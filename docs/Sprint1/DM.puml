@@ -1,0 +1,106 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Ship
+
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
+
+class Truck {
+}
+
+class Container {
+-containerId
+-containerPayload
+-containerTare
+-containerGross
+-ISOcode
+}
+
+class PortWarehouse {
+-idPortW
+-name
+-continent
+-country
+-latitude
+-longitude
+}
+
+class ShipCaptain {
+}
+
+class Client {
+}
+
+class TrafficManager {
+}
+
+class FleetManager {
+}
+
+class WarehouseStaff {
+}
+
+class WarehouseManager {
+}
+
+class PortManager {
+}
+
+class PortStaff {
+}
+
+class TrafficManager {
+}
+
+class TruckDriver {
+}
+
+class ChiefElectricalEngineer {
+}
+
+class CargoManifest {
+}
+
+class LoadingCargoManifest {
+}
+
+class UnloadingCargoManifest {
+}
+
+Ship "1" -- "*" Container : carries >
+Ship "1" -- "1" ShipCaptain
+Ship "1" -- "1" ChiefElectricalEngineer
+Ship "1" -- "*" LoadingCargoManifest : makes >
+Ship "1" -- "*" UnloadingCargoManifest : is delivered <
+Container "*" -- "*" CargoManifest : contains <
+Truck "1" -- "1" TruckDriver
+PortWarehouse "1" -- "1" WarehouseManager
+PortWarehouse "1" -- "1" WarehouseStaff
+PortWarehouse "1" -- "1" PortManager
+PortWarehouse "1" -- "1" PortStaff
+LoadingCargoManifest "1" -u- "1" CargoManifest : is a >
+LoadingCargoManifest "*" -- "1" PortWarehouse : is delivered >
+UnloadingCargoManifest "*" -- "1" PortWarehouse : makes <
+UnloadingCargoManifest "*" -u- "1" CargoManifest : is a >
+
+@enduml
