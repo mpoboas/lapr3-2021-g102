@@ -23,6 +23,8 @@ class Ship {
 -heading
 -position
 -transceiverClass
+-totalTraveledDistance
+-totalNofMovements
 }
 
 class Truck {
