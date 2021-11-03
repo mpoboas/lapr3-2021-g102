@@ -1,0 +1,32 @@
+@startuml
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+-List<Trip> Trips
+}
+
+class Trip{
+-starting port
+-Destination
+-List<Coordinates> CoordinatesSet
+-StartTime
+....
+}
+@enduml
