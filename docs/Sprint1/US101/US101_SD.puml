@@ -1,0 +1,101 @@
+@startuml
+autonumber
+'hide footbox
+actor "Traffic Manager" as TF
+
+participant ":ImportShipsUI" as UI
+participant ":ImportShipsController" as CTRL
+participant ":Import" as import
+participant "Company" as COMP
+participant "importedShips \n:List<Ship>" as list
+participant "shipStore :ShipStore" as STR
+participant "ship: Ship" as ship
+participant "msg: AISMessage" as msg
+
+
+activate TF
+TF -> UI : asks to import ships from file
+activate UI
+UI --> TF : requests data (file directory)
+deactivate UI
+
+TF -> UI : inserts requested data
+activate UI
+
+UI -> CTRL :importShipsData(file)
+
+activate CTRL
+
+CTRL -> import: importShipsData(file)
+activate import
+
+import -> COMP: shipStore = getShipStore()
+activate COMP
+deactivate COMP
+loop for each line of the file
+import -> list: b = boatAlreadyImported(MMSI)
+activate list
+deactivate list
+
+alt b = false
+import -> STR: ship = createShip(fileData)
+
+activate STR
+STR --> ship** : create(MMSI,vesselName,IMO,callSign,vesselType,length,width,draft,cargo,transceiverClass)
+deactivate STR
+else b = true
+import -> list: ship = getShipByMMSI(MMSI)
+activate list
+deactivate list
+end
+
+import -> msg**: msg = create(dateTime,latitude,longitude,SOG,COG,heading)
+import -> ship: addAISMessage(msg)
+activate ship
+deactivate ship
+import -> list : add(ship)
+activate list
+deactivate list
+
+import -> import: count++
+end
+import --> CTRL
+deactivate import
+CTRL --> UI
+deactivate CTRL
+
+
+UI --> TF : shows how many ships were imported
+deactivate UI
+
+
+TF -> UI : confirms the data
+activate UI
+
+UI -> CTRL: saveShipsData()
+activate CTRL
+CTRL -> import: saveShipsData()
+activate import
+loop for each element of the list importedShips
+import -> STR: saveShip(ship)
+activate STR
+STR -> STR: validateShip(ship)
+activate STR
+deactivate STR
+STR -> STR: addShip(ship)
+activate STR
+deactivate STR
+STR --> import
+deactivate STR
+end
+import --> CTRL
+deactivate import
+CTRL --> UI
+deactivate CTRL
+UI --> TF : informs operation success
+deactivate UI
+
+deactivate TF
+
+
+@enduml

@@ -1,0 +1,64 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Company {
+-designation
++getShipStore()
+}
+class ImportShipsController {
++importShipsData(file)
++saveShipsData()
+}
+
+class ImportShipsUI {
+}
+
+class Import{
+-List<Ship> importedShips
++importShipsData(file)
++saveShipsData()
+}
+
+class ShipStore{
+BST<Ship> shipsTree
++createShip(MMSI,vesselName,IMO,callSign,vesselType,\nlength,width,draft,cargo,transceiverClass)
++saveShip(ship)
++validadeShip(ship)
++addShip(ship)
+}
+
+class Ship{
+-MMSI
+-vesselName
+-IMO
+-callSign
+-vesselType
+-length
+-width
+-draft
+-cargo
+-transceiverClass
++Ship(MMSI,vesselName,IMO,callSign,vesselType,\nlength,width,draft,cargo,transceiverClass)
++addAISMessage(aisMessage)
+}
+
+class AISMessage{
+-dateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
++AISMessage(dateTime,latitude,longitude,\nSOG,COG,heading)
+}
+
+ImportShipsUI ..> ImportShipsController
+ImportShipsController ..> Import
+Import --> Company
+Import -> ShipStore
+Company -> ShipStore : uses >
+ShipStore "1" ->  "*" Ship: stores >
+Ship "1" -> "*" AISMessage: contains >
+
+
+@enduml
