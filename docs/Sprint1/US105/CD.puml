@@ -29,4 +29,12 @@ class Trip{
 -StartTime
 ....
 }
+
+class Port{
+-Identification
+-Name
+-Country
+-Location
+}
+
 @enduml
