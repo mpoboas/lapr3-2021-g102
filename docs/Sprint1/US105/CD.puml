@@ -23,11 +23,13 @@ class Ship {
 }
 
 class Trip{
--starting port
--Destination
+-Port startingPort
+-Port Destination
 -List<Coordinates> CoordinatesSet
 -StartTime
-....
+-EndTime
+-getTotalTime()
+-getEstimatedDistance()
 }
 
 class Port{
