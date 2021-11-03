@@ -1,0 +1,30 @@
+@startuml
+autonumber
+'hide footbox
+actor "Traffic Manager" as TF
+
+participant ":CloseShipInfoUI" as UI
+participant ":ShipController" as CTRL
+participant "Company" as COMP
+participant "shipStore: ShipStore" as STR
+participant "ship: Ship" as SHIP
+
+activate TF
+TF -> UI : asks to get all the pairs of ships with close\ndeparture/arrival coordinates
+activate UI
+UI --> CTRL : getCloseCoordsShips()
+activate CTRL
+CTRL --> COMP : shipStore = getShipStore()
+activate COMP
+deactivate COMP
+CTRL --> STR : List<Ship> closeCoordsShipList = getCloseCoordsShips()
+activate STR
+STR --> CTRL
+deactivate STR
+CTRL --> UI
+deactivate CTRL
+UI --> TF : shows all the pairs of ships found
+deactivate UI
+deactivate TF
+
+@enduml
