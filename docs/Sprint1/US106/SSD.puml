@@ -1,0 +1,10 @@
+@startuml
+actor user as usr
+participant system as sys
+autonumber
+usr -> sys : requests ships with mostkilometers travelled and average speed
+sys --> usr : requests how many ships must be listed
+usr -> sys: types how many ships will be listed
+sys --> usr : shows the list requested
+
+@enduml

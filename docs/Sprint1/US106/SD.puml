@@ -1,0 +1,16 @@
+@startuml
+actor user as usr
+participant shipList as sl
+participant ship as ship
+participant travel as travel
+autonumber
+usr -> sl : requests ships with mostkilometers travelled and average speed
+sl --> usr : requests how many ships must be listed
+usr -> sl: types how many ships will be listed
+sl -> ship : requests distance done by each ship
+ship -> travel: requests distance of each ship's travel and duration
+travel --> ship: sends requested data
+ship --> sl : send sum of ship total travel distance and average speed
+sl -->sl : creates list with n elements ordered by traveled distance
+sl --> usr : shows the list requested
+@enduml

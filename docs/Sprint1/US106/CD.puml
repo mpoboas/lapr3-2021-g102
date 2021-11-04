@@ -21,6 +21,10 @@ class Ship {
 -transceiverClass
 -List<Trip> Trips
 }
+class shipList{
+-List<Ship> shipList
+}
+
 
 class Trip{
 -starting port
