@@ -1,0 +1,14 @@
+@startuml
+actor "traffic manager" as actor
+participant ShipList as sl
+participant ships as s
+participant travel as t
+autonumber
+actor -> sl : Requests  a list for all ships(MMSI, total number of movements, Travelled Distance and Delta Distance).
+sl -> s : requests ships
+
+
+s -> t :
+
+sl --> actor : Shows requested list
+@enduml

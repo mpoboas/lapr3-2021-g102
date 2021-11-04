@@ -1,5 +1,7 @@
 @startuml
 actor "traffic manager" as actor
 participant system as sys
-
+autonumber
+actor -> sys : Requests  a list for all ships(MMSI, total number of movements, Travelled Distance and Delta Distance).
+sys --> actor : Shows requested list
 @enduml

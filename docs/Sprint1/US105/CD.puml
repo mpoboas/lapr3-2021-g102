@@ -39,4 +39,9 @@ class Port{
 -Location
 }
 
+class shipList{
+-List<Ships> ship shipList
+}
+
+
 @enduml
