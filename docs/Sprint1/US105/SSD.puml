@@ -2,6 +2,11 @@
 actor "traffic manager" as actor
 participant system as sys
 autonumber
+activate actor
 actor -> sys : Requests  a list for all ships(MMSI, total number of movements, Travelled Distance and Delta Distance).
+activate sys
+
 sys --> actor : Shows requested list
+deactivate sys
+deactivate actor
 @enduml
