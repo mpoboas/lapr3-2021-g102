@@ -24,21 +24,18 @@ public class Ship {
     public double getTotalDistance(){
         double distance = 0;
         for(int i = 0 ; i < tripsList.size();i++){
-            distance = distance + tripsList.get(i).gettripDistance();
+            //distance = distance + tripsList.get(i).gettripDistance();
         }
         return distance;
 
     }
-    public int numberOfMovements(){}
-    public double deltaDistance(){}
+    //public int numberOfMovements(){}
+    //public double deltaDistance(){}
     public double getTotalTimeinSea(){
         double time = 0;
-
-
-
-
-
+        for(int i = 0 ; i < tripsList.size();i++){
+            time = time + tripsList.get(i).getTripDuration();
+        }
         return time;
-
     }
 }

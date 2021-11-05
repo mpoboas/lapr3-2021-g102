@@ -16,9 +16,9 @@ public class Trips {
 
 
 
-    public double getTripDistance(){
+    /*public double getTripDistance(){
 
-    }
+    }*/
     public double getTripDuration(){return (this.endDate.getTime()-this.startDate.getTime())/(60*60 * 1000);}
 
 
