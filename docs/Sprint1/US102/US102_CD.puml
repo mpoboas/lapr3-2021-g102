@@ -1,0 +1,46 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Company {
+-designation
++getShipStore()
+}
+class SearchShipController {
++getShipByMMSI(MMSI)
++getShipByIMO(IMO)
++getShipByCallSign(callSign)
+}
+class SearchShipUI {
+}
+class ShipStore{
++getShipByMMSI(MMSI)
++getShipByIMO(IMO)
++getShipByCallSign(callSign)
+}
+class ShipDTO{
++ShipDTO()
+}
+class ShipMapper{
++toDTO(Ship ship)
+}
+class AISMessageDTO{
++AISMessageDTO()
+}
+class AISMessageMapper{
++toDTO(AISMessage msg)
+}
+class Ship{}
+class AISMessage{}
+
+SearchShipUI ..> SearchShipController
+SearchShipController ..> Company
+SearchShipController ..> ShipMapper
+SearchShipController .> ShipStore
+ShipMapper ..> ShipDTO
+ShipMapper ..> Ship
+ShipStore -> Ship
+Ship -> AISMessage
+AISMessageMapper ..> AISMessage
+AISMessageMapper .> AISMessageDTO
+
+@enduml
