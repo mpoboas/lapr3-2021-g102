@@ -2,9 +2,15 @@
 actor user as usr
 participant system as sys
 autonumber
-usr -> sys : requests ships with mostkilometers travelled and average speed
+activate usr
+usr -> sys : requests ships with most kilometers travelled and average speed
+activate sys
 sys --> usr : requests how many ships must be listed
+deactivate sys
 usr -> sys: types how many ships will be listed
+activate sys
 sys --> usr : shows the list requested
+deactivate sys
+deactivate usr
 
 @enduml

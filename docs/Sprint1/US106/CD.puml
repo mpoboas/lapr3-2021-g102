@@ -1,4 +1,6 @@
 @startuml
+class shipListUI
+class shipListController
 class Ship {
 -MMSI
 -name

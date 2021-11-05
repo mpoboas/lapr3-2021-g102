@@ -1,16 +1,44 @@
 @startuml
 actor user as usr
+participant  listShipsUI as UI
+participant listShipsController as Controller
 participant shipList as sl
 participant ship as ship
 participant travel as travel
 autonumber
-usr -> sl : requests ships with mostkilometers travelled and average speed
-sl --> usr : requests how many ships must be listed
-usr -> sl: types how many ships will be listed
-sl -> ship : requests distance done by each ship
+activate usr
+usr -> UI : requests ships with most kilometers travelled and average speed
+activate UI
+UI --> usr : requests how many ships must be listed
+deactivate UI
+usr -> UI: types how many ships will be listed
+activate UI
+UI -> Controller : Requests list of top n ships with most kilometers and average speed
+activate Controller
+Controller -> sl : requests top n ships with the requested stats
+activate sl
+sl -> ship : requests distance done and total time driven by each ship
+activate ship
 ship -> travel: requests distance of each ship's travel and duration
+activate travel
+travel --> travel : calcultes each trips distance and time
+activate travel
+deactivate travel
 travel --> ship: sends requested data
+deactivate travel
+ship -->ship : calculates total time driven and total distance
+activate ship
+deactivate ship
 ship --> sl : send sum of ship total travel distance and average speed
-sl -->sl : creates list with n elements ordered by traveled distance
-sl --> usr : shows the list requested
+deactivate ship
+sl -->sl : filters the top n ships and orders them
+activate sl
+deactivate sl
+sl --> Controller : sends list
+deactivate sl
+Controller --> UI :  sends list
+deactivate Controller
+UI --> usr : shows the list requested
+deactivate UI
+deactivate usr
 @enduml
