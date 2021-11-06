@@ -81,8 +81,8 @@ public class Ship implements Comparable<Ship> {
     public double getAvgSpeed(){return getTotalDistance()/getTotalTimeinSea();}
 
     /**
-     *
-     * @return total distance done in trips by the ship
+     * total distance done in trips by the ship
+     * @return distance
      */
     public double getTotalDistance(){
         double distance = 0;
@@ -90,14 +90,14 @@ public class Ship implements Comparable<Ship> {
             distance = distance + trips.getTripDistance();
         }
         return distance;
-
     }
     //public int numberOfMovements(){return tripsList.size;} //yet to be confirmed if thats the required value
     //public double deltaDistance(){}
 
     /**
+     * ship's total time spent in the sea
      *
-     * @return ship's total time spent in the sea
+     * @return time
      */
     public double getTotalTimeinSea(){
         double time = 0;
@@ -106,7 +106,6 @@ public class Ship implements Comparable<Ship> {
         }
         return time;
     }
-
     /**
      *
      * @param msg ais message to be added to the ship
@@ -121,6 +120,7 @@ public class Ship implements Comparable<Ship> {
     /**
      *
      * @param trip  to be added to the ship
+     *
      */
     public void addTrip(Trips trip) {
         tripsList.add(trip);

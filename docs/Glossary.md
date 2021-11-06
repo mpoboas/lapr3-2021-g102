@@ -17,6 +17,7 @@
 | **Hull** | **Casco** | The main body of a ship or other vessel. |
 | **ISO Code** | **Código ISO** | Identifies a shipping container. |
 | **IMO** | **IMO** | International ship identification code (remains unchanged after transferring the ship´s registration to another country). |
+| **Knots** | **Nós** | Unit of speed very commonly used in aviation and sea navigation, it equals 1.852 km/h or 1.15078 mph. |
 | **MMSI** | **MMSI** | Ship identification code. |
 | **Payload Weight** | **Carga útil** | Weight of the cargo or contents that a container can hold. |
 | **Port** | **Port** | Refers to to the left side of a ship, when facing forward. |
