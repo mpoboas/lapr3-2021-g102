@@ -1,0 +1,73 @@
+package lapr.project.model;
+
+import org.junit.Test;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+
+import static org.junit.Assert.*;
+
+public class TripsTest {
+    Trips trip ;
+    AISMessage ais1;
+    AISMessage ais2;
+    AISMessage ais3;
+
+    @Test
+    public void getStartTest(){
+        trip = new Trips();
+        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4);
+        trip.addAISMessage(ais1);
+        ais1 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4);
+        trip.addAISMessage(ais2);
+        ais1 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4);
+        trip.addAISMessage(ais3);
+        System.out.println(trip.getStart());
+
+
+    }
+
+    @Test
+    public void addAISMessage() {
+        trip = new Trips();
+        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4);
+        trip.addAISMessage(ais1);
+        assertTrue("Should be true", trip.AIsMessages.get(0) == ais1);
+
+    }
+
+    @Test
+    public void endTrip() {
+        trip = new Trips();
+        assertFalse("Should be false", trip.getTripStatus());
+        trip.endTrip();;
+        assertTrue("Should be true", trip.getTripStatus());
+    }
+
+
+    @Test
+    public void getTripDistance() {
+        trip = new Trips();
+        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4);
+        trip.addAISMessage(ais1);
+        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4);
+        trip.addAISMessage(ais2);
+        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4);
+        trip.addAISMessage(ais3);
+        assertEquals((Math.sqrt((1*1)+(1*1))+Math.sqrt((2*2)+(4*4))) *60,trip.getTripDistance(), 0.1);
+    }
+
+    @Test
+    public void getTripDuration() {
+        trip = new Trips();
+        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4);
+        trip.addAISMessage(ais1);
+        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4);
+        trip.addAISMessage(ais2);
+        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4);
+        trip.addAISMessage(ais3);
+        trip.endTrip();
+        assertEquals(83,trip.getTripDuration(), 0.1);
+    }
+}

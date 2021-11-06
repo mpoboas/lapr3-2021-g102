@@ -1,6 +1,7 @@
 package lapr.project.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -11,7 +12,7 @@ public class AISMessage implements Comparable<AISMessage> {
     /**
      * Date/time of AIS message.
      */
-    private final LocalDate baseDateTime;
+    private final LocalDateTime baseDateTime;
     /**
      * ship latitude
      */
@@ -42,7 +43,7 @@ public class AISMessage implements Comparable<AISMessage> {
      * @param SOG Speed over ground
      * @param heading ship heading
      */
-    public AISMessage(LocalDate baseDateTime,double latitude,double longitude,double COG,double SOG,int heading){
+    public AISMessage(LocalDateTime baseDateTime,double latitude,double longitude,double COG,double SOG,int heading){
         this.baseDateTime = baseDateTime;
         this.latitude=latitude;
         this.longitude=longitude;
@@ -55,7 +56,7 @@ public class AISMessage implements Comparable<AISMessage> {
      *
      * @return the time and date
      */
-    public LocalDate getBaseDateTime() {
+    public LocalDateTime getBaseDateTime() {
         return baseDateTime;
     }
 
@@ -104,15 +105,10 @@ public class AISMessage implements Comparable<AISMessage> {
      * @param c other AISMessage
      * @return distance between AISMessage in nautical miles
      */
-    public double getDistanceAIMes(Object c){
-        if(c instanceof AISMessage) {
-            AISMessage c1 = (AISMessage) c;
-            double cat1 = this.latitude - c1.latitude;
-            double cat2 = this.longitude - c1.longitude;
+    public double getDistanceAIMes(AISMessage c){
+            double cat1 = this.latitude - c.latitude;
+            double cat2 = this.longitude - c.longitude;
             return Math.sqrt((cat1 * cat1) + (cat2 * cat2)) * 60;
-        }else{
-            throw new IllegalArgumentException("Thats not a valid AISMessage");
-        }
     }
 
     /**

@@ -1,16 +1,22 @@
 package lapr.project.model;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Trips {
-    List<AISMessage> AIsMessages;
-    private boolean isOver;
-    private Duration duration;
+    public List<AISMessage> AIsMessages;
+    public boolean isOver;
+    public Duration duration;
     public Trips(){
         this.isOver = false;
         AIsMessages = new ArrayList<>();
+    }
+
+    public LocalDateTime getStart(){
+        return AIsMessages.get(0).getBaseDateTime();
     }
     /**
      * Sets the trip duration after it is over
@@ -48,7 +54,7 @@ public class Trips {
      */
     public double getTripDistance(){
     double distance =0;
-    for (int i = 0 ; i< AIsMessages.size(); i++){
+    for (int i = 0 ; i< AIsMessages.size()-1; i++){
         distance = distance + AIsMessages.get(i).getDistanceAIMes(AIsMessages.get(i+1));
     }
     return distance;
