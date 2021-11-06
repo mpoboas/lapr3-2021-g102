@@ -57,7 +57,7 @@ public class Ship implements Comparable<Ship> {
      */
     private char transceiverClass;
 
-    private List<Trips> tripsList;
+    private final List<Trips> tripsList;
 
     public Ship(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, int draft, int cargo, char transceiverClass) {
         MMSI = mmsi;
@@ -73,6 +73,11 @@ public class Ship implements Comparable<Ship> {
         aisMessagesList = new ArrayList<>();
         this.tripsList = new ArrayList<>();
     }
+    /**
+     *
+     * @return ship MMSI
+     */
+    public int getMMSI(){ return MMSI;}
 
     /**
      *
@@ -91,8 +96,17 @@ public class Ship implements Comparable<Ship> {
         }
         return distance;
     }
-    //public int numberOfMovements(){return tripsList.size;} //yet to be confirmed if thats the required value
-    //public double deltaDistance(){}
+
+    /**
+     *
+     * @return total number of trips done by ship
+     */
+    public int numberOfMovements(){return tripsList.size();}
+    /**
+     *
+     * @return distance between first registerd movement and last
+     */
+    public double deltaDistance(){return aisMessagesList.get(0).getDistanceAIMes(aisMessagesList.get(aisMessagesList.size()-1));}
 
     /**
      * ship's total time spent in the sea
@@ -129,6 +143,13 @@ public class Ship implements Comparable<Ship> {
     public List<AISMessage> getAisMessagesList() {
         return aisMessagesList;
     }
+
+    /**
+     *
+     * @param i index of AISMessage
+     * @return corresponding aismessage
+     */
+    public AISMessage getAISM(int i){return aisMessagesList.get(i);}
 
     /**
      *

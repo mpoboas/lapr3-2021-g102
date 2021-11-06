@@ -6,31 +6,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Trips {
-    public List<AISMessage> AIsMessages;
+    private final List<AISMessage> aisMessagesList;
     private boolean isOver;
     private Duration duration;
     public Trips(){
         this.isOver = false;
-        AIsMessages = new ArrayList<>();
+        aisMessagesList = new ArrayList<>();
     }
     
-    public AISMessage getAIsMessage(int i){return AIsMessages.get(i);}
+    public AISMessage getAIsMessage(int i){return aisMessagesList.get(i);}
 
     public LocalDateTime getStart(){
-        return AIsMessages.get(0).getBaseDateTime();
+        return aisMessagesList.get(0).getBaseDateTime();
     }
     /**
      * Sets the trip duration after it is over
      */
     private void setTripDuration(){
-        duration = Duration.between(this.AIsMessages.get(0).getBaseDateTime(),this.AIsMessages.get(AIsMessages.size()-1).getBaseDateTime() );
+        duration = Duration.between(this.aisMessagesList.get(0).getBaseDateTime(),this.aisMessagesList.get(aisMessagesList.size()-1).getBaseDateTime() );
     }
     /**
      *
      * @param aism to be added to the trip list of AISMessage
      */
     public void addAISMessage(AISMessage aism){
-        AIsMessages.add(aism);
+        aisMessagesList.add(aism);
     }
 
     /**
@@ -55,8 +55,8 @@ public class Trips {
      */
     public double getTripDistance(){
     double distance =0;
-    for (int i = 0 ; i< AIsMessages.size()-1; i++){
-        distance = distance + AIsMessages.get(i).getDistanceAIMes(AIsMessages.get(i+1));
+    for (int i = 0 ; i< aisMessagesList.size()-1; i++){
+        distance = distance + aisMessagesList.get(i).getDistanceAIMes(aisMessagesList.get(i+1));
     }
     return distance;
     }

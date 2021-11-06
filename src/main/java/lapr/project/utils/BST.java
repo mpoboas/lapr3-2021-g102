@@ -145,7 +145,7 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
     private Node<E> remove(E element, Node<E> node) {
 
         if (node == null) {
-            return null;    //throw new IllegalArgumentException("Element does not exist");
+            return null;
         }
         if (element.compareTo(node.getElement()) == 0) {
             // node is the Node to be removed
@@ -217,7 +217,7 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
         return smallestElement(node.getLeft());
     }
 
-    /*
+    /**
      * Returns an iterable collection of elements of the tree, reported in in-order.
      * @return iterable collection of the tree's elements reported in in-order
      */
