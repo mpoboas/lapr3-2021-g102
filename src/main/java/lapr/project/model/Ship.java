@@ -101,8 +101,7 @@ public class Ship implements Comparable<Ship> {
      *
      * @return total number of trips done by ship
      */
-    public int numberOfMovements(){return tripsList.size();} //yet to be confirmed if that's the required value
-
+    public int numberOfMovements(){return tripsList.size();}
     /**
      *
      * @return distance between first registerd movement and last
@@ -131,6 +130,13 @@ public class Ship implements Comparable<Ship> {
         else
             throw new IllegalArgumentException("This message is already saved in this ship");
     }
+
+    /**
+     *
+     * @param i index of AISMessage
+     * @return corresponding aismessage
+     */
+    public AISMessage getAISM(int i){return aisMessagesList.get(i);}
 
     /**
      *
