@@ -73,6 +73,11 @@ public class Ship implements Comparable<Ship> {
         aisMessagesList = new ArrayList<>();
         this.tripsList = new ArrayList<>();
     }
+    /**
+     *
+     * @return ship MMSI
+     */
+    public int getMMSI(){ return MMSI;}
 
     /**
      *

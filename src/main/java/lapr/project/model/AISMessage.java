@@ -102,6 +102,7 @@ public class AISMessage implements Comparable<AISMessage> {
     /**
      *
      * @param c other AISMessage
+     * calculates the distance between two AISMessages by using the Pythagorean theorem
      * @return distance between AISMessage in nautical miles
      */
     public double getDistanceAIMes(AISMessage c){
