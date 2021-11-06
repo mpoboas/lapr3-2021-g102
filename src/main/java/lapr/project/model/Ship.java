@@ -57,7 +57,7 @@ public class Ship implements Comparable<Ship> {
      */
     private char transceiverClass;
 
-    List<Trips> tripsList;
+    private List<Trips> tripsList;
 
     public Ship(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, int draft, int cargo, char transceiverClass) {
         MMSI = mmsi;
@@ -82,12 +82,12 @@ public class Ship implements Comparable<Ship> {
     public double getTotalDistance(){
         double distance = 0;
         for(int i = 0 ; i < tripsList.size();i++){
-            //distance = distance + tripsList.get(i).gettripDistance();
+            distance = distance + tripsList.get(i).getTripDistance();
         }
         return distance;
 
     }
-    //public int numberOfMovements(){}
+    //public int numberOfMovements(){return tripsList.size;} //yet to be confirmed if thats the required value
     //public double deltaDistance(){}
     public double getTotalTimeinSea(){
         double time = 0;

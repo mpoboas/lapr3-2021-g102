@@ -99,6 +99,13 @@ public class AISMessage implements Comparable<AISMessage> {
         return heading;
     }
 
+
+    public double getDistanceAIMes(AISMessage c){//delivers distance between 2 coordinates in nautical miles
+        double cat1 = this.latitude - c.latitude;
+        double cat2 = this.longitude - c.longitude;
+        return Math.sqrt((cat1*cat1) +(cat2*cat2)) * 60;
+    }
+
     /**
      * Checks if other object is equal to this one
      * @param o the other object
