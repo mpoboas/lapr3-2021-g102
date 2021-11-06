@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class ShipStore {
     /**
-     *
+     * All the ships stored in a binary search tree
      */
     BST<Ship> shipBST = new BST<>();
 
@@ -31,12 +31,24 @@ public class ShipStore {
         return new Ship(mmsi, vesselName, imo, callSign, vesselType, length, width, draft, cargo, transceiverClass);
     }
 
+    /**
+     * Checks if a ship is already in store
+     *
+     * @param ship the ship to check
+     * @return false if the ship is null or if the ship is already stores, true if is not stored
+     */
     public boolean validateShip(Ship ship) {
         if (ship == null)
             return false;
         return shipBST.find(ship) == null;
     }
 
+    /**
+     * Adds a ship to the store or adds some ship information if that ship is already in the store
+     *
+     * @param ship the ship to add
+     * @return true if the ship was added or got more aismessages, false if not
+     */
     public boolean addShip(Ship ship) {
         if (validateShip(ship)) {
             shipBST.insert(ship);
@@ -61,8 +73,10 @@ public class ShipStore {
     }
 
     /**
-     * @param ship
-     * @return
+     * Searches for the same ship from the list of ships
+     *
+     * @param ship the ship to get the duplicate
+     * @return the ship with the same information
      */
     public Ship getShipDuplicated(Ship ship) {
         Ship sp = null;

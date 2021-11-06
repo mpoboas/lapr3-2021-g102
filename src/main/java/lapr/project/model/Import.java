@@ -12,14 +12,26 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Import {
+    /**
+     * List of the ships imported from the file
+     */
     private List<Ship> listOfImportedShips;
-    private ShipStore shipStore;
+    /**
+     * Store class that stores the ships imported
+     */
+    private final ShipStore shipStore;
+
 
     public Import() {
         shipStore = new ShipStore(); // Mudar dps para company.getShipStore()
         listOfImportedShips = new ArrayList<>();
     }
 
+    /**
+     * Imports all the ships from a file and adds them to the list of imported tests
+     * @param fileDirectory file directory that contains the ships information
+     * @throws IOException
+     */
     public void importShipsData(String fileDirectory) throws IOException {
         //listOfImportedShips = new ArrayList<>();
 
@@ -44,6 +56,11 @@ public class Import {
         readfile.close();
     }
 
+    /**
+     * Checks if a ship was already imported
+     * @param mmsiS mmsi of the ship to check if its imported
+     * @return true if the ship was already imported, false if not
+     */
     public boolean shipAlreadyImported(String mmsiS) {
         int mmsi = Integer.parseInt(mmsiS);
         for (Ship s : listOfImportedShips) {
@@ -53,6 +70,11 @@ public class Import {
         return false;
     }
 
+    /**
+     * Searches for a determinated ship by its mmsi
+     * @param mmsiS mmsi of the boat to find
+     * @return the ship found
+     */
     public Ship getShipByMMSI(String mmsiS) {
         int mmsi = Integer.parseInt(mmsiS);
         for (Ship s : listOfImportedShips) {
@@ -62,6 +84,11 @@ public class Import {
         throw new IllegalArgumentException("Not found");
     }
 
+    /**
+     * Creates an object of ship from the data of the file
+     * @param attributes an array of all the attributes to create the ship
+     * @return the object ship created
+     */
     public Ship createShip(String[] attributes) {
         int mmsi = Integer.parseInt(attributes[0]);
         String vesselName = attributes[7];
@@ -80,6 +107,11 @@ public class Import {
         return shipStore.createShip(mmsi, vesselName, imo, callSign, vesselType, length, width, draft, cargo, transceiverClass);
     }
 
+    /**
+     * Creates an object of aismessage from the data of the file
+     * @param attributes an array of all the attributes to create the aismessage
+     * @return the object aismessage created
+     */
     public AISMessage createAISMessage(String[] attributes) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy H:mm");
         LocalDateTime baseDateTime = LocalDateTime.parse(attributes[1], dtf);
@@ -91,12 +123,19 @@ public class Import {
         return new AISMessage(baseDateTime, latitude, longitude, COG, SOG, heading);
     }
 
+    /**
+     * Adds all the ships imported to the ship store
+     */
     public void addShips() {
         for (Ship s : listOfImportedShips) {
             shipStore.addShip(s);
         }
     }
 
+    /**
+     * Gets the list of the ships imported
+     * @return imported ships
+     */
     public List<Ship> getListOfImportedShips() {
         return listOfImportedShips;
     }
