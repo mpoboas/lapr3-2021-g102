@@ -1,19 +1,20 @@
 package lapr.project.model;
 
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Trips {
     public List<AISMessage> AIsMessages;
-    public boolean isOver;
-    public Duration duration;
+    private boolean isOver;
+    private Duration duration;
     public Trips(){
         this.isOver = false;
         AIsMessages = new ArrayList<>();
     }
+    
+    public AISMessage getAIsMessage(int i){return AIsMessages.get(i);}
 
     public LocalDateTime getStart(){
         return AIsMessages.get(0).getBaseDateTime();

@@ -125,6 +125,9 @@ public class Ship implements Comparable<Ship> {
     public void addTrip(Trips trip) {
         tripsList.add(trip);
     }
+    public Trips getTrip(int i){
+        return tripsList.get(i);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o)

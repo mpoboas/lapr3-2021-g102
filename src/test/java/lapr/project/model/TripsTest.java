@@ -31,7 +31,7 @@ public class TripsTest {
         trip = new Trips();
         ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4);
         trip.addAISMessage(ais1);
-        assertTrue("Should be true", trip.AIsMessages.get(0) == ais1);
+        assertTrue("Should be true", trip.getAIsMessage(0) == ais1);
 
     }
 
