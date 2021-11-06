@@ -15,35 +15,35 @@ public class Ship implements Comparable<Ship> {
     /**
      *
      */
-    private int MMSI;
+    private final int MMSI;
     /**
      *
      */
-    private String vesselName;
+    private final String vesselName;
     /**
      *
      */
-    private String IMO;
+    private final String IMO;
     /**
      *
      */
-    private String callSign;
+    private final String callSign;
     /**
      *
      */
-    private int vesselType;
+    private final int vesselType;
     /**
      *
      */
-    private int length;
+    private final int length;
     /**
      *
      */
-    private int width;
+    private final int width;
     /**
      *
      */
-    private int draft;
+    private final int draft;
     /**
      *
      */
@@ -113,8 +113,21 @@ public class Ship implements Comparable<Ship> {
     public void addAISMessage(AISMessage msg) {
         if (!aisMessagesList.contains(msg))
             aisMessagesList.add(msg);
-        else
-            throw new IllegalArgumentException("This message is already saved in this ship");
+    }
+
+    /**
+     * imports a list to the list of ais messages
+     * @param msgList ais message list to import
+     */
+    public void addAISMessage(List<AISMessage> msgList){
+        for (AISMessage msg: msgList) {
+            addAISMessage(msg);
+        }
+
+    }
+
+    public List<AISMessage> getAisMessagesList() {
+        return aisMessagesList;
     }
 
     /**
