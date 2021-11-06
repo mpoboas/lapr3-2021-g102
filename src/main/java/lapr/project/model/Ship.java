@@ -96,8 +96,18 @@ public class Ship implements Comparable<Ship> {
         }
         return distance;
     }
-    //public int numberOfMovements(){return tripsList.size;} //yet to be confirmed if thats the required value
-    //public double deltaDistance(){}
+
+    /**
+     *
+     * @return total number of trips done by ship
+     */
+    public int numberOfMovements(){return tripsList.size();} //yet to be confirmed if that's the required value
+
+    /**
+     *
+     * @return distance between first registerd movement and last
+     */
+    public double deltaDistance(){return aisMessagesList.get(0).getDistanceAIMes(aisMessagesList.get(aisMessagesList.size()-1));}
 
     /**
      * ship's total time spent in the sea
