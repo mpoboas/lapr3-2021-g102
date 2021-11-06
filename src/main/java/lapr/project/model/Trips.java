@@ -6,16 +6,22 @@ import java.util.Date;
 import java.util.List;
 
 public class Trips {
-    Port startingPort;
-    Port destination;
     List<AISMessage> AIsMessages;
+    private boolean isOver;
     private Duration duration;
     public Trips(){
-
+        this.isOver = false;
         AIsMessages = new ArrayList<AISMessage>();
     }
     private void setTripDuration(){
         duration = Duration.between(this.AIsMessages.get(0).getBaseDateTime(),this.AIsMessages.get(AIsMessages.size()-1).getBaseDateTime() );
+    }
+    public void addAISMessage(AISMessage aism){
+        AIsMessages.add(aism);
+    }
+    public void endTrip(){
+        isOver = true;
+        setTripDuration();
     }
     public double getTripDistance(){//gets trip distance in nautical miles
     double distance =0;

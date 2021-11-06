@@ -108,6 +108,16 @@ public class Ship implements Comparable<Ship> {
             throw new IllegalArgumentException("This message is already saved in this ship");
     }
 
+    /**
+     *
+     * @param trip  to be added to the ship
+     */
+    public void addTrip(Trips trip) {
+        if (!aisMessagesList.contains(trip))
+            tripsList.add(trip);
+        else
+            throw new IllegalArgumentException("This message is already saved in this ship");
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o)
