@@ -71,28 +71,38 @@ public class Ship implements Comparable<Ship> {
         this.cargo = cargo;
         this.transceiverClass = transceiverClass;
         aisMessagesList = new ArrayList<>();
+        this.tripsList = new ArrayList<>();
     }
 
-    public Ship(){
-
-        this.tripsList = new ArrayList<Trips>();
-    }
-
+    /**
+     *
+     * @return ship average speed in knots (nautical miles per hour)
+     */
     public double getAvgSpeed(){return getTotalDistance()/getTotalTimeinSea();}
+
+    /**
+     *
+     * @return total distance done in trips by the ship
+     */
     public double getTotalDistance(){
         double distance = 0;
-        for(int i = 0 ; i < tripsList.size();i++){
-            distance = distance + tripsList.get(i).getTripDistance();
+        for (Trips trips : tripsList) {
+            distance = distance + trips.getTripDistance();
         }
         return distance;
 
     }
     //public int numberOfMovements(){return tripsList.size;} //yet to be confirmed if thats the required value
     //public double deltaDistance(){}
+
+    /**
+     *
+     * @return ship's total time spent in the sea
+     */
     public double getTotalTimeinSea(){
         double time = 0;
-        for(int i = 0 ; i < tripsList.size();i++){
-            time = time + tripsList.get(i).getTripDuration();
+        for (Trips trips : tripsList) {
+            time = time + trips.getTripDuration();
         }
         return time;
     }
@@ -113,10 +123,7 @@ public class Ship implements Comparable<Ship> {
      * @param trip  to be added to the ship
      */
     public void addTrip(Trips trip) {
-        if (!aisMessagesList.contains(trip))
-            tripsList.add(trip);
-        else
-            throw new IllegalArgumentException("This message is already saved in this ship");
+        tripsList.add(trip);
     }
     @Override
     public boolean equals(Object o) {
