@@ -57,7 +57,7 @@ public class Ship implements Comparable<Ship> {
      */
     private char transceiverClass;
 
-    private List<Trips> tripsList;
+    private final List<Trips> tripsList;
 
     public Ship(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, int draft, int cargo, char transceiverClass) {
         MMSI = mmsi;
