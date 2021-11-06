@@ -19,13 +19,11 @@ public class TripsTest {
         trip = new Trips();
         ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4);
         trip.addAISMessage(ais1);
-        ais1 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4);
+        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4);
         trip.addAISMessage(ais2);
-        ais1 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4);
+        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4);
         trip.addAISMessage(ais3);
-        System.out.println(trip.getStart());
-
-
+        assertEquals(LocalDateTime.of(2018, Month.JUNE, 26, 2, 0),trip.getStart());
     }
 
     @Test
@@ -40,6 +38,12 @@ public class TripsTest {
     @Test
     public void endTrip() {
         trip = new Trips();
+        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4);
+        trip.addAISMessage(ais1);
+        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4);
+        trip.addAISMessage(ais2);
+        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4);
+        trip.addAISMessage(ais3);
         assertFalse("Should be false", trip.getTripStatus());
         trip.endTrip();;
         assertTrue("Should be true", trip.getTripStatus());
