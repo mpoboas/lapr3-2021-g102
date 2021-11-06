@@ -144,4 +144,16 @@ public class AISMessage implements Comparable<AISMessage> {
     public int compareTo(AISMessage o) {
         return this.baseDateTime.compareTo(o.baseDateTime);
     }
+
+    @Override
+    public String toString() {
+        return "AISMessage{" +
+                "baseDateTime=" + baseDateTime +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", COG=" + COG +
+                ", SOG=" + SOG +
+                ", heading=" + heading +
+                '}' + '\n';
+    }
 }

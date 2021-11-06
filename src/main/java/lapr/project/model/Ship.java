@@ -43,7 +43,7 @@ public class Ship implements Comparable<Ship> {
     /**
      *
      */
-    private final int draft;
+    private final double draft;
     /**
      *
      */
@@ -59,7 +59,7 @@ public class Ship implements Comparable<Ship> {
 
     private final List<Trips> tripsList;
 
-    public Ship(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, int draft, int cargo, char transceiverClass) {
+    public Ship(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, double draft, int cargo, char transceiverClass) {
         MMSI = mmsi;
         this.vesselName = vesselName;
         IMO = imo;
@@ -180,5 +180,21 @@ public class Ship implements Comparable<Ship> {
     @Override
     public int compareTo(Ship o) {
         return MMSI - o.MMSI;
+    }
+
+    @Override
+    public String toString() {
+        return "Ship{" +
+                "MMSI=" + MMSI +
+                ", vesselName='" + vesselName + '\'' +
+                ", IMO='" + IMO + '\'' +
+                ", callSign='" + callSign + '\'' +
+                ", vesselType=" + vesselType +
+                ", length=" + length +
+                ", width=" + width +
+                ", draft=" + draft +
+                ", cargo=" + cargo +
+                ", transceiverClass=" + transceiverClass +
+                '}' + '\n' + aisMessagesList;
     }
 }

@@ -27,7 +27,7 @@ public class ShipStore {
      * @param transceiverClass the transceiver class of the ship
      * @return a new instance of ship
      */
-    public Ship createShip(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, int draft, int cargo, char transceiverClass) {
+    public Ship createShip(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, double draft, int cargo, char transceiverClass) {
         return new Ship(mmsi, vesselName, imo, callSign, vesselType, length, width, draft, cargo, transceiverClass);
     }
 
