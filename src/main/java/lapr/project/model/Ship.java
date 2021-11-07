@@ -94,6 +94,78 @@ public class Ship implements Comparable<Ship> {
 
     /**
      *
+     * @return vessel name of the ship
+     */
+    public String getVesselName() {
+        return vesselName;
+    }
+
+    /**
+     *
+     * @return imo of the ship
+     */
+    public String getIMO() {
+        return IMO;
+    }
+
+    /**
+     *
+     * @return call sign of the ship
+     */
+    public String getCallSign() {
+        return callSign;
+    }
+
+    /**
+     *
+     * @return vessel type of the ship
+     */
+    public int getVesselType() {
+        return vesselType;
+    }
+
+    /**
+     *
+     * @return length of the ship
+     */
+    public int getLength() {
+        return length;
+    }
+
+    /**
+     *
+     * @return width of the ship
+     */
+    public int getWidth() {
+        return width;
+    }
+
+    /**
+     *
+     * @return draft of the ship
+     */
+    public double getDraft() {
+        return draft;
+    }
+
+    /**
+     *
+     * @return cargo of the ship
+     */
+    public int getCargo() {
+        return cargo;
+    }
+
+    /**
+     *
+     * @return transceiver class of the ship
+     */
+    public char getTransceiverClass() {
+        return transceiverClass;
+    }
+
+    /**
+     *
      * @return ship average speed in knots (nautical miles per hour)
      */
     public double getAvgSpeed(){return getTotalDistance()/getTotalTimeinSea();}

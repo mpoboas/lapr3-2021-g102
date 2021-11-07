@@ -3,8 +3,6 @@ package lapr.project.stores;
 import lapr.project.model.Ship;
 import lapr.project.utils.BST;
 
-import java.util.List;
-
 /**
  * This class represents the tree of the ships
  */
@@ -85,5 +83,44 @@ public class ShipStore {
                 sp = s;
         }
         return sp;
+    }
+
+    /**
+     * Searches for a ship by its mmsi
+     * @param mmsi mmsi to identify the ship
+     * @return the ship with that mmsi or throws an exception if the ship was not found
+     */
+    public Ship getShipByMMSI(int mmsi){
+        for (Ship s: getListOfShipsASCOrd()) {
+            if (s.getMMSI() == mmsi)
+                return s;
+        }
+        throw new IllegalArgumentException("The ship with the MMSI: " + mmsi + " was not found");
+    }
+
+    /**
+     * Searches for a ship by its imo
+     * @param imo mmsi to identify the ship
+     * @return the ship with that imo or throws an exception if the ship was not found
+     */
+    public Ship getShipByIMO(String imo){
+        for (Ship s: getListOfShipsASCOrd()) {
+            if (s.getIMO().equals(imo))
+                return s;
+        }
+        throw new IllegalArgumentException("The ship with the IMO: " + imo + " was not found");
+    }
+
+    /**
+     * Searches for a ship by its call sign
+     * @param callSign mmsi to identify the ship
+     * @return the ship with that call sign or throws an exception if the ship was not found
+     */
+    public Ship getShipByCallSign(String callSign){
+        for (Ship s: getListOfShipsASCOrd()) {
+            if (s.getCallSign().equals(callSign))
+                return s;
+        }
+        throw new IllegalArgumentException("The ship with the Call Sign: " + callSign + " was not found");
     }
 }
