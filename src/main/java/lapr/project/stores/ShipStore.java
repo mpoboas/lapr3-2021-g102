@@ -87,11 +87,12 @@ public class ShipStore {
 
     /**
      * Searches for a ship by its mmsi
+     *
      * @param mmsi mmsi to identify the ship
      * @return the ship with that mmsi or throws an exception if the ship was not found
      */
-    public Ship getShipByMMSI(int mmsi){
-        for (Ship s: getListOfShipsASCOrd()) {
+    public Ship getShipByMMSI(int mmsi) {
+        for (Ship s : getListOfShipsASCOrd()) {
             if (s.getMMSI() == mmsi)
                 return s;
         }
@@ -100,11 +101,12 @@ public class ShipStore {
 
     /**
      * Searches for a ship by its imo
+     *
      * @param imo mmsi to identify the ship
      * @return the ship with that imo or throws an exception if the ship was not found
      */
-    public Ship getShipByIMO(String imo){
-        for (Ship s: getListOfShipsASCOrd()) {
+    public Ship getShipByIMO(String imo) {
+        for (Ship s : getListOfShipsASCOrd()) {
             if (s.getIMO().equals(imo))
                 return s;
         }
@@ -113,14 +115,49 @@ public class ShipStore {
 
     /**
      * Searches for a ship by its call sign
+     *
      * @param callSign mmsi to identify the ship
      * @return the ship with that call sign or throws an exception if the ship was not found
      */
-    public Ship getShipByCallSign(String callSign){
-        for (Ship s: getListOfShipsASCOrd()) {
+    public Ship getShipByCallSign(String callSign) {
+        for (Ship s : getListOfShipsASCOrd()) {
             if (s.getCallSign().equals(callSign))
                 return s;
         }
         throw new IllegalArgumentException("The ship with the Call Sign: " + callSign + " was not found");
     }
+
+    /*public void getCloseCoordsShips() {
+        List<Ship> shipList = (List<Ship>) this.getListOfShipsASCOrd();
+
+        for (int i = 0; i < shipList.size(); i++) {
+            if (!(shipList.get(i).getTotalDistance() < 10000)) { // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms"
+                List<Trips> ship1TripList = new ArrayList<>(shipList.get(i).getTripList());
+                for (int j = i + 1; j < shipList.size(); j++) {
+                    if (!(shipList.get(j).getTotalDistance() < 10000) && (shipList.get(i).getTotalDistance() != shipList.get(j).getTotalDistance())) { // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms"
+                        List<Trips> ship2TripList = new ArrayList<>(shipList.get(i).getTripList());
+
+                        for (Trips ship1Trip : ship1TripList) {
+                            for (Trips ship2Trip : ship2TripList) {
+                                AISMessage ship1TripDepartureAisMessage = ship1Trip.getAIsMessage(0);
+                                AISMessage ship1TripArrivalAisMessage = ship1Trip.getLastAISMessage();
+                                AISMessage ship2TripDepartureAisMessage = ship2Trip.getAIsMessage(0);
+                                AISMessage ship2TripArrivalAisMessage = ship2Trip.getLastAISMessage();
+                                if (ship1TripDepartureAisMessage.getDistanceAIMes(ship2TripDepartureAisMessage) < 5000) {
+
+                                } else if (ship1TripDepartureAisMessage.getDistanceAIMes(ship2TripArrivalAisMessage) < 5000) {
+
+                                } else if (ship1TripArrivalAisMessage.getDistanceAIMes(ship2TripDepartureAisMessage) < 5000) {
+
+                                } else if (ship1TripArrivalAisMessage.getDistanceAIMes(ship2TripArrivalAisMessage) < 5000) {
+
+                                }
+                            }
+                        }
+                    }
+                    //List<AISMessage> aisMessageList = new ArrayList<>(shipList.get(i).getAisMessagesList());
+                }
+            }
+        }
+    }*/
 }
