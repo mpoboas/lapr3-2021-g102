@@ -37,6 +37,7 @@ SearchShipController ..> Company
 SearchShipController ..> ShipMapper
 SearchShipController .> ShipStore
 ShipMapper ..> ShipDTO
+ShipMapper .> AISMessageMapper
 ShipMapper ..> Ship
 ShipStore -> Ship
 Ship -> AISMessage
