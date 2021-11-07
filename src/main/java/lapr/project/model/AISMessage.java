@@ -1,5 +1,7 @@
 package lapr.project.model;
 
+import lapr.project.utils.Coordinates;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -12,14 +14,8 @@ public class AISMessage implements Comparable<AISMessage> {
      * Date/time of AIS message.
      */
     private final LocalDateTime baseDateTime;
-    /**
-     * ship latitude
-     */
-    private final double latitude;
-    /**
-     * ship longitude
-     */
-    private final double longitude;
+
+    private final Coordinates coordinates;
     /**
      *Course over ground
      */
@@ -44,8 +40,7 @@ public class AISMessage implements Comparable<AISMessage> {
      */
     public AISMessage(LocalDateTime baseDateTime,double latitude,double longitude,double COG,double SOG,int heading){
         this.baseDateTime = baseDateTime;
-        this.latitude=latitude;
-        this.longitude=longitude;
+        this.coordinates = new Coordinates(latitude, longitude);
         this.COG= COG;
         this.SOG=SOG;
         this.heading=heading;
@@ -59,20 +54,8 @@ public class AISMessage implements Comparable<AISMessage> {
         return baseDateTime;
     }
 
-    /**
-     *
-     * @return latitude
-     */
-    public double getLatitude() {
-        return latitude;
-    }
-
-    /**
-     *
-     * @return longitude
-     */
-    public double getLongitude() {
-        return longitude;
+    public Coordinates getCoordinates() {
+        return coordinates;
     }
 
     /**
@@ -106,8 +89,8 @@ public class AISMessage implements Comparable<AISMessage> {
      * @return distance between AISMessage in nautical miles
      */
     public double getDistanceAIMes(AISMessage c){
-            double cat1 = this.latitude - c.latitude;
-            double cat2 = this.longitude - c.longitude;
+            double cat1 = this.coordinates.getLatitude() - c.coordinates.getLatitude();
+            double cat2 = this.coordinates.getLongitude() - c.coordinates.getLongitude();
             return Math.sqrt((cat1 * cat1) + (cat2 * cat2)) * 60;
     }
 
@@ -149,8 +132,8 @@ public class AISMessage implements Comparable<AISMessage> {
     public String toString() {
         return "AISMessage{" +
                 "baseDateTime=" + baseDateTime +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
+                ", latitude=" + coordinates.getLatitude() +
+                ", longitude=" + coordinates.getLongitude() +
                 ", COG=" + COG +
                 ", SOG=" + SOG +
                 ", heading=" + heading +

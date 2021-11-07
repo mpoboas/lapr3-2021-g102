@@ -9,7 +9,7 @@ import java.util.List;
 public class AISMessageMapper {
 
     public AISMessageDTO toDTO(AISMessage msg){
-        return new AISMessageDTO(msg.getBaseDateTime(), msg.getLatitude(), msg.getLongitude(), msg.getCOG(), msg.getSOG(), msg.getHeading());
+        return new AISMessageDTO(msg.getBaseDateTime(), msg.getCoordinates().getLatitude(), msg.getCoordinates().getLongitude(), msg.getCOG(), msg.getSOG(), msg.getHeading());
     }
 
     public List<AISMessageDTO> toDTO(List<AISMessage> msgList){

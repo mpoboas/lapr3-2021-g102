@@ -1,5 +1,7 @@
 package lapr.project.model;
 
+import lapr.project.utils.Coordinates;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,12 +15,15 @@ public class Trips {
         this.isOver = false;
         aisMessagesList = new ArrayList<>();
     }
-    
+
     public AISMessage getAIsMessage(int i){return aisMessagesList.get(i);}
+
+    public AISMessage getLastAISMessage(){return aisMessagesList.get(aisMessagesList.size()-1);}
 
     public LocalDateTime getStart(){
         return aisMessagesList.get(0).getBaseDateTime();
     }
+
     /**
      * Sets the trip duration after it is over
      */
