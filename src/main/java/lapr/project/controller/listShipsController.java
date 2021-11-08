@@ -24,8 +24,8 @@ public class listShipsController {
 
     /**
      *
-     * @param asc
-     * @param criteria
+     * @param asc is order ascending
+     * @param criteria field to order list, 0 for distance, 1 for n movements
      */
     public listShipsController(boolean asc, int criteria){
         shipStore = new ShipStore();
@@ -37,9 +37,9 @@ public class listShipsController {
 
     /**
      *
-     * @param nships
-     * @param start
-     * @param end
+     * @param nships number of ships to be listed
+     * @param start start date required by user
+     * @param end end date required by user
      */
     public listShipsController(int nships, LocalDateTime start, LocalDateTime end){
         this.nShips = nships;
@@ -54,7 +54,7 @@ public class listShipsController {
 
     /**
      *
-     * @return
+     * @return a list of all ships stored
      */
     private List<Ship> getShipList(){
         Iterable <Ship> shipListI = shipStore.getListOfShipsASCOrd();
@@ -65,28 +65,26 @@ public class listShipsController {
 
     /**
      *
-     * @param shipList
-     * @param asc
+     * @param shipList ship hash map to be ordered
+     * @param asc is the order ascending
      */
-
     private void orderByNmovements(Map<Ship, List<Double>>  shipList , boolean asc) {
-        List<Map.Entry<Ship, List<Double>>> list = new LinkedList<Map.Entry<Ship, List<Double>>>(shipListMap.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<Ship, List<Double>>>() {
-            @Override
-            public int compare(Map.Entry<Ship, List<Double>> shipListEntry, Map.Entry<Ship, List<Double>> t1) {
-                return t1.getValue().get(1).compareTo(shipListEntry.getValue().get(1));
-            }
-        });
+        List<Map.Entry<Ship, List<Double>>> list = new LinkedList<>(shipList.entrySet());
+        if (this.asc) {
+            list.sort(Comparator.comparing(shipListEntry -> shipListEntry.getValue().get(1)));
+        }else{
+            list.sort((shipListEntry, t1) -> t1.getValue().get(1).compareTo(shipListEntry.getValue().get(1)));
+        }
         shipList = new HashMap<>();
-        for (int i = 0 ; i < list.size() ; i++) {
-            shipList.put(list.get(i).getKey(),list.get(i).getValue());
+        for (Map.Entry<Ship, List<Double>> shipListEntry : list) {
+            shipList.put(shipListEntry.getKey(), shipListEntry.getValue());
         }
     }
 
     /**
      *
-     * @param shipList
-     * @return
+     * @param shipList hashmap with every ship
+     * @return top n ships of the hashmap
      */
     private Map<Ship, List<Double>> getTopN(Map<Ship, List<Double>>  shipList){
         Map <Ship, List<Double>> list = new HashMap<>();
@@ -100,26 +98,25 @@ public class listShipsController {
 
     /**
      *
-     * @param shipList
-     * @param asc
+     * @param shipList hash map of ships yet to be ordered
+     * @param asc is order ascending
      */
     private void orderByTotalDistance(Map<Ship, List<Double>>  shipList, boolean asc){
-        List<Map.Entry<Ship, List<Double>>> list = new LinkedList<Map.Entry<Ship, List<Double>>>(shipListMap.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<Ship, List<Double>>>() {
-            @Override
-            public int compare(Map.Entry<Ship, List<Double>> shipListEntry, Map.Entry<Ship, List<Double>> t1) {
-                return shipListEntry.getValue().get(0).compareTo(t1.getValue().get(0));
-            }
-        });
+        List<Map.Entry<Ship, List<Double>>> list = new LinkedList<>(shipList.entrySet());
+        if (this.asc) {
+            list.sort(Comparator.comparing(shipListEntry -> shipListEntry.getValue().get(0)));
+        }else{
+            list.sort((shipListEntry, t1) -> t1.getValue().get(0).compareTo(shipListEntry.getValue().get(0)));
+        }
         shipList = new HashMap<>();
-        for (int i = 0 ; i < list.size() ; i++) {
-            shipList.put(list.get(i).getKey(),list.get(i).getValue());
+        for (Map.Entry<Ship, List<Double>> shipListEntry : list) {
+            shipList.put(shipListEntry.getKey(), shipListEntry.getValue());
         }
     }
 
     /**
      * groups ship map by vessel tyoe
-     * @param shipList
+     * @param shipList hash map of ships yet ot be grouped by vessel
      */
     private void groupVesselType(Map<Ship, List<Double>>  shipList){
 
@@ -132,19 +129,18 @@ public class listShipsController {
      */
     private Map<Ship, List<Double>> generateMap(List<Ship> shipList){
         Map<Ship, List<Double>> shipMap = new HashMap<>();
-        for(int i = 0;i < shipList.size();i++){
+        for (Ship ship : shipList) {
             List<Double> Params = new ArrayList();
-            Params.add(shipList.get(i).getTotalDistance());
-            if (op == 0){
-                Params.add(shipList.get(i).getTotalDistance());
-                Params.add((double)shipList.get(i).numberOfMovements());
-                Params.add(shipList.get(i).deltaDistance());
+            if (op == 0) {
+                Params.add(ship.getTotalDistance());
+                Params.add((double) ship.numberOfMovements());
+                Params.add(ship.deltaDistance());
             }
-            if(op == 1){
-                Params.add(shipList.get(i).getDistBetweenDates(start,end));
-                Params.add(shipList.get(i).getAvgSpeed(Params.get(0),shipList.get(i).getTimeInSeaBetweenDates(start,end)));
+            if (op == 1) {
+                Params.add(ship.getDistBetweenDates(start, end));
+                Params.add(ship.getAvgSpeed(Params.get(0), ship.getTimeInSeaBetweenDates(start, end)));
             }
-            shipMap.put(shipList.get(i), Params);
+            shipMap.put(ship, Params);
         }
         if(op==0){
             if(criteria == 0){orderByTotalDistance(shipMap,asc);}
