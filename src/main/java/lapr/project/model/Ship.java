@@ -183,6 +183,13 @@ public class Ship implements Comparable<Ship> {
         }
         return distance;
     }
+
+    /**
+     *
+     * @param start of period required by user
+     * @param end of period required by user
+     * @return distance done by ship int tha period
+     */
     public double getDistBetweenDates(LocalDateTime start, LocalDateTime end){
         double distance = 0;
         for (int i =0 ; i< aisMessagesList.size(); i++) {
