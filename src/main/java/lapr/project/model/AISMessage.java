@@ -15,6 +15,9 @@ public class AISMessage implements Comparable<AISMessage> {
      */
     private final LocalDateTime baseDateTime;
 
+    /**
+     * Coordinates of the ship
+     */
     private final Coordinates coordinates;
     /**
      *Course over ground
@@ -54,6 +57,9 @@ public class AISMessage implements Comparable<AISMessage> {
         return baseDateTime;
     }
 
+    /**
+     * @return coordinates
+     */
     public Coordinates getCoordinates() {
         return coordinates;
     }

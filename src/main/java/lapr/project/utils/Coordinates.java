@@ -10,15 +10,28 @@ public class Coordinates {
      */
     private final double longitude;
 
+    /**
+     * Constructor of the class coordinates
+     * @param latitude ship latitude
+     * @param longitude ship longitude
+     */
     public Coordinates(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
+    /**
+     *
+     * @return latitude
+     */
     public double getLatitude() {
         return latitude;
     }
 
+    /**
+     *
+     * @return longitude
+     */
     public double getLongitude() {
         return longitude;
     }
