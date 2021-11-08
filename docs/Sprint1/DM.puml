@@ -23,12 +23,12 @@ class Ship {
 -heading
 -position
 -transceiverClass
--List<Trips> trips
+-trips
 }
 class Trips{
--Port startingPort
--Port Destination
--List<Coordinates> CoordinatesSet
+-startingPort
+-destination
+-CoordinatesSet
 }
 class Truck {
 }
@@ -92,19 +92,12 @@ class LoadingCargoManifest {
 class UnloadingCargoManifest {
 }
 
-class Port{
--Identification
--Name
--Country
--Location
-}
-
 Ship "1" -- "*" Container : carries >
 Ship "1" -- "1" ShipCaptain
 Ship "1" -- "1" ChiefElectricalEngineer
 Ship "1" -- "*" LoadingCargoManifest : makes >
 Ship "1" -- "*" UnloadingCargoManifest : is delivered <
-Ship "1" -- "*" Port : Travels between >
+Trips "1" -- "*" PortWarehouse : between >
 Ship "1" -- "*" Trips : does many >
 Container "*" -- "*" CargoManifest : contains <
 Truck "1" -- "1" TruckDriver

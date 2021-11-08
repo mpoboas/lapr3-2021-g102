@@ -16,9 +16,9 @@ public class Trips {
         aisMessagesList = new ArrayList<>();
     }
 
-    public AISMessage getAIsMessage(int i){return aisMessagesList.get(i);}
+    public int getAISMessageListSize(){return aisMessagesList.size();}
 
-    public AISMessage getLastAISMessage(){return aisMessagesList.get(aisMessagesList.size()-1);}
+    public AISMessage getAIsMessage(int i){return aisMessagesList.get(i);}
 
     public LocalDateTime getStart(){
         return aisMessagesList.get(0).getBaseDateTime();

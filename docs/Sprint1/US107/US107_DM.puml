@@ -1,0 +1,42 @@
+@startuml
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+-trips
+}
+class Trips{
+-startingPort
+-destination
+-CoordinatesSet
+}
+class PortWarehouse {
+-idPortW
+-name
+-continent
+-country
+-latitude
+-longitude
+}
+
+Trips "1" -- "*" PortWarehouse : between >
+Ship "1" -- "*" Trips : does many >
+
+
+@enduml
