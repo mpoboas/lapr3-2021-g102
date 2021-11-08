@@ -8,6 +8,7 @@ participant ":ShipController" as CTRL
 participant "Company" as COMP
 participant "shipStore: ShipStore" as STR
 participant "ship: Ship" as SHIP
+participant "closeCoordsShipList\n: List<Pair<Ship, Ship>>"
 
 activate TF
 TF -> UI : asks to get all the pairs of ships with close\ndeparture/arrival coordinates
@@ -17,7 +18,7 @@ activate CTRL
 CTRL --> COMP : shipStore = getShipStore()
 activate COMP
 deactivate COMP
-CTRL --> STR : List<Ship> closeCoordsShipList = getCloseCoordsShips()
+CTRL --> STR : closeCoordsShipList = getCloseCoordsShips()
 activate STR
 STR --> CTRL
 deactivate STR
