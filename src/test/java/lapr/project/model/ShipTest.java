@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.Objects;
 
 import static org.junit.Assert.*;
 
@@ -267,13 +268,30 @@ public class ShipTest {
 
     @Test
     public void testEquals() {
+        Ship ship1 = new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
+        Ship ship2 = new Ship(113,"132","test1","Ship1", 12, 1200, 600 , 21);
+        Ship ship3 = new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
+        assertTrue(ship1.equals(ship1));
+        assertFalse(ship1.equals(null));
+        assertFalse(ship1.equals("Ship"));
+        assertFalse(ship1.equals(ship2));
+        assertTrue(ship1.equals(ship3));
+
     }
 
     @Test
     public void testHashCode() {
+        Ship ship1 = new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
+        assertEquals( Objects.hash(112, "test", "Ship"),ship1.hashCode());
     }
 
     @Test
     public void compareTo() {
+        Ship ship1 = new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
+        Ship ship2 = new Ship(113,"132","test1","Ship1", 12, 1200, 600 , 21);
+        Ship ship3 = new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
+        assertEquals(-1,ship1.compareTo(ship2));
+        assertEquals(0,ship1.compareTo(ship3));
+        assertEquals(1,ship2.compareTo(ship1));
     }
 }

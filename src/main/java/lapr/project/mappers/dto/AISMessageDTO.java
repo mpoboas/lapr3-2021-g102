@@ -66,6 +66,8 @@ public class AISMessageDTO {
                 ", COG=" + COG +
                 ", SOG=" + SOG +
                 ", heading=" + heading +
+                ", cargo=" + cargo +
+                ", transceiver class=" + transceiverClass +
                 '}' + '\n';
     }
 }
