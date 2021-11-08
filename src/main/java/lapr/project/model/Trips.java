@@ -23,6 +23,7 @@ public class Trips {
     public LocalDateTime getStart(){
         return aisMessagesList.get(0).getBaseDateTime();
     }
+    public LocalDateTime getEnd(){return aisMessagesList.get(aisMessagesList.size()-1).getBaseDateTime();}
 
     /**
      * Sets the trip duration after it is over

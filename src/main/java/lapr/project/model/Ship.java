@@ -1,5 +1,7 @@
 package lapr.project.model;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -168,7 +170,7 @@ public class Ship implements Comparable<Ship> {
      *
      * @return ship average speed in knots (nautical miles per hour)
      */
-    public double getAvgSpeed(){return getTotalDistance()/getTotalTimeinSea();}
+    public double getAvgSpeed(double dist, double time){return dist/time;}
 
     /**
      * total distance done in trips by the ship
@@ -180,6 +182,31 @@ public class Ship implements Comparable<Ship> {
             distance = distance + trips.getTripDistance();
         }
         return distance;
+    }
+    public double getDistBetweenDates(LocalDateTime start, LocalDateTime end){
+        double distance = 0;
+        for (int i =0 ; i< aisMessagesList.size(); i++) {
+            if(aisMessagesList.get(i).getBaseDateTime().isAfter(start) && aisMessagesList.get(i).getBaseDateTime().isBefore(end) && i >0 ){
+                distance = distance + aisMessagesList.get(i).getDistanceAIMes(aisMessagesList.get(i-1));
+            }
+        }
+        return distance;
+    }
+
+    /**
+     *
+     * @param start date of required period
+     * @param end date of required period
+     * @return number of hours spent in sea between those dates
+     */
+    public double getTimeInSeaBetweenDates(LocalDateTime start, LocalDateTime end){
+        double time = 0;
+        for (int i =0 ; i< aisMessagesList.size(); i++) {
+            if(aisMessagesList.get(i).getBaseDateTime().isAfter(start) && aisMessagesList.get(i).getBaseDateTime().isBefore(end) && i >0 ){
+                time = time + Duration.between(aisMessagesList.get(i-1).getBaseDateTime(), aisMessagesList.get(i).getBaseDateTime()).toHours();
+            }
+        }
+        return time;
     }
 
     /**
