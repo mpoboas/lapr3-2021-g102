@@ -31,6 +31,14 @@ public class AISMessage implements Comparable<AISMessage> {
      * ship heading
      */
     private final int heading;
+    /**
+     * the cargo of the ship
+     */
+    private int cargo;
+    /**
+     * the transceiver class of the ship
+     */
+    private char transceiverClass;
 
     /**
      * Constructor of the class ais message
@@ -41,12 +49,14 @@ public class AISMessage implements Comparable<AISMessage> {
      * @param SOG Speed over ground
      * @param heading ship heading
      */
-    public AISMessage(LocalDateTime baseDateTime,double latitude,double longitude,double COG,double SOG,int heading){
+    public AISMessage(LocalDateTime baseDateTime,double latitude,double longitude,double COG,double SOG,int heading,int cargo,char transceiverClass){
         this.baseDateTime = baseDateTime;
         this.coordinates = new Coordinates(latitude, longitude);
         this.COG= COG;
         this.SOG=SOG;
         this.heading=heading;
+        this.cargo = cargo;
+        this.transceiverClass = transceiverClass;
     }
 
     /**
@@ -86,6 +96,22 @@ public class AISMessage implements Comparable<AISMessage> {
      */
     public int getHeading() {
         return heading;
+    }
+
+    /**
+     *
+     * @return cargo of the ship
+     */
+    public int getCargo() {
+        return cargo;
+    }
+
+    /**
+     *
+     * @return transceiver class of the ship
+     */
+    public char getTransceiverClass() {
+        return transceiverClass;
     }
 
     /**

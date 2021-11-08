@@ -40,14 +40,7 @@ public class ShipDTO {
      * all the ais messages of the ship
      */
     private List<AISMessageDTO> aisMessagesList;
-    /**
-     * the cargo of the ship
-     */
-    private int cargo;
-    /**
-     * the transceiver class of the ship
-     */
-    private char transceiverClass;
+
 
     /**
      *
@@ -59,10 +52,8 @@ public class ShipDTO {
      * @param length           the length of the ship
      * @param width            the width of the ship
      * @param draft            the draft of the ship
-     * @param cargo            the cargo of the ship
-     * @param transceiverClass the transceiver class of the ship
      */
-    public ShipDTO(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, double draft, List<AISMessageDTO> aismessges, int cargo, char transceiverClass) {
+    public ShipDTO(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, double draft, List<AISMessageDTO> aismessges) {
         MMSI = mmsi;
         this.vesselName = vesselName;
         IMO = imo;
@@ -71,8 +62,6 @@ public class ShipDTO {
         this.length = length;
         this.width = width;
         this.draft = draft;
-        this.cargo = cargo;
-        this.transceiverClass = transceiverClass;
         aisMessagesList = aismessges;
     }
 
@@ -91,8 +80,6 @@ public class ShipDTO {
                 ", length=" + length +
                 ", width=" + width +
                 ", draft=" + draft +
-                ", cargo=" + cargo +
-                ", transceiverClass=" + transceiverClass +
                 '}' + '\n' + aisMessagesList;
     }
 }

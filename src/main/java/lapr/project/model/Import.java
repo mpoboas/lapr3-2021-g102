@@ -98,13 +98,7 @@ public class Import {
         int length = Integer.parseInt(attributes[11]);
         int width = Integer.parseInt(attributes[12]);
         double draft = Double.parseDouble(attributes[13]);
-        int cargo;
-        if (attributes[14].equals("NA")) {
-            cargo = -1;
-        } else
-            cargo = Integer.parseInt(attributes[14]);
-        char transceiverClass = attributes[15].charAt(0);
-        return shipStore.createShip(mmsi, vesselName, imo, callSign, vesselType, length, width, draft, cargo, transceiverClass);
+        return shipStore.createShip(mmsi, vesselName, imo, callSign, vesselType, length, width, draft);
     }
 
     /**
@@ -120,7 +114,13 @@ public class Import {
         double COG = Double.parseDouble(attributes[4]);
         double SOG = Double.parseDouble(attributes[5]);
         int heading = Integer.parseInt(attributes[6]);
-        return new AISMessage(baseDateTime, latitude, longitude, COG, SOG, heading);
+        int cargo;
+        if (attributes[14].equals("NA")) {
+            cargo = -1;
+        } else
+            cargo = Integer.parseInt(attributes[14]);
+        char transceiverClass = attributes[15].charAt(0);
+        return new AISMessage(baseDateTime, latitude, longitude, COG, SOG, heading,cargo,transceiverClass);
     }
 
     /**

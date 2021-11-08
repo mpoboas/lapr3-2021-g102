@@ -21,12 +21,10 @@ public class ShipStore {
      * @param length           the length of the ship
      * @param width            the width of the ship
      * @param draft            the draft of the ship
-     * @param cargo            the cargo of the ship
-     * @param transceiverClass the transceiver class of the ship
      * @return a new instance of ship
      */
-    public Ship createShip(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, double draft, int cargo, char transceiverClass) {
-        return new Ship(mmsi, vesselName, imo, callSign, vesselType, length, width, draft, cargo, transceiverClass);
+    public Ship createShip(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, double draft) {
+        return new Ship(mmsi, vesselName, imo, callSign, vesselType, length, width, draft);
     }
 
     /**

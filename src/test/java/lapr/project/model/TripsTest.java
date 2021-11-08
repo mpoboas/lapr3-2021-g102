@@ -17,11 +17,11 @@ public class TripsTest {
     @Test
     public void getStartTest(){
         trip = new Trips();
-        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4);
+        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais1);
-        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4);
+        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais2);
-        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4);
+        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais3);
         assertEquals(LocalDateTime.of(2018, Month.JUNE, 26, 2, 0),trip.getStart());
     }
@@ -29,7 +29,7 @@ public class TripsTest {
     @Test
     public void addAISMessage() {
         trip = new Trips();
-        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4);
+        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais1);
         assertTrue("Should be true", trip.getAIsMessage(0) == ais1);
 
@@ -38,11 +38,11 @@ public class TripsTest {
     @Test
     public void endTrip() {
         trip = new Trips();
-        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4);
+        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais1);
-        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4);
+        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais2);
-        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4);
+        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais3);
         assertFalse("Should be false", trip.getTripStatus());
         trip.endTrip();;
@@ -53,11 +53,11 @@ public class TripsTest {
     @Test
     public void getTripDistance() {
         trip = new Trips();
-        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4);
+        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais1);
-        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4);
+        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais2);
-        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4);
+        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais3);
         assertEquals((Math.sqrt((1*1)+(1*1))+Math.sqrt((2*2)+(4*4))) *60,trip.getTripDistance(), 0.1);
     }
@@ -65,11 +65,11 @@ public class TripsTest {
     @Test
     public void getTripDuration() {
         trip = new Trips();
-        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4);
+        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais1);
-        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4);
+        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais2);
-        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4);
+        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais3);
         trip.endTrip();
         assertEquals(83,trip.getTripDuration(), 0.1);

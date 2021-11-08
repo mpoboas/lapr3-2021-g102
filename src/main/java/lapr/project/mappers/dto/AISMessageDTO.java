@@ -29,6 +29,15 @@ public class AISMessageDTO {
     private final int heading;
 
     /**
+     * the cargo of the ship
+     */
+    private int cargo;
+    /**
+     * the transceiver class of the ship
+     */
+    private char transceiverClass;
+
+    /**
      * Constructor of the class ais message DTO
      * @param baseDateTime Date/time of AIS message
      * @param latitude ship latitude
@@ -37,13 +46,15 @@ public class AISMessageDTO {
      * @param SOG Speed over ground
      * @param heading ship heading
      */
-    public AISMessageDTO(LocalDateTime baseDateTime,double latitude,double longitude,double COG,double SOG,int heading){
+    public AISMessageDTO(LocalDateTime baseDateTime,double latitude,double longitude,double COG,double SOG,int heading,int cargo, char transceiverClass){
         this.baseDateTime = baseDateTime;
         this.latitude=latitude;
         this.longitude=longitude;
         this.COG= COG;
         this.SOG=SOG;
         this.heading=heading;
+        this.cargo= cargo;
+        this.transceiverClass=transceiverClass;
     }
 
     @Override

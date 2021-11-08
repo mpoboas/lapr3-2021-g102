@@ -3,6 +3,7 @@ package lapr.project.model;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -50,14 +51,7 @@ public class Ship implements Comparable<Ship> {
      * all the ais messages of the ship
      */
     private List<AISMessage> aisMessagesList;
-    /**
-     * the cargo of the ship
-     */
-    private int cargo;
-    /**
-     * the transceiver class of the ship
-     */
-    private char transceiverClass;
+
 
     private final List<Trips> tripsList;
 
@@ -71,10 +65,8 @@ public class Ship implements Comparable<Ship> {
      * @param length           the length of the ship
      * @param width            the width of the ship
      * @param draft            the draft of the ship
-     * @param cargo            the cargo of the ship
-     * @param transceiverClass the transceiver class of the ship
      */
-    public Ship(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, double draft, int cargo, char transceiverClass) {
+    public Ship(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, double draft) {
         MMSI = mmsi;
         this.vesselName = vesselName;
         IMO = imo;
@@ -83,8 +75,8 @@ public class Ship implements Comparable<Ship> {
         this.length = length;
         this.width = width;
         this.draft = draft;
-        this.cargo = cargo;
-        this.transceiverClass = transceiverClass;
+        //this.cargo = cargo;
+        //this.transceiverClass = transceiverClass;
         aisMessagesList = new ArrayList<>();
         this.tripsList = new ArrayList<>();
     }
@@ -150,21 +142,6 @@ public class Ship implements Comparable<Ship> {
         return draft;
     }
 
-    /**
-     *
-     * @return cargo of the ship
-     */
-    public int getCargo() {
-        return cargo;
-    }
-
-    /**
-     *
-     * @return transceiver class of the ship
-     */
-    public char getTransceiverClass() {
-        return transceiverClass;
-    }
 
     /**
      *
@@ -244,8 +221,9 @@ public class Ship implements Comparable<Ship> {
      * @param msg ais message to be added to the ship
      */
     public void addAISMessage(AISMessage msg) {
-        if (!aisMessagesList.contains(msg))
+        if (!aisMessagesList.contains(msg)){
             aisMessagesList.add(msg);
+            Collections.sort(aisMessagesList);}
     }
 
     /**
@@ -334,8 +312,6 @@ public class Ship implements Comparable<Ship> {
                 ", length=" + length +
                 ", width=" + width +
                 ", draft=" + draft +
-                ", cargo=" + cargo +
-                ", transceiverClass=" + transceiverClass +
                 '}' + '\n' + aisMessagesList;
     }
 }

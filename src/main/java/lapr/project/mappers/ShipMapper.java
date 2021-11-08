@@ -11,7 +11,7 @@ public class ShipMapper {
     public ShipDTO toDTO(Ship ship) {
         return new ShipDTO(ship.getMMSI(), ship.getVesselName(), ship.getIMO(), ship.getCallSign(),
                 ship.getVesselType(), ship.getLength(), ship.getWidth(), ship.getDraft(),
-                new AISMessageMapper().toDTO(ship.getAisMessagesList()),ship.getCargo(), ship.getTransceiverClass());
+                new AISMessageMapper().toDTO(ship.getAisMessagesList()));
     }
 
     public List<ShipDTO> toDTO(List<Ship> shipList){
