@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class listShipsController {
-    Map<Ship, List<Double>> shipListMap;
-    ShipStore shipStore;
+    private final Map<Ship, List<Double>> shipListMap;
+    private final ShipStore shipStore;
     private int nShips;
     private final int op;
     /**
@@ -34,6 +34,8 @@ public class listShipsController {
         this.asc = asc ;
         this.shipListMap = generateMap(getShipList());
     }
+
+    public Map<Ship, List<Double>> getShipMap(){return shipListMap;}
 
     /**
      *
@@ -70,7 +72,7 @@ public class listShipsController {
      */
     private void orderByNmovements(Map<Ship, List<Double>>  shipList , boolean asc) {
         List<Map.Entry<Ship, List<Double>>> list = new LinkedList<>(shipList.entrySet());
-        if (this.asc) {
+        if (asc) {
             list.sort(Comparator.comparing(shipListEntry -> shipListEntry.getValue().get(1)));
         }else{
             list.sort((shipListEntry, t1) -> t1.getValue().get(1).compareTo(shipListEntry.getValue().get(1)));
@@ -103,7 +105,7 @@ public class listShipsController {
      */
     private void orderByTotalDistance(Map<Ship, List<Double>>  shipList, boolean asc){
         List<Map.Entry<Ship, List<Double>>> list = new LinkedList<>(shipList.entrySet());
-        if (this.asc) {
+        if (asc) {
             list.sort(Comparator.comparing(shipListEntry -> shipListEntry.getValue().get(0)));
         }else{
             list.sort((shipListEntry, t1) -> t1.getValue().get(0).compareTo(shipListEntry.getValue().get(0)));
