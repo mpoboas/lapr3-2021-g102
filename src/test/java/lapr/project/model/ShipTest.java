@@ -39,7 +39,7 @@ public class ShipTest {
         ais6 = new AISMessage(LocalDateTime.of(2019, Month.MAY, 29, 13, 0), 16, 19, 21,13, 4);
         ship.getTrip(1).addAISMessage(ais6);
         ship.getTrip(1).endTrip();
-        assertEquals(706.3/166,ship.getAvgSpeed(),0.1);
+        assertEquals(706.3/166,ship.getAvgSpeed(ship.getTotalDistance(), ship.getTotalTimeinSea()),0.1);
     }
 
     @Test
