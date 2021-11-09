@@ -121,7 +121,12 @@ public class listShipsController {
      * @param shipList hash map of ships yet ot be grouped by vessel
      */
     private void groupVesselType(Map<Ship, List<Double>>  shipList){
-
+        List<Map.Entry<Ship, List<Double>>> list = new LinkedList<>(shipList.entrySet());
+        list.sort(Comparator.comparing(shipListEntry -> shipListEntry.getKey().getVesselType()));
+        shipList = new HashMap<>();
+        for (Map.Entry<Ship, List<Double>> shipListEntry : list) {
+            shipList.put(shipListEntry.getKey(), shipListEntry.getValue());
+        }
     }
 
     /**
