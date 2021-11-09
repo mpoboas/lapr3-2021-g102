@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="916px" preserveAspectRatio="none" style="width:457px;height:916px;background:#FFFFFF;" version="1.1" viewBox="0 0 457 916" width="457px" zoomAndPan="magnify"><defs><filter height="300%" id="fc8qbipmtkln4" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[c6ddddda358f072e4f19aa798de5fbe9]
+entity TM--><ellipse cx="58" cy="600.5" fill="#FEFECE" filter="url(#fc8qbipmtkln4)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><path d="M58,608.5 L58,635.5 M45,616.5 L71,616.5 M58,635.5 L45,650.5 M58,635.5 L71,650.5 " fill="none" filter="url(#fc8qbipmtkln4)" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="8" y="670.5332">Traffic Manager</text><!--MD5=[1035515eb14b5228f153ae78bdf69e99]
+entity PM--><ellipse cx="58" cy="123.5" fill="#FEFECE" filter="url(#fc8qbipmtkln4)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><path d="M58,131.5 L58,158.5 M45,139.5 L71,139.5 M58,158.5 L45,173.5 M58,158.5 L71,173.5 " fill="none" filter="url(#fc8qbipmtkln4)" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104" x="6" y="193.5332">Project Manager</text><ellipse cx="307.7698" cy="375.454" fill="#FEFECE" filter="url(#fc8qbipmtkln4)" rx="85.2698" ry="19.454" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="127" x="244.2698" y="379.1825">UC101 - Import Ship</text><ellipse cx="308.1128" cy="454.6226" fill="#FEFECE" filter="url(#fc8qbipmtkln4)" rx="108.6128" ry="24.1226" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="180" x="218.1128" y="458.3511">UC102 - Search Ship Details</text><ellipse cx="307.9113" cy="540.3823" fill="#FEFECE" filter="url(#fc8qbipmtkln4)" rx="122.4113" ry="26.8823" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="210" x="202.9113" y="544.1108">UC103 - List positional messages</text><ellipse cx="307.8863" cy="632.4773" fill="#FEFECE" filter="url(#fc8qbipmtkln4)" rx="137.8863" ry="29.9773" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="243" x="186.3863" y="636.2058">UC104 - Make summary of movements</text><ellipse cx="307.934" cy="722.4868" fill="#FEFECE" filter="url(#fc8qbipmtkln4)" rx="110.434" ry="24.4868" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="184" x="215.934" y="726.2153">UC105 - List Ship information</text><ellipse cx="308.011" cy="803.7022" fill="#FEFECE" filter="url(#fc8qbipmtkln4)" rx="96.511" ry="21.7022" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="153" x="231.511" y="807.4307">UC106 - List top-N ships</text><ellipse cx="308.1681" cy="882.7336" fill="#FEFECE" filter="url(#fc8qbipmtkln4)" rx="99.1681" ry="22.2336" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="159" x="228.6681" y="886.4621">UC107 - List pair of ships</text><ellipse cx="308.0226" cy="30.3045" fill="#FEFECE" filter="url(#fc8qbipmtkln4)" rx="109.5226" ry="24.3045" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="182" x="217.0226" y="34.033">UC108 - Develop data model</text><ellipse cx="307.7802" cy="112.556" fill="#FEFECE" filter="url(#fc8qbipmtkln4)" rx="98.2802" ry="22.056" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157" x="229.2802" y="116.2846">UC109 - Draft SQL script</text><ellipse cx="307.8511" cy="198.4702" fill="#FEFECE" filter="url(#fc8qbipmtkln4)" rx="130.3511" ry="28.4702" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="227" x="194.3511" y="202.1987">UC110 - Define naming conventions</text><ellipse cx="308.1999" cy="291.44" fill="#FEFECE" filter="url(#fc8qbipmtkln4)" rx="132.6999" ry="28.94" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="232" x="192.1999" y="295.1685">UC111 - SQL script to load database</text><!--MD5=[eb394df793b6527a8f467ad3b00c2178]
+link TM to UC1--><path d="M69.06,590.94 C83.2,541.4 113.77,459.54 170,413.5 C186.27,400.18 206.87,391.52 227.13,385.89 " fill="none" id="TM-to-UC1" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="231.99,384.59,222.2638,383.0404,227.1584,385.8765,224.3223,390.7711,231.99,384.59" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[6f0eda27e72d1840533164b38d13ddf6]
+link TM to UC2--><path d="M83.44,590.93 C103.22,560.68 133.7,520.9 170,496.5 C185.47,486.1 203.63,478.19 221.57,472.2 " fill="none" id="TM-to-UC2" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="226.63,470.56,216.835,469.5317,221.8739,472.1025,219.303,477.1414,226.63,470.56" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ca9c497d0e80d7b38e522228fc5fb78b]
+link TM to UC3--><path d="M108.1,610.67 C127.27,602.42 149.52,593.18 170,585.5 C189.75,578.09 211.33,570.68 231.41,564.08 " fill="none" id="TM-to-UC3" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="236.21,562.51,226.4122,561.5082,231.4581,564.0654,228.9009,569.1113,236.21,562.51" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e561c6286dbc2e125beced9e9a448a89]
+link TM to UC4--><path d="M108.29,632.5 C124.96,632.5 144.5,632.5 164.7,632.5 " fill="none" id="TM-to-UC4" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="169.85,632.5,160.85,628.5,164.85,632.5,160.85,636.5,169.85,632.5" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b65fa0eb71713d9e3bc3ca87ebd6e673]
+link TM to UC5--><path d="M108.26,655.19 C127.35,663.62 149.51,672.96 170,680.5 C190.53,688.06 213.13,695.38 233.94,701.74 " fill="none" id="TM-to-UC5" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="238.91,703.25,231.4653,696.802,234.1268,701.7936,229.1351,704.4551,238.91,703.25" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ceabe40056f84f82c5d21ece4a2428a1]
+link TM to UC6--><path d="M84.41,674.28 C104.27,703.58 134.43,741.48 170,764.5 C186.84,775.4 206.77,783.31 226.13,789.03 " fill="none" id="TM-to-UC6" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="231.04,790.44,223.4852,784.1214,226.2324,789.0664,221.2874,791.8136,231.04,790.44" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d54280f900b2388128057b2d9944803c]
+link TM to UC7--><path d="M70.3,674.36 C85.29,721.95 116.32,798.71 170,842.5 C184.57,854.38 202.53,862.74 220.6,868.61 " fill="none" id="TM-to-UC7" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="225.7,870.2,218.3139,863.685,220.9301,868.7005,215.9147,871.3168,225.7,870.2" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[abbc55ace0bcc805811beb3b4a7b018f]
+link PM to UC8--><path d="M107.14,113.81 C125.83,99.2 148.01,83.66 170,72.5 C187.89,63.42 208.11,55.89 227.42,49.83 " fill="none" id="PM-to-UC8" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="232.3,48.33,222.5209,47.1598,227.522,49.8034,224.8784,54.8046,232.3,48.33" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[51be8eabe763dc4ec862a5f131eb1acb]
+link PM to UC9--><path d="M110.09,146.64 C143.06,140.92 186.71,133.36 224.53,126.8 " fill="none" id="PM-to-UC9" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="229.58,125.92,220.0277,123.5212,224.6539,126.7767,221.3985,131.4029,229.58,125.92" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2731d86bcbb2a12fcd85077cf541b522]
+link PM to UC10--><path d="M110.09,164.36 C136.2,168.88 169,174.57 200.3,180 " fill="none" id="PM-to-UC10" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="205.31,180.87,197.1285,175.3871,200.3839,180.0133,195.7577,183.2688,205.31,180.87" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[4364b21bc98b125e7993a90058f3d979]
+link PM to UC11--><path d="M103.7,197.22 C123.01,213.62 146.52,231.58 170,244.5 C185.71,253.14 203.29,260.62 220.49,266.91 " fill="none" id="PM-to-UC11" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="225.33,268.65,218.2088,261.8464,220.6236,266.962,215.508,269.3767,225.33,268.65" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[73318139305c2f62519fc4d85b6b4588]
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+
+actor "Traffic Manager" as TM
+
+actor "Project Manager" as PM
+
+
+usecase "UC101 - Import Ship" as UC1
+usecase "UC102 - Search Ship Details" as UC2
+usecase "UC103 - List positional messages" as UC3
+usecase "UC104 - Make summary of movements" as UC4
+usecase "UC105 - List Ship information" as UC5
+usecase "UC106 - List top-N ships" as UC6
+usecase "UC107 - List pair of ships" as UC7
+
+usecase "UC108 - Develop data model" as UC8
+usecase "UC109 - Draft SQL script" as UC9
+usecase "UC110 - Define naming conventions" as UC10
+usecase "UC111 - SQL script to load database" as UC11
+
+
+
+TM - -> (UC1)
+TM - -> (UC2)
+TM - -> (UC3)
+TM - -> (UC4)
+TM - -> (UC5)
+TM - -> (UC6)
+TM - -> (UC7)
+
+PM - -> (UC8)
+PM - -> (UC9)
+PM - -> (UC10)
+PM - -> (UC11)
+
+@enduml
+
+@startuml
+left to right direction
+
+actor "Traffic Manager" as TM
+
+actor "Project Manager" as PM
+
+
+usecase "UC101 - Import Ship" as UC1
+usecase "UC102 - Search Ship Details" as UC2
+usecase "UC103 - List positional messages" as UC3
+usecase "UC104 - Make summary of movements" as UC4
+usecase "UC105 - List Ship information" as UC5
+usecase "UC106 - List top-N ships" as UC6
+usecase "UC107 - List pair of ships" as UC7
+
+usecase "UC108 - Develop data model" as UC8
+usecase "UC109 - Draft SQL script" as UC9
+usecase "UC110 - Define naming conventions" as UC10
+usecase "UC111 - SQL script to load database" as UC11
+
+
+
+TM - -> (UC1)
+TM - -> (UC2)
+TM - -> (UC3)
+TM - -> (UC4)
+TM - -> (UC5)
+TM - -> (UC6)
+TM - -> (UC7)
+
+PM - -> (UC8)
+PM - -> (UC9)
+PM - -> (UC10)
+PM - -> (UC11)
+
+@enduml
+
+PlantUML version 1.2021.11(Sat Oct 02 14:26:11 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>
