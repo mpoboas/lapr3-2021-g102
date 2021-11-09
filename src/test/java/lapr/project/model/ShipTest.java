@@ -70,7 +70,7 @@ public class ShipTest {
         ship.getTrip(1).addAISMessage(ais6);
         ship.addAISMessage(ais6);
         ship.getTrip(1).endTrip();
-        assertEquals(2, ship.numberOfMovements());
+        assertEquals(3, ship.numberOfMovements());
     }
 
 
