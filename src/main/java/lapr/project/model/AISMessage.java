@@ -3,6 +3,8 @@ package lapr.project.model;
 import lapr.project.utils.Coordinates;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -113,6 +115,38 @@ public class AISMessage implements Comparable<AISMessage> {
     public char getTransceiverClass() {
         return transceiverClass;
     }
+
+    /**
+     *
+     * @param ship the ship to get the AISMessages from
+     * @param date the date for the search
+     * @return the list of positional messages at a certain date for a given ship
+     */
+    public List<AISMessage> getAISAtDate(Ship ship, LocalDateTime date){
+        List<AISMessage> list = new ArrayList<>();
+        for (AISMessage msg : ship.getAisMessagesList()) {
+            if (msg.getBaseDateTime().getDayOfMonth() == date.getDayOfMonth() && msg.getBaseDateTime().getMonthValue()  == date.getMonthValue())
+                list.add(msg);
+        }
+        return list;
+    }
+
+    /**
+     *
+     * @param ship the ship to get the AISMessages from
+     * @param startDateTime the start date for the search
+     * @param endDateTime the end date for the serach
+     * @return the list of positional messages between two dates for a given ship
+     */
+    public List<AISMessage> getAISBetweenTwoDates(Ship ship, LocalDateTime startDateTime, LocalDateTime endDateTime){
+        List<AISMessage> list = new ArrayList<>();
+        for (AISMessage msg : ship.getAisMessagesList()) {
+            if (msg.getBaseDateTime().isAfter(startDateTime) && msg.getBaseDateTime().isBefore(endDateTime))
+                list.add(msg);
+        }
+        return list;
+    }
+
 
     /**
      *
