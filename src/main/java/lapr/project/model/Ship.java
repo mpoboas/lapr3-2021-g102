@@ -221,8 +221,14 @@ public class Ship implements Comparable<Ship> {
      * @param msg ais message to be added to the ship
      */
     public void addAISMessage(AISMessage msg) {
+        if (aisMessagesList.size() == 0) {
+            Trips trip = new Trips();
+            this.tripsList.add(trip);
+        }
+
         if (!aisMessagesList.contains(msg)){
             aisMessagesList.add(msg);
+            this.tripsList.get(0).addAISMessage(msg);
             Collections.sort(aisMessagesList);}
     }
 
