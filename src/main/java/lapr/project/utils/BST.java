@@ -105,10 +105,10 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
     protected Node<E> find(Node<E> node, E element) {
         if (node == null) return null;
 
-        if (node.getLeft().getElement().compareTo(element) > 0)
+        if (node.getElement().compareTo(element) > 0)
             return find(node.getLeft(), element);
 
-        if (node.getRight().getElement().compareTo(element) < 0)
+        if (node.getElement().compareTo(element) < 0)
             return find(node.getRight(), element);
 
         return node;
@@ -219,6 +219,7 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
 
     /**
      * Returns an iterable collection of elements of the tree, reported in in-order.
+     *
      * @return iterable collection of the tree's elements reported in in-order
      */
     public Iterable<E> inOrder() {

@@ -3,6 +3,9 @@ package lapr.project.stores;
 import lapr.project.model.Ship;
 import lapr.project.utils.BST;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class represents the tree of the ships
  */
@@ -51,6 +54,7 @@ public class ShipStore {
             return true;
         } else {
             Ship s = getShipDuplicated(ship);
+            System.out.println("entrou");
             if (!s.getAisMessagesList().equals(ship.getAisMessagesList())) {
                 s.addAISMessage(ship.getAisMessagesList());
                 return true;
@@ -64,8 +68,10 @@ public class ShipStore {
      *
      * @return the list of ships
      */
-    public Iterable<Ship> getListOfShipsASCOrd() {
-        return shipBST.inOrder();
+    public List<Ship> getListOfShipsASCOrd() {
+        List<Ship> shipList = new ArrayList<>();
+        shipBST.inOrder().forEach(shipList::add);
+        return shipList;
     }
 
     /**
