@@ -37,20 +37,19 @@ class ShipStoreTest {
     void addShip() {
         ShipStore store = new ShipStore();
         Ship ex1 =  new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
-        //Ship ex2 =  new Ship(110,"122","test","Ship", 12, 1200, 600 , 21);
-        //Ship ex3 =  new Ship(122,"122","test","Ship", 12, 1200, 600 , 21);
+        Ship ex2 =  new Ship(110,"122","test","Ship", 12, 1200, 600 , 21);
+        Ship ex3 =  new Ship(122,"122","test","Ship", 12, 1200, 600 , 21);
         assertTrue(store.addShip(ex1));
-        //assertTrue(store.addShip(ex2));
-        //assertTrue(store.addShip(ex3));
-        //assertFalse(store.addShip(ex1));
+        assertTrue(store.addShip(ex2));
+        assertTrue(store.addShip(ex3));
+        assertFalse(store.addShip(ex1));
         ex1.addAISMessage( new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' ));
-        //store.addShip(ex1);
-        //assertTrue(store.addShip(ex1));
+        store.addShip(ex1);
+        assertFalse(store.addShip(ex1));
     }
 
     @Test
     void getListOfShipsASCOrd() {
-        /*
         ShipStore store = new ShipStore();
         Ship ex1 =  new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
         Ship ex2 =  new Ship(110,"122","test","Ship", 12, 1200, 600 , 21);
@@ -62,7 +61,7 @@ class ShipStoreTest {
         expected.add(ex2);
         expected.add(ex1);
         expected.add(ex3);
-        assertEquals(expected,store.getListOfShipsASCOrd());*/
+        assertEquals(expected,store.getListOfShipsASCOrd());
 
     }
 
