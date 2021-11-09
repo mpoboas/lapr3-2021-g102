@@ -1,8 +1,6 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class Ship
-
 class Ship {
 -MMSI
 -name
@@ -15,6 +13,9 @@ class Ship {
 -width
 -capacity
 -draft
+-trips
+}
+class AISMessage{
 -baseDateTime
 -latitude
 -longitude
@@ -23,7 +24,6 @@ class Ship {
 -heading
 -position
 -transceiverClass
--trips
 }
 class Trips{
 -startingPort
@@ -93,6 +93,7 @@ class UnloadingCargoManifest {
 }
 
 Ship "1" -- "*" Container : carries >
+Ship "1" -- "*" AISMessage : contains >
 Ship "1" -- "1" ShipCaptain
 Ship "1" -- "1" ChiefElectricalEngineer
 Ship "1" -- "*" LoadingCargoManifest : makes >
