@@ -21,10 +21,10 @@ class AISMessageTest {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy H:mm");
         LocalDateTime baseDateTime = LocalDateTime.parse("26/06/2018 2:00", dtf);
         assertEquals(baseDateTime,ais1.getBaseDateTime());
-        assertEquals(13.0,ais1.getCoordinates().getLatitude());
-        assertEquals(14.0,ais1.getCoordinates().getLongitude());
-        assertEquals(21.0,ais1.getCOG());
-        assertEquals(13.0,ais1.getSOG());
+        assertEquals(13.0,ais1.getCoordinates().getLatitude(),0);
+        assertEquals(14.0,ais1.getCoordinates().getLongitude(),0);
+        assertEquals(21.0,ais1.getCOG(),0);
+        assertEquals(13.0,ais1.getSOG(),0);
         assertEquals(4,ais1.getHeading());
         assertEquals(3000,ais1.getCargo());
         assertEquals('B',ais1.getTransceiverClass());
