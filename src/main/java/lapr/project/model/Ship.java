@@ -247,20 +247,36 @@ public class Ship implements Comparable<Ship> {
     /**
      *
      * @param i index of AISMessage
-     * @return corresponding aismessage
+     * @return corresponding AIS message
      */
     public AISMessage getAISM(int i){return aisMessagesList.get(i);}
 
     /**
      *
-     * @param trip  to be added to the ship
+     * @param trip to be added to the ship
      *
      */
     public void addTrip(Trips trip) {
         tripsList.add(trip);
     }
+
+    /**
+     *
+     * @param i trip index to get
+     * @return the corresponding trip instance
+     *
+     */
     public Trips getTrip(int i){
         return tripsList.get(i);
+    }
+
+    /**
+     *
+     * Gets all the trips from a ship
+     * @return a list of trips from a ship
+     */
+    public List<Trips> getTripsList() {
+        return new ArrayList<>(this.tripsList);
     }
 
     /**
