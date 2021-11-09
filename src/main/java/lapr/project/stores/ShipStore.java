@@ -1,7 +1,11 @@
 package lapr.project.stores;
 
 import lapr.project.model.Ship;
+import lapr.project.model.Trips;
 import lapr.project.utils.BST;
+import lapr.project.utils.Conversions;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +20,14 @@ public class ShipStore {
     BST<Ship> shipBST = new BST<>();
 
     /**
-     * @param mmsi             the mmsi code of the ship
-     * @param vesselName       the vessel name of the ship
-     * @param imo              the imo code of the ship
-     * @param callSign         the call sign of the ship
-     * @param vesselType       the vessel type of the ship
-     * @param length           the length of the ship
-     * @param width            the width of the ship
-     * @param draft            the draft of the ship
+     * @param mmsi       the mmsi code of the ship
+     * @param vesselName the vessel name of the ship
+     * @param imo        the imo code of the ship
+     * @param callSign   the call sign of the ship
+     * @param vesselType the vessel type of the ship
+     * @param length     the length of the ship
+     * @param width      the width of the ship
+     * @param draft      the draft of the ship
      * @return a new instance of ship
      */
     public Ship createShip(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, double draft) {
@@ -129,5 +133,49 @@ public class ShipStore {
                 return s;
         }
         throw new IllegalArgumentException("The ship with the Call Sign: " + callSign + " was not found");
+    }
+
+    /**
+     * Returns a list of pairs of ships with routes with close departure/arrival coordinates and with different Travelled Distance.
+     *
+     * @return pairs of ships list
+     */
+    public List<Pair<Ship, Ship>> getCloseCoordsShips() {
+        boolean isPair;
+        List<Pair<Ship, Ship>> closeCoordsShipList = new ArrayList<>();
+        List<Ship> shipList = this.getListOfShipsASCOrd();
+        // Iterate through ship list to get the first element of the possible Pair
+        for (int i = 0; i < shipList.size(); i++) {
+            // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms"
+            if (!(shipList.get(i).getTotalDistance() < 0)) {
+                List<Trips> ship1TripList = new ArrayList<>(shipList.get(i).getTripsList());
+                // Iterate through ship list to get the second element of the possible Pair
+                for (int j = i + 1; j < shipList.size(); j++) {
+                    isPair = false;
+                    // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms; Ships must have different Travelled Distance"
+                    if (!(shipList.get(j).getTotalDistance() < 0) && (shipList.get(i).getTotalDistance() != shipList.get(j).getTotalDistance())) {
+                        List<Trips> ship2TripList = new ArrayList<>(shipList.get(j).getTripsList());
+
+                        // Iterate through first ship trip list
+                        for (Trips ship1Trip : ship1TripList) {
+                            // Iterate through second ship trip list
+                            for (Trips ship2Trip : ship2TripList) {
+                                // If departure/arrival coordinates are no more than 5km away from each other, create Pair
+                                double distance1 = Conversions.nauticalMilesToKm(ship1Trip.getAIsMessage(0).getDistanceAIMes(ship2Trip.getAIsMessage(0)));
+                                double distance2 = Conversions.nauticalMilesToKm(ship1Trip.getAIsMessage(ship1Trip.getAISMessageListSize() - 1).getDistanceAIMes(ship2Trip.getAIsMessage(ship2Trip.getAISMessageListSize() - 1)));
+                                if (distance1 <= 5000 || distance2 <= 5000) isPair = true;
+                            }
+                        }
+
+                        if (isPair) {
+                            Pair<Ship, Ship> pairOfShips = new ImmutablePair<>(shipList.get(i), shipList.get(j));
+                            closeCoordsShipList.add(pairOfShips);
+                        }
+                    }
+                }
+            }
+        }
+
+        return closeCoordsShipList;
     }
 }

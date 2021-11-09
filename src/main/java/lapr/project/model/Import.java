@@ -21,7 +21,9 @@ public class Import {
      */
     private final ShipStore shipStore;
 
-
+    /**
+     * Import class constructor
+     */
     public Import() {
         shipStore = new ShipStore(); // Mudar dps para company.getShipStore()
         listOfImportedShips = new ArrayList<>();
@@ -29,6 +31,7 @@ public class Import {
 
     /**
      * Imports all the ships from a file and adds them to the list of imported tests
+     *
      * @param fileDirectory file directory that contains the ships information
      * @throws IOException
      */
@@ -58,6 +61,7 @@ public class Import {
 
     /**
      * Checks if a ship was already imported
+     *
      * @param mmsiS mmsi of the ship to check if its imported
      * @return true if the ship was already imported, false if not
      */
@@ -71,7 +75,17 @@ public class Import {
     }
 
     /**
-     * Searches for a determinated ship by its mmsi
+     * Gets the store used to import the ships
+     *
+     * @return store instance
+     */
+    public ShipStore getShipStore() {
+        return this.shipStore;
+    }
+
+    /**
+     * Searches for a determined ship by its mmsi
+     *
      * @param mmsiS mmsi of the boat to find
      * @return the ship found
      */
@@ -86,6 +100,7 @@ public class Import {
 
     /**
      * Creates an object of ship from the data of the file
+     *
      * @param attributes an array of all the attributes to create the ship
      * @return the object ship created
      */
@@ -103,6 +118,7 @@ public class Import {
 
     /**
      * Creates an object of aismessage from the data of the file
+     *
      * @param attributes an array of all the attributes to create the aismessage
      * @return the object aismessage created
      */
@@ -120,7 +136,7 @@ public class Import {
         } else
             cargo = Integer.parseInt(attributes[14]);
         char transceiverClass = attributes[15].charAt(0);
-        return new AISMessage(baseDateTime, latitude, longitude, COG, SOG, heading,cargo,transceiverClass);
+        return new AISMessage(baseDateTime, latitude, longitude, COG, SOG, heading, cargo, transceiverClass);
     }
 
     /**
@@ -134,6 +150,7 @@ public class Import {
 
     /**
      * Gets the list of the ships imported
+     *
      * @return imported ships
      */
     public List<Ship> getListOfImportedShips() {
