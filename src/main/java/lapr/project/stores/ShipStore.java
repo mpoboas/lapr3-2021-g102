@@ -2,6 +2,7 @@ package lapr.project.stores;
 
 import lapr.project.model.Ship;
 import lapr.project.model.Trips;
+import lapr.project.utils.AVL;
 import lapr.project.utils.BST;
 import lapr.project.utils.Conversions;
 import org.apache.commons.lang3.tuple.ImmutablePair;
@@ -17,7 +18,7 @@ public class ShipStore {
     /**
      * All the ships stored in a binary search tree
      */
-    BST<Ship> shipBST = new BST<>();
+    BST<Ship> shipBST = new AVL<>();
 
     /**
      * @param mmsi       the mmsi code of the ship
