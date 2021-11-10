@@ -51,12 +51,7 @@ public class Import {
             } else {
                 ship = getShipByMMSI(attributes[0]);
             }
-            Trips trip = new Trips();
-            ship.addTrip(trip);
-            AISMessage aisMessage = createAISMessage(attributes);
-            ship.addAISMessage(aisMessage);
-            trip.addAISMessage(aisMessage);
-
+            ship.addAISMessage(createAISMessage(attributes));
             if (!listOfImportedShips.contains(ship))
                 listOfImportedShips.add(ship);
         }

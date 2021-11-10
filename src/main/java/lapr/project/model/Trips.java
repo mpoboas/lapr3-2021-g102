@@ -50,6 +50,17 @@ public class Trips {
     }
 
     /**
+     * imports a list to the list of ais messages
+     *
+     * @param msgList ais message list to import
+     */
+    public void addAISMessage(List<AISMessage> msgList) {
+        for (AISMessage msg : msgList) {
+            addAISMessage(msg);
+        }
+    }
+
+    /**
      * Changes the trip status to complet
      */
     public void endTrip() {

@@ -62,6 +62,9 @@ public class ShipStore {
             System.out.println("entrou");
             if (!s.getAisMessagesList().equals(ship.getAisMessagesList())) {
                 s.addAISMessage(ship.getAisMessagesList());
+                Trips trip = new Trips();
+                trip.addAISMessage(s.getAisMessagesList());
+                s.addTrip(trip);
                 return true;
             }
         }
