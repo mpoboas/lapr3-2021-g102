@@ -55,6 +55,9 @@ public class ShipStore {
      */
     public boolean addShip(Ship ship) {
         if (validateShip(ship)) {
+            Trips trip = new Trips();
+            trip.addAISMessage(ship.getAisMessagesList());
+            ship.addTrip(trip);
             shipBST.insert(ship);
             return true;
         } else {
