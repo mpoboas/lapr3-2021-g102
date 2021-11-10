@@ -2,7 +2,6 @@ package lapr.project.model;
 
 import org.junit.Test;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 
@@ -45,7 +44,7 @@ public class TripsTest {
         ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais3);
         assertFalse("Should be false", trip.getTripStatus());
-        trip.endTrip();;
+        trip.endTrip();
         assertTrue("Should be true", trip.getTripStatus());
     }
 

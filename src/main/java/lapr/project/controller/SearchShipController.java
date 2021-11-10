@@ -5,10 +5,8 @@ import lapr.project.mappers.dto.ShipDTO;
 import lapr.project.model.Ship;
 import lapr.project.stores.ShipStore;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class SearchShipController {
     //private App app;

@@ -97,7 +97,7 @@ class ShipStoreTest {
         ShipStore store = new ShipStore();
         Ship ex1 =  new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
         store.addShip(ex1);
-        Ship res = store.getShipByIMO("test");;
+        Ship res = store.getShipByIMO("test");
         assertEquals(res,ex1);
 
         try {
@@ -112,7 +112,7 @@ class ShipStoreTest {
         ShipStore store = new ShipStore();
         Ship ex1 =  new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
         store.addShip(ex1);
-        Ship res = store.getShipByCallSign("Ship");;
+        Ship res = store.getShipByCallSign("Ship");
         assertEquals(res,ex1);
 
         try {

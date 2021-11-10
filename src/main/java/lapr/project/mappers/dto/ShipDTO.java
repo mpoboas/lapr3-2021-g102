@@ -39,7 +39,7 @@ public class ShipDTO {
     /**
      * all the ais messages of the ship
      */
-    private List<AISMessageDTO> aisMessagesList;
+    private final List<AISMessageDTO> aisMessagesList;
 
 
     /**

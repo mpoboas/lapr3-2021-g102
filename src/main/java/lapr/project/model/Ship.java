@@ -50,7 +50,7 @@ public class Ship implements Comparable<Ship> {
     /**
      * all the ais messages of the ship
      */
-    private List<AISMessage> aisMessagesList;
+    private final List<AISMessage> aisMessagesList;
 
 
     private final List<Trips> tripsList;

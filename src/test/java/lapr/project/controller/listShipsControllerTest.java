@@ -1,7 +1,6 @@
 package lapr.project.controller;
 
 import lapr.project.model.AISMessage;
-import lapr.project.model.Import;
 import lapr.project.model.Ship;
 import lapr.project.model.Trips;
 import lapr.project.stores.ShipStore;
