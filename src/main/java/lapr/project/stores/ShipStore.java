@@ -5,6 +5,7 @@ import lapr.project.model.Trips;
 import lapr.project.utils.AVL;
 import lapr.project.utils.BST;
 import lapr.project.utils.Conversions;
+import lapr.project.utils.SortByMMSITravDistance;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -183,6 +184,7 @@ public class ShipStore {
             }
         }
 
+        closeCoordsShipList.sort(new SortByMMSITravDistance());
         return closeCoordsShipList;
     }
 
