@@ -27,5 +27,13 @@ class SearchShipControllerTest {
         ctrl.searchShip("212351000");
         ctrl.searchShip("IMO9395044");
         ctrl.searchShip("WDG5171");
+        ctrl.searchShip("123");
+        ctrl.searchShip("IMO1223");
+        ctrl.searchShip("I1223");
+        ctrl.searchShip("IM1223");
+        ctrl.searchShip("PQO1223");
+        ctrl.searchShip("JMO1223");
+        ctrl.searchShip("OMI1223");
+        ctrl.searchShip("AB123");
     }
 }

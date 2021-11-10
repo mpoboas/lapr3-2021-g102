@@ -26,40 +26,45 @@ public class SearchShipController {
         this.company = company;
     }*/
 
-    public SearchShipController(ShipStore store){
+    public SearchShipController(ShipStore store) {
         this.store = store;
     }
 
-    public void searchShip(String codeInserted){
+    public void searchShip(String codeInserted) {
         ShipDTO shipDTO;
         try {
-            int mmsi = Integer.parseInt(codeInserted);
-            shipDTO = getShipByMMSI(mmsi);
-        } catch (Exception e){
-            if (codeInserted.charAt(0) == 'I' && codeInserted.charAt(1) == 'M' && codeInserted.charAt(2) == 'O')
-                shipDTO = getShipByIMO(codeInserted);
-            else shipDTO = getShipByCallSign(codeInserted);
+            try {
+                int mmsi = Integer.parseInt(codeInserted);
+                shipDTO = getShipByMMSI(mmsi);
+            } catch (NumberFormatException e) {
+                if (codeInserted.charAt(0) == 'I' && codeInserted.charAt(1) == 'M' && codeInserted.charAt(2) == 'O')
+                    shipDTO = getShipByIMO(codeInserted);
+                else shipDTO = getShipByCallSign(codeInserted);
+            }
+            String fileName = "Ship" + codeInserted + ".txt";
+            writeToFile(shipDTO, fileName);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        String fileName = "Ship" + codeInserted +".txt";
-        writeToFile(shipDTO,fileName);
+
     }
 
-    public ShipDTO getShipByMMSI(int mmsi){
+    public ShipDTO getShipByMMSI(int mmsi) {
         Ship ship = store.getShipByMMSI(mmsi);
         return new ShipMapper().toDTO(ship);
     }
 
-    public ShipDTO getShipByIMO(String imo){
+    public ShipDTO getShipByIMO(String imo) {
         Ship ship = store.getShipByIMO(imo);
         return new ShipMapper().toDTO(ship);
     }
 
-    public ShipDTO getShipByCallSign(String callSign){
+    public ShipDTO getShipByCallSign(String callSign) {
         Ship ship = store.getShipByCallSign(callSign);
         return new ShipMapper().toDTO(ship);
     }
 
-    public void writeToFile(ShipDTO ship, String fileName){
+    public void writeToFile(ShipDTO ship, String fileName) {
         FileWriter myWriter = null;
         try {
             myWriter = new FileWriter(fileName, true);
@@ -71,7 +76,7 @@ public class SearchShipController {
             try {
                 if (myWriter != null)
                     myWriter.close();
-            } catch(IOException e) {
+            } catch (IOException e) {
                 System.out.println("An error ocurred in the writing the information of the ship.");
                 e.printStackTrace();
 
