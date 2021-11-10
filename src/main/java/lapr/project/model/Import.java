@@ -24,8 +24,8 @@ public class Import {
     /**
      * Import class constructor
      */
-    public Import() {
-        shipStore = new ShipStore(); // Mudar dps para company.getShipStore()
+    public Import(ShipStore store) {
+        shipStore = store; // Mudar dps para company.getShipStore()
         listOfImportedShips = new ArrayList<>();
     }
 
@@ -51,7 +51,11 @@ public class Import {
             } else {
                 ship = getShipByMMSI(attributes[0]);
             }
-            ship.addAISMessage(createAISMessage(attributes));
+            Trips trip = new Trips();
+            ship.addTrip(trip);
+            AISMessage aisMessage = createAISMessage(attributes);
+            ship.addAISMessage(aisMessage);
+            trip.addAISMessage(aisMessage);
 
             if (!listOfImportedShips.contains(ship))
                 listOfImportedShips.add(ship);

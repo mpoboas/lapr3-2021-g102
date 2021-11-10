@@ -124,7 +124,7 @@ class ShipStoreTest {
 
     @Test
     void getCloseCoordsShips() {
-        Import imp = new Import();
+        Import imp = new Import(new ShipStore());
         String file = "data/data-shipsports/data-shipsports/data-ships&ports/sships.csv";
 
         try {
