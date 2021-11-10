@@ -23,7 +23,5 @@ public class PositionalMessagesController {
         return store.getShipByMMSI(mmsi);
     }
 
-    public void getPositionalMessagesAtDate(Ship ship, DateTime)
-
-
+    //public void getPositionalMessagesAtDate(Ship ship, DateTime)
 }
