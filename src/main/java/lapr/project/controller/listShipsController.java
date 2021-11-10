@@ -27,8 +27,8 @@ public class listShipsController {
      * @param asc is order ascending
      * @param criteria field to order list, 0 for distance, 1 for n movements
      */
-    public listShipsController(boolean asc, int criteria){
-        shipStore = new ShipStore();
+    public listShipsController(boolean asc, int criteria, ShipStore shipStore){
+        this.shipStore = shipStore;
         op = 0;
         this.criteria = criteria;
         this.asc = asc ;
@@ -43,13 +43,13 @@ public class listShipsController {
      * @param start start date required by user
      * @param end end date required by user
      */
-    public listShipsController(int nships, LocalDateTime start, LocalDateTime end){
+    public listShipsController(int nships, LocalDateTime start, LocalDateTime end, ShipStore shipStore){
         this.nShips = nships;
-        shipStore = new ShipStore();
         op = 1;
         this.start = start;
         this.end=end;
         this.asc =false;
+        this.shipStore = shipStore;
         this.shipListMap = generateMap(getShipList());
 
     }
@@ -59,10 +59,7 @@ public class listShipsController {
      * @return a list of all ships stored
      */
     private List<Ship> getShipList(){
-        Iterable <Ship> shipListI = shipStore.getListOfShipsASCOrd();
-        List<Ship> shipList = new ArrayList<>();
-        shipListI.forEach(shipList::add);
-        return shipList;
+        return shipStore.getShipList();
     }
 
     /**
@@ -90,7 +87,7 @@ public class listShipsController {
      */
     private Map<Ship, List<Double>> getTopN(Map<Ship, List<Double>>  shipList){
         Map <Ship, List<Double>> list = new HashMap<>();
-        for(int i = 0 ; i< this.nShips; i++){
+        for(int i = 0 ; i< this.nShips  ; i++){
             Map.Entry<Ship, List<Double>> entry = shipList.entrySet().iterator().next();
             list.put(entry.getKey(),entry.getValue());
             shipList.remove(entry.getKey());

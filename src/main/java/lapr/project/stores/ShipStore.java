@@ -185,4 +185,11 @@ public class ShipStore {
 
         return closeCoordsShipList;
     }
+
+    public List<Ship> getShipList(){
+        Iterable <Ship> shipListI = this.getListOfShipsASCOrd();
+        List<Ship> shipList = new ArrayList<>();
+        shipListI.forEach(shipList::add);
+        return shipList;
+    }
 }
