@@ -190,8 +190,7 @@ public class Ship implements Comparable<Ship> {
     /**
      * @return total number of trips done by ship
      */
-    public int numberOfMovements() {
-        return tripsList.size();
+    public int numberOfMovements() {return aisMessagesList.size();
     }
 
     /**

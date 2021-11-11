@@ -108,7 +108,7 @@ public class ListShipsController {
         List<Map.Entry<Ship, List<Double>>> list = new LinkedList<>(shipList.entrySet());
         if (asc) {
             list.sort(Comparator.comparing(shipListEntry -> shipListEntry.getValue().get(0)));
-        }else{
+        } else {
             list.sort((shipListEntry, t1) -> t1.getValue().get(0).compareTo(shipListEntry.getValue().get(0)));
         }
         shipList = new HashMap<>();
