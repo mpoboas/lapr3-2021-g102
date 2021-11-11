@@ -17,5 +17,12 @@ public class Port {
         this.latitude = latitude;
         this.longitude = longitude;
     }
+    public int getid(){return this.id;}
+    public String getName(){return this.name;}
+    public String getContinent(){return this.continent;}
+    public String getCountry(){return this.country;}
+    public double getLatitude(){return this.latitude;}
+    public double getLongitude(){return this.longitude;}
+
 
 }
