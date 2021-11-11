@@ -15,26 +15,22 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 public class listShipsControllerTest {
-    ListShipsController controller;
-    ShipStore store;
-    Ship ship1 ;
-    Trips trip1;
-    AISMessage ais1;
-    AISMessage ais2;
-    AISMessage ais3;
-    AISMessage ais4;
-    AISMessage ais5;
-    AISMessage ais6;
-    Trips trip2;
-    Ship ship2;
-    Ship ship3;
-    Ship ship4;
-
-
-
 
     @Test
     public void getShipMap() {
+        ShipStore store;
+        Ship ship1 ;
+        Trips trip1;
+        AISMessage ais1;
+        AISMessage ais2;
+        AISMessage ais3;
+        AISMessage ais4;
+        AISMessage ais5;
+        AISMessage ais6;
+        Trips trip2;
+        Ship ship2;
+        Ship ship3;
+        Ship ship4;
         store = new ShipStore();
         ship1 = new Ship(114,"122","test","Ship", 12, 1200, 600 , 21);
         trip1 = new Trips();
@@ -163,6 +159,20 @@ public class listShipsControllerTest {
 
     @Test
     public void getShipList() {
+        ListShipsController controller;
+        ShipStore store;
+        Ship ship1 ;
+        Trips trip1;
+        AISMessage ais1;
+        AISMessage ais2;
+        AISMessage ais3;
+        AISMessage ais4;
+        AISMessage ais5;
+        AISMessage ais6;
+        Trips trip2;
+        Ship ship2;
+        Ship ship3;
+        Ship ship4;
         store = new ShipStore();
         ship1 = new Ship(114,"122","test","Ship", 12, 1200, 600 , 21);
         trip1 = new Trips();
@@ -294,6 +304,20 @@ public class listShipsControllerTest {
 
     @Test
     public void orderByNmovements() {
+        ListShipsController controller;
+        ShipStore store;
+        Ship ship1 ;
+        Trips trip1;
+        AISMessage ais1;
+        AISMessage ais2;
+        AISMessage ais3;
+        AISMessage ais4;
+        AISMessage ais5;
+        AISMessage ais6;
+        Trips trip2;
+        Ship ship2;
+        Ship ship3;
+        Ship ship4;
         store = new ShipStore();
         ship1 = new Ship(114,"122","test","Ship", 12, 1200, 600 , 21);
         trip1 = new Trips();
@@ -424,7 +448,22 @@ public class listShipsControllerTest {
     }
 
     @Test
-    public void getTopN() {        store = new ShipStore();
+    public void getTopN() {
+        ListShipsController controller;
+        ShipStore store;
+        Ship ship1 ;
+        Trips trip1;
+        AISMessage ais1;
+        AISMessage ais2;
+        AISMessage ais3;
+        AISMessage ais4;
+        AISMessage ais5;
+        AISMessage ais6;
+        Trips trip2;
+        Ship ship2;
+        Ship ship3;
+        Ship ship4;
+        store = new ShipStore();
         ship1 = new Ship(114,"122","test","Ship", 12, 1200, 600 , 21);
         trip1 = new Trips();
         ship1.addTrip(trip1);
@@ -565,6 +604,20 @@ public class listShipsControllerTest {
 
     @Test
     public void groupVesselType() {
+        ListShipsController controller;
+        ShipStore store;
+        Ship ship1 ;
+        Trips trip1;
+        AISMessage ais1;
+        AISMessage ais2;
+        AISMessage ais3;
+        AISMessage ais4;
+        AISMessage ais5;
+        AISMessage ais6;
+        Trips trip2;
+        Ship ship2;
+        Ship ship3;
+        Ship ship4;
         store = new ShipStore();
         ship1 = new Ship(114,"122","test","Ship", 12, 1200, 600 , 21);
         trip1 = new Trips();
@@ -692,6 +745,20 @@ public class listShipsControllerTest {
 
     @Test
     public void generateMap() {
+        ListShipsController controller;
+        ShipStore store;
+        Ship ship1 ;
+        Trips trip1;
+        AISMessage ais1;
+        AISMessage ais2;
+        AISMessage ais3;
+        AISMessage ais4;
+        AISMessage ais5;
+        AISMessage ais6;
+        Trips trip2;
+        Ship ship2;
+        Ship ship3;
+        Ship ship4;
         store = new ShipStore();
         ship1 = new Ship(114,"122","test","Ship", 12, 1200, 600 , 21);
         trip1 = new Trips();
