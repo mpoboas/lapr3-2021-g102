@@ -19,7 +19,7 @@ public class ListShipsController {
      */
     private int criteria;
     /**
-     * chacks of order is ascending or descending
+     * checks of order is ascending or descending
      */
     private final boolean asc;
     private LocalDateTime start;
@@ -118,7 +118,7 @@ public class ListShipsController {
     }
 
     /**
-     * groups ship map by vessel tyoe
+     * groups ship map by vessel type
      * @param shipList hash map of ships yet ot be grouped by vessel
      */
      void groupVesselType(Map<Ship, List<Double>>  shipList){
