@@ -6,6 +6,8 @@ import lapr.project.stores.ShipStore;
 import java.time.LocalDateTime;
 import java.util.*;
 
+import static lapr.project.utils.Conversions.nauticalMilesToKm;
+
 
 public class ListShipsController {
     private final Map<Ship, List<Double>> shipListMap;
@@ -138,13 +140,13 @@ public class ListShipsController {
         for (Ship ship : shipList) {
             List<Double> Params = new ArrayList();
             if (op == 0) {
-                Params.add(ship.getTotalDistance());
+                Params.add(nauticalMilesToKm(ship.getTotalDistance()));
                 Params.add((double) ship.numberOfMovements());
-                Params.add(ship.deltaDistance());
+                Params.add(nauticalMilesToKm(ship.deltaDistance()));
             }
             if (op == 1) {
-                Params.add(ship.getDistBetweenDates(start, end));
-                Params.add(ship.getAvgSpeed(Params.get(0), ship.getTimeInSeaBetweenDates(start, end)));
+                Params.add(nauticalMilesToKm(ship.getDistBetweenDates(start, end)));
+                Params.add(nauticalMilesToKm(ship.getAvgSpeed(Params.get(0), ship.getTimeInSeaBetweenDates(start, end))));
             }
             shipMap.put(ship, Params);
         }
@@ -158,6 +160,27 @@ public class ListShipsController {
             groupVesselType(shipMap);
         }
         return shipMap;
+    }
+
+    /**
+     *
+     * @return A string with the required ships
+     */
+    public String toString() {
+         StringBuilder string = new StringBuilder("List of ships\n");
+        if (op == 0) {
+            string.append("|\tMMSI\t|\tNumber of movements\t|\tTravelled distance\t|\tDelta Distance\t|\n");
+            for( Map.Entry<Ship, List<Double>> entry : shipListMap.entrySet() ){
+                string.append("|\t").append(entry.getKey().getMMSI()).append("\t|\t").append(entry.getValue().get(1)).append("\t|\t").append(entry.getValue().get(0)).append("\t|\t").append(entry.getValue().get(2)).append("\t|\n");
+            }
+        }
+        if(op == 1) {
+            string.append("|\tMMSI\t|\tVessel Type\t|\tKilometers Traveled\t|\tMeanSOG\t|\n ");
+            for( Map.Entry<Ship, List<Double>> entry : shipListMap.entrySet() ){
+                string.append("|\t").append(entry.getKey().getMMSI()).append("\t|\t").append(entry.getKey().getVesselName()).append("\t|\t").append(entry.getValue().get(0)).append("\t|\t").append(entry.getValue().get(1)).append("\t|\n");
+            }
+        }
+        return string.toString();
     }
 }
 
