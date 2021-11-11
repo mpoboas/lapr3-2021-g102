@@ -287,7 +287,9 @@ public class listShipsControllerTest {
         store.addShip(ship3);
         store.addShip(ship4);
         controller = new listShipsController(false,0, store);
-        assertEquals(store.getListOfShipsASCOrd(),controller.getShipList());
+        List<Ship> list1 = store.getListOfShipsASCOrd();
+        List<Ship> list2 = controller.getShipList();
+        assertEquals(list1,list2);
     }
 
     @Test
@@ -546,9 +548,11 @@ public class listShipsControllerTest {
         store.addShip(ship3);
         store.addShip(ship4);
         controller = new listShipsController(1,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
-        assertEquals(1,controller.getTopN(controller.getShipMap()).size());
+        Map<Ship, List<Double>> test = controller.getTopN(controller.getShipMap());
+        assertEquals(1,test.size());
         controller = new listShipsController(0,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
-        assertEquals(0,controller.getTopN(controller.getShipMap()).size());
+        Map<Ship, List<Double>> test2 = controller.getTopN(controller.getShipMap());
+        assertEquals(0,test2.size());
 
     }
 
