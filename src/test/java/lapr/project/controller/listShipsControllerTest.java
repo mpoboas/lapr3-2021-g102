@@ -18,8 +18,8 @@ public class listShipsControllerTest {
 
     @Test
     public void getShipMap() {
-        ShipStore store;
-        Ship ship1 ;
+        ShipStore store = new ShipStore();
+        Ship ship1 = new Ship(114,"122","test","Ship", 12, 1200, 600 , 21);
         Trips trip1;
         AISMessage ais1;
         AISMessage ais2;
@@ -31,8 +31,6 @@ public class listShipsControllerTest {
         Ship ship2;
         Ship ship3;
         Ship ship4;
-        store = new ShipStore();
-        ship1 = new Ship(114,"122","test","Ship", 12, 1200, 600 , 21);
         trip1 = new Trips();
         ship1.addTrip(trip1);
         ais1 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' );
@@ -159,7 +157,7 @@ public class listShipsControllerTest {
 
     @Test
     public void getShipList() {
-        ListShipsController controller;
+
         ShipStore store;
         Ship ship1 ;
         Trips trip1;
@@ -296,7 +294,8 @@ public class listShipsControllerTest {
         store.addShip(ship2);
         store.addShip(ship3);
         store.addShip(ship4);
-        controller = new ListShipsController(false,0, store);
+        ListShipsController controller = new ListShipsController(false,0, store);;
+
         List<Ship> list1 = store.getListOfShipsASCOrd();
         List<Ship> list2 = controller.getShipList();
         assertEquals(list1,list2);
@@ -304,7 +303,7 @@ public class listShipsControllerTest {
 
     @Test
     public void orderByNmovements() {
-        ListShipsController controller;
+
         ShipStore store;
         Ship ship1 ;
         Trips trip1;
@@ -441,7 +440,7 @@ public class listShipsControllerTest {
         store.addShip(ship2);
         store.addShip(ship3);
         store.addShip(ship4);
-        controller = new ListShipsController(false,0, store);
+        ListShipsController controller = new ListShipsController(false,0, store);
         Map.Entry<Ship, List<Double>> entry1 = controller.getShipMap().entrySet().iterator().next();
         Ship s = entry1.getKey();
         assertEquals(ship2, s);
@@ -449,7 +448,6 @@ public class listShipsControllerTest {
 
     @Test
     public void getTopN() {
-        ListShipsController controller;
         ShipStore store;
         Ship ship1 ;
         Trips trip1;
@@ -586,7 +584,7 @@ public class listShipsControllerTest {
         store.addShip(ship2);
         store.addShip(ship3);
         store.addShip(ship4);
-        controller = new ListShipsController(1,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
+        ListShipsController controller = new ListShipsController(1,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
         Map<Ship, List<Double>> test = controller.getTopN(controller.getShipMap());
         assertEquals(1,test.size());
         controller = new ListShipsController(0,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
@@ -604,7 +602,6 @@ public class listShipsControllerTest {
 
     @Test
     public void groupVesselType() {
-        ListShipsController controller;
         ShipStore store;
         Ship ship1 ;
         Trips trip1;
@@ -736,7 +733,7 @@ public class listShipsControllerTest {
         store.addShip(ship2);
         store.addShip(ship3);
         store.addShip(ship4);
-        controller = new ListShipsController(false,1, store);
+        ListShipsController controller = new ListShipsController(false,1, store);
         Map<Ship, List<Double>> groupVessel = controller.getShipMap();
         controller.groupVesselType(groupVessel);
         ListShipsController controller1 = new ListShipsController(4,LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2022, Month.JANUARY, 1, 0, 0),store);
@@ -745,7 +742,6 @@ public class listShipsControllerTest {
 
     @Test
     public void generateMap() {
-        ListShipsController controller;
         ShipStore store;
         Ship ship1 ;
         Trips trip1;
@@ -881,7 +877,7 @@ public class listShipsControllerTest {
         list.add(ship1);
         list.add(ship2);
         list.add(ship3);
-        controller = new ListShipsController(false,1, store);
+        ListShipsController controller = new ListShipsController(false,1, store);
         Map<Ship, List<Double>> map =controller.generateMap(list);
         assertNotEquals(map, controller.getShipMap());
     }
