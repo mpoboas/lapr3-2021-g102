@@ -159,8 +159,6 @@ public class listShipsControllerTest2 {
         s = entry1.getKey();
         assertNotEquals(ship2,s);
         assertEquals(ship1,s);
-
-
     }
 
 

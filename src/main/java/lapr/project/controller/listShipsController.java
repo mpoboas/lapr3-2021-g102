@@ -36,8 +36,6 @@ public class listShipsController {
         this.shipListMap = generateMap(getShipList());
     }
 
-    public Map<Ship, List<Double>> getShipMap(){return shipListMap;}
-
     /**
      *
      * @param nships number of ships to be listed
@@ -54,6 +52,9 @@ public class listShipsController {
         this.shipListMap = generateMap(getShipList());
 
     }
+
+    public Map<Ship, List<Double>> getShipMap(){return shipListMap;}
+
 
     /**
      *
