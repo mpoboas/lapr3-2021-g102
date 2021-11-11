@@ -15,7 +15,7 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 public class listShipsControllerTest2 {
-    listShipsController controller;
+    ListShipsController controller;
     ShipStore store;
     Ship ship1 ;
     Trips trip1;
@@ -138,7 +138,7 @@ public class listShipsControllerTest2 {
         store.addShip(ship2);
         store.addShip(ship3);
         store.addShip(ship4);
-        controller = new listShipsController(false,0, store);
+        controller = new ListShipsController(false,0, store);
         Map.Entry<Ship, List<Double>> entry = controller.getShipMap().entrySet().iterator().next();
         Ship s = entry.getKey();
         assertEquals(ship4, s);
@@ -150,7 +150,7 @@ public class listShipsControllerTest2 {
 
 
 
-        controller = new listShipsController(true, 0 , store);
+        controller = new ListShipsController(true, 0 , store);
         Map.Entry<Ship, List<Double>> entry1 = controller.getShipMap().entrySet().iterator().next();
         s = entry1.getKey();
         assertEquals(ship2, s);
@@ -271,7 +271,7 @@ public class listShipsControllerTest2 {
         store.addShip(ship3);
         store.addShip(ship4);
 
-        controller = new listShipsController(2,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
+        controller = new ListShipsController(2,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
 
         assertEquals(2,controller.getShipMap().size());
     }
@@ -396,7 +396,7 @@ public class listShipsControllerTest2 {
         store.addShip(ship2);
         store.addShip(ship3);
         store.addShip(ship4);
-        controller = new listShipsController(false,1, store);
+        controller = new ListShipsController(false,1, store);
         Map.Entry<Ship, List<Double>> entry = controller.getShipMap().entrySet().iterator().next();
         Ship s = entry.getKey();
         assertEquals(ship2, s);
@@ -528,7 +528,7 @@ public class listShipsControllerTest2 {
         store.addShip(ship2);
         store.addShip(ship3);
         store.addShip(ship4);
-        controller = new listShipsController(2,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
+        controller = new ListShipsController(2,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
         Map<Ship, List<Double>> map = controller.generateMap(list);
         assertEquals(controller.getShipMap(),map);
     }
@@ -653,10 +653,10 @@ public class listShipsControllerTest2 {
         store.addShip(ship2);
         store.addShip(ship3);
         store.addShip(ship4);
-        controller = new listShipsController(false,1, store);
+        controller = new ListShipsController(false,1, store);
         Map<Ship, List<Double>> groupVessel = controller.getShipMap();
         controller.groupVesselType(groupVessel);
-        listShipsController controller1 = new listShipsController(4,LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2022, Month.JANUARY, 1, 0, 0),store);
+        ListShipsController controller1 = new ListShipsController(4,LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2022, Month.JANUARY, 1, 0, 0),store);
         assertEquals(controller1.getShipMap().keySet(), groupVessel.keySet());
     }
 

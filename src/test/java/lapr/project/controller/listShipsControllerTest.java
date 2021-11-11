@@ -15,7 +15,7 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 public class listShipsControllerTest {
-    listShipsController controller;
+    ListShipsController controller;
     ShipStore store;
     Ship ship1 ;
     Trips trip1;
@@ -286,7 +286,7 @@ public class listShipsControllerTest {
         store.addShip(ship2);
         store.addShip(ship3);
         store.addShip(ship4);
-        controller = new listShipsController(false,0, store);
+        controller = new ListShipsController(false,0, store);
         List<Ship> list1 = store.getListOfShipsASCOrd();
         List<Ship> list2 = controller.getShipList();
         assertEquals(list1,list2);
@@ -417,7 +417,7 @@ public class listShipsControllerTest {
         store.addShip(ship2);
         store.addShip(ship3);
         store.addShip(ship4);
-        controller = new listShipsController(false,0, store);
+        controller = new ListShipsController(false,0, store);
         Map.Entry<Ship, List<Double>> entry1 = controller.getShipMap().entrySet().iterator().next();
         Ship s = entry1.getKey();
         assertEquals(ship2, s);
@@ -547,10 +547,10 @@ public class listShipsControllerTest {
         store.addShip(ship2);
         store.addShip(ship3);
         store.addShip(ship4);
-        controller = new listShipsController(1,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
+        controller = new ListShipsController(1,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
         Map<Ship, List<Double>> test = controller.getTopN(controller.getShipMap());
         assertEquals(1,test.size());
-        controller = new listShipsController(0,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
+        controller = new ListShipsController(0,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
         Map<Ship, List<Double>> test2 = controller.getTopN(controller.getShipMap());
         assertEquals(0,test2.size());
 

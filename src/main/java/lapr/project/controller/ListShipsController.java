@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 
-public class listShipsController {
+public class ListShipsController {
     private final Map<Ship, List<Double>> shipListMap;
     private final ShipStore shipStore;
     private int nShips;
@@ -28,7 +28,7 @@ public class listShipsController {
      * @param asc is order ascending
      * @param criteria field to order list, 0 for distance, 1 for n movements
      */
-    public listShipsController(boolean asc, int criteria, ShipStore shipStore){
+    public ListShipsController(boolean asc, int criteria, ShipStore shipStore){
         this.shipStore = shipStore;
         op = 0;
         this.criteria = criteria;
@@ -42,7 +42,7 @@ public class listShipsController {
      * @param start start date required by user
      * @param end end date required by user
      */
-    public listShipsController(int nships, LocalDateTime start, LocalDateTime end, ShipStore shipStore){
+    public ListShipsController(int nships, LocalDateTime start, LocalDateTime end, ShipStore shipStore){
         this.nShips = nships;
         op = 1;
         this.start = start;
