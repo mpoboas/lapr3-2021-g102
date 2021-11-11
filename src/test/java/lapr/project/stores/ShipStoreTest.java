@@ -137,13 +137,13 @@ class ShipStoreTest {
 
         List<Pair<Ship,Ship>> pairOfShipsList = imp.getShipStore().getCloseCoordsShips();
 
-        /*int i = 1;
+        int i = 1;
         for (Pair<Ship, Ship> pair : pairOfShipsList) {
             System.out.println(i + " pair:");
             System.out.println(pair.getKey().getMMSI());
             System.out.println(pair.getValue().getMMSI());
             i++;
-        }*/
+        }
 
         assertNotNull(pairOfShipsList);
         assertNotEquals(0, pairOfShipsList.size());

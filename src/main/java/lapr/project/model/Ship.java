@@ -56,15 +56,14 @@ public class Ship implements Comparable<Ship> {
     private final List<Trips> tripsList;
 
     /**
-     *
-     * @param mmsi             the mmsi code of the ship
-     * @param vesselName       the vessel name of the ship
-     * @param imo              the imo code of the ship
-     * @param callSign         the call sign of the ship
-     * @param vesselType       the vessel type of the ship
-     * @param length           the length of the ship
-     * @param width            the width of the ship
-     * @param draft            the draft of the ship
+     * @param mmsi       the mmsi code of the ship
+     * @param vesselName the vessel name of the ship
+     * @param imo        the imo code of the ship
+     * @param callSign   the call sign of the ship
+     * @param vesselType the vessel type of the ship
+     * @param length     the length of the ship
+     * @param width      the width of the ship
+     * @param draft      the draft of the ship
      */
     public Ship(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, double draft) {
         MMSI = mmsi;
@@ -80,14 +79,15 @@ public class Ship implements Comparable<Ship> {
         aisMessagesList = new ArrayList<>();
         this.tripsList = new ArrayList<>();
     }
-    /**
-     *
-     * @return ship MMSI
-     */
-    public int getMMSI(){ return MMSI;}
 
     /**
-     *
+     * @return ship MMSI
+     */
+    public int getMMSI() {
+        return MMSI;
+    }
+
+    /**
      * @return vessel name of the ship
      */
     public String getVesselName() {
@@ -95,7 +95,6 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
-     *
      * @return imo of the ship
      */
     public String getIMO() {
@@ -103,7 +102,6 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
-     *
      * @return call sign of the ship
      */
     public String getCallSign() {
@@ -111,7 +109,6 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
-     *
      * @return vessel type of the ship
      */
     public int getVesselType() {
@@ -119,7 +116,6 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
-     *
      * @return length of the ship
      */
     public int getLength() {
@@ -127,7 +123,6 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
-     *
      * @return width of the ship
      */
     public int getWidth() {
@@ -135,7 +130,6 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
-     *
      * @return draft of the ship
      */
     public double getDraft() {
@@ -144,16 +138,18 @@ public class Ship implements Comparable<Ship> {
 
 
     /**
-     *
      * @return ship average speed in knots (nautical miles per hour)
      */
-    public double getAvgSpeed(double dist, double time){return dist/time;}
+    public double getAvgSpeed(double dist, double time) {
+        return dist / time;
+    }
 
     /**
      * total distance done in trips by the ship
+     *
      * @return distance
      */
-    public double getTotalDistance(){
+    public double getTotalDistance() {
         double distance = 0;
         for (Trips trips : tripsList) {
             distance = distance + trips.getTripDistance();
@@ -162,88 +158,87 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
-     *
      * @param start of period required by user
-     * @param end of period required by user
+     * @param end   of period required by user
      * @return distance done by ship int tha period
      */
-    public double getDistBetweenDates(LocalDateTime start, LocalDateTime end){
+    public double getDistBetweenDates(LocalDateTime start, LocalDateTime end) {
         double distance = 0;
-        for (int i =0 ; i< aisMessagesList.size(); i++) {
-            if(aisMessagesList.get(i).getBaseDateTime().isAfter(start) && aisMessagesList.get(i).getBaseDateTime().isBefore(end) && i >0 ){
-                distance = distance + aisMessagesList.get(i).getDistanceAIMes(aisMessagesList.get(i-1));
+        for (int i = 0; i < aisMessagesList.size(); i++) {
+            if (aisMessagesList.get(i).getBaseDateTime().isAfter(start) && aisMessagesList.get(i).getBaseDateTime().isBefore(end) && i > 0) {
+                distance = distance + aisMessagesList.get(i).getDistanceAIMes(aisMessagesList.get(i - 1));
             }
         }
         return distance;
     }
 
     /**
-     *
      * @param start date of required period
-     * @param end date of required period
+     * @param end   date of required period
      * @return number of hours spent in sea between those dates
      */
-    public double getTimeInSeaBetweenDates(LocalDateTime start, LocalDateTime end){
+    public double getTimeInSeaBetweenDates(LocalDateTime start, LocalDateTime end) {
         double time = 0;
-        for (int i =0 ; i< aisMessagesList.size(); i++) {
-            if(aisMessagesList.get(i).getBaseDateTime().isAfter(start) && aisMessagesList.get(i).getBaseDateTime().isBefore(end) && i >0 ){
-                time = time + Duration.between(aisMessagesList.get(i-1).getBaseDateTime(), aisMessagesList.get(i).getBaseDateTime()).toHours();
+        for (int i = 0; i < aisMessagesList.size(); i++) {
+            if (aisMessagesList.get(i).getBaseDateTime().isAfter(start) && aisMessagesList.get(i).getBaseDateTime().isBefore(end) && i > 0) {
+                time = time + Duration.between(aisMessagesList.get(i - 1).getBaseDateTime(), aisMessagesList.get(i).getBaseDateTime()).toHours();
             }
         }
         return time;
     }
 
     /**
-     *
      * @return total number of trips done by ship
      */
-    public int numberOfMovements(){return tripsList.size();}
+    public int numberOfMovements() {
+        return tripsList.size();
+    }
+
     /**
-     *
      * @return distance between first registerd movement and last
      */
-    public double deltaDistance(){return aisMessagesList.get(0).getDistanceAIMes(aisMessagesList.get(aisMessagesList.size()-1));}
+    public double deltaDistance() {
+        return aisMessagesList.get(0).getDistanceAIMes(aisMessagesList.get(aisMessagesList.size() - 1));
+    }
 
     /**
      * ship's total time spent in the sea
      *
      * @return time
      */
-    public double getTotalTimeinSea(){
+    public double getTotalTimeinSea() {
         double time = 0;
         for (Trips trips : tripsList) {
             time = time + trips.getTripDuration();
         }
         return time;
     }
+
     /**
-     *
      * @param msg ais message to be added to the ship
      */
     public void addAISMessage(AISMessage msg) {
-        if (aisMessagesList.size() == 0) {
-            Trips trip = new Trips();
-            this.tripsList.add(trip);
-        }
 
-        if (!aisMessagesList.contains(msg)){
+        if (!aisMessagesList.contains(msg)) {
             aisMessagesList.add(msg);
-            this.tripsList.get(0).addAISMessage(msg);
-            Collections.sort(aisMessagesList);}
+            Collections.sort(aisMessagesList);
+        }
     }
 
     /**
      * imports a list to the list of ais messages
+     *
      * @param msgList ais message list to import
      */
-    public void addAISMessage(List<AISMessage> msgList){
-        for (AISMessage msg: msgList) {
+    public void addAISMessage(List<AISMessage> msgList) {
+        for (AISMessage msg : msgList) {
             addAISMessage(msg);
         }
     }
 
     /**
      * Gets the list of all the AIS messages from the ship
+     *
      * @return list of AIS messages
      */
     public List<AISMessage> getAisMessagesList() {
@@ -251,34 +246,60 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
-     *
      * @param i index of AISMessage
      * @return corresponding AIS message
      */
-    public AISMessage getAISM(int i){return aisMessagesList.get(i);}
+    public AISMessage getAISM(int i) {
+        return aisMessagesList.get(i);
+    }
 
     /**
-     *
+     * @param ship the ship to get the AISMessages from
+     * @param date the date for the search
+     * @return the list of positional messages at a certain date for a given ship
+     */
+    public List<AISMessage> getAISAtDate(Ship ship, LocalDateTime date) {
+        List<AISMessage> list = new ArrayList<>();
+        for (AISMessage msg : ship.getAisMessagesList()) {
+            if (msg.getBaseDateTime().getDayOfMonth() == date.getDayOfMonth() && msg.getBaseDateTime().getMonthValue() == date.getMonthValue())
+                list.add(msg);
+        }
+        return list;
+    }
+
+    /**
+     * @param ship          the ship to get the AISMessages from
+     * @param startDateTime the start date for the search
+     * @param endDateTime   the end date for the search
+     * @return the list of positional messages between two dates for a given ship
+     */
+    public List<AISMessage> getAISBetweenTwoDates(Ship ship, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        List<AISMessage> list = new ArrayList<>();
+        for (AISMessage msg : ship.getAisMessagesList()) {
+            if (msg.getBaseDateTime().isAfter(startDateTime) && msg.getBaseDateTime().isBefore(endDateTime))
+                list.add(msg);
+        }
+        return list;
+    }
+
+    /**
      * @param trip to be added to the ship
-     *
      */
     public void addTrip(Trips trip) {
         tripsList.add(trip);
     }
 
     /**
-     *
      * @param i trip index to get
      * @return the corresponding trip instance
-     *
      */
-    public Trips getTrip(int i){
+    public Trips getTrip(int i) {
         return tripsList.get(i);
     }
 
     /**
-     *
      * Gets all the trips from a ship
+     *
      * @return a list of trips from a ship
      */
     public List<Trips> getTripsList() {
@@ -287,6 +308,7 @@ public class Ship implements Comparable<Ship> {
 
     /**
      * Checks if another object is equal to this onde
+     *
      * @param o the object to compare
      * @return false if the object is null and of other class, true if is the same object or the mmsi is the same
      */
@@ -301,7 +323,6 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
-     *
      * @return the hascode of the ship
      */
     @Override
@@ -311,6 +332,7 @@ public class Ship implements Comparable<Ship> {
 
     /**
      * Compares this ship to other ship
+     *
      * @param o the ship to compare
      * @return zero if the ships are equal, less than zero if the other object is bigger or more than zero if this ship is bigger
      */
@@ -320,7 +342,6 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
-     *
      * @return the ship information
      */
     @Override

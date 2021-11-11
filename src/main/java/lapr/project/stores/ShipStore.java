@@ -5,6 +5,7 @@ import lapr.project.model.Trips;
 import lapr.project.utils.AVL;
 import lapr.project.utils.BST;
 import lapr.project.utils.Conversions;
+import lapr.project.utils.SortByMMSITravDistance;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -144,6 +145,7 @@ public class ShipStore {
 
     /**
      * Returns a list of pairs of ships with routes with close departure/arrival coordinates and with different Travelled Distance.
+     * Sorted by the first ship´s MMSI and in descending order of the Travelled Distance difference.
      *
      * @return pairs of ships list
      */
@@ -154,13 +156,13 @@ public class ShipStore {
         // Iterate through ship list to get the first element of the possible Pair
         for (int i = 0; i < shipList.size(); i++) {
             // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms"
-            if (!(shipList.get(i).getTotalDistance() < 0)) {
+            if (!(Conversions.nauticalMilesToKm(shipList.get(i).getTotalDistance()) < 100)) {
                 List<Trips> ship1TripList = new ArrayList<>(shipList.get(i).getTripsList());
                 // Iterate through ship list to get the second element of the possible Pair
                 for (int j = i + 1; j < shipList.size(); j++) {
                     isPair = false;
                     // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms; Ships must have different Travelled Distance"
-                    if (!(shipList.get(j).getTotalDistance() < 0) && (shipList.get(i).getTotalDistance() != shipList.get(j).getTotalDistance())) {
+                    if (!(Conversions.nauticalMilesToKm(shipList.get(i).getTotalDistance()) < 100) && (shipList.get(i).getTotalDistance() != shipList.get(j).getTotalDistance())) {
                         List<Trips> ship2TripList = new ArrayList<>(shipList.get(j).getTripsList());
 
                         // Iterate through first ship trip list
@@ -168,9 +170,9 @@ public class ShipStore {
                             // Iterate through second ship trip list
                             for (Trips ship2Trip : ship2TripList) {
                                 // If departure/arrival coordinates are no more than 5km away from each other, create Pair
-                                double distance1 = Conversions.nauticalMilesToKm(ship1Trip.getAIsMessage(0).getDistanceAIMes(ship2Trip.getAIsMessage(0)));
-                                double distance2 = Conversions.nauticalMilesToKm(ship1Trip.getAIsMessage(ship1Trip.getAISMessageListSize() - 1).getDistanceAIMes(ship2Trip.getAIsMessage(ship2Trip.getAISMessageListSize() - 1)));
-                                if (distance1 <= 5000 || distance2 <= 5000) isPair = true;
+                                double distance1 = Conversions.nauticalMilesToKm(ship1Trip.getAIsMessage(0).getDistanceAIMes(ship1Trip.getAIsMessage(ship1Trip.getAISMessageListSize() - 1)));
+                                double distance2 = Conversions.nauticalMilesToKm(ship2Trip.getAIsMessage(0).getDistanceAIMes(ship2Trip.getAIsMessage(ship2Trip.getAISMessageListSize() - 1)));
+                                if (distance1 <= 5000 && distance2 <= 5000) isPair = true;
                             }
                         }
 
@@ -183,6 +185,7 @@ public class ShipStore {
             }
         }
 
+        closeCoordsShipList.sort(new SortByMMSITravDistance());
         return closeCoordsShipList;
     }
 
