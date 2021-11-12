@@ -4,7 +4,7 @@ autonumber
 actor "Traffic Manager" as TF
 
 participant ":CloseShipInfoUI" as UI
-participant ":ListShipsController" as CTRL
+participant ":PairOfShipsController" as CTRL
 participant "Company" as COMP
 participant "shipStore: ShipStore" as STR
 participant "ship: Ship" as SHIP
