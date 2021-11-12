@@ -3,8 +3,6 @@ package lapr.project.utils;
 import lapr.project.model.AISMessage;
 import lapr.project.model.Ship;
 import lapr.project.model.Trips;
-import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -46,15 +44,15 @@ class SortByMMSITravDistanceTest {
         ex3.addAISMessage(exAis1);
 
         List<Pair<Ship, Ship>> listOfPairs = new ArrayList<>();
-        listOfPairs.add(new ImmutablePair<>(ex1, ex2));
-        listOfPairs.add(new ImmutablePair<>(ex1, ex3));
-        listOfPairs.add(new ImmutablePair<>(ex2, ex3));
+        listOfPairs.add(new Pair<>(ex1, ex2));
+        listOfPairs.add(new Pair<>(ex1, ex3));
+        listOfPairs.add(new Pair<>(ex2, ex3));
 
         listOfPairs.sort(new SortByMMSITravDistance());
         List<Pair<Ship, Ship>> expected = new ArrayList<>();
-        expected.add(new ImmutablePair<>(ex2, ex3));
-        expected.add(new ImmutablePair<>(ex1, ex2));
-        expected.add(new ImmutablePair<>(ex1, ex3));
+        expected.add(new Pair<>(ex2, ex3));
+        expected.add(new Pair<>(ex1, ex2));
+        expected.add(new Pair<>(ex1, ex3));
         assertEquals(expected, listOfPairs);
     }
 }

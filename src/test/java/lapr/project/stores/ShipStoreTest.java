@@ -3,7 +3,7 @@ package lapr.project.stores;
 import lapr.project.model.AISMessage;
 import lapr.project.model.Import;
 import lapr.project.model.Ship;
-import org.apache.commons.lang3.tuple.Pair;
+import lapr.project.utils.Pair;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -140,8 +140,8 @@ class ShipStoreTest {
         int i = 1;
         for (Pair<Ship, Ship> pair : pairOfShipsList) {
             System.out.println(i + " pair:");
-            System.out.println(pair.getKey().getMMSI());
-            System.out.println(pair.getValue().getMMSI());
+            System.out.println(pair.getFirst().getMMSI());
+            System.out.println(pair.getSecond().getMMSI());
             i++;
         }
 

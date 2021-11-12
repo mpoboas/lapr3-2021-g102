@@ -2,12 +2,7 @@ package lapr.project.stores;
 
 import lapr.project.model.Ship;
 import lapr.project.model.Trips;
-import lapr.project.utils.AVL;
-import lapr.project.utils.BST;
-import lapr.project.utils.Conversions;
-import lapr.project.utils.SortByMMSITravDistance;
-import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.apache.commons.lang3.tuple.Pair;
+import lapr.project.utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -156,13 +151,13 @@ public class ShipStore {
         // Iterate through ship list to get the first element of the possible Pair
         for (int i = 0; i < shipList.size(); i++) {
             // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms"
-            if (!(Conversions.nauticalMilesToKm(shipList.get(i).getTotalDistance()) < 100)) {
+            if (!(Conversions.nauticalMilesToKm(shipList.get(i).getTotalDistance()) < 10)) {
                 List<Trips> ship1TripList = new ArrayList<>(shipList.get(i).getTripsList());
                 // Iterate through ship list to get the second element of the possible Pair
                 for (int j = i + 1; j < shipList.size(); j++) {
                     isPair = false;
                     // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms; Ships must have different Travelled Distance"
-                    if (!(Conversions.nauticalMilesToKm(shipList.get(i).getTotalDistance()) < 100) && (shipList.get(i).getTotalDistance() != shipList.get(j).getTotalDistance())) {
+                    if (!(Conversions.nauticalMilesToKm(shipList.get(i).getTotalDistance()) < 10) && (shipList.get(i).getTotalDistance() != shipList.get(j).getTotalDistance())) {
                         List<Trips> ship2TripList = new ArrayList<>(shipList.get(j).getTripsList());
 
                         // Iterate through first ship trip list
@@ -170,14 +165,18 @@ public class ShipStore {
                             // Iterate through second ship trip list
                             for (Trips ship2Trip : ship2TripList) {
                                 // If departure/arrival coordinates are no more than 5km away from each other, create Pair
-                                double distance1 = Conversions.nauticalMilesToKm(ship1Trip.getAIsMessage(0).getDistanceAIMes(ship1Trip.getAIsMessage(ship1Trip.getAISMessageListSize() - 1)));
-                                double distance2 = Conversions.nauticalMilesToKm(ship2Trip.getAIsMessage(0).getDistanceAIMes(ship2Trip.getAIsMessage(ship2Trip.getAISMessageListSize() - 1)));
-                                if (distance1 <= 5000 && distance2 <= 5000) isPair = true;
+                                double distance1 = Conversions.nauticalMilesToKm(ship1Trip.getAIsMessage(0).getDistanceAIMes(ship2Trip.getAIsMessage(0)));
+                                double distance2 = Conversions.nauticalMilesToKm(ship1Trip.getAIsMessage(ship1Trip.getAISMessageListSize() - 1).getDistanceAIMes(ship2Trip.getAIsMessage(ship2Trip.getAISMessageListSize() - 1)));
+                                System.out.println("Delta distance dos 2 navios:");
+                                System.out.println(distance1);
+                                System.out.println(distance2);
+                                System.out.println();
+                                if (distance1 <= 5 || distance2 <= 5) isPair = true;
                             }
                         }
 
                         if (isPair) {
-                            Pair<Ship, Ship> pairOfShips = new ImmutablePair<>(shipList.get(i), shipList.get(j));
+                            Pair<Ship, Ship> pairOfShips = new Pair<>(shipList.get(i), shipList.get(j));
                             closeCoordsShipList.add(pairOfShips);
                         }
                     }

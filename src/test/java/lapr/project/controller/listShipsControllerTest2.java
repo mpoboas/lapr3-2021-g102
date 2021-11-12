@@ -1,14 +1,11 @@
 package lapr.project.controller;
 
 import lapr.project.model.AISMessage;
-import lapr.project.model.Import;
 import lapr.project.model.Ship;
 import lapr.project.model.Trips;
 import lapr.project.stores.ShipStore;
-import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
@@ -17,7 +14,6 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class listShipsControllerTest2 {
 
@@ -719,32 +715,5 @@ public class listShipsControllerTest2 {
         controller.groupVesselType(groupVessel);
         ListShipsController controller1 = new ListShipsController(4,LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2022, Month.JANUARY, 1, 0, 0),store);
         assertEquals(controller1.getShipMap().keySet(), groupVessel.keySet());
-    }
-
-    @Test
-    public void getCloseCoordsShips() {
-        Import imp = new Import(new ShipStore());
-        String file = "data/data-shipsports/data-shipsports/data-ships&ports/sships.csv";
-
-        try {
-            imp.importShipsData(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        imp.addShips();
-
-        List<Pair<Ship,Ship>> pairOfShipsList = imp.getShipStore().getCloseCoordsShips();
-
-        int i = 1;
-        for (Pair<Ship, Ship> pair : pairOfShipsList) {
-            System.out.println(i + " pair:");
-            System.out.println(pair.getKey().getMMSI());
-            System.out.println(pair.getValue().getMMSI());
-            i++;
-        }
-
-        assertNotNull(pairOfShipsList);
-        assertNotEquals(0, pairOfShipsList.size());
     }
 }
