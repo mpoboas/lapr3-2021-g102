@@ -2,6 +2,7 @@ package lapr.project.controller;
 
 import lapr.project.model.Ship;
 import lapr.project.stores.ShipStore;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -131,9 +132,19 @@ public class ListShipsController {
     }
 
     /**
+     * Returns a list of pairs of ships with routes with close departure/arrival coordinates and with different Travelled Distance.
+     * Sorted by the first ship´s MMSI and in descending order of the Travelled Distance difference.
+     *
+     * @return pairs of ships list
+     */
+    public List<Pair<Ship, Ship>> getCloseCoordsShips() {
+        return new ArrayList<>(this.shipStore.getCloseCoordsShips());
+    }
+
+    /**
      *
      * @param shipList receives the list of all ships
-     * @return A ship map metting requiremnts by the user
+     * @return A ship map meeting requirements by the user
      */
      Map<Ship, List<Double>> generateMap(List<Ship> shipList){
         Map<Ship, List<Double>> shipMap = new HashMap<>();
