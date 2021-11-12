@@ -212,6 +212,20 @@ public class Ship implements Comparable<Ship> {
         return aisMessagesList.get(aisMessagesList.size() - 1).getCoordinates().getLongitude();
     }
 
+    /**
+     * @return the start time
+     */
+    public LocalDateTime getStartBDT() {
+        return aisMessagesList.get(0).getBaseDateTime();
+    }
+
+    /**
+     * @return the end time
+     */
+    public LocalDateTime getEndBDT() {
+        return aisMessagesList.get(aisMessagesList.size() - 1).getBaseDateTime();
+    }
+
 
     /**
      * @return ship average speed in knots (nautical miles per hour)
