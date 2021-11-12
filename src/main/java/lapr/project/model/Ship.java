@@ -253,13 +253,13 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
-     * @param ship the ship to get the AISMessages from
+     * //@param ship the ship to get the AISMessages from
      * @param date the date for the search
      * @return the list of positional messages at a certain date for a given ship
      */
-    public List<AISMessage> getAISAtDate(Ship ship, LocalDateTime date) {
+    public List<AISMessage> getAISAtDate(LocalDateTime date) {
         List<AISMessage> list = new ArrayList<>();
-        for (AISMessage msg : ship.getAisMessagesList()) {
+        for (AISMessage msg : getAisMessagesList()) {
             if (msg.getBaseDateTime().getDayOfMonth() == date.getDayOfMonth() && msg.getBaseDateTime().getMonthValue() == date.getMonthValue())
                 list.add(msg);
         }
@@ -267,14 +267,14 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
-     * @param ship          the ship to get the AISMessages from
+     * //@param ship          the ship to get the AISMessages from
      * @param startDateTime the start date for the search
      * @param endDateTime   the end date for the search
      * @return the list of positional messages between two dates for a given ship
      */
-    public List<AISMessage> getAISBetweenTwoDates(Ship ship, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+    public List<AISMessage> getAISBetweenTwoDates(LocalDateTime startDateTime, LocalDateTime endDateTime) {
         List<AISMessage> list = new ArrayList<>();
-        for (AISMessage msg : ship.getAisMessagesList()) {
+        for (AISMessage msg : getAisMessagesList()) {
             if (msg.getBaseDateTime().isAfter(startDateTime) && msg.getBaseDateTime().isBefore(endDateTime))
                 list.add(msg);
         }
