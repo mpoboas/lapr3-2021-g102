@@ -9,7 +9,7 @@ class Company {
 class CloseShipInfoUI {
 }
 
-class ShipController {
+class ListShipsController {
 +getCloseCoordsShips()
 }
 
@@ -31,10 +31,10 @@ class Ship {
 -transceiverClass
 }
 
-CloseShipInfoUI ..> ShipController
+CloseShipInfoUI ..> ListShipsController
 Company -> ShipStore : adopts >
 ShipStore "1" ->  "*" Ship: stores >
-ShipController ..> Company
-ShipController ..> ShipStore
+ListShipsController ..> Company
+ListShipsController ..> ShipStore
 
 @enduml
