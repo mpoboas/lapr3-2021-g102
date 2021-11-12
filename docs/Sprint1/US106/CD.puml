@@ -1,6 +1,16 @@
 @startuml
-class shipListUI
-class shipListController
+class ListShipController
+class Conversions
+class AISMessage{
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
 class Ship {
 -MMSI
 -name

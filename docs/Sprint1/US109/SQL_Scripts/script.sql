@@ -1,5 +1,7 @@
---Table SHIP
+--Test on Table SHIP
 --List table collumns
+
+
 DESCRIBE SHIP;
 
 INSERT INTO SHIP VALUES (112, 1, 'Test ship', 'Call sign',122 ,131 ,12 ,133 ,1331 );--pass
@@ -9,9 +11,6 @@ INSERT INTO SHIP VALUES (412, 4, 'othertest', 'call sign bigger than 15 char',31
 INSERT INTO SHIP VALUES (112, 5, 'TEST SHIP', 'sign', 1721, 142, 1412, 1421, 141 );--EXPECTED ERROR
 INSERT INTO SHIP VALUES (null, 4, 'Days of the Phoenix', 'cs',143 ,143 ,1412 ,14 ,141 );--expeted error on MMSI
 INSERT INTO SHIP VALUES (711, 5, null, 'AFI',1412 ,24 ,124 ,1212 , 1241 );--pass
-SELECT * FROM SHIP;
---Clean Table--
-DELETE FROM SHIP WHERE MMSI = 112 AND mmsi = 211 AND MMSI = 3300 AND MMSI = 711;
 SELECT * FROM SHIP;
 
 --TESTS ON TABLES PERSON AND TRUCKDRIVER
@@ -23,8 +22,8 @@ INSERT INTO TRUCKDRIVER VALUES (NULL);--Expected error because field is null
 INSERT INTO TRUCKDRIVER VALUES ('TEST');-- expected error because there is a varchar in a number position
 INSERT INTO PERSON VALUES (1222,'Person Test', '2000.12.20');--pass
 INSERT INTO TRUCKDRIVER VALUES (1222);--pass
-INSERT INTO PERSON VALUES (21,'Person Test', 2000-12-20);--expacted error
-INSERT INTO PERSON VALUES (1222,'Test', '1999.12.20'); -- expected error same key
+INSERT INTO PERSON VALUES (21,'Person Test', 2000-12-20);--expacted error because date isn't between single quote
+INSERT INTO PERSON VALUES (1222,'Test', '1999.12.20'); -- expected error key already exists
 
 
 SELECT * FROM TRUCKDRIVER;

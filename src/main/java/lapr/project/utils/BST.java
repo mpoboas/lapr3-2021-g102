@@ -169,7 +169,7 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
         return node;
     }
 
-    /*
+    /**
      * Returns the number of nodes in the tree.
      * @return number of nodes in the tree
      */
@@ -181,7 +181,7 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
         return (node == null) ? 0 : (1 + size(node.left) + size(node.right));
     }
 
-    /*
+    /**
      * Returns the height of the tree
      * @return height
      */
@@ -189,7 +189,7 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
         return height(root);
     }
 
-    /*
+    /**
      * Returns the height of the subtree rooted at Node node.
      * @param node A valid Node within the tree
      * @return height

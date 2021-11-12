@@ -18,10 +18,7 @@ public class ListShipControllerDemo {
         im.addShips();
         store = im.getShipStore();
         ListShipsController cont = new ListShipsController(true,1, store);
-
         System.out.println(cont);
-
-
     }
     @Test
     public void Demo2() throws IOException {

@@ -32,8 +32,21 @@ class Port{
 -Country
 -Location
 }
+class AISMessage{
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
+
 Ship "1" -- "*" Port : Travels between >
 Ship "1" -- "*" Trips : does many >
+Ship "1" -- "*" AISMessage : contains >
+
 
 
 @enduml

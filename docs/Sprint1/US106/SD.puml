@@ -9,11 +9,11 @@ autonumber
 activate usr
 usr -> UI : requests ships with most kilometers travelled and average speed
 activate UI
-UI --> usr : requests how many ships must be listed
+UI --> usr : requests how many ships must be listed and period of time
 deactivate UI
-usr -> UI: types how many ships will be listed
+usr -> UI: types how many ships will be listed and period of time
 activate UI
-UI -> Controller : Requests list of top n ships with most kilometers and average speed
+UI -> Controller : Requests list of top n ships with most kilometers and average speed in that period
 activate Controller
 Controller -> sl : requests top n ships with the requested stats
 activate sl
@@ -31,10 +31,10 @@ activate ship
 deactivate ship
 ship --> sl : send sum of ship total travel distance and average speed
 deactivate ship
-sl -->sl : filters the top n ships and orders them
-activate sl
-deactivate sl
 sl --> Controller : sends list
+Controller -->Controller : filters the top n ships and orders them
+activate Controller
+deactivate Controller
 deactivate sl
 Controller --> UI :  sends list
 deactivate Controller
