@@ -136,6 +136,82 @@ public class Ship implements Comparable<Ship> {
         return draft;
     }
 
+    /**
+     * @return the max SOG of the ship
+     */
+    public double getMaxSOG() {
+        double max = 0;
+        for (AISMessage msg : aisMessagesList) {
+            if (msg.getSOG() > max) max = msg.getSOG();
+        }
+        return max;
+    }
+
+    /**
+     * @return the max COG of the ship
+     */
+    public double getMaxCOG() {
+        double max = 0;
+        for (AISMessage msg : aisMessagesList) {
+            if (msg.getCOG() > max) max = msg.getCOG();
+        }
+        return max;
+    }
+
+    /**
+     * @return the mean SOG of the ship
+     */
+    public double getMeanSOG() {
+        double sum = 0;
+        double mean = 0;
+        for (AISMessage msg : aisMessagesList) {
+            sum += msg.getSOG();
+        }
+        mean = sum / aisMessagesList.size();
+        return mean;
+    }
+
+    /**
+     * @return the mean COG of the ship
+     */
+    public double getMeanCOG() {
+        double sum = 0;
+        double mean = 0;
+        for (AISMessage msg : aisMessagesList) {
+            sum += msg.getCOG();
+        }
+        mean = sum / aisMessagesList.size();
+        return mean;
+    }
+
+    /**
+     * @return the ship's departure latitude
+     */
+    public double getDepartureLatitude() {
+        return aisMessagesList.get(0).getCoordinates().getLatitude();
+    }
+
+    /**
+     * @return the ship's departure longitude
+     */
+    public double getDepartureLongitude() {
+        return aisMessagesList.get(0).getCoordinates().getLongitude();
+    }
+
+    /**
+     * @return the ship's arrival latitude
+     */
+    public double getArrivalLatitude() {
+        return aisMessagesList.get(aisMessagesList.size() - 1).getCoordinates().getLatitude();
+    }
+
+    /**
+     * @return the ship's arrival longitude
+     */
+    public double getArrivalLongitude() {
+        return aisMessagesList.get(aisMessagesList.size() - 1).getCoordinates().getLongitude();
+    }
+
 
     /**
      * @return ship average speed in knots (nautical miles per hour)
