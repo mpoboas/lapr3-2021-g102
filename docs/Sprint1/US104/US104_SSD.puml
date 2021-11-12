@@ -1,0 +1,17 @@
+@startuml
+autonumber
+actor "Traffic Manager" as TF
+
+activate TF
+TF -> ":System" : aks to see a summary of a ship's movements
+activate ":System"
+":System" --> TF : asks to choose a ship (MMSI or IMO or callSign)
+deactivate ":System"
+
+TF -> ":System" : inserts requested data
+activate ":System"
+":System" --> TF : shows summary of the selected ship's movement's
+deactivate ":System"
+deactivate TF
+
+@enduml
