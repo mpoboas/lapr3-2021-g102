@@ -4,8 +4,9 @@ import lapr.project.model.AISMessage;
 import lapr.project.model.Import;
 import lapr.project.model.Ship;
 import lapr.project.stores.ShipStore;
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -36,9 +37,9 @@ public class PositionalMessagesControllerTest {
         List<Ship> list = imp.getListOfImportedShips();
 
         //GET SHIP
-        Assert.assertEquals(testShip, ctrl.getShip("210950000"));
-        Assert.assertEquals(testShip, ctrl.getShip("IMO9395044"));
-        Assert.assertEquals(testShip, ctrl.getShip("C4SQ2"));
+        assertEquals(testShip, ctrl.getShip("210950000"));
+        assertEquals(testShip, ctrl.getShip("IMO9395044"));
+        assertEquals(testShip, ctrl.getShip("C4SQ2"));
 
         //AT DATE
         List<AISMessage> atDate = new ArrayList<>();
@@ -48,7 +49,7 @@ public class PositionalMessagesControllerTest {
                 atDate.add(msg);
         }
 
-        Assert.assertEquals(atDate, ctrl.getPositionalMessagesAtDate(testShip, LocalDateTime.of(2020, Month.DECEMBER, 31, 2, 0)));
+        assertEquals(atDate, ctrl.getPositionalMessagesAtDate(testShip, LocalDateTime.of(2020, Month.DECEMBER, 31, 2, 0)));
 
         //BETWEEN TWO DATES
         List<AISMessage> betweenTwoDates = new ArrayList<>();
@@ -59,6 +60,6 @@ public class PositionalMessagesControllerTest {
                 betweenTwoDates.add(msg);
         }
 
-        Assert.assertEquals(betweenTwoDates, ctrl.getPositionalMessagesBetweenTwoDates(testShip, LocalDateTime.of(2020, Month.DECEMBER, 31, 11, 59), LocalDateTime.of(2020, Month.DECEMBER, 31, 22, 59)));
+        assertEquals(betweenTwoDates, ctrl.getPositionalMessagesBetweenTwoDates(testShip, LocalDateTime.of(2020, Month.DECEMBER, 31, 11, 59), LocalDateTime.of(2020, Month.DECEMBER, 31, 22, 59)));
     }
 }

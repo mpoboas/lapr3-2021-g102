@@ -1,14 +1,11 @@
 package lapr.project.utils;
 
 import lapr.project.model.Ship;
-import lapr.project.stores.ShipStore;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ShipTreeTest {
@@ -34,7 +31,7 @@ class ShipTreeTest {
             instance.insert(s);
         }
 
-        assertEquals("inOrder should be "+order1.toString(), order1, instance.inOrder());
+        assertEquals(order1, instance.inOrder(), "inOrder should be "+order1.toString());
         System.out.println("<instance 1>");
         System.out.println(instance);
         System.out.println("height1="+instance.height());
@@ -48,7 +45,7 @@ class ShipTreeTest {
         for (Ship s: arr ) {
             instance1.insert(s);
         }
-        assertEquals("inOrder should be "+order2.toString(), order2, instance1.inOrder());
+        assertEquals(order2, instance1.inOrder(), "inOrder should be "+order2.toString());
         System.out.println("<instance 1.2>");
         System.out.println(instance1);
         System.out.println("height1.2="+instance1.height());
@@ -76,8 +73,8 @@ class ShipTreeTest {
         System.out.println(instance2);
         System.out.println("height2="+instance2.height());
 
-        assertEquals("inOrder should be "+order1.toString(),order1, instance2.inOrder());
-        assertEquals("height should be 2 ",instance2.height(), 2);
+        assertEquals(order1, instance2.inOrder(), "inOrder should be "+order1.toString());
+        assertEquals(instance2.height(), 2);
         System.out.println("------------------------------------");
 
 
@@ -104,8 +101,8 @@ class ShipTreeTest {
         System.out.println("<instance 3>");
         System.out.println(instance3);
         System.out.println("height3="+instance3.height());
-        assertEquals("inOrder should be "+order1.toString(), order1, instance3.inOrder());
-        assertEquals("height should be 2 ",instance3.height(), 2);
+        assertEquals(order1, instance3.inOrder(), "inOrder should be "+order1.toString());
+        assertEquals(instance3.height(), 2);
         System.out.println("------------------------------------");
     }
 
@@ -136,34 +133,34 @@ class ShipTreeTest {
         //no rotations needed
         instance.remove(ship4);
         order1.remove(ship4);
-        assertEquals("inOrder should be "+order1.toString(), order1, instance.inOrder());
-        assertEquals("height should be 2 ",instance.height(), 2);
+        assertEquals(order1, instance.inOrder(), "inOrder should be "+order1.toString());
+        assertEquals(instance.height(), 2);
 
         //test Simple left rotation
         instance.remove(ship2);
         order1.remove(ship2);
-        assertEquals("inOrder should be "+order1.toString(), order1, instance.inOrder());
-        assertEquals("height should be 2 ",instance.height(), 2);
+        assertEquals(order1, instance.inOrder(), "inOrder should be "+order1.toString());
+        assertEquals(instance.height(), 2);
 
         instance.remove(ship1);
         order1.remove(ship1);
-        assertEquals("inOrder should be "+order1.toString(), order1, instance.inOrder());
-        assertEquals("height should be 1 ",instance.height(), 1);
+        assertEquals(order1, instance.inOrder(), "inOrder should be "+order1.toString());
+        assertEquals(instance.height(), 1);
 
         instance.remove(ship6);
         order1.remove(ship6);
-        assertEquals("inOrder should be "+order1.toString(), order1, instance.inOrder());
-        assertEquals("height should be 1 ", 1, instance.height());
+        assertEquals(order1, instance.inOrder(), "inOrder should be "+order1.toString());
+        assertEquals( 1, instance.height());
 
         instance.remove(ship3);
         order1.remove(ship3);
-        assertEquals("inOrder should be "+order1.toString(), order1, instance.inOrder());
-        assertEquals("height should be 1 ", 0, instance.height());
+        assertEquals(order1, instance.inOrder(), "inOrder should be "+order1.toString());
+        assertEquals(0, instance.height());
 
         instance.remove(ship5);
         order1.remove(ship5);
-        assertEquals("inOrder should be "+order1.toString(), order1, instance.inOrder());
-        assertEquals("height should be 1 ", -1, instance.height());
+        assertEquals(order1, instance.inOrder(), "inOrder should be "+order1.toString());
+        assertEquals(-1, instance.height());
 
         System.out.println("------------------------------------");
     }

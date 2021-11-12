@@ -1,11 +1,11 @@
 package lapr.project.model;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.time.Month;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TripsTest {
     Trips trip ;
@@ -30,7 +30,8 @@ public class TripsTest {
         trip = new Trips();
         ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais1);
-        assertTrue("Should be true", trip.getAIsMessage(0) == ais1);
+        assertTrue(trip.getAIsMessage(0) == ais1, "Should be true");
+
 
     }
 
@@ -43,9 +44,9 @@ public class TripsTest {
         trip.addAISMessage(ais2);
         ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais3);
-        assertFalse("Should be false", trip.getTripStatus());
+        assertFalse(trip.getTripStatus(), "Should be false");
         trip.endTrip();
-        assertTrue("Should be true", trip.getTripStatus());
+        assertTrue(trip.getTripStatus(), "Should be true");
     }
 
 

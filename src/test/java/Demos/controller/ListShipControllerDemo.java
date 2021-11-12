@@ -3,7 +3,7 @@ package Demos.controller;
 import lapr.project.controller.ListShipsController;
 import lapr.project.model.Import;
 import lapr.project.stores.ShipStore;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.time.LocalDateTime;

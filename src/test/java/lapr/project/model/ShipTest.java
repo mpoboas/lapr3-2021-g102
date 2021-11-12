@@ -2,14 +2,14 @@ package lapr.project.model;
 
 import lapr.project.utils.SortByCallSign;
 import lapr.project.utils.SortByIMO;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Comparator;
 import java.util.Objects;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ShipTest {
     Trips trip;

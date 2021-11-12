@@ -4,7 +4,7 @@ import lapr.project.model.AISMessage;
 import lapr.project.model.Ship;
 import lapr.project.model.Trips;
 import lapr.project.stores.ShipStore;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class listShipsControllerTest {
 
@@ -294,7 +295,7 @@ public class listShipsControllerTest {
         store.addShip(ship2);
         store.addShip(ship3);
         store.addShip(ship4);
-        ListShipsController controller = new ListShipsController(false,0, store);;
+        ListShipsController controller = new ListShipsController(false,0, store);
 
         List<Ship> list1 = store.getListOfShipsASCOrd();
         List<Ship> list2 = controller.getShipList();

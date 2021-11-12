@@ -23,4 +23,7 @@ public class CalculatorExampleTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    void sum() {
+    }
 }
