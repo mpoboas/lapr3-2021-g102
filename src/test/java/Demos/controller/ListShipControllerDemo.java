@@ -11,10 +11,14 @@ import java.time.Month;
 
 public class ListShipControllerDemo {
     @Test
-    public void Demo1() throws IOException {
+    public void Demo1()  {
         ShipStore store = new ShipStore();
         Import im = new Import(store);
-        im.importShipsData("data/data-shipsports/data-shipsports/data-ships&ports/sships.csv");
+        try {
+            im.importShipsData("data/data-shipsports/data-shipsports/data-ships&ports/sships.csv");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         im.addShips();
         store = im.getShipStore();
         ListShipsController cont = new ListShipsController(true,1, store);
@@ -24,10 +28,14 @@ public class ListShipControllerDemo {
 
     }
     @Test
-    public void Demo2() throws IOException {
+    public void Demo2()  {
         ShipStore store = new ShipStore();
         Import im = new Import(store);
-        im.importShipsData("data/data-shipsports/data-shipsports/data-ships&ports/sships.csv");
+        try {
+            im.importShipsData("data/data-shipsports/data-shipsports/data-ships&ports/sships.csv");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         im.addShips();
         store = im.getShipStore();
         ListShipsController cont = new ListShipsController(20, LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2021, Month.JANUARY, 1, 0, 0),store);
