@@ -1,9 +1,12 @@
 package lapr.project.model;
 
+import lapr.project.utils.SortByCallSign;
+import lapr.project.utils.SortByIMO;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.Comparator;
 import java.util.Objects;
 
 import static org.junit.Assert.*;
@@ -293,5 +296,13 @@ public class ShipTest {
         assertEquals(-1,ship1.compareTo(ship2));
         assertEquals(0,ship1.compareTo(ship3));
         assertEquals(1,ship2.compareTo(ship1));
+        Comparator<Ship> c1 = new SortByCallSign();
+        assertEquals(-1,c1.compare(ship1,ship2));
+        assertEquals(0,c1.compare(ship1,ship3));
+        assertEquals(1,c1.compare(ship2,ship1));
+        Comparator<Ship> c2 = new SortByIMO();
+        assertEquals(-1,c2.compare(ship1,ship2));
+        assertEquals(0,c2.compare(ship1,ship3));
+        assertEquals(1,c2.compare(ship2,ship1));
     }
 }
