@@ -1,0 +1,186 @@
+package lapr.project.utils;
+
+import lapr.project.model.Ship;
+import lapr.project.stores.ShipStore;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+
+class ShipTreeTest {
+
+    @Test
+    void insert() {
+        System.out.println("insert");
+        Ship ship1 = new Ship(112,"112","IMOtest9","Ship55", 12, 1200, 600 , 21);
+        Ship ship2 = new Ship(113,"122","IMOtest1","Ship89", 12, 1200, 600 , 21);
+        Ship ship3 = new Ship(114,"132","IMOtest4","Ship01", 12, 1200, 600 , 21);
+        Ship ship4 = new Ship(110,"142","IMOtest3","Ship63", 12, 1200, 600 , 21);
+        Ship ship5 = new Ship(120,"152","IMOtest8","Ship47", 12, 1200, 600 , 21);
+        Ship ship6 = new Ship(118,"162","IMOtest5","Ship99", 12, 1200, 600 , 21);
+        List<Ship> arr = new ArrayList<>();
+        arr.add(ship1); arr.add(ship2);arr.add(ship3);arr.add(ship4);arr.add(ship5);arr.add(ship6);
+        //test Simple right rotation
+        //Testing Ship tree by IMO
+        ShipTree instance = new ShipTree("IMO");
+
+        List<Ship> order1 = new ArrayList<>();
+        order1.add(ship2);order1.add(ship4);order1.add(ship3);order1.add(ship6);order1.add(ship5);order1.add(ship1);
+        for (Ship s: arr ) {
+            instance.insert(s);
+        }
+
+        assertEquals("inOrder should be "+order1.toString(), order1, instance.inOrder());
+        System.out.println("<instance 1>");
+        System.out.println(instance);
+        System.out.println("height1="+instance.height());
+        System.out.println("------------------------------------");
+
+        //Testing Ship tree by CallSign
+        ShipTree instance1 = new ShipTree("Call Sign");
+
+        List<Ship> order2 = new ArrayList<>();
+        order2.add(ship3);order2.add(ship5);order2.add(ship1);order2.add(ship4);order2.add(ship2);order2.add(ship6);
+        for (Ship s: arr ) {
+            instance1.insert(s);
+        }
+        assertEquals("inOrder should be "+order2.toString(), order2, instance1.inOrder());
+        System.out.println("<instance 1.2>");
+        System.out.println(instance1);
+        System.out.println("height1.2="+instance1.height());
+        System.out.println("------------------------------------");
+
+        //test Simple left rotation
+        ShipTree instance2 = new ShipTree("IMO");
+        //AVL<Integer> instance2 = new AVL();
+        ship1 = new Ship(112,"112","IMOtest08","Ship55", 12, 1200, 600 , 21);
+        ship2 = new Ship(113,"122","IMOtest04","Ship89", 12, 1200, 600 , 21);
+        ship3 = new Ship(114,"132","IMOtest10","Ship01", 12, 1200, 600 , 21);
+        ship4 = new Ship(110,"142","IMOtest09","Ship63", 12, 1200, 600 , 21);
+        ship5 = new Ship(120,"152","IMOtest15","Ship47", 12, 1200, 600 , 21);
+        ship6 = new Ship(118,"162","IMOtest12","Ship99", 12, 1200, 600 , 21);
+        arr = new ArrayList<>();
+        arr.add(ship1); arr.add(ship2);arr.add(ship3);arr.add(ship4);arr.add(ship5);arr.add(ship6);
+        order1 = new ArrayList<>();
+        order1.add(ship2);order1.add(ship1);order1.add(ship4);order1.add(ship3);order1.add(ship6);order1.add(ship5);
+
+        for (Ship s: arr ) {
+            instance2.insert(s);
+        }
+
+        System.out.println("<instance 2>");
+        System.out.println(instance2);
+        System.out.println("height2="+instance2.height());
+
+        assertEquals("inOrder should be "+order1.toString(),order1, instance2.inOrder());
+        assertEquals("height should be 2 ",instance2.height(), 2);
+        System.out.println("------------------------------------");
+
+
+        //test double rotation
+        //AVL<Integer> instance3 = new AVL();
+        ShipTree instance3 = new ShipTree("IMO");
+        int arr3[] = {8,4,10,2,6,5};
+        ship1 = new Ship(112,"112","IMOtest08","Ship55", 12, 1200, 600 , 21);
+        ship2 = new Ship(113,"122","IMOtest04","Ship89", 12, 1200, 600 , 21);
+        ship3 = new Ship(114,"132","IMOtest10","Ship01", 12, 1200, 600 , 21);
+        ship4 = new Ship(110,"142","IMOtest02","Ship63", 12, 1200, 600 , 21);
+        ship5 = new Ship(120,"152","IMOtest06","Ship47", 12, 1200, 600 , 21);
+        ship6 = new Ship(118,"162","IMOtest05","Ship99", 12, 1200, 600 , 21);
+        arr = new ArrayList<>();
+        arr.add(ship1); arr.add(ship2);arr.add(ship3);arr.add(ship4);arr.add(ship5);arr.add(ship6);
+
+        order1 = new ArrayList<>();
+        order1.add(ship4);order1.add(ship2);order1.add(ship6);order1.add(ship5);order1.add(ship1);order1.add(ship3);
+
+        for (Ship s: arr ) {
+            instance3.insert(s);
+        }
+
+        System.out.println("<instance 3>");
+        System.out.println(instance3);
+        System.out.println("height3="+instance3.height());
+        assertEquals("inOrder should be "+order1.toString(), order1, instance3.inOrder());
+        assertEquals("height should be 2 ",instance3.height(), 2);
+        System.out.println("------------------------------------");
+    }
+
+    @Test
+    void remove() {
+        System.out.println("remove");
+        Ship ship1 = new Ship(112,"112","IMOtest9","Ship55", 12, 1200, 600 , 21);
+        Ship ship2 = new Ship(113,"122","IMOtest1","Ship89", 12, 1200, 600 , 21);
+        Ship ship3 = new Ship(114,"132","IMOtest4","Ship01", 12, 1200, 600 , 21);
+        Ship ship4 = new Ship(110,"142","IMOtest3","Ship63", 12, 1200, 600 , 21);
+        Ship ship5 = new Ship(120,"152","IMOtest8","Ship47", 12, 1200, 600 , 21);
+        Ship ship6 = new Ship(118,"162","IMOtest5","Ship99", 12, 1200, 600 , 21);
+        List<Ship> arr = new ArrayList<>();
+        arr.add(ship1); arr.add(ship2);arr.add(ship3);arr.add(ship4);arr.add(ship5);arr.add(ship6);
+        List<Ship> order1 = new ArrayList<>();
+        order1.add(ship2);order1.add(ship4);order1.add(ship3);order1.add(ship6);order1.add(ship5);order1.add(ship1);
+
+
+        ShipTree instance;
+
+        instance = new ShipTree("IMO");
+
+        for (Ship s: arr ) {
+            instance.insert(s);
+        }
+
+
+        //no rotations needed
+        instance.remove(ship4);
+        order1.remove(ship4);
+        assertEquals("inOrder should be "+order1.toString(), order1, instance.inOrder());
+        assertEquals("height should be 2 ",instance.height(), 2);
+
+        //test Simple left rotation
+        instance.remove(ship2);
+        order1.remove(ship2);
+        assertEquals("inOrder should be "+order1.toString(), order1, instance.inOrder());
+        assertEquals("height should be 2 ",instance.height(), 2);
+
+        instance.remove(ship1);
+        order1.remove(ship1);
+        assertEquals("inOrder should be "+order1.toString(), order1, instance.inOrder());
+        assertEquals("height should be 1 ",instance.height(), 1);
+
+        instance.remove(ship6);
+        order1.remove(ship6);
+        assertEquals("inOrder should be "+order1.toString(), order1, instance.inOrder());
+        assertEquals("height should be 1 ", 1, instance.height());
+
+        instance.remove(ship3);
+        order1.remove(ship3);
+        assertEquals("inOrder should be "+order1.toString(), order1, instance.inOrder());
+        assertEquals("height should be 1 ", 0, instance.height());
+
+        instance.remove(ship5);
+        order1.remove(ship5);
+        assertEquals("inOrder should be "+order1.toString(), order1, instance.inOrder());
+        assertEquals("height should be 1 ", -1, instance.height());
+
+        System.out.println("------------------------------------");
+    }
+
+    @Test
+    void testEquals() {
+        System.out.println("equals");
+        Ship ship1 = new Ship(112,"112","IMOtest9","Ship55", 12, 1200, 600 , 21);
+        Ship ship2 = new Ship(113,"122","IMOtest1","Ship89", 12, 1200, 600 , 21);
+        ShipTree instance = new ShipTree("IMO");
+        instance.insert(ship1);
+        instance.insert(ship2);
+        ShipTree instance2 = new ShipTree("IMO");
+        instance2.insert(ship1);
+        instance2.insert(ship2);
+        assertTrue(instance.equals(instance2), "equals! ");
+        instance2.remove(ship1);
+        assertFalse(instance.equals(instance2), "equals! ");
+    }
+}
