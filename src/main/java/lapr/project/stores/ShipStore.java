@@ -14,15 +14,15 @@ public class ShipStore {
     /**
      * All the ships stored in a binary search tree ordered by mmsi
      */
-    BST<Ship> shipBSTMMSI = new ShipTree("MMSI");
+    ShipTree shipBSTMMSI = new ShipTree("MMSI");
     /**
      * All the ships stored in a binary search tree ordered by IMO
      */
-    BST<Ship> shipBSTIMO = new ShipTree("IMO");
+    ShipTree shipBSTIMO = new ShipTree("IMO");
     /**
      * All the ships stored in a binary search tree ordered by call sign
      */
-    BST<Ship> shipBSTCallSign = new ShipTree("Call Sign");
+    ShipTree shipBSTCallSign = new ShipTree("Call Sign");
 
 
     /**
@@ -122,10 +122,14 @@ public class ShipStore {
      * @return the ship with that mmsi or throws an exception if the ship was not found
      */
     public Ship getShipByMMSI(int mmsi) {
+        Ship ship =  this.shipBSTMMSI.searchShipByMMSI(mmsi);
+        if (ship != null)
+            return ship;
+        /*
         for (Ship s : getListOfShipsASCOrd()) {
             if (s.getMMSI() == mmsi)
                 return s;
-        }
+        }*/
         throw new IllegalArgumentException("The ship with the MMSI: " + mmsi + " was not found");
     }
 
@@ -136,10 +140,14 @@ public class ShipStore {
      * @return the ship with that imo or throws an exception if the ship was not found
      */
     public Ship getShipByIMO(String imo) {
-        for (Ship s : getListOfShipsASCOrd()) {
+        Ship ship =  this.shipBSTIMO.searchShipByIMO(imo);
+        if (ship != null)
+            return ship;
+
+        /*for (Ship s : getListOfShipsASCOrd()) {
             if (s.getIMO().equals(imo))
                 return s;
-        }
+        }*/
         throw new IllegalArgumentException("The ship with the IMO: " + imo + " was not found");
     }
 
@@ -150,10 +158,13 @@ public class ShipStore {
      * @return the ship with that call sign or throws an exception if the ship was not found
      */
     public Ship getShipByCallSign(String callSign) {
-        for (Ship s : getListOfShipsASCOrd()) {
+        Ship ship =  this.shipBSTCallSign.searchShipByCallSign(callSign);
+        if (ship != null)
+            return ship;
+        /*for (Ship s : getListOfShipsASCOrd()) {
             if (s.getCallSign().equals(callSign))
                 return s;
-        }
+        }*/
         throw new IllegalArgumentException("The ship with the Call Sign: " + callSign + " was not found");
     }
 

@@ -170,4 +170,47 @@ public class ShipTree extends BST<Ship>{
                 return false;
         } else return false;
     }
+
+   // The use of the following six methods is recommended when the initialization is done with the respective type of data
+    public Ship searchShipByMMSI(int mmsi){
+        Node<Ship> n = searchShipByMMSI(root,mmsi);
+        if (n == null)
+            return null;
+        return n.getElement();
+    }
+
+    private Node<Ship> searchShipByMMSI(Node<Ship> node, int mmsi){
+        if (node == null) return null;
+        if (mmsi == node.getElement().getMMSI()) return node;
+        if (mmsi < node.getElement().getMMSI()) return searchShipByMMSI(node.getLeft(),mmsi);
+        else return searchShipByMMSI(node.getRight(), mmsi);
+    }
+
+    public Ship searchShipByIMO(String IMO){
+        Node<Ship> n = searchShipByIMO(root,IMO);
+        if (n == null)
+            return null;
+        return n.getElement();
+    }
+
+    private Node<Ship> searchShipByIMO(Node<Ship> node, String IMO){
+        if (node == null) return null;
+        if (IMO.equals(node.getElement().getIMO())) return node;
+        if (IMO.compareTo(node.getElement().getIMO()) < 0) return searchShipByIMO(node.getLeft(),IMO);
+        else return searchShipByIMO(node.getRight(), IMO);
+    }
+
+    public Ship searchShipByCallSign(String callSign){
+        Node<Ship> n = searchShipByCallSign(root,callSign);
+        if (n == null)
+            return null;
+        return n.getElement();
+    }
+
+    private Node<Ship> searchShipByCallSign(Node<Ship> node,String callSign){
+        if (node == null) return null;
+        if (callSign.equals(node.getElement().getCallSign())) return node;
+        if (callSign.compareTo(node.getElement().getCallSign()) < 0) return searchShipByCallSign(node.getLeft(),callSign);
+        else return searchShipByCallSign(node.getRight(), callSign);
+    }
 }
