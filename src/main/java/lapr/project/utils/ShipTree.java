@@ -4,11 +4,11 @@ import lapr.project.model.Ship;
 
 import java.util.Comparator;
 
-public class ShipTree extends BST<Ship>{
+public class ShipTree extends BST<Ship> {
 
     Comparator<Ship> comp;
 
-    public ShipTree(String type){
+    public ShipTree(String type) {
         if (type.equals("IMO"))
             comp = new SortByIMO();
         if (type.equals("Call Sign"))
@@ -20,6 +20,13 @@ public class ShipTree extends BST<Ship>{
                     return o1.compareTo(o2);
                 }
             };
+    }
+
+    public Ship getShip(Ship ship) {
+        Node<Ship> n = find(ship);
+        if (n == null)
+            return null;
+        return n.getElement();
     }
 
     private int balanceFactor(Node<Ship> node) {
@@ -139,10 +146,10 @@ public class ShipTree extends BST<Ship>{
     protected Node<Ship> find(Node<Ship> node, Ship element) {
         if (node == null) return null;
 
-        if (node.getElement().compareTo(element) > 0)
+        if (comp.compare(node.getElement(), element) > 0)
             return find(node.getLeft(), element);
 
-        if (node.getElement().compareTo(element) < 0)
+        if (comp.compare(node.getElement(), element) < 0)
             return find(node.getRight(), element);
 
         return node;
@@ -163,7 +170,7 @@ public class ShipTree extends BST<Ship>{
         if (root1 == null && root2 == null)
             return true;
         else if (root1 != null && root2 != null) {
-            if ( comp.compare(root1.getElement(), root2.getElement()) == 0) {
+            if (comp.compare(root1.getElement(), root2.getElement()) == 0) {
                 return equals(root1.getLeft(), root2.getLeft())
                         && equals(root1.getRight(), root2.getRight());
             } else
@@ -171,46 +178,47 @@ public class ShipTree extends BST<Ship>{
         } else return false;
     }
 
-   // The use of the following six methods is recommended when the initialization is done with the respective type of data
-    public Ship searchShipByMMSI(int mmsi){
-        Node<Ship> n = searchShipByMMSI(root,mmsi);
+    // The use of the following six methods is recommended when the initialization is done with the respective type of data
+    public Ship searchShipByMMSI(int mmsi) {
+        Node<Ship> n = searchShipByMMSI(root, mmsi);
         if (n == null)
             return null;
         return n.getElement();
     }
 
-    private Node<Ship> searchShipByMMSI(Node<Ship> node, int mmsi){
+    private Node<Ship> searchShipByMMSI(Node<Ship> node, int mmsi) {
         if (node == null) return null;
         if (mmsi == node.getElement().getMMSI()) return node;
-        if (mmsi < node.getElement().getMMSI()) return searchShipByMMSI(node.getLeft(),mmsi);
+        if (mmsi < node.getElement().getMMSI()) return searchShipByMMSI(node.getLeft(), mmsi);
         else return searchShipByMMSI(node.getRight(), mmsi);
     }
 
-    public Ship searchShipByIMO(String IMO){
-        Node<Ship> n = searchShipByIMO(root,IMO);
+    public Ship searchShipByIMO(String IMO) {
+        Node<Ship> n = searchShipByIMO(root, IMO);
         if (n == null)
             return null;
         return n.getElement();
     }
 
-    private Node<Ship> searchShipByIMO(Node<Ship> node, String IMO){
+    private Node<Ship> searchShipByIMO(Node<Ship> node, String IMO) {
         if (node == null) return null;
         if (IMO.equals(node.getElement().getIMO())) return node;
-        if (IMO.compareTo(node.getElement().getIMO()) < 0) return searchShipByIMO(node.getLeft(),IMO);
+        if (IMO.compareTo(node.getElement().getIMO()) < 0) return searchShipByIMO(node.getLeft(), IMO);
         else return searchShipByIMO(node.getRight(), IMO);
     }
 
-    public Ship searchShipByCallSign(String callSign){
-        Node<Ship> n = searchShipByCallSign(root,callSign);
+    public Ship searchShipByCallSign(String callSign) {
+        Node<Ship> n = searchShipByCallSign(root, callSign);
         if (n == null)
             return null;
         return n.getElement();
     }
 
-    private Node<Ship> searchShipByCallSign(Node<Ship> node,String callSign){
+    private Node<Ship> searchShipByCallSign(Node<Ship> node, String callSign) {
         if (node == null) return null;
         if (callSign.equals(node.getElement().getCallSign())) return node;
-        if (callSign.compareTo(node.getElement().getCallSign()) < 0) return searchShipByCallSign(node.getLeft(),callSign);
+        if (callSign.compareTo(node.getElement().getCallSign()) < 0)
+            return searchShipByCallSign(node.getLeft(), callSign);
         else return searchShipByCallSign(node.getRight(), callSign);
     }
 }

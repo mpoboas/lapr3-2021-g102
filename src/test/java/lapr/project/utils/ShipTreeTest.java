@@ -107,6 +107,26 @@ class ShipTreeTest {
     }
 
     @Test
+    void getShip(){
+        System.out.println("get ship");
+        Ship ship1 = new Ship(112,"112","IMOtest9","Ship55", 12, 1200, 600 , 21);
+        Ship ship2 = new Ship(113,"122","IMOtest1","Ship89", 12, 1200, 600 , 21);
+        Ship ship3 = new Ship(114,"132","IMOtest4","Ship01", 12, 1200, 600 , 21);
+        Ship ship4 = new Ship(110,"142","IMOtest3","Ship63", 12, 1200, 600 , 21);
+        Ship ship5 = new Ship(120,"152","IMOtest8","Ship47", 12, 1200, 600 , 21);
+        Ship ship6 = new Ship(118,"162","IMOtest5","Ship99", 12, 1200, 600 , 21);
+        List<Ship> arr = new ArrayList<>();
+        arr.add(ship1); arr.add(ship2);arr.add(ship3);arr.add(ship4);arr.add(ship5);arr.add(ship6);
+        ShipTree instance1 = new ShipTree("MMSI");
+        for (Ship s: arr ) {
+            instance1.insert(s);
+        }
+        assertEquals(ship1,instance1.getShip(ship1));
+        assertNull(instance1.getShip(new Ship(100,"1000","IMOtest666","Ship58", 12, 1200, 600 , 21)));
+
+    }
+
+    @Test
     void remove() {
         System.out.println("remove");
         Ship ship1 = new Ship(112,"112","IMOtest9","Ship55", 12, 1200, 600 , 21);

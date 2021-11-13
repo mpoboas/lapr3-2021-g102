@@ -66,17 +66,7 @@ class ShipStoreTest {
         assertEquals(expected,store.getListOfShipsASCOrd());
 
     }
-
-    @Test
-    void getShipDuplicated() {
-        ShipStore store = new ShipStore();
-        Ship ex1 =  new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
-        store.addShip(ex1);
-        Ship res = store.getShipDuplicated(ex1);
-        assertEquals(res,ex1);
-
-    }
-
+    
     @Test
     void getShipByMMSI() {
         ShipStore store = new ShipStore();

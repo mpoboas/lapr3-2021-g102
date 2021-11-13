@@ -76,8 +76,7 @@ public class ShipStore {
             insertShip(ship);
             return true;
         } else {
-            Ship s = getShipDuplicated(ship);
-            System.out.println("entrou");
+            Ship s = shipBSTMMSI.getShip(ship);
             if (!s.getAisMessagesList().equals(ship.getAisMessagesList())) {
                 s.addAISMessage(ship.getAisMessagesList());
                 Trips trip = new Trips();
@@ -98,21 +97,6 @@ public class ShipStore {
         List<Ship> shipList = new ArrayList<>();
         shipBSTMMSI.inOrder().forEach(shipList::add);
         return shipList;
-    }
-
-    /**
-     * Searches for the same ship from the list of ships
-     *
-     * @param ship the ship to get the duplicate
-     * @return the ship with the same information
-     */
-    public Ship getShipDuplicated(Ship ship) {
-        Ship sp = null;
-        for (Ship s : getListOfShipsASCOrd()) {
-            if (s.equals(ship))
-                sp = s;
-        }
-        return sp;
     }
 
     /**
