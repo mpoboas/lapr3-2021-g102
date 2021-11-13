@@ -15,7 +15,7 @@ public class Import {
     /**
      * List of the ships imported from the file
      */
-    private List<Ship> listOfImportedShips;
+    private final List<Ship> listOfImportedShips;
     /**
      * Store class that stores the ships imported
      */

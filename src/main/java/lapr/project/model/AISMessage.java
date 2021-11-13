@@ -3,8 +3,6 @@ package lapr.project.model;
 import lapr.project.utils.Coordinates;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -36,11 +34,11 @@ public class AISMessage implements Comparable<AISMessage> {
     /**
      * the cargo of the ship
      */
-    private int cargo;
+    private final int cargo;
     /**
      * the transceiver class of the ship
      */
-    private char transceiverClass;
+    private final char transceiverClass;
 
     /**
      * Constructor of the class ais message
