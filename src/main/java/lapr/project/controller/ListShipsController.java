@@ -24,6 +24,7 @@ public class ListShipsController {
     private final boolean asc;
     private LocalDateTime start;
     private LocalDateTime end;
+    private List<Map.Entry<Ship, List<Double>>> linkedShipList;
 
     /**
      *
@@ -32,7 +33,7 @@ public class ListShipsController {
      */
     public ListShipsController(boolean asc, int criteria, ShipStore shipStore){
         this.shipStore = shipStore;
-        op = 0;
+        this.op = 0;
         this.criteria = criteria;
         this.asc = asc ;
         this.shipListMap = generateMap(getShipList());
@@ -46,7 +47,7 @@ public class ListShipsController {
      */
     public ListShipsController(int nships, LocalDateTime start, LocalDateTime end, ShipStore shipStore){
         this.nShips = nships;
-        op = 1;
+        this.op = 1;
         this.start = start;
         this.end=end;
         this.asc =false;
@@ -71,17 +72,15 @@ public class ListShipsController {
      * @param shipList ship hash map to be ordered
      * @param asc is the order ascending
      */
-     void orderByNmovements(Map<Ship, List<Double>>  shipList , boolean asc) {
+    List<Map.Entry<Ship, List<Double>>> orderByNmovements(Map<Ship, List<Double>>  shipList , boolean asc) {
         List<Map.Entry<Ship, List<Double>>> list = new LinkedList<>(shipList.entrySet());
         if (asc) {
             list.sort(Comparator.comparing(shipListEntry -> shipListEntry.getValue().get(1)));
         }else{
             list.sort((shipListEntry, t1) -> t1.getValue().get(1).compareTo(shipListEntry.getValue().get(1)));
         }
-        shipList = new HashMap<>();
-        for (Map.Entry<Ship, List<Double>> shipListEntry : list) {
-            shipList.put(shipListEntry.getKey(), shipListEntry.getValue());
-        }
+        return list;
+
     }
 
     /**
@@ -91,6 +90,9 @@ public class ListShipsController {
      */
      Map<Ship, List<Double>> getTopN(Map<Ship, List<Double>>  shipList){
         Map <Ship, List<Double>> list = new HashMap<>();
+        if(this.nShips > shipList.size()){
+            this.nShips = shipList.size();
+        }
         for(int i = 0 ; i< this.nShips  ; i++){
             Map.Entry<Ship, List<Double>> entry = shipList.entrySet().iterator().next();
             list.put(entry.getKey(),entry.getValue());
@@ -99,35 +101,32 @@ public class ListShipsController {
         return list;
     }
 
+    List<Map.Entry<Ship, List<Double>>> getShipLinkedList(){
+         return this.linkedShipList;
+    }
+
     /**
      *
      * @param shipList hash map of ships yet to be ordered
      * @param asc is order ascending
      */
-     void orderByTotalDistance(Map<Ship, List<Double>>  shipList, boolean asc){
+    List<Map.Entry<Ship, List<Double>>> orderByTotalDistance(Map<Ship, List<Double>>  shipList, boolean asc){
         List<Map.Entry<Ship, List<Double>>> list = new LinkedList<>(shipList.entrySet());
         if (asc) {
             list.sort(Comparator.comparing(shipListEntry -> shipListEntry.getValue().get(0)));
         } else {
             list.sort((shipListEntry, t1) -> t1.getValue().get(0).compareTo(shipListEntry.getValue().get(0)));
         }
-        shipList = new HashMap<>();
-        for (Map.Entry<Ship, List<Double>> shipListEntry : list) {
-            shipList.put(shipListEntry.getKey(), shipListEntry.getValue());
-        }
+
+        return list;
     }
 
     /**
      * groups ship map by vessel type
-     * @param shipList hash map of ships yet ot be grouped by vessel
+     * @param list hash map of ships yet ot be grouped by vessel
      */
-     void groupVesselType(Map<Ship, List<Double>>  shipList){
-        List<Map.Entry<Ship, List<Double>>> list = new LinkedList<>(shipList.entrySet());
+     void groupVesselType(List<Map.Entry<Ship, List<Double>>> list){
         list.sort(Comparator.comparing(shipListEntry -> shipListEntry.getKey().getVesselType()));
-        shipList = new HashMap<>();
-        for (Map.Entry<Ship, List<Double>> shipListEntry : list) {
-            shipList.put(shipListEntry.getKey(), shipListEntry.getValue());
-        }
     }
 
     /**
@@ -138,7 +137,7 @@ public class ListShipsController {
      Map<Ship, List<Double>> generateMap(List<Ship> shipList){
         Map<Ship, List<Double>> shipMap = new HashMap<>();
         for (Ship ship : shipList) {
-            List<Double> Params = new ArrayList();
+            List<Double> Params = new ArrayList<>();
             if (op == 0) {
                 Params.add(nauticalMilesToKm(ship.getTotalDistance()));
                 Params.add((double) ship.numberOfMovements());
@@ -151,13 +150,12 @@ public class ListShipsController {
             shipMap.put(ship, Params);
         }
         if(op==0){
-            if(criteria == 0){orderByTotalDistance(shipMap,asc);}
-            if(criteria == 1){orderByNmovements(shipMap, asc);}
+            if(criteria == 0){this.linkedShipList=orderByTotalDistance(shipMap,asc);}
+            if(criteria == 1){this.linkedShipList=orderByNmovements(shipMap, asc);}
         }
         if(op==1){
-            orderByTotalDistance(shipMap, asc);
-            shipMap = getTopN(shipMap);
-            groupVesselType(shipMap);
+            this.linkedShipList=orderByTotalDistance(shipMap, asc);
+            groupVesselType(this.linkedShipList);
         }
         return shipMap;
     }
@@ -170,14 +168,14 @@ public class ListShipsController {
          StringBuilder string = new StringBuilder("List of ships\n");
         if (op == 0) {
             string.append("|\tMMSI\t|\tNumber of movements\t|\tTravelled distance\t|\tDelta Distance\t|\n");
-            for( Map.Entry<Ship, List<Double>> entry : shipListMap.entrySet() ){
-                string.append("|\t").append(entry.getKey().getMMSI()).append("\t|\t").append(entry.getValue().get(1)).append("\t|\t").append(entry.getValue().get(0)).append("\t|\t").append(entry.getValue().get(2)).append("\t|\n");
+            for(int i = 0; i< linkedShipList.size();i++){
+                string.append("|\t").append(linkedShipList.get(i).getKey().getMMSI()).append("\t|\t").append(linkedShipList.get(i).getValue().get(1)).append("\t|\t").append(linkedShipList.get(i).getValue().get(0)).append("\t|\t").append(linkedShipList.get(i).getValue().get(2)).append("\t|\n");
             }
         }
         if(op == 1) {
             string.append("|\tMMSI\t|\tVessel Type\t|\tKilometers Traveled\t|\tMeanSOG\t|\n ");
-            for( Map.Entry<Ship, List<Double>> entry : shipListMap.entrySet() ){
-                string.append("|\t").append(entry.getKey().getMMSI()).append("\t|\t").append(entry.getKey().getVesselName()).append("\t|\t").append(entry.getValue().get(0)).append("\t|\t").append(entry.getValue().get(1)).append("\t|\n");
+            for(int i = 0; i< linkedShipList.size() && i< this.nShips;i++){
+                string.append("|\t").append(linkedShipList.get(i).getKey().getMMSI()).append("\t|\t").append(linkedShipList.get(i).getKey().getVesselName()).append("\t|\t").append(linkedShipList.get(i).getValue().get(0)).append("\t|\t").append(linkedShipList.get(i).getValue().get(1)).append("\t|\n");
             }
         }
         return string.toString();

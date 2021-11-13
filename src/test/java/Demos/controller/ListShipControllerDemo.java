@@ -17,7 +17,7 @@ public class ListShipControllerDemo {
         im.importShipsData("data/data-shipsports/data-shipsports/data-ships&ports/sships.csv");
         im.addShips();
         store = im.getShipStore();
-        ListShipsController cont = new ListShipsController(true,1, store);
+        ListShipsController cont = new ListShipsController(true,0, store);
         System.out.println(cont);
     }
     @Test
@@ -27,7 +27,7 @@ public class ListShipControllerDemo {
         im.importShipsData("data/data-shipsports/data-shipsports/data-ships&ports/sships.csv");
         im.addShips();
         store = im.getShipStore();
-        ListShipsController cont = new ListShipsController(20, LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2021, Month.JANUARY, 1, 0, 0),store);
+        ListShipsController cont = new ListShipsController(50, LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2021, Month.JANUARY, 1, 0, 0),store);
 
         System.out.println(cont);
 

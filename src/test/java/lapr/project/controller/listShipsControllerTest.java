@@ -735,10 +735,10 @@ public class listShipsControllerTest {
         store.addShip(ship3);
         store.addShip(ship4);
         ListShipsController controller = new ListShipsController(false,1, store);
-        Map<Ship, List<Double>> groupVessel = controller.getShipMap();
+        List<Map.Entry<Ship, List<Double>>> groupVessel = controller.getShipLinkedList();
         controller.groupVesselType(groupVessel);
         ListShipsController controller1 = new ListShipsController(4,LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2022, Month.JANUARY, 1, 0, 0),store);
-        assertEquals(controller1.getShipMap().keySet(), groupVessel.keySet());
+        assertEquals(groupVessel.get(1),groupVessel.get(2));
     }
 
     @Test
