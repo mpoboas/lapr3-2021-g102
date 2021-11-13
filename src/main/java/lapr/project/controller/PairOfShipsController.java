@@ -4,14 +4,32 @@ import lapr.project.model.Ship;
 import lapr.project.stores.ShipStore;
 import lapr.project.utils.Pair;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PairOfShipsController {
+    /**
+     * The ship store
+     */
     private final ShipStore shipStore;
 
+    /**
+     * Pair of ships controller constructor.
+     *
+     * @param shipStore the ship store
+     */
     public PairOfShipsController(ShipStore shipStore) {
         this.shipStore = shipStore;
+    }
+    /**
+     * Returns the ship store.
+     *
+     * @return ship store instance
+     */
+    public ShipStore getShipStore() {
+        return this.shipStore;
     }
 
     /**
@@ -21,10 +39,37 @@ public class PairOfShipsController {
      * @return pairs of ships list
      */
     public List<Pair<Ship, Ship>> getCloseCoordsShips() {
-        return new ArrayList<>(this.shipStore.getCloseCoordsShips());
+        List<Pair<Ship, Ship>> closeCoordsShips = new ArrayList<>(this.shipStore.getCloseCoordsShips());
+        writeToFile(closeCoordsShips);
+        return closeCoordsShips;
     }
 
-    public ShipStore getShipStore() {
-        return this.shipStore;
+    /**
+     * Writes all the pairs´ information into a output file.
+     *  @param pairList list of pairs
+     *
+     */
+    private void writeToFile(List<Pair<Ship, Ship>> pairList) {
+        FileWriter myWriter = null;
+        try {
+            myWriter = new FileWriter("CloseCoordsPairs.txt", true);
+            myWriter.write("Ship1 MMSI|Ship2 MMSI2|Movs|TravelDist|Movs|TravelDist\n");
+            if (!pairList.isEmpty()) {
+                for (Pair<Ship, Ship> pairOfShips : pairList) {
+                    myWriter.write(String.format("%d | %d | %d | %f | %d | %f\n", pairOfShips.getFirst().getMMSI(), pairOfShips.getSecond().getMMSI(), pairOfShips.getFirst().numberOfMovements(), pairOfShips.getFirst().getTotalDistance(), pairOfShips.getSecond().numberOfMovements(), pairOfShips.getSecond().getTotalDistance()));
+                }
+            } else myWriter.write("List is empty.");
+        } catch (IOException e) {
+            System.out.println("An error occurred in the writing of the information of the pair.");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (myWriter != null)
+                    myWriter.close();
+            } catch (IOException e) {
+                System.out.println("An error occurred in the writing of the information of the pair.");
+                e.printStackTrace();
+            }
+        }
     }
 }

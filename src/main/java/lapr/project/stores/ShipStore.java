@@ -1,5 +1,6 @@
 package lapr.project.stores;
 
+import lapr.project.model.AISMessage;
 import lapr.project.model.Ship;
 import lapr.project.model.Trips;
 import lapr.project.utils.*;
@@ -42,9 +43,10 @@ public class ShipStore {
 
     /**
      * This class adds a ship to all the trees
+     *
      * @param ship ship to add to the trees
      */
-    public void insertShip(Ship ship){
+    public void insertShip(Ship ship) {
         shipBSTMMSI.insert(ship);
         shipBSTIMO.insert(ship);
         shipBSTCallSign.insert(ship);
@@ -106,7 +108,7 @@ public class ShipStore {
      * @return the ship with that mmsi or throws an exception if the ship was not found
      */
     public Ship getShipByMMSI(int mmsi) {
-        Ship ship =  this.shipBSTMMSI.searchShipByMMSI(mmsi);
+        Ship ship = this.shipBSTMMSI.searchShipByMMSI(mmsi);
         if (ship != null)
             return ship;
         /*
@@ -124,7 +126,7 @@ public class ShipStore {
      * @return the ship with that imo or throws an exception if the ship was not found
      */
     public Ship getShipByIMO(String imo) {
-        Ship ship =  this.shipBSTIMO.searchShipByIMO(imo);
+        Ship ship = this.shipBSTIMO.searchShipByIMO(imo);
         if (ship != null)
             return ship;
 
@@ -142,7 +144,7 @@ public class ShipStore {
      * @return the ship with that call sign or throws an exception if the ship was not found
      */
     public Ship getShipByCallSign(String callSign) {
-        Ship ship =  this.shipBSTCallSign.searchShipByCallSign(callSign);
+        Ship ship = this.shipBSTCallSign.searchShipByCallSign(callSign);
         if (ship != null)
             return ship;
         /*for (Ship s : getListOfShipsASCOrd()) {
@@ -159,33 +161,32 @@ public class ShipStore {
      * @return pairs of ships list
      */
     public List<Pair<Ship, Ship>> getCloseCoordsShips() {
-        boolean isPair;
         List<Pair<Ship, Ship>> closeCoordsShipList = new ArrayList<>();
         List<Ship> shipList = this.getListOfShipsASCOrd();
-        // Iterate through ship list to get the first element of the possible Pair
-        for (int i = 0; i < shipList.size(); i++) {
-            // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms"
-            if (!(Conversions.nauticalMilesToKm(shipList.get(i).getTotalDistance()) < 10)) {
-                List<Trips> ship1TripList = new ArrayList<>(shipList.get(i).getTripsList());
-                // Iterate through ship list to get the second element of the possible Pair
-                for (int j = i + 1; j < shipList.size(); j++) {
-                    isPair = false;
-                    // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms; Ships must have different Travelled Distance"
-                    if (!(Conversions.nauticalMilesToKm(shipList.get(i).getTotalDistance()) < 10) && (shipList.get(i).getTotalDistance() != shipList.get(j).getTotalDistance())) {
-                        List<Trips> ship2TripList = new ArrayList<>(shipList.get(j).getTripsList());
 
-                        // Iterate through first ship trip list
-                        for (Trips ship1Trip : ship1TripList) {
-                            // Iterate through second ship trip list
-                            for (Trips ship2Trip : ship2TripList) {
-                                // If departure/arrival coordinates are no more than 5km away from each other, create Pair
-                                double distance1 = Conversions.nauticalMilesToKm(ship1Trip.getAIsMessage(0).getDistanceAIMes(ship2Trip.getAIsMessage(0)));
-                                double distance2 = Conversions.nauticalMilesToKm(ship1Trip.getAIsMessage(ship1Trip.getAISMessageListSize() - 1).getDistanceAIMes(ship2Trip.getAIsMessage(ship2Trip.getAISMessageListSize() - 1)));
-                                System.out.println("Delta distance dos 2 navios:");
-                                System.out.println(distance1);
-                                System.out.println(distance2);
-                                System.out.println();
-                                if (distance1 <= 5 || distance2 <= 5) isPair = true;
+        for (int i = 0; i < shipList.size(); i++) { // Iterate through ship list to get the first element of the possible Pair
+            if (!(Conversions.nauticalMilesToKm(shipList.get(i).getTotalDistance()) < 10)) { // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms"
+                List<Trips> ship1TripList = new ArrayList<>(shipList.get(i).getTripsList());
+                for (int j = i + 1; j < shipList.size(); j++) { // Iterate through ship list to get the second element of the possible Pair
+                    boolean isPair = false;
+                    if (!(Conversions.nauticalMilesToKm(shipList.get(i).getTotalDistance()) < 10) && (shipList.get(i).getTotalDistance() != shipList.get(j).getTotalDistance())) { // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms; Ships must have different Travelled Distance"
+                        List<Trips> ship2TripList = new ArrayList<>(shipList.get(j).getTripsList());
+                        for (Trips ship1Trip : ship1TripList) { // Iterate through first ship trip list
+                            AISMessage departureAIS1 = ship1Trip.getAIsMessage(0);
+                            AISMessage arrivalAIS1 = ship1Trip.getAIsMessage(ship1Trip.getAISMessageListSize() - 1);
+
+                            if (Validations.validateAISMessageForCalculations(departureAIS1) && Validations.validateAISMessageForCalculations(arrivalAIS1)) { // Verify if AIS message is valid for calculations
+                                for (Trips ship2Trip : ship2TripList) { // Iterate through second ship trip list
+                                    AISMessage departureAIS2 = ship2Trip.getAIsMessage(0);
+                                    AISMessage arrivalAIS2 = ship2Trip.getAIsMessage(ship2Trip.getAISMessageListSize() - 1);
+
+                                    if (Validations.validateAISMessageForCalculations(departureAIS2) && Validations.validateAISMessageForCalculations(arrivalAIS2)) { // Verify if AIS message is valid for calculations
+                                        // If departure/arrival coordinates are no more than 5km away from each other, create Pair
+                                        double distance1 = Conversions.nauticalMilesToKm(departureAIS1.getDistanceAIMes(departureAIS2));
+                                        double distance2 = Conversions.nauticalMilesToKm(arrivalAIS1.getDistanceAIMes(arrivalAIS2));
+                                        if (distance1 <= 5 || distance2 <= 5) isPair = true;
+                                    }
+                                }
                             }
                         }
 
@@ -202,8 +203,8 @@ public class ShipStore {
         return closeCoordsShipList;
     }
 
-    public List<Ship> getShipList(){
-        Iterable <Ship> shipListI = this.getListOfShipsASCOrd();
+    public List<Ship> getShipList() {
+        Iterable<Ship> shipListI = this.getListOfShipsASCOrd();
         List<Ship> shipList = new ArrayList<>();
         shipListI.forEach(shipList::add);
         return shipList;

@@ -33,14 +33,6 @@ class PairOfShipsControllerTest {
         PairOfShipsController pairOfShipsController = new PairOfShipsController(imp.getShipStore());
         List<Pair<Ship,Ship>> pairOfShipsList = pairOfShipsController.getCloseCoordsShips();
 
-        int i = 1;
-        for (Pair<Ship, Ship> pair : pairOfShipsList) {
-            System.out.println(i + " pair:");
-            System.out.println(pair.getFirst().getMMSI());
-            System.out.println(pair.getSecond().getMMSI());
-            i++;
-        }
-
         assertNotNull(pairOfShipsList);
         assertEquals(0, pairOfShipsList.size());
     }
