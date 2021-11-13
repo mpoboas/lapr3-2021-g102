@@ -114,7 +114,7 @@ public class ListShipsController {
         List<Map.Entry<Ship, List<Double>>> list = new LinkedList<>(shipList.entrySet());
         if (asc) {
             list.sort(Comparator.comparing(shipListEntry -> shipListEntry.getValue().get(0)));
-        } else {
+        }else{
             list.sort((shipListEntry, t1) -> t1.getValue().get(0).compareTo(shipListEntry.getValue().get(0)));
         }
 
@@ -125,8 +125,9 @@ public class ListShipsController {
      * groups ship map by vessel type
      * @param list hash map of ships yet ot be grouped by vessel
      */
-     void groupVesselType(List<Map.Entry<Ship, List<Double>>> list){
+    List<Map.Entry<Ship, List<Double>>> groupVesselType(List<Map.Entry<Ship, List<Double>>> list){
         list.sort(Comparator.comparing(shipListEntry -> shipListEntry.getKey().getVesselType()));
+        return list;
     }
 
     /**
@@ -155,7 +156,12 @@ public class ListShipsController {
         }
         if(op==1){
             this.linkedShipList=orderByTotalDistance(shipMap, asc);
-            groupVesselType(this.linkedShipList);
+            if(this.linkedShipList.size()> this.nShips) {
+                for (int i = this.linkedShipList.size()-1 ; i > this.nShips; i--){
+                    linkedShipList.remove(i);
+                }
+            }
+            this.linkedShipList =groupVesselType(this.linkedShipList);
         }
         return shipMap;
     }
@@ -173,9 +179,9 @@ public class ListShipsController {
             }
         }
         if(op == 1) {
-            string.append("|\tMMSI\t|\tVessel Type\t|\tKilometers Traveled\t|\tMeanSOG\t|\n ");
+            string.append("|\tMMSI\t|\tVessel type\t|\tVessel Name\t|\tKilometers Traveled\t|\tMeanSOG\t|\n ");
             for(int i = 0; i< linkedShipList.size() && i< this.nShips;i++){
-                string.append("|\t").append(linkedShipList.get(i).getKey().getMMSI()).append("\t|\t").append(linkedShipList.get(i).getKey().getVesselName()).append("\t|\t").append(linkedShipList.get(i).getValue().get(0)).append("\t|\t").append(linkedShipList.get(i).getValue().get(1)).append("\t|\n");
+                string.append("|\t").append(linkedShipList.get(i).getKey().getMMSI()).append("\t|\t").append(linkedShipList.get(i).getKey().getVesselType()).append("\t|\t").append(linkedShipList.get(i).getKey().getVesselName()).append("\t|\t").append(linkedShipList.get(i).getValue().get(0)).append("\t|\t").append(linkedShipList.get(i).getValue().get(1)).append("\t|\n");
             }
         }
         return string.toString();
