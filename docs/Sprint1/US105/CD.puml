@@ -1,11 +1,16 @@
 @startuml
-
-
-class listShipsUI {}
-
-
-class listShipsController
-
+class ListShipController
+class Conversions
+class AISMessage{
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
 class Ship {
 -MMSI
 -name
@@ -28,27 +33,13 @@ class Ship {
 -transceiverClass
 -List<Trip> Trips
 }
-
-class Trip{
--Port startingPort
--Port Destination
--List<Coordinates> CoordinatesSet
--StartTime
--EndTime
--getTotalTime()
--getEstimatedDistance()
+class shipStore{
+-List<Ship> shipList
 }
-
-class Port{
--Identification
--Name
--Country
--Location
-}
-
-class shipList{
--List<Ships> ship shipList
-}
-
-
+class Import
+Import  --  shipStore: imports ships from file >
+shipStore -- Ship : stores list of ships >
+Conversions -- ListShipController: Makes unit convertions >
+Ship -- AISMessage : Makes AISMessage periodicaly >
+ListShipController -- shipStore : gets list of ships >
 @enduml

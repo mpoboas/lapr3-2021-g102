@@ -8,6 +8,10 @@ participant travel as t
 autonumber
 activate actor
 actor -> UI : Requests  a list for all ships(MMSI, total number of movements, Travelled Distance and Delta Distance).
+UI --> actor : asks about order of list and which field willl order list
+deactivate UI
+actor ->UI : Types requested data
+activate UI
 activate UI
 UI -> Controller : requests ship list with required paramters
 activate Controller
