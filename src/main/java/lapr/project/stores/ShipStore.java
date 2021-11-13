@@ -12,9 +12,18 @@ import java.util.List;
  */
 public class ShipStore {
     /**
-     * All the ships stored in a binary search tree
+     * All the ships stored in a binary search tree ordered by mmsi
      */
-    BST<Ship> shipBST = new AVL<>();
+    BST<Ship> shipBSTMMSI = new ShipTree("MMSI");
+    /**
+     * All the ships stored in a binary search tree ordered by IMO
+     */
+    BST<Ship> shipBSTIMO = new ShipTree("IMO");
+    /**
+     * All the ships stored in a binary search tree ordered by call sign
+     */
+    BST<Ship> shipBSTCallSign = new ShipTree("Call Sign");
+
 
     /**
      * @param mmsi       the mmsi code of the ship
@@ -32,6 +41,16 @@ public class ShipStore {
     }
 
     /**
+     * This class adds a ship to all the trees
+     * @param ship ship to add to the trees
+     */
+    public void insertShip(Ship ship){
+        shipBSTMMSI.insert(ship);
+        shipBSTIMO.insert(ship);
+        shipBSTCallSign.insert(ship);
+    }
+
+    /**
      * Checks if a ship is already in store
      *
      * @param ship the ship to check
@@ -40,7 +59,7 @@ public class ShipStore {
     public boolean validateShip(Ship ship) {
         if (ship == null)
             return false;
-        return shipBST.find(ship) == null;
+        return shipBSTMMSI.find(ship) == null;
     }
 
     /**
@@ -54,7 +73,7 @@ public class ShipStore {
             Trips trip = new Trips();
             trip.addAISMessage(ship.getAisMessagesList());
             ship.addTrip(trip);
-            shipBST.insert(ship);
+            insertShip(ship);
             return true;
         } else {
             Ship s = getShipDuplicated(ship);
@@ -71,13 +90,13 @@ public class ShipStore {
     }
 
     /**
-     * Gets the list of all ships in ascend order
+     * Gets the list of all ships in ascend order by mmsi
      *
      * @return the list of ships
      */
     public List<Ship> getListOfShipsASCOrd() {
         List<Ship> shipList = new ArrayList<>();
-        shipBST.inOrder().forEach(shipList::add);
+        shipBSTMMSI.inOrder().forEach(shipList::add);
         return shipList;
     }
 
