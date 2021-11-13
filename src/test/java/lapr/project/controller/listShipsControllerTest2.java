@@ -288,7 +288,7 @@ public class listShipsControllerTest2 {
 
         controller = new ListShipsController(2,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
 
-        assertEquals(2,controller.getShipLinkedList().size());
+        assertEquals(4,controller.getShipLinkedList().size());
     }
 
     @Test
