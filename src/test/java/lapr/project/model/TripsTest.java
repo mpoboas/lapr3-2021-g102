@@ -59,7 +59,7 @@ public class TripsTest {
         trip.addAISMessage(ais2);
         ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
         trip.addAISMessage(ais3);
-        assertEquals((Math.sqrt((1*1)+(1*1))+Math.sqrt((2*2)+(4*4))) *60,trip.getTripDistance(), 0.1);
+        assertEquals(344.9,trip.getTripDistance(), 0.1);
     }
 
     @Test

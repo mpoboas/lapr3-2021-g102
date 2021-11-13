@@ -104,7 +104,7 @@ public class ShipTest {
         ship.getTrip(1).addAISMessage(ais6);
         ship.addAISMessage(ais6);
         ship.getTrip(1).endTrip();
-        assertEquals(349.8, ship.deltaDistance(), 0.1);
+        assertEquals(342, ship.deltaDistance(), 0.1);
     }
 
     @Test
@@ -128,7 +128,7 @@ public class ShipTest {
         ais6 = new AISMessage(LocalDateTime.of(2019, Month.MAY, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
         ship.getTrip(1).addAISMessage(ais6);
         ship.getTrip(1).endTrip();
-        assertEquals(706.3,ship.getTotalDistance(),0.1 );
+        assertEquals(689.9,ship.getTotalDistance(),0.1 );
     }
 
     @Test
@@ -266,7 +266,7 @@ public class ShipTest {
         ship.getTrip(1).addAISMessage(ais6);
         ship.addAISMessage(ais6);
         ship.getTrip(1).endTrip();
-        assertEquals(353.1,ship.getDistBetweenDates( LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0),  LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0)),0.1 );
+        assertEquals(344.9,ship.getDistBetweenDates( LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0),  LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0)),0.1 );
     }
 
     @Test

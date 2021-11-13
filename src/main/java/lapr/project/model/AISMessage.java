@@ -121,9 +121,10 @@ public class AISMessage implements Comparable<AISMessage> {
      * @return distance between AISMessage in nautical miles
      */
     public double getDistanceAIMes(AISMessage c){
+            double cat2 = (this.coordinates.getLongitude() - c.coordinates.getLongitude())* Math.cos(((this.coordinates.getLatitude() *Math.PI /180)+ (c.coordinates.getLatitude()*Math.PI /180))/2);;
             double cat1 = this.coordinates.getLatitude() - c.coordinates.getLatitude();
-            double cat2 = this.coordinates.getLongitude() - c.coordinates.getLongitude();
-            return Math.sqrt((cat1 * cat1) + (cat2 * cat2)) * 60;
+
+            return Math.sqrt((cat1 * cat1) + (cat2 * cat2)) * 60.04 ;
     }
 
     /**
