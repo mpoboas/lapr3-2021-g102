@@ -4,7 +4,7 @@ participant  listShipsUI as UI
 participant listShipsController as Controller
 participant shipList as sl
 participant ship as ship
-participant travel as travel
+participant AISMessage as AISMessage
 autonumber
 activate usr
 usr -> UI : requests ships with most kilometers travelled and average speed
@@ -19,17 +19,17 @@ Controller -> sl : requests top n ships with the requested stats
 activate sl
 sl -> ship : requests distance done and total time driven by each ship
 activate ship
-ship -> travel: requests distance of each ship's travel and duration
-activate travel
-travel --> travel : calcultes each trips distance and time
-activate travel
-deactivate travel
-travel --> ship: sends requested data
-deactivate travel
+ship -> AISMessage: requests distance of each ship's AISMessage and duration
+activate AISMessage
+AISMessage --> AISMessage : calculates distance in between AISMessages in period required
+activate AISMessage
+deactivate AISMessage
+AISMessage --> ship: sends requested data
+deactivate AISMessage
 ship -->ship : calculates total time driven and total distance
 activate ship
 deactivate ship
-ship --> sl : send sum of ship total travel distance and average speed
+ship --> sl : send sum of ship total AISMessage distance and average speed
 deactivate ship
 sl --> Controller : sends list
 Controller -->Controller : filters the top n ships and orders them

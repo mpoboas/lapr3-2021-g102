@@ -33,18 +33,13 @@ class Ship {
 -transceiverClass
 -List<Trip> Trips
 }
-class shipList{
+class shipStore{
 -List<Ship> shipList
 }
-
-
-class Trip{
--starting port
--Destination
--List<Coordinates> CoordinatesSet
--StartTime
--Endtime
-getTripDistance()
-....
-}
+class Import
+Import  --  shipStore: imports ships from file >
+shipStore -- Ship : stores list of ships >
+Conversions -- ListShipController: Makes unit convertions >
+Ship -- AISMessage : Makes AISMessage periodicaly >
+ListShipController -- shipStore : gets list of ships >
 @enduml
