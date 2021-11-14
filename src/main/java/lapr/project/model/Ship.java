@@ -74,8 +74,7 @@ public class Ship implements Comparable<Ship> {
         this.length = length;
         this.width = width;
         this.draft = draft;
-        //this.cargo = cargo;
-        //this.transceiverClass = transceiverClass;
+
         aisMessagesList = new ArrayList<>();
         this.tripsList = new ArrayList<>();
     }
@@ -163,7 +162,7 @@ public class Ship implements Comparable<Ship> {
      */
     public double getMeanSOG() {
         double sum = 0;
-        double mean = 0;
+        double mean ;
         for (AISMessage msg : aisMessagesList) {
             sum += msg.getSOG();
         }
@@ -176,7 +175,7 @@ public class Ship implements Comparable<Ship> {
      */
     public double getMeanCOG() {
         double sum = 0;
-        double mean = 0;
+        double mean;
         for (AISMessage msg : aisMessagesList) {
             sum += msg.getCOG();
         }
@@ -250,7 +249,7 @@ public class Ship implements Comparable<Ship> {
     /**
      * total distance done in trips by the ship
      * THIS IS A TEMPORARY METHOD. TO BE DELETED!
-     * @return
+     * @return total distance
      */
     public double getTotalDistance2() {
         double distance = 0;
@@ -319,7 +318,7 @@ public class Ship implements Comparable<Ship> {
     /**
      * ship's total time spent in the sea
      * THIS IS A TEMPORARY METHOD. TO BE REMOVED!
-     * @return
+     * @return total time in sea
      */
     public double getTotalTimeinSea2(){
         Duration duration;
