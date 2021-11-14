@@ -11,7 +11,6 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
     private int balanceFactor(Node<E> node) {
         return height(node.getRight()) - height(node.getLeft());
 
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     private Node<E> rightRotation(Node<E> node) {
@@ -21,7 +20,6 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
         node = leftson;
         return node;
 
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     private Node<E> leftRotation(Node<E> node) {
@@ -30,7 +28,6 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
         rightson.setLeft(node);
         node = rightson;
         return node;
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     private Node<E> twoRotations(Node<E> node) {
@@ -42,13 +39,11 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
             node = leftRotation(node);
         }
         return node;
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     private Node<E> balanceNode(Node<E> node) {
         if (balanceFactor(node) > 1)
             if (balanceFactor(node.getRight()) >= 0) {
-                //return rightRotation(node);
                 return leftRotation(node);
                 //rotação simples
             } else {
@@ -58,13 +53,11 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
         if (balanceFactor(node) < -1)
             if (balanceFactor(node.getLeft()) < 0) {
                 //rotação simples
-                //return leftRotation(node);
                 return rightRotation(node);
             } else {
                 return twoRotations(node);
                 //rotação dupla
             }
-        //throw new UnsupportedOperationException("Not supported yet.");
         return node;
     }
 
@@ -88,7 +81,6 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
         }
         return node;
 
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -119,7 +111,6 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
             node = balanceNode(node);
         }
         return node;
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
 
