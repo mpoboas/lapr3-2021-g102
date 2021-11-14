@@ -8,6 +8,7 @@ import lapr.project.utils.Pair;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -47,18 +48,12 @@ class PairOfShipsControllerTest {
     }
 
     @Test
-    void writeToFile() {
+    void writeToFileNotEmptyPairList() {
         PairOfShipsController pairOfShipsController = new PairOfShipsController();
-        Import imp = new Import(pairOfShipsController.getShipStore());
-        String file = "data/data-shipsports/data-shipsports/data-ships&ports/sships.csv";
-        try {
-            imp.importShipsData(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        imp.addShips();
-        List<Pair<Ship,Ship>> pairOfShipsList = pairOfShipsController.getCloseCoordsShips();
+        List<Pair<Ship,Ship>> pairOfShipsList = new ArrayList<>();
+        Ship ex1 = new Ship(112, "122", "test", "Ship", 12, 1200, 600, 21);
+        Ship ex2 = new Ship(113, "122", "test", "Ship", 12, 1200, 600, 21);
+        pairOfShipsList.add(new Pair<>(ex1, ex2));
         pairOfShipsController.writeToFile(pairOfShipsList, "CloseCoordsPairs.txt");
     }
 }
