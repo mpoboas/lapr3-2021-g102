@@ -250,12 +250,15 @@ class ShipTreeTest {
         ShipTree instance2 = new ShipTree("IMO");
         instance2.insert(ship1);
         instance2.insert(ship2);
+        assertTrue(new ShipTree("MMSI").equals(new ShipTree("MMSI")), "equals! ");
         assertTrue(instance.equals(instance), "equals! ");
         assertTrue(instance.equals(instance2), "equals! ");
         instance2.remove(ship1);
         assertFalse(instance.equals(instance2), "equals! ");
         assertFalse(instance.equals(null), "equals! ");
         assertFalse(instance.equals("TREE"), "equals! ");
+        assertFalse(instance.equals(new ShipTree("MMSI")), "equals! ");
+        assertFalse(new ShipTree("MMSI").equals(instance), "equals! ");
     }
 
     @Test
