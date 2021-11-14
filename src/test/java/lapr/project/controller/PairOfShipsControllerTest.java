@@ -43,17 +43,8 @@ class PairOfShipsControllerTest {
         imp.addShips();
         List<Pair<Ship,Ship>> pairOfShipsList = pairOfShipsController.getCloseCoordsShips();
 
+        System.out.println(pairOfShipsController.toString(pairOfShipsList, "CloseCoordsPairs.txty"));
         assertNotNull(pairOfShipsList);
         assertEquals(0, pairOfShipsList.size());
-    }
-
-    @Test
-    void writeToFileNotEmptyPairList() {
-        PairOfShipsController pairOfShipsController = new PairOfShipsController();
-        List<Pair<Ship,Ship>> pairOfShipsList = new ArrayList<>();
-        Ship ex1 = new Ship(112, "122", "test", "Ship", 12, 1200, 600, 21);
-        Ship ex2 = new Ship(113, "122", "test", "Ship", 12, 1200, 600, 21);
-        pairOfShipsList.add(new Pair<>(ex1, ex2));
-        pairOfShipsController.writeToFile(pairOfShipsList, "CloseCoordsPairs.txt");
     }
 }

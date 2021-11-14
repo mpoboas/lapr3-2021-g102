@@ -54,38 +54,24 @@ public class PairOfShipsController {
      * @return pairs of ships list
      */
     public List<Pair<Ship, Ship>> getCloseCoordsShips() {
-        List<Pair<Ship, Ship>> closeCoordsShips = new ArrayList<>(this.company.getShipStore().getCloseCoordsShips());
-        writeToFile(closeCoordsShips, "CloseCoordsPairs.txt");
-        return closeCoordsShips;
+        return new ArrayList<>(this.company.getShipStore().getCloseCoordsShips());
     }
 
     /**
      * Writes all the pairs´ information into a output file.
-     *  @param pairList list of pairs
+     * @param pairList list of pairs
+     * @return string related to all the pairs of ships
      *
      */
-    public void writeToFile(List<Pair<Ship, Ship>> pairList, String filename) {
-        FileWriter myWriter = null;
-        try {
-            myWriter = new FileWriter(filename, true);
-            myWriter.write("Ship1 MMSI   Ship2 MMSI   Movs   TravelDist   Movs   TravelDist\n");
-            myWriter.write("------------------------------------------------------------\n");
-            if (!pairList.isEmpty()) {
-                for (Pair<Ship, Ship> pairOfShips : pairList) {
-                    myWriter.write(String.format("%-13d%-13d%-7d%-13f%-7d%-9f\n", pairOfShips.getFirst().getMMSI(), pairOfShips.getSecond().getMMSI(), pairOfShips.getFirst().numberOfMovements(), pairOfShips.getFirst().getTotalDistance(), pairOfShips.getSecond().numberOfMovements(), pairOfShips.getSecond().getTotalDistance()));
-                }
-            } else myWriter.write("List is empty.\n");
-        } catch (IOException e) {
-            System.out.println("An error occurred in the writing of the information of the pair.");
-            e.printStackTrace();
-        } finally {
-            try {
-                if (myWriter != null)
-                    myWriter.close();
-            } catch (IOException e) {
-                System.out.println("An error occurred in the writing of the information of the pair.");
-                e.printStackTrace();
+    public String toString(List<Pair<Ship, Ship>> pairList, String filename) {
+        StringBuilder stringBuilder = new StringBuilder("Ship1 MMSI   Ship2 MMSI   Movs   TravelDist   Movs   TravelDist\n");
+        stringBuilder.append("------------------------------------------------------------\n");
+        if (!pairList.isEmpty()) {
+            for (Pair<Ship, Ship> pairOfShips : pairList) {
+                stringBuilder.append(String.format("%-13d%-13d%-7d%-13f%-7d%-9f\n", pairOfShips.getFirst().getMMSI(), pairOfShips.getSecond().getMMSI(), pairOfShips.getFirst().numberOfMovements(), pairOfShips.getFirst().getTotalDistance(), pairOfShips.getSecond().numberOfMovements(), pairOfShips.getSecond().getTotalDistance()));
             }
-        }
+        } else stringBuilder.append("List is empty.\n");
+
+        return stringBuilder.toString();
     }
 }
