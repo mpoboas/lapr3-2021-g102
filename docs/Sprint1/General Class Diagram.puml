@@ -7,7 +7,9 @@ class Company {
 }
 
 class ShipStore{
-BST<Ship> shipsTree
+-ShipTree shipTreeMMSI
+-ShipTree shipTreeIMO
+-ShipTree shipTreeCallSign
 +createShip(MMSI,vesselName,IMO,callSign,vesselType,\nlength,width,draft,cargo,transceiverClass)
 +validadeShip(ship)
 +addShip(ship)
@@ -50,6 +52,18 @@ class Ship{
 +deltaDistance()
 }
 
+class ShipTree{
+-Comparator<Ship> comp;
++ShipTree(type);
++insert(ship);
++remove(ship);
++find(ship);
++equals(Object);
++getShipByMMSI(MMSI);
++getShipByIMO(IMO);
++getShipByCallSign(callSign);
++getCloseCoordsShips();
+}
 class AISMessage{
 -dateTime
 -latitude
@@ -148,7 +162,7 @@ Import -> ShipStore
 Company -> ShipStore : uses >
 ShipStore "1" ->  "*" Ship: stores >
 Ship "1" -> "*" AISMessage: contains >
-
+ShipStore -> ShipTree
 
 
 ShipMapper ..> ShipDTO
