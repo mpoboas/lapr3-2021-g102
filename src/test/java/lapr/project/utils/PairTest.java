@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PairTest {
     Pair<String, String> testPair = new Pair<>("Test1", "Test2");
+    Pair<String, String> testEmptyPair = new Pair<>();
 
     @Test
     void pairEmpty() {
-        Pair<String, String> testEmptyPair = new Pair<>();
         assertNull(testEmptyPair.getFirst());
         assertNull(testEmptyPair.getSecond());
     }
@@ -27,7 +27,10 @@ class PairTest {
     @Test
     void testEquals() {
         Pair<String, String> testPairEquals = new Pair<>("Test1", "Test2");
+        Object obj = new Object();
         assertEquals(testPair, testPairEquals);
+        assertNotEquals(testPair, testEmptyPair);
+        assertNotEquals(testPair, obj);
     }
 
     @Test
