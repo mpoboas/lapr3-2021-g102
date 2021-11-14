@@ -9,20 +9,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class SearchShipController {
-    //private App app;
-    //private Company company;
 
-    private ShipStore store;
+    private final ShipStore store;
 
-    /*
-    public SearchShipController() {
-        //this(App.getInstance().getCompany());
-        //app = App.getInstance();
-    }
 
-    public SearchShipController(Company company) {
-        this.company = company;
-    }*/
 
     public SearchShipController(ShipStore store) {
         this.store = store;
