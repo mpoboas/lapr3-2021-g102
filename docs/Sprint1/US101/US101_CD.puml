@@ -20,9 +20,10 @@ class Import{
 }
 
 class ShipStore{
-BST<Ship> shipsTree
+-ShipTree shipTreeMMSI
+-ShipTree shipTreeIMO
+-ShipTree shipTreeCallSign
 +createShip(MMSI,vesselName,IMO,callSign,vesselType,\nlength,width,draft,cargo,transceiverClass)
-+saveShip(ship)
 +validadeShip(ship)
 +addShip(ship)
 }
@@ -51,6 +52,14 @@ class AISMessage{
 -heading
 +AISMessage(dateTime,latitude,longitude,\nSOG,COG,heading)
 }
+class ShipTree{
+-Comparator<Ship> comp;
++ShipTree(type);
++insert(ship);
++remove(ship);
++find(ship);
++equals(Object);
+}
 
 ImportShipsUI ..> ImportShipsController
 ImportShipsController ..> Import
@@ -59,6 +68,8 @@ Import -> ShipStore
 Company -> ShipStore : uses >
 ShipStore "1" ->  "*" Ship: stores >
 Ship "1" -> "*" AISMessage: contains >
+
+ShipTree --> ShipStore
 
 
 @enduml
