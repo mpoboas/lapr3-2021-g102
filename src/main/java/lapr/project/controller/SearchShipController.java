@@ -28,23 +28,18 @@ public class SearchShipController {
         this.store = store;
     }
 
-    public void searchShip(String codeInserted) {
+    public boolean searchShip(String codeInserted) {
         ShipDTO shipDTO;
         try {
-            try {
-                int mmsi = Integer.parseInt(codeInserted);
-                shipDTO = getShipByMMSI(mmsi);
-            } catch (NumberFormatException e) {
-                if (codeInserted.charAt(0) == 'I' && codeInserted.charAt(1) == 'M' && codeInserted.charAt(2) == 'O')
-                    shipDTO = getShipByIMO(codeInserted);
-                else shipDTO = getShipByCallSign(codeInserted);
-            }
-            String fileName = "Ship" + codeInserted + ".txt";
-            writeToFile(shipDTO, fileName);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            int mmsi = Integer.parseInt(codeInserted);
+            shipDTO = getShipByMMSI(mmsi);
+        } catch (NumberFormatException e) {
+            if (codeInserted.charAt(0) == 'I' && codeInserted.charAt(1) == 'M' && codeInserted.charAt(2) == 'O')
+                shipDTO = getShipByIMO(codeInserted);
+            else shipDTO = getShipByCallSign(codeInserted);
         }
-
+        String fileName = "Ship" + codeInserted + ".txt";
+        return writeToFile(shipDTO, fileName);
     }
 
     public ShipDTO getShipByMMSI(int mmsi) {
@@ -62,11 +57,13 @@ public class SearchShipController {
         return new ShipMapper().toDTO(ship);
     }
 
-    public void writeToFile(ShipDTO ship, String fileName) {
+    public boolean writeToFile(ShipDTO ship, String fileName) {
+        boolean success = false;
         FileWriter myWriter = null;
         try {
             myWriter = new FileWriter(fileName, true);
             myWriter.write(ship.toString());
+            success = true;
         } catch (IOException e) {
             System.out.println("An error ocurred in the writing the information of the ship.");
             e.printStackTrace();
@@ -80,5 +77,6 @@ public class SearchShipController {
 
             }
         }
+        return success;
     }
 }

@@ -1,5 +1,6 @@
 package lapr.project.controller;
 
+import lapr.project.mappers.dto.ShipDTO;
 import lapr.project.model.Import;
 import lapr.project.stores.ShipStore;
 import org.junit.jupiter.api.Test;
@@ -23,10 +24,9 @@ class SearchShipControllerTest {
             e.printStackTrace();
         }
 
-        ctrl.searchShip("212351000");
-        ctrl.searchShip("IMO9395044");
-        ctrl.searchShip("WDG5171");
-
+        assertTrue(ctrl.searchShip("212351000"));
+        assertTrue(ctrl.searchShip("IMO9395044"));
+        assertTrue(ctrl.searchShip("WDG5171"));
 
         try {
             ctrl.searchShip("123");
@@ -68,13 +68,5 @@ class SearchShipControllerTest {
         }catch (Exception e){
             assertEquals("The ship with the Call Sign: AB123 was not found",e.getMessage());
         }
-
-
-
-
-
-
-
-
     }
 }
