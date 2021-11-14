@@ -1,8 +1,12 @@
 package lapr.project.utils;
 
+import lapr.project.model.AISMessage;
 import lapr.project.model.Ship;
+import lapr.project.model.Trips;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class ShipTree extends BST<Ship> {
 
@@ -220,5 +224,58 @@ public class ShipTree extends BST<Ship> {
         if (callSign.compareTo(node.getElement().getCallSign()) < 0)
             return searchShipByCallSign(node.getLeft(), callSign);
         else return searchShipByCallSign(node.getRight(), callSign);
+    }
+
+    public List<Pair<Ship, Ship>> getCloseCoordsShips() {
+        List<Pair<Ship, Ship>> closeCoordsShipList = new ArrayList<>();
+        getCloseCoordsShips(root, closeCoordsShipList);
+
+        return new ArrayList<>(closeCoordsShipList);
+    }
+
+    private void getCloseCoordsShips(Node<Ship> node, List<Pair<Ship, Ship>> closeCoordsShipList) {
+        if (node == null)
+            return;
+
+        getCloseCoordsShips(node.getLeft(), closeCoordsShipList);
+        createSubtreeAndAddPairs(root, node, closeCoordsShipList);
+        getCloseCoordsShips(node.getRight(), closeCoordsShipList);
+    }
+
+    private void createSubtreeAndAddPairs(Node<Ship> node, Node<Ship> notIncludedNode, List<Pair<Ship, Ship>> closeCoordsShipList) {
+        if (node == null)
+            return;
+        ShipTree subtree = new ShipTree("MMSI");
+        createSubtreeAndAddPairs(node.getLeft(), notIncludedNode, closeCoordsShipList);
+        if (node != notIncludedNode) {
+            subtree.insert(node.getElement());
+            if (isPair(notIncludedNode, node))
+                closeCoordsShipList.add(new Pair<>(notIncludedNode.getElement(), node.getElement()));
+        }
+        createSubtreeAndAddPairs(node.getRight(), notIncludedNode, closeCoordsShipList);
+    }
+
+    private boolean isPair(Node<Ship> node1, Node<Ship> node2) {
+        if (node1 == null || node2 == null) return false;
+        // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms; Ships should have different Travalled Distances."
+        if (Conversions.nauticalMilesToKm(node1.getElement().getTotalDistance()) < 10 || Conversions.nauticalMilesToKm(node2.getElement().getTotalDistance()) < 10 || (node1.getElement().getTotalDistance() == node2.getElement().getTotalDistance()))
+            return false;
+        for (Trips ship1Trip : node1.getElement().getTripsList()) { // Iterate through first ship trip list
+            AISMessage departureAIS1 = ship1Trip.getAIsMessage(0); // Get the trip´s departure positional message
+            AISMessage arrivalAIS1 = ship1Trip.getAIsMessage(ship1Trip.getAISMessageListSize() - 1); // Get the trip´s arrival positional message
+            if (Validations.validateAISMessageForCalculations(departureAIS1) && Validations.validateAISMessageForCalculations(arrivalAIS1)) {
+                for (Trips ship2Trip : node2.getElement().getTripsList()) { // Iterate through second ship trip list
+                    AISMessage departureAIS2 = ship2Trip.getAIsMessage(0); // Get the trip´s departure positional message
+                    AISMessage arrivalAIS2 = ship2Trip.getAIsMessage(ship2Trip.getAISMessageListSize() - 1); // Get the trip´s arrival positional message
+                    if (Validations.validateAISMessageForCalculations(departureAIS2) && Validations.validateAISMessageForCalculations(arrivalAIS2)) {
+                        double distance1 = Conversions.nauticalMilesToKm(departureAIS1.getDistanceAIMes(departureAIS2)); // Distance between both ships´ departure positions
+                        double distance2 = Conversions.nauticalMilesToKm(arrivalAIS1.getDistanceAIMes(arrivalAIS2)); // Distance between both ships´ arrival positions
+                        if (distance1 <= 5 && distance2 <= 5) return true;
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 }

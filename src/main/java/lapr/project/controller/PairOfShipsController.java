@@ -53,10 +53,11 @@ public class PairOfShipsController {
         FileWriter myWriter = null;
         try {
             myWriter = new FileWriter("CloseCoordsPairs.txt", true);
-            myWriter.write("Ship1 MMSI|Ship2 MMSI2|Movs|TravelDist|Movs|TravelDist\n");
+            myWriter.write("Ship1 MMSI   Ship2 MMSI   Movs   TravelDist   Movs   TravelDist\n");
+            myWriter.write("------------------------------------------------------------\n");
             if (!pairList.isEmpty()) {
                 for (Pair<Ship, Ship> pairOfShips : pairList) {
-                    myWriter.write(String.format("%d | %d | %d | %f | %d | %f\n", pairOfShips.getFirst().getMMSI(), pairOfShips.getSecond().getMMSI(), pairOfShips.getFirst().numberOfMovements(), pairOfShips.getFirst().getTotalDistance(), pairOfShips.getSecond().numberOfMovements(), pairOfShips.getSecond().getTotalDistance()));
+                    myWriter.write(String.format("%-13d%-13d%-7d%-13f%-7d%-9f\n", pairOfShips.getFirst().getMMSI(), pairOfShips.getSecond().getMMSI(), pairOfShips.getFirst().numberOfMovements(), pairOfShips.getFirst().getTotalDistance(), pairOfShips.getSecond().numberOfMovements(), pairOfShips.getSecond().getTotalDistance()));
                 }
             } else myWriter.write("List is empty.");
         } catch (IOException e) {
