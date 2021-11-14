@@ -13,6 +13,9 @@ class SearchShipController {
 class SearchShipUI {
 }
 class ShipStore{
+-ShipTree shipTreeMMSI
+-ShipTree shipTreeIMO
+-ShipTree shipTreeCallSign
 +getShipByMMSI(MMSI)
 +getShipByIMO(IMO)
 +getShipByCallSign(callSign)
@@ -29,8 +32,17 @@ class AISMessageDTO{
 class AISMessageMapper{
 +toDTO(AISMessage msg)
 }
-class Ship{}
+class Ship{
+-mmsi
+-imo
+-callSign
+}
 class AISMessage{}
+class ShipTree{
++getShipByMMSI(MMSI)
++getShipByIMO(IMO)
++getShipByCallSign(callSign)
+}
 
 SearchShipUI ..> SearchShipController
 SearchShipController ..> Company
@@ -43,5 +55,6 @@ ShipStore -> Ship
 Ship -> AISMessage
 AISMessageMapper ..> AISMessage
 AISMessageMapper .> AISMessageDTO
+ShipStore -> ShipTree
 
 @enduml
