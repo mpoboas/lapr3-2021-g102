@@ -31,7 +31,7 @@ more than 5 Kms away) and with different Travelled Distance.
 * 	**AC1:** The pairs should appear sorted by the MMSI code of the 1st ship and in descending order of the Travelled Distance difference.
 *	**AC2:** Pairs of ships with departure/arrival coordinates that are more than 5 kms away from each other should not be considered.
 *	**AC3:** Ships with Travelled Distance less than 10 kms should not be considered.
-*   **AC4:** In case of operation success, all the information desired will be presented to the user in the form of a text file (CloseCoordsPairs.txt, in the root of the project).
+*   **AC4:** In case of operation success, all the information desired will be presented to the user in the console.
 
 ### 1.4. Found out Dependencies
 
@@ -101,7 +101,7 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 # 4. Tests
 
-**Test 1:** Controller test - Imports sships csv file, and test the getCloseCoordsList method. An empty list of pairs is expected.
+**Test 1:** Controller test - Imports sships.csv file, and test the getCloseCoordsList method. An empty list of pairs is expected.
 
 	@Test
     public void getCloseCoordsShips() {
@@ -117,6 +117,7 @@ Other software classes (i.e. Pure Fabrication) identified:
         imp.addShips();
         List<Pair<Ship,Ship>> pairOfShipsList = pairOfShipsController.getCloseCoordsShips();
 
+        System.out.println(pairOfShipsController.toString(pairOfShipsList));
         assertNotNull(pairOfShipsList);
         assertEquals(0, pairOfShipsList.size());
     }
