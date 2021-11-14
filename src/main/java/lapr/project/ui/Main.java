@@ -2,8 +2,6 @@ package lapr.project.ui;
 
 import lapr.project.model.CalculatorExample;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +27,7 @@ class Main {
      *
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException, SQLException {
+    public static void main(String[] args) {
         CalculatorExample calculatorExample = new CalculatorExample();
         int value = calculatorExample.sum(3, 5);
 

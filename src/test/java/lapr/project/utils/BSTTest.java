@@ -75,6 +75,7 @@ public class BSTTest {
     public void testRemove() {
         System.out.println("remove");
 
+
         int qtd=arr.length;
         instance.remove(999);
 

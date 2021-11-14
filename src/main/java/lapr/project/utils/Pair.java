@@ -1,8 +1,8 @@
 package lapr.project.utils;
 
 public class Pair<T, S> {
-    private T first;
-    private S second;
+    private final T first;
+    private final S second;
 
     public Pair() {
         this.first = null;

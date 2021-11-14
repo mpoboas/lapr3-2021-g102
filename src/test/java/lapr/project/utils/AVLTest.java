@@ -29,7 +29,7 @@ public class AVLTest {
         Integer[] inorder1={2,3,4,6,8,10};
         for (int i=0; i<arr.length; i++)            //new elements
             instance.insert(arr[i]);
-        
+        instance.insert(10);
         List<Integer> lExpected = Arrays.asList(inorder1);           
         assertEquals(lExpected, instance.inOrder());
         System.out.println("<instance 1>");
@@ -75,6 +75,9 @@ public class AVLTest {
         AVL<Integer> instance;
         
         instance = new AVL();
+        int size = instance.size();
+        instance.remove(0);
+        assertEquals(size,instance.size());
         int arr[] = {8,4,10,2,6,3};
         for (int i=0; i<arr.length; i++)            
             instance.insert(arr[i]);
@@ -130,8 +133,14 @@ public class AVLTest {
         {
             instance2.insert(arr2[i]);
         }
+        assertTrue( instance.equals(instance));
         assertTrue( instance.equals(instance2));
         instance2.remove(8);
         assertFalse( instance.equals(instance2));
-    }
+         assertFalse( instance.equals(null));
+         assertFalse( instance.equals("TREE"));
+
+
+
+     }
 }

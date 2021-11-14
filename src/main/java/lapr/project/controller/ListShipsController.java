@@ -138,17 +138,17 @@ public class ListShipsController {
      Map<Ship, List<Double>> generateMap(List<Ship> shipList){
         Map<Ship, List<Double>> shipMap = new HashMap<>();
         for (Ship ship : shipList) {
-            List<Double> Params = new ArrayList<>();
+            List<Double> params = new ArrayList<>();
             if (op == 0) {
-                Params.add(nauticalMilesToKm(ship.getTotalDistance()));
-                Params.add((double) ship.numberOfMovements());
-                Params.add(nauticalMilesToKm(ship.deltaDistance()));
+                params.add(nauticalMilesToKm(ship.getTotalDistance()));
+                params.add((double) ship.numberOfMovements());
+                params.add(nauticalMilesToKm(ship.deltaDistance()));
             }
             if (op == 1) {
-                Params.add(nauticalMilesToKm(ship.getDistBetweenDates(start, end)));
-                Params.add(nauticalMilesToKm(ship.getAvgSpeed(Params.get(0), ship.getTimeInSeaBetweenDates(start, end))));
+                params.add(nauticalMilesToKm(ship.getDistBetweenDates(start, end)));
+                params.add(nauticalMilesToKm(ship.getAvgSpeed(params.get(0), ship.getTimeInSeaBetweenDates(start, end))));
             }
-            shipMap.put(ship, Params);
+            shipMap.put(ship, params);
         }
         if(op==0){
             if(criteria == 0){this.linkedShipList=orderByTotalDistance(shipMap,asc);}
@@ -156,7 +156,7 @@ public class ListShipsController {
         }
         if(op==1){
             this.linkedShipList=orderByTotalDistance(shipMap, asc);
-            if(this.linkedShipList.size()> this.nShips &&this.linkedShipList.size() > this.nShips + 1) {
+            if(this.linkedShipList.size()> this.nShips &&this.linkedShipList.size() - 1 > this.nShips ) {
                     linkedShipList.subList(this.nShips + 1, this.linkedShipList.size()).clear();
             }
             this.linkedShipList =groupVesselType(this.linkedShipList);
