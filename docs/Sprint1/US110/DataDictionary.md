@@ -10,6 +10,7 @@
 | **MMSI** | **Ship** | **Maritime Mobile Service Identity** | Represents one of the ship´s unique identification code. |
 | **IMO** | **Ship** | **International Maritime Organization** | Represents one of the ship´s unique identification code. |
 | **callSign** | **Ship** | **Call Sign** | Represents one of the ship´s unique identification code. |
+| **draft** | **Ship** | **Draft** | Represents the vertical distance between the waterline and the bottom of the ship´s hull, in meters.|
 | **isoCode** | **Container** | **International Organization for Standardization Code** | Represents the container´s unique identification code.|
 |  | **CargoManifest** | **Cargo Manifest** | Represents a manifest that is elaborated by the port staff when a ship loads/unloads cargo in a port/warehouse, which contains information about each container.|
 | **totalMovNumber** | **Summary** | **Total number of movements** | Represents the total number of movements made by a ship in a trip.|
