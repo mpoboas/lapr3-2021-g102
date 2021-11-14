@@ -23,7 +23,7 @@ CTRL --> STR : closeCoordsShipList = getCloseCoordsShips()
 activate STR
 STR --> TREE : closeCoordsShipList = getCloseCoordsShips()
 activate TREE
-TREE --> TREE : createSubtreeAndAddPairs()
+TREE --> TREE : addAllPairs()
 TREE --> TREE : isPair()
 TREE --> STR
 deactivate TREE
