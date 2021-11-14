@@ -30,7 +30,6 @@ public class ShipTree extends BST<Ship> {
 
     private int balanceFactor(Node<Ship> node) {
         return height(node.getRight()) - height(node.getLeft());
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     private Node<Ship> rightRotation(Node<Ship> node) {
@@ -40,7 +39,6 @@ public class ShipTree extends BST<Ship> {
         node = leftson;
         return node;
 
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     private Node<Ship> leftRotation(Node<Ship> node) {
@@ -49,7 +47,6 @@ public class ShipTree extends BST<Ship> {
         rightson.setLeft(node);
         node = rightson;
         return node;
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     private Node<Ship> twoRotations(Node<Ship> node) {
@@ -61,13 +58,11 @@ public class ShipTree extends BST<Ship> {
             node = leftRotation(node);
         }
         return node;
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     private Node<Ship> balanceNode(Node<Ship> node) {
         if (balanceFactor(node) > 1)
             if (balanceFactor(node.getRight()) >= 0) {
-                //return rightRotation(node);
                 return leftRotation(node);
                 //rotação simples
             } else {
@@ -77,13 +72,11 @@ public class ShipTree extends BST<Ship> {
         if (balanceFactor(node) < -1)
             if (balanceFactor(node.getLeft()) < 0) {
                 //rotação simples
-                //return leftRotation(node);
                 return rightRotation(node);
             } else {
                 return twoRotations(node);
                 //rotação dupla
             }
-        //throw new UnsupportedOperationException("Not supported yet.");
         return node;
     }
 
@@ -107,7 +100,6 @@ public class ShipTree extends BST<Ship> {
         }
         return node;
 
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -138,7 +130,6 @@ public class ShipTree extends BST<Ship> {
             node = balanceNode(node);
         }
         return node;
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
