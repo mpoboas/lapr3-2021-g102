@@ -39,7 +39,7 @@ public class ShipSummaryController {
         double maxSOG = ship.getMaxSOG();
         double maxCOG = ship.getMaxCOG();
         double meanSOG = ship.getMeanSOG();
-        double meanCOG = ship.getMeanSOG();
+        double meanCOG = ship.getMeanCOG();
         double departureLatitude = ship.getDepartureLatitude();
         double departureLongitude = ship.getDepartureLongitude();
         double arrivalLatitude = ship.getArrivalLatitude();

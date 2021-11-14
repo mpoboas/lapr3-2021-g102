@@ -36,6 +36,10 @@ public class ShipSummaryControllerTest {
         Ship testShip = ctrl.getShip("210950000");
         List<AISMessage> aisMessagesList = testShip.getAisMessagesList();
 
+        assertEquals(testShip, ctrl.getShip("210950000"));
+        assertEquals(testShip, ctrl.getShip("IMO9395044"));
+        assertEquals(testShip, ctrl.getShip("C4SQ2"));
+
         Ship ship;
         AISMessage ais1;
         AISMessage ais2;
