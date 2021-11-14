@@ -18,6 +18,7 @@ class ImportShipsControllerTest {
 
         try {
             ctrl.importShipData(existingFileDirectory);
+            assertNotEquals(0,ctrl.getImp().getListOfImportedShips().size());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -29,6 +30,7 @@ class ImportShipsControllerTest {
         }
 
         ctrl.addShips();
+        assertNotEquals(0,ctrl.getImp().getShipStore().getShipList().size());
     }
 
 }

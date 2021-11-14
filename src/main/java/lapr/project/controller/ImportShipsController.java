@@ -1,5 +1,6 @@
 package lapr.project.controller;
 
+import lapr.project.model.Company;
 import lapr.project.model.Import;
 import lapr.project.stores.ShipStore;
 
@@ -11,16 +12,17 @@ public class ImportShipsController {
     private Import imp;
     private ShipStore store;
 
-    /*
-    public ImportShipController() {
-        //this(App.getInstance().getCompany());
-        //app = App.getInstance();
+/*
+    public ImportShipsController() {
+        this(App.getInstance().getCompany());
+        app = App.getInstance();
     }
 
-    public ImportShipController(Company company) {
+    public ImportShipsController(Company company) {
         this.company = company;
-    }*/
-
+        imp = new Import(company.getShipStore());
+    }
+*/
     public ImportShipsController(ShipStore store){
         this.store = store;
         imp = new Import(store);
@@ -32,5 +34,9 @@ public class ImportShipsController {
 
     public void addShips(){
         imp.addShips();
+    }
+
+    public Import getImp() {
+        return imp;
     }
 }
