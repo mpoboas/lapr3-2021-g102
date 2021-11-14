@@ -740,6 +740,7 @@ public class listShipsControllerTest {
         Map<Ship, List<Double>> entry1 = controller.getShipMap();
         assertEquals(ship1, controller.orderByTotalDistance(entry1, true).get(0).getKey());
         assertEquals(ship2, controller.orderByTotalDistance(entry1, false).get(0).getKey());
+
     }
 
     @Test
@@ -1020,6 +1021,9 @@ public class listShipsControllerTest {
         list.add(ship3);
         ListShipsController controller = new ListShipsController(false,1, store);
         Map<Ship, List<Double>> map =controller.generateMap(list);
+        assertNotEquals(map, controller.getShipMap());
+        controller = new ListShipsController(false,0, store);
+         map =controller.generateMap(list);
         assertNotEquals(map, controller.getShipMap());
     }
 }
