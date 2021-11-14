@@ -6,6 +6,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PairTest {
     Pair<String, String> testPair = new Pair<>("Test1", "Test2");
+
+    @Test
+    void pairEmpty() {
+        Pair<String, String> testEmptyPair = new Pair<>();
+        assertNull(testEmptyPair.getFirst());
+        assertNull(testEmptyPair.getSecond());
+    }
+
     @Test
     void getFirst() {
         assertEquals("Test1", testPair.getFirst());
