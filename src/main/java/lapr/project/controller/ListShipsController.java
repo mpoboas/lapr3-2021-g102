@@ -156,7 +156,7 @@ public class ListShipsController {
         }
         if(op==1){
             this.linkedShipList=orderByTotalDistance(shipMap, asc);
-            if(this.linkedShipList.size()> this.nShips &&this.linkedShipList.size() > this.nShips + 1) {
+            if(this.linkedShipList.size()> this.nShips &&this.linkedShipList.size() - 1 > this.nShips ) {
                     linkedShipList.subList(this.nShips + 1, this.linkedShipList.size()).clear();
             }
             this.linkedShipList =groupVesselType(this.linkedShipList);
