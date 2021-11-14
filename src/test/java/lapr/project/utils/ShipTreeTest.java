@@ -43,6 +43,7 @@ class ShipTreeTest {
         for (Ship s : arr) {
             instance.insert(s);
         }
+        instance.insert(ship1);
 
         assertEquals(order1, instance.inOrder(), "inOrder should be " + order1.toString());
         System.out.println("<instance 1>");
@@ -197,7 +198,7 @@ class ShipTreeTest {
         ShipTree instance;
 
         instance = new ShipTree("IMO");
-
+        instance.remove(ship1);
         for (Ship s : arr) {
             instance.insert(s);
         }
@@ -249,9 +250,12 @@ class ShipTreeTest {
         ShipTree instance2 = new ShipTree("IMO");
         instance2.insert(ship1);
         instance2.insert(ship2);
+        assertTrue(instance.equals(instance), "equals! ");
         assertTrue(instance.equals(instance2), "equals! ");
         instance2.remove(ship1);
         assertFalse(instance.equals(instance2), "equals! ");
+        assertFalse(instance.equals(null), "equals! ");
+        assertFalse(instance.equals("TREE"), "equals! ");
     }
 
     @Test
