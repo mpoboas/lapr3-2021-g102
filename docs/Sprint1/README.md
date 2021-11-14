@@ -3,7 +3,7 @@
 
 # Relational Model #
 
-![Relational model.svg](Relational model.svg)
+![RelationalModel.svg](RelationalModel.svg)
 
 # Domain Model #
 
