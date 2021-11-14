@@ -3,17 +3,29 @@ package lapr.project.controller;
 import lapr.project.model.Ship;
 import lapr.project.stores.ShipStore;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ShipSummaryController {
 
+    /**
+     * The Ship store
+     */
     private final ShipStore store;
 
+    /**
+     * ShipSummaryController constructor receiving the store as a parameter
+     * @param store
+     */
     public ShipSummaryController(ShipStore store) {
         this.store = store;
     }
 
+    /**
+     * Get's a ship from a code (MMSI, IMO or CallSign)
+     *
+     * @param code the code
+     * @return the ship
+     */
     public Ship getShip(String code) {
         Ship ship;
         int mmsi;
@@ -28,6 +40,10 @@ public class ShipSummaryController {
         return ship;
     }
 
+    /**
+     * A ship's summary of movements
+     * @param ship the ship
+     */
     public void getShipSummary(Ship ship) {
 
         int MMSI = ship.getMMSI();
@@ -66,7 +82,4 @@ public class ShipSummaryController {
                 ", Arrival Longitude=" + arrivalLongitude +
                 '}' + '\n');
     }
-
-
-
 }
