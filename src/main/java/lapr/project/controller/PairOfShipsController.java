@@ -1,5 +1,6 @@
 package lapr.project.controller;
 
+import lapr.project.model.Company;
 import lapr.project.model.Ship;
 import lapr.project.stores.ShipStore;
 import lapr.project.utils.Pair;
@@ -11,25 +12,39 @@ import java.util.List;
 
 public class PairOfShipsController {
     /**
-     * The ship store
+     * The app
      */
-    private final ShipStore shipStore;
+    private App app;
 
     /**
-     * Pair of ships controller constructor.
-     *
-     * @param shipStore the ship store
+     * The company
      */
-    public PairOfShipsController(ShipStore shipStore) {
-        this.shipStore = shipStore;
+    private final Company company;
+
+    /**
+     * Constructor of the covid report controller, through a company object.
+     *
+     * @param company the company object
+     */
+    public PairOfShipsController(Company company) {
+        this.company = company;
     }
+
+    /**
+     * Constructor of the covid report controller, with no received parameters.
+     */
+    public PairOfShipsController() {
+        this(App.getInstance().getCompany());
+        app = App.getInstance();
+    }
+
     /**
      * Returns the ship store.
      *
      * @return ship store instance
      */
     public ShipStore getShipStore() {
-        return this.shipStore;
+        return this.company.getShipStore();
     }
 
     /**
@@ -39,7 +54,7 @@ public class PairOfShipsController {
      * @return pairs of ships list
      */
     public List<Pair<Ship, Ship>> getCloseCoordsShips() {
-        List<Pair<Ship, Ship>> closeCoordsShips = new ArrayList<>(this.shipStore.getCloseCoordsShips());
+        List<Pair<Ship, Ship>> closeCoordsShips = new ArrayList<>(this.company.getShipStore().getCloseCoordsShips());
         writeToFile(closeCoordsShips);
         return closeCoordsShips;
     }

@@ -12,16 +12,18 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PairOfShipsControllerTest {
-    Import imp = new Import(new ShipStore());
+
 
     @Test
     void getShipStore() {
-        PairOfShipsController pairOfShipsController = new PairOfShipsController(imp.getShipStore());
+        PairOfShipsController pairOfShipsController = new PairOfShipsController();
         assertNotNull(pairOfShipsController.getShipStore());
     }
 
     @Test
     public void getCloseCoordsShipsSships() {
+        PairOfShipsController pairOfShipsController = new PairOfShipsController();
+        Import imp = new Import(pairOfShipsController.getShipStore());
         String file = "data/data-shipsports/data-shipsports/data-ships&ports/sships.csv";
         try {
             imp.importShipsData(file);
@@ -30,7 +32,6 @@ class PairOfShipsControllerTest {
         }
 
         imp.addShips();
-        PairOfShipsController pairOfShipsController = new PairOfShipsController(imp.getShipStore());
         List<Pair<Ship,Ship>> pairOfShipsList = pairOfShipsController.getCloseCoordsShips();
 
         assertNotNull(pairOfShipsList);
