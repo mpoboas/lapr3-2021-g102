@@ -53,9 +53,6 @@ class PortWarehouse {
 class ShipCaptain {
 }
 
-class Client {
-}
-
 class TrafficManager {
 }
 
@@ -92,23 +89,24 @@ class LoadingCargoManifest {
 class UnloadingCargoManifest {
 }
 
+FleetManager "1" -- "*" Ship : controls >
+TrafficManager "1" -- "1" Ship : controls >
+TrafficManager "1" -- "1" Truck : controls >
 Ship "1" -- "*" Container : carries >
 Ship "1" -- "*" AISMessage : contains >
-Ship "1" -- "1" ShipCaptain
+Ship "1" -- "1" ShipCaptain : drives >
 Ship "1" -- "1" ChiefElectricalEngineer
-Ship "1" -- "*" LoadingCargoManifest : makes >
-Ship "1" -- "*" UnloadingCargoManifest : is delivered <
 Trips "1" -- "*" PortWarehouse : between >
 Ship "1" -- "*" Trips : does many >
 Container "*" -- "*" CargoManifest : contains <
-Truck "1" -- "1" TruckDriver
+Truck "1" -- "*" Container : carries >
+Truck "1" -- "1" TruckDriver : drives <
 PortWarehouse "1" -- "1" WarehouseManager
 PortWarehouse "1" -- "1" WarehouseStaff
 PortWarehouse "1" -- "1" PortManager
 PortWarehouse "1" -- "1" PortStaff
 LoadingCargoManifest "1" -u- "1" CargoManifest : is a >
-LoadingCargoManifest "*" -- "1" PortWarehouse : is delivered >
-UnloadingCargoManifest "*" -- "1" PortWarehouse : makes <
+CargoManifest "*" -- "1" PortStaff : makes <
 UnloadingCargoManifest "*" -u- "1" CargoManifest : is a >
 
 @enduml
