@@ -238,24 +238,23 @@ public class ShipTree extends BST<Ship> {
             return;
 
         getCloseCoordsShips(node.getLeft(), closeCoordsShipList);
-        createSubtreeAndAddPairs(root, node, closeCoordsShipList);
+        addAllPairs(root, node, closeCoordsShipList);
         getCloseCoordsShips(node.getRight(), closeCoordsShipList);
     }
 
-    private void createSubtreeAndAddPairs(Node<Ship> node, Node<Ship> notIncludedNode, List<Pair<Ship, Ship>> closeCoordsShipList) {
+    private void addAllPairs(Node<Ship> node, Node<Ship> nodeToBeCompared, List<Pair<Ship, Ship>> closeCoordsShipList) {
         if (node == null)
             return;
-        ShipTree subtree = new ShipTree("MMSI");
-        createSubtreeAndAddPairs(node.getLeft(), notIncludedNode, closeCoordsShipList);
-        if (node != notIncludedNode) {
-            subtree.insert(node.getElement());
-            if (isPair(notIncludedNode, node))
-                closeCoordsShipList.add(new Pair<>(notIncludedNode.getElement(), node.getElement()));
+
+        addAllPairs(node.getLeft(), nodeToBeCompared, closeCoordsShipList);
+        if (node != nodeToBeCompared) {
+            if (isPair(nodeToBeCompared, node))
+                closeCoordsShipList.add(new Pair<>(nodeToBeCompared.getElement(), node.getElement()));
         }
-        createSubtreeAndAddPairs(node.getRight(), notIncludedNode, closeCoordsShipList);
+        addAllPairs(node.getRight(), nodeToBeCompared, closeCoordsShipList);
     }
 
-    private boolean isPair(Node<Ship> node1, Node<Ship> node2) {
+    private static boolean isPair(Node<Ship> node1, Node<Ship> node2) {
         if (node1 == null || node2 == null) return false;
         // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms; Ships should have different Travalled Distances."
         if (Conversions.nauticalMilesToKm(node1.getElement().getTotalDistance()) < 10 || Conversions.nauticalMilesToKm(node2.getElement().getTotalDistance()) < 10 || (node1.getElement().getTotalDistance() == node2.getElement().getTotalDistance()))

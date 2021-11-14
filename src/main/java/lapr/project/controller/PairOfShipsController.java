@@ -74,7 +74,7 @@ public class PairOfShipsController {
                 for (Pair<Ship, Ship> pairOfShips : pairList) {
                     myWriter.write(String.format("%-13d%-13d%-7d%-13f%-7d%-9f\n", pairOfShips.getFirst().getMMSI(), pairOfShips.getSecond().getMMSI(), pairOfShips.getFirst().numberOfMovements(), pairOfShips.getFirst().getTotalDistance(), pairOfShips.getSecond().numberOfMovements(), pairOfShips.getSecond().getTotalDistance()));
                 }
-            } else myWriter.write("List is empty.");
+            } else myWriter.write("List is empty.\n");
         } catch (IOException e) {
             System.out.println("An error occurred in the writing of the information of the pair.");
             e.printStackTrace();
