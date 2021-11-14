@@ -105,6 +105,18 @@ public class ShipStore {
     }
 
     /**
+     * Get the ship list
+     *
+     * @return the ship list
+     */
+    public List<Ship> getShipList() {
+        Iterable<Ship> shipListI = this.getListOfShipsASCOrd();
+        List<Ship> shipList = new ArrayList<>();
+        shipListI.forEach(shipList::add);
+        return shipList;
+    }
+
+    /**
      * Searches for a ship by its mmsi
      *
      * @param mmsi mmsi to identify the ship
@@ -174,12 +186,5 @@ public class ShipStore {
         }
         closeCoordsShips.sort(new SortByMMSITravDistance());
         return closeCoordsShips;
-    }
-
-    public List<Ship> getShipList() {
-        Iterable<Ship> shipListI = this.getListOfShipsASCOrd();
-        List<Ship> shipList = new ArrayList<>();
-        shipListI.forEach(shipList::add);
-        return shipList;
     }
 }
