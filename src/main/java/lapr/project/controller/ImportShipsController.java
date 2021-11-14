@@ -7,12 +7,12 @@ import lapr.project.stores.ShipStore;
 import java.io.IOException;
 
 public class ImportShipsController {
-    //private App app;
-    //private Company company;
+    private App app;
+    private Company company;
     private Import imp;
     private ShipStore store;
 
-/*
+
     public ImportShipsController() {
         this(App.getInstance().getCompany());
         app = App.getInstance();
@@ -22,7 +22,7 @@ public class ImportShipsController {
         this.company = company;
         imp = new Import(company.getShipStore());
     }
-*/
+
     public ImportShipsController(ShipStore store){
         this.store = store;
         imp = new Import(store);
