@@ -18,12 +18,7 @@ public class ShipTree extends BST<Ship> {
         if (type.equals("Call Sign"))
             comp = new SortByCallSign();
         if (type.equals("MMSI"))
-            comp = new Comparator<Ship>() {
-                @Override
-                public int compare(Ship o1, Ship o2) {
-                    return o1.compareTo(o2);
-                }
-            };
+            comp = Comparator.naturalOrder();
     }
 
     public Ship getShip(Ship ship) {
@@ -247,8 +242,7 @@ public class ShipTree extends BST<Ship> {
             return;
 
         addAllPairs(node.getLeft(), nodeToBeCompared, closeCoordsShipList);
-        if (node != nodeToBeCompared) {
-            if (isPair(nodeToBeCompared, node))
+        if (node != nodeToBeCompared &&isPair(nodeToBeCompared, node) ) {
                 closeCoordsShipList.add(new Pair<>(nodeToBeCompared.getElement(), node.getElement()));
         }
         addAllPairs(node.getRight(), nodeToBeCompared, closeCoordsShipList);
