@@ -61,6 +61,7 @@ public class ShipTree extends BST<Ship> {
     }
 
     private Node<Ship> balanceNode(Node<Ship> node) {
+
         if (balanceFactor(node) > 1)
             if (balanceFactor(node.getRight()) >= 0) {
                 return leftRotation(node);
@@ -144,7 +145,7 @@ public class ShipTree extends BST<Ship> {
 
         return node;
     }
-
+    @Override
     public boolean equals(Object otherObj) {
         if (this == otherObj)
             return true;

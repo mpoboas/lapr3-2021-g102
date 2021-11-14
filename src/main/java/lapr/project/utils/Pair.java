@@ -21,14 +21,17 @@ public class Pair<T, S> {
     public S getSecond() {
         return second;
     }
-
+    @Override
     public boolean equals(Object otherObject) {
         if (otherObject == null) return false;
         if (getClass() != otherObject.getClass()) return false;
 
         Pair<?, ?> otherPair = (Pair<?, ?>) otherObject;
 
-        return (this.first.equals(otherPair.first) && second.equals(otherPair.second));
+        assert this.first != null;
+        if (!this.first.equals(otherPair.first)) return false;
+        assert second != null;
+        return (second.equals(otherPair.second));
     }
 
     public String toString() {

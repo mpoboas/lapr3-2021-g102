@@ -31,7 +31,7 @@ more than 5 Kms away) and with different Travelled Distance.
 * 	**AC1:** The pairs should appear sorted by the MMSI code of the 1st ship and in descending order of the Travelled Distance difference.
 *	**AC2:** Pairs of ships with departure/arrival coordinates that are more than 5 kms away from each other should not be considered.
 *	**AC3:** Ships with Travelled Distance less than 10 kms should not be considered.
-*   **AC4:** In case of operation success, all the information desired will be presented to the user.
+*   **AC4:** In case of operation success, all the information desired will be presented to the user in the form of a text file (CloseCoordsPairs.txt, in the root of the project).
 
 ### 1.4. Found out Dependencies
 
@@ -58,7 +58,7 @@ n/a
 
 ### 2.1. Relevant Domain Model Excerpt
 
-![US107-MD](US107_MD.svg)
+![US107-DM](US107_DM.svg)
 
 ### 2.2. Other Remarks
 
@@ -101,27 +101,26 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 # 4. Tests
 
-**Test 1:** Test.
+**Test 1:** Controller test - Imports sships csv file, and test the getCloseCoordsList method. An empty list of pairs is expected.
 
-	@Test(expected = IllegalArgumentException.class)
-    public void teste() {
-        teste;
+	@Test
+    public void getCloseCoordsShips() {
+        PairOfShipsController pairOfShipsController = new PairOfShipsController();
+        Import imp = new Import(pairOfShipsController.getShipStore());
+        String file = "data/data-shipsports/data-shipsports/data-ships&ports/sships.csv";
+        try {
+            imp.importShipsData(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        imp.addShips();
+        List<Pair<Ship,Ship>> pairOfShipsList = pairOfShipsController.getCloseCoordsShips();
+
+        assertNotNull(pairOfShipsList);
+        assertEquals(0, pairOfShipsList.size());
     }
 
-# 5. Construction (Implementation)
-
-## Class Teste
-
-	public teste() {
-		teste;
-	}
-
-# 6. Integration and Demo
-
-* Some users are bootstrapped while system starts.
-
-# 7. Observations
+# 5. Observations
 
 The domain model classes may have to be modified in future versions of the project, according to the US requirements;
-
-The company class is getting too many responsibilities due to IE pattern and, therefore, they are becoming huge and harder to maintain.
