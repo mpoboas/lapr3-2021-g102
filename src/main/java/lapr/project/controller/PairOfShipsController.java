@@ -5,8 +5,6 @@ import lapr.project.model.Ship;
 import lapr.project.stores.ShipStore;
 import lapr.project.utils.Pair;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +61,7 @@ public class PairOfShipsController {
      * @return string related to all the pairs of ships
      *
      */
-    public String toString(List<Pair<Ship, Ship>> pairList, String filename) {
+    public String toString(List<Pair<Ship, Ship>> pairList) {
         StringBuilder stringBuilder = new StringBuilder("Ship1 MMSI   Ship2 MMSI   Movs   TravelDist   Movs   TravelDist\n");
         stringBuilder.append("------------------------------------------------------------\n");
         if (!pairList.isEmpty()) {
