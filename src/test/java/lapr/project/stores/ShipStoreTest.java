@@ -19,17 +19,17 @@ class ShipStoreTest {
     @Test
     void createShip() {
         ShipStore store = new ShipStore();
-        Ship ex1 =  new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
-        Ship ex2 = new Ship(113,"122","test","Ship", 12, 1200, 600 , 21);
-        Ship res = store.createShip(112,"122","test","Ship", 12, 1200, 600 , 21);
+        Ship ex1 = new Ship(112, "122", "test", "Ship", 12, 1200, 600, 21);
+        Ship ex2 = new Ship(113, "122", "test", "Ship", 12, 1200, 600, 21);
+        Ship res = store.createShip(112, "122", "test", "Ship", 12, 1200, 600, 21);
 
-        assertEquals(ex1,res);
+        assertEquals(ex1, res);
     }
 
     @Test
     void validateShip() {
         ShipStore store = new ShipStore();
-        Ship ex1 =  new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
+        Ship ex1 = new Ship(112, "122", "test", "Ship", 12, 1200, 600, 21);
         assertTrue(store.validateShip(ex1));
         store.addShip(ex1);
         assertFalse(store.validateShip(null));
@@ -38,14 +38,14 @@ class ShipStoreTest {
     @Test
     void addShip() {
         ShipStore store = new ShipStore();
-        Ship ex1 =  new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
-        Ship ex2 =  new Ship(110,"122","test","Ship", 12, 1200, 600 , 21);
-        Ship ex3 =  new Ship(122,"122","test","Ship", 12, 1200, 600 , 21);
+        Ship ex1 = new Ship(112, "122", "test", "Ship", 12, 1200, 600, 21);
+        Ship ex2 = new Ship(110, "122", "test", "Ship", 12, 1200, 600, 21);
+        Ship ex3 = new Ship(122, "122", "test", "Ship", 12, 1200, 600, 21);
         assertTrue(store.addShip(ex1));
         assertTrue(store.addShip(ex2));
         assertTrue(store.addShip(ex3));
         assertFalse(store.addShip(ex1));
-        ex1.addAISMessage( new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' ));
+        ex1.addAISMessage(new AISMessage(LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21, 13, 4, 3000, 'B'));
         store.addShip(ex1);
         assertFalse(store.addShip(ex1));
     }
@@ -53,9 +53,9 @@ class ShipStoreTest {
     @Test
     void getListOfShipsASCOrd() {
         ShipStore store = new ShipStore();
-        Ship ex1 =  new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
-        Ship ex2 =  new Ship(110,"122","test","Ship", 12, 1200, 600 , 21);
-        Ship ex3 =  new Ship(122,"122","test","Ship", 12, 1200, 600 , 21);
+        Ship ex1 = new Ship(112, "122", "test", "Ship", 12, 1200, 600, 21);
+        Ship ex2 = new Ship(110, "122", "test", "Ship", 12, 1200, 600, 21);
+        Ship ex3 = new Ship(122, "122", "test", "Ship", 12, 1200, 600, 21);
         store.addShip(ex1);
         store.addShip(ex2);
         store.addShip(ex3);
@@ -63,21 +63,21 @@ class ShipStoreTest {
         expected.add(ex2);
         expected.add(ex1);
         expected.add(ex3);
-        assertEquals(expected,store.getListOfShipsASCOrd());
+        assertEquals(expected, store.getListOfShipsASCOrd());
 
     }
-    
+
     @Test
     void getShipByMMSI() {
         ShipStore store = new ShipStore();
-        Ship ex1 =  new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
+        Ship ex1 = new Ship(112, "122", "test", "Ship", 12, 1200, 600, 21);
         store.addShip(ex1);
         Ship res = store.getShipByMMSI(112);
-        assertEquals(res,ex1);
+        assertEquals(res, ex1);
 
         try {
             store.getShipByMMSI(111);
-        } catch (Exception e){
+        } catch (Exception e) {
             assertEquals("The ship with the MMSI: 111 was not found", e.getMessage());
         }
     }
@@ -85,14 +85,14 @@ class ShipStoreTest {
     @Test
     void getShipByIMO() {
         ShipStore store = new ShipStore();
-        Ship ex1 =  new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
+        Ship ex1 = new Ship(112, "122", "test", "Ship", 12, 1200, 600, 21);
         store.addShip(ex1);
         Ship res = store.getShipByIMO("test");
-        assertEquals(res,ex1);
+        assertEquals(res, ex1);
 
         try {
             store.getShipByIMO("test2");
-        } catch (Exception e){
+        } catch (Exception e) {
             assertEquals("The ship with the IMO: test2 was not found", e.getMessage());
         }
     }
@@ -100,14 +100,14 @@ class ShipStoreTest {
     @Test
     void getShipByCallSign() {
         ShipStore store = new ShipStore();
-        Ship ex1 =  new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
+        Ship ex1 = new Ship(112, "122", "test", "Ship", 12, 1200, 600, 21);
         store.addShip(ex1);
         Ship res = store.getShipByCallSign("Ship");
-        assertEquals(res,ex1);
+        assertEquals(res, ex1);
 
         try {
             store.getShipByCallSign("Ship2");
-        } catch (Exception e){
+        } catch (Exception e) {
             assertEquals("The ship with the Call Sign: Ship2 was not found", e.getMessage());
         }
     }
@@ -115,7 +115,7 @@ class ShipStoreTest {
     @Test
     void getCloseCoordsShips() {
         Import imp = new Import(new ShipStore());
-        String file = "data/data-shipsports/data-shipsports/data-ships&ports/sships.csv";
+        String file = "data/data-shipsports/data-shipsports/data-ships&ports/bships.csv";
 
         try {
             imp.importShipsData(file);
@@ -124,8 +124,7 @@ class ShipStoreTest {
         }
 
         imp.addShips();
-
-        List<Pair<Ship,Ship>> pairOfShipsList = imp.getShipStore().getCloseCoordsShips();
+        List<Pair<Ship, Ship>> pairOfShipsList = imp.getShipStore().getCloseCoordsShips();
 
         assertNotNull(pairOfShipsList);
         assertEquals(0, pairOfShipsList.size());

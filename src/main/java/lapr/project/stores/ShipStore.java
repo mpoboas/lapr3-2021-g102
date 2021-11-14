@@ -90,6 +90,10 @@ public class ShipStore {
         return false;
     }
 
+    public ShipTree getShipBSTMMSI() {
+        return shipBSTMMSI;
+    }
+
     /**
      * Gets the list of all ships in ascend order by mmsi
      *
@@ -161,46 +165,16 @@ public class ShipStore {
      * @return pairs of ships list
      */
     public List<Pair<Ship, Ship>> getCloseCoordsShips() {
-        List<Pair<Ship, Ship>> closeCoordsShipList = new ArrayList<>();
-        List<Ship> shipList = this.getListOfShipsASCOrd();
+        List<Pair<Ship, Ship>> pairOfShipsList = this.getShipBSTMMSI().getCloseCoordsShips();
 
-        for (int i = 0; i < shipList.size(); i++) { // Iterate through ship list to get the first element of the possible Pair
-            if (!(Conversions.nauticalMilesToKm(shipList.get(i).getTotalDistance()) < 10)) { // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms"
-                List<Trips> ship1TripList = new ArrayList<>(shipList.get(i).getTripsList());
-                for (int j = i + 1; j < shipList.size(); j++) { // Iterate through ship list to get the second element of the possible Pair
-                    boolean isPair = false;
-                    if (!(Conversions.nauticalMilesToKm(shipList.get(i).getTotalDistance()) < 10) && (shipList.get(i).getTotalDistance() != shipList.get(j).getTotalDistance())) { // Acceptance Criteria: "Do not consider ships with Travelled Distance less than 10kms; Ships must have different Travelled Distance"
-                        List<Trips> ship2TripList = new ArrayList<>(shipList.get(j).getTripsList());
-                        for (Trips ship1Trip : ship1TripList) { // Iterate through first ship trip list
-                            AISMessage departureAIS1 = ship1Trip.getAIsMessage(0);
-                            AISMessage arrivalAIS1 = ship1Trip.getAIsMessage(ship1Trip.getAISMessageListSize() - 1);
-
-                            if (Validations.validateAISMessageForCalculations(departureAIS1) && Validations.validateAISMessageForCalculations(arrivalAIS1)) { // Verify if AIS message is valid for calculations
-                                for (Trips ship2Trip : ship2TripList) { // Iterate through second ship trip list
-                                    AISMessage departureAIS2 = ship2Trip.getAIsMessage(0);
-                                    AISMessage arrivalAIS2 = ship2Trip.getAIsMessage(ship2Trip.getAISMessageListSize() - 1);
-
-                                    if (Validations.validateAISMessageForCalculations(departureAIS2) && Validations.validateAISMessageForCalculations(arrivalAIS2)) { // Verify if AIS message is valid for calculations
-                                        // If departure/arrival coordinates are no more than 5km away from each other, create Pair
-                                        double distance1 = Conversions.nauticalMilesToKm(departureAIS1.getDistanceAIMes(departureAIS2));
-                                        double distance2 = Conversions.nauticalMilesToKm(arrivalAIS1.getDistanceAIMes(arrivalAIS2));
-                                        if (distance1 <= 5 || distance2 <= 5) isPair = true;
-                                    }
-                                }
-                            }
-                        }
-
-                        if (isPair) {
-                            Pair<Ship, Ship> pairOfShips = new Pair<>(shipList.get(i), shipList.get(j));
-                            closeCoordsShipList.add(pairOfShips);
-                        }
-                    }
-                }
+        for (int i = 0; i < pairOfShipsList.size(); i++) {
+            for (int j = i + 1; j < pairOfShipsList.size(); j++) {
+                if (pairOfShipsList.get(i).getFirst() == pairOfShipsList.get(j).getSecond())
+                    pairOfShipsList.remove(pairOfShipsList.get(j));
             }
         }
-
-        closeCoordsShipList.sort(new SortByMMSITravDistance());
-        return closeCoordsShipList;
+        pairOfShipsList.sort(new SortByMMSITravDistance());
+        return pairOfShipsList;
     }
 
     public List<Ship> getShipList() {

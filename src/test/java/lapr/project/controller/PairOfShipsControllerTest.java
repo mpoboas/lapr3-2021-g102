@@ -22,7 +22,7 @@ class PairOfShipsControllerTest {
 
     @Test
     public void getCloseCoordsShipsSships() {
-        String file = "data/data-shipsports/data-shipsports/data-ships&ports/sships.csv";
+        String file = "data/data-shipsports/data-shipsports/data-ships&ports/bships.csv";
         try {
             imp.importShipsData(file);
         } catch (IOException e) {
