@@ -24,9 +24,19 @@ class SearchShipControllerTest {
             e.printStackTrace();
         }
 
-        assertTrue(ctrl.searchShip("212351000"));
-        assertTrue(ctrl.searchShip("IMO9395044"));
-        assertTrue(ctrl.searchShip("WDG5171"));
+        assertEquals("Ship{MMSI=212351000, vesselName='HYUNDAI SINGAPORE', IMO='IMO9305685', callSign='5BZP3', vesselType=70, length=303, width=40, draft=14.5}\n" +
+                "[AISMessage{baseDateTime=2020-12-31T23:03, latitude=55.09307, longitude=-167.63625, COG=3.5, SOG=-61.6, heading=232, cargo=79, transceiver class=B}\n" +
+                "]",ctrl.searchShip("212351000").toString());
+        assertEquals("Ship{MMSI=636092932, vesselName='MSC ILONA', IMO='IMO9225641', callSign='D5VK6', vesselType=79, length=299, width=40, draft=11.8}\n" +
+                "[AISMessage{baseDateTime=2020-12-31T12:06, latitude=26.52605, longitude=-78.76731, COG=0.0, SOG=-189.6, heading=220, cargo=79, transceiver class=A}\n" +
+                ", AISMessage{baseDateTime=2020-12-31T14:32, latitude=26.526, longitude=-78.76736, COG=0.0, SOG=-190.6, heading=219, cargo=79, transceiver class=A}\n" +
+                ", AISMessage{baseDateTime=2020-12-31T18:49, latitude=26.52601, longitude=-78.76733, COG=0.0, SOG=-190.6, heading=219, cargo=79, transceiver class=A}\n" +
+                ", AISMessage{baseDateTime=2020-12-31T19:01, latitude=26.52603, longitude=-78.76731, COG=0.0, SOG=-190.6, heading=219, cargo=79, transceiver class=A}\n" +
+                ", AISMessage{baseDateTime=2020-12-31T21:20, latitude=26.52601, longitude=-78.76737, COG=0.0, SOG=-190.6, heading=219, cargo=79, transceiver class=A}\n" +
+                "]",ctrl.searchShip("IMO9225641").toString());
+        assertEquals("Ship{MMSI=636091400, vesselName='RHL AGILITAS', IMO='IMO9373486', callSign='A8ND5', vesselType=70, length=176, width=27, draft=10.9}\n" +
+                "[AISMessage{baseDateTime=2020-12-31T18:26, latitude=23.07187, longitude=-83.53367, COG=15.9, SOG=66.2, heading=68, cargo=71, transceiver class=B}\n" +
+                "]",ctrl.searchShip("A8ND5").toString());
 
         try {
             ctrl.searchShip("123");

@@ -18,7 +18,7 @@ public class SearchShipController {
         this.store = store;
     }
 
-    public boolean searchShip(String codeInserted) {
+    public ShipDTO searchShip(String codeInserted) {
         ShipDTO shipDTO;
         try {
             int mmsi = Integer.parseInt(codeInserted);
@@ -28,8 +28,7 @@ public class SearchShipController {
                 shipDTO = getShipByIMO(codeInserted);
             else shipDTO = getShipByCallSign(codeInserted);
         }
-        String fileName = "Ship" + codeInserted + ".txt";
-        return writeToFile(shipDTO, fileName);
+        return shipDTO;
     }
 
     public ShipDTO getShipByMMSI(int mmsi) {
@@ -47,26 +46,4 @@ public class SearchShipController {
         return new ShipMapper().toDTO(ship);
     }
 
-    public boolean writeToFile(ShipDTO ship, String fileName) {
-        boolean success = false;
-        FileWriter myWriter = null;
-        try {
-            myWriter = new FileWriter(fileName, true);
-            myWriter.write(ship.toString());
-            success = true;
-        } catch (IOException e) {
-            System.out.println("An error ocurred in the writing the information of the ship.");
-            e.printStackTrace();
-        } finally {
-            try {
-                if (myWriter != null)
-                    myWriter.close();
-            } catch (IOException e) {
-                System.out.println("An error ocurred in the writing the information of the ship.");
-                e.printStackTrace();
-
-            }
-        }
-        return success;
-    }
 }
