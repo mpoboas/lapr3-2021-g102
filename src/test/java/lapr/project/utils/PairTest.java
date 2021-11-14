@@ -19,7 +19,7 @@ class PairTest {
     @Test
     void testEquals() {
         Pair<String, String> testPairEquals = new Pair<>("Test1", "Test2");
-        assertTrue(testPair.equals(testPairEquals));
+        assertEquals(testPair, testPairEquals);
     }
 
     @Test

@@ -21,7 +21,7 @@ class PairOfShipsControllerTest {
     }
 
     @Test
-    public void getCloseCoordsShipsSships() {
+    public void getCloseCoordsShips() {
         PairOfShipsController pairOfShipsController = new PairOfShipsController();
         Import imp = new Import(pairOfShipsController.getShipStore());
         String file = "data/data-shipsports/data-shipsports/data-ships&ports/sships.csv";

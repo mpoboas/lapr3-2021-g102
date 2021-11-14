@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -192,6 +194,19 @@ public class ShipTest {
     }
 
     @Test
+    void testAddAISMessage() {
+        ship = new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
+        trip = new Trips();
+        ship.addTrip(trip);
+        List<AISMessage> aisMessageList = new ArrayList<>();
+        aisMessageList.add(new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' ));
+        aisMessageList.add(new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4, 3000, 'B' ));
+        aisMessageList.add(new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' ));
+        ship.addAISMessage(aisMessageList);
+        assertNotEquals(0, ship.getAisMessagesList().size());
+    }
+
+    @Test
     public void addTrip() {
         ship = new Ship(112,"122","test","Ship", 12, 1200, 600 , 21 );
 
@@ -207,7 +222,6 @@ public class ShipTest {
         ship.getTrip(0).endTrip();
         assertEquals(ship.getTrip(0).getTripStatus(), true);
     }
-
     @Test
     public void testTimeBetweenDates(){
         ship = new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
@@ -238,6 +252,7 @@ public class ShipTest {
         ship.getTrip(1).endTrip();
         assertEquals(83,ship.getTimeInSeaBetweenDates( LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0),  LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0)),0.1 );
     }
+
     @Test
     public void testDistBetweenDates(){
         ship = new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
