@@ -248,6 +248,19 @@ public class Ship implements Comparable<Ship> {
     }
 
     /**
+     * total distance done in trips by the ship
+     * THIS IS A TEMPORARY METHOD. TO BE DELETED!
+     * @return
+     */
+    public double getTotalDistance2() {
+        double distance = 0;
+        for (int i = 0; i < aisMessagesList.size() - 1; i++) {
+            distance = distance + aisMessagesList.get(i).getDistanceAIMes(aisMessagesList.get(i + 1));
+        }
+        return distance;
+    }
+
+    /**
      * @param start of period required by user
      * @param end   of period required by user
      * @return distance done by ship int tha period
@@ -301,6 +314,17 @@ public class Ship implements Comparable<Ship> {
             time = time + trips.getTripDuration();
         }
         return time;
+    }
+
+    /**
+     * ship's total time spent in the sea
+     * THIS IS A TEMPORARY METHOD. TO BE REMOVED!
+     * @return
+     */
+    public double getTotalTimeinSea2(){
+        Duration duration;
+        duration = Duration.between(this.aisMessagesList.get(0).getBaseDateTime(), this.aisMessagesList.get(aisMessagesList.size() - 1).getBaseDateTime());
+        return duration.toHours();
     }
 
     /**
