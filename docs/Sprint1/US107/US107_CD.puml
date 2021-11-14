@@ -14,7 +14,11 @@ class PairOfShipsController {
 }
 
 class ShipStore {
-BST<Ship> shipsTree
+BST<Ship> shipTree
++getCloseCoordsShips()
+}
+
+class ShipTree {
 +getCloseCoordsShips()
 }
 
@@ -33,7 +37,8 @@ class Ship {
 
 CloseShipInfoUI ..> PairOfShipsController
 Company -> ShipStore : adopts >
-ShipStore "1" ->  "*" Ship: stores >
+ShipStore "1" ->  "*" ShipTree: has >
+ShipTree "1" ->  "*" Ship: stores >
 PairOfShipsController ..> Company
 PairOfShipsController ..> ShipStore
 

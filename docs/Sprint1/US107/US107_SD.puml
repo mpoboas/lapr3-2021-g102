@@ -7,6 +7,7 @@ participant ":CloseShipInfoUI" as UI
 participant ":PairOfShipsController" as CTRL
 participant "Company" as COMP
 participant "shipStore: ShipStore" as STR
+participant "shipTree: ShipTree" as TREE
 participant "ship: Ship" as SHIP
 participant "closeCoordsShipList\n: List<Pair<Ship, Ship>>"
 
@@ -20,6 +21,12 @@ activate COMP
 deactivate COMP
 CTRL --> STR : closeCoordsShipList = getCloseCoordsShips()
 activate STR
+STR --> TREE : closeCoordsShipList = getCloseCoordsShips()
+activate TREE
+TREE --> TREE : createSubtreeAndAddPairs()
+TREE --> TREE : isPair()
+TREE --> STR
+deactivate TREE
 STR --> CTRL
 deactivate STR
 CTRL --> UI
