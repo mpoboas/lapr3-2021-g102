@@ -55,7 +55,7 @@ public class PairOfShipsController {
      */
     public List<Pair<Ship, Ship>> getCloseCoordsShips() {
         List<Pair<Ship, Ship>> closeCoordsShips = new ArrayList<>(this.company.getShipStore().getCloseCoordsShips());
-        writeToFile(closeCoordsShips);
+        writeToFile(closeCoordsShips, "CloseCoordsPairs.txt");
         return closeCoordsShips;
     }
 
@@ -64,10 +64,10 @@ public class PairOfShipsController {
      *  @param pairList list of pairs
      *
      */
-    private void writeToFile(List<Pair<Ship, Ship>> pairList) {
+    public void writeToFile(List<Pair<Ship, Ship>> pairList, String filename) {
         FileWriter myWriter = null;
         try {
-            myWriter = new FileWriter("CloseCoordsPairs.txt", true);
+            myWriter = new FileWriter(filename, true);
             myWriter.write("Ship1 MMSI   Ship2 MMSI   Movs   TravelDist   Movs   TravelDist\n");
             myWriter.write("------------------------------------------------------------\n");
             if (!pairList.isEmpty()) {

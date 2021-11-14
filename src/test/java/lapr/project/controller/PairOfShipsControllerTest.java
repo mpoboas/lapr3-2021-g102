@@ -1,5 +1,6 @@
 package lapr.project.controller;
 
+import lapr.project.model.Company;
 import lapr.project.model.Import;
 import lapr.project.model.Ship;
 import lapr.project.stores.ShipStore;
@@ -21,6 +22,13 @@ class PairOfShipsControllerTest {
     }
 
     @Test
+    void getShipStoreCompany() {
+        Company company = new Company("CargoCompany");
+        PairOfShipsController pairOfShipsController = new PairOfShipsController(company);
+        assertNotNull(pairOfShipsController.getShipStore());
+    }
+
+    @Test
     public void getCloseCoordsShips() {
         PairOfShipsController pairOfShipsController = new PairOfShipsController();
         Import imp = new Import(pairOfShipsController.getShipStore());
@@ -36,5 +44,21 @@ class PairOfShipsControllerTest {
 
         assertNotNull(pairOfShipsList);
         assertEquals(0, pairOfShipsList.size());
+    }
+
+    @Test
+    void writeToFile() {
+        PairOfShipsController pairOfShipsController = new PairOfShipsController();
+        Import imp = new Import(pairOfShipsController.getShipStore());
+        String file = "data/data-shipsports/data-shipsports/data-ships&ports/sships.csv";
+        try {
+            imp.importShipsData(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        imp.addShips();
+        List<Pair<Ship,Ship>> pairOfShipsList = pairOfShipsController.getCloseCoordsShips();
+        pairOfShipsController.writeToFile(pairOfShipsList, "CloseCoordsPairs.txt");
     }
 }
