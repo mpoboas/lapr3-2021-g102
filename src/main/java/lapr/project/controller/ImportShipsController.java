@@ -1,12 +1,12 @@
 package lapr.project.controller;
 
-import lapr.project.model.Company;
 import lapr.project.model.Import;
 import lapr.project.stores.ShipStore;
 
 import java.io.IOException;
 
 public class ImportShipsController {
+<<<<<<< HEAD
     private App app;
     private Company company;
     private Import imp;
@@ -23,8 +23,11 @@ public class ImportShipsController {
         imp = new Import(company.getShipStore());
     }
 
+=======
+    private final Import imp;
+
+>>>>>>> b5c05951519b6cb19c6500cde8dfc4fcd3d10f20
     public ImportShipsController(ShipStore store){
-        this.store = store;
         imp = new Import(store);
     }
 
