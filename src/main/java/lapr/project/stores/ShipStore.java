@@ -1,6 +1,5 @@
 package lapr.project.stores;
 
-import lapr.project.model.AISMessage;
 import lapr.project.model.Ship;
 import lapr.project.model.Trips;
 import lapr.project.utils.*;
@@ -165,16 +164,16 @@ public class ShipStore {
      * @return pairs of ships list
      */
     public List<Pair<Ship, Ship>> getCloseCoordsShips() {
-        List<Pair<Ship, Ship>> pairOfShipsList = this.getShipBSTMMSI().getCloseCoordsShips();
+        List<Pair<Ship, Ship>> closeCoordsShips = this.getShipBSTMMSI().getCloseCoordsShips();
 
-        for (int i = 0; i < pairOfShipsList.size(); i++) {
-            for (int j = i + 1; j < pairOfShipsList.size(); j++) {
-                if (pairOfShipsList.get(i).getFirst() == pairOfShipsList.get(j).getSecond())
-                    pairOfShipsList.remove(pairOfShipsList.get(j));
+        for (int i = 0; i < closeCoordsShips.size(); i++) {
+            for (int j = i + 1; j < closeCoordsShips.size(); j++) {
+                if (closeCoordsShips.get(i).getFirst() == closeCoordsShips.get(j).getSecond())
+                    closeCoordsShips.remove(closeCoordsShips.get(j));
             }
         }
-        pairOfShipsList.sort(new SortByMMSITravDistance());
-        return pairOfShipsList;
+        closeCoordsShips.sort(new SortByMMSITravDistance());
+        return closeCoordsShips;
     }
 
     public List<Ship> getShipList() {
