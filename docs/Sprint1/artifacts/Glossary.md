@@ -12,7 +12,7 @@
 | **COG** | **COG** | Course over ground. |
 | **Container** | **Contentor** | A large object for storing/transporting something. |
 | **Delta Distance** | **Distância Delta** | Linear distance between the coordinates of the first and last move. |
-| **Draft** | **Draft** | Vertical distance between the waterline abd the bottom of the ship´s hull, in meters. |
+| **Draft** | **Draft** | Vertical distance between the waterline and the bottom of the ship´s hull, in meters. |
 | **Gross Weight** | **Peso Bruto** | Weight of the container plus the maximum payload it can hold. |
 | **Hull** | **Casco** | The main body of a ship or other vessel. |
 | **ISO Code** | **Código ISO** | Identifies a shipping container. |
