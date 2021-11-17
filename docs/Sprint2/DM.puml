@@ -1,0 +1,112 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+-trips
+}
+class AISMessage{
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
+class Trips{
+-startingPort
+-destination
+-CoordinatesSet
+}
+class Truck {
+}
+
+class Container {
+-containerId
+-containerPayload
+-containerTare
+-containerGross
+-ISOcode
+}
+
+class PortWarehouse {
+-idPortW
+-name
+-continent
+-country
+-latitude
+-longitude
+}
+
+class ShipCaptain {
+}
+
+class TrafficManager {
+}
+
+class FleetManager {
+}
+
+class WarehouseStaff {
+}
+
+class WarehouseManager {
+}
+
+class PortManager {
+}
+
+class PortStaff {
+}
+
+class TrafficManager {
+}
+
+class TruckDriver {
+}
+
+class ChiefElectricalEngineer {
+}
+
+class CargoManifest {
+}
+
+class LoadingCargoManifest {
+}
+
+class UnloadingCargoManifest {
+}
+
+FleetManager "1" -- "*" Ship : controls >
+TrafficManager "1" -- "1" Ship : controls >
+TrafficManager "1" -- "1" Truck : controls >
+Ship "1" -- "*" Container : carries >
+Ship "1" -- "*" AISMessage : contains >
+Ship "1" -- "1" ShipCaptain : drives >
+Ship "1" -- "1" ChiefElectricalEngineer
+Trips "1" -- "*" PortWarehouse : between >
+Ship "1" -- "*" Trips : does many >
+Container "*" -- "*" CargoManifest : contains <
+Truck "1" -- "*" Container : carries >
+Truck "1" -- "1" TruckDriver : drives <
+PortWarehouse "1" -- "1" WarehouseManager
+PortWarehouse "1" -- "1" WarehouseStaff
+PortWarehouse "1" -- "1" PortManager
+PortWarehouse "1" -- "1" PortStaff
+LoadingCargoManifest "1" -u- "1" CargoManifest : is a >
+CargoManifest "*" -- "1" PortStaff : makes <
+UnloadingCargoManifest "*" -u- "1" CargoManifest : is a >
+
+@enduml

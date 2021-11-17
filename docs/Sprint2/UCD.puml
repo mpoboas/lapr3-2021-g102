@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+
+actor "Traffic Manager" as TM
+
+actor "Project Manager" as PM
+
+
+usecase "UC101 - Import Ship" as UC1
+usecase "UC102 - Search Ship Details" as UC2
+usecase "UC103 - List positional messages" as UC3
+usecase "UC104 - Make summary of movements" as UC4
+usecase "UC105 - List Ship information" as UC5
+usecase "UC106 - List top-N ships" as UC6
+usecase "UC107 - List pair of ships" as UC7
+
+usecase "UC108 - Develop data model" as UC8
+usecase "UC109 - Draft SQL script" as UC9
+usecase "UC110 - Define naming conventions" as UC10
+usecase "UC111 - SQL script to load database" as UC11
+
+
+
+TM --> (UC1)
+TM --> (UC2)
+TM --> (UC3)
+TM --> (UC4)
+TM --> (UC5)
+TM --> (UC6)
+TM --> (UC7)
+
+PM --> (UC8)
+PM --> (UC9)
+PM --> (UC10)
+PM --> (UC11)
+
+@enduml

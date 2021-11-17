@@ -1,0 +1,73 @@
+@startuml
+autonumber
+'hide footbox
+actor "Traffic Manager" as TF
+
+participant ":PositionalMessagesUI" as UI
+participant ":PositionalMessagesController" as CTRL
+participant "Company" as COMP
+participant "ship: Ship" as ship
+
+
+
+activate TF
+TF -> UI : asks for the positional messages of a ship
+activate UI
+UI --> TF : asks to choose a ship (MMSI or IMO or callSign)
+deactivate UI
+
+TF -> UI : inserts requested data
+activate UI
+
+UI -> CTRL : getShip()
+activate CTRL
+
+
+alt MMSI
+CTRL -> COMP :ship = getShipByMMSI(MMSI)
+activate COMP
+deactivate COMP
+
+else IMO
+CTRL -> COMP :ship = getShipByIMO(IMO)
+activate COMP
+deactivate COMP
+
+else callSign
+CTRL -> COMP :ship = getShipByCallSign(callSign)
+activate COMP
+deactivate COMP
+
+end
+
+UI --> TF : requests a period or date
+deactivate UI
+
+TF -> UI : inserts requested data
+activate UI
+
+alt atDate
+UI -> CTRL : getPositionalMessagesAtDate(date)
+CTRL -> COMP : getPositionalMessagesAtDate(ship, date)
+activate COMP
+deactivate COMP
+
+
+else betweenTwoDates
+UI -> CTRL : getPositionalMessagesBetweenTwoDates(date1, date2)
+CTRL -> COMP : getPositionalMessagesBetweenTwoDates(ship, date1, date2)
+activate COMP
+deactivate COMP
+end
+
+UI --> TF : shows the ship's positional messages
+
+
+
+
+deactivate UI
+
+deactivate TF
+
+
+@enduml
