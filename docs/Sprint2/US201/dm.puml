@@ -1,0 +1,29 @@
+@startuml
+class Coordinates{
+-latitude
+-longitude
+}
+class Port {
+-idPort
+-name
+-continent
+-country
+}
+class WarehouseStaff {
+}
+
+class WarehouseManager {
+}
+
+class PortManager {
+}
+
+class PortStaff {
+}
+PortWarehouse "1" -- "1" Coordinates : Has only 1 set of >
+PortWarehouse "1" -- "1" WarehouseManager
+PortWarehouse "1" -- "1" WarehouseStaff
+PortWarehouse "1" -- "1" PortManager
+PortWarehouse "1" -- "1" PortStaff
+
+@enduml

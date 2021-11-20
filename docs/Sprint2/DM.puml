@@ -88,7 +88,18 @@ class LoadingCargoManifest {
 
 class UnloadingCargoManifest {
 }
-
+class Coordinates{
+-latitude
+-longitude
+}
+class Port {
+-idPort
+-name
+-continent
+-country
+}
+Port "1" -- "1" Coordinates : Has only 1 set of >
+Port "1" -- "1" PortWarehouse : Has a >
 FleetManager "1" -- "*" Ship : controls >
 TrafficManager "1" -- "1" Ship : controls >
 TrafficManager "1" -- "1" Truck : controls >
