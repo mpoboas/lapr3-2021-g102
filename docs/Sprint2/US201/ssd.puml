@@ -1,0 +1,8 @@
+@startuml
+actor "Port Manager" as Pman
+participant System as sys
+Pman -> sys : Requests 2d tree of ports
+sys -->Pman : Asks for file with Port information
+Pman -> sys :inserts file name
+sys --> Pman :shows 2d Tree of ports
+@enduml
