@@ -1,6 +1,8 @@
 package lapr.project.model;
 
-public class Port {
+import java.util.Objects;
+
+public class Port implements Comparable<Port> {
 
     private final int id;
     private final String name;
@@ -25,4 +27,25 @@ public class Port {
     public double getLongitude(){return this.longitude;}
 
 
+    @Override
+    public int compareTo(Port o) {
+        return this.id - o.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Port{" +
+                "id=" + id +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Port port = (Port) o;
+        return id == port.id && Double.compare(port.latitude, latitude) == 0 && Double.compare(port.longitude, longitude) == 0;
+    }
 }
