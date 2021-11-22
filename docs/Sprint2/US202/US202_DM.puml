@@ -1,0 +1,67 @@
+@startuml
+
+class TrafficManager {
+}
+
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+-trips
+}
+
+class AISMessage{
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
+
+class Trips {
+-startingPort
+-destination
+-CoordinatesSet
+}
+
+class PortWarehouse {
+-idPortW
+-name
+-continent
+-country
+-latitude
+-longitude
+}
+
+class Coordinates{
+-latitude
+-longitude
+}
+
+TrafficManager "1" -- "1" Ship : controls >
+Ship "1" -- "*" AISMessage : contains >
+Ship "1" -- "*" Trips : does many >
+AISMessage "1" -- "1" Coordinates : Has a set of >
+Trips "1" -- "*" PortWarehouse : between >
+PortWarehouse "1" -- "1" Coordinates : Has a set of >
+
+@enduml

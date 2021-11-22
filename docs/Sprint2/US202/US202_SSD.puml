@@ -1,0 +1,16 @@
+@startuml
+autonumber
+actor "Traffic Manager" as TF
+
+activate TF
+TF -> ":System" : requests to find the closest port of a ship,\non a certain date and time
+activate ":System"
+":System" --> TF : requests all the needed data (ship´s CallSign and DateTime)
+deactivate ":System"
+TF -> ":System" : types data
+activate ":System"
+":System" --> TF : shows the given ship´s closest port
+deactivate ":System"
+deactivate TF
+
+@enduml
