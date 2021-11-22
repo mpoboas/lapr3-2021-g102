@@ -1,0 +1,16 @@
+@startuml
+autonumber
+actor "Ship Captain" as SC
+
+activate SC
+SC -> ":System" : requests the occupancy rate of a\ngiven ship for a given cargo manifest
+activate ":System"
+":System" --> SC : requests all the needed data (ship)
+deactivate ":System"
+SC -> ":System" : types data
+activate ":System"
+":System" --> SC : shows the given ship´s occupancy rate
+deactivate ":System"
+deactivate SC
+
+@enduml
