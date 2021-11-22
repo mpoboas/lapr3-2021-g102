@@ -15,6 +15,7 @@ class Ship {
 -draft
 -trips
 }
+
 class AISMessage{
 -baseDateTime
 -latitude
@@ -25,11 +26,13 @@ class AISMessage{
 -position
 -transceiverClass
 }
+
 class Trips{
 -startingPort
 -destination
 -CoordinatesSet
 }
+
 class Truck {
 }
 
@@ -88,23 +91,27 @@ class LoadingCargoManifest {
 
 class UnloadingCargoManifest {
 }
+
 class Coordinates{
 -latitude
 -longitude
 }
+
 class Port {
 -idPort
 -name
 -continent
 -country
 }
-Port "1" -- "1" Coordinates : Has only 1 set of >
+
+Port "1" -- "1" Coordinates : Has a set of >
 Port "1" -- "1" PortWarehouse : Has a >
 FleetManager "1" -- "*" Ship : controls >
 TrafficManager "1" -- "1" Ship : controls >
 TrafficManager "1" -- "1" Truck : controls >
 Ship "1" -- "*" Container : carries >
 Ship "1" -- "*" AISMessage : contains >
+AISMessage "1" -- "1" Coordinates : Has a set of >
 Ship "1" -- "1" ShipCaptain : drives >
 Ship "1" -- "1" ChiefElectricalEngineer
 Trips "1" -- "*" PortWarehouse : between >
@@ -119,5 +126,4 @@ PortWarehouse "1" -- "1" PortStaff
 LoadingCargoManifest "1" -u- "1" CargoManifest : is a >
 CargoManifest "*" -- "1" PortStaff : makes <
 UnloadingCargoManifest "*" -u- "1" CargoManifest : is a >
-
 @enduml
