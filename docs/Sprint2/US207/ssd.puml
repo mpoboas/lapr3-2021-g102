@@ -1,0 +1,9 @@
+@startuml
+actor "Ship Captain" as sc
+participant system as sys
+autonumber
+sc -> sys: Requests how many cargo manifests he has transported in a given year
+sys --> sc : Requests which year is desired
+sc ->sys : types requested data
+sys --> sc : Shows the desired number
+@enduml
