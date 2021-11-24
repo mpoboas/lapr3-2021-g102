@@ -20,6 +20,7 @@ class PortManager {
 
 class PortStaff {
 }
+Port "1" -- "1" PortWarehouse : has atleast one >
 PortWarehouse "1" -- "1" Coordinates : Has only 1 set of >
 PortWarehouse "1" -- "1" WarehouseManager
 PortWarehouse "1" -- "1" WarehouseStaff

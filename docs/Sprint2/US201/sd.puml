@@ -1,0 +1,15 @@
+@startuml
+actor "Port Manager" as Pman
+participant Create2DTreeUI as UI
+participant Create2DTreeController as controller
+activate Pman
+Pman -> UI : Requests 2d tree of ports
+activate UI
+UI -->Pman : Asks for file with Port information
+deactivate UI
+Pman -> UI :inserts file name
+activate UI
+UI --> Pman :shows 2d Tree of ports
+deactivate UI
+deactivate Pman
+@enduml
