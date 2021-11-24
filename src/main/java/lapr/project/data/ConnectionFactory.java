@@ -26,7 +26,7 @@ public class ConnectionFactory {
     /**
      * This is the size of the connection pool.
      */
-    private final Integer connectionPoolCount = 1;
+    private static final Integer connectionPoolCount = 1;
 
     private final List<DatabaseConnection> databaseConnectionList =
             new ArrayList<>();
@@ -57,6 +57,7 @@ public class ConnectionFactory {
                 getClass().getClassLoader().getResourceAsStream(
                         "application.properties");
         properties.load(inputStream);
+        assert inputStream != null;
         inputStream.close();
 
         //Set new properties.
