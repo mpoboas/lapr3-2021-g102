@@ -1,16 +1,22 @@
 @startuml
 actor "Ship Captain" as sc
-participant system as sys
+participant getNManifestsYUI as UI
+participant getNManifestsYController as Controller
+participant ConnectionFactory as cf
+participant DatabaseConnection as dc
+participant getNManifestsYear as data
+database LAPR3_G102  as db
+
 autonumber
 activate sc
-sc -> sys: Requests how many cargo manifests he has transported in a given year
-activate sys
-sys --> sc : Requests which year is desired
-deactivate sys
-sc ->sys : types requested data
-activate sys
-sys --> sc : Shows the desired number
-deactivate sys
+sc -> UI: Requests how many cargo manifests he has transported in a given year and average container
+activate UI
+UI --> sc : Requests which year is desired
+deactivate UI
+sc ->UI : types requested data
+activate UI
+UI --> sc : Shows the desired numbers
+deactivate UI
 deactivate sc
 
 
