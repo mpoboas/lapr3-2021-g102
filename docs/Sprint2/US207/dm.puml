@@ -1,3 +1,21 @@
 @startuml
+class Container {
+-containerId
+-containerPayload
+-containerTare
+-containerGross
+-ISOcode
+}
+class CargoManifest {
+}
 
+class LoadingCargoManifest {
+}
+
+class UnloadingCargoManifest {
+}
+CargoManifest "1" -- "*" Container : contains various >
+LoadingCargoManifest "1" -u- "1" CargoManifest : is a >
+CargoManifest "*" -- "1" PortStaff : makes <
+UnloadingCargoManifest "*" -u- "1" CargoManifest : is a >
 @enduml
