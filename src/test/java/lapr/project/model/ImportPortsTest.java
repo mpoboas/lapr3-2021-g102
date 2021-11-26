@@ -3,6 +3,7 @@ package lapr.project.model;
 //import lapr.project.stores.PortStore;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ class ImportPortsTest {
         try {
             imp.importPortsData("File");
         } catch (IOException e) {
-            assertEquals("File (O sistema não conseguiu localizar o ficheiro especificado)", e.getMessage());
+            assertEquals(FileNotFoundException.class, e.getClass());
         }
         try {
             imp.importPortsData(file1);
