@@ -6,7 +6,7 @@ class Company {
 +getShipStore()
 }
 
-class ClosestPortUI {
+class FindClosestPortUI {
 }
 
 class FindClosestPortController {
@@ -38,7 +38,11 @@ class Ship {
 
 class PortStore {
 BST<Port> portTree
-+findClosestPort(Coordinates coordinates)
++findNearestNeighbour(double shipLongitude, double shipLatitude)
+}
+
+class PortTree {
++findNearestNeighbour(double shipLongitude, double shipLatitude)
 }
 
 class Port {
@@ -49,9 +53,10 @@ class Port {
 -coordinates
 }
 
-ClosestPortUI ..> FindClosestPortController
+FindClosestPortUI ..> FindClosestPortController
 Company -> PortStore : adopts >
-PortStore "1" ->  "*" Port: stores >
+PortStore "1" ->  "*" PortTree: has >
+PortTree "1" ->  "*" Port: stores >
 ShipStore "1" ->  "*" ShipTree: has >
 ShipTree "1" ->  "*" Ship: stores >
 FindClosestPortController ..> Company
