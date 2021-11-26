@@ -1,6 +1,6 @@
 package lapr.project.model;
 
-import java.util.Objects;
+import java.awt.geom.Point2D;
 
 public class Port implements Comparable<Port> {
 
@@ -8,16 +8,18 @@ public class Port implements Comparable<Port> {
     private final String name;
     private final String continent;
     private final String country;
-    private final double latitude;
-    private final double longitude;
+    private final double latitude; // eixo y
+    private final double longitude; //eixo y
+    private final Point2D.Double coords;
 
-    public Port(int id , String name, String continent, String country, double latitude, double longitude){
+    public Port(int id , String name, String continent, String country, double longitude, double latitude){
         this.id  =id;
         this.name = name;
         this.continent = continent;
         this.country = country;
         this.latitude = latitude;
         this.longitude = longitude;
+        coords = new Point2D.Double(longitude,latitude);
     }
     public int getid(){return this.id;}
     public String getName(){return this.name;}
@@ -25,6 +27,7 @@ public class Port implements Comparable<Port> {
     public String getCountry(){return this.country;}
     public double getLatitude(){return this.latitude;}
     public double getLongitude(){return this.longitude;}
+
 
 
     @Override
@@ -47,5 +50,9 @@ public class Port implements Comparable<Port> {
         if (o == null || getClass() != o.getClass()) return false;
         Port port = (Port) o;
         return id == port.id && Double.compare(port.latitude, latitude) == 0 && Double.compare(port.longitude, longitude) == 0;
+    }
+
+    public Point2D.Double getCoords() {
+        return coords;
     }
 }
