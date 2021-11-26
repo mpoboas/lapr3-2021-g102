@@ -10,17 +10,17 @@ class FindClosestPortUI {
 }
 
 class FindClosestPortController {
-+getShipCoordinatesAtGivenTime(Ship ship, DateTime dateTime)
 +findClosestPort(Coordinates coordinates)
+-getShipCoordinatesAtGivenTime(Ship ship, DateTime dateTime)
 }
 
 class ShipStore {
-BST<Ship> shipTree
+-BST<Ship> shipTree
 +getShipCoordinatesAtGivenTime(Ship ship, DateTime dateTime)
 }
 
 class ShipTree {
-getShipCoordinatesAtGivenTime(Ship ship, DateTime dateTime)
++getShipCoordinatesAtGivenTime(Ship ship, DateTime dateTime)
 }
 
 class Ship {
@@ -37,7 +37,7 @@ class Ship {
 }
 
 class PortStore {
-BST<Port> portTree
+-BST<Port> portTree
 +findNearestNeighbour(double shipLongitude, double shipLatitude)
 }
 
