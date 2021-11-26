@@ -5,7 +5,6 @@ participant getNManifestsYController as Controller
 participant getNManifestsYear as data
 participant ConnectionFactory as cf
 participant DatabaseConnection as dc
-
 database LAPR3_G102  as db
 
 autonumber
@@ -16,6 +15,26 @@ UI --> sc : Requests which year is desired
 deactivate UI
 sc ->UI : types requested data
 activate UI
+UI -> Controller :requests data
+activate Controller
+Controller -> data : requests data
+activate data
+data -> cf : requests a database connection to run query
+activate cf
+cf -> dc : requests database connection to run query
+activate dc
+dc -> db : estabilishes connection and runs query
+activate db
+db --> dc : sends desired data
+deactivate db
+dc --> cf : sends requested data
+deactivate dc
+cf --> data : senda requested data
+deactivate cf
+data -->  Controller: sends requested data
+deactivate data
+Controller --> UI :sends requested data
+deactivate Controller
 UI --> sc : Shows the desired numbers
 deactivate UI
 deactivate sc
