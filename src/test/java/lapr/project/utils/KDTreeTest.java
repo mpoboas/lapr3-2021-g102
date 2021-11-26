@@ -57,9 +57,9 @@ class KDTreeTest {
         assertEquals(0, tree.inOrder().size());
         assertEquals(-1, tree.height());
         for (Port p : portsList) {
-            tree.insert(p, p.getLatitude(), p.getLongitude());
+            tree.insert(p, p.getLongitude(),p.getLatitude());
         }
-        tree.insert(p1, p1.getLatitude(), p1.getLongitude());
+        tree.insert(p1, p1.getLongitude(), p1.getLatitude());
         System.out.println(tree);
         assertEquals(6, tree.inOrder().size());
 
@@ -78,14 +78,43 @@ class KDTreeTest {
         System.out.println(tree);
         System.out.println("height1=" + tree.height());
         System.out.println("------------------------------------");
+    }
+
+    @Test
+    void testPortTree(){
+        PortTree tree = new PortTree();
+        Port p1 = new Port(1, "name1", "continent1", "country1", 30, 40);
+        Port p2 = new Port(2, "name2", "continent1", "country2", 5, 25);
+        Port p3 = new Port(3, "name3", "continent2", "country3", 10, 12);
+        Port p4 = new Port(4, "name4", "continent2", "country4", 70, 70);
+        Port p5 = new Port(5, "name5", "continent4", "country5", 50, 30);
+        Port p6 = new Port(6, "name6", "continent5", "country6", 35, 45);
+        List<Port> portsList = new ArrayList<>();
+        portsList.add(p5);
+        portsList.add(p6);
+        portsList.add(p3);
+        portsList.add(p4);
+        portsList.add(p2);
+        portsList.add(p1);
+       // List<Port> portsList2 = portsList.subList(0, portsList.size()) ;
+
+        //System.out.println(portsList2);
+        tree.buildKDTree(portsList);
+        List<Port> balanced = new ArrayList<>();
+        //balanced.add(p2);balanced.add(p3);balanced.add(p5);balanced.add(p6);balanced.add(p1);balanced.add(p4);
+        balanced.add(p3);balanced.add(p2);balanced.add(p1);balanced.add(p5);balanced.add(p6);balanced.add(p4);
+        System.out.println(tree);
+        assertEquals(balanced, tree.inOrder());
+
 
     }
-/*
+
+
     @Test
     void findNearestNeighbour() {
-        KDTree<Port> tree = new KDTree<>();
-        Port p1 = new Port(1, "name1", "continent1", "country1", 3, 9);
-        Port p2 = new Port(2, "name2", "continent1", "country2", 1, 7);
+        PortTree tree = new PortTree();
+        Port p1 = new Port(1, "name1", "continent1", "country1",  3,9);
+        Port p2 = new Port(2, "name2", "continent1", "country2",1, 7 );
         Port p3 = new Port(3, "name3", "continent2", "country3", 7, 9);
         Port p4 = new Port(4, "name4", "continent2", "country4", 2, 1);
         Port p5 = new Port(5, "name5", "continent4", "country5", 9, 6);
@@ -107,17 +136,36 @@ class KDTreeTest {
         portsList.add(p9);
         portsList.add(p10);
         portsList.add(p11);
-        assertNull(tree.findNearestNeighbour(1,2));
-        for (Port p : portsList) {
-            tree.insert(p, p.getLatitude(), p.getLongitude());
+        List<Port> portsListX = new ArrayList<>(portsList);portsListX.sort(new PortByLongitude());
+        List<Port> portsListY = new ArrayList<>(portsList);portsListY.sort(new PortByLatitude());
+
+        System.out.println("Sorted by X:");
+        for (Port p: portsListX) {
+            System.out.println(p);
         }
-        tree.findNearestNeighbour(4,5);
+        System.out.println();
+        System.out.println("Sorted by Y:");
+        for (Port p: portsListY) {
+            System.out.println(p);
+        }
+
+        assertNull(tree.findNearestNeighbour(1,2));
+       /* for (Port p : portsList) {
+            tree.insert(p, p.getLatitude(), p.getLongitude());
+        }*/
+        tree.buildKDTree(portsList);
+        //tree.findNearestNeighbour(4,5);
         //assertEquals(p7, tree.findNearestNeighbour(4,5));
         System.out.println("<tree>");
         System.out.println(tree);
         System.out.println("height1=" + tree.height());
         System.out.println("------------------------------------");
-    }*/
+
+        System.out.println("In order:");
+        for (Port p: tree.inOrder()) {
+            System.out.println(p);
+        }
+    }
 
 
 }

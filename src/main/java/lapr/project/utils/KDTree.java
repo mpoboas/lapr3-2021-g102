@@ -18,11 +18,24 @@ public class KDTree<T extends Comparable<T>> {
         private Node2D<T> left;
         private Node2D<T> right;
 
+        public Node2D(T element, Node2D<T> leftChild, Node2D<T> rightChild) {
+            info = element;
+            left = leftChild;
+            right = rightChild;
+        }
+
+        public Node2D(T element, Point2D.Double coords, Node2D<T> leftChild, Node2D<T> rightChild) {
+            info = element;
+            left = leftChild;
+            right = rightChild;
+            this.coords = coords;
+        }
+
         public Node2D(T element, double x, double y, Node2D<T> leftChild, Node2D<T> rightChild) {
             info = element;
             left = leftChild;
             right = rightChild;
-            coords = new Point2D.Double(x,y);
+            coords = new Point2D.Double(x, y);
         }
 
         public T getElement() {
@@ -33,11 +46,25 @@ public class KDTree<T extends Comparable<T>> {
             return coords.getX();
         }
 
+        public void setX(Double x) {
+            coords.x = x;
+        }
+
         public double getY() {
             return coords.getY();
         }
 
-        public void setElement(T element){info=element;}
+        public void setY(Double y) {
+            coords.y = y;
+        }
+
+        public void setElement(T element) {
+            info = element;
+        }
+
+        public void setLeft(Node2D<T> node) {left = node;}
+        public void setRight(Node2D<T> node) {right = node;}
+
     }
     //----------- end of nested Node class -----------
 
@@ -55,7 +82,7 @@ public class KDTree<T extends Comparable<T>> {
         }
     };
 
-    private Node2D<T> root;
+    protected Node2D<T> root;
 
     public KDTree() {
         root = null;
@@ -92,14 +119,13 @@ public class KDTree<T extends Comparable<T>> {
 
     }
 
-    private Node2D<T> insert(Node2D<T> currentNode, Node2D<T> node, boolean divX) {
+    protected Node2D<T> insert(Node2D<T> currentNode, Node2D<T> node, boolean divX) {
 
         if (currentNode == null)
             return node;
-        if (node.coords.equals(currentNode.coords)){
+        if (node.coords.equals(currentNode.coords)) {
             currentNode.setElement(node.info);
-        }
-        else {
+        } else {
             int cmpResult = (divX ? cmpX : cmpY).compare(node, currentNode);
 
             if (cmpResult == -1) {
@@ -118,7 +144,9 @@ public class KDTree<T extends Comparable<T>> {
         return currentNode;
     }
 
-/*
+    public void buildKDTree(List<T> elements){}
+
+
     public T findNearestNeighbour(double x, double y) {
         return findNearestNeighbour(root, x, y, root, true);
     }
@@ -144,7 +172,7 @@ public class KDTree<T extends Comparable<T>> {
             findNearestNeighbour(node2, x, y, closestNode, !divX);
 
         return closestNode.info;
-    }*/
+    }
 
     public List<T> inOrder() {
         List<T> list = new ArrayList<>();
