@@ -2,9 +2,10 @@
 actor "Ship Captain" as sc
 participant getNManifestsYUI as UI
 participant getNManifestsYController as Controller
+participant getNManifestsYear as data
 participant ConnectionFactory as cf
 participant DatabaseConnection as dc
-participant getNManifestsYear as data
+
 database LAPR3_G102  as db
 
 autonumber

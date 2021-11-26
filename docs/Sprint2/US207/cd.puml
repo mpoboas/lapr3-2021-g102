@@ -2,11 +2,38 @@
 class getNManifestsYUI{
 }
 class getNManifestsYController{
+-idShipCaptain
+-year
+-getNManifests()
+-getAvgContainerPerManifest()
 }
 class ConnectionFactory{
+-getInstance()
+-loadProperties()
+-getDatabaseConnection()
+
 }
 class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
+-getConnection()
+-registerError(SQLException error)
+-getLastError()
 }
 class getNManifestsYear{
+-idShipCaptain
+-year
+-NManifestsYear
+-AvgContainerPerManifest
+-getNmanifestsinyear()
+-getAVGContainerPerManifest()
+-executeStatementeOnDB(String sqlCommand)
+-getNManifests()
+-getAvgManifests()
 }
+getNManifestsYUI -- getNManifestsYController : requests number of cargo manifests and avg container per manifest by a certain captain >
+getNManifestsYController -- getNManifestsYear : requests data >
+getNManifestsYear -- ConnectionFactory : requests connection to database to obtain data >
+ConnectionFactory -- DatabaseConnection : fabricate a >
 @enduml
