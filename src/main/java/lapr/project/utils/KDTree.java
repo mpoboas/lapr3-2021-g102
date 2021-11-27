@@ -38,6 +38,13 @@ public class KDTree<T extends Comparable<T>> {
             coords = new Point2D.Double(x, y);
         }
 
+        public void setObject(Node2D<T> node2D){
+            this.info = node2D.info;
+            this.coords = node2D.coords;
+            setLeft(node2D.left);
+            setRight(node2D.right);
+        }
+
         public T getElement() {
             return info;
         }
@@ -62,8 +69,13 @@ public class KDTree<T extends Comparable<T>> {
             info = element;
         }
 
-        public void setLeft(Node2D<T> node) {left = node;}
-        public void setRight(Node2D<T> node) {right = node;}
+        public void setLeft(Node2D<T> node) {
+            left = node;
+        }
+
+        public void setRight(Node2D<T> node) {
+            right = node;
+        }
 
     }
     //----------- end of nested Node class -----------
@@ -144,11 +156,12 @@ public class KDTree<T extends Comparable<T>> {
         return currentNode;
     }
 
-    public void buildKDTree(List<T> elements){}
+    //public void buildKDTree(List<T> elements){}
 
 
     public T findNearestNeighbour(double x, double y) {
-        return findNearestNeighbour(root, x, y, root, true);
+        KDTree<T> auxTree = this.copyTree();
+        return findNearestNeighbour(auxTree.root, x, y, auxTree.root, true);
     }
 
     private T findNearestNeighbour(Node2D<T> node, double x, double y, Node2D<T> closestNode, boolean divX) {
@@ -157,8 +170,9 @@ public class KDTree<T extends Comparable<T>> {
         double d = Point2D.distanceSq(node.coords.x, node.coords.y, x, y);
         double closestDist = Point2D.distanceSq(closestNode.coords.x, closestNode.coords.y, x, y);
 
-        if (closestDist > d)
-            closestNode = node;
+        if (closestDist > d){
+            closestNode.setObject(node);
+        }
 
         double delta = divX ? (x - node.coords.x) : (y - node.coords.y);
         double deltaS = delta * delta;
@@ -212,6 +226,21 @@ public class KDTree<T extends Comparable<T>> {
         } else
             sb.append(root.getElement()).append("\n");
         toStringRec(root.left, level + 1, sb);
+    }
+
+    private KDTree<T> copyTree(){
+        KDTree<T> otherTree = new KDTree<>();
+        otherTree.root = preOrderCopy(this.root);
+        return otherTree;
+    }
+
+    private Node2D<T> preOrderCopy(Node2D<T> node){
+        if (node == null)
+            return null;
+        Node2D<T> copy = new Node2D<>(node.info, node.coords,null,null);
+        copy.left = preOrderCopy(node.left);
+        copy.right = preOrderCopy(node.right);
+        return copy;
     }
 
 }
