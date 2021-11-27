@@ -1,6 +1,6 @@
 package lapr.project.model;
 
-//import lapr.project.stores.PortStore;
+import lapr.project.stores.PortStore;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -17,8 +17,8 @@ class ImportPortsTest {
 
     @Test
     void importPortsData() {
-        //PortStore store = new PortStore();
-        ImportPorts imp = new ImportPorts(/*store*/);
+        PortStore store = new PortStore();
+        ImportPorts imp = new ImportPorts(store);
         try {
             imp.importPortsData("File");
         } catch (IOException e) {
@@ -30,15 +30,12 @@ class ImportPortsTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
-
 
     @Test
     void portAlreadyImported() {
-        //PortStore store = new PortStore();
-        ImportPorts imp = new ImportPorts(/*store*/);
+        PortStore store = new PortStore();
+        ImportPorts imp = new ImportPorts(store);
         try {
             imp.importPortsData(file1);
             assertTrue(imp.portAlreadyImported("20351"));
@@ -51,8 +48,8 @@ class ImportPortsTest {
 
     @Test
     void getListOfImportedPorts() {
-        //PortStore store = new PortStore();
-        ImportPorts imp = new ImportPorts(/*store*/);
+        PortStore store = new PortStore();
+        ImportPorts imp = new ImportPorts(store);
         Port p1 = new Port(29002, "Liverpool", "Europe", "United Kingdom", -3.033333333, 53.46666667);
         Port p2 = new Port(14635, "Los Angeles", "America", "United States", -118.2666667, 33.71666667);
         Port p3 = new Port(25007, "New Jersey", "America", "United States", -74.16666667, 40.66666667);
@@ -89,7 +86,21 @@ class ImportPortsTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    @Test
+    void addPortsTest(){
+        PortStore store = new PortStore();
+        ImportPorts imp = new ImportPorts(store);
+        try {
+            imp.importPortsData(file1);
+            imp.addPorts();
+            assertEquals(0,imp.getListOfImportedPorts().size());
+            assertNotEquals(0,store.getPortTree().inOrder().size());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assertEquals(store,imp.getStore());
 
     }
 }
