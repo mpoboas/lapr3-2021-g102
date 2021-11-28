@@ -145,6 +145,7 @@ public class ShipTree extends BST<Ship> {
 
         return node;
     }
+
     @Override
     public boolean equals(Object otherObj) {
         if (this == otherObj)
@@ -234,8 +235,8 @@ public class ShipTree extends BST<Ship> {
             return;
 
         addAllPairs(node.getLeft(), nodeToBeCompared, closeCoordsShipList);
-        if (node != nodeToBeCompared &&isPair(nodeToBeCompared, node) ) {
-                closeCoordsShipList.add(new Pair<>(nodeToBeCompared.getElement(), node.getElement()));
+        if (node != nodeToBeCompared && isPair(nodeToBeCompared, node)) {
+            closeCoordsShipList.add(new Pair<>(nodeToBeCompared.getElement(), node.getElement()));
         }
         addAllPairs(node.getRight(), nodeToBeCompared, closeCoordsShipList);
     }

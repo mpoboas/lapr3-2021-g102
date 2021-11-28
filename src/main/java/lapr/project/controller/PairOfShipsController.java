@@ -29,7 +29,7 @@ public class PairOfShipsController {
     }
 
     /**
-     * Constructor of the covid report controller, with no received parameters.
+     * Constructor of the pair of ships controller, with no received parameters.
      */
     public PairOfShipsController() {
         this(App.getInstance().getCompany());
