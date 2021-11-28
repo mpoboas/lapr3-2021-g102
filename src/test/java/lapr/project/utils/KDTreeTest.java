@@ -3,6 +3,7 @@ package lapr.project.utils;
 import lapr.project.model.Port;
 import org.junit.jupiter.api.Test;
 
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -112,7 +113,8 @@ class KDTreeTest {
 
     @Test
     void findNearestNeighbour() {
-        PortTree tree = new PortTree();
+        //PortTree tree = new PortTree();
+        KDTree<Port> tree = new KDTree<>();
         Port p1 = new Port(1, "name1", "continent1", "country1",  3,9);
         Port p2 = new Port(2, "name2", "continent1", "country2",1, 7 );
         Port p3 = new Port(3, "name3", "continent2", "country3", 7, 9);
@@ -136,30 +138,21 @@ class KDTreeTest {
         portsList.add(p9);
         portsList.add(p10);
         portsList.add(p11);
-        List<Port> portsListX = new ArrayList<>(portsList);portsListX.sort(new PortByLongitude());
-        List<Port> portsListY = new ArrayList<>(portsList);portsListY.sort(new PortByLatitude());
-
-        System.out.println("Sorted by X:");
-        for (Port p: portsListX) {
-            System.out.println(p);
-        }
-        System.out.println();
-        System.out.println("Sorted by Y:");
-        for (Port p: portsListY) {
-            System.out.println(p);
-        }
 
         assertNull(tree.findNearestNeighbour(1,2));
-       /* for (Port p : portsList) {
-            tree.insert(p, p.getLatitude(), p.getLongitude());
-        }*/
-        tree.buildKDTree(portsList);
-        //tree.findNearestNeighbour(4,5);
-        //assertEquals(p7, tree.findNearestNeighbour(4,5));
+        //tree.buildKDTree(portsList);
+        for (Port p : portsList) {
+            tree.insert(p, p.getLongitude(),p.getLatitude());
+        }
         System.out.println("<tree>");
         System.out.println(tree);
         System.out.println("height1=" + tree.height());
         System.out.println("------------------------------------");
+
+        //tree.findNearestNeighbour(4,5);
+
+        assertEquals(p7, tree.findNearestNeighbour(4,5));
+
 
         System.out.println("In order:");
         for (Port p: tree.inOrder()) {

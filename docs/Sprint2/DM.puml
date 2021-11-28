@@ -13,7 +13,6 @@ class Ship {
 -width
 -capacity
 -draft
--trips
 }
 
 class AISMessage{
@@ -84,6 +83,8 @@ class ChiefElectricalEngineer {
 }
 
 class CargoManifest {
+-content
+-elaborationDate
 }
 
 class LoadingCargoManifest {
@@ -112,7 +113,7 @@ TrafficManager "1" -- "1" Truck : controls >
 Ship "1" -- "*" Container : carries >
 Ship "1" -- "*" AISMessage : contains >
 AISMessage "1" -- "1" Coordinates : Has a set of >
-Ship "1" -- "1" ShipCaptain : drives >
+Ship "1" -- "1" ShipCaptain : drives <
 Ship "1" -- "1" ChiefElectricalEngineer
 Trips "1" -- "*" PortWarehouse : between >
 Ship "1" -- "*" Trips : does many >

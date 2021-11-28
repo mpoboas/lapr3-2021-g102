@@ -173,6 +173,7 @@ CREATE TABLE CargoManifestType (
 CREATE TABLE CargoManifest (
     idCargoManifest INTEGER PRIMARY KEY,
     content VARCHAR(255),
+    elaborationDate TIMESTAMP,
     idCargoManifestType INTEGER,
     idTrip INTEGER,
     idPortWarehouse INTEGER
