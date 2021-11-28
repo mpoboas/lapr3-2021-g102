@@ -10,7 +10,7 @@ public class US207Demo {
     static Scanner scan = new Scanner(System.in);
     static getNManifestsController controller;
     public static void main(String[] args) throws IOException, SQLException {
-        int id = 12;
+        int id = 3;
         System.out.println("List number of cargo manifests transported in year and average container per cargo manifest");
         System.out.println("Which year is requires?");
         int year = scan.nextInt();

@@ -12,13 +12,13 @@ class getNManifestsControllerTest {
 
     @Test
     void getNManifests() throws SQLException, IOException {
-        controller = new getNManifestsController(2021, 12);
+        controller = new getNManifestsController(3, 2020);
         System.out.println(controller.getNManifests());
     }
 
     @Test
     void getAvgContainerPerManifest() throws SQLException, IOException {
-        controller = new getNManifestsController(2021, 12);
+        controller = new getNManifestsController(3, 2020);
         System.out.println(controller.getAvgContainerPerManifest());
     }
 }
