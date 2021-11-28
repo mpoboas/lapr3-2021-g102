@@ -1,6 +1,7 @@
 @startuml
 actor "Port Manager" as Pman
 participant System as sys
+autonumber
 activate Pman
 Pman -> sys : Requests 2d tree of ports
 activate sys
@@ -8,7 +9,12 @@ sys -->Pman : Asks for file with Port information
 deactivate sys
 Pman -> sys :inserts file name
 activate sys
-sys --> Pman :shows 2d Tree of ports
+sys --> Pman : shows how many ports were imported
+deactivate sys
+deactivate sys
+Pman -> sys : confirms the data
+activate sys
+sys --> Pman : informs operation success
 deactivate sys
 deactivate Pman
 @enduml
