@@ -19,6 +19,19 @@ public class PortStore {
     }
 
     /**
+     * Creates an instance of port
+     * @param id port id
+     * @param name port name
+     * @param continent port continent
+     * @param country port country
+     * @param longitude port longitude
+     * @param latitude port latitude
+     * @return the instance of the port created
+     */
+    public Port createPort(int id,String name, String continent,String country,double longitude,double latitude){
+        return new Port(id,name,continent,country,longitude,latitude);
+    }
+    /**
      * Build the tree balanced
      * @param ports the list of the ports
      */

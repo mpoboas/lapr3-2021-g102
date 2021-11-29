@@ -13,17 +13,17 @@ class ImportPortsController {
 class ImportPortsUI {
 }
 
-class Import{
+class ImportPorts{
 -List<Port> importedPorts
 +importPortsData(file)
+-createPort(idPort, name,continent,country,longitude,latitude)
 +savePortsData()
 }
 
 class PortStore{
--KDTree portTree
-+createPort(idPort, name,continent,country,latitude,longitude)
-+validadePort(port)
-+addPort(port)
+-PortTree portTree
++createPort(idPort, name,continent,country,longitude,latitude)
++buildPortTree(List<Port> listOfPorts)
 }
 
 class PortWarehouse{
@@ -33,10 +33,12 @@ class PortWarehouse{
 -country
 -latitude
 -longitude
-+create(idPort, name,continent,country,latitude,longitude)
++create(idPort, name,continent,country,,longitude,latitude)
 }
 
-
+class PortTree{
++buildKDTree(List<Port> listOfPorts)
+}
 class KDTree{
 -2DNode root
 +KDTree()
@@ -46,14 +48,14 @@ class KDTree{
 }
 
 ImportPortsUI ..> ImportPortsController
-ImportPortsController ..> Import
-Import --> Company
-Import -> PortStore
+ImportPortsController ..> ImportPorts
+ImportPorts --> Company
+ImportPorts -> PortStore
 Company -> PortStore : uses >
 PortStore "1" ->  "*" PortWarehouse: stores >
 
 
-KDTree --> PortStore
-
+PortTree --> PortStore
+ PortTree -|> KDTree
 
 @enduml
