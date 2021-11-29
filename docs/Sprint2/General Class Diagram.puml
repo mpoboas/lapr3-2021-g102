@@ -4,6 +4,7 @@
 class Company {
 -designation
 +getShipStore()
++getPortStore()
 }
 
 class ShipStore{
@@ -19,6 +20,11 @@ class ShipStore{
 +getCloseCoordsShips()
 }
 
+class PortStore{
+-PortTree portTree
++createPort(idPort, name,continent,country,longitude,latitude)
++buildPortTree(List<Port> listOfPorts)
+}
 
 class Ship{
 -MMSI
@@ -52,6 +58,16 @@ class Ship{
 +deltaDistance()
 }
 
+class PortWarehouse{
+-idPort
+-name
+-continent
+-country
+-latitude
+-longitude
++create(idPort, name,continent,country,,longitude,latitude)
+}
+
 class ShipTree{
 -Comparator<Ship> comp;
 +ShipTree(type);
@@ -73,6 +89,18 @@ class AISMessage{
 -heading
 +AISMessage(dateTime,latitude,longitude,\nSOG,COG,heading)
 }
+
+class PortTree{
++buildKDTree(List<Port> listOfPorts)
+}
+class KDTree{
+-2DNode root
++KDTree()
++size()
++height()
++insert(element,x,y)
++findNearestNeighbour(x,y)
+}
 class ImportShipsUI {
 }
 
@@ -86,6 +114,13 @@ class Import{
 -List<Ship> importedShips
 +importShipsData(file)
 +saveShipsData()
+}
+
+class ImportPorts{
+-List<Port> importedPorts
++importPortsData(file)
+-createPort(idPort, name,continent,country,longitude,latitude)
++savePortsData()
 }
 
 class SearchShipController {
@@ -135,6 +170,14 @@ class PairOfShipsController {
 +getCloseCoordsShips()
 }
 
+class ImportPortsController {
++importShipsData(file)
++saveShipsData()
+}
+
+class ImportPortsUI {
+}
+
 
 ImportShipsUI ..> ImportShipsController
 ImportShipsController ..> Import
@@ -170,6 +213,18 @@ ShipMapper .> AISMessageMapper
 ShipMapper ..> Ship
 AISMessageMapper ..> AISMessage
 AISMessageMapper .> AISMessageDTO
+
+
+ImportPortsUI ..> ImportPortsController
+ImportPortsController ..> ImportPorts
+ImportPorts --> Company
+ImportPorts -> PortStore
+Company -> PortStore : uses >
+PortStore "1" ->  "*" PortWarehouse: stores >
+
+
+PortTree --> PortStore
+ PortTree -|> KDTree
 
 
 

@@ -70,7 +70,7 @@ public class ImportPorts {
         String name = attributes[3];
         double latitude = Double.parseDouble(attributes[4]);
         double longitude = Double.parseDouble(attributes[5]);
-        return new Port(code,name,continent,country, longitude, latitude);
+        return store.createPort(code, name, continent, country, longitude, latitude);
     }
 
     /**

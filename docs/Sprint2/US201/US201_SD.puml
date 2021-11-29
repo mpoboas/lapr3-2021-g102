@@ -1,7 +1,7 @@
 @startuml
 autonumber
 'hide footbox
-actor "Traffic Manager" as TF
+actor "Port Manager" as TF
 
 participant ":ImportPortsUI" as UI
 participant ":ImportPortsController" as CTRL
@@ -10,7 +10,7 @@ participant "Company" as COMP
 participant "importedPorts \n:List<Port>" as list
 participant "portStore :PortStore" as STR
 participant "port: Port" as port
-participant "msg: AISMessage" as msg
+
 
 
 activate TF
@@ -68,18 +68,13 @@ UI -> CTRL: savePortsData()
 activate CTRL
 CTRL -> import: savePortsData()
 activate import
-loop for each element of the list importedShips
-import -> STR: savePort(port)
+
+import -> STR: buildPortTree(importedPorts)
 activate STR
-STR -> STR: validatePort(port)
-activate STR
-deactivate STR
-STR -> STR: addPort(port)
-activate STR
-deactivate STR
+
 STR --> import
 deactivate STR
-end
+
 import --> CTRL
 deactivate import
 CTRL --> UI

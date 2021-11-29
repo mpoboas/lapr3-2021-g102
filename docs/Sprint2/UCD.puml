@@ -6,6 +6,11 @@ actor "Traffic Manager" as TM
 
 actor "Project Manager" as PM
 
+actor "Port Manager" as PWM
+
+actor "Client" as CL
+actor "Ship Captain" as SC
+
 
 usecase "UC101 - Import Ship" as UC1
 usecase "UC102 - Search Ship Details" as UC2
@@ -20,7 +25,16 @@ usecase "UC109 - Draft SQL script" as UC9
 usecase "UC110 - Define naming conventions" as UC10
 usecase "UC111 - SQL script to load database" as UC11
 
-
+usecase "UC201 - Import Ports" as UC201
+usecase "UC202 - Find Closest Port of a ship" as US202
+usecase "UC203 - Review relational model" as US203
+usecase "UC204 - Know the current situation of a container" as US204
+usecase "UC205 - List of containers to be offloaded" as US205
+usecase "UC206 - List of containers to be loaded" as US206
+usecase "US207 - Know how many cargo manifests transported" as US207
+usecase "US208 - Occupancy rate of a given ship for a given cargo manifest" as US208
+usecase "US209 - Occupancy rate of a given ship at a given moment" as US209
+usecase "US210 - Ships available next monday" as US210
 
 TM --> (UC1)
 TM --> (UC2)
@@ -34,5 +48,17 @@ PM --> (UC8)
 PM --> (UC9)
 PM --> (UC10)
 PM --> (UC11)
+
+PWM --> (UC201)
+TM --> (US202)
+PM --> (US203)
+
+CL --> (US204)
+SC --> (US205)
+SC --> (US206)
+SC --> (US207)
+SC --> (US208)
+SC --> (US209)
+TM --> (US210)
 
 @enduml
