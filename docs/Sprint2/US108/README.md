@@ -5,12 +5,13 @@
 The sqlCreateTables.sql creates the following tables:
 
 * Person;
-* Role;
+* Occupation;
 * Employee;
 * Vehicle;
 * VesselType;
 * Ship;
-* Tripulation;
+* Crew;
+* Trips
 * Truck;
 * Container;
 * Certificate;
