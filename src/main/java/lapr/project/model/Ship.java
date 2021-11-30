@@ -2,10 +2,7 @@ package lapr.project.model;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Ship implements Comparable<Ship> {
 
@@ -377,6 +374,20 @@ public class Ship implements Comparable<Ship> {
                 list.add(msg);
         }
         return list;
+    }
+
+    /**
+     * @param dateTime the date and time for the search
+     * @return the list of positional messages at a certain date for a given ship
+     */
+    public AISMessage getAISAtDateTime(LocalDateTime dateTime) {
+        for (Trips trip : this.getTripsList()) {
+            for (AISMessage msg : trip.getAisMessagesList()) {
+                if (msg.getBaseDateTime().equals(dateTime))
+                    return msg;
+            }
+        }
+        throw new NoSuchElementException("No AIS message was found.");
     }
 
     /**
