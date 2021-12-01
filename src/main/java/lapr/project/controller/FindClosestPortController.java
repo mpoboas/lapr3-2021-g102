@@ -56,7 +56,7 @@ public class FindClosestPortController {
     }
 
     public Port findClosestPort(String callSign, LocalDateTime dateTime) {
-        Ship ship = this.company.getShipStore().getShipByCallSign(callSign);
+        Ship ship = this.getShipStore().getShipByCallSign(callSign);
         Coordinates shipCoordinates = this.getShipCoordinatesAtGivenTime(ship, dateTime);
 
         return this.getPortStore().getPortTree().findNearestNeighbour(shipCoordinates.getLongitude(), shipCoordinates.getLatitude());
