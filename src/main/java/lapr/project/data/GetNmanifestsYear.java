@@ -56,8 +56,7 @@ public class GetNmanifestsYear {
     private int executeStatementeOnDB(String sqlCommand) throws SQLException {
         int result;
         Connection connection = cf.getDatabaseConnection().getConnection();
-        PreparedStatement runcommand = connection.prepareStatement(sqlCommand);
-        try (ResultSet rs = runcommand.executeQuery()) {
+        try (PreparedStatement runcommand = connection.prepareStatement(sqlCommand); ResultSet rs = runcommand.executeQuery()) {
             rs.next();
             result = rs.getInt(1);
         }
