@@ -49,6 +49,11 @@ CREATE TABLE Truck (
 ALTER TABLE Truck ADD CONSTRAINT fk_Vehicle2 FOREIGN KEY (idVehicle) REFERENCES Vehicle(idVehicle);
 ALTER TABLE Truck ADD CONSTRAINT fk_Employee1 FOREIGN KEY (idEmployee) REFERENCES Employee(idEmployee);
 
+CREATE TABLE ContainerType (
+    idContainerType INTEGER PRIMARY KEY,
+    designation VARCHAR(100)
+);
+
 CREATE TABLE Container (
     idContainer INTEGER PRIMARY KEY,
     tare NUMBER(10,2),
@@ -56,8 +61,10 @@ CREATE TABLE Container (
     gross NUMBER(10,2),
     isoCode INTEGER,
     refrigerated INTEGER,
-    temperature NUMBER(6,2)
+    temperature NUMBER(6,2),
+    idContainerType INTEGER
 );
+ALTER TABLE ContainerType ADD CONSTRAINT fk_ContainerType1 FOREIGN KEY (idContainerType) REFERENCES ContainerType(idContainerType);
 
 CREATE TABLE Certificate (
     idCertificate INTEGER PRIMARY KEY,
@@ -123,7 +130,8 @@ CREATE TABLE Trip (
     idTrip INTEGER PRIMARY KEY,
     idPortWarehouseDeparture INTEGER,
     idPortWarehouseArrival INTEGER,
-    idVehicle INTEGER
+    idVehicle INTEGER,
+    endDate TIMESTAMP
 );
 ALTER TABLE Trip ADD CONSTRAINT fk_PortWarehouse4 FOREIGN KEY (idPortWarehouseDeparture) REFERENCES PortWarehouse(idPortWarehouse);
 ALTER TABLE Trip ADD CONSTRAINT fk_PortWarehouse5 FOREIGN KEY (idPortWarehouseArrival) REFERENCES PortWarehouse(idPortWarehouse);
@@ -152,14 +160,17 @@ ALTER TABLE CargoManifest ADD CONSTRAINT fk_CargoManifestType FOREIGN KEY (idCar
 
 CREATE TABLE ArrivalDeparture (
     idTrip INTEGER,
-    idPortWarehouse INTEGER,
-    arrivalDepartureDate TIMESTAMP,
+    idPortWarehouseDeparture INTEGER,
+    idPortWarehouseArrival INTEGER,
+    departureDate TIMESTAMP,
+    arrivalDate TIMESTAMP,
     idCargoManifestLoad INTEGER,
     idCargoManifestUnload INTEGER
 );
-ALTER TABLE ArrivalDeparture ADD CONSTRAINT pk_ArrivalDeparture PRIMARY KEY (idTrip, idPortWarehouse);
+ALTER TABLE ArrivalDeparture ADD CONSTRAINT pk_ArrivalDeparture PRIMARY KEY (idTrip, idPortWarehouseDeparture);
 ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_Trip2 FOREIGN KEY (idTrip) REFERENCES Trip(idTrip);
-ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_PortWarehouse6 FOREIGN KEY (idPortWarehouse) REFERENCES PortWarehouse(idPortWarehouse);
+ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_PortWarehouse6 FOREIGN KEY (idPortWarehouseDeparture) REFERENCES PortWarehouse(idPortWarehouse);
+ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_PortWarehouse7 FOREIGN KEY (idPortWarehouseArrival) REFERENCES PortWarehouse(idPortWarehouse);
 ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_CargoManifest1 FOREIGN KEY (idCargoManifestLoad) REFERENCES CargoManifest(idCargoManifest);
 ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_CargoManifest2 FOREIGN KEY (idCargoManifestUnload) REFERENCES CargoManifest(idCargoManifest);
 
@@ -180,7 +191,7 @@ CREATE TABLE Summary (
     travelledDistance BINARY_DOUBLE,
     deltaDistance BINARY_DOUBLE
 );
-ALTER TABLE Summary ADD CONSTRAINT fk_ArrivalDeparture1 FOREIGN KEY (idTrip, idPortWarehouse) REFERENCES ArrivalDeparture(idTrip, idPortWarehouse);
+ALTER TABLE Summary ADD CONSTRAINT fk_ArrivalDeparture1 FOREIGN KEY (idTrip, idPortWarehouse) REFERENCES ArrivalDeparture(idTrip, idPortWarehouseDeparture);
 
 CREATE TABLE ManifestContainer (
     idCargoManifest INTEGER,
