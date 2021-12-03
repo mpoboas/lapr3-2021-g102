@@ -34,14 +34,15 @@ public class ImportPorts {
      * @throws IOException
      */
     public void importPortsData(String fileDirectory) throws IOException {
-        Scanner read = new Scanner(new File(fileDirectory));
-        read.nextLine();
-        while (read.hasNextLine()){
-            String[] attributes = read.nextLine().split(",");
-            if (!portAlreadyImported(attributes[2]))
-                listOfImportedPorts.add(createPort(attributes));
+        try(Scanner read = new Scanner(new File(fileDirectory))) {
+            read.nextLine();
+            while (read.hasNextLine()) {
+                String[] attributes = read.nextLine().split(",");
+                if (!portAlreadyImported(attributes[2]))
+                    listOfImportedPorts.add(createPort(attributes));
+            }
         }
-        read.close();
+
     }
 
     /**
