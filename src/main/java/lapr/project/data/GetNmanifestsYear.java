@@ -34,9 +34,7 @@ public class GetNmanifestsYear {
      */
     private void getNmanifestsinyear() throws SQLException {
         String sqlCommand = "SELECT  COUNT(*) FROM CARGOMANIFEST WHERE ELABORATIONDATE > TO_TIMESTAMP('01-01-"+this.year +" 00:00', 'DD-MM-YYYY HH24:mi') AND ELABORATIONDATE < TO_TIMESTAMP('31-12-"+this.year +" 23:59', 'DD-MM-YYYY HH24:mi') AND (IDCARGOMANIFEST IN (SELECT IDCARGOMANIFESTLOAD  FROM ARRIVALDEPARTURE WHERE IDTRIP IN (SELECT IDTRIP FROM CREW WHERE IDEMPLOYEE = "+this.idShipCaptain +")) OR IDCARGOMANIFEST IN (SELECT IDCARGOMANIFESTUNLOAD  FROM ARRIVALDEPARTURE WHERE IDTRIP IN (SELECT IDTRIP FROM CREW WHERE IDEMPLOYEE = "+this.idShipCaptain +")))";
-        ResultSet s = executeStatementeOnDB(sqlCommand);
-        s.next();
-        nManifestsYear = s.getInt("COUNT(*)");
+        nManifestsYear = executeStatementeOnDB(sqlCommand);
     }
 
     /**
@@ -45,9 +43,8 @@ public class GetNmanifestsYear {
      */
     private void getAVGContainerPerManifest() throws SQLException {
         String sqlCommand = "SELECT AVG(c) FROM (SELECT IDCARGOMANIFEST, COUNT(*) AS c FROM MANIFESTCONTAINER WHERE IDCARGOMANIFEST IN (SELECT IDCARGOMANIFEST FROM CARGOMANIFEST WHERE ELABORATIONDATE > TO_TIMESTAMP('01-01-"+this.year +" 00:00', 'DD-MM-YYYY HH24:mi') AND ELABORATIONDATE < TO_TIMESTAMP('31-12-"+this.year +" 23:59', 'DD-MM-YYYY HH24:mi') AND (IDCARGOMANIFEST IN (SELECT IDCARGOMANIFESTLOAD  FROM ARRIVALDEPARTURE WHERE IDTRIP IN (SELECT IDTRIP FROM CREW WHERE IDEMPLOYEE = "+this.idShipCaptain +")) OR IDCARGOMANIFEST IN (SELECT IDCARGOMANIFESTUNLOAD  FROM ARRIVALDEPARTURE WHERE IDTRIP IN (SELECT IDTRIP FROM CREW WHERE IDEMPLOYEE = "+this.idShipCaptain +")))) GROUP BY IDCARGOMANIFEST) ";
-        ResultSet s = executeStatementeOnDB(sqlCommand);
-        s.next();
-        avgContainerPerManifest = s.getInt("AVG(c)");
+
+        avgContainerPerManifest = executeStatementeOnDB(sqlCommand);
     }
 
     /**
@@ -56,10 +53,15 @@ public class GetNmanifestsYear {
      * @return result set from databse
      * @throws SQLException sql exception
      */
-    private ResultSet executeStatementeOnDB(String sqlCommand) throws SQLException {
+    private int executeStatementeOnDB(String sqlCommand) throws SQLException {
+        int result;
         Connection connection = cf.getDatabaseConnection().getConnection();
         PreparedStatement runcommand = connection.prepareStatement(sqlCommand);
-        return runcommand.executeQuery();
+        try (ResultSet rs = runcommand.executeQuery()) {
+            rs.next();
+            result = rs.getInt(1);
+        }
+        return result;
     }
 
     /**
