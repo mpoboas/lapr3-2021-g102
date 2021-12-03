@@ -20,7 +20,7 @@ public class PairOfShipsController {
     private final Company company;
 
     /**
-     * Constructor of the covid report controller, through a company object.
+     * Constructor of the pair of ships controller, through a company object.
      *
      * @param company the company object
      */
