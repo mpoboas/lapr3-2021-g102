@@ -7,6 +7,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
 
 class getNManifestsControllerTest {
     @Mock
@@ -14,16 +15,20 @@ class getNManifestsControllerTest {
     @Test
     @ExtendWith(MockitoExtension.class)
     void getNManifests() {
+        this.controller = mock(GetNManifestsController.class);
         Mockito.when(this.controller.getNManifests()).thenReturn(3);
         assertEquals(3, this.controller.getNManifests());
+        System.out.println("Result: "+ this.controller.getNManifests());
+
     }
 
     @Test
     @ExtendWith(MockitoExtension.class)
     void getAvgContainerPerManifest() {
-
+        this.controller = mock(GetNManifestsController.class);
         Mockito.when(this.controller.getAvgContainerPerManifest()).thenReturn(1.0);
         assertEquals(1, this.controller.getAvgContainerPerManifest());
+        System.out.println("Result: "+ this.controller.getAvgContainerPerManifest());
 
     }
 }
