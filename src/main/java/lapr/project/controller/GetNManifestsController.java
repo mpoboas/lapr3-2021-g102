@@ -1,5 +1,6 @@
 package lapr.project.controller;
 
+import lapr.project.data.ConnectionFactory;
 import lapr.project.data.GetNmanifestsYear;
 
 import java.io.IOException;
@@ -21,6 +22,11 @@ public class GetNManifestsController {
         this.year = year;
         this.idShipCaptain = id;
         getnManY = new GetNmanifestsYear(this.idShipCaptain,this.year);
+    }
+    public GetNManifestsController (ConnectionFactory cf,  int id, int year) throws IOException, SQLException {
+        this.year = year;
+        this.idShipCaptain = id;
+        getnManY = new GetNmanifestsYear(cf, this.idShipCaptain,this.year);
     }
 
     /**

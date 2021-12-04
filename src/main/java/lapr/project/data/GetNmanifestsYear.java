@@ -12,6 +12,8 @@ public class GetNmanifestsYear {
     private int nManifestsYear;
     private double avgContainerPerManifest;
     private final ConnectionFactory cf;
+    private  Connection connection;
+
 
     /**
      *
@@ -27,11 +29,21 @@ public class GetNmanifestsYear {
         getNmanifestsinyear();
         getAVGContainerPerManifest();
     }
+    public GetNmanifestsYear(ConnectionFactory cf, int id, int year) throws IOException, SQLException {
+        this.year = year;
+        this.idShipCaptain = id;
+        this.cf = cf;
+        getNmanifestsinyear();
+        getAVGContainerPerManifest();
+    }
 
-    /**
-     *
-     * @throws SQLException sql exception
-     */
+
+
+
+        /**
+         *
+         * @throws SQLException sql exception
+         */
     private void getNmanifestsinyear() throws SQLException {
         String sqlCommand = "SELECT  COUNT(*) FROM CARGOMANIFEST WHERE ELABORATIONDATE > TO_TIMESTAMP('01-01-"+this.year +" 00:00', 'DD-MM-YYYY HH24:mi') AND ELABORATIONDATE < TO_TIMESTAMP('31-12-"+this.year +" 23:59', 'DD-MM-YYYY HH24:mi') AND (IDCARGOMANIFEST IN (SELECT IDCARGOMANIFESTLOAD  FROM ARRIVALDEPARTURE WHERE IDTRIP IN (SELECT IDTRIP FROM CREW WHERE IDEMPLOYEE = "+this.idShipCaptain +")) OR IDCARGOMANIFEST IN (SELECT IDCARGOMANIFESTUNLOAD  FROM ARRIVALDEPARTURE WHERE IDTRIP IN (SELECT IDTRIP FROM CREW WHERE IDEMPLOYEE = "+this.idShipCaptain +")))";
         nManifestsYear = executeStatementeOnDB(sqlCommand);
