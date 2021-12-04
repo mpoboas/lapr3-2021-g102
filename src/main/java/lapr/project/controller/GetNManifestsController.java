@@ -25,6 +25,12 @@ public class GetNManifestsController {
     public void doDBQuery() throws SQLException, IOException {
         getnManY = new GetNmanifestsYear(this.idShipCaptain,this.year);
     }
+    public void setGetnManY(GetNmanifestsYear data){
+        this.getnManY = data;
+    }
+    public GetNmanifestsYear getData(){
+        return this.getnManY;
+    }
     /**
      *
      * @return number of manifests done by captain in a certain year
