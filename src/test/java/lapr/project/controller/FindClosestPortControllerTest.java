@@ -22,10 +22,10 @@ class FindClosestPortControllerTest {
     ShipStore shipStore = ctrl.getShipStore();
     PortStore portStore = ctrl.getPortStore();
 
-    ImportPortsController impPortCtrl = new ImportPortsController(new PortStore());
-    ImportShipsController impShipCtrl = new ImportShipsController(new ShipStore());
+    ImportPortsController impPortCtrl = new ImportPortsController();
+    ImportShipsController impShipCtrl = new ImportShipsController();
     String portsFile = "data/data-shipsports/data-shipsports/data-ships&ports/sports.csv";
-    String shipsFile = "data/data-shipsports/data-shipsports/data-ships&ports/sships.csv";
+    String shipsFile = "data/data-shipsports/data-shipsports/data-ships&ports/bships.csv";
 
 
 
@@ -50,20 +50,13 @@ class FindClosestPortControllerTest {
 
         AuthController authCtrl = new AuthController();
         authCtrl.doLogin("shipcaptain@lei.sem3.pt","123456");
-        Ship testShip = shipStore.getShipByCallSign("SEOUL EXPRESS");
+
+        Ship testShip = shipStore.getShipByCallSign("DHBN");
         LocalDateTime exampleDateTime = LocalDateTime.of(2020, Month.DECEMBER, 31, 0, 0);
+        ctrl.findClosestPort("DHBN",exampleDateTime);
         Coordinates shipCoordinates = testShip.getAISAtDateTime(exampleDateTime).getCoordinates();
         Port expected = portStore.getPortTree().findNearestNeighbour(shipCoordinates.getLongitude(), shipCoordinates.getLatitude());
-        System.out.println(expected);
-
-
-        /*Ship ship1 = new Ship(112, "122", "test", "Ship", 12, 1200, 600, 21);
-        shipStore.addShip(ship1);*/
-
-
-
-
-
+        assertEquals(expected, ctrl.findClosestPort("DHBN",exampleDateTime));
     }
 
 }
