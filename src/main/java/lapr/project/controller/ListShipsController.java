@@ -156,7 +156,7 @@ public class ListShipsController {
         }
         if(op==1){
             this.linkedShipList=orderByTotalDistance(shipMap, asc);
-            if(this.linkedShipList.size()> this.nShips &&this.linkedShipList.size() - 1 > this.nShips ) {
+            if(this.linkedShipList.size()> this.nShips  ) {
                     linkedShipList.subList(this.nShips + 1, this.linkedShipList.size()).clear();
             }
             this.linkedShipList =groupVesselType(this.linkedShipList);
@@ -179,8 +179,8 @@ public class ListShipsController {
         }
         if(op == 1) {
             string.append("|\tMMSI\t|\tVessel type\t|\tVessel Name\t|\tKilometers Traveled\t|\tMeanSOG\t|\n ");
-            for(int i = 0; i< linkedShipList.size() && i< this.nShips;i++){
-                string.append("|\t").append(linkedShipList.get(i).getKey().getMMSI()).append(sep).append(linkedShipList.get(i).getKey().getVesselType()).append(sep).append(linkedShipList.get(i).getKey().getVesselName()).append(sep).append(linkedShipList.get(i).getValue().get(0)).append(sep).append(linkedShipList.get(i).getValue().get(1)).append("\t|\n");
+            for (Map.Entry<Ship, List<Double>> shipListEntry : linkedShipList) {
+                string.append("|\t").append(shipListEntry.getKey().getMMSI()).append(sep).append(shipListEntry.getKey().getVesselType()).append(sep).append(shipListEntry.getKey().getVesselName()).append(sep).append(shipListEntry.getValue().get(0)).append(sep).append(shipListEntry.getValue().get(1)).append("\t|\n");
             }
         }
         return string.toString();
