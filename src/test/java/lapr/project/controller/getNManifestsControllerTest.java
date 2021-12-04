@@ -29,9 +29,10 @@ class getNManifestsControllerTest {
     @Test
     @ExtendWith(MockitoExtension.class)
     void getAvgContainerPerManifest() {
-        this.controller = mock(GetNManifestsController.class);
-        Mockito.when(this.controller.getAvgContainerPerManifest()).thenReturn(1.0);
-        assertEquals(1, this.controller.getAvgContainerPerManifest());
+        this.controller = new GetNManifestsController(1,2020);
+        this.controller.setGetnManY(data);
+        Mockito.when(this.data.getAvgManifests()).thenReturn(1.0);
+        assertEquals(1.0, this.controller.getAvgContainerPerManifest());
         System.out.println("Result: "+ this.controller.getAvgContainerPerManifest());
 
     }
