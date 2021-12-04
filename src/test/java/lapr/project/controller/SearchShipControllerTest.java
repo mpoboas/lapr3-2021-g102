@@ -1,12 +1,12 @@
 package lapr.project.controller;
 
-import lapr.project.mappers.dto.ShipDTO;
 import lapr.project.model.Import;
 import lapr.project.stores.ShipStore;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SearchShipControllerTest {
     ShipStore store = new ShipStore();

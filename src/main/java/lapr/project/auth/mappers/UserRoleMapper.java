@@ -1,7 +1,7 @@
 package lapr.project.auth.mappers;
 
-import lapr.project.auth.mappers.dto.UserRoleDTO;
 import lapr.project.auth.domain.model.UserRole;
+import lapr.project.auth.mappers.dto.UserRoleDTO;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,7 +2,7 @@ package lapr.project.auth.domain.model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class PasswordTest {
     Password password = new Password("123456");

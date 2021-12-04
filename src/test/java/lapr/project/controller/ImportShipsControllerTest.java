@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class ImportShipsControllerTest {
     String existingFileDirectory = "data/data-shipsports/data-shipsports/data-ships&ports/sships.csv";

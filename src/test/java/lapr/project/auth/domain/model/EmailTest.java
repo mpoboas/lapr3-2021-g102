@@ -2,7 +2,7 @@ package lapr.project.auth.domain.model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EmailTest {
     Email email = new Email("shipcaptain@lei.sem3.pt");

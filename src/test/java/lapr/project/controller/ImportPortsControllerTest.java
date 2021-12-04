@@ -1,13 +1,13 @@
 package lapr.project.controller;
 
 import lapr.project.stores.PortStore;
-import lapr.project.stores.ShipStore;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class ImportPortsControllerTest {
     String existingFileDirectory = "data/data-shipsports/data-shipsports/data-ships&ports/sports.csv";

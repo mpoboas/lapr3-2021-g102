@@ -1,11 +1,10 @@
 package lapr.project.auth.domain.model;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.util.*;
-import java.util.Objects;
 
 /**
  *

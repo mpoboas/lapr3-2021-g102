@@ -1,6 +1,5 @@
 package lapr.project.controller;
 
-import lapr.project.data.ConnectionFactory;
 import lapr.project.data.GetNmanifestsYear;
 
 import java.io.IOException;

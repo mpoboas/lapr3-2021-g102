@@ -3,7 +3,6 @@ package lapr.project.controller;
 import lapr.project.model.AISMessage;
 import lapr.project.model.Import;
 import lapr.project.model.Ship;
-import lapr.project.model.Trips;
 import lapr.project.stores.ShipStore;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +12,6 @@ import java.time.Month;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ShipSummaryControllerTest {
     ShipStore store = new ShipStore();

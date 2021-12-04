@@ -4,15 +4,15 @@ import lapr.project.model.AISMessage;
 import lapr.project.model.Import;
 import lapr.project.model.Ship;
 import lapr.project.stores.ShipStore;
-
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PositionalMessagesControllerTest {
     ShipStore store = new ShipStore();

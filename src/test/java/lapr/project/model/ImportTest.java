@@ -3,9 +3,9 @@ package lapr.project.model;
 import lapr.project.stores.ShipStore;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class ImportTest {
     ShipStore store = new ShipStore();

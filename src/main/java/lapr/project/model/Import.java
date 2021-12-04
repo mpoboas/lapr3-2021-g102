@@ -2,7 +2,6 @@ package lapr.project.model;
 
 import lapr.project.stores.ShipStore;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
