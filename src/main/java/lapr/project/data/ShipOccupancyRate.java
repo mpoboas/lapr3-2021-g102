@@ -27,8 +27,8 @@ public class ShipOccupancyRate {
      * @param shipMMSI        the desired ship´s MMSI
      * @param idCargoManifest the desired cargo manifest´s id
      */
-    public ShipOccupancyRate(int shipMMSI, int idCargoManifest) throws IOException, SQLException {
-        this.connectionFactory = new ConnectionFactory();
+    public ShipOccupancyRate(ConnectionFactory connectionFactory, int shipMMSI, int idCargoManifest) throws IOException, SQLException {
+        this.connectionFactory = connectionFactory;
         this.shipId = getShipIdByMMSI(shipMMSI);
         this.cargoManifestId = idCargoManifest;
         this.shipOccupancyRate = calcShipOccupancyRate();
@@ -40,8 +40,8 @@ public class ShipOccupancyRate {
      * @param shipMMSI         the desired ship´s MMSI
      * @param localDateTimeStr the desired date and time string value
      */
-    public ShipOccupancyRate(int shipMMSI, String localDateTimeStr) throws IOException, SQLException {
-        this.connectionFactory = new ConnectionFactory();
+    public ShipOccupancyRate(ConnectionFactory connectionFactory, int shipMMSI, String localDateTimeStr) throws IOException, SQLException {
+        this.connectionFactory = connectionFactory;
         this.shipId = getShipIdByMMSI(shipMMSI);
         this.cargoManifestId = getCargoManifestIdByDateTime(localDateTimeStr);
         this.shipOccupancyRate = calcShipOccupancyRate();
@@ -86,6 +86,7 @@ public class ShipOccupancyRate {
             callableStatement.setInt(2, shipMMSI);
             callableStatement.registerOutParameter(1, Types.INTEGER);
             callableStatement.execute();
+
             return callableStatement.getInt(1);
         }
     }
