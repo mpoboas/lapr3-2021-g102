@@ -1,0 +1,46 @@
+@startuml
+autonumber
+'hide footbox
+
+actor "Ship Captain" as SC
+
+participant "ShipOccupancyRateUI" as UI
+participant "GetShipOccupancyRateController" as CTRL
+participant "ShipOccupancyRate" as SHIPOCCRATE
+participant ConnectionFactory as CF
+participant DatabaseConnection as DC
+database LAPR3_G102 as DB
+
+activate SC
+SC -> UI : requests the occupancy rate of a given ship for a given\ncargo manifest
+activate UI
+UI --> SC : requests all the needed data (ship and cargo manifest)
+deactivate UI
+
+SC -> UI : types data
+activate UI
+
+UI -> CTRL : getShipOccupancyRateById(shipMMSI, idCargoManifest)
+activate CTRL
+CTRL -> SHIPOCCRATE** : create(shipMMSI, idCargoManifest)
+activate SHIPOCCRATE
+SHIPOCCRATE -> CF** : create()
+activate CF
+CF -> DC** : create()
+activate DC
+DC -> DB : getShipOccupancyRate(idShip, idDesiredCargoManifest)
+activate DB
+DB --> DC
+deactivate DB
+DC --> CF
+deactivate DC
+CF --> SHIPOCCRATE
+CTRL -> SHIPOCCRATE :getShipOccupancyRate()
+deactivate CF
+SHIPOCCRATE --> CTRL
+deactivate SHIPOCCRATE
+CTRL --> UI
+deactivate CTRL
+UI --> SC : shows the given ship´s occupancy rate
+deactivate UI
+@enduml

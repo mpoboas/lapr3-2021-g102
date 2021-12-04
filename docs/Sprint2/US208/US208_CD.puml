@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
+}
+
+class ShipOccupancyRateUI {
+}
+
+class GetShipOccupancyRateController {
++getShipId()
++getCargoManifestId()
++getShipOccupancyRateById()
+}
+
+class ShipOccupancyRate {
+-shipId
+-cargoManifestId
+-shipOccupancyRate
+-connectionFactory
++getShipId()
++getCargoManifestId()
++getShipOccupancyRateById()
+}
+
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
+-getDatabaseConnection()
+
+}
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
+-getConnection()
+-registerError(SQLException error)
+-getLastError()
+}
+
+ShipOccupancyRateUI ..> GetShipOccupancyRateController
+GetShipOccupancyRateController ..> ShipOccupancyRate
+GetShipOccupancyRateController ..> Company
+ShipOccupancyRate ..> ConnectionFactory
+ConnectionFactory ..> DatabaseConnection
+
+@enduml
