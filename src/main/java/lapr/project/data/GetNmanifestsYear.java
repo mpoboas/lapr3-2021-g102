@@ -12,8 +12,6 @@ public class GetNmanifestsYear {
     private int nManifestsYear;
     private double avgContainerPerManifest;
     private final ConnectionFactory cf;
-    private  Connection connection;
-
 
     /**
      *
@@ -29,17 +27,6 @@ public class GetNmanifestsYear {
         getNmanifestsinyear();
         getAVGContainerPerManifest();
     }
-    public GetNmanifestsYear(ConnectionFactory cf, int id, int year) throws IOException, SQLException {
-        this.year = year;
-        this.idShipCaptain = id;
-        this.cf = cf;
-        getNmanifestsinyear();
-        getAVGContainerPerManifest();
-    }
-
-
-
-
         /**
          *
          * @throws SQLException sql exception

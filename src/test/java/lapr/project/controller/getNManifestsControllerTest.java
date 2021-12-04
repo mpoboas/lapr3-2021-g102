@@ -1,37 +1,29 @@
 package lapr.project.controller;
 
-import lapr.project.data.ConnectionFactory;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.concurrent.TimeoutException;
-
-import static org.mockito.Mockito.mock;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class getNManifestsControllerTest {
+    @Mock
     GetNManifestsController controller;
-
     @Test
-    void getNManifests() throws SQLException, IOException {
-        ConnectionFactory cf = mock(ConnectionFactory.class);
-
-        try {
-            controller = new GetNManifestsController(cf,3, 2020);
-            System.out.println(controller.getNManifests());
-        }catch(RuntimeException e){
-            System.out.println("The server is not avalaible at the moment");
-        }
+    @ExtendWith(MockitoExtension.class)
+    void getNManifests() {
+        Mockito.when(this.controller.getNManifests()).thenReturn(3);
+        assertEquals(3, this.controller.getNManifests());
     }
-    @Test
-    void getAvgContainerPerManifest() throws SQLException, IOException {
-        ConnectionFactory cf = mock(ConnectionFactory.class);
 
-        try {
-            controller = new GetNManifestsController(cf,3, 2020);
-            System.out.println(controller.getAvgContainerPerManifest());
-        }catch(RuntimeException e){
-            System.out.println("The server is not available at the moment");
-        }
+    @Test
+    @ExtendWith(MockitoExtension.class)
+    void getAvgContainerPerManifest() {
+
+        Mockito.when(this.controller.getAvgContainerPerManifest()).thenReturn(1.0);
+        assertEquals(1, this.controller.getAvgContainerPerManifest());
+
     }
 }

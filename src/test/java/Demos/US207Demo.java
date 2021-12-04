@@ -1,12 +1,9 @@
 package Demos;
 
-import lapr.project.auth.AuthFacade;
-import lapr.project.auth.mappers.dto.UserRoleDTO;
 import lapr.project.controller.GetNManifestsController;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Scanner;
 
 public class US207Demo {
@@ -21,6 +18,7 @@ public class US207Demo {
         System.out.println("Which year is requires?");
         int year = scan.nextInt();
         controller = new GetNManifestsController(id, year);
+        controller.doDBQuery();
         System.out.println("Data from year " + year);
         System.out.println("|\tNº of cargo manifests\t|\tAvg containers per cargo manifest\t|");
         System.out.println("|\t\t" + controller.getNManifests() + "\t\t|\t\t" + controller.getAvgContainerPerManifest() + "\t\t|");

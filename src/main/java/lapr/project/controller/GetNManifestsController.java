@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class GetNManifestsController {
     private final int idShipCaptain;
     private final int year;
-    private final GetNmanifestsYear getnManY;
+    private GetNmanifestsYear getnManY;
 
     /**
      *
@@ -18,17 +18,13 @@ public class GetNManifestsController {
      * @throws IOException io exception
      * @throws SQLException sql exception
      */
-    public GetNManifestsController ( int id, int year) throws IOException, SQLException {
+    public GetNManifestsController ( int id, int year){
         this.year = year;
         this.idShipCaptain = id;
+    }
+    public void doDBQuery() throws SQLException, IOException {
         getnManY = new GetNmanifestsYear(this.idShipCaptain,this.year);
     }
-    public GetNManifestsController (ConnectionFactory cf,  int id, int year) throws IOException, SQLException {
-        this.year = year;
-        this.idShipCaptain = id;
-        getnManY = new GetNmanifestsYear(cf, this.idShipCaptain,this.year);
-    }
-
     /**
      *
      * @return number of manifests done by captain in a certain year
