@@ -5,6 +5,9 @@ package lapr.project.utils;
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 public class Constants {
+    private Constants(){
+        throw new IllegalStateException("Utility class");
+    }
     //User roles
     public static final String U_ROLE_CLIENT = "CLIENT";
     public static final String U_ROLE_FLEET_MANAGER = "FLEET MANAGER";
