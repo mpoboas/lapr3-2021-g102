@@ -1,0 +1,70 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor "Traffic Manager" as TF
+participant "GetAvailableShipsUI" as UI
+participant "GetAvailableShipsController" as CTRL
+participant "AvailableShipsDB" as CSDB
+participant ConnectionFactory as CF
+participant DatabaseConnection as DC
+
+database LAPR3_G102 as DB
+participant "con: Connection" as CON
+participant "res: ResultSet"
+participant "result: List<String>"
+
+activate TF
+TF -> UI : asks the ships available next monday
+activate UI
+UI -> CTRL: getNextMonday()
+activate CTRL
+CTRL -> CSDB : getNextMonday()
+activate CSDB
+deactivate CSDB
+deactivate CTRL
+
+UI --> TF : shows the next monday details
+deactivate UI
+
+TF -> UI : confirms day
+activate UI
+
+UI -> CTRL: getAvailableShips()
+activate CTRL
+CTRL -> CSDB : getAvailableShips()
+activate CSDB
+CSDB -> CF : getInstance()
+activate CF
+deactivate CF
+CSDB -> CF : getDatabaseConnection()
+activate CF
+deactivate CF
+CSDB -> DC: con = getConnection()
+activate DC
+deactivate DC
+CSDB -> DB : res = fnc_get_container_status(containerID)
+activate DB
+deactivate DB
+CSDB -> CSDB : result = getResult(res)
+activate CSDB
+deactivate CSDB
+
+CSDB --> CTRL : result
+deactivate CSDB
+
+CTRL --> UI : result
+
+deactivate CTRL
+
+UI --> TF : shows all the ships available
+deactivate UI
+
+
+TF -> UI : confirms the data
+activate UI
+UI --> TF : informs operation success
+deactivate UI
+
+deactivate TF
+@enduml
