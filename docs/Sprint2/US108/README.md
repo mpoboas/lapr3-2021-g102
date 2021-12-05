@@ -14,6 +14,7 @@ The sqlCreateTables.sql creates the following tables:
 * Trips
 * Truck;
 * Container;
+* ContainerType;
 * Certificate;
 * ContainerCertificate;
 * Position;
