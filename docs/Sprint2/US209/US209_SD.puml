@@ -20,23 +20,53 @@ deactivate UI
 SC -> UI : types data
 activate UI
 
-UI -> CTRL : getShipOccupancyRateById(shipMMSI, localDateTimeStr)
-activate CTRL
-CTRL -> SHIPOCCRATE** : create(shipMMSI, localDateTimeStr)
-activate SHIPOCCRATE
-SHIPOCCRATE -> CF** : create()
+UI -> CF** : create()
 activate CF
 CF -> DC** : create()
 activate DC
-DC -> DB : getShipOccupancyRate(idShip, idDesiredCargoManifest)
-activate DB
-DB --> DC
-deactivate DB
+DC --> DB
+deactivate DC
+deactivate CF
+
+UI -> CTRL : getShipOccupancyRateById(connectionFactory, shipMMSI, localDateTimeStr)
+activate CTRL
+CTRL -> SHIPOCCRATE** : create(connectionFactory, shipMMSI, localDateTimeStr)
+activate SHIPOCCRATE
+CTRL -> SHIPOCCRATE : getShipOccupancyRate()
+
+SHIPOCCRATE -> CF : getShipIdByMMSI(shipMMSI)
+activate CF
+CF --> DC : establishes connection
+activate DC
+DC --> DB : runs query
+DB --> DC : query results
+DC --> CF
+deactivate DC
+CF --> SHIPOCCRATE
+
+deactivate CF
+SHIPOCCRATE -> CF : getCargoManifestIdByDateTime(localDateTimeStr)
+activate CF
+CF --> DC : establishes connection
+activate DC
+DC --> DB : runs query
+DB --> DC : query results
 DC --> CF
 deactivate DC
 CF --> SHIPOCCRATE
 deactivate CF
-CTRL -> SHIPOCCRATE : getShipOccupancyRate()
+
+SHIPOCCRATE -> CF : calcShipOccupancyRate()
+activate CF
+CF --> DC : establishes connection
+activate DC
+DC --> DB : runs query
+DB --> DC : query results
+DC --> CF
+deactivate DC
+CF --> SHIPOCCRATE
+deactivate CF
+
 SHIPOCCRATE --> CTRL
 deactivate SHIPOCCRATE
 CTRL --> UI
