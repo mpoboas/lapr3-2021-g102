@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="457px" preserveAspectRatio="none" style="width:264px;height:457px;background:#FFFFFF;" version="1.1" viewBox="0 0 264 457" width="264px" zoomAndPan="magnify"><defs><filter height="300%" id="f12je8pl9wyi5o" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[0dc7f2ddb409b58bcf52b12238c25399]
+class Ship--><rect codeLine="3" fill="#FEFECE" filter="url(#f12je8pl9wyi5o)" height="200.1953" id="Ship" style="stroke:#A80036;stroke-width:1.5;" width="91" x="84.5" y="7"/><ellipse cx="114.8" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M116.8,19.5 Q117.0031,19 117.2375,18.75 Q117.4719,18.5 117.7375,18.5 Q118.2063,18.5 118.5031,18.7813 Q118.8,19.0625 118.8,19.7188 L118.8,21.2813 Q118.8,21.9375 118.5188,22.2188 Q118.2375,22.5 117.8,22.5 Q117.4094,22.5 117.1594,22.3281 Q116.9094,22.1563 116.8,21.7031 Q116.7531,21.3906 116.5813,21.2188 Q116.2688,20.8906 115.7063,20.7031 Q115.1438,20.5 114.5813,20.5 Q113.8781,20.5 113.2844,20.7813 Q112.7063,21.0625 112.2531,21.6875 Q111.8,22.3125 111.8,23.1719 L111.8,24.0938 Q111.8,25.125 112.6438,25.8125 Q113.4875,26.5 114.9875,26.5 Q115.8781,26.5 116.5031,26.2969 Q116.8625,26.1875 117.2688,25.8281 Q117.5344,25.625 117.675,25.5625 Q117.8156,25.5 117.9875,25.5 Q118.3156,25.5 118.55,25.7656 Q118.8,26.0156 118.8,26.375 Q118.8,26.7188 118.4563,27.125 Q117.9563,27.7188 117.1594,28.0469 Q116.1125,28.5 114.8313,28.5 Q113.3313,28.5 112.1281,27.9063 Q111.1594,27.4375 110.4719,26.4219 Q109.8,25.4063 109.8,24.2031 L109.8,23.1094 Q109.8,21.8594 110.3938,20.7656 Q111.0031,19.6719 112.05,19.0938 Q113.1125,18.5 114.3,18.5 Q115.0188,18.5 115.6438,18.75 Q116.2688,19 116.8,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="25" x="132.2" y="27.9102">Ship</text><line style="stroke:#A80036;stroke-width:1.5;" x1="85.5" x2="174.5" y1="39" y2="39"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="92.5" y="47"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="25" x="104.5" y="54.4189">MMSI</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="92.5" y="60.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="26" x="104.5" y="68.2549">name</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="92.5" y="74.6719"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="18" x="104.5" y="82.0908">IMO</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="92.5" y="88.5078"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="65" x="104.5" y="95.9268">nrGenerators</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="92.5" y="102.3438"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="52" x="104.5" y="109.7627">pwrOutput</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="92.5" y="116.1797"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="37" x="104.5" y="123.5986">callSign</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="92.5" y="130.0156"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="56" x="104.5" y="137.4346">vesselType</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="92.5" y="143.8516"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="29" x="104.5" y="151.2705">length</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="92.5" y="157.6875"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="27" x="104.5" y="165.1064">width</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="92.5" y="171.5234"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="104.5" y="178.9424">capacity</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="92.5" y="185.3594"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="23" x="104.5" y="192.7783">draft</text><line style="stroke:#A80036;stroke-width:1.5;" x1="85.5" x2="174.5" y1="199.1953" y2="199.1953"/><!--MD5=[640ee3fc06c6afdbbdc2004f4e297605]
+class AISMessage--><rect codeLine="17" fill="#FEFECE" filter="url(#f12je8pl9wyi5o)" height="158.6875" id="AISMessage" style="stroke:#A80036;stroke-width:1.5;" width="108" x="7" y="285"/><ellipse cx="25.15" cy="301" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M27.15,297.5 Q27.3531,297 27.5875,296.75 Q27.8219,296.5 28.0875,296.5 Q28.5563,296.5 28.8531,296.7813 Q29.15,297.0625 29.15,297.7188 L29.15,299.2813 Q29.15,299.9375 28.8688,300.2188 Q28.5875,300.5 28.15,300.5 Q27.7594,300.5 27.5094,300.3281 Q27.2594,300.1563 27.15,299.7031 Q27.1031,299.3906 26.9313,299.2188 Q26.6188,298.8906 26.0563,298.7031 Q25.4938,298.5 24.9313,298.5 Q24.2281,298.5 23.6344,298.7813 Q23.0563,299.0625 22.6031,299.6875 Q22.15,300.3125 22.15,301.1719 L22.15,302.0938 Q22.15,303.125 22.9938,303.8125 Q23.8375,304.5 25.3375,304.5 Q26.2281,304.5 26.8531,304.2969 Q27.2125,304.1875 27.6188,303.8281 Q27.8844,303.625 28.025,303.5625 Q28.1656,303.5 28.3375,303.5 Q28.6656,303.5 28.9,303.7656 Q29.15,304.0156 29.15,304.375 Q29.15,304.7188 28.8063,305.125 Q28.3063,305.7188 27.5094,306.0469 Q26.4625,306.5 25.1813,306.5 Q23.6813,306.5 22.4781,305.9063 Q21.5094,305.4375 20.8219,304.4219 Q20.15,303.4063 20.15,302.2031 L20.15,301.1094 Q20.15,299.8594 20.7438,298.7656 Q21.3531,297.6719 22.4,297.0938 Q23.4625,296.5 24.65,296.5 Q25.3688,296.5 25.9938,296.75 Q26.6188,297 27.15,297.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="69" x="39.85" y="305.9102">AISMessage</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="114" y1="317" y2="317"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="325"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="68" x="27" y="332.4189">baseDateTime</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="338.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="34" x="27" y="346.2549">latitude</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="352.6719"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="43" x="27" y="360.0908">longitude</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="366.5078"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="23" x="27" y="373.9268">SOG</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="380.3438"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="23" x="27" y="387.7627">COG</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="394.1797"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="38" x="27" y="401.5986">heading</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="408.0156"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="37" x="27" y="415.4346">position</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="421.8516"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="82" x="27" y="429.2705">transceiverClass</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="114" y1="435.6875" y2="435.6875"/><!--MD5=[3530e01058db3ef71c9092c8c74e37d5]
+class Trips--><rect codeLine="28" fill="#FEFECE" filter="url(#f12je8pl9wyi5o)" height="89.5078" id="Trips" style="stroke:#A80036;stroke-width:1.5;" width="100" x="150" y="319.5"/><ellipse cx="183" cy="335.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M185,332 Q185.2031,331.5 185.4375,331.25 Q185.6719,331 185.9375,331 Q186.4063,331 186.7031,331.2813 Q187,331.5625 187,332.2188 L187,333.7813 Q187,334.4375 186.7188,334.7188 Q186.4375,335 186,335 Q185.6094,335 185.3594,334.8281 Q185.1094,334.6563 185,334.2031 Q184.9531,333.8906 184.7813,333.7188 Q184.4688,333.3906 183.9063,333.2031 Q183.3438,333 182.7813,333 Q182.0781,333 181.4844,333.2813 Q180.9063,333.5625 180.4531,334.1875 Q180,334.8125 180,335.6719 L180,336.5938 Q180,337.625 180.8438,338.3125 Q181.6875,339 183.1875,339 Q184.0781,339 184.7031,338.7969 Q185.0625,338.6875 185.4688,338.3281 Q185.7344,338.125 185.875,338.0625 Q186.0156,338 186.1875,338 Q186.5156,338 186.75,338.2656 Q187,338.5156 187,338.875 Q187,339.2188 186.6563,339.625 Q186.1563,340.2188 185.3594,340.5469 Q184.3125,341 183.0313,341 Q181.5313,341 180.3281,340.4063 Q179.3594,339.9375 178.6719,338.9219 Q178,337.9063 178,336.7031 L178,335.6094 Q178,334.3594 178.5938,333.2656 Q179.2031,332.1719 180.25,331.5938 Q181.3125,331 182.5,331 Q183.2188,331 183.8438,331.25 Q184.4688,331.5 185,332 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="28" x="201" y="340.4102">Trips</text><line style="stroke:#A80036;stroke-width:1.5;" x1="151" x2="249" y1="351.5" y2="351.5"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="158" y="359.5"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="55" x="170" y="366.9189">startingPort</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="158" y="373.3359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="52" x="170" y="380.7549">destination</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="158" y="387.1719"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="74" x="170" y="394.5908">CoordinatesSet</text><line style="stroke:#A80036;stroke-width:1.5;" x1="151" x2="249" y1="401.0078" y2="401.0078"/><!--MD5=[b28ddc43d72cac3a79123039941f2d4a]
+link Ship to AISMessage--><path codeLine="34" d="M101.2,207.22 C98.39,217.26 95.61,227.33 93,237 C88.84,252.42 84.54,268.94 80.5,284.79 " fill="none" id="Ship-AISMessage" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="96.7108,251.0067,101.8825,243.0252,96.2034,241.5097,96.7108,251.0067" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="49" x="107" y="251.4951">contains</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="91.828" y="228.6683">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="77.0672" y="274.23">*</text><!--MD5=[cecf98931707cc988ef45bf8e5acb14d]
+link Ship to Trips--><path codeLine="35" d="M157.16,207.15 C167.81,246 179.47,288.58 187.94,319.48 " fill="none" id="Ship-Trips" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="175.3214,250.998,175.7654,241.4978,170.0966,243.0512,175.3214,250.998" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="64" x="183" y="251.4951">does many</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="151.8975" y="228.5931">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="180.6195" y="308.5923">*</text><!--MD5=[fb235176e46f31a07dd852c87b3a6fb2]
+@startuml
+'https://plantuml.com/class-diagram
+
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+}
+
+class AISMessage{
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
+
+class Trips{
+-startingPort
+-destination
+-CoordinatesSet
+}
+
+Ship "1" - - "*" AISMessage : contains >
+Ship "1" - - "*" Trips : does many >
+
+@enduml
+
+@startuml
+
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+}
+
+class AISMessage{
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
+
+class Trips{
+-startingPort
+-destination
+-CoordinatesSet
+}
+
+Ship "1" - - "*" AISMessage : contains >
+Ship "1" - - "*" Trips : does many >
+
+@enduml
+
+PlantUML version 1.2021.11(Sat Oct 02 14:26:11 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

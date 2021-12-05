@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+}
+
+class AISMessage{
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
+
+class Trips{
+-startingPort
+-destination
+-CoordinatesSet
+}
+
+Ship "1" -- "*" AISMessage : contains >
+Ship "1" -- "*" Trips : does many >
+
+@enduml
