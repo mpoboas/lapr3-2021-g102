@@ -14,10 +14,11 @@ public class AvailableShipsDB {
 
     public List<String> getAvailableShips(ConnectionFactory connectionFactory) throws SQLException {
         try (Connection conn = connectionFactory.getDatabaseConnection().getConnection();
-             CallableStatement clst = conn.prepareCall("{ ? = call fnc_n_monday_available_ship(?) }");) {
+             CallableStatement clst = conn.prepareCall("{ ? = call fnc_n_monday_available_ships(?) }");) {
             clst.registerOutParameter(1, Types.REF_CURSOR);
             Timestamp now = Timestamp.valueOf(LocalDateTime.now());
             clst.setTimestamp(2, now);
+            clst.execute();
             ResultSet resultSet = (ResultSet) clst.getObject(1);
             return result(resultSet);
         }

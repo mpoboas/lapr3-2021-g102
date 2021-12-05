@@ -1,7 +1,7 @@
 set serveroutput on;
 Declare
-    c_cursor SYS_REFCURSOR;
     v_date DATE;
+    c_cursor SYS_REFCURSOR;
     v_idVec INTEGER;
     v_shipN VARCHAR(100);
     v_mmsi INTEGER;
@@ -14,7 +14,7 @@ BEGIN
 
     dbms_output.put_line('Available ships on: ' || v_date)
            
-    c_cursor := fnc_get_n_monday_available_ships(sysdate);
+    c_cursor := fnc_n_monday_available_ships(sysdate);
     loop
         fetch c_cursor INTO v_idVEC, v_shipN,v_mmsi,v_latitude,v_longitude;
         Exit when c_cursor%NOTFOUND;

@@ -1,4 +1,4 @@
-Create or replace function fnc_get_n_monday_available_ships(p_date DATE ) return sys_refcursor
+Create or replace function fnc_n_monday_available_ships(p_date TIMESTAMP ) return sys_refcursor
 as
     v_next_monday Date;
     c_available_ships sys_refcursor;
