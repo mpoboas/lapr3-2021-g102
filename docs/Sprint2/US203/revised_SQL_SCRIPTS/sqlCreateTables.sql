@@ -64,7 +64,7 @@ CREATE TABLE Container (
     temperature NUMBER(6,2),
     idContainerType INTEGER
 );
-ALTER TABLE ContainerType ADD CONSTRAINT fk_ContainerType1 FOREIGN KEY (idContainerType) REFERENCES ContainerType(idContainerType);
+ALTER TABLE Container ADD CONSTRAINT fk_ContainerType1 FOREIGN KEY (idContainerType) REFERENCES ContainerType(idContainerType);
 
 CREATE TABLE Certificate (
     idCertificate INTEGER PRIMARY KEY,
