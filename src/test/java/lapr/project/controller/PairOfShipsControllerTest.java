@@ -1,7 +1,6 @@
 package lapr.project.controller;
 
 import lapr.project.model.Company;
-import lapr.project.model.Import;
 import lapr.project.model.Ship;
 import lapr.project.utils.Pair;
 import org.junit.jupiter.api.Test;
@@ -31,15 +30,15 @@ class PairOfShipsControllerTest {
     @Test
     public void getCloseCoordsShips() {
         PairOfShipsController pairOfShipsController = new PairOfShipsController();
-        Import imp = new Import(pairOfShipsController.getShipStore());
+        ImportShipsController importShipsController = new ImportShipsController(pairOfShipsController.getShipStore());
         String file = "data/data-shipsports/data-shipsports/data-ships&ports/sships.csv";
         try {
-            imp.importShipsData(file);
+            importShipsController.importShipData(file);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        imp.addShips();
+        importShipsController.addShips();
         List<Pair<Ship,Ship>> pairOfShipsList = pairOfShipsController.getCloseCoordsShips();
 
         System.out.println(pairOfShipsController.toString(pairOfShipsList));
