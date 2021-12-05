@@ -24,6 +24,7 @@ public class ShipOccupancyRate {
     /**
      * Constructor of the ShipOccupancyRate, through a given ship MMSI and cargo manifest id.
      *
+     * @param connectionFactory the connection factory
      * @param shipMMSI        the desired ship´s MMSI
      * @param idCargoManifest the desired cargo manifest´s id
      */
@@ -37,6 +38,7 @@ public class ShipOccupancyRate {
     /**
      * Constructor of the ShipOccupancyRate, through a given ship MMSI and date and time.
      *
+     * @param connectionFactory the connection factory
      * @param shipMMSI         the desired ship´s MMSI
      * @param localDateTimeStr the desired date and time string value
      */
@@ -82,7 +84,8 @@ public class ShipOccupancyRate {
      * @throws SQLException sql exception
      */
     private int getShipIdByMMSI(int shipMMSI) throws SQLException {
-        try (Connection connection = this.connectionFactory.getDatabaseConnection().getConnection(); CallableStatement callableStatement = connection.prepareCall("{? = call getShipIdByMMSI(?)}")) {
+        Connection connection = this.connectionFactory.getDatabaseConnection().getConnection();
+        try(CallableStatement callableStatement = connection.prepareCall("{? = call getShipIdByMMSI(?)}")) {
             callableStatement.setInt(2, shipMMSI);
             callableStatement.registerOutParameter(1, Types.INTEGER);
             callableStatement.execute();
@@ -99,7 +102,8 @@ public class ShipOccupancyRate {
      * @throws SQLException sql exception
      */
     private int getCargoManifestIdByDateTime(String localDateTimeStr) throws SQLException {
-        try (Connection connection = this.connectionFactory.getDatabaseConnection().getConnection(); CallableStatement callableStatement = connection.prepareCall("{? = call getCargoManifestIdByDateTime(?)}")) {
+        Connection connection = this.connectionFactory.getDatabaseConnection().getConnection();
+        try (CallableStatement callableStatement = connection.prepareCall("{? = call getCargoManifestIdByDateTime(?)}")) {
             callableStatement.setString(2, localDateTimeStr);
             callableStatement.registerOutParameter(1, Types.INTEGER);
             callableStatement.execute();
@@ -116,7 +120,8 @@ public class ShipOccupancyRate {
      * @throws SQLException sql exception
      */
     private double calcShipOccupancyRate() throws SQLException {
-        try (Connection connection = this.connectionFactory.getDatabaseConnection().getConnection(); CallableStatement callableStatement = connection.prepareCall("{? = call getShipOccupancyRate(?, ?)}")) {
+        Connection connection = this.connectionFactory.getDatabaseConnection().getConnection();
+        try(CallableStatement callableStatement = connection.prepareCall("{? = call getShipOccupancyRate(?, ?)}")) {
             callableStatement.setInt(2, this.shipId);
             callableStatement.setInt(3, this.cargoManifestId);
             callableStatement.registerOutParameter(1, Types.DOUBLE);

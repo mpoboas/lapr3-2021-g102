@@ -64,6 +64,7 @@ public class GetShipOccupancyRateController {
     /**
      * Gets the ship´s occupancy rate, through a ship MMSI and a cargo manifest id.
      *
+     * @param connectionFactory the connection factory
      * @param shipMMSI the ship´s MMSI
      * @param idCargoManifest the ship cargo manifest´s id
      * @return ship´s occupancy rate id
@@ -79,6 +80,7 @@ public class GetShipOccupancyRateController {
     /**
      * Gets the ship´s occupancy rate, through a ship MMSI and a date and time.
      *
+     * @param connectionFactory the connection factory
      * @param shipMMSI the ship´s MMSI
      * @param localDateTimeStr the desired date and time string value
      * @return ship´s occupancy rate id

@@ -1,6 +1,5 @@
 package Demos;
 
-import lapr.project.auth.mappers.dto.UserRoleDTO;
 import lapr.project.controller.AuthController;
 import lapr.project.controller.GetShipOccupancyRateController;
 import lapr.project.data.ConnectionFactory;
@@ -39,7 +38,7 @@ public class US208209Demo {
                     break;
                 case 2:
                     System.out.println("Enter date and time: ");
-                    String localDateTimeStr = scan.nextLine();
+                    String localDateTimeStr = scan.next();
                     shipOccupancyRate = controller.getShipOccupancyRateByDateTime(connectionFactory, shipMMSI, localDateTimeStr);
                     break;
                 default:
