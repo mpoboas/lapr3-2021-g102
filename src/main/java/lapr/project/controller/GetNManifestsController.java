@@ -20,9 +20,10 @@ public class GetNManifestsController {
     public GetNManifestsController ( int id, int year){
         this.year = year;
         this.idShipCaptain = id;
+        getnManY = new GetNmanifestsYear(this.idShipCaptain,this.year);
     }
     public void doDBQuery() throws SQLException, IOException {
-        getnManY = new GetNmanifestsYear(this.idShipCaptain,this.year);
+        getnManY.runDBCommand();
     }
     public void setGetnManY(GetNmanifestsYear data){
         this.getnManY = data;

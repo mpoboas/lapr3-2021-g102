@@ -18,11 +18,9 @@ public class US207Demo {
         int id = scan.nextInt();
         System.out.println("Email?");
         String email = scan.next();
-        if(login.existsUser(email)) {
             System.out.println("Password?");
             String password = scan.next();
             login.doLogin(email, password);
-            if(login.getCurrentUserSession().isLoggedIn()){
             System.out.println("List number of cargo manifests transported in year and average container per cargo manifest");
             System.out.println("Which year is required?");
             int year = scan.nextInt();
@@ -31,12 +29,6 @@ public class US207Demo {
             System.out.println("Data from year " + year);
             System.out.println("|\tNº of cargo manifests\t|\tAvg containers per cargo manifest\t|");
             System.out.println("|\t\t" + controller.getNManifests() + "\t\t|\t\t" + controller.getAvgContainerPerManifest() + "\t\t|");
-            }else{
-                System.out.println("Wrong credentials");
-            }
-        }else{
-            System.out.println("User doesn't exist");
-        }
 
     }
 }

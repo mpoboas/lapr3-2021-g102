@@ -7,7 +7,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 
 class getNManifestsControllerTest {
     @Mock
@@ -16,22 +20,24 @@ class getNManifestsControllerTest {
     GetNmanifestsYear data;
     @Test
     @ExtendWith(MockitoExtension.class)
-    void getNManifests() {
+    void getNManifests() throws SQLException, IOException {
         this.controller = new GetNManifestsController(1,2020);
         this.controller.setGetnManY(data);
         Mockito.when(this.data.getNManifests()).thenReturn(3);
         assertEquals(3, this.controller.getNManifests());
+        controller.doDBQuery();
         System.out.println("Result: "+ this.controller.getNManifests());
 
     }
 
     @Test
     @ExtendWith(MockitoExtension.class)
-    void getAvgContainerPerManifest() {
+    void getAvgContainerPerManifest() throws SQLException, IOException {
         this.controller = new GetNManifestsController(1,2020);
         this.controller.setGetnManY(data);
         Mockito.when(this.data.getAvgManifests()).thenReturn(1.0);
         assertEquals(1.0, this.controller.getAvgContainerPerManifest());
+        controller.doDBQuery();
         System.out.println("Result: "+ this.controller.getAvgContainerPerManifest());
 
     }
