@@ -10,11 +10,24 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContainersToBeOffloadedDB {
+public class ContainersToBeLoadedOffloadedDB {
 
     public List<String> getContainersToBeOffloaded(int idShip, Timestamp date, ConnectionFactory connectionFactory) throws SQLException {
         try (Connection connection = connectionFactory.getDatabaseConnection().getConnection();
              CallableStatement callableStatement = connection.prepareCall("{ ? = call fnc_get_containers_to_be_offloaded(?, ?) }");) {
+            callableStatement.registerOutParameter(1, Types.REF_CURSOR);
+            callableStatement.setInt(2, idShip);
+            Timestamp now = Timestamp.valueOf(LocalDateTime.now());
+            callableStatement.setTimestamp(3, date);
+            callableStatement.execute();
+            ResultSet resultSet = (ResultSet) callableStatement.getObject(1);
+            return result(resultSet);
+        }
+    }
+
+    public List<String> getContainersToBeLoaded(int idShip, Timestamp date, ConnectionFactory connectionFactory) throws SQLException {
+        try (Connection connection = connectionFactory.getDatabaseConnection().getConnection();
+             CallableStatement callableStatement = connection.prepareCall("{ ? = call fnc_get_containers_to_be_loaded(?, ?) }");) {
             callableStatement.registerOutParameter(1, Types.REF_CURSOR);
             callableStatement.setInt(2, idShip);
             Timestamp now = Timestamp.valueOf(LocalDateTime.now());
