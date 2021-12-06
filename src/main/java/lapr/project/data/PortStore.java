@@ -138,7 +138,7 @@ public class PortStore implements Persistable{
     private void insertPositionOnDB(DatabaseConnection databaseConnection,
                                     Port port) throws SQLException{
         Connection connection = databaseConnection.getConnection();
-        String sqlCommand = "insert into port( latitude, longitude) values (?, ?, ?)";
+        String sqlCommand = "insert into position( latitude, longitude) values (?, ?)";
         executePositionStatementOnDatabase(databaseConnection, port,
                 sqlCommand);
     }
