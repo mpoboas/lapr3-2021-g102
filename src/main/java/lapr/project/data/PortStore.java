@@ -157,7 +157,7 @@ public class PortStore implements Persistable{
         String sqlCommand =
                 "update portwarehouse set name = ? , continent = ?, country = ? where id = ?";
 
-        executePortStatementOnDatabase(databaseConnection, port,
+        updatePortStatementOnDatabase(databaseConnection, port,
                 sqlCommand);
     }
 
