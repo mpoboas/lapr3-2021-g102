@@ -99,20 +99,21 @@ public class PortStore implements Persistable{
 
         String sqlCommand = "select * from portwarehouse where idportwarehouse = ?";
 
-        PreparedStatement getClientsPreparedStatement =
-                connection.prepareStatement(sqlCommand);
+        try(PreparedStatement getClientsPreparedStatement =
+                connection.prepareStatement(sqlCommand)) {
 
-        getClientsPreparedStatement.setInt(1, port.getid());
+            getClientsPreparedStatement.setInt(1, port.getid());
 
-        try (ResultSet clientsResultSet = getClientsPreparedStatement.executeQuery()) {
+            try (ResultSet clientsResultSet = getClientsPreparedStatement.executeQuery()) {
 
-            if (clientsResultSet.next()) {
-                // if port already exists in the database
-                isPortOnDatabase = true;
-            } else {
+                if (clientsResultSet.next()) {
+                    // if port already exists in the database
+                    isPortOnDatabase = true;
+                } else {
 
-                // if port does not exist in the database
-                isPortOnDatabase = false;
+                    // if port does not exist in the database
+                    isPortOnDatabase = false;
+                }
             }
         }
         return isPortOnDatabase;
@@ -165,14 +166,15 @@ public class PortStore implements Persistable{
             Port port, String sqlCommand) throws SQLException {
         Connection connection = databaseConnection.getConnection();
 
-        PreparedStatement savePortPreparedStatement =
+        try(PreparedStatement savePortPreparedStatement =
                 connection.prepareStatement(
-                        sqlCommand);
-        savePortPreparedStatement.setString(1, port.getName());
-        savePortPreparedStatement.setString(2, port.getContinent());
-        savePortPreparedStatement.setString(3, port.getCountry());
-        savePortPreparedStatement.setInt(4, port.getid());
-        savePortPreparedStatement.executeUpdate();
+                        sqlCommand)) {
+            savePortPreparedStatement.setString(1, port.getName());
+            savePortPreparedStatement.setString(2, port.getContinent());
+            savePortPreparedStatement.setString(3, port.getCountry());
+            savePortPreparedStatement.setInt(4, port.getid());
+            savePortPreparedStatement.executeUpdate();
+        }
 
     }
 
@@ -188,35 +190,38 @@ public class PortStore implements Persistable{
             Port port, String sqlCommand) throws SQLException {
         Connection connection = databaseConnection.getConnection();
 
-        PreparedStatement savePortPreparedStatement =
+        try(PreparedStatement savePortPreparedStatement =
                 connection.prepareStatement(
-                        sqlCommand);
-        savePortPreparedStatement.setInt(1, port.getid());
-        savePortPreparedStatement.setString(2, port.getName());
-        savePortPreparedStatement.setString(3, port.getContinent());
-        savePortPreparedStatement.setString(4, port.getCountry());
-        savePortPreparedStatement.setInt(5, getPositionid(databaseConnection,port));
-        savePortPreparedStatement.setInt(6, port.getid());
-        savePortPreparedStatement.executeUpdate();
+                        sqlCommand)) {
+            savePortPreparedStatement.setInt(1, port.getid());
+            savePortPreparedStatement.setString(2, port.getName());
+            savePortPreparedStatement.setString(3, port.getContinent());
+            savePortPreparedStatement.setString(4, port.getCountry());
+            savePortPreparedStatement.setInt(5, getPositionid(databaseConnection, port));
+            savePortPreparedStatement.setInt(6, port.getid());
+            savePortPreparedStatement.executeUpdate();
+        }
     }
     private void executePositionStatementOnDatabase(DatabaseConnection databaseConnection,
                                                     Port port, String sqlCommand) throws SQLException{
         Connection connection = databaseConnection.getConnection();
-        PreparedStatement savePortPreparedStatement =
+        try(PreparedStatement savePortPreparedStatement =
                 connection.prepareStatement(
-                        sqlCommand);
-        savePortPreparedStatement.setDouble(1, port.getLatitude());
-        savePortPreparedStatement.setDouble(2, port.getLongitude());
-        savePortPreparedStatement.executeUpdate();
+                        sqlCommand)) {
+            savePortPreparedStatement.setDouble(1, port.getLatitude());
+            savePortPreparedStatement.setDouble(2, port.getLongitude());
+            savePortPreparedStatement.executeUpdate();
+        }
     }
 
     private int getPositionid(DatabaseConnection databaseConnection, Port port) throws SQLException {
         int positionId;
         String sqlCommand = "SELECT IDPOSITION FROM POSITION WHERE LATITUDE = " + port.getLatitude() +" AND LONGITUDE = " +port.getLongitude();
         Connection connection = databaseConnection.getConnection();
-        PreparedStatement runcommand = connection.prepareStatement(sqlCommand);
-        try (ResultSet rs = runcommand.executeQuery()) {
-            positionId = rs.getInt(1);
+        try(PreparedStatement runcommand = connection.prepareStatement(sqlCommand)) {
+            try (ResultSet rs = runcommand.executeQuery()) {
+                positionId = rs.getInt(1);
+            }
         }
 
         return positionId;
