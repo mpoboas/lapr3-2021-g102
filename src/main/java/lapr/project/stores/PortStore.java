@@ -1,8 +1,6 @@
 package lapr.project.stores;
 
 import lapr.project.model.Port;
-
-
 import lapr.project.utils.PortTree;
 
 import java.util.List;
