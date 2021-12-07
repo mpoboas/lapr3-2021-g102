@@ -1,0 +1,233 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
++getShipStore()
++getPortStore()
+}
+
+class ShipStore{
+-ShipTree shipTreeMMSI
+-ShipTree shipTreeIMO
+-ShipTree shipTreeCallSign
++createShip(MMSI,vesselName,IMO,callSign,vesselType,\nlength,width,draft,cargo,transceiverClass)
++validadeShip(ship)
++addShip(ship)
++getShipByMMSI(MMSI)
++getShipByIMO(IMO)
++getShipByCallSign(callSign)
++getCloseCoordsShips()
+}
+
+class PortStore{
+-PortTree portTree
++createPort(idPort, name,continent,country,longitude,latitude)
++buildPortTree(List<Port> listOfPorts)
+}
+
+class Ship{
+-MMSI
+-vesselName
+-IMO
+-callSign
+-vesselType
+-length
+-width
+-draft
+-cargo
+-transceiverClass
++Ship(MMSI,vesselName,IMO,callSign,vesselType,\nlength,width,draft,cargo,transceiverClass)
++addAISMessage(aisMessage)
++getAISAtDate(date)
++getAISBetweenTwoDates(date1, date2)
++getVesselName()
++getStartBDT()
++getEndBDT()
++getTotalTimeInSea()
++numberOfMovements()
++getMaxSOG()
++getMeanSOG()
++getMaxCOG()
++getMeanCOG()
++getDepartureLatitude()
++getDepartureLongitude()
++getArrivalLatitude()
++getArrivalLongitude()
++getTotalDistance()
++deltaDistance()
+}
+
+class PortWarehouse{
+-idPort
+-name
+-continent
+-country
+-latitude
+-longitude
++create(idPort, name,continent,country,,longitude,latitude)
+}
+
+class ShipTree{
+-Comparator<Ship> comp;
++ShipTree(type);
++insert(ship);
++remove(ship);
++find(ship);
++equals(Object);
++getShipByMMSI(MMSI);
++getShipByIMO(IMO);
++getShipByCallSign(callSign);
++getCloseCoordsShips();
+}
+class AISMessage{
+-dateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
++AISMessage(dateTime,latitude,longitude,\nSOG,COG,heading)
+}
+
+class PortTree{
++buildKDTree(List<Port> listOfPorts)
+}
+class KDTree{
+-2DNode root
++KDTree()
++size()
++height()
++insert(element,x,y)
++findNearestNeighbour(x,y)
+}
+class ImportShipsUI {
+}
+
+
+class ImportShipsController {
++importShipsData(file)
++saveShipsData()
+}
+
+class Import{
+-List<Ship> importedShips
++importShipsData(file)
++saveShipsData()
+}
+
+class ImportPorts{
+-List<Port> importedPorts
++importPortsData(file)
+-createPort(idPort, name,continent,country,longitude,latitude)
++savePortsData()
+}
+
+class SearchShipController {
++getShipByMMSI(MMSI)
++getShipByIMO(IMO)
++getShipByCallSign(callSign)
+}
+
+class SearchShipUI {
+}
+class ShipDTO{
++ShipDTO()
+}
+class ShipMapper{
++toDTO(Ship ship)
+}
+class AISMessageDTO{
++AISMessageDTO()
+}
+class AISMessageMapper{
++toDTO(AISMessage msg)
+}
+
+class PositionalMessagesController {
++getPositionalMessagesAtDate(ship, date)
++getPositionalMessagesBetweenTwoDates(ship, date1, date2)
+
+}
+class PositionalMessagesUI {
+}
+
+class SummaryController {
++getShip(code)
++getShipSummary(Ship ship)
+
+}
+class SummaryUI {
+}
+
+class ListShipController
+class Conversions
+
+class CloseShipInfoUI {
+}
+
+class PairOfShipsController {
++getCloseCoordsShips()
+}
+
+class ImportPortsController {
++importShipsData(file)
++saveShipsData()
+}
+
+class ImportPortsUI {
+}
+
+
+ImportShipsUI ..> ImportShipsController
+ImportShipsController ..> Import
+
+SearchShipUI ..> SearchShipController
+SearchShipController ..> Company
+SearchShipController ..> ShipMapper
+SearchShipController .> ShipStore
+
+PositionalMessagesUI ..> PositionalMessagesController
+PositionalMessagesController ..> Company
+
+SummaryUI ..> SummaryController
+SummaryController ..> Company
+
+Conversions -- ListShipController: Makes unit convertions >
+ListShipController -- ShipStore : gets list of ships >
+
+CloseShipInfoUI ..> PairOfShipsController
+PairOfShipsController ..> Company
+PairOfShipsController ..> ShipStore
+
+Import --> Company
+Import -> ShipStore
+Company -> ShipStore : uses >
+ShipStore "1" ->  "*" Ship: stores >
+Ship "1" -> "*" AISMessage: contains >
+ShipStore -> ShipTree
+
+
+ShipMapper ..> ShipDTO
+ShipMapper .> AISMessageMapper
+ShipMapper ..> Ship
+AISMessageMapper ..> AISMessage
+AISMessageMapper .> AISMessageDTO
+
+
+ImportPortsUI ..> ImportPortsController
+ImportPortsController ..> ImportPorts
+ImportPorts --> Company
+ImportPorts -> PortStore
+Company -> PortStore : uses >
+PortStore "1" ->  "*" PortWarehouse: stores >
+
+
+PortTree --> PortStore
+ PortTree -|> KDTree
+
+
+
+
+
+@enduml

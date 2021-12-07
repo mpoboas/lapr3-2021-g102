@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+autonumber
+actor "Client" as CL
+
+activate CL
+CL -> ":System" : asks the situation of a specific container
+activate ":System"
+":System" --> CL : requests data (container identifier)
+deactivate ":System"
+
+CL -> ":System" : inserts requested data
+activate ":System"
+":System" --> CL : shows current situation of the container
+deactivate ":System"
+
+
+CL -> ":System" : confirms the data
+activate ":System"
+":System" --> CL : informs operation success
+deactivate ":System"
+
+deactivate CL
+
+@enduml

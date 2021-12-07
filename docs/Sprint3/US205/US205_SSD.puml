@@ -1,0 +1,16 @@
+@startuml
+autonumber
+actor "Ship Captain" as SC
+
+activate SC
+SC -> ":System" : requests the containers to be offloaded\n in the next port
+activate ":System"
+":System" --> SC : requests the necessary data (ship)
+deactivate ":System"
+SC -> ":System" : types data
+activate ":System"
+":System" --> SC : shows the given ship's list of containers\n to be offloaded in the next port
+deactivate ":System"
+deactivate SC
+
+@enduml

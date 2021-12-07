@@ -1,0 +1,23 @@
+@startuml
+autonumber
+actor "Traffic Manager" as TF
+
+activate TF
+TF -> ":System" : asks for the positional messages of a ship
+activate ":System"
+":System" --> TF : asks to choose a ship (MMSI or IMO or callSign)
+deactivate ":System"
+
+TF -> ":System" : inserts requested data
+activate ":System"
+":System" --> TF : requests a period or date
+deactivate ":System"
+
+TF -> ":System" : inserts requested data
+activate ":System"
+":System" --> TF : shows the ship's positional messages
+deactivate ":System"
+
+deactivate TF
+
+@enduml

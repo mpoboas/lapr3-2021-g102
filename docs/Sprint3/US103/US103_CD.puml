@@ -1,0 +1,35 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Company {
+-designation
++getShipStore()
+}
+class PositionalMessagesController {
++getPositionalMessagesAtDate(ship, date)
++getPositionalMessagesBetweenTwoDates(ship, date1, date2)
+
+}
+class PositionalMessagesUI {
+}
+class ShipStore{
++getShipByMMSI(MMSI)
++getShipByIMO(IMO)
++getShipByCallSign(callSign)
+}
+
+class Ship{
++getAISAtDate(date)
++getAISBetweenTwoDates(date1, date2)
+}
+
+
+PositionalMessagesUI ..> PositionalMessagesController
+PositionalMessagesController ..> Company
+Company --> ShipStore
+ShipStore --> Ship
+
+
+
+
+@enduml

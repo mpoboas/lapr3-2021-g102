@@ -1,0 +1,58 @@
+@startuml
+autonumber
+'hide footbox
+
+actor "Ship Captain" as SC
+
+participant "ShipOccupancyRateUI" as UI
+participant "GetShipOccupancyRateController" as CTRL
+participant "ShipOccupancyRate" as SHIPOCCRATE
+participant ConnectionFactory as CF
+participant DatabaseConnection as DC
+database LAPR3_G102 as DB
+
+activate SC
+SC -> UI : requests the occupancy rate of a given ship at a given moment
+activate UI
+UI --> SC : requests all the needed data (ship and moment)
+deactivate UI
+
+SC -> UI : types data
+activate UI
+
+UI -> CF** : create()
+activate CF
+CF -> DC** : create()
+activate DC
+DC --> DB
+activate DB
+deactivate DB
+deactivate DC
+deactivate CF
+
+UI -> CTRL : getShipOccupancyRateById(connectionFactory, shipMMSI, localDateTimeStr)
+activate CTRL
+CTRL -> SHIPOCCRATE** : create(connectionFactory, shipMMSI, localDateTimeStr)
+activate SHIPOCCRATE
+
+SHIPOCCRATE -> DB : shipId = getShipIdByMMSI(shipMMSI)
+activate DB
+deactivate DB
+
+SHIPOCCRATE -> DB : cargoManifestId = getCargoManifestIdByDateTime(localDateTimeStr)
+activate DB
+deactivate DB
+
+SHIPOCCRATE -> DB : shipOccupancyRate = calcShipOccupancyRate()
+activate DB
+deactivate DB
+
+CTRL -> SHIPOCCRATE : getShipOccupancyRate()
+SHIPOCCRATE -> SHIPOCCRATE : getShipOccupancyRate()
+SHIPOCCRATE --> CTRL : shipOccupancyRate
+deactivate SHIPOCCRATE
+CTRL --> UI : shipOccupancyRate
+deactivate CTRL
+UI --> SC : shows the given ship´s occupancy rate
+deactivate UI
+@enduml

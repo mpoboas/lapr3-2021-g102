@@ -1,0 +1,24 @@
+@startuml
+autonumber
+actor "Traffic Manager" as TF
+
+activate TF
+TF -> ":System" : asks to import ships from file
+activate ":System"
+":System" --> TF : requests data (file directory)
+deactivate ":System"
+
+TF -> ":System" : inserts requested data
+activate ":System"
+":System" --> TF : shows how many ships were imported
+deactivate ":System"
+
+
+TF -> ":System" : confirms the data
+activate ":System"
+":System" --> TF : informs operation success
+deactivate ":System"
+
+deactivate TF
+
+@enduml

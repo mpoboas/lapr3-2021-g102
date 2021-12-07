@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
++getShipStore()
+}
+
+class CloseShipInfoUI {
+}
+
+class PairOfShipsController {
++getCloseCoordsShips()
+}
+
+class ShipStore {
+BST<Ship> shipTree
++getCloseCoordsShips()
+}
+
+class ShipTree {
++getCloseCoordsShips()
+}
+
+class Ship {
+-MMSI
+-vesselName
+-IMO
+-callSign
+-vesselType
+-length
+-width
+-draft
+-cargo
+-transceiverClass
+}
+
+CloseShipInfoUI ..> PairOfShipsController
+Company -> ShipStore : adopts >
+ShipStore "1" ->  "*" ShipTree: has >
+ShipTree "1" ->  "*" Ship: stores >
+PairOfShipsController ..> Company
+PairOfShipsController ..> ShipStore
+
+@enduml

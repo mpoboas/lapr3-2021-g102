@@ -1,0 +1,58 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor "Client" as CL
+participant "GetContainerSituationUI" as UI
+participant "GetContainerSituationController" as CTRL
+participant "ContainerSituationDB" as CSDB
+participant ConnectionFactory as CF
+participant DatabaseConnection as DC
+
+database LAPR3_G102 as DB
+participant "con: Connection" as CON
+
+
+
+activate CL
+CL -> UI : asks the situation of a specific container
+activate UI
+UI --> CL : requests data (container identifier)
+deactivate UI
+
+CL -> UI : inserts requested data
+activate UI
+UI -> CTRL: getSituation(containerID)
+activate CTRL
+CTRL -> CSDB : getSituation(containerDB)
+activate CSDB
+CSDB -> CF : getInstance()
+activate CF
+deactivate CF
+CSDB -> CF : getDatabaseConnection()
+activate CF
+deactivate CF
+CSDB -> DC: con = getConnection()
+activate DC
+deactivate DC
+CSDB -> DB : situation = fnc_get_container_status(containerID)
+activate DB
+deactivate DB
+CSDB --> CTRL : situation
+deactivate CSDB
+
+CTRL --> UI : situation
+
+deactivate CTRL
+
+UI --> CL : shows current situation of the container
+deactivate UI
+
+
+CL -> UI : confirms the data
+activate UI
+UI --> CL : informs operation success
+deactivate UI
+
+deactivate CL
+@enduml

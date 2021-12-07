@@ -1,0 +1,45 @@
+@startuml
+class ListShipController
+class Conversions
+class AISMessage{
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+-List<Trip> Trips
+}
+class shipStore{
+-List<Ship> shipList
+}
+class Import
+Import  --  shipStore: imports ships from file >
+shipStore -- Ship : stores list of ships >
+Conversions -- ListShipController: Makes unit convertions >
+Ship -- AISMessage : Makes AISMessage periodicaly >
+ListShipController -- shipStore : gets list of ships >
+@enduml

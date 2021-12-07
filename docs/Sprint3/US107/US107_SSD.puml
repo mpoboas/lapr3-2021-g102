@@ -1,0 +1,12 @@
+@startuml
+autonumber
+actor "Traffic Manager" as TF
+
+activate TF
+TF -> ":System" : asks to get all the pairs of ships with close\ndeparture/arrival coordinates
+activate ":System"
+":System" --> TF : shows all the pairs of ships found
+deactivate ":System"
+deactivate TF
+
+@enduml

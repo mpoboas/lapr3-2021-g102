@@ -1,0 +1,66 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
++getShipStore()
+}
+
+class FindClosestPortUI {
+}
+
+class FindClosestPortController {
++findClosestPort(Coordinates coordinates)
+-getShipCoordinatesAtGivenTime(Ship ship, DateTime dateTime)
+}
+
+class ShipStore {
+-BST<Ship> shipTree
++getShipCoordinatesAtGivenTime(Ship ship, DateTime dateTime)
+}
+
+class ShipTree {
++getShipCoordinatesAtGivenTime(Ship ship, DateTime dateTime)
+}
+
+class Ship {
+-MMSI
+-vesselName
+-IMO
+-callSign
+-vesselType
+-length
+-width
+-draft
+-cargo
+-transceiverClass
+}
+
+class PortStore {
+-BST<Port> portTree
++findNearestNeighbour(double shipLongitude, double shipLatitude)
+}
+
+class PortTree {
++findNearestNeighbour(double shipLongitude, double shipLatitude)
+}
+
+class Port {
+-id
+-name
+-continent
+-country
+-coordinates
+}
+
+FindClosestPortUI ..> FindClosestPortController
+Company -> PortStore : adopts >
+PortStore "1" ->  "*" PortTree: has >
+PortTree "1" ->  "*" Port: stores >
+ShipStore "1" ->  "*" ShipTree: has >
+ShipTree "1" ->  "*" Ship: stores >
+FindClosestPortController ..> Company
+FindClosestPortController ..> PortStore
+FindClosestPortController ..> ShipStore
+
+@enduml

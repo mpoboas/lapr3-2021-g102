@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="765px" preserveAspectRatio="none" style="width:320px;height:765px;background:#FFFFFF;" version="1.1" viewBox="0 0 320 765" width="320px" zoomAndPan="magnify"><defs><filter height="300%" id="f14ftc5sic2k97" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[02e4b9b7573f1156f41e60aa5b4e25a4]
+class Company--><rect codeLine="3" fill="#FEFECE" filter="url(#f14ftc5sic2k97)" height="61.8359" id="Company" style="stroke:#A80036;stroke-width:1.5;" width="85" x="7" y="306.5"/><ellipse cx="22" cy="322.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M24,319 Q24.2031,318.5 24.4375,318.25 Q24.6719,318 24.9375,318 Q25.4063,318 25.7031,318.2813 Q26,318.5625 26,319.2188 L26,320.7813 Q26,321.4375 25.7188,321.7188 Q25.4375,322 25,322 Q24.6094,322 24.3594,321.8281 Q24.1094,321.6563 24,321.2031 Q23.9531,320.8906 23.7813,320.7188 Q23.4688,320.3906 22.9063,320.2031 Q22.3438,320 21.7813,320 Q21.0781,320 20.4844,320.2813 Q19.9063,320.5625 19.4531,321.1875 Q19,321.8125 19,322.6719 L19,323.5938 Q19,324.625 19.8438,325.3125 Q20.6875,326 22.1875,326 Q23.0781,326 23.7031,325.7969 Q24.0625,325.6875 24.4688,325.3281 Q24.7344,325.125 24.875,325.0625 Q25.0156,325 25.1875,325 Q25.5156,325 25.75,325.2656 Q26,325.5156 26,325.875 Q26,326.2188 25.6563,326.625 Q25.1563,327.2188 24.3594,327.5469 Q23.3125,328 22.0313,328 Q20.5313,328 19.3281,327.4063 Q18.3594,326.9375 17.6719,325.9219 Q17,324.9063 17,323.7031 L17,322.6094 Q17,321.3594 17.5938,320.2656 Q18.2031,319.1719 19.25,318.5938 Q20.3125,318 21.5,318 Q22.2188,318 22.8438,318.25 Q23.4688,318.5 24,319 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="53" x="36" y="327.4102">Company</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="91" y1="338.5" y2="338.5"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="346.5"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="55" x="27" y="353.9189">designation</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="91" y1="360.3359" y2="360.3359"/><!--MD5=[b4696a3677a7a73977ce48afd611f547]
+class ShipOccupancyRateUI--><rect codeLine="7" fill="#FEFECE" filter="url(#f14ftc5sic2k97)" height="48" id="ShipOccupancyRateUI" style="stroke:#A80036;stroke-width:1.5;" width="155" x="53" y="7"/><ellipse cx="68" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M70,19.5 Q70.2031,19 70.4375,18.75 Q70.6719,18.5 70.9375,18.5 Q71.4063,18.5 71.7031,18.7813 Q72,19.0625 72,19.7188 L72,21.2813 Q72,21.9375 71.7188,22.2188 Q71.4375,22.5 71,22.5 Q70.6094,22.5 70.3594,22.3281 Q70.1094,22.1563 70,21.7031 Q69.9531,21.3906 69.7813,21.2188 Q69.4688,20.8906 68.9063,20.7031 Q68.3438,20.5 67.7813,20.5 Q67.0781,20.5 66.4844,20.7813 Q65.9063,21.0625 65.4531,21.6875 Q65,22.3125 65,23.1719 L65,24.0938 Q65,25.125 65.8438,25.8125 Q66.6875,26.5 68.1875,26.5 Q69.0781,26.5 69.7031,26.2969 Q70.0625,26.1875 70.4688,25.8281 Q70.7344,25.625 70.875,25.5625 Q71.0156,25.5 71.1875,25.5 Q71.5156,25.5 71.75,25.7656 Q72,26.0156 72,26.375 Q72,26.7188 71.6563,27.125 Q71.1563,27.7188 70.3594,28.0469 Q69.3125,28.5 68.0313,28.5 Q66.5313,28.5 65.3281,27.9063 Q64.3594,27.4375 63.6719,26.4219 Q63,25.4063 63,24.2031 L63,23.1094 Q63,21.8594 63.5938,20.7656 Q64.2031,19.6719 65.25,19.0938 Q66.3125,18.5 67.5,18.5 Q68.2188,18.5 68.8438,18.75 Q69.4688,19 70,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="123" x="82" y="27.9102">ShipOccupancyRateUI</text><line style="stroke:#A80036;stroke-width:1.5;" x1="54" x2="207" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="54" x2="207" y1="47" y2="47"/><!--MD5=[8ec914af3953690c73f5d482a4b40226]
+class GetShipOccupancyRateController--><rect codeLine="10" fill="#FEFECE" filter="url(#f14ftc5sic2k97)" height="89.5078" id="GetShipOccupancyRateController" style="stroke:#A80036;stroke-width:1.5;" width="216" x="22.5" y="115"/><ellipse cx="37.5" cy="131" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M39.5,127.5 Q39.7031,127 39.9375,126.75 Q40.1719,126.5 40.4375,126.5 Q40.9063,126.5 41.2031,126.7813 Q41.5,127.0625 41.5,127.7188 L41.5,129.2813 Q41.5,129.9375 41.2188,130.2188 Q40.9375,130.5 40.5,130.5 Q40.1094,130.5 39.8594,130.3281 Q39.6094,130.1563 39.5,129.7031 Q39.4531,129.3906 39.2813,129.2188 Q38.9688,128.8906 38.4063,128.7031 Q37.8438,128.5 37.2813,128.5 Q36.5781,128.5 35.9844,128.7813 Q35.4063,129.0625 34.9531,129.6875 Q34.5,130.3125 34.5,131.1719 L34.5,132.0938 Q34.5,133.125 35.3438,133.8125 Q36.1875,134.5 37.6875,134.5 Q38.5781,134.5 39.2031,134.2969 Q39.5625,134.1875 39.9688,133.8281 Q40.2344,133.625 40.375,133.5625 Q40.5156,133.5 40.6875,133.5 Q41.0156,133.5 41.25,133.7656 Q41.5,134.0156 41.5,134.375 Q41.5,134.7188 41.1563,135.125 Q40.6563,135.7188 39.8594,136.0469 Q38.8125,136.5 37.5313,136.5 Q36.0313,136.5 34.8281,135.9063 Q33.8594,135.4375 33.1719,134.4219 Q32.5,133.4063 32.5,132.2031 L32.5,131.1094 Q32.5,129.8594 33.0938,128.7656 Q33.7031,127.6719 34.75,127.0938 Q35.8125,126.5 37,126.5 Q37.7188,126.5 38.3438,126.75 Q38.9688,127 39.5,127.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="184" x="51.5" y="135.9102">GetShipOccupancyRateController</text><line style="stroke:#A80036;stroke-width:1.5;" x1="23.5" x2="237.5" y1="147" y2="147"/><line style="stroke:#A80036;stroke-width:1.5;" x1="23.5" x2="237.5" y1="155" y2="155"/><ellipse cx="33.5" cy="166" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="52" x="42.5" y="170.4189">getShipId()</text><ellipse cx="33.5" cy="179.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="101" x="42.5" y="184.2549">getCargoManifestId()</text><ellipse cx="33.5" cy="193.6719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="143" x="42.5" y="198.0908">getShipOccupancyRateById()</text><!--MD5=[43352eca49dbf609cd22f5fe5476238a]
+class ShipOccupancyRate--><rect codeLine="16" fill="#FEFECE" filter="url(#f14ftc5sic2k97)" height="144.8516" id="ShipOccupancyRate" style="stroke:#A80036;stroke-width:1.5;" width="169" x="127" y="265"/><ellipse cx="153.7" cy="281" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M155.7,277.5 Q155.9031,277 156.1375,276.75 Q156.3719,276.5 156.6375,276.5 Q157.1063,276.5 157.4031,276.7813 Q157.7,277.0625 157.7,277.7188 L157.7,279.2813 Q157.7,279.9375 157.4188,280.2188 Q157.1375,280.5 156.7,280.5 Q156.3094,280.5 156.0594,280.3281 Q155.8094,280.1563 155.7,279.7031 Q155.6531,279.3906 155.4813,279.2188 Q155.1688,278.8906 154.6063,278.7031 Q154.0438,278.5 153.4813,278.5 Q152.7781,278.5 152.1844,278.7813 Q151.6063,279.0625 151.1531,279.6875 Q150.7,280.3125 150.7,281.1719 L150.7,282.0938 Q150.7,283.125 151.5438,283.8125 Q152.3875,284.5 153.8875,284.5 Q154.7781,284.5 155.4031,284.2969 Q155.7625,284.1875 156.1688,283.8281 Q156.4344,283.625 156.575,283.5625 Q156.7156,283.5 156.8875,283.5 Q157.2156,283.5 157.45,283.7656 Q157.7,284.0156 157.7,284.375 Q157.7,284.7188 157.3563,285.125 Q156.8563,285.7188 156.0594,286.0469 Q155.0125,286.5 153.7313,286.5 Q152.2313,286.5 151.0281,285.9063 Q150.0594,285.4375 149.3719,284.4219 Q148.7,283.4063 148.7,282.2031 L148.7,281.1094 Q148.7,279.8594 149.2938,278.7656 Q149.9031,277.6719 150.95,277.0938 Q152.0125,276.5 153.2,276.5 Q153.9188,276.5 154.5438,276.75 Q155.1688,277 155.7,277.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="111" x="170.3" y="285.9102">ShipOccupancyRate</text><line style="stroke:#A80036;stroke-width:1.5;" x1="128" x2="295" y1="297" y2="297"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="135" y="305"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="28" x="147" y="312.4189">shipId</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="135" y="318.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="147" y="326.2549">cargoManifestId</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="135" y="332.6719"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="98" x="147" y="340.0908">shipOccupancyRate</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="135" y="346.5078"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="90" x="147" y="353.9268">connectionFactory</text><line style="stroke:#A80036;stroke-width:1.5;" x1="128" x2="295" y1="360.3438" y2="360.3438"/><ellipse cx="138" cy="371.3438" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="52" x="147" y="375.7627">getShipId()</text><ellipse cx="138" cy="385.1797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="101" x="147" y="389.5986">getCargoManifestId()</text><ellipse cx="138" cy="399.0156" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="143" x="147" y="403.4346">getShipOccupancyRateById()</text><!--MD5=[0b8a0869bb17c5d05015d74abb8e1141]
+class ConnectionFactory--><rect codeLine="26" fill="#FEFECE" filter="url(#f14ftc5sic2k97)" height="89.5078" id="ConnectionFactory" style="stroke:#A80036;stroke-width:1.5;" width="149" x="137" y="470"/><ellipse cx="158.75" cy="486" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M160.75,482.5 Q160.9531,482 161.1875,481.75 Q161.4219,481.5 161.6875,481.5 Q162.1563,481.5 162.4531,481.7813 Q162.75,482.0625 162.75,482.7188 L162.75,484.2813 Q162.75,484.9375 162.4688,485.2188 Q162.1875,485.5 161.75,485.5 Q161.3594,485.5 161.1094,485.3281 Q160.8594,485.1563 160.75,484.7031 Q160.7031,484.3906 160.5313,484.2188 Q160.2188,483.8906 159.6563,483.7031 Q159.0938,483.5 158.5313,483.5 Q157.8281,483.5 157.2344,483.7813 Q156.6563,484.0625 156.2031,484.6875 Q155.75,485.3125 155.75,486.1719 L155.75,487.0938 Q155.75,488.125 156.5938,488.8125 Q157.4375,489.5 158.9375,489.5 Q159.8281,489.5 160.4531,489.2969 Q160.8125,489.1875 161.2188,488.8281 Q161.4844,488.625 161.625,488.5625 Q161.7656,488.5 161.9375,488.5 Q162.2656,488.5 162.5,488.7656 Q162.75,489.0156 162.75,489.375 Q162.75,489.7188 162.4063,490.125 Q161.9063,490.7188 161.1094,491.0469 Q160.0625,491.5 158.7813,491.5 Q157.2813,491.5 156.0781,490.9063 Q155.1094,490.4375 154.4219,489.4219 Q153.75,488.4063 153.75,487.2031 L153.75,486.1094 Q153.75,484.8594 154.3438,483.7656 Q154.9531,482.6719 156,482.0938 Q157.0625,481.5 158.25,481.5 Q158.9688,481.5 159.5938,481.75 Q160.2188,482 160.75,482.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="102" x="174.25" y="490.9102">ConnectionFactory</text><line style="stroke:#A80036;stroke-width:1.5;" x1="138" x2="285" y1="502" y2="502"/><line style="stroke:#A80036;stroke-width:1.5;" x1="138" x2="285" y1="510" y2="510"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="145" y="518"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="64" x="157" y="525.4189">getInstance()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="145" y="531.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="157" y="539.2549">loadProperties()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="145" y="545.6719"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="123" x="157" y="553.0908">getDatabaseConnection()</text><!--MD5=[8aa441cdd93a4e2944eff58bc06cd78a]
+class DatabaseConnection--><rect codeLine="32" fill="#FEFECE" filter="url(#f14ftc5sic2k97)" height="131.0156" id="DatabaseConnection" style="stroke:#A80036;stroke-width:1.5;" width="190" x="116.5" y="620"/><ellipse cx="149.95" cy="636" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M151.95,632.5 Q152.1531,632 152.3875,631.75 Q152.6219,631.5 152.8875,631.5 Q153.3563,631.5 153.6531,631.7813 Q153.95,632.0625 153.95,632.7188 L153.95,634.2813 Q153.95,634.9375 153.6688,635.2188 Q153.3875,635.5 152.95,635.5 Q152.5594,635.5 152.3094,635.3281 Q152.0594,635.1563 151.95,634.7031 Q151.9031,634.3906 151.7313,634.2188 Q151.4188,633.8906 150.8563,633.7031 Q150.2938,633.5 149.7313,633.5 Q149.0281,633.5 148.4344,633.7813 Q147.8563,634.0625 147.4031,634.6875 Q146.95,635.3125 146.95,636.1719 L146.95,637.0938 Q146.95,638.125 147.7938,638.8125 Q148.6375,639.5 150.1375,639.5 Q151.0281,639.5 151.6531,639.2969 Q152.0125,639.1875 152.4188,638.8281 Q152.6844,638.625 152.825,638.5625 Q152.9656,638.5 153.1375,638.5 Q153.4656,638.5 153.7,638.7656 Q153.95,639.0156 153.95,639.375 Q153.95,639.7188 153.6063,640.125 Q153.1063,640.7188 152.3094,641.0469 Q151.2625,641.5 149.9813,641.5 Q148.4813,641.5 147.2781,640.9063 Q146.3094,640.4375 145.6219,639.4219 Q144.95,638.4063 144.95,637.2031 L144.95,636.1094 Q144.95,634.8594 145.5438,633.7656 Q146.1531,632.6719 147.2,632.0938 Q148.2625,631.5 149.45,631.5 Q150.1688,631.5 150.7938,631.75 Q151.4188,632 151.95,632.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="117" x="168.05" y="640.9102">DatabaseConnection</text><line style="stroke:#A80036;stroke-width:1.5;" x1="117.5" x2="305.5" y1="652" y2="652"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="124.5" y="660"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="136.5" y="667.4189">oracleDataSource</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="124.5" y="673.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="53" x="136.5" y="681.2549">connection</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="124.5" y="687.6719"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="24" x="136.5" y="695.0908">error</text><line style="stroke:#A80036;stroke-width:1.5;" x1="117.5" x2="305.5" y1="701.5078" y2="701.5078"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="124.5" y="709.5078"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="136.5" y="716.9268">getConnection()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="124.5" y="723.3438"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="164" x="136.5" y="730.7627">registerError(SQLException error)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="124.5" y="737.1797"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="68" x="136.5" y="744.5986">getLastError()</text><!--MD5=[6f7bce41772257e17fd1566692257dd8]
+link ShipOccupancyRateUI to GetShipOccupancyRateController--><path codeLine="41" d="M130.5,55.29 C130.5,70.48 130.5,90.88 130.5,109.56 " fill="none" id="ShipOccupancyRateUI-to-GetShipOccupancyRateController" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="130.5,114.78,134.5,105.78,130.5,109.78,126.5,105.78,130.5,114.78" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[79da1af8f8cfb510032414deae958fcd]
+link GetShipOccupancyRateController to ShipOccupancyRate--><path codeLine="42" d="M150.94,205.29 C158.63,221.95 167.61,241.41 176.27,260.16 " fill="none" id="GetShipOccupancyRateController-to-ShipOccupancyRate" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="178.46,264.91,178.3026,255.0624,176.3565,260.374,171.045,258.4279,178.46,264.91" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[51e6ea60fe8401665afd4640d77e8691]
+link GetShipOccupancyRateController to Company--><path codeLine="43" d="M110.06,205.29 C96.28,235.14 78.36,273.97 65.59,301.63 " fill="none" id="GetShipOccupancyRateController-to-Company" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="63.43,306.31,70.8372,299.819,65.528,301.7715,63.5756,296.4622,63.43,306.31" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d943b7d11c080b002221c388c53b200a]
+link ShipOccupancyRate to ConnectionFactory--><path codeLine="44" d="M211.5,410.14 C211.5,428.43 211.5,447.69 211.5,464.6 " fill="none" id="ShipOccupancyRate-to-ConnectionFactory" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="211.5,469.76,215.5,460.76,211.5,464.76,207.5,460.76,211.5,469.76" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[f69893cd3a05080ec62d77c49424649a]
+link ConnectionFactory to DatabaseConnection--><path codeLine="45" d="M211.5,560.27 C211.5,576.94 211.5,596.32 211.5,614.75 " fill="none" id="ConnectionFactory-to-DatabaseConnection" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="211.5,619.92,215.5,610.92,211.5,614.92,207.5,610.92,211.5,619.92" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d5d8550da2df8572f0d79e504a574ed6]
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
+}
+
+class ShipOccupancyRateUI {
+}
+
+class GetShipOccupancyRateController {
++getShipId()
++getCargoManifestId()
++getShipOccupancyRateById()
+}
+
+class ShipOccupancyRate {
+-shipId
+-cargoManifestId
+-shipOccupancyRate
+-connectionFactory
++getShipId()
++getCargoManifestId()
++getShipOccupancyRateById()
+}
+
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
+-getDatabaseConnection()
+
+}
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
+-getConnection()
+-registerError(SQLException error)
+-getLastError()
+}
+
+ShipOccupancyRateUI ..> GetShipOccupancyRateController
+GetShipOccupancyRateController ..> ShipOccupancyRate
+GetShipOccupancyRateController ..> Company
+ShipOccupancyRate ..> ConnectionFactory
+ConnectionFactory ..> DatabaseConnection
+
+@enduml
+
+@startuml
+
+class Company {
+-designation
+}
+
+class ShipOccupancyRateUI {
+}
+
+class GetShipOccupancyRateController {
++getShipId()
++getCargoManifestId()
++getShipOccupancyRateById()
+}
+
+class ShipOccupancyRate {
+-shipId
+-cargoManifestId
+-shipOccupancyRate
+-connectionFactory
++getShipId()
++getCargoManifestId()
++getShipOccupancyRateById()
+}
+
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
+-getDatabaseConnection()
+
+}
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
+-getConnection()
+-registerError(SQLException error)
+-getLastError()
+}
+
+ShipOccupancyRateUI ..> GetShipOccupancyRateController
+GetShipOccupancyRateController ..> ShipOccupancyRate
+GetShipOccupancyRateController ..> Company
+ShipOccupancyRate ..> ConnectionFactory
+ConnectionFactory ..> DatabaseConnection
+
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 13:40:07 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: Dynamic Code Evolution 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

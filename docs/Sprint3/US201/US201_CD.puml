@@ -1,0 +1,61 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Company {
+-designation
++getPortStore()
+}
+class ImportPortsController {
++importShipsData(file)
++saveShipsData()
+}
+
+class ImportPortsUI {
+}
+
+class ImportPorts{
+-List<Port> importedPorts
++importPortsData(file)
+-createPort(idPort, name,continent,country,longitude,latitude)
++savePortsData()
+}
+
+class PortStore{
+-PortTree portTree
++createPort(idPort, name,continent,country,longitude,latitude)
++buildPortTree(List<Port> listOfPorts)
+}
+
+class PortWarehouse{
+-idPort
+-name
+-continent
+-country
+-latitude
+-longitude
++create(idPort, name,continent,country,,longitude,latitude)
+}
+
+class PortTree{
++buildKDTree(List<Port> listOfPorts)
+}
+class KDTree{
+-2DNode root
++KDTree()
++size()
++height()
++insert(element,x,y)
+}
+
+ImportPortsUI ..> ImportPortsController
+ImportPortsController ..> ImportPorts
+ImportPorts --> Company
+ImportPorts -> PortStore
+Company -> PortStore : uses >
+PortStore "1" ->  "*" PortWarehouse: stores >
+
+
+PortTree --> PortStore
+ PortTree -|> KDTree
+
+@enduml

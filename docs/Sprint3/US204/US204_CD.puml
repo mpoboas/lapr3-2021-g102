@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class GetContainerSituationUI{}
+class GetContainerSituationController{
++getSituation(containerID)
+}
+class ContainerSituationDB{
++getSituation(containerID)
+}
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
++getDatabaseConnection()
+}
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+GetContainerSituationUI .. GetContainerSituationController
+GetContainerSituationController . ContainerSituationDB
+ContainerSituationDB - ConnectionFactory : requests connection to database to obtain data >
+ConnectionFactory -- DatabaseConnection : fabricate a >
+
+@enduml
