@@ -91,16 +91,14 @@ public class ContainerStore implements Persistable{
     }
     private void insertContainerOnDatabase(DatabaseConnection databaseConnection,
                                            Container container) throws SQLException {
-        Connection connection = databaseConnection.getConnection();
         String sqlCommand =
-                "insert into container(idcontainer, isocode, idcontainertype, gross, tare, payload) values (?, ?, ?, ?, ?); insert into port(idportwarehouse) values ( ? );";
+                "insert into container(idcontainer, isocode, idcontainertype, gross, tare, payload) values (?, ?, ?, ?, ?);";
 
         executePortStatementOnDatabase(databaseConnection, container,
                 sqlCommand);
     }
     private void updateContainerOnDatabase(DatabaseConnection databaseConnection,
                                            Container container) throws SQLException {
-        Connection connection = databaseConnection.getConnection();
         String sqlCommand =
                 "update portwarehouse set name = ? , continent = ?, country = ? where id = ?";
 
