@@ -20,21 +20,21 @@ public class ImportCargoManifest {
 
     public void importCargoManifestData(String fileDirectory) throws IOException {
 
-        Scanner readfile = new Scanner(new File(fileDirectory));
-        readfile.nextLine();
-        while (readfile.hasNextLine()) {
-            String[] attributes = readfile.nextLine().split(",");
-            CargoManifest cm;
-            if (!cargoManifestAlreadyImported(attributes[0])) {
-                cm = createCargoManifest(attributes);
-            } else {
-                cm = getCargoManifestByID(attributes[0]);
+        try(Scanner readfile = new Scanner(new File(fileDirectory))) {
+            readfile.nextLine();
+            while (readfile.hasNextLine()) {
+                String[] attributes = readfile.nextLine().split(",");
+                CargoManifest cm;
+                if (!cargoManifestAlreadyImported(attributes[0])) {
+                    cm = createCargoManifest(attributes);
+                } else {
+                    cm = getCargoManifestByID(attributes[0]);
+                }
+                cm.addContainer(createContainer(attributes));
+                if (!listOfImportedCargoManifests.contains(cm))
+                    listOfImportedCargoManifests.add(cm);
             }
-            cm.addContainer(createContainer(attributes));
-            if (!listOfImportedCargoManifests.contains(cm))
-                listOfImportedCargoManifests.add(cm);
         }
-        readfile.close();
     }
 
     public boolean cargoManifestAlreadyImported(String id) {
