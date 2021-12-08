@@ -52,6 +52,10 @@ public class CargoManifest {
     public void addContainers(List<Pair<Container,ContainerPosition>> containerList){
         this.containerList.addAll(containerList);
     }
+    public void addContainer(Pair<Container,ContainerPosition> container){
+        this.containerList.add(container);
+
+    }
     public String toString(){
         StringBuilder s = new StringBuilder();
         s.append("ID Cargo Manifest:").append(this.id).append("\n");
