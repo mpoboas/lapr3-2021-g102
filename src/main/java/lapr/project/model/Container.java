@@ -46,7 +46,5 @@ public class Container {
         return s;
 
     }
-    public int compareTo(Container o){
-        return this.id.compareTo(o.getId());
-    }
+
 }
