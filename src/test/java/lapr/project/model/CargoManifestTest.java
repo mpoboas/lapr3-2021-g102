@@ -50,6 +50,10 @@ class CargoManifestTest {
         assertEquals(importContainers.getListOfImportedContainers().get(0), cm.getContainerList().get(0).getFirst());
         assertEquals(importContainers.getListOfImportedContainers().get(importContainers.getListOfImportedContainers().size() -1), cm.getContainerList().get(cm.getContainerList().size() -1).getFirst());
         assertTrue( cm.getContainerList().get(0).getSecond().equals(new CargoManifest.ContainerPosition(0,1,0)));
+        assertFalse( cm.getContainerList().get(0).getSecond().equals(new CargoManifest.ContainerPosition(1,1,0)));
+        assertFalse( cm.getContainerList().get(0).getSecond().equals(new CargoManifest.ContainerPosition(0,0,0)));
+        assertFalse( cm.getContainerList().get(0).getSecond().equals(new CargoManifest.ContainerPosition(0,1,1)));
+
     }
 
     @Test
