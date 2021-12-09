@@ -44,10 +44,10 @@ public class PortStore implements Persistable{
 
         try {
             String sqlCommand = "delete from port where id = ?";
-            try (PreparedStatement deleteClientPreparedStatement = connection.prepareStatement(
+            try (PreparedStatement deletePortPreparedStatement = connection.prepareStatement(
                     sqlCommand)) {
-                deleteClientPreparedStatement.setInt(1, port.getid());
-                deleteClientPreparedStatement.executeUpdate();
+                deletePortPreparedStatement.setInt(1, port.getid());
+                deletePortPreparedStatement.executeUpdate();
             }
 
             returnValue = true;
@@ -99,14 +99,14 @@ public class PortStore implements Persistable{
 
         String sqlCommand = "select * from portwarehouse where idportwarehouse = ?";
 
-        try(PreparedStatement getClientsPreparedStatement =
+        try(PreparedStatement getPortPreparedStatement =
                 connection.prepareStatement(sqlCommand)) {
 
-            getClientsPreparedStatement.setInt(1, port.getid());
+            getPortPreparedStatement.setInt(1, port.getid());
 
-            try (ResultSet clientsResultSet = getClientsPreparedStatement.executeQuery()) {
+            try (ResultSet portResultSet = getPortPreparedStatement.executeQuery()) {
 
-                if (clientsResultSet.next()) {
+                if (portResultSet.next()) {
                     // if port already exists in the database
                     isPortOnDatabase = true;
                 } else {
@@ -119,13 +119,13 @@ public class PortStore implements Persistable{
         return isPortOnDatabase;
     }
 
-    /**
-     * Adds a new client record to the database.
-     *
-     * @param databaseConnection
-     * @param port
-     * @throws SQLException
-     */
+
+
+
+
+
+
+
     private void insertPortOnDatabase(DatabaseConnection databaseConnection,
                                         Port port) throws SQLException {
         Connection connection = databaseConnection.getConnection();

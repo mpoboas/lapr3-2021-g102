@@ -10,9 +10,9 @@ public class CargoManifest {
     private final String type;
     private final List<Pair<Container,ContainerPosition>> containerList;
     public static class ContainerPosition{
-        private final int x;
-        private final int y;
-        private final int z;
+        public final int x;
+        public final int y;
+        public final int z;
         public ContainerPosition(int x, int y, int z){
             this.x = x;
             this.y = y;

@@ -22,7 +22,7 @@ public class ContainerStore implements Persistable{
             //Save changes.
             returnValue = true;
         } catch (SQLException ex) {
-            Logger.getLogger(PortStore.class.getName())
+            Logger.getLogger(ContainerStore.class.getName())
                     .log(Level.SEVERE, null, ex);
             databaseConnection.registerError(ex);
             returnValue = false;
@@ -37,14 +37,14 @@ public class ContainerStore implements Persistable{
         Container container = (Container) object;
         try {
             String sqlCommand = "delete from container where idcontainer = ?";
-            try (PreparedStatement deleteClientPreparedStatement = connection.prepareStatement(
+            try (PreparedStatement deleteContainerPreparedStatement = connection.prepareStatement(
                     sqlCommand)) {
-                deleteClientPreparedStatement.setString(1, container.getId());
-                deleteClientPreparedStatement.executeUpdate();
+                deleteContainerPreparedStatement.setString(1, container.getId());
+                deleteContainerPreparedStatement.executeUpdate();
             }
             returnValue = true;
         } catch (SQLException exception) {
-            Logger.getLogger(PortStore.class.getName())
+            Logger.getLogger(ContainerStore.class.getName())
                     .log(Level.SEVERE, null, exception);
             databaseConnection
                     .registerError(exception);
@@ -70,19 +70,17 @@ public class ContainerStore implements Persistable{
 
         String sqlCommand = "select * from container where idcontainer = ?";
 
-        try(PreparedStatement getClientsPreparedStatement =
+        try(PreparedStatement getContainerPreparedStatement =
                     connection.prepareStatement(sqlCommand)) {
 
-            getClientsPreparedStatement.setString(1, container.getId());
+            getContainerPreparedStatement.setString(1, container.getId());
 
-            try (ResultSet clientsResultSet = getClientsPreparedStatement.executeQuery()) {
+            try (ResultSet ccontainerResultSet = getContainerPreparedStatement.executeQuery()) {
 
-                if (clientsResultSet.next()) {
-                    // if port already exists in the database
+                if (ccontainerResultSet.next()) {
                     isContainerOnDatabase = true;
                 } else {
 
-                    // if port does not exist in the database
                     isContainerOnDatabase = false;
                 }
             }
@@ -94,7 +92,7 @@ public class ContainerStore implements Persistable{
         String sqlCommand =
                 "insert into container(idcontainer, isocode, idcontainertype, gross, tare, payload) values (?, ?, ?, ?, ?);";
 
-        executePortStatementOnDatabase(databaseConnection, container,
+        executeContainerStatementOnDatabase(databaseConnection, container,
                 sqlCommand);
     }
     private void updateContainerOnDatabase(DatabaseConnection databaseConnection,
@@ -102,25 +100,25 @@ public class ContainerStore implements Persistable{
         String sqlCommand =
                 "update portwarehouse set name = ? , continent = ?, country = ? where id = ?";
 
-        executePortStatementOnDatabase(databaseConnection, container,
+        executeContainerStatementOnDatabase(databaseConnection, container,
                 sqlCommand);
     }
-    private void executePortStatementOnDatabase(
+    private void executeContainerStatementOnDatabase(
             DatabaseConnection databaseConnection,
             Container container, String sqlCommand) throws SQLException {
         Connection connection = databaseConnection.getConnection();
 
-        try(PreparedStatement savePortPreparedStatement =
+        try(PreparedStatement saveContainerPreparedStatement =
                     connection.prepareStatement(
                             sqlCommand)) {
-            savePortPreparedStatement.setString(1, container.getId());
-            savePortPreparedStatement.setString(2, container.getIsoCode());
-            savePortPreparedStatement.setInt(3, getTypeId(container));
-            savePortPreparedStatement.setInt(4, container.getGross());
-            savePortPreparedStatement.setInt(5, container.getTare());
-            savePortPreparedStatement.setInt(5, container.getPayload());
+            saveContainerPreparedStatement.setString(1, container.getId());
+            saveContainerPreparedStatement.setString(2, container.getIsoCode());
+            saveContainerPreparedStatement.setInt(3, getTypeId(container));
+            saveContainerPreparedStatement.setInt(4, container.getGross());
+            saveContainerPreparedStatement.setInt(5, container.getTare());
+            saveContainerPreparedStatement.setInt(5, container.getPayload());
 
-            savePortPreparedStatement.executeUpdate();
+            saveContainerPreparedStatement.executeUpdate();
         }
     }
     private int getTypeId(Container container){
