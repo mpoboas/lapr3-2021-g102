@@ -17,12 +17,9 @@ public class UploadContainers implements UploadFileToDatabase{
     }
 
     @Override
-    public void importFile(Object o) throws IOException {
-        if(o instanceof ImportCargoManifest){
+    public void importFile() {
             imports = new ImportContainers();
             imports.importContainersData(this.fileDirectory);
-        }
-
     }
     @Override
     public void importToDatabase(){

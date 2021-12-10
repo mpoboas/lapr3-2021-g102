@@ -43,7 +43,7 @@ public class PortStore implements Persistable{
         Port port = (Port) object;
 
         try {
-            String sqlCommand = "delete from port where id = ?";
+            String sqlCommand = "delete from port where idportwarehouse = ?";
             try (PreparedStatement deletePortPreparedStatement = connection.prepareStatement(
                     sqlCommand)) {
                 deletePortPreparedStatement.setInt(1, port.getid());
@@ -130,7 +130,7 @@ public class PortStore implements Persistable{
                                         Port port) throws SQLException {
         Connection connection = databaseConnection.getConnection();
         String sqlCommand =
-                "insert into portwarehouse(idportwarehouse, name, continent, country, idposition) values (?, ?, ?, ?, ?); insert into port(idportwarehouse) values ( ? );";
+                "insert into portwarehouse( idportwarehouse, name, continent, country, idposition) values (?, ?, ?, ?, ?)";
 
         executePortStatementOnDatabase(databaseConnection, port,
                 sqlCommand);
@@ -155,7 +155,7 @@ public class PortStore implements Persistable{
                                         Port port) throws SQLException {
         Connection connection = databaseConnection.getConnection();
         String sqlCommand =
-                "update portwarehouse set name = ? , continent = ?, country = ? where id = ?";
+                "update portwarehouse set name = ? , continent = ?, country = ? where idportwarehouse = ?";
 
         updatePortStatementOnDatabase(databaseConnection, port,
                 sqlCommand);
@@ -198,8 +198,11 @@ public class PortStore implements Persistable{
             savePortPreparedStatement.setString(3, port.getContinent());
             savePortPreparedStatement.setString(4, port.getCountry());
             savePortPreparedStatement.setInt(5, getPositionid(databaseConnection, port));
-            savePortPreparedStatement.setInt(6, port.getid());
             savePortPreparedStatement.executeUpdate();
+        }
+        try(PreparedStatement portsTable = connection.prepareStatement("insert into port( idportwarehouse ) values ( ? )")){
+            portsTable.setInt(1, port.getid());
+            portsTable.executeUpdate();
         }
     }
     private void executePositionStatementOnDatabase(DatabaseConnection databaseConnection,
@@ -220,6 +223,7 @@ public class PortStore implements Persistable{
         Connection connection = databaseConnection.getConnection();
         try(PreparedStatement runcommand = connection.prepareStatement(sqlCommand)) {
             try (ResultSet rs = runcommand.executeQuery()) {
+                rs.next();
                 positionId = rs.getInt(1);
             }
         }

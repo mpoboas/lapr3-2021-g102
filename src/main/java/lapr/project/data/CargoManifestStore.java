@@ -1,8 +1,6 @@
 package lapr.project.data;
 
 import lapr.project.model.CargoManifest;
-import lapr.project.model.Container;
-import lapr.project.utils.Pair;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -92,7 +90,7 @@ public class CargoManifestStore implements Persistable{
     private void insertCargoManifestOnDatabase(DatabaseConnection databaseConnection,
                                            CargoManifest cm) throws SQLException {
         String sqlCommand =
-                "insert into cargomanifest( elaborationdate, idcargomanifesttype, idcargomanifest) values (?, ?, ?);";
+                "insert into cargomanifest( elaborationdate, idcargomanifesttype, idcargomanifest) values (?, ?, ?)";
 
         executeCargoManifestStatementOnDatabase(databaseConnection, cm,
                 sqlCommand);
@@ -129,7 +127,7 @@ public class CargoManifestStore implements Persistable{
         return id;
     }
     private void saveContainers(DatabaseConnection databaseConnection, CargoManifest cm) throws SQLException{
-        String sqlCommand = "insert into manifestcontainer(idcargomanifest, idcontainer, containerpositionx,containerpositiony, containerpositionz) values ( ? , ? , ? , ? , ?) ;";
+        String sqlCommand = "insert into manifestcontainer(idcargomanifest, idcontainer, containerpositionx,containerpositiony, containerpositionz) values ( ? , ? , ? , ? , ?) ";
             executeContainerStatementOnDatabase(databaseConnection,cm,sqlCommand);
 
 

@@ -90,7 +90,7 @@ public class ContainerStore implements Persistable{
     private void insertContainerOnDatabase(DatabaseConnection databaseConnection,
                                            Container container) throws SQLException {
         String sqlCommand =
-                "insert into container(idcontainer, isocode, idcontainertype, gross, tare, payload) values (?, ?, ?, ?, ?);";
+                "insert into container(idcontainer, isocode, idcontainertype, gross, tare, payload) values (?, ?, ?, ?, ?)";
 
         executeContainerStatementOnDatabase(databaseConnection, container,
                 sqlCommand);
