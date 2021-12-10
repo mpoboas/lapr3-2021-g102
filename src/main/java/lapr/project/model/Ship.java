@@ -180,6 +180,10 @@ public class Ship implements Comparable<Ship> {
         return mean;
     }
 
+    public int getCapacity(){
+        return (int)(this.length * this.width * this.draft);
+    }
+
     /**
      * @return the ship's departure latitude
      */

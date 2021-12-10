@@ -47,6 +47,15 @@ public class ShipTest {
         ship.getTrip(1).endTrip();
         assertEquals(706.3/166,ship.getAvgSpeed(ship.getTotalDistance(), ship.getTotalTimeinSea()),0.1);
     }
+    @Test
+    public void getCapacity(){
+        ship = new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
+        assertEquals(1200*600*21 , ship.getCapacity());
+        assertNotEquals(1201*600*21 , ship.getCapacity());
+
+
+
+    }
 
     @Test
     public void numberOfMovements(){
