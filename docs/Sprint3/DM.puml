@@ -48,8 +48,6 @@ class PortWarehouse {
 -name
 -continent
 -country
--latitude
--longitude
 }
 
 class ShipCaptain {
@@ -129,6 +127,9 @@ class Border{
 -country2
 }
 
+class Client {
+}
+
 Country - Border
 Country -- PortWarehouse: is located in <
 SeaDist - PortWarehouse
@@ -137,12 +138,13 @@ Port "1" -- "1" PortWarehouse : Has a >
 FleetManager "1" -- "*" Ship : controls >
 TrafficManager "1" -- "1" Ship : controls >
 TrafficManager "1" -- "1" Truck : controls >
+Client "*" -- "*" Container : leases >
 Ship "1" -- "*" Container : carries >
 Ship "1" -- "*" AISMessage : contains >
 AISMessage "1" -- "1" Coordinates : Has a set of >
 Ship "1" -- "1" ShipCaptain : drives <
 Ship "1" -- "1" ChiefElectricalEngineer
-Trips "1" -- "*" PortWarehouse : between >
+Trips "1" -- "*" Port : between >
 Ship "1" -- "*" Trips : does many >
 Container "*" -- "*" CargoManifest : contains <
 Truck "1" -- "*" Container : carries >
