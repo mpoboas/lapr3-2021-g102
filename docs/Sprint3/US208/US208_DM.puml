@@ -43,7 +43,7 @@ class UnloadingCargoManifest {
 
 Ship "1" -- "1" ShipCaptain : drives <
 Ship "1" -- "*" Container : carries >
-CargoManifest "1" -l- "*" Container : contains >
+CargoManifest "*" -l- "*" Container : contains >
 LoadingCargoManifest "1" -u- "1" CargoManifest : is a >
 UnloadingCargoManifest "*" -u- "1" CargoManifest : is a >
 
