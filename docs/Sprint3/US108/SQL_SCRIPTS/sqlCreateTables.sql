@@ -4,6 +4,17 @@ CREATE TABLE Person (
     birthDate DATE
 );
 
+CREATE TABLE UserRole (
+    idUserRole INTEGER PRIMARY KEY,
+    designation VARCHAR(100)
+);
+
+CREATE TABLE SystemUser (
+    idUser INTEGER PRIMARY KEY,
+    idUserRole INTEGER
+);
+ALTER TABLE SystemUser ADD CONSTRAINT fk_SystemUserRole FOREIGN KEY (idUserRole) REFERENCES UserRole(idUserRole);
+
 CREATE TABLE Occupation (
     idOccupation INTEGER PRIMARY KEY,
     designation VARCHAR(255),
@@ -13,10 +24,12 @@ CREATE TABLE Occupation (
 CREATE TABLE Employee (
     idEmployee INTEGER PRIMARY KEY,
     idPerson INTEGER,
-    idOccupation INTEGER
+    idOccupation INTEGER,
+    idUser INTEGER
 );
-ALTER TABLE Employee ADD CONSTRAINT fk_Person1 FOREIGN KEY (idPerson) REFERENCES Person(idPerson);
-ALTER TABLE Employee ADD CONSTRAINT fk_Occupation1 FOREIGN KEY (idOccupation) REFERENCES Occupation(idOccupation);
+ALTER TABLE Employee ADD CONSTRAINT fk_EmployeePerson FOREIGN KEY (idPerson) REFERENCES Person(idPerson);
+ALTER TABLE Employee ADD CONSTRAINT fk_EmployeeOccupation FOREIGN KEY (idOccupation) REFERENCES Occupation(idOccupation);
+ALTER TABLE Employee ADD CONSTRAINT fk_EmployeeUser FOREIGN KEY (idUser) REFERENCES SystemUser(idUser);
 
 CREATE TABLE Vehicle (
     idVehicle INTEGER PRIMARY KEY
@@ -39,15 +52,15 @@ CREATE TABLE Ship (
     capacity INTEGER,
     draft NUMBER(10,2)
 );
-ALTER TABLE Ship ADD CONSTRAINT fk_VesselType FOREIGN KEY (vesselType) REFERENCES VesselType(idVesselType);
-ALTER TABLE Ship ADD CONSTRAINT fk_Vehicle1 FOREIGN KEY (idVehicle) REFERENCES Vehicle(idVehicle);
+ALTER TABLE Ship ADD CONSTRAINT fk_ShipVesselType FOREIGN KEY (vesselType) REFERENCES VesselType(idVesselType);
+ALTER TABLE Ship ADD CONSTRAINT fk_ShipVehicle FOREIGN KEY (idVehicle) REFERENCES Vehicle(idVehicle);
 
 CREATE TABLE Truck (
     idVehicle INTEGER PRIMARY KEY,
     idEmployee INTEGER
 );
-ALTER TABLE Truck ADD CONSTRAINT fk_Vehicle2 FOREIGN KEY (idVehicle) REFERENCES Vehicle(idVehicle);
-ALTER TABLE Truck ADD CONSTRAINT fk_Employee1 FOREIGN KEY (idEmployee) REFERENCES Employee(idEmployee);
+ALTER TABLE Truck ADD CONSTRAINT fk_TruckVehicle FOREIGN KEY (idVehicle) REFERENCES Vehicle(idVehicle);
+ALTER TABLE Truck ADD CONSTRAINT fk_TruckEmployee FOREIGN KEY (idEmployee) REFERENCES Employee(idEmployee);
 
 CREATE TABLE ContainerType (
     idContainerType INTEGER PRIMARY KEY,
@@ -55,7 +68,7 @@ CREATE TABLE ContainerType (
 );
 
 CREATE TABLE Container (
-    idContainer INTEGER PRIMARY KEY,
+    idContainer VARCHAR(11) PRIMARY KEY,
     tare NUMBER(10,2),
     payload NUMBER(10,2),
     gross NUMBER(10,2),
@@ -64,7 +77,7 @@ CREATE TABLE Container (
     temperature NUMBER(6,2),
     idContainerType INTEGER
 );
-ALTER TABLE Container ADD CONSTRAINT fk_ContainerType1 FOREIGN KEY (idContainerType) REFERENCES ContainerType(idContainerType);
+ALTER TABLE Container ADD CONSTRAINT fk_ContainerType FOREIGN KEY (idContainerType) REFERENCES ContainerType(idContainerType);
 
 CREATE TABLE Certificate (
     idCertificate INTEGER PRIMARY KEY,
@@ -72,12 +85,28 @@ CREATE TABLE Certificate (
 );
 
 CREATE TABLE ContainerCertificate (
-    idContainer INTEGER,
+    idContainer VARCHAR(11),
     idCertificate INTEGER
 );
 ALTER TABLE ContainerCertificate ADD CONSTRAINT pk_ContainerCertificate PRIMARY KEY (idContainer, idCertificate);
-ALTER TABLE ContainerCertificate ADD CONSTRAINT fk_Container1 FOREIGN KEY (idContainer) REFERENCES Container(idContainer);
+ALTER TABLE ContainerCertificate ADD CONSTRAINT fk_Container FOREIGN KEY (idContainer) REFERENCES Container(idContainer);
 ALTER TABLE ContainerCertificate ADD CONSTRAINT fk_Certificate FOREIGN KEY (idCertificate) REFERENCES Certificate(idCertificate);
+
+CREATE TABLE Client (
+    idUser INTEGER PRIMARY KEY,
+    idPerson INTEGER
+);
+ALTER TABLE Client ADD CONSTRAINT fk_ClientUser FOREIGN KEY (idUser) REFERENCES SystemUser(idUser);
+ALTER TABLE Client ADD CONSTRAINT fk_ClientPerson FOREIGN KEY (idPerson) REFERENCES Person(idPerson);
+
+CREATE TABLE Leasing (
+    idUser INTEGER,
+    idContainer VARCHAR(11),
+    leasingDate TIMESTAMP
+);
+ALTER TABLE Leasing ADD CONSTRAINT pk_Leasing PRIMARY KEY(idUser, idContainer, leasingDate);
+ALTER TABLE Leasing ADD CONSTRAINT fk_LeasingUser FOREIGN KEY (idUser) REFERENCES Client(idUser);
+ALTER TABLE Leasing ADD CONSTRAINT fk_LeasingContainer FOREIGN KEY (idContainer) REFERENCES Container(idContainer);
 
 CREATE TABLE Position (
     idPosition INTEGER PRIMARY KEY,
@@ -94,8 +123,33 @@ CREATE TABLE ShipPosition(
     idShip INTEGER,
     idPosition INTEGER
 );
-ALTER TABLE ShipPosition ADD CONSTRAINT fk_Ship2 FOREIGN KEY (idShip) REFERENCES Ship(idVehicle);
-ALTER TABLE ShipPosition ADD CONSTRAINT fk_Position1 FOREIGN KEY (idPosition) REFERENCES Position(idPosition);
+ALTER TABLE ShipPosition ADD CONSTRAINT fk_ShipPositionShip FOREIGN KEY (idShip) REFERENCES Ship(idVehicle);
+ALTER TABLE ShipPosition ADD CONSTRAINT fk_ShipPositionPosition FOREIGN KEY (idPosition) REFERENCES Position(idPosition);
+
+CREATE TABLE Continent (
+    alpha2CodeContinent VARCHAR(2) PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+CREATE TABLE Country (
+    alpha2CodeCountry VARCHAR(2) PRIMARY KEY,
+    alpha3CodeCountry VARCHAR(3),        
+    idPosition INTEGER,
+    alpha2CodeContinent VARCHAR(2),
+    name VARCHAR(100),
+    capital VARCHAR(100),
+    population NUMBER(13)
+);
+ALTER TABLE Country ADD CONSTRAINT fk_CountryPosition FOREIGN KEY (idPosition) REFERENCES Position(idPosition);
+ALTER TABLE Country ADD CONSTRAINT fk_CountryContinent FOREIGN KEY (alpha2CodeContinent) REFERENCES Continent(alpha2CodeContinent);
+
+CREATE TABLE Border(
+    alpha2CodeCountry1 VARCHAR(2),
+    alpha2CodeCountry2 VARCHAR(2)
+);
+ALTER TABLE Border ADD CONSTRAINT pk_Border PRIMARY KEY (alpha2CodeCountry1, alpha2CodeCountry2);
+ALTER TABLE Border ADD CONSTRAINT fk_BorderCountry1 FOREIGN KEY (alpha2CodeCountry1) REFERENCES Country(alpha2CodeCountry);
+ALTER TABLE Border ADD CONSTRAINT fk_BorderCountry2 FOREIGN KEY (alpha2CodeCountry2) REFERENCES Country(alpha2CodeCountry);
 
 CREATE TABLE PortWarehouse (
     idPortWarehouse INTEGER PRIMARY KEY,
@@ -104,27 +158,27 @@ CREATE TABLE PortWarehouse (
     country VARCHAR(100),
     idPosition INTEGER
 );
-ALTER TABLE PortWarehouse ADD CONSTRAINT fk_Position2 FOREIGN KEY (idPosition) REFERENCES Position(idPosition);
+ALTER TABLE PortWarehouse ADD CONSTRAINT fk_PortWarehousePosition FOREIGN KEY (idPosition) REFERENCES Position(idPosition);
 
 CREATE TABLE PortWarehouseStaff (
     idPortWarehouse INTEGER,
     idEmployee INTEGER
 );
 ALTER TABLE PortWarehouseStaff ADD CONSTRAINT pk_PortWarehouseStaff PRIMARY KEY (idPortWarehouse, idEmployee);
-ALTER TABLE PortWarehouseStaff ADD CONSTRAINT fk_PortWarehouse1 FOREIGN KEY (idPortWarehouse) REFERENCES PortWarehouse(idPortWarehouse);
-ALTER TABLE PortWarehouseStaff ADD CONSTRAINT fk_Employee2 FOREIGN KEY (idEmployee) REFERENCES Employee(idEmployee);
+ALTER TABLE PortWarehouseStaff ADD CONSTRAINT fk_StaffPortWarehouse FOREIGN KEY (idPortWarehouse) REFERENCES PortWarehouse(idPortWarehouse);
+ALTER TABLE PortWarehouseStaff ADD CONSTRAINT fk_StaffEmployee FOREIGN KEY (idEmployee) REFERENCES Employee(idEmployee);
 
 CREATE TABLE Port (
     idPortWarehouse INTEGER
 );
 ALTER TABLE Port ADD CONSTRAINT pk_Port PRIMARY KEY (idPortWarehouse);
-ALTER TABLE Port ADD CONSTRAINT fk_PortWarehouse2 FOREIGN KEY (idPortWarehouse) REFERENCES PortWarehouse(idPortWarehouse);
+ALTER TABLE Port ADD CONSTRAINT fk_PortPortWarehouse FOREIGN KEY (idPortWarehouse) REFERENCES PortWarehouse(idPortWarehouse);
 
 CREATE TABLE Warehouse (
     idPortWarehouse INTEGER
 );
 ALTER TABLE Warehouse ADD CONSTRAINT pk_Warehouse PRIMARY KEY (idPortWarehouse);
-ALTER TABLE Warehouse ADD CONSTRAINT fk_PortWarehouse3 FOREIGN KEY (idPortWarehouse) REFERENCES PortWarehouse(idPortWarehouse);
+ALTER TABLE Warehouse ADD CONSTRAINT fk_WarehousePortWarehouse FOREIGN KEY (idPortWarehouse) REFERENCES PortWarehouse(idPortWarehouse);
 
 CREATE TABLE Trip (
     idTrip INTEGER PRIMARY KEY,
@@ -133,17 +187,17 @@ CREATE TABLE Trip (
     idVehicle INTEGER,
     endDate TIMESTAMP
 );
-ALTER TABLE Trip ADD CONSTRAINT fk_PortWarehouse4 FOREIGN KEY (idPortWarehouseDeparture) REFERENCES PortWarehouse(idPortWarehouse);
-ALTER TABLE Trip ADD CONSTRAINT fk_PortWarehouse5 FOREIGN KEY (idPortWarehouseArrival) REFERENCES PortWarehouse(idPortWarehouse);
-ALTER TABLE Trip ADD CONSTRAINT fk_idVehicle3 FOREIGN KEY (idVehicle) REFERENCES Vehicle(idVehicle);
+ALTER TABLE Trip ADD CONSTRAINT fk_TripPortWarehouse1 FOREIGN KEY (idPortWarehouseDeparture) REFERENCES PortWarehouse(idPortWarehouse);
+ALTER TABLE Trip ADD CONSTRAINT fk_TripPortWarehouse2 FOREIGN KEY (idPortWarehouseArrival) REFERENCES PortWarehouse(idPortWarehouse);
+ALTER TABLE Trip ADD CONSTRAINT fk_TripVehicle FOREIGN KEY (idVehicle) REFERENCES Vehicle(idVehicle);
 
 CREATE TABLE Crew (
     idTrip INTEGER,
     idEmployee INTEGER
 );
-ALTER TABLE Crew ADD CONSTRAINT pk_ShipEmployee PRIMARY KEY (idTrip, idEmployee);
-ALTER TABLE Crew ADD CONSTRAINT fk_Trip1 FOREIGN KEY (idTrip) REFERENCES Trip(idTrip);
-ALTER TABLE Crew ADD CONSTRAINT fk_Employee3 FOREIGN KEY (idEmployee) REFERENCES Employee(idEmployee);
+ALTER TABLE Crew ADD CONSTRAINT pk_Crew PRIMARY KEY (idTrip, idEmployee);
+ALTER TABLE Crew ADD CONSTRAINT fk_CrewTrip FOREIGN KEY (idTrip) REFERENCES Trip(idTrip);
+ALTER TABLE Crew ADD CONSTRAINT fk_CrewEmployee FOREIGN KEY (idEmployee) REFERENCES Employee(idEmployee);
 
 CREATE TABLE CargoManifestType (
     idCargoManifestType INTEGER PRIMARY KEY,
@@ -168,11 +222,11 @@ CREATE TABLE ArrivalDeparture (
     idCargoManifestUnload INTEGER
 );
 ALTER TABLE ArrivalDeparture ADD CONSTRAINT pk_ArrivalDeparture PRIMARY KEY (idTrip, idPortWarehouseDeparture, idPortWarehouseArrival);
-ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_Trip2 FOREIGN KEY (idTrip) REFERENCES Trip(idTrip);
-ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_PortWarehouse6 FOREIGN KEY (idPortWarehouseDeparture) REFERENCES PortWarehouse(idPortWarehouse);
-ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_PortWarehouse7 FOREIGN KEY (idPortWarehouseArrival) REFERENCES PortWarehouse(idPortWarehouse);
-ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_CargoManifest1 FOREIGN KEY (idCargoManifestLoad) REFERENCES CargoManifest(idCargoManifest);
-ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_CargoManifest2 FOREIGN KEY (idCargoManifestUnload) REFERENCES CargoManifest(idCargoManifest);
+ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_ArrivalDepartureTrip FOREIGN KEY (idTrip) REFERENCES Trip(idTrip);
+ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_ArrivalDeparturePortWarehouse1 FOREIGN KEY (idPortWarehouseDeparture) REFERENCES PortWarehouse(idPortWarehouse);
+ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_ArrivalDeparturePortWarehouse2 FOREIGN KEY (idPortWarehouseArrival) REFERENCES PortWarehouse(idPortWarehouse);
+ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_ArrivalDepartureCargoManifest1 FOREIGN KEY (idCargoManifestLoad) REFERENCES CargoManifest(idCargoManifest);
+ALTER TABLE ArrivalDeparture ADD CONSTRAINT fk_ArrivalDepartureCargoManifest2 FOREIGN KEY (idCargoManifestUnload) REFERENCES CargoManifest(idCargoManifest);
 
 CREATE TABLE Summary (
     idSummary INTEGER PRIMARY KEY,
@@ -192,28 +246,26 @@ CREATE TABLE Summary (
     travelledDistance BINARY_DOUBLE,
     deltaDistance BINARY_DOUBLE
 );
-ALTER TABLE Summary ADD CONSTRAINT fk_ArrivalDeparture1 FOREIGN KEY (idTrip, idPortWarehouseDeparture, idPortWarehouseArrival) REFERENCES ArrivalDeparture(idTrip, idPortWarehouseDeparture, idPortWarehouseArrival);
+ALTER TABLE Summary ADD CONSTRAINT fk_SummaryArrivalDeparture FOREIGN KEY (idTrip, idPortWarehouseDeparture, idPortWarehouseArrival) REFERENCES ArrivalDeparture(idTrip, idPortWarehouseDeparture, idPortWarehouseArrival);
 
 CREATE TABLE ManifestContainer (
     idCargoManifest INTEGER,
-    idContainer INTEGER,
+    idContainer VARCHAR(11),
     containerPositionX INTEGER,
     containerPositionY INTEGER,
     containerPositionZ INTEGER
 );
 ALTER TABLE ManifestContainer ADD CONSTRAINT pk_ManifestContainer PRIMARY KEY (idCargoManifest, idContainer);
-ALTER TABLE ManifestContainer ADD CONSTRAINT fk_CargoManifest3 FOREIGN KEY (idCargoManifest) REFERENCES CargoManifest(idCargoManifest);
-ALTER TABLE ManifestContainer ADD CONSTRAINT fk_Container2 FOREIGN KEY (idContainer) REFERENCES Container(idContainer);
+ALTER TABLE ManifestContainer ADD CONSTRAINT fk_ManifestContainerCargoManifest FOREIGN KEY (idCargoManifest) REFERENCES CargoManifest(idCargoManifest);
+ALTER TABLE ManifestContainer ADD CONSTRAINT fk_ManifestContainerContainer FOREIGN KEY (idContainer) REFERENCES Container(idContainer);
 
-CREATE TABLE UserRole (
-    idUserRole INTEGER PRIMARY KEY,
-    designation VARCHAR(100)
+CREATE TABLE AuditTrail (
+    idAuditTrail INTEGER PRIMARY KEY,
+    idCargoManifest INTEGER,
+    idContainer VARCHAR(11),
+    idUser INTEGER,
+    dateTime TIMESTAMP,
+    operationType VARCHAR(50)
 );
-
-CREATE TABLE SystemUser (
-    idUser INTEGER PRIMARY KEY,
-    idEmployee INTEGER,
-    idUserRole INTEGER
-);
-ALTER TABLE SystemUser ADD CONSTRAINT fk_Employee4 FOREIGN KEY (idEmployee) REFERENCES Employee(idEmployee);
-ALTER TABLE SystemUser ADD CONSTRAINT fk_UserRole FOREIGN KEY (idUserRole) REFERENCES UserRole(idUserRole);
+ALTER TABLE AuditTrail ADD CONSTRAINT fk_AuditTrailManifestContainer FOREIGN KEY (idCargoManifest, idContainer) REFERENCES ManifestContainer(idCargoManifest, idContainer);
+ALTER TABLE AuditTrail ADD CONSTRAINT fk_AuditTrailUser FOREIGN KEY (idUser) REFERENCES SystemUser(idUser);
