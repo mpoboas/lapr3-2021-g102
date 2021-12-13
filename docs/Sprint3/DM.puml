@@ -104,7 +104,34 @@ class Port {
 -continent
 -country
 }
+class Country{
+-continent
+-alpha.2.code
+-alpha.3.code
+-country
+-population
+-capital
+-latitude
+-longitude
+}
+class SeaDist{
+-from_country
+-to_port_id
+-from_port
+-to_country
+-to_port_id
+-to_port
+-sea_distance
+}
 
+class Border{
+-country1
+-country2
+}
+
+Country - Border
+Country -- PortWarehouse: is located in <
+SeaDist - PortWarehouse
 Port "1" -- "1" Coordinates : Has a set of >
 Port "1" -- "1" PortWarehouse : Has a >
 FleetManager "1" -- "*" Ship : controls >
