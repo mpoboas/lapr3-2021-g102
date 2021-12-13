@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PortStore implements Persistable{
+public class PortStoreDB implements Persistable{
     @Override
     public boolean save(DatabaseConnection databaseConnection, Object object) {
         Port port = (Port) object;
@@ -27,7 +27,7 @@ public class PortStore implements Persistable{
             returnValue = true;
 
         } catch (SQLException ex) {
-            Logger.getLogger(PortStore.class.getName())
+            Logger.getLogger(PortStoreDB.class.getName())
                     .log(Level.SEVERE, null, ex);
             databaseConnection.registerError(ex);
             returnValue = false;
@@ -53,7 +53,7 @@ public class PortStore implements Persistable{
             returnValue = true;
 
         } catch (SQLException exception) {
-            Logger.getLogger(PortStore.class.getName())
+            Logger.getLogger(PortStoreDB.class.getName())
                     .log(Level.SEVERE, null, exception);
             databaseConnection
                     .registerError(exception);

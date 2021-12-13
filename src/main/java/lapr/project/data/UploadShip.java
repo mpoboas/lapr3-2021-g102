@@ -2,6 +2,7 @@ package lapr.project.data;
 
 import lapr.project.model.Import;
 import lapr.project.model.Ship;
+import lapr.project.stores.ShipStore;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,13 +20,13 @@ public class UploadShip implements UploadFileToDatabase{
 
     @Override
     public void importFile() throws IOException {
-        imports = new Import(new lapr.project.stores.ShipStore());
+        imports = new Import(new ShipStore());
         imports.importShipsData(this.fileDirectory);
 
     }
     @Override
     public void importToDatabase(){
-        persistable = new ShipStore();
+        persistable = new ShipStoreDB();
         List<Ship> list = imports.getListOfImportedShips();
         for (Ship ship : list) {
             persistable.save(cf.getDatabaseConnection(), ship);

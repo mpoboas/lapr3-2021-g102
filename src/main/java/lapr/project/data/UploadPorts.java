@@ -1,8 +1,8 @@
 package lapr.project.data;
 
-import lapr.project.model.ImportCargoManifest;
 import lapr.project.model.ImportPorts;
 import lapr.project.model.Port;
+import lapr.project.stores.PortStore;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,13 +20,13 @@ public class UploadPorts implements UploadFileToDatabase {
 
     @Override
     public void importFile() throws IOException {
-        imports = new ImportPorts(new lapr.project.stores.PortStore());
+        imports = new ImportPorts(new PortStore());
         imports.importPortsData(this.fileDirectory);
 
     }
     @Override
     public void importToDatabase(){
-        persistable = new PortStore();
+        persistable = new PortStoreDB();
         List<Port> list = imports.getListOfImportedPorts();
         for(int i = 0; i< list.size(); i++){
             persistable.save(cf.getDatabaseConnection(), list.get(i));

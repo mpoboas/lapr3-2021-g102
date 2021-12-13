@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ShipStore implements Persistable {
+public class ShipStoreDB implements Persistable {
     @Override
     public boolean save(DatabaseConnection databaseConnection, Object object) {
     Ship ship = (Ship) object;
@@ -19,7 +19,7 @@ public class ShipStore implements Persistable {
         saveShipToDatabase(databaseConnection, ship);
         returnValue = true;
     } catch (SQLException ex) {
-        Logger.getLogger(ShipStore.class.getName())
+        Logger.getLogger(ShipStoreDB.class.getName())
                 .log(Level.SEVERE, null, ex);
         databaseConnection.registerError(ex);
         returnValue = false;
@@ -41,7 +41,7 @@ public class ShipStore implements Persistable {
             }
             returnValue = true;
         } catch (SQLException exception) {
-            Logger.getLogger(ShipStore.class.getName())
+            Logger.getLogger(ShipStoreDB.class.getName())
                     .log(Level.SEVERE, null, exception);
             databaseConnection
                     .registerError(exception);
