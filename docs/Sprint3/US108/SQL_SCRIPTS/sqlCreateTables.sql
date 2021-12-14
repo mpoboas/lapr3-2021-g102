@@ -219,6 +219,7 @@ CREATE TABLE ArrivalDeparture (
     idPortWarehouseArrival INTEGER,
     departureDate TIMESTAMP,
     arrivalDate TIMESTAMP,
+    estimatedArrivalDate TIMESTAMP,
     idCargoManifestLoad INTEGER,
     idCargoManifestUnload INTEGER
 );
