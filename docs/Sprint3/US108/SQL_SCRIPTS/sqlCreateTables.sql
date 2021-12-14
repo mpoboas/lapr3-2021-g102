@@ -45,7 +45,7 @@ CREATE TABLE Ship (
     MMSI INTEGER UNIQUE,
     IMO INTEGER UNIQUE,
     shipName VARCHAR(100),
-    callSign VARCHAR(15),
+    callSign VARCHAR(15) UNIQUE,
     vesselType INTEGER,
     length NUMBER(10,2),
     width NUMBER(10,2),
@@ -72,7 +72,7 @@ CREATE TABLE Container (
     tare NUMBER(10,2),
     payload NUMBER(10,2),
     gross NUMBER(10,2),
-    isoCode INTEGER,
+    isoCode VARCHAR(4) UNIQUE,
     refrigerated INTEGER,
     temperature NUMBER(6,2),
     idContainerType INTEGER
@@ -133,8 +133,8 @@ CREATE TABLE Continent (
 
 CREATE TABLE Country (
     alpha2CodeCountry VARCHAR(2) PRIMARY KEY,
-    alpha3CodeCountry VARCHAR(3),        
-    idPosition INTEGER,
+    alpha3CodeCountry VARCHAR(3) UNIQUE,        
+    idPosition INTEGER UNIQUE,
     alpha2CodeContinent VARCHAR(2),
     name VARCHAR(100),
     capital VARCHAR(100),
@@ -153,12 +153,13 @@ ALTER TABLE Border ADD CONSTRAINT fk_BorderCountry2 FOREIGN KEY (alpha2CodeCount
 
 CREATE TABLE PortWarehouse (
     idPortWarehouse INTEGER PRIMARY KEY,
+    idPosition INTEGER UNIQUE,
+    alpha2CodeCountry VARCHAR(2),
     name VARCHAR(100),
-    continent VARCHAR(100),
-    country VARCHAR(100),
-    idPosition INTEGER
+    capacity INTEGER
 );
 ALTER TABLE PortWarehouse ADD CONSTRAINT fk_PortWarehousePosition FOREIGN KEY (idPosition) REFERENCES Position(idPosition);
+ALTER TABLE PortWarehouse ADD CONSTRAINT fk_PortWarehouseCountry FOREIGN KEY (alpha2CodeCountry) REFERENCES Country(alpha2CodeCountry);
 
 CREATE TABLE PortWarehouseStaff (
     idPortWarehouse INTEGER,
