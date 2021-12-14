@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
+}
+
+class WarehouseOccupancyRateUI {
+}
+
+class GetWarehouseOccupancyRate {
++getWarehouseOccupancyRate(int daysCount)
++getContainersLeaving(int daysCount)
+}
+
+class PortWarehouseDB {
++getWarehouseOccupancyRate(int daysCount)
++getContainersLeaving(int daysCount)
+}
+
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
+-getDatabaseConnection()
+}
+
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
+-getConnection()
+-registerError(SQLException error)
+-getLastError()
+}
+
+WarehouseOccupancyRateUI ..> GetWarehouseOccupancyRate
+GetWarehouseOccupancyRate ..> PortWarehouseDB
+GetWarehouseOccupancyRate ..> Company
+PortWarehouseDB ..> ConnectionFactory
+ConnectionFactory ..> DatabaseConnection
+
+@enduml

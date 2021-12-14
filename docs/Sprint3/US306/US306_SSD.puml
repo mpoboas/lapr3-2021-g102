@@ -1,0 +1,12 @@
+@startuml
+autonumber
+actor "Port Manager" as PM
+
+activate PM
+PM -> ":System" : requests the occupancy rate of each warehouse and an estimate\nof the containers leaving the warehouse during the next 30 days
+activate ":System"
+":System" --> PM : shows the occupancy rate of each warehouse and the desired estimate
+deactivate ":System"
+deactivate PM
+
+@enduml
