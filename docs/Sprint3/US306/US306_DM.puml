@@ -1,0 +1,76 @@
+@startuml
+
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
+
+class Container {
+-containerId
+-containerPayload
+-containerTare
+-containerGross
+-ISOcode
+}
+
+class CargoManifest {
+-content
+-elaborationDate
+}
+
+class LoadingCargoManifest {
+}
+
+class UnloadingCargoManifest {
+}
+
+class Client {
+}
+
+class Port {
+-idPort
+-name
+-continent
+-country
+-latitude
+-longitude
+}
+
+class PortWarehouse {
+-idPortW
+-name
+-continent
+-country
+-latitude
+-longitude
+}
+
+Port "1" -- "1" PortWarehouse : Has a >
+Client "*" -u- "*" Container : leases >
+Ship "1" -- "*" Container : carries >
+Ship "1" -- "*" Trips : does many >
+Trips "1" -- "*" Port : between >
+CargoManifest "*" -l- "*" Container : contains >
+LoadingCargoManifest "1" -u- "1" CargoManifest : is a >
+UnloadingCargoManifest "*" -u- "1" CargoManifest : is a >
+CargoManifest "*" -r- "1" PortStaff : makes <
+PortWarehouse "1" -- "1" PortStaff
+
+@enduml

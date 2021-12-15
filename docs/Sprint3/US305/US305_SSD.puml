@@ -1,0 +1,16 @@
+@startuml
+autonumber
+actor "Client" as CL
+
+activate CL
+CL -> ":System" : requests the route of a specific container that is being leased,\ngiven a registration code and container identifier
+activate ":System"
+":System" --> CL : requests all the needed data (user registration code and container id)
+deactivate ":System"
+CL -> ":System" : types data
+activate ":System"
+":System" --> CL : shows the given container´s route (locations, times of arrival and mean of transport)
+deactivate ":System"
+deactivate CL
+
+@enduml

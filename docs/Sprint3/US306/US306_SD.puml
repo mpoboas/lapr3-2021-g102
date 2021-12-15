@@ -1,0 +1,65 @@
+@startuml
+autonumber
+'hide footbox
+
+actor "Client" as CL
+
+participant "WarehouseOccupancyRateUI" as UI
+participant "GetWarehouseOccupancyRate" as CTRL
+participant "PortWarehouseDB" as PORTWDB
+participant ConnectionFactory as CF
+participant DatabaseConnection as DC
+database LAPR3_G102 as DB
+
+activate CL
+CL -> UI : requests the occupancy rate of each warehouse and an estimate\nof the containers leaving the warehouse during the next 30 days
+activate UI
+
+UI -> CF** : create()
+activate CF
+CF -> DC** : create()
+activate DC
+DC --> DB
+activate DB
+deactivate DB
+deactivate DC
+deactivate CF
+
+UI -> CTRL : getWarehouseOccupancyRate(int daysCount)
+activate CTRL
+CTRL -> PORTWDB : getWarehouseOccupancyRate(int daysCount)
+activate PORTWDB
+
+PORTWDB -> CF : connection = getConnection()
+activate CF
+deactivate CF
+
+PORTWDB -> DB : getWarehouseOccupancyRate(int daysCount)
+activate DB
+deactivate DB
+PORTWDB --> CTRL : warehouseOccupancyRateList
+deactivate PORTWDB
+deactivate PORTWDB
+CTRL --> UI : warehouseOccupancyRateList
+deactivate CTRL
+
+UI -> CTRL : getContainersLeaving(int daysCount)
+activate CTRL
+CTRL -> PORTWDB : getContainersLeaving(int daysCount)
+activate PORTWDB
+
+PORTWDB -> CF : connection = getConnection()
+activate CF
+deactivate CF
+
+PORTWDB -> DB : getContainersLeaving(int daysCount)
+activate DB
+deactivate DB
+PORTWDB --> CTRL : containersLeavingList
+deactivate PORTWDB
+deactivate PORTWDB
+CTRL --> UI : containersLeavingList
+deactivate CTRL
+UI --> CL : shows the occupancy rate of each warehouse and the desired estimate
+deactivate UI
+@enduml
