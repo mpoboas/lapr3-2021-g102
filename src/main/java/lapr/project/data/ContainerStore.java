@@ -90,7 +90,7 @@ public class ContainerStore implements Persistable{
     private void insertContainerOnDatabase(DatabaseConnection databaseConnection,
                                            Container container) throws SQLException {
         String sqlCommand =
-                "insert into container(idcontainer, isocode, idcontainertype, gross, tare, payload) values (?, ?, ?, ?, ?)";
+                "insert into container( isocode, idcontainertype, gross, tare, payload, idcontainer) values (?, ?, ?, ?, ?)";
 
         executeContainerStatementOnDatabase(databaseConnection, container,
                 sqlCommand);
@@ -98,7 +98,7 @@ public class ContainerStore implements Persistable{
     private void updateContainerOnDatabase(DatabaseConnection databaseConnection,
                                            Container container) throws SQLException {
         String sqlCommand =
-                "update portwarehouse set name = ? , continent = ?, country = ? where id = ?";
+                "update container set isocode = ? , idcontainertype = ?, gross = ? , tare = ? , payload = ? where id = ?";
 
         executeContainerStatementOnDatabase(databaseConnection, container,
                 sqlCommand);
@@ -111,12 +111,13 @@ public class ContainerStore implements Persistable{
         try(PreparedStatement saveContainerPreparedStatement =
                     connection.prepareStatement(
                             sqlCommand)) {
-            saveContainerPreparedStatement.setString(1, container.getId());
-            saveContainerPreparedStatement.setString(2, container.getIsoCode());
-            saveContainerPreparedStatement.setInt(3, getTypeId(container));
-            saveContainerPreparedStatement.setInt(4, container.getGross());
-            saveContainerPreparedStatement.setInt(5, container.getTare());
+            saveContainerPreparedStatement.setString(1, container.getIsoCode());
+            saveContainerPreparedStatement.setInt(2, getTypeId(container));
+            saveContainerPreparedStatement.setInt(3, container.getGross());
+            saveContainerPreparedStatement.setInt(4, container.getTare());
             saveContainerPreparedStatement.setInt(5, container.getPayload());
+            saveContainerPreparedStatement.setString(6, container.getId());
+
 
             saveContainerPreparedStatement.executeUpdate();
         }
