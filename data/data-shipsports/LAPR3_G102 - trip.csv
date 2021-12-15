@@ -1,2 +1,4 @@
 idTrip,idPortWarehouseDeparture,idPortWarehouseArrival,idVehicle,endDate
 1,14635,13012,1,01/12/2021 9:00:00
+1,14635,13012,1,01/12/2021 9:00:00
+2,29002,14635,1,02/12/2021 10:00:00

@@ -21,7 +21,7 @@ public class ImportTrip {
             read.nextLine();
             while (read.hasNextLine()) {
                 String[] attributes = read.nextLine().split(",");
-                if (!containerAlreadyImported(attributes[0]))
+                if (!tripAlreadyImported(attributes[0]))
                     listOfImportedTrips.add(createTrip(attributes));
             }
         } catch (FileNotFoundException e) {
@@ -30,7 +30,7 @@ public class ImportTrip {
 
     }
 
-    public boolean containerAlreadyImported(String code){
+    public boolean tripAlreadyImported(String code){
         int id = Integer.parseInt(code);
         for (Trips p: listOfImportedTrips) {
             if (p.getId() == id )
