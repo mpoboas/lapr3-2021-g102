@@ -11,25 +11,24 @@ class ImportTripTest {
 
     @Test
     void importContainersData() {
-        imports.importContainersData("data/data-shipsports/LAPR3_G102 - trip.csv");
-        assertEquals(1, imports.getListOfImportedContainers().get(0).getId());
-        assertEquals(1, imports.getListOfImportedContainers().size());
+        imports.importTripsData("data/data-shipsports/LAPR3_G102 - trip.csv");
+        assertEquals(1, imports.getListOfImportedTrips().get(0).getId());
+        assertEquals(1, imports.getListOfImportedTrips().size());
     }
 
     @Test
     void containerAlreadyImported() {
-        imports.importContainersData("data/data-shipsports/LAPR3_G102 - trip.csv");
-        assertEquals(1, imports.getListOfImportedContainers().get(0).getId());
-        assertEquals(1, imports.getListOfImportedContainers().size());
+        imports.importTripsData("data/data-shipsports/LAPR3_G102 - trip.csv");
+        assertEquals(1, imports.getListOfImportedTrips().get(0).getId());
+        assertEquals(1, imports.getListOfImportedTrips().size());
     }
 
     @Test
     void getListOfImportedContainers() {
-        imports.importContainersData("data/data-shipsports/LAPR3_G102 - trip.csv");
-        assertEquals(1, imports.getListOfImportedContainers().get(0).getId());
-        assertEquals(1, imports.getListOfImportedContainers().size());
-        imports.importContainersData("data/data-shipsports/LAPR3_G102 - trip.csv");
-        assertEquals(1, imports.getListOfImportedContainers().get(0).getId());
-        assertEquals(new Date("01/12/2021 9:00:00"), imports.getListOfImportedContainers().get(0).getEndDate());
+        imports.importTripsData("data/data-shipsports/LAPR3_G102 - trip.csv");
+        assertEquals(1, imports.getListOfImportedTrips().get(0).getId());
+        assertEquals(1, imports.getListOfImportedTrips().size());
+        assertEquals(1, imports.getListOfImportedTrips().get(0).getId());
+        assertEquals(new Date("01/12/2021 9:00:00"), imports.getListOfImportedTrips().get(0).getEndDate());
     }
 }

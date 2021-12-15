@@ -16,11 +16,7 @@ public class ImportTrip {
         this.listOfImportedTrips = new ArrayList<>();
     }
 
-    /**
-     *
-     * @param fileDirectory
-     */
-    public void importContainersData(String fileDirectory){
+    public void importTripsData(String fileDirectory){
         try(Scanner read = new Scanner(new File(fileDirectory))) {
             read.nextLine();
             while (read.hasNextLine()) {
@@ -34,11 +30,6 @@ public class ImportTrip {
 
     }
 
-    /**
-     *
-     * @param code
-     * @return
-     */
     public boolean containerAlreadyImported(String code){
         int id = Integer.parseInt(code);
         for (Trips p: listOfImportedTrips) {
@@ -47,7 +38,7 @@ public class ImportTrip {
         }
         return false;
     }
-    public List<Trips> getListOfImportedContainers(){
+    public List<Trips> getListOfImportedTrips(){
         return listOfImportedTrips;
     }
 
