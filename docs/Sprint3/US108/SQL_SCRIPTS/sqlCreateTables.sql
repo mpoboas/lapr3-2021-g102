@@ -138,7 +138,7 @@ CREATE TABLE Country (
     alpha2CodeContinent VARCHAR(2),
     name VARCHAR(100),
     capital VARCHAR(100),
-    population NUMBER(13)
+    population NUMBER(6,2)
 );
 ALTER TABLE Country ADD CONSTRAINT fk_CountryPosition FOREIGN KEY (idPosition) REFERENCES Position(idPosition);
 ALTER TABLE Country ADD CONSTRAINT fk_CountryContinent FOREIGN KEY (alpha2CodeContinent) REFERENCES Continent(alpha2CodeContinent);
@@ -161,6 +161,15 @@ CREATE TABLE PortWarehouse (
 ALTER TABLE PortWarehouse ADD CONSTRAINT fk_PortWarehousePosition FOREIGN KEY (idPosition) REFERENCES Position(idPosition);
 ALTER TABLE PortWarehouse ADD CONSTRAINT fk_PortWarehouseCountry FOREIGN KEY (alpha2CodeCountry) REFERENCES Country(alpha2CodeCountry);
 
+CREATE TABLE Seadist (
+    idPortWarehouseFrom INTEGER,
+    idPortWarehouseTo INTEGER,
+    seadist INTEGER
+);
+ALTER TABLE Seadist ADD CONSTRAINT pk_Seadist PRIMARY KEY (idPortWarehouseFrom, idPortWarehouseTo);
+ALTER TABLE Seadist ADD CONSTRAINT fk_PortWarehouseFrom FOREIGN KEY (idPortWarehouseFrom) REFERENCES PortWarehouse(idPortWarehouse);
+ALTER TABLE Seadist ADD CONSTRAINT fk_PortWarehouseTo FOREIGN KEY (idPortWarehouseTo) REFERENCES PortWarehouse(idPortWarehouse);
+
 CREATE TABLE PortWarehouseStaff (
     idPortWarehouse INTEGER,
     idEmployee INTEGER
@@ -176,10 +185,12 @@ ALTER TABLE Port ADD CONSTRAINT pk_Port PRIMARY KEY (idPortWarehouse);
 ALTER TABLE Port ADD CONSTRAINT fk_PortPortWarehouse FOREIGN KEY (idPortWarehouse) REFERENCES PortWarehouse(idPortWarehouse);
 
 CREATE TABLE Warehouse (
-    idPortWarehouse INTEGER
+    idPortWarehouse INTEGER,
+    idPort INTEGER
 );
 ALTER TABLE Warehouse ADD CONSTRAINT pk_Warehouse PRIMARY KEY (idPortWarehouse);
 ALTER TABLE Warehouse ADD CONSTRAINT fk_WarehousePortWarehouse FOREIGN KEY (idPortWarehouse) REFERENCES PortWarehouse(idPortWarehouse);
+ALTER TABLE Warehouse ADD CONSTRAINT fk_WarehousePort FOREIGN KEY (idPort) REFERENCES Port(idPortWarehouse);
 
 CREATE TABLE Trip (
     idTrip INTEGER PRIMARY KEY,
