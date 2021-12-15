@@ -252,9 +252,8 @@ public class CountryStoreDB implements Persistable {
                 "on c.alpha2CodeContinent = t.alpha2CodeContinent" +
                 "inner join Position p " +
                 "on c.idPosition = p.idPosition";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            ResultSet rs = statement.executeQuery();
-
+        try (PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet rs = statement.executeQuery()) {
             while (rs.next()) {
                 countries.add(new Country(rs.getString(6),
                         rs.getString(1),
