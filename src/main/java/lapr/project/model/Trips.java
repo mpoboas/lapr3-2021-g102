@@ -2,17 +2,50 @@ package lapr.project.model;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.temporal.ChronoField;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Trips {
+    private int id;
+    private int idPortWarehouseDeparture;
+    private int idPortWarehouseArrival;
+    private int idVehicle;
+    private Date endDate;
     private final List<AISMessage> aisMessagesList;
     private boolean isOver;
     private Duration duration;
-
-    public Trips() {
+    public Trips ( int id, int idPortWarehouseDeparture, int idPortWarehouseArrival, int idVehicle, Date endDate){
+        this.id = id;
+        this.idPortWarehouseDeparture = idPortWarehouseDeparture;
+        this.idPortWarehouseArrival = idPortWarehouseArrival;
+        this.idVehicle = idVehicle;
+        this.endDate = endDate;
         this.isOver = false;
         aisMessagesList = new ArrayList<>();
+
+    }
+    public Trips (){
+        this.isOver = false;
+        aisMessagesList = new ArrayList<>();
+    }
+    public int getId(){
+        return this.id;
+    }
+    public int getIdPortWarehouseDeparture(){
+        return this.idPortWarehouseDeparture;
+    }
+    public int getIdPortWarehouseArrival(){
+        return this.idPortWarehouseArrival;
+    }
+    public int getIdVehicle(){
+        return this.idVehicle;
+    }
+    public Date getEndDate(){
+        return this.endDate;
     }
 
     public int getAISMessageListSize() {

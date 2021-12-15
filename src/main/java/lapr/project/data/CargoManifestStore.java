@@ -2,10 +2,7 @@ package lapr.project.data;
 
 import lapr.project.model.CargoManifest;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -112,7 +109,7 @@ public class CargoManifestStore implements Persistable{
                     connection.prepareStatement(
                             sqlCommand)) {
 
-            saveCargoManifestPreparedStatement.setString(1, cm.getDate().toString());
+            saveCargoManifestPreparedStatement.setTimestamp(1, new Timestamp(cm.getDate().getTime()));
             saveCargoManifestPreparedStatement.setInt(2, getTypeId(cm));
             saveCargoManifestPreparedStatement.setInt(3, cm.getId());
             saveCargoManifestPreparedStatement.executeUpdate();

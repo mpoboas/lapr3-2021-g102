@@ -22,7 +22,6 @@ public class UploadShip implements UploadFileToDatabase{
     public void importFile() throws IOException {
         imports = new Import(new ShipStore());
         imports.importShipsData(this.fileDirectory);
-
     }
     @Override
     public void importToDatabase(){
