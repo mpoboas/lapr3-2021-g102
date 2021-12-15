@@ -75,6 +75,20 @@ public class TripsTest {
         trip.endTrip();
         assertEquals(83,trip.getTripDuration(), 0.1);
     }
+
+    @Test
+    public void getEnd(){
+        trip = new Trips();
+        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' );
+        trip.addAISMessage(ais1);
+        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4, 3000, 'B' );
+        trip.addAISMessage(ais2);
+        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
+        trip.addAISMessage(ais3);
+        trip.endTrip();
+        assertEquals(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), trip.getEnd());
+
+    }
     @Test
     public void testTripWithArguments(){
         trip = new Trips(1, 1232,12311, 1, new Date("01/12/2021 9:00:00"));
