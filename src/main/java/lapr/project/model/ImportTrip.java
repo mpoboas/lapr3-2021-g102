@@ -67,12 +67,24 @@ public class ImportTrip {
         return new Trips(idtrip, idPortDeparture, idPortWarehouseArrival, idVehicle, endDate, new ArrayList<>());
     }
     private ArrivalDeparture createAD(String[] attributes){
+        Date dd = (new Date(attributes[7]));
+        Date ad = (new Date(attributes[8]));
         int idPortWarehouseDeparture = Integer.parseInt(attributes[5]);
         int idPortWarehouseArrival = Integer.parseInt(attributes[6]);
-        Timestamp departureDate = new Timestamp(new Date(attributes[7]).getTime());
-        Timestamp arrivalDate = new Timestamp(new Date(attributes[8]).getTime());
-        int idCargoManifestLoad = Integer.parseInt(attributes[9]);
-        int idCargoManifestUnload = Integer.parseInt(attributes[10]);
+        Timestamp departureDate = new Timestamp(dd.getTime());
+        Timestamp arrivalDate = new Timestamp(ad.getTime());
+        int idCargoManifestLoad;
+        int idCargoManifestUnload;
+        if(attributes[9].equalsIgnoreCase("null")){
+            idCargoManifestLoad = 0;
+        }else {
+            idCargoManifestLoad = Integer.parseInt(attributes[9]);
+        }
+        if(attributes[10].equalsIgnoreCase("null")){
+            idCargoManifestUnload = 0;
+        }else {
+            idCargoManifestUnload = Integer.parseInt(attributes[10]);
+        }
         return new ArrivalDeparture(Integer.parseInt(attributes[0]), idPortWarehouseDeparture, idPortWarehouseArrival, departureDate, arrivalDate , idCargoManifestLoad, idCargoManifestUnload) ;
 
 
