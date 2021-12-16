@@ -2,6 +2,7 @@ package lapr.project.data;
 
 import lapr.project.model.Country;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -269,6 +270,41 @@ public class CountryStoreDB implements Persistable {
             ex.printStackTrace();
         }
         return countries;
+    }
+
+    /**
+     * Gets an instance of country by its alpha2Code
+     * @param alpha2Code code to identify the country
+     * @return the instance
+     */
+    public Country getCountryByAlpha2Code(DatabaseConnection dbConnection ,String alpha2Code) /*throws IOException*/ {
+        Country country = null;
+        Connection connection = dbConnection.getConnection();
+        //Connection connection = ConnectionFactory.getInstance().getDatabaseConnection().getConnection();
+        String sql = "select c.alpha2CodeCountry, c.alpha3CodeCountry, c.name, c.capital, c.population, t.name, p.latitude, p.longitude" +
+                "from Country c " +
+                "inner join Continent t " +
+                "on c.alpha2CodeContinent = t.alpha2CodeContinent" +
+                "inner join Position p " +
+                "on c.idPosition = p.idPosition" +
+                "where c.alpha2CodeCountry = " +alpha2Code;
+
+        try(PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery()){
+            resultSet.next();
+            country = new Country(resultSet.getString(6),
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getInt(5),
+                    resultSet.getString(4),
+                    resultSet.getDouble(7),
+                    resultSet.getDouble(8));
+
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return country;
     }
 
 
