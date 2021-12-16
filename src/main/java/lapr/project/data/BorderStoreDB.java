@@ -118,7 +118,7 @@ public class BorderStoreDB implements Persistable {
                         countryStoreDB.getCountryByAlpha2Code(dbConnection, rs.getString(1)),
                         countryStoreDB.getCountryByAlpha2Code(dbConnection, rs.getString(2))));
             }
-        } catch (SQLException | IOException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
 
         }
