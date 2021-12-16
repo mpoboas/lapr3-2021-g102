@@ -62,13 +62,6 @@ public class ImportCargoManifest {
 
         return new CargoManifest(id, elaborationDate,type, new ArrayList<>());
     }
-
-
-
-
-
-
-
     private Pair<Container, CargoManifest.ContainerPosition> createContainer(String[] attributes) {
         String idContainer = attributes[3];
         int posX = Integer.parseInt(attributes [4]);

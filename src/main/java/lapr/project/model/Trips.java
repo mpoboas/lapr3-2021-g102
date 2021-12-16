@@ -16,21 +16,24 @@ public class Trips {
     private int idVehicle;
     private Date endDate;
     private final List<AISMessage> aisMessagesList;
+    private final List<ArrivalDeparture> ArrivalDeps;
     private boolean isOver;
     private Duration duration;
-    public Trips ( int id, int idPortWarehouseDeparture, int idPortWarehouseArrival, int idVehicle, Date endDate){
+    public Trips ( int id, int idPortWarehouseDeparture, int idPortWarehouseArrival, int idVehicle, Date endDate, List <ArrivalDeparture> ArrivalDeps){
         this.id = id;
         this.idPortWarehouseDeparture = idPortWarehouseDeparture;
         this.idPortWarehouseArrival = idPortWarehouseArrival;
         this.idVehicle = idVehicle;
         this.endDate = endDate;
         this.isOver = false;
+        this.ArrivalDeps = ArrivalDeps;
         aisMessagesList = new ArrayList<>();
 
     }
     public Trips (){
         this.isOver = false;
         aisMessagesList = new ArrayList<>();
+        ArrivalDeps = new ArrayList<>();
     }
     public int getId(){
         return this.id;
@@ -46,6 +49,10 @@ public class Trips {
     }
     public Date getEndDate(){
         return this.endDate;
+    }
+    public List<ArrivalDeparture> getADLIst(){return this.ArrivalDeps;}
+    public void addArrivalDeparture(ArrivalDeparture ad){
+        this.ArrivalDeps.add(ad);
     }
 
     public int getAISMessageListSize() {

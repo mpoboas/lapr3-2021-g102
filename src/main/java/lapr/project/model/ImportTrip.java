@@ -2,6 +2,7 @@ package lapr.project.model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -21,13 +22,28 @@ public class ImportTrip {
             read.nextLine();
             while (read.hasNextLine()) {
                 String[] attributes = read.nextLine().split(",");
-                if (!tripAlreadyImported(attributes[0]))
-                    listOfImportedTrips.add(createTrip(attributes));
+                Trips trip ;
+                if (!tripAlreadyImported(attributes[0])) {
+                    trip = createTrip(attributes);
+                }else{
+                    trip = getTripByID(attributes[0]);
+                }
+                trip.addArrivalDeparture(createAD(attributes));
+                if(!listOfImportedTrips.contains(trip))
+                    listOfImportedTrips.add(trip);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
+    }
+    public Trips getTripByID(String id) {
+        int p = Integer.parseInt(id);
+        for (Trips s : listOfImportedTrips) {
+            if (s.getId() == p)
+                return s;
+        }
+        throw new IllegalArgumentException("Not found");
     }
 
     public boolean tripAlreadyImported(String code){
@@ -48,6 +64,17 @@ public class ImportTrip {
         int idPortWarehouseArrival = Integer.parseInt(atributtes[2]);
         int idVehicle = Integer.parseInt(atributtes[3]);
         Date endDate = new Date(atributtes[4]);
-        return new Trips(idtrip, idPortDeparture, idPortWarehouseArrival, idVehicle, endDate);
+        return new Trips(idtrip, idPortDeparture, idPortWarehouseArrival, idVehicle, endDate, new ArrayList<>());
+    }
+    private ArrivalDeparture createAD(String[] attributes){
+        int idPortWarehouseDeparture = Integer.parseInt(attributes[5]);
+        int idPortWarehouseArrival = Integer.parseInt(attributes[6]);
+        Timestamp departureDate = new Timestamp(new Date(attributes[7]).getTime());
+        Timestamp arrivalDate = new Timestamp(new Date(attributes[8]).getTime());
+        int idCargoManifestLoad = Integer.parseInt(attributes[9]);
+        int idCargoManifestUnload = Integer.parseInt(attributes[10]);
+        return new ArrivalDeparture(Integer.parseInt(attributes[0]), idPortWarehouseDeparture, idPortWarehouseArrival, departureDate, arrivalDate , idCargoManifestLoad, idCargoManifestUnload) ;
+
+
     }
 }

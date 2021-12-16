@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -91,7 +92,7 @@ public class TripsTest {
     }
     @Test
     public void testTripWithArguments(){
-        trip = new Trips(1, 1232,12311, 1, new Date("01/12/2021 9:00:00"));
+        trip = new Trips(1, 1232,12311, 1, new Date("01/12/2021 9:00:00"), new ArrayList<>());
         assertEquals(1, trip.getId());
         assertEquals(1232, trip.getIdPortWarehouseDeparture());
         assertEquals(12311, trip.getIdPortWarehouseArrival());
