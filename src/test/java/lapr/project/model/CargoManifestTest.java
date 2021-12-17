@@ -49,10 +49,10 @@ class CargoManifestTest {
         cm.addContainers(l);
         assertEquals(importContainers.getListOfImportedContainers().get(0), cm.getContainerList().get(0).getFirst());
         assertEquals(importContainers.getListOfImportedContainers().get(importContainers.getListOfImportedContainers().size() -1), cm.getContainerList().get(cm.getContainerList().size() -1).getFirst());
-        assertTrue( cm.getContainerList().get(0).getSecond().equals(new CargoManifest.ContainerPosition(0,1,0)));
-        assertFalse( cm.getContainerList().get(0).getSecond().equals(new CargoManifest.ContainerPosition(1,1,0)));
-        assertFalse( cm.getContainerList().get(0).getSecond().equals(new CargoManifest.ContainerPosition(0,0,0)));
-        assertFalse( cm.getContainerList().get(0).getSecond().equals(new CargoManifest.ContainerPosition(0,1,1)));
+        assertTrue( cm.getContainerList().get(0).getSecond().equal(new CargoManifest.ContainerPosition(0,1,0)));
+        assertFalse( cm.getContainerList().get(0).getSecond().equal(new CargoManifest.ContainerPosition(1,1,0)));
+        assertFalse( cm.getContainerList().get(0).getSecond().equal(new CargoManifest.ContainerPosition(0,0,0)));
+        assertFalse( cm.getContainerList().get(0).getSecond().equal(new CargoManifest.ContainerPosition(0,1,1)));
         Container c = new Container( "ID", "Refrigerated","20R5",2000,1220,1200);
         Pair<Container, CargoManifest.ContainerPosition> p = new Pair<Container, CargoManifest.ContainerPosition>(c, new CargoManifest.ContainerPosition(0,0,0));
         cm.addContainer(p);

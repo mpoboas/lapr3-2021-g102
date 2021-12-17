@@ -26,7 +26,7 @@ public class CargoManifest {
             return p;
         }
 
-        public boolean equals(ContainerPosition o){
+        public boolean equal(ContainerPosition o){
             return this.x == o.x && this.y == o.y &&this.z == o.z;
         }
     }

@@ -17,7 +17,7 @@ class ImportCargoManifestTest {
         assertEquals(1, imports.getListOfImportedCargoManifests().get(0).getId() );
         assertEquals("LPRU1628240", imports.getListOfImportedCargoManifests().get(0).getContainerList().get(0).getFirst().getId() );
         assertEquals("LPRU5977032", imports.getListOfImportedCargoManifests().get(0).getContainerList().get(1).getFirst().getId() );
-        assertTrue(imports.getListOfImportedCargoManifests().get(0).getContainerList().get(0).getSecond().equals(new CargoManifest.ContainerPosition(11,1,1)) );
+        assertTrue(imports.getListOfImportedCargoManifests().get(0).getContainerList().get(0).getSecond().equal(new CargoManifest.ContainerPosition(11,1,1)) );
     }
 
     @Test
