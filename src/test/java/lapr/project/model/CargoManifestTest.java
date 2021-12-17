@@ -58,9 +58,7 @@ class CargoManifestTest {
         Pair<Container, CargoManifest.ContainerPosition> p = new Pair<Container, CargoManifest.ContainerPosition>(c, new CargoManifest.ContainerPosition(0,0,0));
         cm.addContainer(p);
         assertEquals(c, cm.getContainerList().get(cm.getContainerList().size() -1).getFirst());
-        assertFalse(cm.equals(cm.getContainerList().get(0).getSecond()));
-        assertTrue(cm.equals(new CargoManifest(12, null, null , new ArrayList<>())));
-        assertFalse(cm.equals(new CargoManifest(2, null, null , new ArrayList<>())));
+
 
 
     }

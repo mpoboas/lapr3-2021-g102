@@ -72,15 +72,7 @@ public class CargoManifest {
         }
         return s.toString();
     }
-    @Override
-    public boolean equals(Object cm){
-        if(cm instanceof  CargoManifest) {
-            CargoManifest c = (CargoManifest) cm;
-            return this.id == c.getId();
-        }else{
-            return false;
-        }
-    }
+
 
 
 
