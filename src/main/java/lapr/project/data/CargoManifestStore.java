@@ -140,7 +140,6 @@ public class CargoManifestStore implements Persistable{
                     connection.prepareStatement(
                             sqlCommand)) {
             for(int i = 0; i < cm.getContainerList().size(); i++) {
-
                 saveContainerPositionPreparedStatement.setInt(1, cm.getId());
                 saveContainerPositionPreparedStatement.setString(2, cm.getContainerList().get(i).getFirst().getId());
                 saveContainerPositionPreparedStatement.setInt(3, cm.getContainerList().get(i).getSecond().x);

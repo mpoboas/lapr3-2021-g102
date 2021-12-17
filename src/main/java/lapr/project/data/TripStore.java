@@ -1,5 +1,6 @@
 package lapr.project.data;
 
+import lapr.project.model.CargoManifest;
 import lapr.project.model.Container;
 import lapr.project.model.Trips;
 
@@ -53,6 +54,7 @@ public class TripStore implements Persistable{
             updateTripOnDatabase(databaseConnection, trip);
         } else {
             insertTripOnDatabase(databaseConnection, trip);
+            saveArrivalDeparture(databaseConnection,trip);
         }
 
     }
@@ -62,7 +64,7 @@ public class TripStore implements Persistable{
 
         boolean isTripOnDatabase = false;
 
-        String sqlCommand = "select * from container where idcontainer = ?";
+        String sqlCommand = "select * from trip where idtrip = ?";
 
         try(PreparedStatement getTripPreparedStatement =
                     connection.prepareStatement(sqlCommand)) {
@@ -113,5 +115,35 @@ public class TripStore implements Persistable{
             saveContainerPreparedStatement.setInt(5, trip.getId());
             saveContainerPreparedStatement.executeUpdate();
         }
+    }
+
+    private void saveArrivalDeparture(DatabaseConnection databaseConnection, Trips t) throws SQLException {
+        String sqlCommand = "Insert into arrivaldeparture(idtrip, idportwarehousedeparture, idportwarehousearrival, departuredate, arrivaldate, idcargomanifestload, idcargomanifestunload) values ( ?, ?, ? ,? ,?, ?, ? )";
+        executeADstatementdOnDatabase(databaseConnection,t , sqlCommand);
+    }
+    private void executeADstatementdOnDatabase(DatabaseConnection databaseConnection,
+                                               Trips t, String sqlCommand) throws SQLException{
+        Connection connection = databaseConnection.getConnection();
+        try(PreparedStatement saveADPreparedStatement =
+                    connection.prepareStatement(
+                            sqlCommand)) {
+            for(int i = 0; i< t.getADLIst().size(); i++){
+                saveADPreparedStatement.setInt(1, t.getADLIst().get(i).getIdTrip());
+                saveADPreparedStatement.setInt(2, t.getADLIst().get(i).getPortWareDeparture());
+                saveADPreparedStatement.setInt(3, t.getADLIst().get(i).getPortWarehouseArrival());
+                saveADPreparedStatement.setTimestamp(4, t.getADLIst().get(i).getDepartureDate());
+                saveADPreparedStatement.setTimestamp(5, t.getADLIst().get(i).getArrivalDate());
+                saveADPreparedStatement.setInt(6, t.getADLIst().get(i).getCargoManifestIdLoad());
+                saveADPreparedStatement.setInt(7, t.getADLIst().get(i).getCargoManifestIdUnload());
+                saveADPreparedStatement.executeUpdate();
+            }
+        }
+
+
+
+
+
+
+
     }
 }
