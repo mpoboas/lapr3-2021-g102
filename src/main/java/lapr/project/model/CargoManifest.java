@@ -25,9 +25,14 @@ public class CargoManifest {
             p = p + "z = " + this.z + "\n\n\n";
             return p;
         }
-
-        public boolean equal(ContainerPosition o){
-            return this.x == o.x && this.y == o.y &&this.z == o.z;
+        @Override
+        public boolean equals(Object o){
+            if(o  instanceof ContainerPosition) {
+                ContainerPosition cp = (ContainerPosition) o;
+                return this.x == cp.x && this.y == cp.y && this.z == cp.z;
+            }else{
+                return false;
+            }
         }
     }
     public CargoManifest (int id, Date elaborationDate, String type, List<Pair<Container,ContainerPosition>> containerList){
@@ -66,6 +71,15 @@ public class CargoManifest {
             s.append("Container ").append(containerContainerPositionPair.getFirst().getId()).append("\n").append(containerContainerPositionPair.getFirst()).append(containerContainerPositionPair.getSecond());
         }
         return s.toString();
+    }
+    @Override
+    public boolean equals(Object cm){
+        if(cm instanceof  CargoManifest) {
+            CargoManifest c = (CargoManifest) cm;
+            return this.id == c.getId();
+        }else{
+            return false;
+        }
     }
 
 
