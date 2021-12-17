@@ -34,6 +34,10 @@ public class CargoManifest {
                 return false;
             }
         }
+        @Override
+        public int hashCode(){
+            return (int)Math.sqrt((double)(this.x*this.x)+(this.y*this.y)+(this.z*this.z));
+        }
     }
     public CargoManifest (int id, Date elaborationDate, String type, List<Pair<Container,ContainerPosition>> containerList){
         this.id = id;
