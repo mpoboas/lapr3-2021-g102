@@ -10,7 +10,7 @@ public class Country extends Place  {
     /**
      * Continent where the country is
      */
-    private final String continent;
+    //private final String continent;
     /**
      * The alpha code with 2 letters
      */
@@ -22,7 +22,7 @@ public class Country extends Place  {
     /**
      * The country's name
      */
-    private final String country;
+    //private final String country;
     /**
      * Population of the country
      */
@@ -34,22 +34,22 @@ public class Country extends Place  {
     /**
      * Latitude of the capital
      */
-    private final double latitude; // eixo y
+    //private final double latitude; // eixo y
     /**
      * Longitude of the country
      */
-    private final double longitude; //eixo x
+    //private final double longitude; //eixo x
 
     public Country(String continent,String alpha2,String alpha3, String country,double population,String capital, double longitude, double latitude) {
-        //super(continent, country, longitude, latitude);
-        this.continent = continent;
+        super(continent, country, longitude, latitude);
+        //this.continent = continent;
         this.alpha2Code = alpha2;
         this.alpha3Code = alpha3;
-        this.country = country;
+        //this.country = country;
         this.population = population;
         this.capital = capital;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        //this.latitude = latitude;
+        //this.longitude = longitude;
     }
 
     public String getAlpha2Code() {
@@ -62,22 +62,22 @@ public class Country extends Place  {
 
 
     public String getContinent() {
-        return continent;
+        return super.getContinent();
     }
 
 
     public String getCountry() {
-        return country;
+        return super.getCountry();
     }
 
 
     public double getLatitude() {
-        return latitude;
+        return super.getLatitude();
     }
 
 
     public double getLongitude() {
-        return longitude;
+        return super.getLongitude();
     }
 
     public double getPopulation() {
@@ -93,12 +93,12 @@ public class Country extends Place  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Country country1 = (Country) o;
-        return Objects.equals(alpha2Code, country1.alpha2Code) && Objects.equals(alpha3Code, country1.alpha3Code) && Objects.equals(country, country1.country);
+        return Objects.equals(alpha2Code, country1.alpha2Code) && Objects.equals(alpha3Code, country1.alpha3Code) && Objects.equals(getCountry(), country1.getCountry());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(alpha2Code, alpha3Code, country);
+        return Objects.hash(alpha2Code, alpha3Code, getCountry());
     }
 
 
