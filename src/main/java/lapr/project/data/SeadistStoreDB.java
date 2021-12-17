@@ -1,10 +1,16 @@
 package lapr.project.data;
 
+import lapr.project.model.Country;
+import lapr.project.model.Port;
 import lapr.project.model.SeaDist;
+import lapr.project.stores.PortStore;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -141,5 +147,37 @@ public class SeadistStoreDB implements Persistable {
             updateSeadist.setInt(3, seadist.getSeaDistance());
             updateSeadist.executeUpdate();
         }
+    }
+
+    /**
+     * Returns all the existing instances of Seadist.
+     *
+     * @param dbConnection the database connection
+     */
+    public List<SeaDist> getAllSeadists(DatabaseConnection dbConnection) {
+        List<SeaDist> seadistList = new ArrayList<>();
+        Connection connection = dbConnection.getConnection();
+        String sqlCommand = "select distinct (SELECT PortWarehouse.alpha2CodeCountry FROM PortWarehouse WHERE PortWarehouse.idPortWarehouse = idPortWarehouseFrom) as from_country, Seadist.idPortWarehouseFrom as from_port, (SELECT PortWarehouse.alpha2CodeCountry FROM PortWarehouse WHERE PortWarehouse.idPortWarehouse = idPortWarehouseTo) as to_country, Seadist.idPortWarehouseTo  as to_port, Seadist.seadist\n" +
+                "from Seadist, PortWarehouse, Country\n" +
+                "where (Seadist.idPortWarehouseFrom = PortWarehouse.idPortWarehouse or Seadist.idPortWarehouseTo = PortWarehouse.idPortWarehouse)\n" +
+                "and PortWarehouse.alpha2CodeCountry = Country.alpha2CodeCountry\n" +
+                "ORDER BY from_port, to_port";
+
+        try (PreparedStatement statement = connection.prepareStatement(sqlCommand); ResultSet rs = statement.executeQuery()) {
+            CountryStoreDB countryStoreDB = new CountryStoreDB();
+            PortStoreDB portStoreDB = new PortStoreDB();
+
+            while (rs.next()) {
+                Country from_country = countryStoreDB.getCountryByAlpha2Code(dbConnection, rs.getString(1));
+                Port from_port = portStoreDB.getPortByIdFromDatabase(dbConnection, rs.getInt(2));
+                Country to_country = countryStoreDB.getCountryByAlpha2Code(dbConnection, rs.getString(3));
+                Port to_port = portStoreDB.getPortByIdFromDatabase(dbConnection, rs.getInt(4));
+                seadistList.add(new SeaDist(from_country, from_port, to_country, to_port, rs.getInt(5)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return seadistList;
     }
 }

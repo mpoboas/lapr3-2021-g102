@@ -17,22 +17,20 @@ class FreightNetworkTest {
     String fileDirectoryBorders = "data/Data-Sprint3-4/borders.csv";
     String fileDirectorySeaDist = "data/Data-Sprint3-4/seadists.csv";
     ImportPorts importP = new ImportPorts(new PortStore());
-    ImportSeadist importSeadist = new ImportSeadist();
 
     @Test
     void buildFreightNetwork() {
         FreightNetwork network = new FreightNetwork();
         try {
             importP.importPortsData(fileDirectoryPorts);
-            importSeadist.importSeadistData(fileDirectorySeaDist);
             network.setCountries(ImportCountry.importCountries(fileDirectoryCountry));
             network.setBorders(ImportBorder.importBorders(fileDirectoryBorders));
             network.setPorts(importP.getListOfImportedPorts());
-            network.setSeaDists(importSeadist.getImportedSeadistList());
+            network.setSeaDists(ImportSeadist.importSeadistData(fileDirectorySeaDist));
         } catch (IOException e) {
             e.printStackTrace();
         }
         network.buildFreightNetwork(5);
-        //System.out.println(network);
+        System.out.println(network);
     }
 }

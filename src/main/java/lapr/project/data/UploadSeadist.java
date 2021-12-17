@@ -8,7 +8,7 @@ import java.util.List;
 
 public class UploadSeadist implements UploadFileToDatabase {
     private String fileDirectory;
-    private ImportSeadist imports;
+    private List<SeaDist> importedSeadistList;
     private ConnectionFactory cf;
 
     @Override
@@ -18,16 +18,14 @@ public class UploadSeadist implements UploadFileToDatabase {
     }
 
     @Override
-    public void importFile() {
-        imports = new ImportSeadist();
-        imports.importSeadistData(this.fileDirectory);
+    public void importFile() throws IOException {
+        this.importedSeadistList = ImportSeadist.importSeadistData(this.fileDirectory);
     }
 
     @Override
     public void importToDatabase() {
         Persistable persistable = new SeadistStoreDB();
-        List<SeaDist> list = imports.getImportedSeadistList();
-        for (SeaDist seaDist : list) {
+        for (SeaDist seaDist : this.importedSeadistList) {
             persistable.save(cf.getDatabaseConnection(), seaDist);
         }
     }

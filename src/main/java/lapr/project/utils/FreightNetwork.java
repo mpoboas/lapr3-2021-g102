@@ -10,7 +10,6 @@ public class FreightNetwork {
 
     private final MatrixGraph<Place, Double> graph;
 
-
     private List<Country> countries;
     private List<Port> ports;
     private List<Border> borders;
@@ -24,14 +23,14 @@ public class FreightNetwork {
         countries = new CountryStoreDB().getCountriesFromDatabase(cf.getDatabaseConnection());
         ports = new PortStoreDB().getPortsFromDatabase(cf.getDatabaseConnection());
         borders = new BorderStoreDB().getAllBorders(cf.getDatabaseConnection());
-        seaDists = new ArrayList<>(); /*new SeadistStoreDB().*/
+        seaDists = new SeadistStoreDB().getAllSeadists(cf.getDatabaseConnection());
     }
 
-    public void buildFreightNetwork(int n){
+    public void buildFreightNetwork(int n) {
         insertConnectionBetweenCountries();
         insertConnectionBetweenPortsSameCountry();
         insertConnectionBetweenCapitalAndClosestPort();
-        //insertConnectionBetweenNClosestPorts(n);
+        insertConnectionBetweenNClosestPorts(n);
     }
 
     private void insertConnectionBetweenCountries() {
@@ -45,34 +44,34 @@ public class FreightNetwork {
             for (Port p2 : ports) {
                 if (!p1.equals(p2)) {
                     if (p1.getCountry().equals(p2.getCountry()))
-                        graph.addEdge(p1, p2, calculateWeight(p1,p2));
+                        graph.addEdge(p1, p2, calculateWeight(p1, p2));
                 }
             }
         }
     }
 
-    private void insertConnectionBetweenCapitalAndClosestPort(){
-        Map<Country,PortTree> portsByCountry = new HashMap<>();
-        for (Country country:countries) {
+    private void insertConnectionBetweenCapitalAndClosestPort() {
+        Map<Country, PortTree> portsByCountry = new HashMap<>();
+        for (Country country : countries) {
             List<Port> portsOfCountry = new ArrayList<>();
-            for (Port port:ports) {
+            for (Port port : ports) {
                 if (port.getCountry().equals(country.getCountry()))
                     portsOfCountry.add(port);
             }
 
-            if (!portsOfCountry.isEmpty()){
+            if (!portsOfCountry.isEmpty()) {
                 PortTree tree = new PortTree();
                 tree.buildKDTree(portsOfCountry);
-                portsByCountry.put(country,tree);
+                portsByCountry.put(country, tree);
             }
         }
         for (Country s : portsByCountry.keySet()) {
             Port closest = portsByCountry.get(s).findNearestNeighbour(s.getLongitude(), s.getLatitude());
-            graph.addEdge(s, closest, calculateWeight(s,closest));
+            graph.addEdge(s, closest, calculateWeight(s, closest));
         }
     }
-/*
-    private void insertConnectionBetweenNClosestPorts(int n){
+
+    private void insertConnectionBetweenNClosestPorts(int n) {
         seaDists.removeIf(s -> s.getFrom_country().equals(s.getTo_country()));
         List<List<SeaDist>> listaDeLista = new ArrayList<>();
         for (Port p : ports) {
@@ -89,36 +88,43 @@ public class FreightNetwork {
             int i = 0;
             while (i < n && i < slist.size()) {
                 SeaDist actual = slist.get(i);
-                graph.addEdge(actual.getFrom_port(), actual.getTo_port(),(double) actual.getSeaDistance());
+                graph.addEdge(actual.getFrom_port(), actual.getTo_port(), (double) actual.getSeaDistance());
                 i++;
             }
         }
-    }*/
+    }
 
     public void setCountries(List<Country> countries) {
         this.countries = countries;
     }
+
     public void setPorts(List<Port> ports) {
         this.ports = ports;
     }
+
     public void setBorders(List<Border> borders) {
         this.borders = borders;
     }
+
     public void setSeaDists(List<SeaDist> seaDists) {
         this.seaDists = seaDists;
     }
 
-
-    private double calculateWeight(Place place1,Place place2){
-        return calculateWeight(place1.getLatitude(),place1.getLongitude(),place2.getLatitude(), place1.getLongitude());
+    private double calculateWeight(Place place1, Place place2) {
+        return calculateWeight(place1.getLatitude(), place1.getLongitude(), place2.getLatitude(), place1.getLongitude());
     }
 
-    private double calculateWeight(Double latitude1, Double longitude1,Double latitude2, Double longitude2){
-        double cat2 = (longitude1 - longitude2)* Math.cos(((latitude1 *Math.PI /180)+ (latitude2*Math.PI /180))/2);;
+    private double calculateWeight(Double latitude1, Double longitude1, Double latitude2, Double longitude2) {
+        double cat2 = (longitude1 - longitude2) * Math.cos(((latitude1 * Math.PI / 180) + (latitude2 * Math.PI / 180)) / 2);
+        ;
         double cat1 = latitude1 - latitude2;
         double result = Math.sqrt((cat1 * cat1) + (cat2 * cat2)) * 60.04;
 
         return Conversions.nauticalMilesToKm(result);
     }
-    
+
+    @Override
+    public String toString() {
+        return this.graph.toString();
+    }
 }
