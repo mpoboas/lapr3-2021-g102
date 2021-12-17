@@ -157,6 +157,7 @@ Trips "1" -- "*" Port : between >
 Ship "1" -- "*" Trips : does many >
 Container "*" -- "*" CargoManifest : contains <
 Truck "1" -- "*" Container : carries >
+PortWarehouse "1" -- "*" Container : Stores >
 Truck "1" -- "1" TruckDriver : drives <
 PortWarehouse "1" -- "1" WarehouseManager
 PortWarehouse "1" -- "1" WarehouseStaff

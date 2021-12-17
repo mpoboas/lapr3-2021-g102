@@ -13,7 +13,7 @@ sys --> pm : asks for confirmation
 deactivate sys
 pm -> sys : confirms data
 activate sys
-sys --> pm : shows requestd report
+sys --> pm : shows requested report
 deactivate sys
 deactivate pm
 
