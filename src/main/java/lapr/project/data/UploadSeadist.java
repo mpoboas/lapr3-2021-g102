@@ -18,7 +18,7 @@ public class UploadSeadist implements UploadFileToDatabase {
     }
 
     @Override
-    public void importFile() throws IOException {
+    public void importFile() {
         imports = new ImportSeadist();
         imports.importSeadistData(this.fileDirectory);
     }
@@ -27,8 +27,8 @@ public class UploadSeadist implements UploadFileToDatabase {
     public void importToDatabase() {
         Persistable persistable = new SeadistStoreDB();
         List<SeaDist> list = imports.getImportedSeadistList();
-        for (int i = 0; i < list.size(); i++) {
-            persistable.save(cf.getDatabaseConnection(), list.get(i));
+        for (SeaDist seaDist : list) {
+            persistable.save(cf.getDatabaseConnection(), seaDist);
         }
     }
 }
