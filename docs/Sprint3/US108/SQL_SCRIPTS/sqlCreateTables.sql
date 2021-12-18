@@ -151,15 +151,22 @@ ALTER TABLE Border ADD CONSTRAINT pk_Border PRIMARY KEY (alpha2CodeCountry1, alp
 ALTER TABLE Border ADD CONSTRAINT fk_BorderCountry1 FOREIGN KEY (alpha2CodeCountry1) REFERENCES Country(alpha2CodeCountry);
 ALTER TABLE Border ADD CONSTRAINT fk_BorderCountry2 FOREIGN KEY (alpha2CodeCountry2) REFERENCES Country(alpha2CodeCountry);
 
+CREATE TABLE PortWarehouseType (
+    idPortWarehouseType CHAR(1) PRIMARY KEY,
+    designation VARCHAR(50)
+);
+
 CREATE TABLE PortWarehouse (
     idPortWarehouse INTEGER PRIMARY KEY,
     idPosition INTEGER UNIQUE,
     alpha2CodeCountry VARCHAR(2),
     name VARCHAR(100),
-    capacity INTEGER
+    capacity INTEGER,
+    idPortWarehouseType CHAR
 );
 ALTER TABLE PortWarehouse ADD CONSTRAINT fk_PortWarehousePosition FOREIGN KEY (idPosition) REFERENCES Position(idPosition);
 ALTER TABLE PortWarehouse ADD CONSTRAINT fk_PortWarehouseCountry FOREIGN KEY (alpha2CodeCountry) REFERENCES Country(alpha2CodeCountry);
+ALTER TABLE PortWarehouse ADD CONSTRAINT fk_PortWarehouseType FOREIGN KEY (idPortWarehouseType) REFERENCES PortWarehouseType(idPortWarehouseType);
 
 CREATE TABLE Seadist (
     idPortWarehouseFrom INTEGER,
@@ -178,19 +185,12 @@ ALTER TABLE PortWarehouseStaff ADD CONSTRAINT pk_PortWarehouseStaff PRIMARY KEY 
 ALTER TABLE PortWarehouseStaff ADD CONSTRAINT fk_StaffPortWarehouse FOREIGN KEY (idPortWarehouse) REFERENCES PortWarehouse(idPortWarehouse);
 ALTER TABLE PortWarehouseStaff ADD CONSTRAINT fk_StaffEmployee FOREIGN KEY (idEmployee) REFERENCES Employee(idEmployee);
 
-CREATE TABLE Port (
-    idPortWarehouse INTEGER
-);
-ALTER TABLE Port ADD CONSTRAINT pk_Port PRIMARY KEY (idPortWarehouse);
-ALTER TABLE Port ADD CONSTRAINT fk_PortPortWarehouse FOREIGN KEY (idPortWarehouse) REFERENCES PortWarehouse(idPortWarehouse);
-
-CREATE TABLE Warehouse (
-    idPortWarehouse INTEGER,
+CREATE TABLE PortWarehouseConnection (
+    idWarehouse INTEGER PRIMARY KEY,
     idPort INTEGER
 );
-ALTER TABLE Warehouse ADD CONSTRAINT pk_Warehouse PRIMARY KEY (idPortWarehouse);
-ALTER TABLE Warehouse ADD CONSTRAINT fk_WarehousePortWarehouse FOREIGN KEY (idPortWarehouse) REFERENCES PortWarehouse(idPortWarehouse);
-ALTER TABLE Warehouse ADD CONSTRAINT fk_WarehousePort FOREIGN KEY (idPort) REFERENCES Port(idPortWarehouse);
+ALTER TABLE PortWarehouseConnection ADD CONSTRAINT fk_PortWarehouseConnectionWarehouse FOREIGN KEY (idWarehouse) REFERENCES PortWarehouse(idPortWarehouse);
+ALTER TABLE PortWarehouseConnection ADD CONSTRAINT fk_PortWarehouseConnectionPort FOREIGN KEY (idPort) REFERENCES PortWarehouse(idPortWarehouse);
 
 CREATE TABLE Trip (
     idTrip INTEGER PRIMARY KEY,
