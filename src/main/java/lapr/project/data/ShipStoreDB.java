@@ -89,7 +89,7 @@ public class ShipStoreDB implements Persistable {
     private void insertShipOnDatabase(DatabaseConnection databaseConnection,
                                            Ship ship) throws SQLException {
         String sqlCommand =
-                "insert into ship( imo, shipname, callsign, vesseltype, lenght, width, capacity, draft, mmsi ) values (?, ?, ?, ?, ? ,? ,? ,? ,? )";
+                "insert into ship( imo, shipname, callsign, vesseltype, length, width, capacity, draft, mmsi ) values (?, ?, ?, ?, ? ,? ,? ,? ,? )";
 
         executeShipStatementOnDatabase(databaseConnection, ship,
                 sqlCommand);
@@ -97,7 +97,7 @@ public class ShipStoreDB implements Persistable {
     private void updateShipOnDatabase(DatabaseConnection databaseConnection,
                                            Ship ship) throws SQLException {
         String sqlCommand =
-                "update ship set imo = ? , shipname = ?, callsign = ?, vesseltype = ?, lenght = ?, width = ?, capacity = ?, draft = ? where mmsi = ?";
+                "update ship set imo = ? , shipname = ?, callsign = ?, vesseltype = ?, length = ?, width = ?, capacity = ?, draft = ? where mmsi = ?";
 
         executeShipStatementOnDatabase(databaseConnection, ship,
                 sqlCommand);

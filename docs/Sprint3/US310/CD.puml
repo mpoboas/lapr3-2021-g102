@@ -1,0 +1,11 @@
+@startuml
+class mapPortOcupancyRateController{
+}
+class PortMapReport{
+
+}
+
+class Port
+
+
+@enduml

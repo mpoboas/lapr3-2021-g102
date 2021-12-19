@@ -9,7 +9,7 @@ public class Port extends Place implements Comparable<Port> {
     //private final String continent;
     //private final String country;
     //private final double latitude; // eixo y
-   // private final double longitude; //eixo x
+    //private final double longitude; //eixo x
     private final Point2D.Double coords;
 
     public Port(int id , String name, String continent, String country, double longitude, double latitude){
