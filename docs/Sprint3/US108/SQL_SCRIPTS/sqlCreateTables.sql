@@ -43,7 +43,7 @@ CREATE TABLE VesselType (
 CREATE TABLE Ship (
     idVehicle INTEGER PRIMARY KEY,
     MMSI INTEGER UNIQUE,
-    IMO INTEGER UNIQUE,
+    IMO VARCHAR(10) UNIQUE,
     shipName VARCHAR(100),
     callSign VARCHAR(15) UNIQUE,
     vesselType INTEGER,
@@ -72,7 +72,7 @@ CREATE TABLE Container (
     tare NUMBER(10,2),
     payload NUMBER(10,2),
     gross NUMBER(10,2),
-    isoCode VARCHAR(4) UNIQUE,
+    isoCode VARCHAR(4),
     refrigerated INTEGER,
     temperature NUMBER(6,2),
     idContainerType INTEGER
