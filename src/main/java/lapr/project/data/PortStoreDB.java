@@ -124,7 +124,7 @@ public class PortStoreDB implements Persistable {
                                       Port port) throws SQLException {
         Connection connection = databaseConnection.getConnection();
         String sqlCommand =
-                "insert into portwarehouse( idportwarehouse, name, continent, country, idposition) values (?, ?, ?, ?, ?)";
+                "insert into portwarehouse( idportwarehouse, name, alpha2codecountry, idposition) values (?, ?, ?,  ?)";
 
         executePortStatementOnDatabase(databaseConnection, port,
                 sqlCommand);
@@ -150,7 +150,7 @@ public class PortStoreDB implements Persistable {
                                       Port port) throws SQLException {
         Connection connection = databaseConnection.getConnection();
         String sqlCommand =
-                "update portwarehouse set name = ? , continent = ?, country = ? where idportwarehouse = ?";
+                "update portwarehouse set name = ? , alpha2codecountry = ? where idportwarehouse = ?";
 
         updatePortStatementOnDatabase(databaseConnection, port,
                 sqlCommand);
@@ -165,9 +165,8 @@ public class PortStoreDB implements Persistable {
                      connection.prepareStatement(
                              sqlCommand)) {
             savePortPreparedStatement.setString(1, port.getName());
-            savePortPreparedStatement.setString(2, port.getContinent());
-            savePortPreparedStatement.setString(3, port.getCountry());
-            savePortPreparedStatement.setInt(4, port.getid());
+            savePortPreparedStatement.setString(2, port.getCountry());
+            savePortPreparedStatement.setInt(3, port.getid());
             savePortPreparedStatement.executeUpdate();
         }
 
@@ -190,14 +189,9 @@ public class PortStoreDB implements Persistable {
                              sqlCommand)) {
             savePortPreparedStatement.setInt(1, port.getid());
             savePortPreparedStatement.setString(2, port.getName());
-            savePortPreparedStatement.setString(3, port.getContinent());
-            savePortPreparedStatement.setString(4, port.getCountry());
-            savePortPreparedStatement.setInt(5, getPositionid(databaseConnection, port));
+            savePortPreparedStatement.setString(3, port.getCountry());
+            savePortPreparedStatement.setInt(4, getPositionid(databaseConnection, port));
             savePortPreparedStatement.executeUpdate();
-        }
-        try (PreparedStatement portsTable = connection.prepareStatement("insert into port( idportwarehouse ) values ( ? )")) {
-            portsTable.setInt(1, port.getid());
-            portsTable.executeUpdate();
         }
     }
 
