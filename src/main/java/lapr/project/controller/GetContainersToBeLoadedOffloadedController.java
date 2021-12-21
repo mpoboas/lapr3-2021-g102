@@ -3,6 +3,7 @@ package lapr.project.controller;
 import lapr.project.data.ConnectionFactory;
 import lapr.project.data.ContainersToBeLoadedOffloadedDB;
 import lapr.project.model.Company;
+import org.mockito.internal.verification.Times;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -30,11 +31,11 @@ public class GetContainersToBeLoadedOffloadedController {
     }
 
 
-    public List<String> getContainersToBeOffloaded(ConnectionFactory connectionFactory) throws SQLException {
-        return new ContainersToBeLoadedOffloadedDB().getContainersToBeOffloaded(1, Timestamp.valueOf(LocalDateTime.now()), connectionFactory);
+    public List<String> getContainersToBeOffloaded(int idShip, Timestamp date, ConnectionFactory connectionFactory) throws SQLException {
+        return new ContainersToBeLoadedOffloadedDB().getContainersToBeOffloaded(idShip, date, connectionFactory);
     }
 
-    public List<String> getContainersToBeLoaded(ConnectionFactory connectionFactory) throws SQLException {
-        return new ContainersToBeLoadedOffloadedDB().getContainersToBeLoaded(1, Timestamp.valueOf(LocalDateTime.now()), connectionFactory);
+    public List<String> getContainersToBeLoaded(int idShip, Timestamp date, ConnectionFactory connectionFactory) throws SQLException {
+        return new ContainersToBeLoadedOffloadedDB().getContainersToBeLoaded(idShip, date, connectionFactory);
     }
 }

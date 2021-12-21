@@ -13,8 +13,8 @@ import java.util.List;
 public class ContainersToBeLoadedOffloadedDB {
 
     public List<String> getContainersToBeOffloaded(int idShip, Timestamp date, ConnectionFactory connectionFactory) throws SQLException {
-        try (Connection connection = connectionFactory.getDatabaseConnection().getConnection();
-             CallableStatement callableStatement = connection.prepareCall("{ ? = call fnc_get_containers_to_be_offloaded(?, ?) }");) {
+        Connection connection = connectionFactory.getDatabaseConnection().getConnection();
+        try (CallableStatement callableStatement = connection.prepareCall("{ ? = call fnc_get_containers_to_be_offloaded(?, ?) }");) {
             callableStatement.registerOutParameter(1, Types.REF_CURSOR);
             callableStatement.setInt(2, idShip);
             Timestamp now = Timestamp.valueOf(LocalDateTime.now());
@@ -26,8 +26,8 @@ public class ContainersToBeLoadedOffloadedDB {
     }
 
     public List<String> getContainersToBeLoaded(int idShip, Timestamp date, ConnectionFactory connectionFactory) throws SQLException {
-        try (Connection connection = connectionFactory.getDatabaseConnection().getConnection();
-             CallableStatement callableStatement = connection.prepareCall("{ ? = call fnc_get_containers_to_be_loaded(?, ?) }");) {
+        Connection connection = connectionFactory.getDatabaseConnection().getConnection();
+        try (CallableStatement callableStatement = connection.prepareCall("{ ? = call fnc_get_containers_to_be_loaded(?, ?) }");) {
             callableStatement.registerOutParameter(1, Types.REF_CURSOR);
             callableStatement.setInt(2, idShip);
             Timestamp now = Timestamp.valueOf(LocalDateTime.now());
@@ -43,7 +43,7 @@ public class ContainersToBeLoadedOffloadedDB {
         while (resultSet.next()) {
             String row = "Cargo Manifest ID: " + resultSet.getString(1) + " | "
                     + "Container ID: " + resultSet.getString(2) + " | "
-                    + "Container Position (X,Y,Z) " + resultSet.getInt(3) + '\n';
+                    + "Container Position (X,Y,Z): " + resultSet.getInt(3) + ", " + resultSet.getInt(4) + ", " + resultSet.getInt(5) /*+ '\n'*/;
             result.add(row);
         }
         return result;
