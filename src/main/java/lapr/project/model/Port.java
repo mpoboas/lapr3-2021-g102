@@ -12,32 +12,44 @@ public class Port extends Place implements Comparable<Port> {
     //private final double longitude; //eixo x
     private final Point2D.Double coords;
 
-    public Port(int id , String name, String continent, String country, double longitude, double latitude){
-        super(continent,country,longitude, latitude);
-        this.id  =id;
+    public Port(int id, String name, String continent, String country, double longitude, double latitude) {
+        super(continent, country, longitude, latitude);
+        this.id = id;
         this.name = name;
         //this.continent = continent;
         //this.country = country;
         //this.latitude = latitude;
         //this.longitude = longitude;
-        coords = new Point2D.Double(longitude,latitude);
+        coords = new Point2D.Double(longitude, latitude);
     }
-    public int getid(){return this.id;}
-    public String getName(){return this.name;}
+
+    public int getid() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
     public String getContinent() {
         return super.getContinent();
     }
+
     public String getCountry() {
         return super.getCountry();
     }
+
     public double getLatitude() {
         return super.getLatitude();
     }
+
     public double getLongitude() {
         return super.getLongitude();
     }
 
-
+    public Point2D.Double getCoords() {
+        return coords;
+    }
 
     @Override
     public int compareTo(Port o) {
@@ -46,11 +58,9 @@ public class Port extends Place implements Comparable<Port> {
 
     @Override
     public String toString() {
-        return "Port{" +
-                "id=" + id +
-                ", latitude=" + getLatitude() +
-                ", longitude=" + getLongitude() +
-                '}';
+        return "Port with id: " + this.id +
+                "; Latitude: " + this.getLatitude() +
+                ", Longitude: " + this.getLongitude() + "\n";
     }
 
     @Override
@@ -59,9 +69,5 @@ public class Port extends Place implements Comparable<Port> {
         if (o == null || getClass() != o.getClass()) return false;
         Port port = (Port) o;
         return id == port.id && Double.compare(port.getLatitude(), getLatitude()) == 0 && Double.compare(port.getLongitude(), getLongitude()) == 0;
-    }
-
-    public Point2D.Double getCoords() {
-        return coords;
     }
 }

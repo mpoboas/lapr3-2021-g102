@@ -33,4 +33,24 @@ class FreightNetworkTest {
         network.buildFreightNetwork(5);
         System.out.println(network);
     }
+
+    @Test
+    void setCountries() {
+    }
+
+    @Test
+    void setPorts() {
+    }
+
+    @Test
+    void setBorders() {
+    }
+
+    @Test
+    void setSeaDists() {
+    }
+
+    @Test
+    void testToString() {
+    }
 }

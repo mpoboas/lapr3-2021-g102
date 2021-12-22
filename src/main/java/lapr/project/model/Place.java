@@ -2,13 +2,32 @@ package lapr.project.model;
 
 
 public class Place {
-
+    /**
+     * The continent name
+     */
     private final String continent;
+    /**
+     * The country name
+     */
     private final String country;
-    private final double latitude; // eixo y
-    private final double longitude; //eixo x
+    /**
+     * The latitude of the place
+     */
+    private final double latitude;
+    /**
+     * The longitude of the place
+     */
+    private final double longitude;
 
-    public Place(String continent, String country, double longitude, double latitude){
+    /**
+     * Constructor of the Place, through a continent name, a country name, a longitude and a latitude.
+     *
+     * @param continent the continent name
+     * @param country   the country name
+     * @param longitude the longitude value
+     * @param latitude  the latitude value
+     */
+    public Place(String continent, String country, double longitude, double latitude) {
         this.continent = continent;
         this.country = country;
         this.latitude = latitude;
@@ -16,8 +35,31 @@ public class Place {
 
     }
 
-    public String getContinent(){return this.continent;}
-    public String getCountry(){return this.country;}
-    public double getLatitude(){return this.latitude;}
-    public double getLongitude(){return this.longitude;}
+    /**
+     * Gets the continent string.
+     */
+    public String getContinent() {
+        return this.continent;
+    }
+
+    /**
+     * Gets the country string.
+     */
+    public String getCountry() {
+        return this.country;
+    }
+
+    /**
+     * Gets the latitude value.
+     */
+    public double getLatitude() {
+        return this.latitude;
+    }
+
+    /**
+     * Gets the longitude value.
+     */
+    public double getLongitude() {
+        return this.longitude;
+    }
 }
