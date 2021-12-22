@@ -60,7 +60,7 @@ public class Port extends Place implements Comparable<Port> {
     public String toString() {
         return "Port with id: " + this.id +
                 "; Latitude: " + this.getLatitude() +
-                ", Longitude: " + this.getLongitude() + "\n";
+                ", Longitude: " + this.getLongitude();
     }
 
     @Override

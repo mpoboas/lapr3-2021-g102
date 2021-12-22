@@ -109,6 +109,6 @@ public class Country extends Place {
         return "Country with Alpha2 code: " + this.alpha2Code + "; " +
                 "Alpha3 code: " + this.alpha3Code + "; " +
                 "Capital: " + this.capital + "; " +
-                "Population: " + this.population + "\n";
+                "Population: " + this.population;
     }
 }

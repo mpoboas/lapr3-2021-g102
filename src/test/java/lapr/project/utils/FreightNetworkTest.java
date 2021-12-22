@@ -1,13 +1,13 @@
 package lapr.project.utils;
 
-import lapr.project.model.ImportBorder;
-import lapr.project.model.ImportCountry;
-import lapr.project.model.ImportPorts;
-import lapr.project.model.ImportSeadist;
+import lapr.project.model.*;
 import lapr.project.stores.PortStore;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,22 +32,8 @@ class FreightNetworkTest {
         }
         network.buildFreightNetwork(5);
         System.out.println(network);
-    }
-
-    @Test
-    void setCountries() {
-    }
-
-    @Test
-    void setPorts() {
-    }
-
-    @Test
-    void setBorders() {
-    }
-
-    @Test
-    void setSeaDists() {
+        assertTrue(network.getGraph().vertices().containsAll(network.getCountries()));
+        assertTrue(network.getGraph().vertices().containsAll(network.getPorts()));
     }
 
     @Test

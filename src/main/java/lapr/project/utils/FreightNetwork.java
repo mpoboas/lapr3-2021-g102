@@ -135,6 +135,18 @@ public class FreightNetwork {
         }
     }
 
+    public MatrixGraph<Place, Double> getGraph() {
+        return this.graph;
+    }
+
+    public List<Country> getCountries() {
+        return this.countries;
+    }
+
+    public List<Port> getPorts() {
+        return this.ports;
+    }
+
     /**
      * Sets the list of countries.
      */

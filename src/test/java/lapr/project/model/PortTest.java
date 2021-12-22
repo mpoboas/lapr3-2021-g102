@@ -89,7 +89,7 @@ public class PortTest {
     @Test
     void testToString(){
         Port port1= new Port (144,"Test Port", "Europe", "Germany", 150, 130);
-        String port1S = "Port{id=144, latitude=130.0, longitude=150.0}";
+        String port1S = "Port with id: 144; Latitude: 130.0, Longitude: 150.0";
         assertEquals(port1S,port1.toString());
     }
 
