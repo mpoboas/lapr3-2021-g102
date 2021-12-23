@@ -8,30 +8,30 @@ class Company {
 class ContainerRouteUI {
 }
 
-class GetClientContainerRoute {
+class GetClientContainerRouteController {
 }
 
 class ContainerDB {
 }
 
 class ConnectionFactory{
--getInstance()
--loadProperties()
--getDatabaseConnection()
++getInstance()
++yloadProperties()
++getDatabaseConnection()
 }
 
 class DatabaseConnection{
 -oracleDataSource
 -connection
 -error
--getConnection()
--registerError(SQLException error)
--getLastError()
++getConnection()
++registerError(SQLException error)
++getLastError()
 }
 
-ContainerRouteUI ..> GetClientContainerRoute
-GetClientContainerRoute ..> ContainerDB
-GetClientContainerRoute ..> Company
+ContainerRouteUI ..> GetClientContainerRouteController
+GetClientContainerRouteController ..> ContainerDB
+GetClientContainerRouteController ..> Company
 ContainerDB ..> ConnectionFactory
 ConnectionFactory ..> DatabaseConnection
 
