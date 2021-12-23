@@ -1,0 +1,60 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+autonumber
+
+actor "Ship Captain" as SC
+participant "GetAuditTrailsUI" as UI
+participant "GetAuditTrailsController" as CTRL
+participant "AuditTrailDB" as ATDB
+participant "cf :ConnectionFactory" as CF
+participant DatabaseConnection as DC
+
+database LAPR3_G102 as DB
+participant "con: Connection" as CON
+
+
+activate SC
+SC -> UI : asks the audit trails of a given container of a given cargo manifest
+activate UI
+UI --> SC : requests data (container id, cargo manifest id)
+deactivate UI
+SC -> UI : inserts requested data
+activate UI
+
+UI -> CF** : create()
+activate CF
+CF -> DC** : create()
+activate DC
+DC --> DB
+activate DB
+deactivate DB
+deactivate DC
+deactivate CF
+
+UI -> CTRL : getAuditTrails(cf, containerID, cargoManifestID)
+activate CTRL
+CTRL -> ATDB : getAuditTrails(cf, containerID, cargoManifestID)
+activate ATDB
+
+ATDB -> CF : conn = getConnection()
+activate CF
+deactivate CF
+ATDB -> DB : auditTrail = fnc_get_audit_trails(containerID, cargoManifestID)
+activate DB
+deactivate DB
+ATDB --> CTRL: auditTrail
+deactivate ATDB
+CTRL --> UI : auditTrail
+deactivate CTRL
+
+UI --> SC : shows list of audit trails of the inserted container and cargo manifest
+deactivate UI
+SC -> UI : confirms data
+activate UI
+UI --> SC : shows operation success
+deactivate UI
+deactivate SC
+@enduml
