@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="429px" preserveAspectRatio="none" style="width:1017px;height:429px;background:#FFFFFF;" version="1.1" viewBox="0 0 1017 429" width="1017px" zoomAndPan="magnify"><defs><filter height="300%" id="f19sskd47aksu6" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[933039f76157e73ac9adc26a1085dee2]
+class GetAuditTrailsUI--><rect codeLine="3" fill="#FEFECE" filter="url(#f19sskd47aksu6)" height="48" id="GetAuditTrailsUI" style="stroke:#A80036;stroke-width:1.5;" width="121" x="64" y="7"/><ellipse cx="79" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M81,19.5 Q81.2031,19 81.4375,18.75 Q81.6719,18.5 81.9375,18.5 Q82.4063,18.5 82.7031,18.7813 Q83,19.0625 83,19.7188 L83,21.2813 Q83,21.9375 82.7188,22.2188 Q82.4375,22.5 82,22.5 Q81.6094,22.5 81.3594,22.3281 Q81.1094,22.1563 81,21.7031 Q80.9531,21.3906 80.7813,21.2188 Q80.4688,20.8906 79.9063,20.7031 Q79.3438,20.5 78.7813,20.5 Q78.0781,20.5 77.4844,20.7813 Q76.9063,21.0625 76.4531,21.6875 Q76,22.3125 76,23.1719 L76,24.0938 Q76,25.125 76.8438,25.8125 Q77.6875,26.5 79.1875,26.5 Q80.0781,26.5 80.7031,26.2969 Q81.0625,26.1875 81.4688,25.8281 Q81.7344,25.625 81.875,25.5625 Q82.0156,25.5 82.1875,25.5 Q82.5156,25.5 82.75,25.7656 Q83,26.0156 83,26.375 Q83,26.7188 82.6563,27.125 Q82.1563,27.7188 81.3594,28.0469 Q80.3125,28.5 79.0313,28.5 Q77.5313,28.5 76.3281,27.9063 Q75.3594,27.4375 74.6719,26.4219 Q74,25.4063 74,24.2031 L74,23.1094 Q74,21.8594 74.5938,20.7656 Q75.2031,19.6719 76.25,19.0938 Q77.3125,18.5 78.5,18.5 Q79.2188,18.5 79.8438,18.75 Q80.4688,19 81,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="89" x="93" y="27.9102">GetAuditTrailsUI</text><line style="stroke:#A80036;stroke-width:1.5;" x1="65" x2="184" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="65" x2="184" y1="47" y2="47"/><!--MD5=[505800658b3d96fed16ef2446dc0886c]
+class GetAuditTrailsController--><rect codeLine="4" fill="#FEFECE" filter="url(#f19sskd47aksu6)" height="61.8359" id="GetAuditTrailsController" style="stroke:#A80036;stroke-width:1.5;" width="235" x="7" y="130"/><ellipse cx="54.75" cy="146" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M56.75,142.5 Q56.9531,142 57.1875,141.75 Q57.4219,141.5 57.6875,141.5 Q58.1563,141.5 58.4531,141.7813 Q58.75,142.0625 58.75,142.7188 L58.75,144.2813 Q58.75,144.9375 58.4688,145.2188 Q58.1875,145.5 57.75,145.5 Q57.3594,145.5 57.1094,145.3281 Q56.8594,145.1563 56.75,144.7031 Q56.7031,144.3906 56.5313,144.2188 Q56.2188,143.8906 55.6563,143.7031 Q55.0938,143.5 54.5313,143.5 Q53.8281,143.5 53.2344,143.7813 Q52.6563,144.0625 52.2031,144.6875 Q51.75,145.3125 51.75,146.1719 L51.75,147.0938 Q51.75,148.125 52.5938,148.8125 Q53.4375,149.5 54.9375,149.5 Q55.8281,149.5 56.4531,149.2969 Q56.8125,149.1875 57.2188,148.8281 Q57.4844,148.625 57.625,148.5625 Q57.7656,148.5 57.9375,148.5 Q58.2656,148.5 58.5,148.7656 Q58.75,149.0156 58.75,149.375 Q58.75,149.7188 58.4063,150.125 Q57.9063,150.7188 57.1094,151.0469 Q56.0625,151.5 54.7813,151.5 Q53.2813,151.5 52.0781,150.9063 Q51.1094,150.4375 50.4219,149.4219 Q49.75,148.4063 49.75,147.2031 L49.75,146.1094 Q49.75,144.8594 50.3438,143.7656 Q50.9531,142.6719 52,142.0938 Q53.0625,141.5 54.25,141.5 Q54.9688,141.5 55.5938,141.75 Q56.2188,142 56.75,142.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="131" x="75.25" y="150.9102">GetAuditTrailsController</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="241" y1="162" y2="162"/><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="241" y1="170" y2="170"/><ellipse cx="18" cy="181" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="209" x="27" y="185.4189">getAuditTrails(containerID,cargoManifestID)</text><!--MD5=[b277e1d7bea6eaeb368a7d4210d51582]
+class AuditTrailDB--><rect codeLine="7" fill="#FEFECE" filter="url(#f19sskd47aksu6)" height="61.8359" id="AuditTrailDB" style="stroke:#A80036;stroke-width:1.5;" width="235" x="277" y="130"/><ellipse cx="356.25" cy="146" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M358.25,142.5 Q358.4531,142 358.6875,141.75 Q358.9219,141.5 359.1875,141.5 Q359.6563,141.5 359.9531,141.7813 Q360.25,142.0625 360.25,142.7188 L360.25,144.2813 Q360.25,144.9375 359.9688,145.2188 Q359.6875,145.5 359.25,145.5 Q358.8594,145.5 358.6094,145.3281 Q358.3594,145.1563 358.25,144.7031 Q358.2031,144.3906 358.0313,144.2188 Q357.7188,143.8906 357.1563,143.7031 Q356.5938,143.5 356.0313,143.5 Q355.3281,143.5 354.7344,143.7813 Q354.1563,144.0625 353.7031,144.6875 Q353.25,145.3125 353.25,146.1719 L353.25,147.0938 Q353.25,148.125 354.0938,148.8125 Q354.9375,149.5 356.4375,149.5 Q357.3281,149.5 357.9531,149.2969 Q358.3125,149.1875 358.7188,148.8281 Q358.9844,148.625 359.125,148.5625 Q359.2656,148.5 359.4375,148.5 Q359.7656,148.5 360,148.7656 Q360.25,149.0156 360.25,149.375 Q360.25,149.7188 359.9063,150.125 Q359.4063,150.7188 358.6094,151.0469 Q357.5625,151.5 356.2813,151.5 Q354.7813,151.5 353.5781,150.9063 Q352.6094,150.4375 351.9219,149.4219 Q351.25,148.4063 351.25,147.2031 L351.25,146.1094 Q351.25,144.8594 351.8438,143.7656 Q352.4531,142.6719 353.5,142.0938 Q354.5625,141.5 355.75,141.5 Q356.4688,141.5 357.0938,141.75 Q357.7188,142 358.25,142.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="68" x="376.75" y="150.9102">AuditTrailDB</text><line style="stroke:#A80036;stroke-width:1.5;" x1="278" x2="511" y1="162" y2="162"/><line style="stroke:#A80036;stroke-width:1.5;" x1="278" x2="511" y1="170" y2="170"/><ellipse cx="288" cy="181" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="209" x="297" y="185.4189">getAuditTrails(containerID,cargoManifestID)</text><!--MD5=[0b8a0869bb17c5d05015d74abb8e1141]
+class ConnectionFactory--><rect codeLine="10" fill="#FEFECE" filter="url(#f19sskd47aksu6)" height="89.5078" id="ConnectionFactory" style="stroke:#A80036;stroke-width:1.5;" width="149" x="834" y="116"/><ellipse cx="855.75" cy="132" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M857.75,128.5 Q857.9531,128 858.1875,127.75 Q858.4219,127.5 858.6875,127.5 Q859.1563,127.5 859.4531,127.7813 Q859.75,128.0625 859.75,128.7188 L859.75,130.2813 Q859.75,130.9375 859.4688,131.2188 Q859.1875,131.5 858.75,131.5 Q858.3594,131.5 858.1094,131.3281 Q857.8594,131.1563 857.75,130.7031 Q857.7031,130.3906 857.5313,130.2188 Q857.2188,129.8906 856.6563,129.7031 Q856.0938,129.5 855.5313,129.5 Q854.8281,129.5 854.2344,129.7813 Q853.6563,130.0625 853.2031,130.6875 Q852.75,131.3125 852.75,132.1719 L852.75,133.0938 Q852.75,134.125 853.5938,134.8125 Q854.4375,135.5 855.9375,135.5 Q856.8281,135.5 857.4531,135.2969 Q857.8125,135.1875 858.2188,134.8281 Q858.4844,134.625 858.625,134.5625 Q858.7656,134.5 858.9375,134.5 Q859.2656,134.5 859.5,134.7656 Q859.75,135.0156 859.75,135.375 Q859.75,135.7188 859.4063,136.125 Q858.9063,136.7188 858.1094,137.0469 Q857.0625,137.5 855.7813,137.5 Q854.2813,137.5 853.0781,136.9063 Q852.1094,136.4375 851.4219,135.4219 Q850.75,134.4063 850.75,133.2031 L850.75,132.1094 Q850.75,130.8594 851.3438,129.7656 Q851.9531,128.6719 853,128.0938 Q854.0625,127.5 855.25,127.5 Q855.9688,127.5 856.5938,127.75 Q857.2188,128 857.75,128.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="102" x="871.25" y="136.9102">ConnectionFactory</text><line style="stroke:#A80036;stroke-width:1.5;" x1="835" x2="982" y1="148" y2="148"/><line style="stroke:#A80036;stroke-width:1.5;" x1="835" x2="982" y1="156" y2="156"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="842" y="164"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="64" x="854" y="171.4189">getInstance()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="842" y="177.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="854" y="185.2549">loadProperties()</text><ellipse cx="845" cy="194.6719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="123" x="854" y="199.0908">getDatabaseConnection()</text><!--MD5=[8aa441cdd93a4e2944eff58bc06cd78a]
+class DatabaseConnection--><rect codeLine="15" fill="#FEFECE" filter="url(#f19sskd47aksu6)" height="131.0156" id="DatabaseConnection" style="stroke:#A80036;stroke-width:1.5;" width="190" x="813.5" y="284"/><ellipse cx="846.95" cy="300" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M848.95,296.5 Q849.1531,296 849.3875,295.75 Q849.6219,295.5 849.8875,295.5 Q850.3563,295.5 850.6531,295.7813 Q850.95,296.0625 850.95,296.7188 L850.95,298.2813 Q850.95,298.9375 850.6688,299.2188 Q850.3875,299.5 849.95,299.5 Q849.5594,299.5 849.3094,299.3281 Q849.0594,299.1563 848.95,298.7031 Q848.9031,298.3906 848.7313,298.2188 Q848.4188,297.8906 847.8563,297.7031 Q847.2938,297.5 846.7313,297.5 Q846.0281,297.5 845.4344,297.7813 Q844.8563,298.0625 844.4031,298.6875 Q843.95,299.3125 843.95,300.1719 L843.95,301.0938 Q843.95,302.125 844.7938,302.8125 Q845.6375,303.5 847.1375,303.5 Q848.0281,303.5 848.6531,303.2969 Q849.0125,303.1875 849.4188,302.8281 Q849.6844,302.625 849.825,302.5625 Q849.9656,302.5 850.1375,302.5 Q850.4656,302.5 850.7,302.7656 Q850.95,303.0156 850.95,303.375 Q850.95,303.7188 850.6063,304.125 Q850.1063,304.7188 849.3094,305.0469 Q848.2625,305.5 846.9813,305.5 Q845.4813,305.5 844.2781,304.9063 Q843.3094,304.4375 842.6219,303.4219 Q841.95,302.4063 841.95,301.2031 L841.95,300.1094 Q841.95,298.8594 842.5438,297.7656 Q843.1531,296.6719 844.2,296.0938 Q845.2625,295.5 846.45,295.5 Q847.1688,295.5 847.7938,295.75 Q848.4188,296 848.95,296.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="117" x="865.05" y="304.9102">DatabaseConnection</text><line style="stroke:#A80036;stroke-width:1.5;" x1="814.5" x2="1002.5" y1="316" y2="316"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="821.5" y="324"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="833.5" y="331.4189">oracleDataSource</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="821.5" y="337.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="53" x="833.5" y="345.2549">connection</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="821.5" y="351.6719"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="24" x="833.5" y="359.0908">error</text><line style="stroke:#A80036;stroke-width:1.5;" x1="814.5" x2="1002.5" y1="365.5078" y2="365.5078"/><ellipse cx="824.5" cy="376.5078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="833.5" y="380.9268">getConnection()</text><ellipse cx="824.5" cy="390.3438" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="164" x="833.5" y="394.7627">registerError(SQLException error)</text><ellipse cx="824.5" cy="404.1797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="68" x="833.5" y="408.5986">getLastError()</text><!--MD5=[b853c09a1719fdd383bf5234bb47db55]
+link GetAuditTrailsUI to GetAuditTrailsController--><path codeLine="24" d="M124.5,55.18 C124.5,76.07 124.5,106.93 124.5,129.75 " fill="none" id="GetAuditTrailsUI-GetAuditTrailsController" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[8b17921b858bdb0169a913ffd8008c24]
+link GetAuditTrailsController to AuditTrailDB--><path codeLine="25" d="M242.1,161 C253.71,161 265.32,161 276.92,161 " fill="none" id="GetAuditTrailsController-AuditTrailDB" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[205f4eec4d25e38f55a9d884a93d7b91]
+link AuditTrailDB to ConnectionFactory--><path codeLine="26" d="M512.1,161 C611.08,161 749.61,161 833.97,161 " fill="none" id="AuditTrailDB-ConnectionFactory" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="539.5,149.1758,530.4549,146.2369,530.4549,152.1147,539.5,149.1758" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="272" x="543.5" y="154.4951">requests connection to database to obtain data</text><!--MD5=[f69893cd3a05080ec62d77c49424649a]
+link ConnectionFactory to DatabaseConnection--><path codeLine="27" d="M908.5,206.2 C908.5,229.36 908.5,258.16 908.5,283.78 " fill="none" id="ConnectionFactory-DatabaseConnection" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="913.5,250.1758,916.4389,241.1307,910.5611,241.1307,913.5,250.1758" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="60" x="922.5" y="250.4951">fabricate a</text><!--MD5=[f00b111d3e8607e79779e98a62d0f6ae]
+@startuml
+'https://plantuml.com/class-diagram
+
+class GetAuditTrailsUI{}
+class GetAuditTrailsController{
++getAuditTrails(containerID,cargoManifestID)
+}
+class AuditTrailDB{
++getAuditTrails(containerID,cargoManifestID)
+}
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
++getDatabaseConnection()
+}
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+GetAuditTrailsUI .. GetAuditTrailsController
+GetAuditTrailsController . AuditTrailDB
+AuditTrailDB - ConnectionFactory : requests connection to database to obtain data >
+ConnectionFactory - - DatabaseConnection : fabricate a >
+
+@enduml
+
+@startuml
+
+class GetAuditTrailsUI{}
+class GetAuditTrailsController{
++getAuditTrails(containerID,cargoManifestID)
+}
+class AuditTrailDB{
++getAuditTrails(containerID,cargoManifestID)
+}
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
++getDatabaseConnection()
+}
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+GetAuditTrailsUI .. GetAuditTrailsController
+GetAuditTrailsController . AuditTrailDB
+AuditTrailDB - ConnectionFactory : requests connection to database to obtain data >
+ConnectionFactory - - DatabaseConnection : fabricate a >
+
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

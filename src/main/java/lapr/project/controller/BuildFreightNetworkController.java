@@ -16,7 +16,7 @@ public class BuildFreightNetworkController {
     private final Company company;
 
     /**
-     * Constructor of the closest port controller, through a company object.
+     * Constructor of the freight network controller, through a company object.
      *
      * @param company the company object
      */
@@ -25,13 +25,16 @@ public class BuildFreightNetworkController {
     }
 
     /**
-     * Constructor of the closest port controller, with no received parameters.
+     * Constructor of the freight network controller, with no received parameters.
      */
     public BuildFreightNetworkController() {
         this(App.getInstance().getCompany());
         app = App.getInstance();
     }
 
+    /**
+     * Gets the freight network.
+     */
     public FreightNetwork getFreightNetwork() {
         return this.company.getFreightNetwork();
     }

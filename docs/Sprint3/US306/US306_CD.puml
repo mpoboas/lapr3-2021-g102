@@ -8,7 +8,7 @@ class Company {
 class WarehouseOccupancyRateUI {
 }
 
-class GetWarehouseOccupancyRate {
+class GetWarehouseOccupancyRateController {
 +getWarehouseOccupancyRate(int daysCount)
 +getContainersLeaving(int daysCount)
 }
@@ -19,23 +19,23 @@ class PortWarehouseDB {
 }
 
 class ConnectionFactory{
--getInstance()
--loadProperties()
--getDatabaseConnection()
++getInstance()
++loadProperties()
++getDatabaseConnection()
 }
 
 class DatabaseConnection{
 -oracleDataSource
 -connection
 -error
--getConnection()
--registerError(SQLException error)
--getLastError()
++getConnection()
++registerError(SQLException error)
++getLastError()
 }
 
-WarehouseOccupancyRateUI ..> GetWarehouseOccupancyRate
-GetWarehouseOccupancyRate ..> PortWarehouseDB
-GetWarehouseOccupancyRate ..> Company
+WarehouseOccupancyRateUI ..> GetWarehouseOccupancyRateController
+GetWarehouseOccupancyRateController ..> PortWarehouseDB
+GetWarehouseOccupancyRateController ..> Company
 PortWarehouseDB ..> ConnectionFactory
 ConnectionFactory ..> DatabaseConnection
 

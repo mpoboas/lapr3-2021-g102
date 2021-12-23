@@ -9,7 +9,7 @@ activate TF
 TF -> ":System" : asks to import countries, ports, borders and\n seadists to build a freight network
 activate ":System"
 
-":System" --> TF : shows the freight network builded
+":System" --> TF : shows the built freight network
 deactivate ":System"
 
 

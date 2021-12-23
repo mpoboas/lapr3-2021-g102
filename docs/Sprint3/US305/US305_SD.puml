@@ -5,7 +5,7 @@ autonumber
 actor "Client" as CL
 
 participant "ContainerRouteUI" as UI
-participant "GetClientContainerRoute" as CTRL
+participant "GetClientContainerRouteController" as CTRL
 participant "ContainerDB" as CONTAINERDB
 participant ConnectionFactory as CF
 participant DatabaseConnection as DC

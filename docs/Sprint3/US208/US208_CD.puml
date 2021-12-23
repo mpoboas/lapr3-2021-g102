@@ -25,18 +25,18 @@ class ShipOccupancyRate {
 }
 
 class ConnectionFactory{
--getInstance()
--loadProperties()
--getDatabaseConnection()
-
++getInstance()
++loadProperties()
++getDatabaseConnection()
 }
+
 class DatabaseConnection{
 -oracleDataSource
 -connection
 -error
--getConnection()
--registerError(SQLException error)
--getLastError()
++getConnection()
++registerError(SQLException error)
++getLastError()
 }
 
 ShipOccupancyRateUI ..> GetShipOccupancyRateController
