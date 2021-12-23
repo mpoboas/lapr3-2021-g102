@@ -2,7 +2,7 @@ package lapr.project.controller;
 
 import lapr.project.data.DatabaseConnection;
 import lapr.project.model.Company;
-import lapr.project.stores.FreightStore;
+import lapr.project.stores.FreightNetwork;
 
 public class BuildFreightNetworkController {
     /**
@@ -32,8 +32,8 @@ public class BuildFreightNetworkController {
         app = App.getInstance();
     }
 
-    public FreightStore getFreightStore() {
-        return this.company.getFreightStore();
+    public FreightNetwork getFreightNetwork() {
+        return this.company.getFreightNetwork();
     }
 
     /**
@@ -42,6 +42,6 @@ public class BuildFreightNetworkController {
      * @param numClosestPorts   the desired number of closest ports
      */
     public void buildFreightNetworkFromDatabase(DatabaseConnection databaseConnection, int numClosestPorts) {
-        this.company.getFreightStore().buildFreightNetworkFromDatabase(databaseConnection, numClosestPorts);
+        this.company.getFreightNetwork().buildFreightNetworkFromDatabase(databaseConnection, numClosestPorts);
     }
 }

@@ -1,9 +1,9 @@
 package lapr.project.model;
 
 import lapr.project.auth.AuthFacade;
-import lapr.project.stores.FreightStore;
 import lapr.project.stores.PortStore;
 import lapr.project.stores.ShipStore;
+import lapr.project.stores.FreightNetwork;
 
 public class Company {
     /**
@@ -29,14 +29,14 @@ public class Company {
     /**
      * The freight store
      */
-    private final FreightStore freightStore;
+    private final FreightNetwork freightNetwork;
 
     public Company(String designation) {
         this.designation = designation;
         this.authFacade = new AuthFacade();
         this.shipStore = new ShipStore();
         this.portStore = new PortStore();
-        this.freightStore = new FreightStore();
+        this.freightNetwork = new FreightNetwork();
     }
 
     /**
@@ -72,11 +72,11 @@ public class Company {
     }
 
     /**
-     * Gets the freight store.
+     * Gets the freight network.
      *
-     * @return FreightStore instance
+     * @return FreightNetwork instance
      */
-    public FreightStore getFreightStore() {
-        return this.freightStore;
+    public FreightNetwork getFreightNetwork() {
+        return this.freightNetwork;
     }
 }

@@ -1,7 +1,9 @@
-package lapr.project.utils;
+package lapr.project.stores;
 
 import lapr.project.data.*;
 import lapr.project.model.*;
+import lapr.project.utils.Conversions;
+import lapr.project.utils.PortTree;
 import lapr.project.utils.graph.MatrixGraph;
 
 import java.util.*;
@@ -11,22 +13,6 @@ public class FreightNetwork {
      * The graph
      */
     private final MatrixGraph<Place, Double> graph;
-    /**
-     * The list of countries
-     */
-    private List<Country> countries;
-    /**
-     * The list of ports
-     */
-    private List<Port> ports;
-    /**
-     * The list of borders between countries
-     */
-    private List<Border> borders;
-    /**
-     * The list of seadists
-     */
-    private List<SeaDist> seaDists;
 
     /**
      * Constructor of the Freight Network, with no received parameters.
@@ -36,45 +22,53 @@ public class FreightNetwork {
     }
 
     /**
-     * Gets all the data needed (list of countries, ports, borders and seadists) from the database.
+     * Gets all the data needed (list of countries, ports, borders and seadists) from the database and builds the freight network.
      *
      * @param databaseConnection the database connection
+     * @param n                  the desired number to be used for the n closest ports search
      */
-    public void getDataFromDatabase(DatabaseConnection databaseConnection) {
-        this.countries = new CountryStoreDB().getCountriesFromDatabase(databaseConnection);
-        this.ports = new PortStoreDB().getPortsFromDatabase(databaseConnection);
-        this.borders = new BorderStoreDB().getAllBorders(databaseConnection);
-        this.seaDists = new SeadistStoreDB().getAllSeadists(databaseConnection);
+    public void buildFreightNetworkFromDatabase(DatabaseConnection databaseConnection, int n) {
+        List<Country> countries = new CountryStoreDB().getCountriesFromDatabase(databaseConnection);
+        List<Border> borders = new BorderStoreDB().getAllBorders(databaseConnection);
+        List<Port> ports = new PortStoreDB().getPortsFromDatabase(databaseConnection);
+        List<SeaDist> seaDists = new SeadistStoreDB().getAllSeadists(databaseConnection);
+        buildFreightNetworkFromGivenData(countries, borders, ports, seaDists, n);
     }
 
     /**
-     * Builds the network.
+     * Builds the freight network, through a list of countries, borders, ports and seadists and through a number of closest ports.
      *
-     * @param n the desired number to be used for the n closest ports search.
+     * @param countries the list of countries.
+     * @param borders   the list of borders
+     * @param ports     the list of ports
+     * @param seaDists  the list of seadists
+     * @param n         the desired number to be used for the n closest ports search.
      */
-    public void buildFreightNetwork(int n) {
-        insertConnectionBetweenCountries();
-        insertConnectionBetweenPortsSameCountry();
-        insertConnectionBetweenCapitalAndClosestPort();
-        insertConnectionBetweenNClosestPorts(n);
+    public void buildFreightNetworkFromGivenData(List<Country> countries, List<Border> borders, List<Port> ports, List<SeaDist> seaDists, int n) {
+        insertConnectionBetweenCountries(borders);
+        insertConnectionBetweenPortsSameCountry(ports);
+        insertConnectionBetweenCapitalAndClosestPort(countries, ports);
+        insertConnectionBetweenNClosestPorts(ports, seaDists, n);
     }
 
     /**
      * Inserts the connection between countries.
+     * @param borders the list of borders
      */
-    private void insertConnectionBetweenCountries() {
-        for (Border border : this.borders) {
+    private void insertConnectionBetweenCountries(List<Border> borders) {
+        for (Border border : borders) {
             this.graph.addEdge(border.getCountry1(), border.getCountry2(), calculateWeight(border.getCountry1(), border.getCountry2()));
         }
     }
 
     /**
      * Inserts the connection between ports of the same country.
+     * @param ports the list of ports
      */
 
-    private void insertConnectionBetweenPortsSameCountry() {
-        for (Port p1 : this.ports) {
-            for (Port p2 : this.ports) {
+    private void insertConnectionBetweenPortsSameCountry(List<Port> ports) {
+        for (Port p1 : ports) {
+            for (Port p2 : ports) {
                 if (!p1.equals(p2)) {
                     if (p1.getCountry().equals(p2.getCountry()))
                         this.graph.addEdge(p1, p2, calculateWeight(p1, p2));
@@ -85,12 +79,14 @@ public class FreightNetwork {
 
     /**
      * Inserts the connection between the capital of the country and the closest port to it.
+     * @param countries the list of countries
+     * @param ports     the list of ports
      */
-    private void insertConnectionBetweenCapitalAndClosestPort() {
+    private void insertConnectionBetweenCapitalAndClosestPort(List<Country> countries, List<Port> ports) {
         Map<Country, PortTree> portsByCountry = new HashMap<>();
-        for (Country country : this.countries) {
+        for (Country country : countries) {
             List<Port> portsOfCountry = new ArrayList<>();
-            for (Port port : this.ports) {
+            for (Port port : ports) {
                 if (port.getCountry().equals(country.getCountry()))
                     portsOfCountry.add(port);
             }
@@ -110,14 +106,16 @@ public class FreightNetwork {
     /**
      * Inserts the connections between each port of a country and the n closest ports of any other country.
      *
+     * @param ports    the list of ports
+     * @param seaDists the list of seadists
      * @param n the desired number of closest ports
      */
-    private void insertConnectionBetweenNClosestPorts(int n) {
-        this.seaDists.removeIf(s -> s.getFrom_country().equals(s.getTo_country()));
+    private void insertConnectionBetweenNClosestPorts(List<Port> ports, List<SeaDist> seaDists, int n) {
+        seaDists.removeIf(s -> s.getFrom_country().equals(s.getTo_country()));
         List<List<SeaDist>> listaDeLista = new ArrayList<>();
-        for (Port p : this.ports) {
+        for (Port p : ports) {
             List<SeaDist> seadistFromSamePort = new ArrayList<>();
-            for (SeaDist s : this.seaDists) {
+            for (SeaDist s : seaDists) {
                 if (p.equals(s.getFrom_port()))
                     seadistFromSamePort.add(s);
                 Collections.sort(seadistFromSamePort);
@@ -133,46 +131,6 @@ public class FreightNetwork {
                 i++;
             }
         }
-    }
-
-    public MatrixGraph<Place, Double> getGraph() {
-        return this.graph;
-    }
-
-    public List<Country> getCountries() {
-        return this.countries;
-    }
-
-    public List<Port> getPorts() {
-        return this.ports;
-    }
-
-    /**
-     * Sets the list of countries.
-     */
-    public void setCountries(List<Country> countries) {
-        this.countries = countries;
-    }
-
-    /**
-     * Sets the list of ports.
-     */
-    public void setPorts(List<Port> ports) {
-        this.ports = ports;
-    }
-
-    /**
-     * Sets the list of borders.
-     */
-    public void setBorders(List<Border> borders) {
-        this.borders = borders;
-    }
-
-    /**
-     * Sets the list of seadists.
-     */
-    public void setSeaDists(List<SeaDist> seaDists) {
-        this.seaDists = seaDists;
     }
 
     /**
@@ -199,6 +157,13 @@ public class FreightNetwork {
         double result = Math.sqrt((cat1 * cat1) + (cat2 * cat2)) * 60.04;
 
         return Conversions.nauticalMilesToKm(result);
+    }
+
+    /**
+     * Gets the matrix graph.
+     */
+    public MatrixGraph<Place, Double> getGraph() {
+        return this.graph;
     }
 
     @Override

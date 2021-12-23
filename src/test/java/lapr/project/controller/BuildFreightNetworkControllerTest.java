@@ -1,7 +1,7 @@
 package lapr.project.controller;
 
 import lapr.project.data.DatabaseConnection;
-import lapr.project.utils.FreightNetwork;
+import lapr.project.stores.FreightNetwork;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,7 +15,7 @@ class BuildFreightNetworkControllerTest {
     @Test
     void getFreightStore() {
         this.buildFreightNetworkController = new BuildFreightNetworkController();
-        assertNotNull(buildFreightNetworkController.getFreightStore());
+        assertNotNull(buildFreightNetworkController.getFreightNetwork());
     }
 
     /*@Test

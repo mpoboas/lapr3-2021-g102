@@ -19,8 +19,8 @@ class CompanyTest {
     }
 
     @Test
-    void getFreightStoreTest(){
+    void getFreightNetworkTest(){
         Company comp = new Company("Company");
-        assertNotNull(comp.getFreightStore());
+        assertNotNull(comp.getFreightNetwork());
     }
 }
