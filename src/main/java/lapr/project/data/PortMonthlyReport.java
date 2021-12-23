@@ -43,6 +43,14 @@ public class PortMonthlyReport {
     public int getPortMaxCapacity(){
         return this.portMaxCapacity;
     }
+
+    /**
+     * Method to import data from port from database
+     * @param idPort required port id
+     * @return port required from databse
+     * @throws IOException exception
+     * @throws SQLException exception
+     */
     private Port getPortFromDB(int idPort) throws IOException, SQLException {
         String sqlCommand = "Select name, idposition, alpha2codecountry, capacity from portwarehouse where idportwarehouse = ? ";
         String name;
@@ -83,6 +91,11 @@ public class PortMonthlyReport {
         }
         return new Port(idPort,name,continent,country,longitude,latitude);
     }
+
+    /**
+     * Method to get the ocupancy in the warehouse/port from databse
+     * @throws SQLException exception
+     */
     private void fillArrayWithDBdata() throws SQLException {
         YearMonth yearMonthObject = YearMonth.of(year, month);
         int daysInMonth = yearMonthObject.lengthOfMonth();
