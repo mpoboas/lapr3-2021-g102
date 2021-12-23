@@ -5,7 +5,7 @@ autonumber
 actor "Client" as CL
 
 participant "WarehouseOccupancyRateUI" as UI
-participant "GetWarehouseOccupancyRate" as CTRL
+participant "GetWarehouseOccupancyRateController" as CTRL
 participant "PortWarehouseDB" as PORTWDB
 participant ConnectionFactory as CF
 participant DatabaseConnection as DC
