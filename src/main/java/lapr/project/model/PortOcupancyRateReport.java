@@ -40,18 +40,18 @@ public class PortOcupancyRateReport {
         }
     }
     public void setMaxAndMin(){
-        int pos= 0;
+        int pos= 1;
         int min = this.dailyOcupiedSpace[0];
-        for(int i = 0; i< this.dailyOcupiedSpace.length; i++){
+        for(int i = 1; i< this.dailyOcupiedSpace.length; i++){
             if(this.dailyOcupiedSpace[i]< min){
                 pos = i +1;
                 min = dailyOcupiedSpace[i];
             }
         }
         this.dayMinCapacity = pos;
-        pos = 0;
+        pos = 1;
         int max = this.dailyOcupiedSpace[0];
-        for(int i = 0; i< this.dailyOcupiedSpace.length; i++){
+        for(int i = 1; i< this.dailyOcupiedSpace.length; i++){
             if(this.dailyOcupiedSpace[i]>max){
                 pos = i + 1;
                 max = this.dailyOcupiedSpace[i];
