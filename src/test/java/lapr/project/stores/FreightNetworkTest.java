@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class FreightNetworkTest {
     String fileDirectoryCountry = "data/Data-Sprint3-4/countries.csv";
     String fileDirectoryPorts = "data/data-shipsports/data-shipsports/data-ships&ports/bports.csv";
@@ -25,8 +27,8 @@ class FreightNetworkTest {
             List<Port> ports = importP.getListOfImportedPorts();
             network.buildFreightNetworkFromGivenData(countries, borders, ports, seaDists, 5);
             System.out.println(network);
-            //assertTrue(network.getGraph().vertices().containsAll());
-            //assertTrue(network.getGraph().vertices().containsAll(network.getPorts()));
+            assertTrue(network.getGraph().vertices().containsAll(countries));
+            assertTrue(network.getGraph().vertices().containsAll(ports));
         } catch (IOException e) {
             e.printStackTrace();
         }

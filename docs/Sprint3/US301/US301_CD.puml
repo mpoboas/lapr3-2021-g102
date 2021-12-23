@@ -1,0 +1,60 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
+}
+
+class BuildFreightNetworkUI {
+}
+
+class BuildFreightNetworkController {
++getFreightNetwork()
++buildFreightNetworkFromDatabase()
+}
+
+class CountryStoreDB {
++getCountriesFromDatabase(databaseConnection)
+}
+
+class BorderStoreDB {
++getAllBorders(databaseConnection)
+}
+
+class PortStoreDB {
++getPortsFromDatabase(databaseConnection)
+}
+
+class SeadistStoreDB {
++getAllSeadists(databaseConnection)
+}
+
+class FreightNetwork {
+-MatrixGraph<Place, Double> graph
++buildFreightNetworkFromDatabase(databaseConnection, n)
++buildFreightNetworkFromGivenData(countries, borders, ports, seadists, n)
+}
+
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+BuildFreightNetworkUI ..> BuildFreightNetworkController
+BuildFreightNetworkController ..> FreightNetwork
+BuildFreightNetworkController ..> Company
+Company -> FreightNetwork : has
+FreightNetwork ..> CountryStoreDB
+FreightNetwork ..> BorderStoreDB
+FreightNetwork ..> PortStoreDB
+FreightNetwork ..> SeadistStoreDB
+CountryStoreDB ..> DatabaseConnection
+BorderStoreDB ..> DatabaseConnection
+PortStoreDB ..> DatabaseConnection
+SeadistStoreDB ..> DatabaseConnection
+
+@enduml
