@@ -38,13 +38,13 @@ public class FreightNetwork {
     /**
      * Gets all the data needed (list of countries, ports, borders and seadists) from the database.
      *
-     * @param cf the database connection factory
+     * @param databaseConnection the database connection
      */
-    public void getDataFromDatabase(ConnectionFactory cf) {
-        this.countries = new CountryStoreDB().getCountriesFromDatabase(cf.getDatabaseConnection());
-        this.ports = new PortStoreDB().getPortsFromDatabase(cf.getDatabaseConnection());
-        this.borders = new BorderStoreDB().getAllBorders(cf.getDatabaseConnection());
-        this.seaDists = new SeadistStoreDB().getAllSeadists(cf.getDatabaseConnection());
+    public void getDataFromDatabase(DatabaseConnection databaseConnection) {
+        this.countries = new CountryStoreDB().getCountriesFromDatabase(databaseConnection);
+        this.ports = new PortStoreDB().getPortsFromDatabase(databaseConnection);
+        this.borders = new BorderStoreDB().getAllBorders(databaseConnection);
+        this.seaDists = new SeadistStoreDB().getAllSeadists(databaseConnection);
     }
 
     /**
