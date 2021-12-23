@@ -1,11 +1,36 @@
 @startuml
-class mapPortOcupancyRateController{
+class PortOcupancyRateReport{
+-idPort
+-year
+-month
+-setDailyRate()
+-setMaxAndMin()
+-toString()
 }
-class PortMapReport{
+class PortReportController{
+-idPort
+-year
+-month
+-getDataAndGenerateReport()
+-doReport()
+-getReport()
 
 }
+class PortMonthlyReport{
+-getDataFromDB()
+-getPortFromDB(int idPort)
+-fillArrayWithDBdata()
+}
 
-class Port
 
-
+class Port{
+-idPort
+-name
+-continente
+-country
+-coords
+}
+PortReportController -> PortMonthlyReport : Requests data from database >
+PortReportController -> PortOcupancyRateReport : GIves data to generate report >
+PortOcupancyRateReport -> Port : Accesses >
 @enduml
