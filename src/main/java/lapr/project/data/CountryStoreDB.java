@@ -2,7 +2,6 @@ package lapr.project.data;
 
 import lapr.project.model.Country;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,9 +67,9 @@ public class CountryStoreDB implements Persistable {
     /**
      * Saves the country instance on the database, verifying if the instance already exists updating the information, or creates a new instance
      *
-     * @param dbConnection the database connection
-     * @param country      Country to save
-     * @throws SQLException
+     * @param dbConnection  the database connection
+     * @param country       the Country instance to save
+     * @throws SQLException the ssql exception
      */
     private void saveCountryToDatabase(DatabaseConnection dbConnection, Country country) throws SQLException {
 
@@ -88,7 +87,7 @@ public class CountryStoreDB implements Persistable {
      * @param databaseConnection the database connection
      * @param country            the instance of country
      * @return true if the country is on the db, false if not
-     * @throws SQLException
+     * @throws SQLException      the SQL exception
      */
     private boolean isCountryOnDatabase(DatabaseConnection databaseConnection, Country country) throws SQLException {
         Connection connection = databaseConnection.getConnection();
@@ -102,8 +101,7 @@ public class CountryStoreDB implements Persistable {
             try (ResultSet countryRS = countryStatement.executeQuery()) {
                 if (countryRS.next()) {
                     isCountryOnDatabase = true;
-                } else
-                    isCountryOnDatabase = false;
+                }
             }
         }
         return isCountryOnDatabase;
@@ -112,9 +110,9 @@ public class CountryStoreDB implements Persistable {
     /**
      * Updates information of a country on an existing instance
      *
-     * @param dbConnection the database connection
-     * @param country      the country
-     * @throws SQLException an exception
+     * @param dbConnection  the database connection
+     * @param country       the country
+     * @throws SQLException the SQL exception
      */
     private void updateCountryOnDatabase(DatabaseConnection dbConnection, Country country) throws SQLException {
         String sqlCommand =
@@ -140,11 +138,9 @@ public class CountryStoreDB implements Persistable {
      *
      * @param databaseConnection the database connection
      * @param country            country that has the position information
-     * @throws SQLException
+     * @throws SQLException      the SQL exception
      */
-    private void insertPositionOnDB(DatabaseConnection databaseConnection,
-                                    Country country) throws SQLException {
-        Connection connection = databaseConnection.getConnection();
+    private void insertPositionOnDB(DatabaseConnection databaseConnection, Country country) throws SQLException {
         String sqlCommand = "insert into position(latitude, longitude) values (?, ?)";
         executePositionStatementOnDatabase(databaseConnection, country,
                 sqlCommand);
@@ -167,7 +163,7 @@ public class CountryStoreDB implements Persistable {
      *
      * @param databaseConnection the database connection
      * @param country            the country to insert
-     * @throws SQLException
+     * @throws SQLException      the SQL exception
      */
     private void insertCountryOnDatabase(DatabaseConnection databaseConnection,
                                          Country country) throws SQLException {
@@ -199,10 +195,10 @@ public class CountryStoreDB implements Persistable {
     /**
      * Gets the position id from a country's latitude and longitude
      *
-     * @param dbconnection database connection
-     * @param country      country that has the information
+     * @param dbconnection  database connection
+     * @param country       country that has the information
      * @return the position's id
-     * @throws SQLException
+     * @throws SQLException the SQL exception
      */
     private int getPositionId(DatabaseConnection dbconnection, Country country) throws SQLException {
         int id;
@@ -220,10 +216,10 @@ public class CountryStoreDB implements Persistable {
     /**
      * Gets the alpha 2 code continent from a country continent name
      *
-     * @param dbconnection database connection
-     * @param country      country
+     * @param dbconnection  database connection
+     * @param country       country
      * @return the alpha2CodeContinent
-     * @throws SQLException
+     * @throws SQLException the SQL exception
      */
     private String getAlpha2CodeContinentCode(DatabaseConnection dbconnection, Country country) throws SQLException {
         String code;
@@ -247,10 +243,10 @@ public class CountryStoreDB implements Persistable {
     public List<Country> getCountriesFromDatabase(DatabaseConnection dbConnection) {
         List<Country> countries = new ArrayList<>();
         Connection connection = dbConnection.getConnection();
-        String sql = "select c.alpha2CodeCountry, c.alpha3CodeCountry, c.name, c.capital, c.population, t.name, p.latitude, p.longitude" +
+        String sql = "select c.alpha2CodeCountry, c.alpha3CodeCountry, c.name, c.capital, c.population, Continent.name, p.latitude, p.longitude " +
                 "from Country c " +
-                "inner join Continent t " +
-                "on c.alpha2CodeContinent = t.alpha2CodeContinent" +
+                "inner join Continent " +
+                "on c.alpha2CodeContinent = Continent.alpha2CodeContinent " +
                 "inner join Position p " +
                 "on c.idPosition = p.idPosition";
         try (PreparedStatement statement = connection.prepareStatement(sql);
@@ -274,10 +270,11 @@ public class CountryStoreDB implements Persistable {
 
     /**
      * Gets an instance of country by its alpha2Code
+     *
      * @param alpha2Code code to identify the country
      * @return the instance
      */
-    public Country getCountryByAlpha2Code(DatabaseConnection dbConnection ,String alpha2Code) /*throws IOException*/ {
+    public Country getCountryByAlpha2Code(DatabaseConnection dbConnection, String alpha2Code) /*throws IOException*/ {
         Country country = null;
         Connection connection = dbConnection.getConnection();
         //Connection connection = ConnectionFactory.getInstance().getDatabaseConnection().getConnection();
@@ -287,10 +284,10 @@ public class CountryStoreDB implements Persistable {
                 "on c.alpha2CodeContinent = t.alpha2CodeContinent" +
                 "inner join Position p " +
                 "on c.idPosition = p.idPosition" +
-                "where c.alpha2CodeCountry = " +alpha2Code;
+                "where c.alpha2CodeCountry = " + alpha2Code;
 
-        try(PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery()){
+        try (PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
             resultSet.next();
             country = new Country(resultSet.getString(6),
                     resultSet.getString(1),
@@ -301,7 +298,7 @@ public class CountryStoreDB implements Persistable {
                     resultSet.getDouble(7),
                     resultSet.getDouble(8));
 
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return country;

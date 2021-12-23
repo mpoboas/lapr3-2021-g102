@@ -1,6 +1,7 @@
 package lapr.project.model;
 
 import lapr.project.auth.AuthFacade;
+import lapr.project.stores.FreightStore;
 import lapr.project.stores.PortStore;
 import lapr.project.stores.ShipStore;
 
@@ -19,16 +20,23 @@ public class Company {
      * The store of ships
      */
     private final ShipStore shipStore;
+
     /**
      * The store of ports
      */
     private final PortStore portStore;
 
+    /**
+     * The freight store
+     */
+    private final FreightStore freightStore;
+
     public Company(String designation) {
         this.designation = designation;
         this.authFacade = new AuthFacade();
-        shipStore = new ShipStore();
-        portStore = new PortStore();
+        this.shipStore = new ShipStore();
+        this.portStore = new PortStore();
+        this.freightStore = new FreightStore();
     }
 
     /**
@@ -37,20 +45,38 @@ public class Company {
      * @return auth facade.
      */
     public AuthFacade getAuthFacade() {
-        return authFacade;
+        return this.authFacade;
+    }
+
+    /**
+     * Gets the company´s designation.
+     *
+     * @return designation.
+     */
+    public String getDesignation() {
+        return designation;
     }
 
     /**
      * @return gets the ship store
      */
     public ShipStore getShipStore() {
-        return shipStore;
+        return this.shipStore;
     }
 
     /**
      * @return gets the port store
      */
     public PortStore getPortStore() {
-        return portStore;
+        return this.portStore;
+    }
+
+    /**
+     * Gets the freight store.
+     *
+     * @return FreightStore instance
+     */
+    public FreightStore getFreightStore() {
+        return this.freightStore;
     }
 }

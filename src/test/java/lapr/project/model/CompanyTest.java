@@ -17,4 +17,10 @@ class CompanyTest {
         Company comp = new Company("Company");
         assertNotNull(comp.getPortStore());
     }
+
+    @Test
+    void getFreightStoreTest(){
+        Company comp = new Company("Company");
+        assertNotNull(comp.getFreightStore());
+    }
 }
