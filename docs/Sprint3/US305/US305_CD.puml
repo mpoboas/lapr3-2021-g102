@@ -9,9 +9,11 @@ class ContainerRouteUI {
 }
 
 class GetClientContainerRouteController {
++getContainerRoute(userId, containerId)
 }
 
 class ContainerDB {
++getContainerRoute(userId, containerId)
 }
 
 class ConnectionFactory{

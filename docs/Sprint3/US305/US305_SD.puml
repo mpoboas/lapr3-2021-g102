@@ -35,11 +35,11 @@ activate CTRL
 CTRL -> CONTAINERDB : getContainerRoute(userId, containerId)
 activate CONTAINERDB
 
-CONTAINERDB -> CF : connection = getConnection()
-activate CF
-deactivate CF
+CONTAINERDB -> DC : connection = getConnection()
+activate DC
+deactivate DC
 
-CONTAINERDB -> DB : getContainerRoute(userId, containerId)
+CONTAINERDB -> DB : fnc_get_container_route(userId, containerId)
 activate DB
 deactivate DB
 CONTAINERDB --> CTRL : containerRoute
