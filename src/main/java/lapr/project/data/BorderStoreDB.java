@@ -106,7 +106,7 @@ public class BorderStoreDB implements Persistable {
      * @param dbConnection database connection
      * @return list of borders
      */
-    public List<Border> getAllBorders(DatabaseConnection dbConnection) {
+    public List<Border> getBordersFromDatabase(DatabaseConnection dbConnection) {
         List<Border> borders = new ArrayList<>();
         Connection connection = dbConnection.getConnection();
         String sql = "select * from border";

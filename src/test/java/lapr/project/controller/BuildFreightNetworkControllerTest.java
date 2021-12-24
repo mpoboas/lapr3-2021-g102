@@ -13,9 +13,9 @@ class BuildFreightNetworkControllerTest {
     FreightNetwork freightNetwork = mock(FreightNetwork.class);
 
     @Test
-    void getFreightStore() {
+    void getFreightNetworkGraph() {
         this.buildFreightNetworkController = new BuildFreightNetworkController();
-        assertNotNull(buildFreightNetworkController.getFreightNetwork());
+        assertNotNull(buildFreightNetworkController.getFreightNetworkGraph());
     }
 
     /*@Test

@@ -154,7 +154,7 @@ public class SeadistStoreDB implements Persistable {
      *
      * @param dbConnection the database connection
      */
-    public List<SeaDist> getAllSeadists(DatabaseConnection dbConnection) {
+    public List<SeaDist> getSeadistsFromDatabase(DatabaseConnection dbConnection) {
         List<SeaDist> seadistList = new ArrayList<>();
         Connection connection = dbConnection.getConnection();
         String sqlCommand = "select distinct (SELECT PortWarehouse.alpha2CodeCountry FROM PortWarehouse WHERE PortWarehouse.idPortWarehouse = idPortWarehouseFrom) as from_country, Seadist.idPortWarehouseFrom as from_port, (SELECT PortWarehouse.alpha2CodeCountry FROM PortWarehouse WHERE PortWarehouse.idPortWarehouse = idPortWarehouseTo) as to_country, Seadist.idPortWarehouseTo  as to_port, Seadist.seadist\n" +

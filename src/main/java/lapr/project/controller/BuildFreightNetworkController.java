@@ -33,18 +33,19 @@ public class BuildFreightNetworkController {
     }
 
     /**
-     * Gets the freight network.
-     */
-    public FreightNetwork getFreightNetwork() {
-        return this.company.getFreightNetwork();
-    }
-
-    /**
      * Builds the freight network, with data imported from the database.
      * @param databaseConnection the database connection
      * @param numClosestPorts   the desired number of closest ports
      */
     public void buildFreightNetworkFromDatabase(DatabaseConnection databaseConnection, int numClosestPorts) {
         this.company.getFreightNetwork().buildFreightNetworkFromDatabase(databaseConnection, numClosestPorts);
+    }
+
+    /**
+     * Gets the freight network matrix graph.
+     * @return the String representation of the graph
+     */
+    public String getFreightNetworkGraph() {
+        return this.company.getFreightNetwork().toString();
     }
 }
