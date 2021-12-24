@@ -35,6 +35,10 @@ activate CTRL
 CTRL -> SHIPOCCRATE** : create(connectionFactory, shipMMSI, localDateTimeStr)
 activate SHIPOCCRATE
 
+SHIPOCCRATE -> DC : connection = getConnection()
+activate DC
+deactivate DC
+
 SHIPOCCRATE -> DB : shipId = getShipIdByMMSI(shipMMSI)
 activate DB
 deactivate DB
