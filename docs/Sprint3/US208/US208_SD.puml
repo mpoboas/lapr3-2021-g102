@@ -35,9 +35,9 @@ activate CTRL
 CTRL -> SHIPOCCRATE** : create(connectionFactory, shipMMSI, idCargoManifest)
 activate SHIPOCCRATE
 
-SHIPOCCRATE -> CF : connection = getConnection()
-activate CF
-deactivate CF
+SHIPOCCRATE -> DC : connection = getConnection()
+activate DC
+deactivate DC
 SHIPOCCRATE -> DB : shipId = getShipIdByMMSI(shipMMSI)
 activate DB
 deactivate DB
