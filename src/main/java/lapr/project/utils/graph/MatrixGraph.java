@@ -69,7 +69,6 @@ public class MatrixGraph<V,E> extends CommonGraph<V,E> {
 
         return edges;
 
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -127,7 +126,6 @@ public class MatrixGraph<V,E> extends CommonGraph<V,E> {
             if (edgeMatrix[vertKey][i] != null)
                 oe.add(edgeMatrix[vertKey][i]);
         return oe;
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
