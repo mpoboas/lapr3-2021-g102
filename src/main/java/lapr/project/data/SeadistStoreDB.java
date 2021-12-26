@@ -3,7 +3,6 @@ package lapr.project.data;
 import lapr.project.model.Country;
 import lapr.project.model.Port;
 import lapr.project.model.SeaDist;
-import lapr.project.stores.PortStore;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -115,8 +114,14 @@ public class SeadistStoreDB implements Persistable {
      * @throws SQLException in case of an error, throws an SQL exception
      */
     private void updateSeadistOnDatabase(DatabaseConnection dbConnection, SeaDist seadist) throws SQLException {
-        String sqlCommand = "update Seadist set idPortWarehouseFrom = ?, idPortWarehouseTo = ?, seadist = ? where idPortWarehouseFrom = ? AND idPortWarehouseTo = ?";
-        executeSeadistStatementOnDatabase(dbConnection, seadist, sqlCommand);
+        String sqlCommand = "update Seadist set seadist = ? where idPortWarehouseFrom = ? AND idPortWarehouseTo = ?";
+
+        try (PreparedStatement updateSeadist = dbConnection.getConnection().prepareStatement(sqlCommand)) {
+            updateSeadist.setInt(1, seadist.getSeaDistance());
+            updateSeadist.setInt(2, seadist.getFrom_port().getid());
+            updateSeadist.setInt(3, seadist.getTo_port().getid());
+            updateSeadist.executeUpdate();
+        }
     }
 
     /**
@@ -141,11 +146,11 @@ public class SeadistStoreDB implements Persistable {
      * @throws SQLException in case of an error, throws an SQL exception
      */
     private void executeSeadistStatementOnDatabase(DatabaseConnection dbConnection, SeaDist seadist, String sqlCommand) throws SQLException {
-        try (PreparedStatement updateSeadist = dbConnection.getConnection().prepareStatement(sqlCommand)) {
-            updateSeadist.setInt(1, seadist.getFrom_port().getid());
-            updateSeadist.setInt(2, seadist.getTo_port().getid());
-            updateSeadist.setInt(3, seadist.getSeaDistance());
-            updateSeadist.executeUpdate();
+        try (PreparedStatement insertSeadist = dbConnection.getConnection().prepareStatement(sqlCommand)) {
+            insertSeadist.setInt(1, seadist.getFrom_port().getid());
+            insertSeadist.setInt(2, seadist.getTo_port().getid());
+            insertSeadist.setInt(3, seadist.getSeaDistance());
+            insertSeadist.executeUpdate();
         }
     }
 
