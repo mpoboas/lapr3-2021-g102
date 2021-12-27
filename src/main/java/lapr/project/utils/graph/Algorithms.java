@@ -2,11 +2,13 @@ package lapr.project.utils.graph;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.function.BinaryOperator;
-
+// NOTE : MISSING ALLPATHS and getPaths METHOD
 public class Algorithms {
+    private Algorithms(){
+
+    }
 
     /** Performs breadth-first search of a Graph starting in a vertex
      *
@@ -14,7 +16,7 @@ public class Algorithms {
      * @param vert vertex that will be the source of the search
      * @return a LinkedList with the vertices of breadth-first search
      */
-    public static <V, E> LinkedList<V> BreadthFirstSearch(Graph<V, E> g, V vert) {
+    public static <V, E> LinkedList<V> breadthFirstSearch(Graph<V, E> g, V vert) {
         if(!g.validVertex(vert))
             return null;
 
@@ -24,7 +26,7 @@ public class Algorithms {
 
         qbfs.add(vert);
         qaux.add(vert);
-        int vKey = g.key(vert);
+        int vKey;
 
         while(!qaux.isEmpty()){
             vert = qaux.remove();
@@ -48,7 +50,7 @@ public class Algorithms {
      * @param visited set of previously visited vertices
      * @param qdfs return LinkedList with vertices of depth-first search
      */
-    private static <V, E> void DepthFirstSearch(Graph<V, E> g, V vOrig, boolean[] visited, LinkedList<V> qdfs) {
+    private static <V, E> void depthFirstSearch(Graph<V, E> g, V vOrig, boolean[] visited, LinkedList<V> qdfs) {
         int vKey = g.key(vOrig);
         if(visited[vKey]) return;
 
@@ -56,7 +58,7 @@ public class Algorithms {
         visited[vKey]= true;
 
         for(V vAdj : g.adjVertices(vOrig)){
-            DepthFirstSearch(g,vAdj,visited,qdfs);
+            depthFirstSearch(g,vAdj,visited,qdfs);
         }
 
 
@@ -74,36 +76,11 @@ public class Algorithms {
             return null;
         LinkedList<V> qdfs = new LinkedList<>();
         boolean[] visited = new boolean[g.numVertices()];
-        DepthFirstSearch(g,vert,visited,qdfs);
+        depthFirstSearch(g,vert,visited,qdfs);
         return qdfs;
     }
 
 
-    /** Returns all paths from vOrig to vDest
-     *
-     * @param g       Graph instance
-     * @param vOrig   Vertex that will be the source of the path
-     * @param vDest   Vertex that will be the end of the path
-     * @param visited set of discovered vertices
-     * @param path    stack with vertices of the current path (the path is in reverse order)
-     * @param paths   ArrayList with all the paths (in correct order)
-     */
-    private static <V, E> void allPaths(Graph<V, E> g, V vOrig, V vDest, boolean[] visited,
-                                        LinkedList<V> path, ArrayList<LinkedList<V>> paths) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    /** Returns all paths from vOrig to vDest
-     *
-     * @param g     Graph instance
-     * @param vOrig information of the Vertex origin
-     * @param vDest information of the Vertex destination
-     * @return paths ArrayList with all paths from vOrig to vDest
-     */
-    public static <V, E> ArrayList<LinkedList<V>> allPaths(Graph<V, E> g, V vOrig, V vDest) {
-
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
 
     /**
@@ -176,7 +153,6 @@ public class Algorithms {
 
         E[] dist = (E[]) new Object[numVerts];
 
-        initializePathDist(numVerts,pathKeys,dist);
         shortestPathDijkstra(g,vOrig,ce,sum,zero,visited,pathKeys,dist);
         E lenghtPath = dist[g.key(vDest)];
         if(lenghtPath != null){
@@ -185,9 +161,7 @@ public class Algorithms {
         }
         return null;
     }
-    public static <V, E> void initializePathDist ( int nVerts, V[] pathKeys, E[]dist){
 
-    }
 
     /** Shortest-path between a vertex and all other vertices
      *
@@ -211,7 +185,6 @@ public class Algorithms {
         boolean[] visited = new boolean[numVerts];
         V[] pathKeys = (V[]) new Object [numVerts];
         E[] dist = (E[]) new Object[numVerts];
-        initializePathDist(numVerts,pathKeys,dist);
         shortestPathDijkstra(g,vOrig,ce,sum,zero,visited,pathKeys,dist);
         dists.clear();
         paths.clear();
@@ -246,6 +219,7 @@ public class Algorithms {
      */
     private static <V, E> void getPath(Graph<V, E> g, V vOrig, V vDest,
                                        V [] pathKeys, LinkedList<V> path) {
+
 
     }
 

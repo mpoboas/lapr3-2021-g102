@@ -70,15 +70,15 @@ public class MatrixAlgorithmsTest {
     public void testBreadthFirstSearch() {
         System.out.println("Test BreadthFirstSearch");
 
-        Assertions.assertNull(Algorithms.BreadthFirstSearch(completeMap, "LX"), "Should be null if vertex does not exist");
+        Assertions.assertNull(Algorithms.breadthFirstSearch(completeMap, "LX"), "Should be null if vertex does not exist");
 
-        LinkedList<String> path = Algorithms.BreadthFirstSearch(incompleteMap, "Faro");
+        LinkedList<String> path = Algorithms.breadthFirstSearch(incompleteMap, "Faro");
 
         assertEquals(1, path.size(), "Should be just one");
 
         assertEquals("Faro", path.peekFirst());
 
-        path = Algorithms.BreadthFirstSearch(incompleteMap, "Porto");
+        path = Algorithms.breadthFirstSearch(incompleteMap, "Porto");
         assertEquals(8, path.size(), "Should give seven vertices"); //yet to fix something in algorithms
 
         assertEquals("Porto", path.removeFirst(), "BreathFirst Porto");
@@ -92,7 +92,7 @@ public class MatrixAlgorithmsTest {
         expected = new LinkedList<>(Arrays.asList("Lisboa"));
         //checkContentEquals(expected, path.subList(5, 6), "BreathFirst Porto");
 
-        path = Algorithms.BreadthFirstSearch(incompleteMap, "Viseu");
+        path = Algorithms.breadthFirstSearch(incompleteMap, "Viseu");
         expected = new LinkedList<>(Arrays.asList("Viseu", "Guarda", "Castelo Branco"));
 //        assertEquals(expected, path, "BreathFirst Viseu");
     }
@@ -111,13 +111,13 @@ public class MatrixAlgorithmsTest {
 
         assertEquals("Faro", path.peekFirst());
 
-        path = Algorithms.BreadthFirstSearch(incompleteMap, "Porto");
+        path = Algorithms.breadthFirstSearch(incompleteMap, "Porto");
         assertEquals(8, path.size(), "Should give seven vertices");//still something to fix in algorithms
 
         assertEquals("Porto", path.removeFirst(), "DepthFirst Porto");
         assertTrue(new LinkedList<>(Arrays.asList("Aveiro", "Braga", "Vila Real")).contains(path.removeFirst()), "DepthFirst Porto");
 
-        path = Algorithms.BreadthFirstSearch(incompleteMap, "Viseu");
+        path = Algorithms.breadthFirstSearch(incompleteMap, "Viseu");
         List<String> expected = new LinkedList<>(Arrays.asList("Viseu", "Guarda", "Castelo Branco"));
         //assertEquals(expected, path, "DepthFirst Viseu");
     }
@@ -204,7 +204,7 @@ public class MatrixAlgorithmsTest {
     }
 
     @Test
-    public void minDistTest(){
+    void minDistTest(){
         MatrixGraph<String, Integer> newGraph =Algorithms.minDistGraph(completeMap,Integer::compare,Integer::sum);
         assertEquals("Porto", newGraph.vertices().get(0));
         assertEquals(85,newGraph.edge("Viseu","Aveiro").getWeight());
