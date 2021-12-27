@@ -51,7 +51,7 @@ public class UserSession implements Serializable {
     public String getUserName()
     {
         if (isLoggedIn())
-            this.user.getName();
+            return this.user.getName();
         return null;
     }
 

@@ -34,7 +34,7 @@ BEGIN
                                                                 from ArrivalDeparture
                                                                 where idCargoManifestLoad = v_cargo_manifest)));
         
-        Select Distinct Concat('Ship,', v_ship_name) into m_result from ship;
+        Select Distinct Concat('SHIP,', v_ship_name) into m_result from ship;
         return (m_result);
         
     ELSE
