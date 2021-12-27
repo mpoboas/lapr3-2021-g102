@@ -39,8 +39,11 @@ activate CTRL
 CTRL -> ATDB : getAuditTrails(cf, containerID, cargoManifestID)
 activate ATDB
 
-ATDB -> CF : conn = getConnection()
+ATDB -> CF : conn = getDatabaseConnection()
 activate CF
+CF -> DC: getConnection()
+activate DC
+deactivate DC
 deactivate CF
 ATDB -> DB : auditTrail = fnc_get_audit_trails(containerID, cargoManifestID)
 activate DB

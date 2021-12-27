@@ -32,14 +32,14 @@ public class AuditTrailDB {
      * @return the list
      * @throws SQLException
      */
-    public List<String> resultSetToList(ResultSet rs) throws SQLException{
+    private List<String> resultSetToList(ResultSet rs) throws SQLException{
         List<String> list = new ArrayList<>();
         while (rs.next()){
             String row = "User/Login: " + rs.getString(1) + " | "
                     + "Date&Time of Operation: " + rs.getTimestamp(2) + " | "
                     + "Type of Operation: " + rs.getString(3) + " | "
                     + "Container ID: " + rs.getString(4) + " | "
-                    + "Cargo Manifest ID: " + rs.getInt(5) + '\n';
+                    + "Cargo Manifest ID: " + rs.getInt(5);
             list.add(row);
         }
         return list;

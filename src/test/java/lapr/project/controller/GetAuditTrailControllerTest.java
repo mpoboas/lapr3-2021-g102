@@ -4,6 +4,7 @@ import lapr.project.data.AuditTrailDB;
 import lapr.project.data.ConnectionFactory;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,22 @@ class GetAuditTrailControllerTest {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
+/*
+    @Test
+    void getAuditTrails2() throws IOException {
+        ConnectionFactory cf = ConnectionFactory.getInstance();
+        AuditTrailDB auditTrailDB = new AuditTrailDB();
+        GetAuditTrailController ctrl = new GetAuditTrailController(auditTrailDB,cf);
+        String idContainer ="LPRU5603455";
+        int idCargoManifest=8;
+        try{
+            List<String> res = ctrl.getAuditTrails(idContainer,idCargoManifest);
+        for (String s: res) {
+            System.out.println(s);
+        }
+        }catch (SQLException exception){
+            System.out.println(exception.getMessage());
+        }
+    }*/
 }
