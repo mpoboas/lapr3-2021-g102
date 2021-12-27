@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
@@ -203,6 +201,13 @@ public class MatrixAlgorithmsTest {
         Algorithms.shortestPaths(incompleteMap, "Braga", Integer::compare, Integer::sum, 0, paths, dists);
         assertEquals(255, dists.get(completeMap.key("Leiria")), "Path between Braga and Leiria should be 255 Km");
 //        assertEquals(Arrays.asList("Braga", "Porto", "Aveiro", "Leiria"), paths.get(completeMap.key("Leiria")), "Path to Leiria");
+    }
+
+    @Test
+    public void minDistTest(){
+        MatrixGraph<String, Integer> newGraph =Algorithms.minDistGraph(completeMap,Integer::compare,Integer::sum);
+        assertEquals("Porto", newGraph.vertices().get(0));
+        assertEquals(85,newGraph.edge("Viseu","Aveiro").getWeight());
     }
 
 }
