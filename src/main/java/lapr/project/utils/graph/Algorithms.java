@@ -2,6 +2,7 @@ package lapr.project.utils.graph;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.function.BinaryOperator;
 
@@ -71,15 +72,10 @@ public class Algorithms {
     public static <V, E> LinkedList<V> DepthFirstSearch(Graph<V, E> g, V vert) {
         if(!g.validVertex(vert))
             return null;
-
         LinkedList<V> qdfs = new LinkedList<>();
         boolean[] visited = new boolean[g.numVertices()];
-
         DepthFirstSearch(g,vert,visited,qdfs);
-
         return qdfs;
-
-
     }
 
 
@@ -180,7 +176,7 @@ public class Algorithms {
 
         E[] dist = (E[]) new Object[numVerts];
 
-        //initializePathDist(numVerts,pathKeys,dist);
+        initializePathDist(numVerts,pathKeys,dist);
         shortestPathDijkstra(g,vOrig,ce,sum,zero,visited,pathKeys,dist);
         E lenghtPath = dist[g.key(vDest)];
         if(lenghtPath != null){
@@ -188,9 +184,8 @@ public class Algorithms {
             return lenghtPath;
         }
         return null;
-
-
-
+    }
+    public static <V, E> void initializePathDist ( int nVerts, V[] pathKeys, E[]dist){
 
     }
 
@@ -205,6 +200,7 @@ public class Algorithms {
      * @param dists returns the corresponding minimum distances
      * @return if vOrig exists in the graph true, false otherwise
      */
+
     public static <V, E> boolean shortestPaths(Graph<V, E> g, V vOrig,
                                                Comparator<E> ce, BinaryOperator<E> sum, E zero,
                                                ArrayList<LinkedList<V>> paths, ArrayList<E> dists) {
@@ -215,7 +211,7 @@ public class Algorithms {
         boolean[] visited = new boolean[numVerts];
         V[] pathKeys = (V[]) new Object [numVerts];
         E[] dist = (E[]) new Object[numVerts];
-        //initializePathDist(numVerts,pathKeys,dist);
+        initializePathDist(numVerts,pathKeys,dist);
         shortestPathDijkstra(g,vOrig,ce,sum,zero,visited,pathKeys,dist);
         dists.clear();
         paths.clear();

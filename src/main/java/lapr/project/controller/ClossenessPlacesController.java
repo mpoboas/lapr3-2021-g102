@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ClossenessPlacesController {
     private final int nPlaces;
-    private final Place p;
+    private Place p;
     private final ClossenessPlaces clossenessPlaces;
     private List<Pair<Place,Double>> placesList;
     public ClossenessPlacesController(Place p, int n){
@@ -20,10 +20,15 @@ public class ClossenessPlacesController {
     public void buildNetwork() throws IOException {
         this.clossenessPlaces.buildFreightNetworkFromDB();
     }
+    public void setPort(Place p){
+        this.p = p;
+        clossenessPlaces.setPort(p);
+    }
     private void generateList(){
         this.clossenessPlaces.getAdjPlaces();
         this.placesList = this.clossenessPlaces.getClossenessPlaces();
     }
+    public ClossenessPlaces getClossenessPlaces(){return this.clossenessPlaces;}
     public List<Pair<Place,Double>> getClossenessPlacesList() {
         if (this.placesList == null) {
             generateList();

@@ -223,9 +223,10 @@ public class CountryStoreDB implements Persistable {
      */
     private String getAlpha2CodeContinentCode(DatabaseConnection dbconnection, Country country) throws SQLException {
         String code;
-        String command = "select alpha2CodeContinent from Continent where name = " + country.getContinent();
+        String command = "select alpha2CodeContinent from Continent where upper(name) = upper( ? ) ";
         Connection connection = dbconnection.getConnection();
         try (PreparedStatement statement = connection.prepareStatement(command)) {
+            statement.setString(1,country.getContinent());
             try (ResultSet resultSet = statement.executeQuery()) {
                 resultSet.next();
                 code = resultSet.getString(1);

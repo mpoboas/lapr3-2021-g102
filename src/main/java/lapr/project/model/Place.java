@@ -62,4 +62,8 @@ public class Place {
     public double getLongitude() {
         return this.longitude;
     }
+
+    public int compare(Place p1, Place p2){
+        return p1.continent.compareTo(p2.continent);
+    }
 }
