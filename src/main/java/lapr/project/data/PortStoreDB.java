@@ -224,14 +224,14 @@ public class PortStoreDB implements Persistable {
     public List<Port> getPortsFromDatabase(DatabaseConnection databaseConnection) {
         List<Port> ports = new ArrayList<>();
         try (Statement statement = databaseConnection.getConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from portwarehouse inner join position on position.idposition = portwarehouse.idposition");) {
+            ResultSet resultSet = statement.executeQuery("select portwarehouse.idportwarehouse, portwarehouse.name, continent.name ,country.name, position.latitude, position.longitude from portwarehouse inner join position on position.idposition = portwarehouse.idposition inner join country on country.alpha2codecountry = portwarehouse.alpha2codecountry inner join continent on continent.alpha2codecontinent=country.alpha2codecontinent")) {
             while (resultSet.next()) {
                 ports.add(new Port(resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getString(4),
-                        resultSet.getDouble(8),
-                        resultSet.getDouble(7)));
+                        resultSet.getDouble(6),
+                        resultSet.getDouble(5)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
