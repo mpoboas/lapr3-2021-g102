@@ -2,6 +2,7 @@ package lapr.project.model;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class CompanyTest {
@@ -16,6 +17,7 @@ class CompanyTest {
     void getPortStoreTest(){
         Company comp = new Company("Company");
         assertNotNull(comp.getPortStore());
+        assertEquals("Company", comp.getDesignation());
     }
 
     @Test
