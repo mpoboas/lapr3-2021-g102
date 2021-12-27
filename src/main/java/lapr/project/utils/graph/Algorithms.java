@@ -247,7 +247,6 @@ public class Algorithms {
     private static <V, E> void getPath(Graph<V, E> g, V vOrig, V vDest,
                                        V [] pathKeys, LinkedList<V> path) {
 
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /** Calculates the minimum distance graph using Floyd-Warshall
