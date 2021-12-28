@@ -249,7 +249,7 @@ public class PortStoreDB implements Persistable {
     public Port getPortByIdFromDatabase(DatabaseConnection databaseConnection, int idPortWarehouse) {
         Port port = null;
         try (Statement statement = databaseConnection.getConnection().createStatement();
-             ResultSet resultSet = statement.executeQuery("select portwarehouse.idPortWarehouse, portwarehouse.name, country.name, country.alpha2CodeContinent, position.longitude, position.latitude from portwarehouse inner join position on position.idposition = portwarehouse.idposition inner join country on country.alpha2CodeCountry = portwarehouse.alpha2CodeCountry where portwarehouse.idportwarehouse = " + idPortWarehouse);) {
+             ResultSet resultSet = statement.executeQuery("select portwarehouse.idPortWarehouse, portwarehouse.name, continent.name, country.name, position.longitude, position.latitude from portwarehouse inner join position on position.idposition = portwarehouse.idposition inner join country on country.alpha2CodeCountry = portwarehouse.alpha2CodeCountry inner join continent on continent.alpha2CodeContinent = country.alpha2CodeContinent where portwarehouse.idportwarehouse = " + idPortWarehouse);) {
             while (resultSet.next()) {
                 port = new Port(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDouble(5), resultSet.getDouble(6));
             }
