@@ -22,9 +22,20 @@ public class GetNManifestsController {
         this.idShipCaptain = id;
         getnManY = new GetNmanifestsYear(this.idShipCaptain,this.year);
     }
+
+    /**
+     * Method to do database query
+     * @throws SQLException exception
+     * @throws IOException exception
+     */
     public void doDBQuery() throws SQLException, IOException {
         getnManY.runDBCommand();
     }
+
+    /**
+     * method to set data class, mostly used in tests
+     * @param data new data class
+     */
     public void setGetnManY(GetNmanifestsYear data){
         this.getnManY = data;
     }

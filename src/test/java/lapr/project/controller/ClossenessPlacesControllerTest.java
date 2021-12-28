@@ -34,10 +34,11 @@ class ClossenessPlacesControllerTest {
         port.importPortsData("data/data-shipsports/LAPR3_G102 - bports (alpha2Code).csv");
         controller.getClossenessPlaces().getNetwork().buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"),ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"),port.getListOfImportedPorts(),ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"),2);
         controller.setPort(controller.getClossenessPlaces().getNetwork().getGraph().vertex(1));
+        controller.setnPlaces(3);
         List<Pair<Place,Double>> list =  controller.getClossenessPlacesList();
-        assertEquals("Guatemala" ,list.get(0).getFirst().getCountry());
-        assertEquals("Belize" ,list.get(1).getFirst().getCountry());
-        assertEquals(2,list.size());
+        assertEquals("Belize" ,list.get(0).getFirst().getCountry());
+        assertEquals("United States" ,list.get(1).getFirst().getCountry());
+        assertEquals(3,list.size());
         assertFalse(controller.getClossenessPlacesList().isEmpty());
     }
 }
