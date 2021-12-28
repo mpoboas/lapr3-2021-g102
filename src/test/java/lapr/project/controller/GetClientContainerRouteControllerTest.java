@@ -16,11 +16,11 @@ class GetClientContainerRouteControllerTest {
     void getClientContainerRoute() {
         try {
             this.databaseConnection = ConnectionFactory.getInstance().getDatabaseConnection();
-            String result = this.getClientContainerRouteController.getClientContainerRoute(databaseConnection, 3, "LPRU1628240");
+            String result = this.getClientContainerRouteController.getClientContainerRoute(databaseConnection, 1, "LPRU1628240");
             System.out.println(result);
             assertNotEquals("", result);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
     }
 }

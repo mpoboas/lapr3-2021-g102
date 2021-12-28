@@ -1,7 +1,6 @@
 package lapr.project.data;
 
 import lapr.project.model.Container;
-import lapr.project.model.Port;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -141,8 +140,8 @@ public class ContainerStore implements Persistable {
      * Gets the route of a specified container, leased by a specified client.
      *
      * @param databaseConnection the database connection
-     * @param clientId the client´s identifier
-     * @param containerId the container´s identifier
+     * @param clientId           the client´s identifier
+     * @param containerId        the container´s identifier
      * @return the container´s route
      */
     public String getClientContainerRoute(DatabaseConnection databaseConnection, int clientId, String containerId) throws SQLException {
@@ -155,13 +154,17 @@ public class ContainerStore implements Persistable {
             callableStatement.execute();
             ResultSet resultSet = (ResultSet) callableStatement.getObject(1);
             StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("Container with id ").append(containerId).append(", leased by client with id ").append(clientId).append(":\n\n");
+            int count = 0;
             while (resultSet.next()) {
-                stringBuilder.append("Departure PortWarehouse ID: ").append(resultSet.getInt(1)).append("\n")
+                count++;
+                stringBuilder.append("Movement ").append(count).append(": \n")
+                        .append("Departure PortWarehouse ID: ").append(resultSet.getInt(1)).append("\n")
                         .append("Arrival PortWarehouse ID: ").append(resultSet.getInt(2)).append("\n")
                         .append("Date and time of departure: ").append(resultSet.getTimestamp(3)).append("\n")
                         .append("Date and time of arrival: ").append(resultSet.getTimestamp(4)).append("\n")
                         .append("Date and time of expected arrival: ").append(resultSet.getTimestamp(5)).append("\n")
-                        .append("Mean of transport: ").append(resultSet.getString(6)).append("\n");
+                        .append("Mean of transport: ").append(resultSet.getString(6)).append("\n\n");
             }
 
             return stringBuilder.toString();
