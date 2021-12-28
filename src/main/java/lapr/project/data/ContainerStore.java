@@ -3,14 +3,11 @@ package lapr.project.data;
 import lapr.project.model.Container;
 import lapr.project.model.Port;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ContainerStore implements Persistable{
+public class ContainerStore implements Persistable {
     @Override
     public boolean save(DatabaseConnection databaseConnection, Object object) {
         Container container = (Container) object;
@@ -29,6 +26,7 @@ public class ContainerStore implements Persistable{
         }
         return returnValue;
     }
+
     @Override
     public boolean delete(DatabaseConnection databaseConnection,
                           Object object) {
@@ -52,8 +50,9 @@ public class ContainerStore implements Persistable{
         }
         return returnValue;
     }
+
     private void saveContainerToDatabase(DatabaseConnection databaseConnection,
-                                    Container container) throws SQLException {
+                                         Container container) throws SQLException {
 
         if (isContainerOnDatabase(databaseConnection, container)) {
             updateContainerOnDatabase(databaseConnection, container);
@@ -62,6 +61,7 @@ public class ContainerStore implements Persistable{
         }
 
     }
+
     private boolean isContainerOnDatabase(DatabaseConnection databaseConnection,
                                           Container container) throws SQLException {
         Connection connection = databaseConnection.getConnection();
@@ -70,8 +70,8 @@ public class ContainerStore implements Persistable{
 
         String sqlCommand = "select * from container where idcontainer = ?";
 
-        try(PreparedStatement getContainerPreparedStatement =
-                    connection.prepareStatement(sqlCommand)) {
+        try (PreparedStatement getContainerPreparedStatement =
+                     connection.prepareStatement(sqlCommand)) {
 
             getContainerPreparedStatement.setString(1, container.getId());
 
@@ -87,6 +87,7 @@ public class ContainerStore implements Persistable{
         }
         return isContainerOnDatabase;
     }
+
     private void insertContainerOnDatabase(DatabaseConnection databaseConnection,
                                            Container container) throws SQLException {
         String sqlCommand =
@@ -95,6 +96,7 @@ public class ContainerStore implements Persistable{
         executeContainerStatementOnDatabase(databaseConnection, container,
                 sqlCommand);
     }
+
     private void updateContainerOnDatabase(DatabaseConnection databaseConnection,
                                            Container container) throws SQLException {
         String sqlCommand =
@@ -103,14 +105,15 @@ public class ContainerStore implements Persistable{
         executeContainerStatementOnDatabase(databaseConnection, container,
                 sqlCommand);
     }
+
     private void executeContainerStatementOnDatabase(
             DatabaseConnection databaseConnection,
             Container container, String sqlCommand) throws SQLException {
         Connection connection = databaseConnection.getConnection();
 
-        try(PreparedStatement saveContainerPreparedStatement =
-                    connection.prepareStatement(
-                            sqlCommand)) {
+        try (PreparedStatement saveContainerPreparedStatement =
+                     connection.prepareStatement(
+                             sqlCommand)) {
             saveContainerPreparedStatement.setString(1, container.getIsoCode());
             saveContainerPreparedStatement.setInt(2, getTypeId(container));
             saveContainerPreparedStatement.setInt(3, container.getGross());
@@ -122,15 +125,46 @@ public class ContainerStore implements Persistable{
             saveContainerPreparedStatement.executeUpdate();
         }
     }
-    private int getTypeId(Container container){
+
+    private int getTypeId(Container container) {
         int id = 3;
-        if(container.getType().equalsIgnoreCase("normal"))
+        if (container.getType().equalsIgnoreCase("normal"))
             return 3;
-        if(container.getType().equalsIgnoreCase("refrigerated5"))
+        if (container.getType().equalsIgnoreCase("refrigerated5"))
             return 2;
-        if(container.getType().equalsIgnoreCase("refrigerated7"))
+        if (container.getType().equalsIgnoreCase("refrigerated7"))
             return 1;
         return id;
     }
 
+    /**
+     * Gets the route of a specified container, leased by a specified client.
+     *
+     * @param databaseConnection the database connection
+     * @param clientId the client´s identifier
+     * @param containerId the container´s identifier
+     * @return the container´s route
+     */
+    public String getClientContainerRoute(DatabaseConnection databaseConnection, int clientId, String containerId) throws SQLException {
+        Connection connection = databaseConnection.getConnection();
+
+        try (CallableStatement callableStatement = connection.prepareCall("{? = call fnc_get_client_container_route(?, ?)}")) {
+            callableStatement.setInt(2, clientId);
+            callableStatement.setString(3, containerId);
+            callableStatement.registerOutParameter(1, Types.REF_CURSOR);
+            callableStatement.execute();
+            ResultSet resultSet = (ResultSet) callableStatement.getObject(1);
+            StringBuilder stringBuilder = new StringBuilder();
+            while (resultSet.next()) {
+                stringBuilder.append("Departure PortWarehouse ID: ").append(resultSet.getInt(1)).append("\n")
+                        .append("Arrival PortWarehouse ID: ").append(resultSet.getInt(2)).append("\n")
+                        .append("Date and time of departure: ").append(resultSet.getTimestamp(3)).append("\n")
+                        .append("Date and time of arrival: ").append(resultSet.getTimestamp(4)).append("\n")
+                        .append("Date and time of expected arrival: ").append(resultSet.getTimestamp(5)).append("\n")
+                        .append("Mean of transport: ").append(resultSet.getString(6)).append("\n");
+            }
+
+            return stringBuilder.toString();
+        }
+    }
 }

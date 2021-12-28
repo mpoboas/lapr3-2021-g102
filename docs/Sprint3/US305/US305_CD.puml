@@ -9,16 +9,16 @@ class ContainerRouteUI {
 }
 
 class GetClientContainerRouteController {
-+getContainerRoute(userId, containerId)
+getClientContainerRoute(databaseConnection, clientId, containerId)
 }
 
 class ContainerDB {
-+getContainerRoute(userId, containerId)
+getClientContainerRoute(databaseConnection, clientId, containerId)
 }
 
 class ConnectionFactory{
 +getInstance()
-+yloadProperties()
++loadProperties()
 +getDatabaseConnection()
 }
 

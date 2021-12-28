@@ -1,6 +1,7 @@
 package lapr.project.model;
 
 import lapr.project.auth.AuthFacade;
+import lapr.project.data.ContainerStore;
 import lapr.project.stores.PortStore;
 import lapr.project.stores.ShipStore;
 import lapr.project.stores.FreightNetwork;
@@ -31,12 +32,18 @@ public class Company {
      */
     private final FreightNetwork freightNetwork;
 
+    /**
+     * The store of containers
+     */
+    private final ContainerStore containerStore;
+
     public Company(String designation) {
         this.designation = designation;
         this.authFacade = new AuthFacade();
         this.shipStore = new ShipStore();
         this.portStore = new PortStore();
         this.freightNetwork = new FreightNetwork();
+        this.containerStore = new ContainerStore();
     }
 
     /**
@@ -58,14 +65,18 @@ public class Company {
     }
 
     /**
-     * @return gets the ship store
+     * Gets the store of ships
+     *
+     * @return the ShipStore instance
      */
     public ShipStore getShipStore() {
         return this.shipStore;
     }
 
     /**
-     * @return gets the port store
+     * Gets the store of ports
+     *
+     * @return the PortStore instance
      */
     public PortStore getPortStore() {
         return this.portStore;
@@ -74,9 +85,18 @@ public class Company {
     /**
      * Gets the freight network.
      *
-     * @return FreightNetwork instance
+     * @return the FreightNetwork instance
      */
     public FreightNetwork getFreightNetwork() {
         return this.freightNetwork;
+    }
+
+    /**
+     * Gets the store of containers.
+     *
+     * @return the ContainerStore instance
+     */
+    public ContainerStore getContainerStore() {
+        return containerStore;
     }
 }
