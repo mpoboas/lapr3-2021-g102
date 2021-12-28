@@ -15,7 +15,7 @@ set SERVEROUTPUT ON;
 
 Declare
     c_cursor sys_refcursor;
-    v_user_id integer;
+    v_user_id varchar(50);
     v_date_time TIMESTAMP;
     v_type_operation varchar2(50);
     v_container_id VARCHAR2(11);

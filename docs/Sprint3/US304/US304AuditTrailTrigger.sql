@@ -5,11 +5,16 @@ for each row
 DECLARE
     v_operation VARCHAR2(50);
     v_operation_date Timestamp;
+    v_user_id integer;
     v_idContainer Container.idcontainer%type;
     v_idCargoManifest CargoManifest.idcargomanifest%type;
 Begin
     Select sysdate into v_operation_date
     from dual;
+
+    Select iduser into v_user_id
+    from systemuser where username = (Select user
+                                  from dual);
 
     if inserting 
     then
@@ -33,6 +38,6 @@ Begin
     end if;
 
     Insert into audittrail (idaudittrail, idcargomanifest, idcontainer, iduser, datetime, operationtype)
-    values (seq_audit_trail.nextval ,v_idCargoManifest,v_idContainer, null, v_operation_date, v_operation);
+    values (seq_audit_trail.nextval ,v_idCargoManifest,v_idContainer, v_user_id, v_operation_date, v_operation);
 
 end;

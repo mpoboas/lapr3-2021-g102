@@ -5,7 +5,7 @@ as
 Begin
     Open c_audit_trails
     for
-        Select iduser, datetime, operationtype, idcontainer, idcargomanifest
+        Select (Select username from systemuser where systemuser.iduser = audittrail.iduser), datetime, operationtype, idcontainer, idcargomanifest
         from audittrail
         where idcontainer = p_containerID AND idcargomanifest = p_manifestID
         order by datetime;
