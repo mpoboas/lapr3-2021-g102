@@ -1,7 +1,7 @@
 package lapr.project.model;
 
 import lapr.project.auth.AuthFacade;
-import lapr.project.data.ContainerStore;
+import lapr.project.data.*;
 import lapr.project.stores.PortStore;
 import lapr.project.stores.ShipStore;
 import lapr.project.stores.FreightNetwork;
@@ -26,16 +26,23 @@ public class Company {
      * The store of ports
      */
     private final PortStore portStore;
+    /**
+     * Trip store
+     */
+    private final TripStore tripStore;
+    private final ShipStoreDB shipStoreDB;
+    private final PortStoreDB portStoreDB;
+    private final SeadistStoreDB seadistStoreDB;
+    private final ContainerStore containerStore;
+    private final CountryStoreDB countryStoreDB;
+    private final BorderStoreDB borderStoreDB;
+    private final CargoManifestStore cargoManifestStore;
+
 
     /**
      * The freight store
      */
     private final FreightNetwork freightNetwork;
-
-    /**
-     * The store of containers
-     */
-    private final ContainerStore containerStore;
 
     public Company(String designation) {
         this.designation = designation;
@@ -43,7 +50,15 @@ public class Company {
         this.shipStore = new ShipStore();
         this.portStore = new PortStore();
         this.freightNetwork = new FreightNetwork();
+        this.tripStore = new TripStore();
+        this.shipStoreDB = new ShipStoreDB();
+        this.portStoreDB = new PortStoreDB();
+        this.seadistStoreDB = new SeadistStoreDB();
         this.containerStore = new ContainerStore();
+        this.countryStoreDB = new CountryStoreDB();
+        this.borderStoreDB = new BorderStoreDB();
+        this.cargoManifestStore = new CargoManifestStore();
+
     }
 
     /**
@@ -65,18 +80,14 @@ public class Company {
     }
 
     /**
-     * Gets the store of ships
-     *
-     * @return the ShipStore instance
+     * @return gets the ship store
      */
     public ShipStore getShipStore() {
         return this.shipStore;
     }
 
     /**
-     * Gets the store of ports
-     *
-     * @return the PortStore instance
+     * @return gets the port store
      */
     public PortStore getPortStore() {
         return this.portStore;
@@ -85,18 +96,40 @@ public class Company {
     /**
      * Gets the freight network.
      *
-     * @return the FreightNetwork instance
+     * @return FreightNetwork instance
      */
     public FreightNetwork getFreightNetwork() {
         return this.freightNetwork;
     }
-
-    /**
-     * Gets the store of containers.
-     *
-     * @return the ContainerStore instance
-     */
-    public ContainerStore getContainerStore() {
-        return containerStore;
+    public ShipStoreDB getShipStoreDB(){
+        return this.shipStoreDB;
     }
+
+    public TripStore getTripStore(){
+        return this.tripStore;
+    }
+    public PortStoreDB getPortStoreDB(){
+        return this.portStoreDB;
+    }
+
+    public CargoManifestStore getCargoManifestStore(){
+        return this.cargoManifestStore;
+    }
+    public BorderStoreDB getBorderStoreDB(){
+        return this.borderStoreDB;
+    }
+    public SeadistStoreDB getSeadistStoreDB(){
+        return this.seadistStoreDB;
+    }
+    public ContainerStore getContainerStore(){
+        return this.containerStore;
+    }
+    public CountryStoreDB getCountryStoreDB(){
+        return this.countryStoreDB;
+    }
+
+
+
+
+
 }
