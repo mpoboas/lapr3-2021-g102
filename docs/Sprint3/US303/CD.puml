@@ -1,7 +1,36 @@
 @startuml
-class getClosenessPlacesController{
-
+class ClosenessPlacesController{
+-int nPlaces;
+-Place p;
+-ClossenessPlaces clossenessPlaces;
+-List<Pair<Place,Double>> placesList;
+-generateList()
+-getClosestPlacesList()
 }
-
+class ClossenessPlaces{
+-int nPlaces;
+-FreightNetwork network;
+-List<Pair<Place,Double>> closenessPlaces;
+-Place p;
+-getClossenessPlacesNetwork()
+-getClosestPlaces()
+}
+class Company{
+-FreightNetwork freightNetwork
+-getFreightNetwork()
+}
+class AlgorithmsNetwork{
+-shortestPathDijkstra(Graph<Place, Double> g, Place vOrig, Comparator<Double> ce, BinaryOperator<Double> sum, Double zero, boolean[] visited, Place [] pathKeys, Double [] dist)
+-shortestPath(Graph<Place, Double> g, Place vOrig, Place vDest,Comparator<Double> ce, BinaryOperator<Double> sum, Double zero, LinkedList<Place> shortPath)
+}
+class FreightNetwork{
+-MatrixGraph<Place, Double> graph
+-shortestPath(Place vOrig, Place vDest)
+-getGraph()
+}
+ClosenessPlacesController -- Company : get Freight Network from >
+ClosenessPlacesController -- ClossenessPlaces : Interacts with >
+ClossenessPlaces -- FreightNetwork : Requests the shortest paths from the required place to the rest
+FreightNetwork -- AlgorithmsNetwork : uses algorithms from >
 
 @enduml

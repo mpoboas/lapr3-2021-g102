@@ -25,15 +25,12 @@ public class ClossenessPlacesController {
      */
     private List<Pair<Place,Double>> placesList;
 
-    private final Company company;
-
     /**
      * controller initializer
      * @param p place of reference
      * @param n number of places to be listed
      */
     public ClossenessPlacesController(Company company, Place p, int n){
-        this.company = company;
         this.nPlaces = n;
         this.p = p;
         this.clossenessPlaces = new ClossenessPlaces(company.getFreightNetwork(),this.p,this.nPlaces);

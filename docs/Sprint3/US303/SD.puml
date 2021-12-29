@@ -1,0 +1,51 @@
+@startuml
+
+actor "Traffic Manager" as tm
+participant UI as ui
+participant ClossenessPlacesController as controller
+participant ClossenessPlaces as data
+participant FreigthNetwork as network
+participant Company as company
+participant AlgorithmsNetwork as alg
+autonumber
+activate tm
+tm -> ui : requests the n Closest places to the port
+activate ui
+ui -->tm : asks which port and the values of n
+deactivate ui
+tm -> ui : types requested data
+activate ui
+ui --> tm : requests confirmation
+deactivate ui
+tm -> ui: confirms inserted data
+activate ui
+
+ui -> controller : Requests the list of ClossenessPlaces from the required place
+activate controller
+controller -> company : requests the freight network
+activate company
+company --> controller : delivers freight network
+deactivate company
+controller -> data : sends freight network and requests creation of list
+activate data
+data -> network : requests list of all places
+activate network
+network --> data :sends requested data
+deactivate network
+data -> network : requests which is the shortest path between the required place and all other places
+activate network
+network -> alg : requests shortest path lenght
+activate alg
+alg --> alg : calculates which is the shortest path
+alg --> network : send required data
+deactivate alg
+network --> data : sends requested data
+deactivate network
+data --> controller : sends requested data
+deactivate data
+controller --> ui :sends requested data
+deactivate controller
+ui --> tm : shows requested list
+deactivate ui
+deactivate tm
+@enduml
