@@ -19,10 +19,10 @@ public class ClossenessPlaces {
      * @param p place of reference
      * @param n number of places to be listed
      */
-    public ClossenessPlaces(Place p ,int n){
+    public ClossenessPlaces(FreightNetwork fn, Place p ,int n){
         this.nPlaces = n;
         this.p = p;
-        this.network = new FreightNetwork();
+        this.network = fn;
         this.closenessPlaces = new ArrayList<>();
     }
 
@@ -60,18 +60,24 @@ public class ClossenessPlaces {
     /**
      * get clossest places to the refence place
      */
-    public void getAdjPlaces(){
-        List<Place> list = new ArrayList<>(this.network.getGraph().adjVertices(p));
+    public void getClossenessPlacesNetwork(){
+        List<Place> list = new ArrayList<>(this.network.getGraph().vertices());
         for (Place place : list) {
-            Pair<Place, Double> pair = new Pair<>(place, getDistance(place));
+            Pair<Place, Double> pair = new Pair<>(place, this.network.shortestPath(this.p, place));
             this.closenessPlaces.add(pair);
         }
-        if(this.closenessPlaces.size()>nPlaces){
-            this.closenessPlaces.sort(this::compare);
-            if (this.closenessPlaces.size() > this.nPlaces) {
-                this.closenessPlaces.subList(this.nPlaces, this.closenessPlaces.size()).clear();
+        for(int i = 0; i < this.closenessPlaces.size(); i++ ){
+            if(this.closenessPlaces.get(i).getSecond() == null){
+                this.closenessPlaces.remove(i); //remove places thaare not connected to the desired port
+                i = i -1 ;
             }
         }
+        this.closenessPlaces.sort(this::compare);
+        if(this.closenessPlaces.size()>nPlaces) {
+            this.closenessPlaces.subList(this.nPlaces, this.closenessPlaces.size()).clear();
+        }
+        this.closenessPlaces.sort(this::compareContinents);
+
     }
 
     /**
@@ -80,25 +86,20 @@ public class ClossenessPlaces {
      * @param p2 place 2
      * @return result of the comparison
      */
-    private int compare(Pair<Place,Double>p1, Pair<Place,Double> p2){
+    private int compare(Pair<Place,Double> p1, Pair<Place,Double> p2){
         return p1.getSecond().compareTo(p2.getSecond());
     }
+    private int compareContinents(Pair<Place,Double> p1, Pair<Place,Double> p2){
+        return p1.getFirst().compare(p1.getFirst(),p2.getFirst());
+    }
+
 
     /**
      * method to get list of clossenss places
      * @return list
      */
-    public List<Pair<Place,Double>> getClosenessPlaces(){
+    public List<Pair<Place,Double>> getClosestPlaces(){
         return this.closenessPlaces;
-    }
-
-    /**
-     * get the distance of a certain place to the refence place
-     * @param p1 place to be analyzed
-     * @return distnce between two
-     */
-    public double getDistance(Place p1){
-        return this.network.getGraph().edge(this.p, p1).getWeight();
     }
 
 }

@@ -1,6 +1,7 @@
 package lapr.project.controller;
 
 import lapr.project.data.ClossenessPlaces;
+import lapr.project.model.Company;
 import lapr.project.model.Place;
 import lapr.project.utils.Pair;
 
@@ -25,25 +26,19 @@ public class ClossenessPlacesController {
      */
     private List<Pair<Place,Double>> placesList;
 
+    private final Company company;
+
     /**
      * controller initializer
      * @param p place of reference
      * @param n number of places to be listed
      */
-    public ClossenessPlacesController(Place p, int n){
+    public ClossenessPlacesController(Company company, Place p, int n){
+        this.company = company;
         this.nPlaces = n;
         this.p = p;
-        this.clossenessPlaces = new ClossenessPlaces(this.p,this.nPlaces);
+        this.clossenessPlaces = new ClossenessPlaces(company.getFreightNetwork(),this.p,this.nPlaces);
     }
-
-    /**
-     * method to build network from database
-     * @throws IOException exception
-     */
-    public void buildNetwork() throws IOException {
-        this.clossenessPlaces.buildFreightNetworkFromDB();
-    }
-
     /**
      * set a new port
      * @param p new place
@@ -65,9 +60,9 @@ public class ClossenessPlacesController {
     /**
      * generate list
      */
-    private void generateList(){
-        this.clossenessPlaces.getAdjPlaces();
-        this.placesList = this.clossenessPlaces.getClosenessPlaces();
+    public void generateList(){
+        this.clossenessPlaces.getClossenessPlacesNetwork();
+        this.placesList = this.clossenessPlaces.getClosestPlaces();
     }
 
     /**
@@ -77,10 +72,10 @@ public class ClossenessPlacesController {
     public ClossenessPlaces getClossenessPlaces(){return this.clossenessPlaces;}
 
     /**
-     * get clsseness places lsit
+     * get closest places list
      * @return list
      */
-    public List<Pair<Place,Double>> getClossenessPlacesList() {
+    public List<Pair<Place,Double>> getClosestPlacesList() {
         if (this.placesList == null) {
             generateList();
         } else {
@@ -88,4 +83,6 @@ public class ClossenessPlacesController {
         }
         return this.placesList;
     }
+
+
 }

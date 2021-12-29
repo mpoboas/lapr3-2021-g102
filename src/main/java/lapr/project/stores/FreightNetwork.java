@@ -4,6 +4,7 @@ import lapr.project.data.*;
 import lapr.project.model.*;
 import lapr.project.utils.Conversions;
 import lapr.project.utils.PortTree;
+import lapr.project.utils.graph.AlgorithmsNetwork;
 import lapr.project.utils.graph.MatrixGraph;
 
 import java.util.*;
@@ -157,6 +158,11 @@ public class FreightNetwork {
         double result = Math.sqrt((cat1 * cat1) + (cat2 * cat2)) * 60.04;
 
         return Conversions.nauticalMilesToKm(result);
+    }
+
+    public Double shortestPath(Place vOrig, Place vDest){
+        LinkedList<Place> shortPath = new LinkedList<>();
+        return AlgorithmsNetwork.shortestPath(this.graph, vOrig,vDest,Double::compare,Double::sum, (double) 0,shortPath);
     }
 
     /**
