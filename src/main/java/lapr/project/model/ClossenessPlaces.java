@@ -1,10 +1,8 @@
-package lapr.project.data;
+package lapr.project.model;
 
-import lapr.project.model.Place;
 import lapr.project.stores.FreightNetwork;
 import lapr.project.utils.Pair;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,15 +22,6 @@ public class ClossenessPlaces {
         this.p = p;
         this.network = fn;
         this.closenessPlaces = new ArrayList<>();
-    }
-
-    /**
-     * buid network from database
-     * @throws IOException exception
-     */
-    public void buildFreightNetworkFromDB() throws IOException {
-        ConnectionFactory cf = new ConnectionFactory();
-        this.network.buildFreightNetworkFromDatabase(cf.getDatabaseConnection(),this.nPlaces);
     }
 
     /**

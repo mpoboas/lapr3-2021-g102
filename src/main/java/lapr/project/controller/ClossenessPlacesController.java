@@ -1,11 +1,10 @@
 package lapr.project.controller;
 
-import lapr.project.data.ClossenessPlaces;
+import lapr.project.model.ClossenessPlaces;
 import lapr.project.model.Company;
 import lapr.project.model.Place;
 import lapr.project.utils.Pair;
 
-import java.io.IOException;
 import java.util.List;
 
 public class ClossenessPlacesController {
