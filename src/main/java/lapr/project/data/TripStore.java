@@ -118,7 +118,7 @@ public class TripStore implements Persistable{
     }
 
     private void saveArrivalDeparture(DatabaseConnection databaseConnection, Trips t) throws SQLException {
-        String sqlCommand = "Insert into arrivaldeparture(idtrip, idportwarehousedeparture, idportwarehousearrival, departuredate, arrivaldate, idcargomanifestload, idcargomanifestunload) values ( ?, ?, ? ,? ,?, ?, ? )";
+        String sqlCommand = "Insert into arrivaldeparture(idtrip, idportwarehousedeparture, idportwarehousearrival, departuredate, arrivaldate, estimatedarrivaldate, idcargomanifestload, idcargomanifestunload) values ( ?, ?, ? ,? ,?, ?, ?, ? )";
         executeADstatementdOnDatabase(databaseConnection,t , sqlCommand);
     }
     private void executeADstatementdOnDatabase(DatabaseConnection databaseConnection,
@@ -133,8 +133,9 @@ public class TripStore implements Persistable{
                 saveADPreparedStatement.setInt(3, t.getADLIst().get(i).getPortWarehouseArrival());
                 saveADPreparedStatement.setTimestamp(4, t.getADLIst().get(i).getDepartureDate());
                 saveADPreparedStatement.setTimestamp(5, t.getADLIst().get(i).getArrivalDate());
-                saveADPreparedStatement.setInt(6, t.getADLIst().get(i).getCargoManifestIdLoad());
-                saveADPreparedStatement.setInt(7, t.getADLIst().get(i).getCargoManifestIdUnload());
+                saveADPreparedStatement.setTimestamp(6, t.getADLIst().get(i).getEstimatedArrivalDate());
+                saveADPreparedStatement.setInt(7, t.getADLIst().get(i).getCargoManifestIdLoad());
+                saveADPreparedStatement.setInt(8, t.getADLIst().get(i).getCargoManifestIdUnload());
                 saveADPreparedStatement.executeUpdate();
             }
         }
