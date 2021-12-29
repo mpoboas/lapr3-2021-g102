@@ -42,6 +42,6 @@ class ImportCargoManifestTest {
         imports = new ImportCargoManifest();
         imports.importCargoManifestData("data/data-shipsports/LAPR3_G102 - cargoManifests.csv");
         List<CargoManifest> list = imports.getListOfImportedCargoManifests();
-        assertEquals(8, list.size());
+        assertEquals(12, list.size());
     }
 }

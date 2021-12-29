@@ -41,7 +41,7 @@ class CargoManifestTest {
     void addContainers() {
         CargoManifest cm = new CargoManifest(12, new Date("12/12/2021"), "load", new ArrayList<>());
         importContainers = new ImportContainers();
-        importContainers.importContainersData("data/LAPR3_G102 - containers.csv");
+        importContainers.importContainersData("data/data-shipsports/LAPR3_G102 - containers.csv");
         List<Pair<Container, CargoManifest.ContainerPosition>> l = new ArrayList<>();
         for(int i = 0 ; i< importContainers.getListOfImportedContainers().size(); i++){
             l.add(new Pair<>(importContainers.getListOfImportedContainers().get(i), new CargoManifest.ContainerPosition(i, i+1,i*2)) );
@@ -67,7 +67,7 @@ class CargoManifestTest {
     void testToString() {
         CargoManifest cm = new CargoManifest(12, new Date("12/12/2021"), "load", new ArrayList<>());
         importContainers = new ImportContainers();
-        importContainers.importContainersData("data/LAPR3_G102 - containers.csv");
+        importContainers.importContainersData("data/data-shipsports/LAPR3_G102 - containers.csv");
         List<Pair<Container, CargoManifest.ContainerPosition>> l = new ArrayList<>();
         for(int i = 0 ; i< importContainers.getListOfImportedContainers().size(); i++){
             l.add(new Pair<>(importContainers.getListOfImportedContainers().get(i), new CargoManifest.ContainerPosition(i, i+1,i*2)) );

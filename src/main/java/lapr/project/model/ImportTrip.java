@@ -13,23 +13,24 @@ import java.util.Scanner;
 
 public class ImportTrip {
     private final List<Trips> listOfImportedTrips;
-    public ImportTrip(){
+
+    public ImportTrip() {
         this.listOfImportedTrips = new ArrayList<>();
     }
 
-    public void importTripsData(String fileDirectory){
-        try(Scanner read = new Scanner(new File(fileDirectory))) {
+    public void importTripsData(String fileDirectory) {
+        try (Scanner read = new Scanner(new File(fileDirectory))) {
             read.nextLine();
             while (read.hasNextLine()) {
                 String[] attributes = read.nextLine().split(",");
-                Trips trip ;
+                Trips trip;
                 if (!tripAlreadyImported(attributes[0])) {
                     trip = createTrip(attributes);
-                }else{
+                } else {
                     trip = getTripByID(attributes[0]);
                 }
                 trip.addArrivalDeparture(createAD(attributes));
-                if(!listOfImportedTrips.contains(trip))
+                if (!listOfImportedTrips.contains(trip))
                     listOfImportedTrips.add(trip);
             }
         } catch (FileNotFoundException e) {
@@ -37,6 +38,7 @@ public class ImportTrip {
         }
 
     }
+
     public Trips getTripByID(String id) {
         int p = Integer.parseInt(id);
         for (Trips s : listOfImportedTrips) {
@@ -46,19 +48,20 @@ public class ImportTrip {
         throw new IllegalArgumentException("Not found");
     }
 
-    public boolean tripAlreadyImported(String code){
+    public boolean tripAlreadyImported(String code) {
         int id = Integer.parseInt(code);
-        for (Trips p: listOfImportedTrips) {
-            if (p.getId() == id )
+        for (Trips p : listOfImportedTrips) {
+            if (p.getId() == id)
                 return true;
         }
         return false;
     }
-    public List<Trips> getListOfImportedTrips(){
+
+    public List<Trips> getListOfImportedTrips() {
         return listOfImportedTrips;
     }
 
-    private Trips createTrip(String[] atributtes){
+    private Trips createTrip(String[] atributtes) {
         int idtrip = Integer.parseInt(atributtes[0]);
         int idPortDeparture = Integer.parseInt(atributtes[1]);
         int idPortWarehouseArrival = Integer.parseInt(atributtes[2]);
@@ -66,27 +69,28 @@ public class ImportTrip {
         Date endDate = new Date(atributtes[4]);
         return new Trips(idtrip, idPortDeparture, idPortWarehouseArrival, idVehicle, endDate, new ArrayList<>());
     }
-    private ArrivalDeparture createAD(String[] attributes){
+
+    private ArrivalDeparture createAD(String[] attributes) {
         Date dd = (new Date(attributes[7]));
         Date ad = (new Date(attributes[8]));
+        Date ead = (new Date(attributes[9]));
         int idPortWarehouseDeparture = Integer.parseInt(attributes[5]);
         int idPortWarehouseArrival = Integer.parseInt(attributes[6]);
         Timestamp departureDate = new Timestamp(dd.getTime());
         Timestamp arrivalDate = new Timestamp(ad.getTime());
+        Timestamp estimatedArrivalDate = new Timestamp(ead.getTime());
         int idCargoManifestLoad;
         int idCargoManifestUnload;
-        if(attributes[9].equalsIgnoreCase("null")){
+        if (attributes[10].equalsIgnoreCase("null")) {
             idCargoManifestLoad = 0;
-        }else {
-            idCargoManifestLoad = Integer.parseInt(attributes[9]);
+        } else {
+            idCargoManifestLoad = Integer.parseInt(attributes[10]);
         }
-        if(attributes[10].equalsIgnoreCase("null")){
+        if (attributes[11].equalsIgnoreCase("null")) {
             idCargoManifestUnload = 0;
-        }else {
-            idCargoManifestUnload = Integer.parseInt(attributes[10]);
+        } else {
+            idCargoManifestUnload = Integer.parseInt(attributes[11]);
         }
-        return new ArrivalDeparture(Integer.parseInt(attributes[0]), idPortWarehouseDeparture, idPortWarehouseArrival, departureDate, arrivalDate , idCargoManifestLoad, idCargoManifestUnload) ;
-
-
+        return new ArrivalDeparture(Integer.parseInt(attributes[0]), idPortWarehouseDeparture, idPortWarehouseArrival, departureDate, arrivalDate, estimatedArrivalDate, idCargoManifestLoad, idCargoManifestUnload);
     }
 }
