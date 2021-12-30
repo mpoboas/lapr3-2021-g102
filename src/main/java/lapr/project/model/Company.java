@@ -26,23 +26,51 @@ public class Company {
      * The store of ports
      */
     private final PortStore portStore;
+
     /**
-     * Trip store
+     * The Trip store
      */
     private final TripStore tripStore;
-    private final ShipStoreDB shipStoreDB;
-    private final PortStoreDB portStoreDB;
-    private final SeadistStoreDB seadistStoreDB;
-    private final ContainerStore containerStore;
-    private final CountryStoreDB countryStoreDB;
-    private final BorderStoreDB borderStoreDB;
-    private final CargoManifestStore cargoManifestStore;
 
+    /**
+     * The Ship store from database
+     */
+    private final ShipStoreDB shipStoreDB;
+
+    /**
+     * The Port store from database
+     */
+    private final PortStoreDB portStoreDB;
+
+    /**
+     * The Seadist store from database
+     */
+    private final SeadistStoreDB seadistStoreDB;
+
+    /**
+     * The Container store from database
+     */
+    private final ContainerStore containerStore;
+
+    /**
+     * The Country store from database
+     */
+    private final CountryStoreDB countryStoreDB;
+
+    /**
+     * The Border store from database
+     */
+    private final BorderStoreDB borderStoreDB;
+
+    /**
+     * The Cargo Manifest store from database
+     */
+    private final CargoManifestStore cargoManifestStore;
 
     /**
      * The freight store
      */
-    private final FreightNetwork freightNetwork;
+    private FreightNetwork freightNetwork;
 
     public Company(String designation) {
         this.designation = designation;
@@ -101,35 +129,83 @@ public class Company {
     public FreightNetwork getFreightNetwork() {
         return this.freightNetwork;
     }
-    public ShipStoreDB getShipStoreDB(){
+
+    /**
+     * Gets the Ship store from database.
+     *
+     * @return ShipStoreDB instance
+     */
+    public ShipStoreDB getShipStoreDB() {
         return this.shipStoreDB;
     }
 
-    public TripStore getTripStore(){
+    /**
+     * Gets the Trip store from database.
+     *
+     * @return TripStore instance
+     */
+    public TripStore getTripStore() {
         return this.tripStore;
     }
-    public PortStoreDB getPortStoreDB(){
+
+    /**
+     * Gets the Port store from database.
+     *
+     * @return PortStoreDB instance
+     */
+    public PortStoreDB getPortStoreDB() {
         return this.portStoreDB;
     }
 
-    public CargoManifestStore getCargoManifestStore(){
+    /**
+     * Gets the Cargo Manifest store from database.
+     *
+     * @return CargoManifestStore instance
+     */
+    public CargoManifestStore getCargoManifestStore() {
         return this.cargoManifestStore;
     }
-    public BorderStoreDB getBorderStoreDB(){
+
+    /**
+     * Gets the Border store from database.
+     *
+     * @return BorderStoreDB instance
+     */
+    public BorderStoreDB getBorderStoreDB() {
         return this.borderStoreDB;
     }
-    public SeadistStoreDB getSeadistStoreDB(){
+
+    /**
+     * Gets the Seadist store from database.
+     *
+     * @return SeadistStoreDB instance
+     */
+    public SeadistStoreDB getSeadistStoreDB() {
         return this.seadistStoreDB;
     }
-    public ContainerStore getContainerStore(){
+
+    /**
+     * Gets the Container store from database.
+     *
+     * @return ContainerStoreDB instance
+     */
+    public ContainerStore getContainerStore() {
         return this.containerStore;
     }
-    public CountryStoreDB getCountryStoreDB(){
+
+    /**
+     * Gets the Country store from database.
+     *
+     * @return CountryStoreDB instance
+     */
+    public CountryStoreDB getCountryStoreDB() {
         return this.countryStoreDB;
     }
 
-
-
-
-
+    /**
+     * Sets the Freight Network (just for mockito usage).
+     */
+    public void setFreightNetwork(FreightNetwork freightNetwork) {
+        this.freightNetwork = freightNetwork;
+    }
 }
