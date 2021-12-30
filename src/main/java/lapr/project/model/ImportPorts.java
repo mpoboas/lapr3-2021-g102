@@ -71,7 +71,8 @@ public class ImportPorts {
         String name = attributes[3];
         double latitude = Double.parseDouble(attributes[4]);
         double longitude = Double.parseDouble(attributes[5]);
-        return store.createPort(code, name, continent, country, longitude, latitude);
+        int capacity = Integer.parseInt(attributes[6]);
+        return store.createPort(code, name, continent, country, longitude, latitude , capacity);
     }
 
     /**

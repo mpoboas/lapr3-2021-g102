@@ -6,13 +6,10 @@ public class Port extends Place implements Comparable<Port> {
 
     private final int id;
     private final String name;
-    //private final String continent;
-    //private final String country;
-    //private final double latitude; // eixo y
-    //private final double longitude; //eixo x
     private final Point2D.Double coords;
+    private final int capacity;
 
-    public Port(int id, String name, String continent, String country, double longitude, double latitude) {
+    public Port(int id, String name, String continent, String country, double longitude, double latitude,int capacity) {
         super(continent, country, longitude, latitude);
         this.id = id;
         this.name = name;
@@ -21,6 +18,7 @@ public class Port extends Place implements Comparable<Port> {
         //this.latitude = latitude;
         //this.longitude = longitude;
         coords = new Point2D.Double(longitude, latitude);
+        this.capacity = capacity;
     }
 
     public int getid() {
@@ -50,6 +48,8 @@ public class Port extends Place implements Comparable<Port> {
     public Point2D.Double getCoords() {
         return coords;
     }
+
+    public int getCapacity(){return this.capacity;}
 
     @Override
     public int compareTo(Port o) {

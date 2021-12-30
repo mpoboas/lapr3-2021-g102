@@ -12,57 +12,63 @@ public class PortTest {
 
     @Test
     public void getid() {
-        Port port= new Port (144,"Test Port", "Europe", "Germany", 150, 130);
+        Port port= new Port (144,"Test Port", "Europe", "Germany", 150, 130,1212);
 
         assertEquals(144, port.getid());
     }
 
     @Test
     public void getName() {
-        Port port= new Port (144,"Test Port", "Europe", "Germany", 150, 130);
+        Port port= new Port (144,"Test Port", "Europe", "Germany", 150, 130,1212);
 
         assertEquals("Test Port", port.getName());
     }
 
     @Test
     public void getContinent() {
-        Port port= new Port (144,"Test Port", "Europe", "Germany", 150, 130);
+        Port port= new Port (144,"Test Port", "Europe", "Germany", 150, 130,1212);
 
         assertEquals("Europe", port.getContinent());
     }
 
     @Test
     public void getCountry() {
-        Port port= new Port (144,"Test Port", "Europe", "Germany", 150, 130);
+        Port port= new Port (144,"Test Port", "Europe", "Germany", 150, 130,1212);
 
         assertEquals("Germany", port.getCountry());
     }
 
     @Test
     public void getLatitude() {
-        Port port= new Port (144,"Test Port", "Europe", "Germany", 150, 130);
+        Port port= new Port (144,"Test Port", "Europe", "Germany", 150, 130,1212);
 
         assertEquals(130, port.getLatitude(), 0.01);
     }
 
     @Test
     public void getLongitude() {
-        Port port= new Port (144,"Test Port", "Europe", "Germany", 150, 130);
+        Port port= new Port (144,"Test Port", "Europe", "Germany", 150, 130,1212);
 
         assertEquals(150, port.getLongitude(), 0.01);
+    }
+    @Test
+    void getCapacity(){
+        Port port= new Port (144,"Test Port", "Europe", "Germany", 150, 130,1212);
+        assertEquals(1212,port.getCapacity());
+
     }
 
     @Test
     void testEquals(){
-        Port port1= new Port (144,"Test Port", "Europe", "Germany", 150, 130);
-        Port port2= new Port (144,"Test Port", "Europe", "Germany", 150, 130); //Copy of port 1
-        Port port3= new Port (142,"Test Port", "Europe", "Germany", 120, 85);
-        Port port21= new Port (144,"Test Port", "Europe", "Germany", 152, 131); //same id of port2
-        Port port22= new Port (141,"Test Port", "Europe", "Germany", 152, 130); //same latitude port2
-        Port port23= new Port (141,"Test Port", "Europe", "Germany", 150, 131); //same longitude port2
-        Port port24= new Port (144,"Test Port", "Europe", "Germany", 151, 130); //same id and latitude
-        Port port25= new Port (144,"Test Port", "Europe", "Germany", 150, 131); //same id and longitude
-        Port port26= new Port (141,"Test Port", "Europe", "Germany", 150, 130); //same latitude and longitude
+        Port port1= new Port (144,"Test Port", "Europe", "Germany", 150, 130,112);
+        Port port2= new Port (144,"Test Port", "Europe", "Germany", 150, 130,2122); //Copy of port 1
+        Port port3= new Port (142,"Test Port", "Europe", "Germany", 120, 85,1221);
+        Port port21= new Port (144,"Test Port", "Europe", "Germany", 152, 131,123); //same id of port2
+        Port port22= new Port (141,"Test Port", "Europe", "Germany", 152, 130,213123); //same latitude port2
+        Port port23= new Port (141,"Test Port", "Europe", "Germany", 150, 131,12312); //same longitude port2
+        Port port24= new Port (144,"Test Port", "Europe", "Germany", 151, 130,312); //same id and latitude
+        Port port25= new Port (144,"Test Port", "Europe", "Germany", 150, 131,532); //same id and longitude
+        Port port26= new Port (141,"Test Port", "Europe", "Germany", 150, 130,356); //same latitude and longitude
         assertTrue(port1.equals(port1));
         assertFalse(port1.equals(null));
         assertFalse(port1.equals("Port"));
@@ -78,9 +84,9 @@ public class PortTest {
 
     @Test
     void testCompare(){
-        Port port1= new Port (144,"Test Port", "Europe", "Germany", 150, 130);
-        Port port2= new Port (144,"Test Port", "Europe", "Germany", 150, 130);
-        Port port3= new Port (142,"Test Port", "Europe", "Germany", 120, 85);
+        Port port1= new Port (144,"Test Port", "Europe", "Germany", 150, 130,112);
+        Port port2= new Port (144,"Test Port", "Europe", "Germany", 150, 130,2122); //Copy
+        Port port3= new Port (142,"Test Port", "Europe", "Germany", 120, 85,1221);
         assertEquals(0,port1.compareTo(port2));
         assertEquals(2,port1.compareTo(port3));
         assertEquals(-2,port3.compareTo(port1));
@@ -88,24 +94,24 @@ public class PortTest {
 
     @Test
     void testToString(){
-        Port port1= new Port (144,"Test Port", "Europe", "Germany", 150, 130);
+        Port port1= new Port (144,"Test Port", "Europe", "Germany", 150, 130,112);
         String port1S = "Port with id: 144; Latitude: 130.0, Longitude: 150.0";
         assertEquals(port1S,port1.toString());
     }
 
     @Test
     void testComparators(){
-        Port p1 = new Port(1, "name1", "continent1", "country1",  3,9);
-        Port p2 = new Port(2, "name2", "continent1", "country2",1, 7 );
-        Port p3 = new Port(3, "name3", "continent2", "country3", 7, 9);
-        Port p4 = new Port(4, "name4", "continent2", "country4", 2, 1);
-        Port p5 = new Port(5, "name5", "continent4", "country5", 9, 6);
-        Port p6 = new Port(6, "name6", "continent5", "country6", 5, 9);
-        Port p7 = new Port(7, "name7", "continent5", "country7", 1, 4);
-        Port p8 = new Port(8, "name8", "continent3", "country8", 7, 3);
-        Port p9 = new Port(9, "name9", "continent3", "country8", 11, 6);
-        Port p10 = new Port(10, "name10", "continent3", "country12", 6, 1);
-        Port p11 = new Port(11, "name11", "continent3", "country10", 2, 1);
+        Port p1 = new Port(1, "name1", "continent1", "country1",  3,9,1212);
+        Port p2 = new Port(2, "name2", "continent1", "country2",1, 7 ,1223);
+        Port p3 = new Port(3, "name3", "continent2", "country3", 7, 9,1212);
+        Port p4 = new Port(4, "name4", "continent2", "country4", 2, 1,645);
+        Port p5 = new Port(5, "name5", "continent4", "country5", 9, 6,455);
+        Port p6 = new Port(6, "name6", "continent5", "country6", 5, 9,3456);
+        Port p7 = new Port(7, "name7", "continent5", "country7", 1, 4,676);
+        Port p8 = new Port(8, "name8", "continent3", "country8", 7, 3,4566);
+        Port p9 = new Port(9, "name9", "continent3", "country8", 11, 6,467);
+        Port p10 = new Port(10, "name10", "continent3", "country12", 6, 1,566);
+        Port p11 = new Port(11, "name11", "continent3", "country10", 2, 1,677);
         Comparator<Port> comp1 = new PortByLongitude();
         Comparator<Port> comp2 = new PortByLatitude();
 

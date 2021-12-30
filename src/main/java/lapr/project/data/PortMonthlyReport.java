@@ -89,7 +89,7 @@ public class PortMonthlyReport {
                 continent = rs.getString(2);
             }
         }
-        return new Port(idPort,name,continent,country,longitude,latitude);
+        return new Port(idPort,name,continent,country,longitude,latitude,this.portMaxCapacity);
     }
 
     /**

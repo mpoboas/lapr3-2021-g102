@@ -13,7 +13,7 @@ class PortOcupancyRateReportTest {
     @Test
     void setDailyRate() {
         int [] ocupiedSpace = {122, 23,340,500,700,900,999,998,1000,620,400,200,120,100,50,25,12,10,0,120,32,12,100,111,200,32,500,122,322,111};
-        Port port = new Port(12,"Test Port", "Europe","Portugal",39.399872, -8.224454);
+        Port port = new Port(12,"Test Port", "Europe","Portugal",39.399872, -8.224454,1222);
         report = new PortOcupancyRateReport(1000,ocupiedSpace,port, 3,2021);
         assertEquals(0,report.getRateOnDay(19));
         assertEquals(100,report.getRateOnDay(9));
@@ -26,7 +26,7 @@ class PortOcupancyRateReportTest {
     @Test
     void setMaxAndMin() {
         int [] ocupiedSpace = {122, 23,340,500,700,900,999,998,1000,620,400,200,120,100,50,25,12,10,0,120,32,12,100,111,200,32,500,122,322,111};
-        Port port = new Port(12,"Test Port", "Europe","Portugal",39.399872, -8.224454);
+        Port port = new Port(12,"Test Port", "Europe","Portugal",39.399872, -8.224454,1222);
         report = new PortOcupancyRateReport(1000,ocupiedSpace,port, 3,2021);
         assertEquals(0,report.getOcupationOnDay(19));
         assertEquals(1000,report.getOcupationOnDay(9));
@@ -39,7 +39,7 @@ class PortOcupancyRateReportTest {
     @Test
     void testToString() throws FileNotFoundException {
         int [] ocupiedSpace = {122, 23,340,500,700,900,999,998,1000,620,400,200,120,100,50,25,12,10,0,120,32,12,100,111,200,32,500,122,322,111};
-        Port port = new Port(12,"Test Port", "Europe","Portugal",39.399872, -8.224454);
+        Port port = new Port(12,"Test Port", "Europe","Portugal",39.399872, -8.224454,1222);
         report = new PortOcupancyRateReport(1000,ocupiedSpace,port, 3,2021);
         System.out.println(report);
         try (PrintWriter out = new PrintWriter("Port Report.txt")) {

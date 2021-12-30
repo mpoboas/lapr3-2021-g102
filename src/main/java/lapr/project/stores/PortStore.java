@@ -26,8 +26,8 @@ public class PortStore {
      * @param latitude port latitude
      * @return the instance of the port created
      */
-    public Port createPort(int id,String name, String continent,String country,double longitude,double latitude){
-        return new Port(id,name,continent,country,longitude,latitude);
+    public Port createPort(int id,String name, String continent,String country,double longitude,double latitude,int capacity){
+        return new Port(id,name,continent,country,longitude,latitude,capacity);
     }
     /**
      * Build the tree balanced

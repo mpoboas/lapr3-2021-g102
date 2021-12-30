@@ -124,7 +124,7 @@ public class PortStoreDB implements Persistable {
                                       Port port) throws SQLException {
         Connection connection = databaseConnection.getConnection();
         String sqlCommand =
-                "insert into portwarehouse( idportwarehouse, name, alpha2codecountry, idposition) values (?, ?, ?,  ?)";
+                "insert into portwarehouse( idportwarehouse, name, alpha2codecountry, idposition, capacity) values (?, ?, ?,  ? , ?)";
 
         executePortStatementOnDatabase(databaseConnection, port,
                 sqlCommand);
@@ -150,7 +150,7 @@ public class PortStoreDB implements Persistable {
                                       Port port) throws SQLException {
         Connection connection = databaseConnection.getConnection();
         String sqlCommand =
-                "update portwarehouse set name = ? , alpha2codecountry = ? where idportwarehouse = ?";
+                "update portwarehouse set name = ? , alpha2codecountry = ? , capacity = ? where idportwarehouse = ?";
 
         updatePortStatementOnDatabase(databaseConnection, port,
                 sqlCommand);
@@ -166,7 +166,8 @@ public class PortStoreDB implements Persistable {
                              sqlCommand)) {
             savePortPreparedStatement.setString(1, port.getName());
             savePortPreparedStatement.setString(2, port.getCountry());
-            savePortPreparedStatement.setInt(3, port.getid());
+            savePortPreparedStatement.setInt(3,port.getCapacity());
+            savePortPreparedStatement.setInt(4, port.getid());
             savePortPreparedStatement.executeUpdate();
         }
 
@@ -191,6 +192,7 @@ public class PortStoreDB implements Persistable {
             savePortPreparedStatement.setString(2, port.getName());
             savePortPreparedStatement.setString(3, port.getCountry());
             savePortPreparedStatement.setInt(4, getPositionid(databaseConnection, port));
+            savePortPreparedStatement.setInt(5, port.getCapacity());
             savePortPreparedStatement.executeUpdate();
         }
     }
@@ -224,14 +226,14 @@ public class PortStoreDB implements Persistable {
     public List<Port> getPortsFromDatabase(DatabaseConnection databaseConnection) {
         List<Port> ports = new ArrayList<>();
         try (Statement statement = databaseConnection.getConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery("select portwarehouse.idportwarehouse, portwarehouse.name, continent.name ,country.name, position.latitude, position.longitude from portwarehouse inner join position on position.idposition = portwarehouse.idposition inner join country on country.alpha2codecountry = portwarehouse.alpha2codecountry inner join continent on continent.alpha2codecontinent=country.alpha2codecontinent")) {
+            ResultSet resultSet = statement.executeQuery("select portwarehouse.idportwarehouse, portwarehouse.name, continent.name ,country.name, position.latitude, position.longitude, portwarehouse.capacity from portwarehouse inner join position on position.idposition = portwarehouse.idposition inner join country on country.alpha2codecountry = portwarehouse.alpha2codecountry inner join continent on continent.alpha2codecontinent=country.alpha2codecontinent")) {
             while (resultSet.next()) {
                 ports.add(new Port(resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getString(4),
                         resultSet.getDouble(6),
-                        resultSet.getDouble(5)));
+                        resultSet.getDouble(5),resultSet.getInt(7)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -249,9 +251,9 @@ public class PortStoreDB implements Persistable {
     public Port getPortByIdFromDatabase(DatabaseConnection databaseConnection, int idPortWarehouse) {
         Port port = null;
         try (Statement statement = databaseConnection.getConnection().createStatement();
-             ResultSet resultSet = statement.executeQuery("select portwarehouse.idPortWarehouse, portwarehouse.name, continent.name, country.name, position.longitude, position.latitude from portwarehouse inner join position on position.idposition = portwarehouse.idposition inner join country on country.alpha2CodeCountry = portwarehouse.alpha2CodeCountry inner join continent on continent.alpha2CodeContinent = country.alpha2CodeContinent where portwarehouse.idportwarehouse = " + idPortWarehouse);) {
+             ResultSet resultSet = statement.executeQuery("select portwarehouse.idPortWarehouse, portwarehouse.name, continent.name, country.name, position.longitude, position.latitude, portwarehouse.capacity from portwarehouse inner join position on position.idposition = portwarehouse.idposition inner join country on country.alpha2CodeCountry = portwarehouse.alpha2CodeCountry inner join continent on continent.alpha2CodeContinent = country.alpha2CodeContinent where portwarehouse.idportwarehouse = " + idPortWarehouse);) {
             while (resultSet.next()) {
-                port = new Port(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDouble(5), resultSet.getDouble(6));
+                port = new Port(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDouble(5), resultSet.getDouble(6), resultSet.getInt(7));
             }
         } catch (SQLException e) {
             e.printStackTrace();

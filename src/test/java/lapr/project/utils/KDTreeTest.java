@@ -15,12 +15,12 @@ class KDTreeTest {
         KDTree<Port> tree = new KDTree<>();
         assertNull(tree.getRoot());
         assertTrue(tree.isEmpty());
-        Port p1 = new Port(1, "name1", "continent1", "country1", 30, 40);
-        Port p2 = new Port(2, "name2", "continent1", "country2", 5, 25);
-        Port p3 = new Port(3, "name3", "continent2", "country3", 10, 12);
-        Port p4 = new Port(4, "name4", "continent2", "country4", 70, 70);
-        Port p5 = new Port(5, "name5", "continent4", "country5", 50, 30);
-        Port p6 = new Port(6, "name6", "continent5", "country6", 35, 45);
+        Port p1 = new Port(1, "name1", "continent1", "country1", 30, 40,1222);
+        Port p2 = new Port(2, "name2", "continent1", "country2", 5, 25,1222);
+        Port p3 = new Port(3, "name3", "continent2", "country3", 10, 12,1222);
+        Port p4 = new Port(4, "name4", "continent2", "country4", 70, 70,1222);
+        Port p5 = new Port(5, "name5", "continent4", "country5", 50, 30,1222);
+        Port p6 = new Port(6, "name6", "continent5", "country6", 35, 45,1222);
         List<Port> portsList = new ArrayList<>();
         portsList.add(p1);
         portsList.add(p2);
@@ -41,12 +41,12 @@ class KDTreeTest {
     void insert() {
         KDTree<Port> tree = new KDTree<>();
         assertNull(tree.getRoot());
-        Port p1 = new Port(1, "name1", "continent1", "country1", 30, 40);
-        Port p2 = new Port(2, "name2", "continent1", "country2", 5, 25);
-        Port p3 = new Port(3, "name3", "continent2", "country3", 10, 12);
-        Port p4 = new Port(4, "name4", "continent2", "country4", 70, 70);
-        Port p5 = new Port(5, "name5", "continent4", "country5", 50, 30);
-        Port p6 = new Port(6, "name6", "continent5", "country6", 35, 45);
+        Port p1 = new Port(1, "name1", "continent1", "country1", 30, 40,1222);
+        Port p2 = new Port(2, "name2", "continent1", "country2", 5, 25,1222);
+        Port p3 = new Port(3, "name3", "continent2", "country3", 10, 12,1222);
+        Port p4 = new Port(4, "name4", "continent2", "country4", 70, 70,1222);
+        Port p5 = new Port(5, "name5", "continent4", "country5", 50, 30,1222);
+        Port p6 = new Port(6, "name6", "continent5", "country6", 35, 45,1222);
         List<Port> portsList = new ArrayList<>();
         portsList.add(p1);
         portsList.add(p2);
@@ -83,12 +83,12 @@ class KDTreeTest {
     @Test
     void testPortTree(){
         PortTree tree = new PortTree();
-        Port p1 = new Port(1, "name1", "continent1", "country1", 30, 40);
-        Port p2 = new Port(2, "name2", "continent1", "country2", 5, 25);
-        Port p3 = new Port(3, "name3", "continent2", "country3", 10, 12);
-        Port p4 = new Port(4, "name4", "continent2", "country4", 70, 70);
-        Port p5 = new Port(5, "name5", "continent4", "country5", 50, 30);
-        Port p6 = new Port(6, "name6", "continent5", "country6", 35, 45);
+        Port p1 = new Port(1, "name1", "continent1", "country1", 30, 40,1222);
+        Port p2 = new Port(2, "name2", "continent1", "country2", 5, 25,1222);
+        Port p3 = new Port(3, "name3", "continent2", "country3", 10, 12,1222);
+        Port p4 = new Port(4, "name4", "continent2", "country4", 70, 70,1222);
+        Port p5 = new Port(5, "name5", "continent4", "country5", 50, 30,1222);
+        Port p6 = new Port(6, "name6", "continent5", "country6", 35, 45,1222);
         List<Port> portsList = new ArrayList<>();
         portsList.add(p5);
         portsList.add(p6);
@@ -114,17 +114,17 @@ class KDTreeTest {
     void findNearestNeighbour() {
         //PortTree tree = new PortTree();
         KDTree<Port> tree = new KDTree<>();
-        Port p1 = new Port(1, "name1", "continent1", "country1",  3,9);
-        Port p2 = new Port(2, "name2", "continent1", "country2",1, 7 );
-        Port p3 = new Port(3, "name3", "continent2", "country3", 7, 9);
-        Port p4 = new Port(4, "name4", "continent2", "country4", 2, 1);
-        Port p5 = new Port(5, "name5", "continent4", "country5", 9, 6);
-        Port p6 = new Port(6, "name6", "continent5", "country6", 5, 9);
-        Port p7 = new Port(7, "name7", "continent5", "country7", 1, 4);
-        Port p8 = new Port(8, "name8", "continent3", "country8", 7, 3);
-        Port p9 = new Port(9, "name9", "continent3", "country8", 11, 6);
-        Port p10 = new Port(10, "name10", "continent3", "country12", 6, 1);
-        Port p11 = new Port(11, "name11", "continent3", "country10", 8, 2);
+        Port p1 = new Port(1, "name1", "continent1", "country1",  3,9,1211);
+        Port p2 = new Port(2, "name2", "continent1", "country2",1, 7 ,1212);
+        Port p3 = new Port(3, "name3", "continent2", "country3", 7, 9,12122);
+        Port p4 = new Port(4, "name4", "continent2", "country4", 2, 1,12212);
+        Port p5 = new Port(5, "name5", "continent4", "country5", 9, 6,122);
+        Port p6 = new Port(6, "name6", "continent5", "country6", 5, 9,1212);
+        Port p7 = new Port(7, "name7", "continent5", "country7", 1, 4,212);
+        Port p8 = new Port(8, "name8", "continent3", "country8", 7, 3,1212);
+        Port p9 = new Port(9, "name9", "continent3", "country8", 11, 6,1122);
+        Port p10 = new Port(10, "name10", "continent3", "country12", 6, 1,1221);
+        Port p11 = new Port(11, "name11", "continent3", "country10", 8, 2,1212);
         List<Port> portsList = new ArrayList<>();
         portsList.add(p1);
         portsList.add(p2);
