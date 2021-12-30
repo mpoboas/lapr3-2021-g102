@@ -25,41 +25,30 @@ deactivate DB
 deactivate DC
 deactivate CF
 
-UI -> CTRL : getWarehouseOccupancyRate(int daysCount)
+UI -> CTRL : getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerId)
 activate CTRL
-CTRL -> PORTWDB : getWarehouseOccupancyRate(int daysCount)
+CTRL -> PORTWDB : getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerId)
 activate PORTWDB
 
 PORTWDB -> CF : connection = getConnection()
 activate CF
 deactivate CF
 
-PORTWDB -> DB : getWarehouseOccupancyRate(int daysCount)
+PORTWDB -> DB : fnc_get_each_warehouse_occupancy_rate_next_30_days(portManagerId)
 activate DB
 deactivate DB
-PORTWDB --> CTRL : warehouseOccupancyRateList
-deactivate PORTWDB
-deactivate PORTWDB
-CTRL --> UI : warehouseOccupancyRateList
-deactivate CTRL
-
-UI -> CTRL : getContainersLeaving(int daysCount)
-activate CTRL
-CTRL -> PORTWDB : getContainersLeaving(int daysCount)
-activate PORTWDB
-
-PORTWDB -> CF : connection = getConnection()
-activate CF
-deactivate CF
-
-PORTWDB -> DB : getContainersLeaving(int daysCount)
+loop for each warehouse
+PORTWDB -> DB : fnc_get_containers_leaving_next_30_days(portWarehouseId)
 activate DB
 deactivate DB
-PORTWDB --> CTRL : containersLeavingList
+end
+
+PORTWDB --> CTRL : result
 deactivate PORTWDB
 deactivate PORTWDB
-CTRL --> UI : containersLeavingList
+CTRL --> UI : result
 deactivate CTRL
+
 UI --> CL : shows the occupancy rate of each warehouse and the desired estimate
 deactivate UI
 @enduml
