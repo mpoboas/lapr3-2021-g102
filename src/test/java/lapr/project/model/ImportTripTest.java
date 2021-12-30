@@ -32,6 +32,6 @@ class ImportTripTest {
         assertEquals(1, imports.getListOfImportedTrips().get(0).getId());
         assertEquals(2, imports.getListOfImportedTrips().size());
         assertEquals(1, imports.getListOfImportedTrips().get(0).getId());
-        assertEquals(new Date("01/12/2021 9:00:00"), imports.getListOfImportedTrips().get(0).getEndDate());
+        assertEquals(new Date("12/01/2021 9:00:00"), imports.getListOfImportedTrips().get(0).getEndDate());
     }
 }
