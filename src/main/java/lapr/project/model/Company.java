@@ -40,7 +40,7 @@ public class Company {
     /**
      * The Port store from database
      */
-    private final PortStoreDB portStoreDB;
+    private PortStoreDB portStoreDB;
 
     /**
      * The Seadist store from database
@@ -50,7 +50,7 @@ public class Company {
     /**
      * The Container store from database
      */
-    private final ContainerStore containerStore;
+    private ContainerStore containerStore;
 
     /**
      * The Country store from database
@@ -207,5 +207,19 @@ public class Company {
      */
     public void setFreightNetwork(FreightNetwork freightNetwork) {
         this.freightNetwork = freightNetwork;
+    }
+
+    /**
+     * Sets the Container store from database (just for mockito usage).
+     */
+    public void setContainerStore(ContainerStore containerStore) {
+        this.containerStore = containerStore;
+    }
+
+    /**
+     * Sets the Container store from database (just for mockito usage).
+     */
+    public void setPortStoreDB(PortStoreDB portStoreDB) {
+        this.portStoreDB = portStoreDB;
     }
 }

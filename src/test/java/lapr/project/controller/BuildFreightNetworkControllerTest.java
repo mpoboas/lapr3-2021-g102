@@ -17,14 +17,14 @@ class BuildFreightNetworkControllerTest {
     @Test
     void getFreightNetworkGraph() {
         this.buildFreightNetworkController = new BuildFreightNetworkController();
-        assertNotNull(buildFreightNetworkController.getFreightNetworkGraph());
+        assertNotNull(this.buildFreightNetworkController.getFreightNetworkGraph());
     }
 
     @Test
     void buildFreightNetworkFromDatabase() {
         this.buildFreightNetworkController = new BuildFreightNetworkController();
-        this.company.setFreightNetwork(freightNetwork);
-        doNothing().when(freightNetwork).buildFreightNetworkFromDatabase(this.databaseConnection, 5);
+        this.company.setFreightNetwork(this.freightNetwork);
+        doNothing().when(this.freightNetwork).buildFreightNetworkFromDatabase(this.databaseConnection, 5);
         this.buildFreightNetworkController.buildFreightNetworkFromDatabase(this.databaseConnection, 5);
     }
 }
