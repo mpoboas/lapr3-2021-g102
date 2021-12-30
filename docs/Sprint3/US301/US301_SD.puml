@@ -4,8 +4,8 @@ autonumber
 
 actor "Traffic Manager" as TF
 
-participant "ShipOccupancyRateUI" as UI
-participant "GetShipOccupancyRateController" as CTRL
+participant "BuildFreightNetworkUI" as UI
+participant "BuildFreightNetworkController" as CTRL
 participant Company as COMP
 participant "FreightNetwork" as FN
 participant ConnectionFactory as CF
