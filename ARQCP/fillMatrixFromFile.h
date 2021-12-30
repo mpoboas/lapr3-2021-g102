@@ -1,0 +1,1 @@
+void fillMatrixFromFile(int *matrix, char *file);
