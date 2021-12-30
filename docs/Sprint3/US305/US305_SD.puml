@@ -42,10 +42,10 @@ deactivate DC
 CONTAINERDB -> DB : fnc_get_client_container_route(clientId, containerId)
 activate DB
 deactivate DB
-CONTAINERDB --> CTRL : containerRoute
+CONTAINERDB --> CTRL : result
 deactivate CONTAINERDB
 deactivate CONTAINERDB
-CTRL --> UI : containerRoute
+CTRL --> UI : result
 deactivate CTRL
 UI --> CL : shows the given container´s route (locations, times of arrival and mean of transport)
 deactivate UI
