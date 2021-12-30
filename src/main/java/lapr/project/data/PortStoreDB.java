@@ -166,7 +166,7 @@ public class PortStoreDB implements Persistable {
                              sqlCommand)) {
             savePortPreparedStatement.setString(1, port.getName());
             savePortPreparedStatement.setString(2, port.getCountry());
-            savePortPreparedStatement.setInt(3,port.getCapacity());
+            savePortPreparedStatement.setInt(3, port.getCapacity());
             savePortPreparedStatement.setInt(4, port.getid());
             savePortPreparedStatement.executeUpdate();
         }
@@ -226,14 +226,14 @@ public class PortStoreDB implements Persistable {
     public List<Port> getPortsFromDatabase(DatabaseConnection databaseConnection) {
         List<Port> ports = new ArrayList<>();
         try (Statement statement = databaseConnection.getConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery("select portwarehouse.idportwarehouse, portwarehouse.name, continent.name ,country.name, position.latitude, position.longitude, portwarehouse.capacity from portwarehouse inner join position on position.idposition = portwarehouse.idposition inner join country on country.alpha2codecountry = portwarehouse.alpha2codecountry inner join continent on continent.alpha2codecontinent=country.alpha2codecontinent")) {
+             ResultSet resultSet = statement.executeQuery("select portwarehouse.idportwarehouse, portwarehouse.name, continent.name ,country.name, position.latitude, position.longitude, portwarehouse.capacity from portwarehouse inner join position on position.idposition = portwarehouse.idposition inner join country on country.alpha2codecountry = portwarehouse.alpha2codecountry inner join continent on continent.alpha2codecontinent=country.alpha2codecontinent")) {
             while (resultSet.next()) {
                 ports.add(new Port(resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getString(4),
                         resultSet.getDouble(6),
-                        resultSet.getDouble(5),resultSet.getInt(7)));
+                        resultSet.getDouble(5), resultSet.getInt(7)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -246,7 +246,7 @@ public class PortStoreDB implements Persistable {
      * Gets an instance of Port by a id.
      *
      * @param databaseConnection the database connection
-     * @param idPortWarehouse the id of the desired portwarehouse
+     * @param idPortWarehouse    the id of the desired portwarehouse
      */
     public Port getPortByIdFromDatabase(DatabaseConnection databaseConnection, int idPortWarehouse) {
         Port port = null;
@@ -260,5 +260,51 @@ public class PortStoreDB implements Persistable {
         }
 
         return port;
+    }
+
+    /**
+     * Gets the occupancy rate and an estimate of the containers leaving the warehouse during the next 30 days of every warehouse that a port manager has access to.
+     *
+     * @param databaseConnection the database connection
+     * @param portManagerId      the port manager´s identifier
+     * @return the container´s route
+     */
+    public String getEachWarehouseOccupancyRateAndContainersLeaving30Days(DatabaseConnection databaseConnection, int portManagerId) throws SQLException {
+        Connection connection = databaseConnection.getConnection();
+
+        try (CallableStatement callableStatementOccupancyRate = connection.prepareCall("{? = call fnc_get_each_warehouse_occupancy_rate(?)}")) {
+            callableStatementOccupancyRate.setInt(2, portManagerId);
+            callableStatementOccupancyRate.registerOutParameter(1, Types.REF_CURSOR);
+            callableStatementOccupancyRate.execute();
+            ResultSet resultSetOccupancyRate = (ResultSet) callableStatementOccupancyRate.getObject(1);
+            StringBuilder stringBuilder = new StringBuilder();
+            while (resultSetOccupancyRate.next()) {
+                int warehouseId = resultSetOccupancyRate.getInt(1);
+                String warehouseName = resultSetOccupancyRate.getString(2);
+
+                stringBuilder.append("Warehouse ID: ").append(warehouseId).append("\n")
+                        .append("Warehouse: ").append(warehouseName).append("\n")
+                        .append("Warehouse occupancy rate ").append(resultSetOccupancyRate.getDouble(3)).append("%\n");
+
+                try (CallableStatement callableStatementContainersLeaving = connection.prepareCall("{? = call fnc_get_containers_leaving_next_30_days(?)}")) {
+                    callableStatementContainersLeaving.setInt(2, warehouseId);
+                    callableStatementContainersLeaving.registerOutParameter(1, Types.REF_CURSOR);
+                    callableStatementContainersLeaving.execute();
+                    ResultSet resultSetContainersLeaving = (ResultSet) callableStatementContainersLeaving.getObject(1);
+                    if (!resultSetContainersLeaving.next())
+                        stringBuilder.append("No containers are leaving ").append(warehouseName).append(" in the next 30 days.\n");
+                    else {
+                        while (resultSetContainersLeaving.next()) {
+                            stringBuilder.append("Container ID: ").append(resultSetContainersLeaving.getString(1)).append("\n")
+                                    .append("Container gross weight: ").append(resultSetContainersLeaving.getDouble(2)).append("\n")
+                                    .append("Container type: ").append(resultSetContainersLeaving.getString(3)).append("\n");
+                        }
+                    }
+                    stringBuilder.append("\n");
+                }
+            }
+
+            return stringBuilder.toString();
+        }
     }
 }
