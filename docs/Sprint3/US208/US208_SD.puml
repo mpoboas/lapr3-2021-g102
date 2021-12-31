@@ -38,19 +38,19 @@ activate SHIPOCCRATE
 SHIPOCCRATE -> DC : connection = getConnection()
 activate DC
 deactivate DC
-SHIPOCCRATE -> DB : shipId = getShipIdByMMSI(shipMMSI)
+SHIPOCCRATE -> DB : shipId = fnc_get_ship_id_by_mmsi(shipMMSI)
 activate DB
 deactivate DB
 
-SHIPOCCRATE -> DB : shipOccupancyRate = calcShipOccupancyRate()
+SHIPOCCRATE -> DB : shipOccupancyRate = fnc_get_ship_occupancy_rate(shipId, cargoManifestId)
 activate DB
 deactivate DB
 
 CTRL -> SHIPOCCRATE : getShipOccupancyRate()
 SHIPOCCRATE -> SHIPOCCRATE : getShipOccupancyRate()
-SHIPOCCRATE --> CTRL : shipOccupancyRate
+SHIPOCCRATE --> CTRL : result
 deactivate SHIPOCCRATE
-CTRL --> UI : shipOccupancyRate
+CTRL --> UI : result
 deactivate CTRL
 UI --> SC : shows the given ship´s occupancy rate
 deactivate UI
