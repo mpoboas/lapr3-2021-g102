@@ -157,21 +157,22 @@ public class ContainerStore implements Persistable {
             stringBuilder.append("Container with the identifier ").append(containerId).append(", leased by the client with the identifier ").append(clientId).append(":\n\n");
             int count = 0;
             while (resultSet.next()) {
-                count++;
-
-                if (resultSet.getTimestamp(4) == null) {
-                    stringBuilder.append("Container is on board of a ").append(resultSet.getString(6))
-                            .append("in the middle of the ocean. The expected date and time of arrival at the port with the identifier ").append(resultSet.getInt(2))
-                            .append(" is ").append(resultSet.getTimestamp(5)).append("\n\n");
+                if (resultSet.getTimestamp(6) == null) {
+                    stringBuilder.append("Container is on board of a ").append(resultSet.getString(8))
+                            .append("in the middle of the ocean. The expected date and time of arrival at the PortWarehouse ").append(resultSet.getString(4))
+                            .append(" is ").append(resultSet.getTimestamp(7)).append("\n");
+                } else if (resultSet.getInt(1) == resultSet.getInt(2)) {
+                    stringBuilder.append("Container was shipped at the PortWarehouse ").append(resultSet.getString(3)).append(" at ").append(resultSet.getTimestamp(6)).append("\n");
+                } else {
+                    count++;
+                    stringBuilder.append("Movement ").append(count).append(":\n")
+                            .append("Departure PortWarehouse: ").append(resultSet.getString(3)).append("\n")
+                            .append("Arrival PortWarehouse ID: ").append(resultSet.getString(4)).append("\n")
+                            .append("Date and time of departure: ").append(resultSet.getTimestamp(5)).append("\n")
+                            .append("Date and time of arrival: ").append(resultSet.getTimestamp(6)).append("\n")
+                            .append("Date and time of expected arrival: ").append(resultSet.getTimestamp(7)).append("\n")
+                            .append("Mean of transport: ").append(resultSet.getString(8)).append("\n\n");
                 }
-
-                stringBuilder.append("Movement ").append(count).append(": \n")
-                        .append("Departure PortWarehouse ID: ").append(resultSet.getInt(1)).append("\n")
-                        .append("Arrival PortWarehouse ID: ").append(resultSet.getInt(2)).append("\n")
-                        .append("Date and time of departure: ").append(resultSet.getTimestamp(3)).append("\n")
-                        .append("Date and time of arrival: ").append(resultSet.getTimestamp(4)).append("\n")
-                        .append("Date and time of expected arrival: ").append(resultSet.getTimestamp(5)).append("\n")
-                        .append("Mean of transport: ").append(resultSet.getString(6)).append("\n\n");
             }
 
             return stringBuilder.toString();

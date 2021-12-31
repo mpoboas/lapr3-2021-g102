@@ -22,7 +22,7 @@ public class US306Demo {
         AuthController authController = new AuthController();
         if (!authController.doLogin(email, password)) System.out.println("Invalid Login Credentials.");
         else {
-            System.out.println("Enter your port manager identification number (1): ");
+            System.out.println("Enter your port manager identification number (e.g. 1): ");
             int portManagerId = scan.nextInt();
             System.out.println(getWarehouseOccupancyRateController.getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerId));
         }
