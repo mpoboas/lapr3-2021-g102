@@ -24,11 +24,9 @@ void fillCargoManifestMatrix(int ***matrix, char* file, int shipCapacity){
 
 int ***allocateArray(int x,int y, int z){
     int*** matrix = (int***)malloc(x * sizeof(int**));
-    for (int i = 0; i < x; i++)
-    {
+    for (int i = 0; i < x; i++){
         matrix[i] = (int**)malloc(y * sizeof(int*));
-        for (int j = 0; j < y; j++)
-        {
+        for (int j = 0; j < y; j++){
             matrix[i][j] = (int*)malloc(z * sizeof(int));
         }
     }
@@ -54,7 +52,7 @@ void create3DArray(){
 }
 int main(void){
     
-
+    create3DArray();
 
     
     long res = number_occupied_free();
