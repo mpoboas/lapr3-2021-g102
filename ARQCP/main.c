@@ -3,6 +3,9 @@
 #include "fillMatrixFromFile.h"
 #include "totalnumber.h"
 int ***matrix;
+int x = 0;
+int y = 0;
+int z = 0;
 int** matrixFromFile(char *fileDirectory,int shipCapacity ){
     int numberOfParams = 4;
     int *p =  calloc(shipCapacity*numberOfParams, sizeof(int));
