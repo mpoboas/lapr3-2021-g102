@@ -8,13 +8,13 @@
     .global is_position_filled
 
     is_position_filled:
-        leaq matrix(%rip), %rdi # copies the address of matrix to %rdi
+        movq matrix(%rip), %rdi # copies the address of matrix to %rdi
         movl x(%rip), %esi # copies x value to %rbx
         movl y(%rip), %ecx # copies y value to %rcx
         movl z(%rip), %edx # copies x value to %rdx
 
-        leaq (%rdi, %rsi, 8), %rdi # address of line x
-        leaq (%rdi, %rcx, 8), %rdi # address of line y
+        movq (%rdi, %rsi, 8), %rdi # address of line x
+        movq (%rdi, %rcx, 8), %rdi # address of line y
         movl (%rdi, %rdx, 4), %eax # matrix[x][y][z] value
 
         cmp $0, %eax # compares %eax with 0
