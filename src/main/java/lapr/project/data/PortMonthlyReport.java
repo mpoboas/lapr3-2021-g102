@@ -6,9 +6,7 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.time.YearMonth;
-import java.util.Date;
 
 public class PortMonthlyReport {
     private Port port;
@@ -99,18 +97,16 @@ public class PortMonthlyReport {
     private void fillArrayWithDBdata() throws SQLException {
         YearMonth yearMonthObject = YearMonth.of(year, month);
         int daysInMonth = yearMonthObject.lengthOfMonth();
-        Date d;
-        Timestamp ts;
-        String sqlCommand = "SELECT (Select count(*) from MANIFESTCONTAINER where IDCARGOMANIFEST in (select IDCARGOMANIFESTUNLOAD from ARRIVALDEPARTURE where IDPORTWAREHOUSEARRIVAL = ? and ARRIVALDATE < ?))-(Select count(*) from MANIFESTCONTAINER where IDCARGOMANIFEST in (select IDCARGOMANIFESTLOAD from ARRIVALDEPARTURE where IDPORTWAREHOUSEARRIVAL = ? and ARRIVALDATE < ? )) as Warehouse_Stock from DUAL";
+        String s;
+        String sqlCommand = "SELECT (Select count(*) from MANIFESTCONTAINER where IDCARGOMANIFEST in (select IDCARGOMANIFESTUNLOAD from ARRIVALDEPARTURE where IDPORTWAREHOUSEARRIVAL = ? and ARRIVALDATE < to_timestamp( ? )))-(Select count(*) from MANIFESTCONTAINER where IDCARGOMANIFEST in (select IDCARGOMANIFESTLOAD from ARRIVALDEPARTURE where IDPORTWAREHOUSEARRIVAL = ? and ARRIVALDATE < to_timestamp( ? ) )) as Warehouse_Stock from DUAL";
         this.dailyOcupiedSpace = new int[daysInMonth];
         for(int i = 0 ; i < dailyOcupiedSpace.length; i++){
-            d = new Date(year,month,i+1);
-            ts = new Timestamp(d.getTime());
+            s = year+"-"+month+"-"+(i+1);
             try (PreparedStatement ps = cf.getDatabaseConnection().getConnection().prepareStatement(sqlCommand)){
                 ps.setInt(1,this.port.getid());
-                ps.setTimestamp(2,ts);
+                ps.setString(2,s);
                 ps.setInt(3,this.port.getid());
-                ps.setTimestamp(4,ts);
+                ps.setString(4,s);
                 try(ResultSet rs = ps.executeQuery()){
                     rs.next();
                     this.dailyOcupiedSpace[i]= rs.getInt(1);

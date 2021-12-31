@@ -1,0 +1,46 @@
+Port Warehouse Report
+PortWarehouse ID:10860
+PortWarehouse Name: Matarani
+Coordinate: Point2D.Double[-72.1, -17.0]
+Report from month: 12/2021
+
+
+
+Day 1: [                                                                                                    ] Rate 0% 
+Day 2: [█████████████████████                                                                               ] Rate 21% 
+Day 3: [█████████████████████                                                                               ] Rate 21% 
+Day 4: [█████████████████████                                                                               ] Rate 21% 
+Day 5: [█████████████████████                                                                               ] Rate 21% 
+Day 6: [█████████████                                                                                       ] Rate 13% 
+Day 7: [█████████████                                                                                       ] Rate 13% 
+Day 8: [█████████████                                                                                       ] Rate 13% 
+Day 9: [█████████████                                                                                       ] Rate 13% 
+Day 10: [█████████████                                                                                       ] Rate 13% 
+Day 11: [█████████████                                                                                       ] Rate 13% 
+Day 12: [█████████████                                                                                       ] Rate 13% 
+Day 13: [█████████████                                                                                       ] Rate 13% 
+Day 14: [█████████████                                                                                       ] Rate 13% 
+Day 15: [█████████████                                                                                       ] Rate 13% 
+Day 16: [█████████████                                                                                       ] Rate 13% 
+Day 17: [█████████████                                                                                       ] Rate 13% 
+Day 18: [█████████████                                                                                       ] Rate 13% 
+Day 19: [█████████████                                                                                       ] Rate 13% 
+Day 20: [█████████████                                                                                       ] Rate 13% 
+Day 21: [█████████████                                                                                       ] Rate 13% 
+Day 22: [█████████████                                                                                       ] Rate 13% 
+Day 23: [█████████████                                                                                       ] Rate 13% 
+Day 24: [█████████████                                                                                       ] Rate 13% 
+Day 25: [█████████████                                                                                       ] Rate 13% 
+Day 26: [█████████████                                                                                       ] Rate 13% 
+Day 27: [█████████████                                                                                       ] Rate 13% 
+Day 28: [█████████████                                                                                       ] Rate 13% 
+Day 29: [█████████████                                                                                       ] Rate 13% 
+Day 30: [█████████████                                                                                       ] Rate 13% 
+Day 31: [█████████████                                                                                       ] Rate 13% 
+Day with most capacity: 2
+Rate ocupied in that day: 21%
+
+Day with least capacity: 1
+Rate ocupied in that day: 0%
+
+
