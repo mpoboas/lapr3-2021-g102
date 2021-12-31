@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include "fillMatrixFromFile.h"
 #include "totalnumber.h"
-
+int ***matrix;
 int** matrixFromFile(char *fileDirectory,int shipCapacity ){
     int numberOfParams = 4;
-    int *p =  calloc(shipCapacity*4, sizeof(int));
+    int *p =  calloc(shipCapacity*numberOfParams, sizeof(int));
     int *(*matrixPointer) = malloc(shipCapacity*sizeof(int*));
     for(int i = 0; i< shipCapacity; i++){
-        *(matrixPointer+i)= p + i*4;
+        *(matrixPointer+i)= p + i*numberOfParams;
     }
     fillMatrixFromFile(matrixPointer, fileDirectory);
     return matrixPointer;
@@ -38,14 +38,13 @@ int main(void){
     char file[70];
     char *pointFile;
     pointFile = file;
-    int **test = matrixFromFile(file,3000);
     printf("Ship x axix?");
     scanf("%d",&shipCapacityX);
     printf("Ship y axix?");
-    scanf("%d",&shipCapacityZ);
+    scanf("%d",&shipCapacityY);
     printf("Ship z axix?");
     scanf("%d",&shipCapacityZ);
-    int ***matrix= allocateArray(shipCapacityX, shipCapacityY,  shipCapacityZ);
+    matrix = allocateArray(shipCapacityX, shipCapacityY,  shipCapacityZ);
     printf("File?");
     scanf("%s",pointFile);
     fillCargoManifestMatrix(matrix, pointFile, shipCapacityX * shipCapacityY * shipCapacityZ);
