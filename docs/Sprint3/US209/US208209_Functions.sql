@@ -1,78 +1,79 @@
-CREATE OR REPLACE FUNCTION getShipCapacity (idShip INTEGER) RETURN INTEGER
+CREATE OR REPLACE FUNCTION fnc_get_ship_capacity(p_id_ship INTEGER) RETURN INTEGER
 IS
-shipCapacity INTEGER := 0;
+v_ship_capacity INTEGER := 0;
 BEGIN
-    SELECT Ship.capacity INTO shipCapacity
+    SELECT Ship.capacity INTO v_ship_capacity
     FROM Vehicle, Ship
-    WHERE Vehicle.idVehicle = Ship.idVehicle AND Ship.idVehicle = idShip;
-    RETURN shipCapacity;
+    WHERE Vehicle.idVehicle = Ship.idVehicle AND Ship.idVehicle = p_id_ship;
+    RETURN v_ship_capacity;
 END;
 
-CREATE OR REPLACE FUNCTION getShipIdByMMSI(shipMMSI INTEGER) RETURN INTEGER
+CREATE OR REPLACE FUNCTION fnc_get_ship_id_by_mmsi(p_ship_mmsi INTEGER) RETURN INTEGER
 IS
-shipId INTEGER := 0;
+v_ship_id INTEGER := 0;
 BEGIN
-    SELECT Ship.idVehicle INTO shipId 
+    SELECT Ship.idVehicle INTO v_ship_id 
     FROM Ship 
-    WHERE Ship.MMSI = shipMMSI;
+    WHERE Ship.MMSI = p_ship_mmsi;
     
-    RETURN shipId;
+    RETURN v_ship_id;
 END;
 
-CREATE OR REPLACE FUNCTION getCargoManifestIdByDateTime(localDateTimeStr VARCHAR) RETURN INTEGER
+CREATE OR REPLACE FUNCTION fnc_get_cargo_manifest_id_by_date_time(p_local_date_time_str VARCHAR) RETURN INTEGER
 IS
-cargoManifestId INTEGER;
+v_cargo_manifest_id INTEGER;
 BEGIN
-        SELECT subQuery.idCargoManifest INTO cargoManifestId
+        SELECT subQuery.idCargoManifest INTO v_cargo_manifest_id
         FROM (SELECT CargoManifest.idCargoManifest, CargoManifest.elaborationDate 
         FROM CargoManifest 
-        WHERE CargoManifest.elaborationDate <= TO_TIMESTAMP(localDateTimeStr, 'DD-MM-YYYY HH24:mi') 
+        WHERE CargoManifest.elaborationDate <= TO_TIMESTAMP(p_local_date_time_str, 'YYYY-MM-DD HH24:MI') 
         ORDER BY CargoManifest.elaborationDate DESC, CargoManifest.idCargoManifest DESC) subQuery
         WHERE ROWNUM = 1;
         
-        RETURN cargoManifestId;
+        RETURN v_cargo_manifest_id;
 END;
 
-CREATE OR REPLACE FUNCTION getCargoManifestDateById(idDesiredCargoManifest INTEGER) RETURN TIMESTAMP
+CREATE OR REPLACE FUNCTION fnc_get_cargo_manifest_date_by_id(p_id_desired_cargo_manifest INTEGER) RETURN TIMESTAMP
 IS
-desiredElaborationDate TIMESTAMP;
+v_desired_elaboration_date TIMESTAMP;
 BEGIN
-        SELECT CargoManifest.elaborationDate INTO desiredElaborationDate
+        SELECT CargoManifest.elaborationDate INTO v_desired_elaboration_date
         FROM CargoManifest
-        WHERE CargoManifest.idCargoManifest = idDesiredCargoManifest;
+        WHERE CargoManifest.idCargoManifest = p_id_desired_cargo_manifest;
         
-        RETURN desiredElaborationDate;
+        RETURN v_desired_elaboration_date;
 END;
 
-CREATE OR REPLACE FUNCTION getShipOccupancyRate(idShip INTEGER, idDesiredCargoManifest INTEGER) RETURN NUMBER 
+CREATE OR REPLACE FUNCTION fnc_get_ship_occupancy_rate(p_id_ship INTEGER, p_id_desired_cargo_manifest INTEGER) RETURN NUMBER 
 IS
-occupancyRate NUMBER(6, 2) := 0;
-shipCapacity INTEGER := 0;
-numContainersOnBoard INTEGER := 0;
-numLoadedContainers INTEGER;
-numUnloadedContainers INTEGER;
-desiredElaborationDate TIMESTAMP;
+v_occupancy_rate NUMBER(6, 2) := 0;
+v_ship_capacity INTEGER := 0;
+v_num_containers_on_board INTEGER := 0;
+v_num_loaded_containers INTEGER;
+v_num_unloaded_containers INTEGER;
+v_desired_elaboration_date TIMESTAMP;
 BEGIN
-        desiredElaborationDate := getCargoManifestDateById(idDesiredCargoManifest);
+        v_desired_elaboration_date := fnc_get_cargo_manifest_date_by_id(p_id_desired_cargo_manifest);
 
-        SELECT COUNT(*) INTO numLoadedContainers
+        SELECT COUNT(*) INTO v_num_loaded_containers
         FROM CargoManifest, ManifestContainer, Container, ArrivalDeparture, Trip, Vehicle, Ship
-        WHERE CargoManifest.elaborationDate <= desiredElaborationDate AND CargoManifest.idCargoManifest <= idDesiredCargoManifest AND CargoManifest.idCargoManifestType = 1 AND (CargoManifest.idCargoManifest = ArrivalDeparture.idCargoManifestLoad OR CargoManifest.idCargoManifest = ArrivalDeparture.idCargoManifestUnload)
-        AND ArrivalDeparture.idTrip = Trip.idTrip AND Trip.idVehicle = Vehicle.idVehicle AND Vehicle.idVehicle = Ship.idVehicle AND Ship.idVehicle = idShip 
+        WHERE CargoManifest.elaborationDate <= v_desired_elaboration_date AND CargoManifest.idCargoManifest <= p_id_desired_cargo_manifest
+        AND CargoManifest.idCargoManifestType = 1 AND CargoManifest.idCargoManifest = ArrivalDeparture.idCargoManifestLoad
+        AND ArrivalDeparture.idTrip = Trip.idTrip AND Trip.idVehicle = Vehicle.idVehicle AND Vehicle.idVehicle = Ship.idVehicle AND Ship.idVehicle = p_id_ship 
         AND CargoManifest.idCargoManifest = ManifestContainer.idCargoManifest AND ManifestContainer.idContainer = Container.idContainer;
         
-        SELECT COUNT(*) INTO numUnloadedContainers
+        SELECT COUNT(*) INTO v_num_unloaded_containers
         FROM CargoManifest, ManifestContainer, Container, ArrivalDeparture, Trip, Vehicle, Ship
-        WHERE CargoManifest.elaborationDate <= desiredElaborationDate AND CargoManifest.idCargoManifest <= idDesiredCargoManifest AND CargoManifest.idCargoManifestType = 2 AND (CargoManifest.idCargoManifest = ArrivalDeparture.idCargoManifestLoad OR CargoManifest.idCargoManifest = ArrivalDeparture.idCargoManifestUnload)
-        AND ArrivalDeparture.idTrip = Trip.idTrip AND Trip.idVehicle = Vehicle.idVehicle AND Vehicle.idVehicle = Ship.idVehicle AND Ship.idVehicle = idShip 
+        WHERE CargoManifest.elaborationDate <= v_desired_elaboration_date AND CargoManifest.idCargoManifest <= p_id_desired_cargo_manifest
+        AND CargoManifest.idCargoManifestType = 2 AND CargoManifest.idCargoManifest = ArrivalDeparture.idCargoManifestUnload
+        AND ArrivalDeparture.idTrip = Trip.idTrip AND Trip.idVehicle = Vehicle.idVehicle AND Vehicle.idVehicle = Ship.idVehicle AND Ship.idVehicle = p_id_ship 
         AND CargoManifest.idCargoManifest = ManifestContainer.idCargoManifest AND ManifestContainer.idContainer = Container.idContainer; 
         
-        
-        numContainersOnBoard := numLoadedContainers - numUnloadedContainers;
-        dbms_output.put_line ('Number of containers on the ship --> ' || numContainersOnBoard);
-        shipCapacity := getShipCapacity(idShip);
-        dbms_output.put_line ('Container capacity of the ship --> ' || shipCapacity);
+        v_num_containers_on_board := v_num_loaded_containers - v_num_unloaded_containers;
+        dbms_output.put_line ('Number of containers on the ship --> ' || v_num_containers_on_board);
+        v_ship_capacity := fnc_get_ship_capacity(p_id_ship);
+        dbms_output.put_line ('Container capacity of the ship --> ' || v_ship_capacity);
     
-        occupancyRate := (numContainersOnBoard / shipCapacity) * 100;
-        RETURN occupancyRate;
+        v_occupancy_rate := (v_num_containers_on_board / v_ship_capacity) * 100;
+        RETURN v_occupancy_rate;
 END;
