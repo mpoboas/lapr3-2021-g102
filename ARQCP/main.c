@@ -4,6 +4,7 @@
 #include "totalnumber.h"
 
 int** matrixFromFile(char *fileDirectory,int shipCapacity ){
+    int numberOfParams = 4;
     int *p =  calloc(shipCapacity*4, sizeof(int));
     int *(*matrixPointer) = malloc(shipCapacity*sizeof(int*));
     for(int i = 0; i< shipCapacity; i++){
@@ -13,12 +14,46 @@ int** matrixFromFile(char *fileDirectory,int shipCapacity ){
     return matrixPointer;
 }
 
+void fillCargoManifestMatrix(int ***matrix, char* file, int shipCapacity){
+    int **pointContentsFile = matrixFromFile(file, shipCapacity);
+    fill3DMatrix(matrix,pointContentsFile,shipCapacity);
+}
+
+int ***allocateArray(int x,int y, int z){
+    int*** matrix = (int***)malloc(x * sizeof(int**));
+    for (int i = 0; i < x; i++)
+    {
+        matrix[i] = (int**)malloc(y * sizeof(int*));
+        for (int j = 0; j < y; j++)
+        {
+            matrix[i][j] = (int*)malloc(z * sizeof(int));
+        }
+    }
+    return matrix;
+}
 int main(void){
+    int shipCapacityX;
+    int shipCapacityY;
+    int shipCapacityZ;
+    char file[70];
+    char *pointFile;
+    pointFile = file;
+    int **test = matrixFromFile(file,3000);
+    printf("Ship x axix?");
+    scanf("%d",&shipCapacityX);
+    printf("Ship y axix?");
+    scanf("%d",&shipCapacityZ);
+    printf("Ship z axix?");
+    scanf("%d",&shipCapacityZ);
+    int ***matrix= allocateArray(shipCapacityX, shipCapacityY,  shipCapacityZ);
+    printf("File?");
+    scanf("%s",pointFile);
+    fillCargoManifestMatrix(matrix, pointFile, shipCapacityX * shipCapacityY * shipCapacityZ);
 
 
 
 
-
+    
     long res = number_occupied_free();
     long *ptr = &res;
     int *x = (int *)ptr;
