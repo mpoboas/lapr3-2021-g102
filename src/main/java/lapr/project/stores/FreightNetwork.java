@@ -115,13 +115,13 @@ public class FreightNetwork {
         seaDists.removeIf(s -> s.getFrom_country().equals(s.getTo_country()));
         List<List<SeaDist>> listaDeLista = new ArrayList<>();
         for (Port p : ports) {
-            List<SeaDist> seadistFromSamePort = new ArrayList<>();
+            List<SeaDist> seadistSamePort = new ArrayList<>();
             for (SeaDist s : seaDists) {
-                if (p.equals(s.getFrom_port()))
-                    seadistFromSamePort.add(s);
-                Collections.sort(seadistFromSamePort);
-                if (!seadistFromSamePort.isEmpty())
-                    listaDeLista.add(seadistFromSamePort);
+                if (p.equals(s.getFrom_port()) || p.equals(s.getTo_port()))
+                    seadistSamePort.add(s);
+                Collections.sort(seadistSamePort);
+                if (!seadistSamePort.isEmpty())
+                    listaDeLista.add(seadistSamePort);
             }
         }
         for (List<SeaDist> slist : listaDeLista) {
