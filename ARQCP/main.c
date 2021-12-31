@@ -34,25 +34,26 @@ int ***allocateArray(int x,int y, int z){
     }
     return matrix;
 }
-int main(void){
+void create3DArray(){
     int shipCapacityX;
     int shipCapacityY;
     int shipCapacityZ;
     char file[70];
     char *pointFile;
     pointFile = file;
-    printf("Ship x axix?");
+    printf("Ship x axix?\n");
     scanf("%d",&shipCapacityX);
-    printf("Ship y axix?");
+    printf("Ship y axix?\n");
     scanf("%d",&shipCapacityY);
-    printf("Ship z axix?");
+    printf("Ship z axix?\n");
     scanf("%d",&shipCapacityZ);
     matrix = allocateArray(shipCapacityX, shipCapacityY,  shipCapacityZ);
-    printf("File?");
+    printf("File?\n");
     scanf("%s",pointFile);
     fillCargoManifestMatrix(matrix, pointFile, shipCapacityX * shipCapacityY * shipCapacityZ);
-
-
+}
+int main(void){
+    
 
 
     
