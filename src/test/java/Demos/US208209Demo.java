@@ -22,7 +22,7 @@ public class US208209Demo {
         if (!authController.doLogin(email, password)) System.out.println("Invalid Login Credentials.");
         else {
             double shipOccupancyRate = 0;
-            System.out.println("Enter Ship MMSI: ");
+            System.out.println("Enter Ship MMSI (e.g. 316005667): ");
             int shipMMSI = scan.nextInt();
             System.out.println("In which format do you want to enter the cargo manifest? ");
             System.out.println("1 - Id");
@@ -32,13 +32,14 @@ public class US208209Demo {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Enter id: ");
+                    System.out.println("Enter id (e.g. 1): ");
                     int cargoManifestId = scan.nextInt();
                     shipOccupancyRate = controller.getShipOccupancyRateById(connectionFactory, shipMMSI, cargoManifestId);
                     break;
                 case 2:
-                    System.out.println("Enter date and time: ");
-                    String localDateTimeStr = scan.next();
+                    System.out.println("Enter date and time (e.g. 2021-12-01 00:30): ");
+                    scan.nextLine();
+                    String localDateTimeStr = scan.nextLine();
                     shipOccupancyRate = controller.getShipOccupancyRateByDateTime(connectionFactory, shipMMSI, localDateTimeStr);
                     break;
                 default:
