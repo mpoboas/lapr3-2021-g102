@@ -284,7 +284,7 @@ public class PortStoreDB implements Persistable {
 
                 stringBuilder.append("Warehouse ID: ").append(warehouseId).append("\n")
                         .append("Warehouse: ").append(warehouseName).append("\n")
-                        .append("Warehouse occupancy rate ").append(resultSetOccupancyRate.getDouble(3)).append("%\n");
+                        .append("Warehouse occupancy rate: ").append(resultSetOccupancyRate.getDouble(3)).append("%\n");
 
                 try (CallableStatement callableStatementContainersLeaving = connection.prepareCall("{? = call fnc_get_containers_leaving_next_30_days(?)}")) {
                     callableStatementContainersLeaving.setInt(2, warehouseId);
