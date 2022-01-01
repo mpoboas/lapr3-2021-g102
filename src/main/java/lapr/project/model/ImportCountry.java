@@ -16,7 +16,7 @@ public class ImportCountry {
                 String[] attributes = readfile.nextLine().split(",");
                 Country country = new Country(attributes[0],attributes[1],attributes[2],attributes[3],
                         Double.parseDouble(attributes[4]) ,attributes[5],
-                        Double.parseDouble(attributes[6]),Double.parseDouble(attributes[7]));
+                        Double.parseDouble(attributes[7]),Double.parseDouble(attributes[6]));
                 if (!importedCountries.contains(country))
                     importedCountries.add(country);
             }

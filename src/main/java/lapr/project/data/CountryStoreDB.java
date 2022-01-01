@@ -257,7 +257,7 @@ public class CountryStoreDB implements Persistable {
                         rs.getString(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getInt(5),
+                        rs.getDouble(5),
                         rs.getString(4),
                         rs.getDouble(7),
                         rs.getDouble(8)
@@ -296,7 +296,7 @@ public class CountryStoreDB implements Persistable {
                         resultSet.getString(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
-                        resultSet.getInt(5),
+                        resultSet.getDouble(5),
                         resultSet.getString(4),
                         resultSet.getDouble(7),
                         resultSet.getDouble(8));

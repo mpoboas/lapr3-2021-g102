@@ -119,10 +119,10 @@ public class FreightNetwork {
             for (SeaDist s : seaDists) {
                 if (p.equals(s.getFrom_port()) || p.equals(s.getTo_port()))
                     seadistSamePort.add(s);
-                Collections.sort(seadistSamePort);
-                if (!seadistSamePort.isEmpty())
-                    listaDeLista.add(seadistSamePort);
             }
+            Collections.sort(seadistSamePort);
+            if (!seadistSamePort.isEmpty())
+                listaDeLista.add(seadistSamePort);
         }
         for (List<SeaDist> slist : listaDeLista) {
             int i = 0;
