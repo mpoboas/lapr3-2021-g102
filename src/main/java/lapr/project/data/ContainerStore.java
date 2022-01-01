@@ -76,12 +76,7 @@ public class ContainerStore implements Persistable {
 
             try (ResultSet ccontainerResultSet = getContainerPreparedStatement.executeQuery()) {
 
-                if (ccontainerResultSet.next()) {
-                    isContainerOnDatabase = true;
-                } else {
-
-                    isContainerOnDatabase = false;
-                }
+                isContainerOnDatabase = ccontainerResultSet.next();
             }
         }
         return isContainerOnDatabase;

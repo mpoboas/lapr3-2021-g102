@@ -1,6 +1,5 @@
 package lapr.project.data;
 
-import lapr.project.model.Container;
 import lapr.project.model.Ship;
 
 import java.sql.Connection;
@@ -31,13 +30,13 @@ public class ShipStoreDB implements Persistable {
                           Object object) {
         boolean returnValue = false;
         Connection connection = databaseConnection.getConnection();
-        Container container = (Container) object;
+        Ship ship = (Ship) object;
         try {
-            String sqlCommand = "delete from container where idcontainer = ?";
-            try (PreparedStatement deleteClientPreparedStatement = connection.prepareStatement(
+            String sqlCommand = "delete from ship where mmsi = ?";
+            try (PreparedStatement deleteShipPreparedStatement = connection.prepareStatement(
                     sqlCommand)) {
-                deleteClientPreparedStatement.setString(1, container.getId());
-                deleteClientPreparedStatement.executeUpdate();
+                deleteShipPreparedStatement.setInt(1, ship.getMMSI());
+                deleteShipPreparedStatement.executeUpdate();
             }
             returnValue = true;
         } catch (SQLException exception) {
@@ -76,12 +75,7 @@ public class ShipStoreDB implements Persistable {
 
             try (ResultSet shipResultSet = getShipPreparedStatement.executeQuery()) {
 
-                if (shipResultSet.next()) {
-                    isShipOnDatabase = true;
-                } else {
-
-                    isShipOnDatabase = false;
-                }
+                isShipOnDatabase = shipResultSet.next();
             }
         }
         return isShipOnDatabase;
@@ -134,12 +128,7 @@ public class ShipStoreDB implements Persistable {
                     connection.prepareStatement(sqlCommand)) {
             getVesselTypePreparedStatement.setInt(1, ship.getVesselType());
             try (ResultSet vesselTypeResultSet = getVesselTypePreparedStatement.executeQuery()) {
-                if (vesselTypeResultSet.next()) {
-                    isVesselTypeOnDatabase = true;
-                } else {
-
-                    isVesselTypeOnDatabase = false;
-                }
+                isVesselTypeOnDatabase = vesselTypeResultSet.next();
             }
         }
         return isVesselTypeOnDatabase;
