@@ -2,9 +2,8 @@ package lapr.project.utils.graph;
 
 import lapr.project.model.Place;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.LinkedList;
+import java.util.List;
 import java.util.function.BinaryOperator;
 // NOTE : MISSING ALLPATHS and getPaths METHOD
 public class AlgorithmsNetwork {
@@ -22,9 +21,9 @@ public class AlgorithmsNetwork {
      * @param pathKeys minimum path vertices keys
      * @param dist     minimum distances
      */
-    private static <V, E> void shortestPathDijkstra(Graph<Place, Double> g, Place vOrig,
-                                                    Comparator<Double> ce, BinaryOperator<Double> sum, Double zero,
-                                                    boolean[] visited, Place [] pathKeys, Double [] dist) {
+    private static void shortestPathDijkstra(Graph<Place, Double> g, Place vOrig,
+                                             Comparator<Double> ce, BinaryOperator<Double> sum, Double zero,
+                                             boolean[] visited, Place [] pathKeys, Double [] dist) {
         int vKey = g.key(vOrig);
         dist[vKey] = zero;
         pathKeys[vKey] = vOrig;
@@ -68,9 +67,9 @@ public class AlgorithmsNetwork {
      * @param shortPath returns the vertices which make the shortest path
      * @return if vertices exist in the graph and are connected, true, false otherwise
      */
-    public static <V, E> Double shortestPath(Graph<Place, Double> g, Place vOrig, Place vDest,
-                                        Comparator<Double> ce, BinaryOperator<Double> sum, Double zero,
-                                        LinkedList<Place> shortPath) {
+    public static Double shortestPath(Graph<Place, Double> g, Place vOrig, Place vDest,
+                                          Comparator<Double> ce, BinaryOperator<Double> sum, Double zero,
+                                      List<Place> shortPath) {
         if(!g.validVertex(vOrig) || !g.validVertex(vDest))
             return null;
 
@@ -103,7 +102,14 @@ public class AlgorithmsNetwork {
      * @param path     stack with the minimum path (correct order)
      */
     private static <V, E> void getPath(Graph<V, E> g, V vOrig, V vDest,
-                                       V [] pathKeys, LinkedList<V> path) {
+                                       V [] pathKeys, List<V> path) {
+        path.add(vOrig);
+        for (V pathKey : pathKeys) {
+            if(pathKey != null) {
+                path.add(g.vertices().get(g.vertices().indexOf(pathKey)));
+            }
+        }
+        path.add(vDest);
 
 
     }

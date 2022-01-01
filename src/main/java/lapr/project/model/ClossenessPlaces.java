@@ -57,7 +57,7 @@ public class ClossenessPlaces {
         }
         for(int i = 0; i < this.closenessPlaces.size(); i++ ){
             if(this.closenessPlaces.get(i).getSecond() == null){
-                this.closenessPlaces.remove(i); //remove places thaare not connected to the desired port
+                this.closenessPlaces.remove(i); //remove places that are not connected to the desired port
                 i = i -1 ;
             }
         }
