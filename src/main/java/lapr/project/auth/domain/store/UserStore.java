@@ -14,7 +14,7 @@ import java.util.Set;
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 public class UserStore implements Serializable {
-    private Set<User> store = new HashSet<User>();
+    private final Set<User> store = new HashSet<>();
 
 
     public User create(String name, String email, String password)
@@ -24,8 +24,7 @@ public class UserStore implements Serializable {
 
     public boolean add(User user)
     {
-        if (user != null) {
-            if (!exists(user))
+        if (user != null && !exists(user)) {
                 return this.store.add(user);
         }
         return false;

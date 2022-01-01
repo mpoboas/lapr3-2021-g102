@@ -13,7 +13,7 @@ import java.util.Set;
  */
 public class UserRoleStore implements Serializable {
 
-    private Set<UserRole> store = new HashSet<UserRole>();
+    private final Set<UserRole> store = new HashSet<>();
 
     public UserRole create(String id, String description)
     {
@@ -22,8 +22,7 @@ public class UserRoleStore implements Serializable {
 
     public boolean add(UserRole role)
     {
-        if (role != null) {
-            if (!exists(role))
+        if (role != null && !exists(role)) {
                 return this.store.add(role);
         }
         return false;
