@@ -1,8 +1,8 @@
 .section .data
     .global matrix
-    .global x
-    .global y
-    .global z
+    .global shipCapacityX
+    .global shipCapacityY
+    .global shipCapacityZ
 
 .section .text
     .global number_occupied_free
@@ -12,9 +12,9 @@
         movq $0, %rdx
         movq $0, %rcx
         movq $0, %rsi
-        movl x(%rip), %eax # place x in rax
-        mull y(%rip) # multiply x by y
-        mull z(%rip) # multiply xy by z
+        movl shipCapacityX(%rip), %eax # place x in rax
+        mull shipCapacityY(%rip) # multiply x by y
+        mull shipCapacityZ(%rip) # multiply xy by z
         movl %eax, %edx # place the number of elements in edx
         movq $0, %rax
 

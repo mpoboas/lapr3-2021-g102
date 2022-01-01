@@ -5,6 +5,9 @@
 #include "is_position_filled.h"
 
 int ***matrix;
+int shipCapacityX;
+int shipCapacityY;
+int shipCapacityZ;
 int x = 0;
 int y = 0;
 int z = 0;
@@ -38,9 +41,6 @@ int ***allocateArray(int x, int y, int z){
 }
 
 void create3DArray(){
-    int shipCapacityX;
-    int shipCapacityY;
-    int shipCapacityZ;
     char file[70];
     char *pointFile;
     pointFile = file;
