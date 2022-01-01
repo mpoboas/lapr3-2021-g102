@@ -39,6 +39,7 @@ BEGIN
             WHERE CargoManifest.idCargoManifestType = 1 
             AND CargoManifest.idCargoManifest = ManifestContainer.idCargoManifest AND Container.idContainer = ManifestContainer.idContainer AND Container.idContainer = Leasing.idContainer
             AND Container.idContainer = p_id_container AND Leasing.idClient = Client.idClient AND Client.idClient = p_id_client
+            AND CargoManifest.elaborationDate >= Leasing.leasingDate
             ORDER BY difference) subQuery
         WHERE ROWNUM = 1;
 
@@ -58,6 +59,7 @@ BEGIN
         FROM (SELECT ArrivalDeparture.estimatedArrivalDate
         FROM ArrivalDeparture, Trip, CargoManifest, CargoManifestType, ManifestContainer, Container
         WHERE ArrivalDeparture.idTrip = Trip.idTrip AND ArrivalDeparture.idTrip = v_id_trip
+        AND ArrivalDeparture.estimatedArrivalDate > (SELECT ArrivalDeparture.estimatedArrivalDate FROM ArrivalDeparture WHERE ArrivalDeparture.departureDate = v_date_time_departure)
         AND ArrivalDeparture.idCargoManifestUnload = CargoManifest.idCargoManifest
         AND CargoManifest.idCargoManifestType = CargoManifestType.idCargoManifestType AND CargoManifestType.idCargoManifestType = 2
         AND CargoManifest.idCargoManifest = ManifestContainer.idCargoManifest AND ManifestContainer.idContainer = Container.idContainer
