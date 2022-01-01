@@ -95,10 +95,12 @@ BEGIN
 
 EXCEPTION
         WHEN ex_container_not_found then
-            raise_application_error(-20010, 'Invalid Container id');
+            return 'WARNING! error code: 10 | Container ID: ' || p_containerID;
+            --raise_application_error(-20010, 'Invalid Container id');
         When ex_container_not_leased then
             raise_application_error(-20009, 'Container is not leased at the moment');
         When ex_container_not_leased_by_client then
-            raise_application_error(-20011, 'Container is not leased by client');
+            return 'WARNING! error code: 11 | Container ID: ' || p_containerID;
+            --raise_application_error(-20011, 'Container is not leased by client');
 
 END;
