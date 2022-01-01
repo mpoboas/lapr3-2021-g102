@@ -173,9 +173,9 @@ public class SeadistStoreDB implements Persistable {
             PortStoreDB portStoreDB = new PortStoreDB();
 
             while (rs.next()) {
-                Country from_country = countryStoreDB.getCountryByAlpha2Code(dbConnection, rs.getString(1));
+                Country from_country = new Country("", rs.getString(1), "", "", 0.0, "", 0.0, 0.0);
                 Port from_port = portStoreDB.getPortByIdFromDatabase(dbConnection, rs.getInt(2));
-                Country to_country = countryStoreDB.getCountryByAlpha2Code(dbConnection, rs.getString(3));
+                Country to_country = new Country("", rs.getString(3), "", "", 0.0, "", 0.0, 0.0);
                 Port to_port = portStoreDB.getPortByIdFromDatabase(dbConnection, rs.getInt(4));
                 seadistList.add(new SeaDist(from_country, from_port, to_country, to_port, rs.getInt(5)));
             }

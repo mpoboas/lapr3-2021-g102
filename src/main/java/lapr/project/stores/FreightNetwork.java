@@ -112,7 +112,7 @@ public class FreightNetwork {
      * @param n the desired number of closest ports
      */
     private void insertConnectionBetweenNClosestPorts(List<Port> ports, List<SeaDist> seaDists, int n) {
-        seaDists.removeIf(s -> s.getFrom_country().equals(s.getTo_country()));
+        seaDists.removeIf(s -> s.getFrom_country().getAlpha2Code().equals(s.getTo_country().getAlpha2Code()));
         List<List<SeaDist>> listaDeLista = new ArrayList<>();
         for (Port p : ports) {
             List<SeaDist> seadistSamePort = new ArrayList<>();
