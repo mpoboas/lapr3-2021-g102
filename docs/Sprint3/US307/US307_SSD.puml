@@ -1,0 +1,12 @@
+@startuml
+autonumber
+actor "Port Manager" as PM
+
+activate PM
+PM -> ":System" : issues a cargo manifest destined for a warehouse
+activate ":System"
+":System" --> PM : shows a warning if the warehouse's available capacity\n is exceeded
+deactivate ":System"
+deactivate PM
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+
+class CargoManifest {
+-content
+-elaborationDate
+}
+
+class LoadingCargoManifest {
+}
+
+class UnloadingCargoManifest {
+}
+
+class PortWarehouse {
+-idPortWarehouse
+-idPosition
+-alpha2Code
+-name
+-capacity
+-idPortWarehouseType
+}
+
+
+LoadingCargoManifest "1" -u- "1" CargoManifest : is a >
+UnloadingCargoManifest "*" -u- "1" CargoManifest : is a >
+CargoManifest "*" -u- "1" PortStaff : makes <
+PortWarehouse "1" -- "1" PortStaff
+
+@enduml
