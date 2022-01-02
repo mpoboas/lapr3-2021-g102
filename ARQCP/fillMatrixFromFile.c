@@ -5,7 +5,7 @@ void fillMatrixFromFile(int *(*matrix), char *fileName){
     fp = fopen(fileName, "r");
     char *ptrTemp = NULL;
     char *pointFileContents = NULL;
-    int lineCount = 1;
+    int lineCount = 0;
     pointFileContents = (char *)malloc(50+ sizeof(char));
     int i;
     for(i = 0 ; !feof(fp);i++){
