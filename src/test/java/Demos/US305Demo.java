@@ -24,7 +24,7 @@ public class US305Demo {
         else {
             System.out.println("Enter your client identification number (e.g. 3): ");
             int clientId = scan.nextInt();
-            System.out.println("Enter the container identification code (e.g. LPRU1628240): ");
+            System.out.println("Enter the container identification code (e.g. LPRU1628240 / LPRU5977032 / LPRU7664786): ");
             String containerId = scan.next();
             System.out.println(getClientContainerRouteController.getClientContainerRoute(databaseConnection, clientId, containerId));
         }
