@@ -32,9 +32,9 @@ void fillCargoManifestMatrix(int ***matrix, char *file, int shipCapacity){
 int ***allocateArray(int x, int y, int z){
     int ***matrix = (int ***)malloc(x * sizeof(int **));
     for (int i = 0; i < x; i++){
-        matrix[i] = (int **)malloc(y * sizeof(int *));
+        *(matrix+i) = (int **)malloc(y * sizeof(int *));
         for (int j = 0; j < y; j++){
-            matrix[i][j] = (int *)malloc(z * sizeof(int));
+            *(*(matrix+i)+j) = (int *)malloc(z * sizeof(int));
         }
     }
     return matrix;
@@ -54,10 +54,12 @@ void create3DArray(){
     printf("File?\n");
     scanf("%s", pointFile);
     fillCargoManifestMatrix(matrix, pointFile, shipCapacityX * shipCapacityY * shipCapacityZ);
+
 }
 
 int main(void){
     create3DArray();
+
 
     int is_filled = is_position_filled();
     printf("Is position filled: %d\n", is_filled);

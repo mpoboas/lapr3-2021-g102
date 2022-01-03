@@ -6,7 +6,7 @@ void fillMatrixFromFile(int *(*matrix), char *fileName){
     char *ptrTemp = NULL;
     char *pointFileContents = NULL;
     int lineCount = 0;
-    pointFileContents = (char *)malloc(50+ sizeof(char));
+    pointFileContents = (char *)malloc(50* sizeof(char));
     int i;
     for(i = 0 ; !feof(fp);i++){
       fscanf(fp,"%c",(pointFileContents +i));
@@ -28,7 +28,7 @@ void fillMatrixFromFile(int *(*matrix), char *fileName){
         k = 0;
         while(pointFileContents[charCount] != '\n'){
           if(pointFileContents[charCount] != ','){
-                matrix[j][k] = ((matrix[j][k])*10) + (pointFileContents[charCount]-48);
+                *(*(matrix+j)+k) = (*(*(matrix+j)+k) * 10) + (pointFileContents[charCount]-48);
             }else{
                 k = k +1;
             }
@@ -41,6 +41,6 @@ void fillMatrixFromFile(int *(*matrix), char *fileName){
 void fill3DMatrix(int ***matrix, int **fileContents, int nMaxContainers){
     int j = 1;
     for(int i = 0; i < nMaxContainers; i++){
-        matrix[fileContents[i][j]][fileContents[i][j+1]][fileContents[i][j+2]] = fileContents[i][0];
+        *(*(*(matrix+*(*(fileContents+i)+j))+*(*(fileContents+i)+j+1))+ *(*(fileContents+i)+j+2)) = *(*(fileContents+i));
     }
 }
