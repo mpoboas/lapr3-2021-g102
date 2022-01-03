@@ -12,7 +12,7 @@ int x = 0;
 int y = 0;
 int z = 0;
 
-int **matrixFromFile(char *fileDirectory, int shipCapacity){
+int **matrixFromFile(char *fileDirectory, int shipCapacity){//creates 2d matrix considering ship capacity and sends that array to be filled in  fillMatrixFromFile
     int numberOfParams = 4;
     int *p = calloc(shipCapacity * numberOfParams, sizeof(int));
     int *(*matrixPointer) = malloc(shipCapacity * sizeof(int *));
@@ -23,13 +23,13 @@ int **matrixFromFile(char *fileDirectory, int shipCapacity){
     return matrixPointer;
 }
 
-void fillCargoManifestMatrix(int ***matrix, char *file, int shipCapacity){
+void fillCargoManifestMatrix(int ***matrix, char *file, int shipCapacity){//sends 3d array to be filled with data stored in 2d array, then frees the space ocupied by 2d array
     int **pointContentsFile = matrixFromFile(file, shipCapacity);
     fill3DMatrix(matrix, pointContentsFile, shipCapacity);
     free(pointContentsFile);
 }
 
-int ***allocateArray(int x, int y, int z){
+int ***allocateArray(int x, int y, int z){//alocates 3d array size considering the ships max capacity and measurements
     int ***matrix = (int ***)malloc(x * sizeof(int **));
     for (int i = 0; i < x; i++){
         *(matrix+i) = (int **)malloc(y * sizeof(int *));

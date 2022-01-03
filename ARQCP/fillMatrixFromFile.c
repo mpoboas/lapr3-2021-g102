@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-void fillMatrixFromFile(int *(*matrix), char *fileName){
+void fillMatrixFromFile(int *(*matrix), char *fileName){//method to get data from file into 2d array
     FILE *fp;
     fp = fopen(fileName, "r");
     char *ptrTemp = NULL;
     char *pointFileContents = NULL;
-    int lineCount = 0;
+    int lineCount = 0;//counts number of regists from file
     pointFileContents = (char *)malloc(50* sizeof(char));
     int i;
     for(i = 0 ; !feof(fp);i++){
@@ -38,7 +38,7 @@ void fillMatrixFromFile(int *(*matrix), char *fileName){
         j = j +1;
     }
 }
-void fill3DMatrix(int ***matrix, int **fileContents, int nMaxContainers){
+void fill3DMatrix(int ***matrix, int **fileContents, int nMaxContainers){//transformas 2d array with data from a file into a 3d matrix
     int j = 1;
     for(int i = 0; i < nMaxContainers; i++){
         *(*(*(matrix+*(*(fileContents+i)+j))+*(*(fileContents+i)+j+1))+ *(*(fileContents+i)+j+2)) = *(*(fileContents+i));
