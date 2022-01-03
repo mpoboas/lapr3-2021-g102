@@ -91,9 +91,9 @@ BEGIN
     -- Exceptions declaration
     EXCEPTION
         WHEN ex_container_not_valid THEN
-            raise_application_error(-20000, 'The specified container does not exist.');
+            raise_application_error(-20001, 'The specified container does not exist.');
             RETURN NULL;
         WHEN ex_container_not_leased THEN
-            raise_application_error(-20000, 'The specified container is not leased by the specified client.');
+            raise_application_error(-20002, 'The specified container is not leased by the specified client.');
             RETURN NULL;
 END;
