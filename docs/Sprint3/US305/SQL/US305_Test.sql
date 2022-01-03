@@ -14,7 +14,7 @@ p_id_container VARCHAR(11);
 c_route SYS_REFCURSOR;
 BEGIN
     p_username_client := 'joaoteixeira08';
-    p_id_container := 'LPRU1628240';
+    p_id_container := 'LPRU7664786'; -- (e.g. LPRU1628240 / LPRU5977032 / LPRU7664786)
     
     dbms_output.put_line('Client username: ' || p_username_client);
     dbms_output.put_line('Container ID: ' || p_id_container || chr(10));
@@ -28,9 +28,7 @@ BEGIN
             DBMS_OUTPUT.PUT_LINE('Container is on board of a ' || v_mean_of_transport
             || ' in the middle of the ocean. The expected date and time of arrival at the port ' || v_id_port_warehouse_arrival 
             || ' is ' || v_estimated_arrival_date);
-        ELSIF v_id_port_warehouse_departure = v_id_port_warehouse_arrival THEN
-            DBMS_OUTPUT.PUT_LINE('Container was shipped in the PortWarehouse ' || v_departure_name || ' at ' || v_departure_date);
-        ELSE
+        ELSIF v_id_port_warehouse_departure <> v_id_port_warehouse_arrival THEN
             DBMS_OUTPUT.PUT_LINE('Departure PortWarehouse ID: '|| v_id_port_warehouse_departure ||' | '
                             || 'Arrival PortWarehouse ID: ' ||  v_id_port_warehouse_arrival ||' | '
                             || 'Date and time of departure: ' || v_departure_date ||' | '
