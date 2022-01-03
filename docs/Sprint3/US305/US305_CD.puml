@@ -9,11 +9,11 @@ class ContainerRouteUI {
 }
 
 class GetClientContainerRouteController {
-getClientContainerRoute(databaseConnection, clientId, containerId)
+getClientContainerRoute(databaseConnection, clientUsername, containerId)
 }
 
 class ContainerDB {
-getClientContainerRoute(databaseConnection, clientId, containerId)
+getClientContainerRoute(databaseConnection, clientUsername, containerId)
 }
 
 class ConnectionFactory{

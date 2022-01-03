@@ -53,9 +53,12 @@ public class App {
         this.authFacade.addUserWithRole("Ship Chief Electric Engineer", "shipchiefelectricengineer@lei.sem3.pt", "123456", Constants.U_ROLE_SHIP_CHIEF_ELECTRIC_ENGINEER);
         this.authFacade.addUserWithRole("Project Manager", "projectmanager@lei.sem3.pt", "123456", Constants.U_ROLE_PROJECT_MANAGER);
 
-        this.authFacade.addUserWithRole("João Teixeira", "joaoteixeira@lei.sem3.pt", "123456", Constants.U_ROLE_CLIENT);
-        this.authFacade.addUserWithRole("Luís Figo", "luisfigo@lei.sem3.pt", "123456", Constants.U_ROLE_CLIENT);
-        this.authFacade.addUserWithRole("João Silva", "joaosilva@lei.sem3.pt", "123456", Constants.U_ROLE_CLIENT);
+        // Clients
+        this.authFacade.addUserWithRole("joaoteixeira08", "joaoteixeira08@lei.sem3.pt", "123456", Constants.U_ROLE_CLIENT);
+        this.authFacade.addUserWithRole("luisfigo07", "luisfigo07@lei.sem3.pt", "123456", Constants.U_ROLE_CLIENT);
+
+        // Port Manager
+        this.authFacade.addUserWithRole("joaosilva12", "joaosilva12@lei.sem3.pt", "123456", Constants.U_ROLE_PORT_MANAGER);
     }
 
     // Extracted from https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2

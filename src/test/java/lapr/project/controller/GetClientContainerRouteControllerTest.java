@@ -16,14 +16,16 @@ class GetClientContainerRouteControllerTest {
     DatabaseConnection databaseConnection = mock(DatabaseConnection.class);
     ContainerStore containerStore = mock(ContainerStore.class);
     Company company = App.getInstance().getCompany();
+    AuthController authController = new AuthController();
 
     @Test
     void getClientContainerRoute() {
         try {
+            authController.doLogin("client@lei.sem3.pt", "123456");
             this.company.setContainerStore(this.containerStore);
-            when(this.containerStore.getClientContainerRoute(this.databaseConnection, 5, "pass")).thenReturn("Pass");
+            when(this.containerStore.getClientContainerRoute(this.databaseConnection, "Client", "pass")).thenReturn("Pass");
 
-            assertEquals("Pass", this.getClientContainerRouteController.getClientContainerRoute(this.databaseConnection, 5, "pass"));
+            assertEquals("Pass", this.getClientContainerRouteController.getClientContainerRoute(this.databaseConnection, "Client", "pass"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

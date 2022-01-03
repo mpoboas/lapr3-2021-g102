@@ -2,6 +2,7 @@ package lapr.project.controller;
 
 import lapr.project.data.DatabaseConnection;
 import lapr.project.model.Company;
+import lapr.project.utils.Constants;
 
 import java.sql.SQLException;
 
@@ -36,11 +37,13 @@ public class GetClientContainerRouteController {
      * Gets the route of a specified container, leased by a specified client.
      *
      * @param databaseConnection the database connection
-     * @param clientId the client´s identifier
+     * @param clientUsername the client´s username
      * @param containerId the container´s identifier
      * @return the container´s route
      */
-    public String getClientContainerRoute(DatabaseConnection databaseConnection, int clientId, String containerId) throws SQLException {
-        return this.company.getContainerStore().getClientContainerRoute(databaseConnection, clientId, containerId);
+    public String getClientContainerRoute(DatabaseConnection databaseConnection, String clientUsername, String containerId) throws SQLException {
+        if (this.app.getCurrentUserSession().isLoggedInWithRole(Constants.U_ROLE_CLIENT)) {
+            return this.company.getContainerStore().getClientContainerRoute(databaseConnection, clientUsername, containerId);
+        } else throw new IllegalStateException("Not authorized.");
     }
 }

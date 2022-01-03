@@ -135,21 +135,21 @@ public class ContainerStore implements Persistable {
      * Gets the route of a specified container, leased by a specified client.
      *
      * @param databaseConnection the database connection
-     * @param clientId           the client´s identifier
+     * @param clientUsername           the client´s username
      * @param containerId        the container´s identifier
      * @return the container´s route
      */
-    public String getClientContainerRoute(DatabaseConnection databaseConnection, int clientId, String containerId) throws SQLException {
+    public String getClientContainerRoute(DatabaseConnection databaseConnection, String clientUsername, String containerId) throws SQLException {
         Connection connection = databaseConnection.getConnection();
 
         try (CallableStatement callableStatement = connection.prepareCall("{? = call fnc_get_client_container_route(?, ?)}")) {
-            callableStatement.setInt(2, clientId);
+            callableStatement.setString(2, clientUsername);
             callableStatement.setString(3, containerId);
             callableStatement.registerOutParameter(1, Types.REF_CURSOR);
             callableStatement.execute();
             ResultSet resultSet = (ResultSet) callableStatement.getObject(1);
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("Container with the identifier ").append(containerId).append(", leased by the client with the identifier ").append(clientId).append(":\n\n");
+            stringBuilder.append("Container with the identifier ").append(containerId).append(", leased by the client ").append(clientUsername).append(":\n\n");
             int count = 0;
             while (resultSet.next()) {
                 if (resultSet.getTimestamp(6) == null) {

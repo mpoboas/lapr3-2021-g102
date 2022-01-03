@@ -9,17 +9,17 @@ v_departure_date TIMESTAMP;
 v_arrival_date TIMESTAMP;
 v_estimated_arrival_date TIMESTAMP;
 v_mean_of_transport VARCHAR(50);
-p_id_client INTEGER;
+p_username_client VARCHAR(50);
 p_id_container VARCHAR(11);
 c_route SYS_REFCURSOR;
 BEGIN
-    p_id_client := 3;
+    p_username_client := 'joaoteixeira08';
     p_id_container := 'LPRU1628240';
     
-    dbms_output.put_line('Client ID: ' || p_id_client);
+    dbms_output.put_line('Client username: ' || p_username_client);
     dbms_output.put_line('Container ID: ' || p_id_container || chr(10));
     
-    c_route := fnc_get_client_container_route(p_id_client, p_id_container);
+    c_route := fnc_get_client_container_route(p_username_client, p_id_container);
     LOOP
         FETCH c_route INTO v_id_port_warehouse_departure, v_id_port_warehouse_arrival, v_departure_name, v_arrival_name, v_departure_date, v_arrival_date, v_estimated_arrival_date, v_mean_of_transport;
         EXIT WHEN c_route%NOTFOUND;

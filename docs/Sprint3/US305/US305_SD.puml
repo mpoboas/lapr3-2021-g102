@@ -30,16 +30,16 @@ deactivate DB
 deactivate DC
 deactivate CF
 
-UI -> CTRL : getClientContainerRoute(databaseConnection, clientId, containerId)
+UI -> CTRL : getClientContainerRoute(databaseConnection, clientUsername, containerId)
 activate CTRL
-CTRL -> CONTAINERDB : getClientContainerRoute(databaseConnection, clientId, containerId)
+CTRL -> CONTAINERDB : getClientContainerRoute(databaseConnection, clientUsername, containerId)
 activate CONTAINERDB
 
 CONTAINERDB -> DC : connection = getConnection()
 activate DC
 deactivate DC
 
-CONTAINERDB -> DB : fnc_get_client_container_route(clientId, containerId)
+CONTAINERDB -> DB : fnc_get_client_container_route(clientUsername, containerId)
 activate DB
 deactivate DB
 CONTAINERDB --> CTRL : result

@@ -1,5 +1,6 @@
 package Demos;
 
+import lapr.project.controller.App;
 import lapr.project.controller.AuthController;
 import lapr.project.controller.GetClientContainerRouteController;
 import lapr.project.data.ConnectionFactory;
@@ -15,18 +16,24 @@ public class US305Demo {
 
     public static void main(String[] args) throws IOException, SQLException {
         DatabaseConnection databaseConnection = ConnectionFactory.getInstance().getDatabaseConnection();
-        System.out.println("Enter email: ");
+        System.out.println("Enter email: (e.g. joaoteixeira08@lei.sem3.pt)");
         String email = scan.next();
         System.out.println("Enter password: ");
         String password = scan.next();
         AuthController authController = new AuthController();
+
         if (!authController.doLogin(email, password)) System.out.println("Invalid Login Credentials.");
         else {
-            System.out.println("Enter your client identification number (e.g. 3): ");
-            int clientId = scan.nextInt();
-            System.out.println("Enter the container identification code (e.g. LPRU1628240 / LPRU5977032 / LPRU7664786): ");
-            String containerId = scan.next();
-            System.out.println(getClientContainerRouteController.getClientContainerRoute(databaseConnection, clientId, containerId));
+            String res;
+            do  {
+                System.out.println("Enter the container identification code (e.g. LPRU1628240 / LPRU5977032 / LPRU7664786): ");
+                String containerId = scan.next();
+                System.out.println(getClientContainerRouteController.getClientContainerRoute(databaseConnection, App.getInstance().getCurrentUserSession().getUserName(), containerId));
+
+                System.out.println("Do you want to know the route of any other container? (y/n)");
+                res = scan.next();
+                System.out.println();
+            } while (res.equals("y"));
         }
     }
 }

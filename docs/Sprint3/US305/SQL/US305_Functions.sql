@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION fnc_get_client_container_route(p_id_client INTEGER, p_id_container VARCHAR) RETURN SYS_REFCURSOR
+CREATE OR REPLACE FUNCTION fnc_get_client_container_route(p_username_client VARCHAR, p_id_container VARCHAR) RETURN SYS_REFCURSOR
 IS
 v_current_timestamp TIMESTAMP;
 v_id_cargo_manifest_load INTEGER;
@@ -19,8 +19,8 @@ BEGIN
 
     -- Check if the container is leased by the specified client
     SELECT COUNT(*) INTO v_container_is_leased
-    FROM Container, Client, Leasing
-    WHERE Container.idContainer = p_id_container AND Container.idContainer = Leasing.idContainer AND Leasing.idClient = Client.idClient AND Client.idClient = p_id_client;
+    FROM Container, Client, Leasing, SystemUser
+    WHERE Container.idContainer = p_id_container AND Container.idContainer = Leasing.idContainer AND Leasing.idClient = Client.idClient AND Client.idUser = SystemUser.idUser AND SystemUser.username = p_username_client;
 
     -- If the container is not valid or it´s not leased by the client, an exception is raised 
     IF v_container_is_valid = 0 THEN
@@ -35,10 +35,10 @@ BEGIN
         -- Loading cargo manifest id that contains the container
         SELECT subQuery.idCargoManifest INTO v_id_cargo_manifest_load
         FROM (SELECT CargoManifest.idCargoManifest, CargoManifest.elaborationDate - Leasing.leasingDate AS difference
-            FROM CargoManifest, ManifestContainer, Container, Leasing, Client
+            FROM CargoManifest, ManifestContainer, Container, Leasing, Client, SystemUser
             WHERE CargoManifest.idCargoManifestType = 1 
             AND CargoManifest.idCargoManifest = ManifestContainer.idCargoManifest AND Container.idContainer = ManifestContainer.idContainer AND Container.idContainer = Leasing.idContainer
-            AND Container.idContainer = p_id_container AND Leasing.idClient = Client.idClient AND Client.idClient = p_id_client
+            AND Container.idContainer = p_id_container AND Leasing.idClient = Client.idClient AND Client.idUser = SystemUser.idUser AND SystemUser.username = p_username_client
             AND CargoManifest.elaborationDate >= Leasing.leasingDate
             ORDER BY difference) subQuery
         WHERE ROWNUM = 1;
