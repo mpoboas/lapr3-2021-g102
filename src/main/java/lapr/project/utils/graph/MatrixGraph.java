@@ -240,6 +240,16 @@ public class MatrixGraph<V,E> extends CommonGraph<V,E> {
         }
     }
 
+    /**
+     * Returns the edge matrix.
+     *
+     * @return the edge matrix
+     */
+    public Edge<V, E>[][] getEdgeMatrix() {
+        return this.edgeMatrix;
+    }
+
+
     @Override
     public boolean removeEdge(V vOrig, V vDest) {
         int vOrigKey = key(vOrig);
