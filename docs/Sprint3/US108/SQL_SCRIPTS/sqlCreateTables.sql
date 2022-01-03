@@ -4,16 +4,24 @@ CREATE TABLE Person (
     birthDate DATE
 );
 
-CREATE TABLE UserRole (
+CREATE TABLE SystemRole (
     idUserRole INTEGER PRIMARY KEY,
     designation VARCHAR(100)
 );
 
 CREATE TABLE SystemUser (
     idUser INTEGER PRIMARY KEY,
+    username VARCHAR(50) UNIQUE,
+    email VARCHAR(100) UNIQUE
+);
+
+CREATE TABLE SystemUserRole (
+    idUser INTEGER,
     idUserRole INTEGER
 );
-ALTER TABLE SystemUser ADD CONSTRAINT fk_SystemUserRole FOREIGN KEY (idUserRole) REFERENCES UserRole(idUserRole);
+ALTER TABLE SystemUserRole ADD CONSTRAINT pk_SystemUserRole PRIMARY KEY (idUser, idUserRole);
+ALTER TABLE SystemUserRole ADD CONSTRAINT fk_SystemUser FOREIGN KEY (idUser) REFERENCES SystemUser(idUser);
+ALTER TABLE SystemUserRole ADD CONSTRAINT fk_SystemRole FOREIGN KEY (idUserRole) REFERENCES SystemRole(idUserRole);
 
 CREATE TABLE Occupation (
     idOccupation INTEGER PRIMARY KEY,
@@ -24,16 +32,29 @@ CREATE TABLE Occupation (
 CREATE TABLE Employee (
     idEmployee INTEGER PRIMARY KEY,
     idPerson INTEGER,
-    idOccupation INTEGER,
     idUser INTEGER
 );
 ALTER TABLE Employee ADD CONSTRAINT fk_EmployeePerson FOREIGN KEY (idPerson) REFERENCES Person(idPerson);
-ALTER TABLE Employee ADD CONSTRAINT fk_EmployeeOccupation FOREIGN KEY (idOccupation) REFERENCES Occupation(idOccupation);
 ALTER TABLE Employee ADD CONSTRAINT fk_EmployeeUser FOREIGN KEY (idUser) REFERENCES SystemUser(idUser);
 
-CREATE TABLE Vehicle (
-    idVehicle INTEGER PRIMARY KEY
+CREATE TABLE EmployeeOccupation (
+    idEmployee INTEGER,
+    idOccupation INTEGER
 );
+ALTER TABLE EmployeeOccupation ADD CONSTRAINT pk_EmployeeOccupation PRIMARY KEY (idEmployee, idOccupation);
+ALTER TABLE EmployeeOccupation ADD CONSTRAINT fk_EmployeeOccupationEmployee FOREIGN KEY (idEmployee) REFERENCES Employee(idEmployee);
+ALTER TABLE EmployeeOccupation ADD CONSTRAINT fk_EmployeeOccupationOccupation FOREIGN KEY (idOccupation) REFERENCES Occupation(idOccupation);
+
+CREATE TABLE VehicleType (
+    idVehicleType INTEGER PRIMARY KEY,
+    designation VARCHAR(50)
+);
+
+CREATE TABLE Vehicle (
+    idVehicle INTEGER PRIMARY KEY,
+    idVehicleType INTEGER
+);
+ALTER TABLE Vehicle ADD CONSTRAINT fk_VehicleType FOREIGN KEY(idVehicletype) REFERENCES VehicleType(idVehicleType);
 
 CREATE TABLE VesselType (
     idVesselType INTEGER PRIMARY KEY,
@@ -93,19 +114,19 @@ ALTER TABLE ContainerCertificate ADD CONSTRAINT fk_Container FOREIGN KEY (idCont
 ALTER TABLE ContainerCertificate ADD CONSTRAINT fk_Certificate FOREIGN KEY (idCertificate) REFERENCES Certificate(idCertificate);
 
 CREATE TABLE Client (
-    idUser INTEGER PRIMARY KEY,
-    idPerson INTEGER
+    idClient INTEGER PRIMARY KEY,
+    idUser INTEGER
 );
+ALTER TABLE Client ADD CONSTRAINT fk_ClientPerson FOREIGN KEY (idClient) REFERENCES Person(idPerson);
 ALTER TABLE Client ADD CONSTRAINT fk_ClientUser FOREIGN KEY (idUser) REFERENCES SystemUser(idUser);
-ALTER TABLE Client ADD CONSTRAINT fk_ClientPerson FOREIGN KEY (idPerson) REFERENCES Person(idPerson);
 
 CREATE TABLE Leasing (
-    idUser INTEGER,
+    idClient INTEGER,
     idContainer VARCHAR(11),
     leasingDate TIMESTAMP
 );
-ALTER TABLE Leasing ADD CONSTRAINT pk_Leasing PRIMARY KEY(idUser, idContainer, leasingDate);
-ALTER TABLE Leasing ADD CONSTRAINT fk_LeasingUser FOREIGN KEY (idUser) REFERENCES Client(idUser);
+ALTER TABLE Leasing ADD CONSTRAINT pk_Leasing PRIMARY KEY(idClient, idContainer, leasingDate);
+ALTER TABLE Leasing ADD CONSTRAINT fk_LeasingClient FOREIGN KEY (idClient) REFERENCES Client(idClient);
 ALTER TABLE Leasing ADD CONSTRAINT fk_LeasingContainer FOREIGN KEY (idContainer) REFERENCES Container(idContainer);
 
 CREATE TABLE Position (
@@ -280,5 +301,4 @@ CREATE TABLE AuditTrail (
     dateTime TIMESTAMP,
     operationType VARCHAR(50)
 );
-ALTER TABLE AuditTrail ADD CONSTRAINT fk_AuditTrailManifestContainer FOREIGN KEY (idCargoManifest, idContainer) REFERENCES ManifestContainer(idCargoManifest, idContainer);
 ALTER TABLE AuditTrail ADD CONSTRAINT fk_AuditTrailUser FOREIGN KEY (idUser) REFERENCES SystemUser(idUser);
