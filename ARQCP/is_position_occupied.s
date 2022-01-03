@@ -5,9 +5,9 @@
     .global z
     
 .section .text
-    .global is_position_filled
+    .global is_position_occupied
 
-    is_position_filled:
+    is_position_occupied:
         movq matrix(%rip), %rdi # copies the address of matrix to %rdi
         movl x(%rip), %esi # copies x value to %rbx
         movl y(%rip), %ecx # copies y value to %rcx
@@ -18,12 +18,12 @@
         movl (%rdi, %rdx, 4), %eax # matrix[x][y][z] value
 
         cmp $0, %eax # compares %eax with 0
-        je is_not_filled # if %eax is equal to 0, the container position is not filled
+        je is_not_occupied # if matrix[x][y][z] is equal to 0, the position is not occupied
 
-        movb $1, %al # copies the value 1 to %al
+        movb $1, %al # otherwise, the position is occupied. Copies the value 1 to %al
         jmp end
 
-    is_not_filled:
+    is_not_occupied:
         movb $0, %al # copies the value 0 to %al
         jmp end
 

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "fillMatrixFromFile.h"
 #include "totalnumber.h"
-#include "is_position_filled.h"
+#include "is_position_occupied.h"
 
 int ***matrix;
 int shipCapacityX;
@@ -54,15 +54,13 @@ void create3DArray(){
     printf("File?\n");
     scanf("%s", pointFile);
     fillCargoManifestMatrix(matrix, pointFile, shipCapacityX * shipCapacityY * shipCapacityZ);
-
 }
 
 int main(void){
     create3DArray();
 
-
-    int is_filled = is_position_filled();
-    printf("Is position filled: %d\n", is_filled);
+    int is_occupied = is_position_occupied();
+    printf("Is position occupied: %d\n", is_occupied);
 
     long res = number_occupied_free();
     long *ptr = &res;
