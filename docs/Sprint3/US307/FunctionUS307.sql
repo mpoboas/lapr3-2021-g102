@@ -43,6 +43,6 @@ BEGIN
     v_totalContainers := v_unloadedContainers - v_loadedContainers;
     v_availableCapacity := v_capacity - v_totalContainers;
 
-    IF (v_containersComingIn > v_availableCapacity) THEN RAISE_APPLICATION_ERROR(-20307,'Cargo Manifest '|| :new.IDCARGOMANIFESTUNLOAD || ' exceeds the ' || v_warehouseName || '''s available capacity (' || v_availableCapacity || '/' || v_capacity || ')');
+    IF (v_containersComingIn > v_availableCapacity) THEN RAISE_APPLICATION_ERROR(-20307,'Cargo Manifest '|| :new.IDCARGOMANIFESTUNLOAD || ' exceeds the ' || v_warehouseName || '''s available capacity (' || v_availableCapacity || '/' || v_capacity || ') | Containers coming in: ' || v_containersComingIn);
     END IF;
 END;

@@ -45,12 +45,12 @@ BEGIN
     -- Containers coming in from the cargo manifest (aka containers being loaded into the ship)
     SELECT COUNT(*) INTO v_containersComingIn
     FROM MANIFESTCONTAINER, CARGOMANIFEST
-    WHERE MANIFESTCONTAINER.IDCARGOMANIFEST = :new.IDCARGOMANIFESTLOAD;
+    WHERE MANIFESTCONTAINER.IDCARGOMANIFEST = :new.IDCARGOMANIFESTLOAD AND CARGOMANIFEST.IDCARGOMANIFEST = :new.IDCARGOMANIFESTLOAD;
 
     v_containersOnBoard := v_loadedContainers - v_unloadedContainers;
     v_availableCapacity := v_capacity - v_containersOnBoard;
 
-    IF (v_containersComingIn > v_availableCapacity) THEN RAISE_APPLICATION_ERROR(-20308,'Cargo Manifest '|| :new.IDCARGOMANIFESTLOAD || ' exceeds the ' || v_shipName || '''s available capacity (' || v_availableCapacity || '/' || v_capacity || ')');
+    IF (v_containersComingIn > v_availableCapacity) THEN RAISE_APPLICATION_ERROR(-20308,'Cargo Manifest '|| :new.IDCARGOMANIFESTLOAD || ' exceeds the ' || v_shipName || '''s available capacity (' || v_availableCapacity || '/' || v_capacity || ') | Containers coming in: ' || v_containersComingIn);
     END IF;
 
     EXCEPTION
