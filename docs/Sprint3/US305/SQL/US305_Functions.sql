@@ -35,10 +35,11 @@ BEGIN
         -- Loading cargo manifest id that contains the container
         SELECT subQuery.idCargoManifest INTO v_id_cargo_manifest_load
         FROM (SELECT CargoManifest.idCargoManifest, CargoManifest.elaborationDate - Leasing.leasingDate AS difference
-            FROM CargoManifest, ManifestContainer, Container, Leasing, Client, SystemUser
+            FROM CargoManifest, ManifestContainer, Container, Leasing, Client, SystemUser, SystemUserRole, SystemRole
             WHERE CargoManifest.idCargoManifestType = 1 
             AND CargoManifest.idCargoManifest = ManifestContainer.idCargoManifest AND Container.idContainer = ManifestContainer.idContainer AND Container.idContainer = Leasing.idContainer
             AND Container.idContainer = p_id_container AND Leasing.idClient = Client.idClient AND Client.idUser = SystemUser.idUser AND SystemUser.username = p_username_client
+            AND SystemUserRole.idUser = SystemUser.idUser AND SystemUserRole.idUserRole = SystemRole.idUserRole AND SystemUserRole.idUserRole = 1
             AND CargoManifest.elaborationDate >= Leasing.leasingDate
             ORDER BY difference) subQuery
         WHERE ROWNUM = 1;

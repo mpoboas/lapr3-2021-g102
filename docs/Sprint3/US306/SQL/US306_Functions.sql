@@ -21,9 +21,10 @@ BEGIN
                 AND ArrivalDeparture.idTrip = Trip.idTrip AND Trip.idVehicle = Vehicle.idVehicle AND ArrivalDeparture.arrivalDate IS NOT NULL
                 AND PortWarehouse.idPortWarehouseType = 'W' AND ArrivalDeparture.idPortWarehouseArrival = PortWarehouse.idPortWarehouse))
                 AS Number_containers_left
-        FROM PortWarehouse, PortWarehouseStaff, Employee, PortWarehouseConnection, Occupation, EmployeeOccupation, PortWarehouseType, SystemUser
+        FROM PortWarehouse, PortWarehouseStaff, Employee, PortWarehouseConnection, Occupation, EmployeeOccupation, PortWarehouseType, SystemUser, SystemUserRole, SystemRole
         WHERE PortWarehouseType.idPortWarehouseType = PortWarehouse.idPortWarehouseType AND PortWarehouseType.idPortWarehouseType = 'W'
         AND PortWarehouseStaff.idEmployee = Employee.idEmployee AND SystemUser.idUser = Employee.idUser AND SystemUser.username = p_port_manager_username
+        AND SystemUserRole.idUser = SystemUser.idUser AND SystemUserRole.idUserRole = SystemRole.idUserRole AND SystemUserRole.idUserRole = 2
         AND Employee.idEmployee = EmployeeOccupation.idEmployee AND EmployeeOccupation.idOccupation = Occupation.idOccupation AND Occupation.idOccupation = 1
         AND PortWarehouseConnection.idPort = PortWarehouseStaff.idPortWarehouse AND PortWarehouse.idPortWarehouse = PortWarehouseConnection.idWarehouse);
         

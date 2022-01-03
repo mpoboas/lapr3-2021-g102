@@ -1,0 +1,449 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
+-FreightNetwork freightNetwork
++getShipStore()
++getPortStore()
++getFreightNetwork()
+}
+
+class ShipStore{
+-ShipTree shipTreeMMSI
+-ShipTree shipTreeIMO
+-ShipTree shipTreeCallSign
++createShip(MMSI,vesselName,IMO,callSign,vesselType,\nlength,width,draft,cargo,transceiverClass)
++validadeShip(ship)
++addShip(ship)
++getShipByMMSI(MMSI)
++getShipByIMO(IMO)
++getShipByCallSign(callSign)
++getCloseCoordsShips()
+}
+
+class PortStore{
+-PortTree portTree
++createPort(idPort, name,continent,country,longitude,latitude)
++buildPortTree(List<Port> listOfPorts)
+}
+
+class Ship{
+-MMSI
+-vesselName
+-IMO
+-callSign
+-vesselType
+-length
+-width
+-draft
+-cargo
+-transceiverClass
++Ship(MMSI,vesselName,IMO,callSign,vesselType,\nlength,width,draft,cargo,transceiverClass)
++addAISMessage(aisMessage)
++getAISAtDate(date)
++getAISBetweenTwoDates(date1, date2)
++getVesselName()
++getStartBDT()
++getEndBDT()
++getTotalTimeInSea()
++numberOfMovements()
++getMaxSOG()
++getMeanSOG()
++getMaxCOG()
++getMeanCOG()
++getDepartureLatitude()
++getDepartureLongitude()
++getArrivalLatitude()
++getArrivalLongitude()
++getTotalDistance()
++deltaDistance()
+}
+
+class PortWarehouse{
+-idPort
+-name
+-continent
+-country
+-latitude
+-longitude
++create(idPort, name,continent,country,,longitude,latitude)
+}
+
+class ShipTree{
+-Comparator<Ship> comp;
++ShipTree(type);
++insert(ship);
++remove(ship);
++find(ship);
++equals(Object);
++getShipByMMSI(MMSI);
++getShipByIMO(IMO);
++getShipByCallSign(callSign);
++getCloseCoordsShips();
+}
+class AISMessage{
+-dateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
++AISMessage(dateTime,latitude,longitude,\nSOG,COG,heading)
+}
+
+class PortTree{
++buildKDTree(List<Port> listOfPorts)
+}
+class KDTree{
+-2DNode root
++KDTree()
++size()
++height()
++insert(element,x,y)
++findNearestNeighbour(x,y)
+}
+class ImportShipsUI {
+}
+
+
+class ImportShipsController {
++importShipsData(file)
++saveShipsData()
+}
+
+class Import{
+-List<Ship> importedShips
++importShipsData(file)
++saveShipsData()
+}
+
+class ImportPorts{
+-List<Port> importedPorts
++importPortsData(file)
+-createPort(idPort, name,continent,country,longitude,latitude)
++savePortsData()
+}
+
+class SearchShipController {
++getShipByMMSI(MMSI)
++getShipByIMO(IMO)
++getShipByCallSign(callSign)
+}
+
+class SearchShipUI {
+}
+class ShipDTO{
++ShipDTO()
+}
+class ShipMapper{
++toDTO(Ship ship)
+}
+class AISMessageDTO{
++AISMessageDTO()
+}
+class AISMessageMapper{
++toDTO(AISMessage msg)
+}
+
+class PositionalMessagesController {
++getPositionalMessagesAtDate(ship, date)
++getPositionalMessagesBetweenTwoDates(ship, date1, date2)
+
+}
+class PositionalMessagesUI {
+}
+
+class SummaryController {
++getShip(code)
++getShipSummary(Ship ship)
+
+}
+class SummaryUI {
+}
+
+class ListShipController
+class Conversions
+
+class CloseShipInfoUI {
+}
+
+class PairOfShipsController {
++getCloseCoordsShips()
+}
+
+class ImportPortsController {
++importShipsData(file)
++saveShipsData()
+}
+
+class ImportPortsUI {
+}
+
+class BuildFreightNetworkUI {
+}
+
+class BuildFreightNetworkController {
++getFreightNetwork()
++buildFreightNetworkFromDatabase()
+}
+
+class CountryStoreDB {
++getCountriesFromDatabase(databaseConnection)
+}
+
+class BorderStoreDB {
++getAllBorders(databaseConnection)
+}
+
+class PortStoreDB {
++getPortsFromDatabase(databaseConnection)
+}
+
+class SeadistStoreDB {
++getAllSeadists(databaseConnection)
+}
+
+class FreightNetwork {
+-MatrixGraph<Place, Double> graph
++buildFreightNetworkFromDatabase(databaseConnection, n)
++buildFreightNetworkFromGivenData(countries, borders, ports, seadists, n)
++shortestPath(Place vOrig, Place vDest)
++getGraph()
+}
+
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+class Place{
+-continent
+-country
+-latitude
+-longitude
+}
+class Country{
+-capital
+-alpha2Code
+-alpha3Code
+-population
+}
+class Border{
+-country1
+-country2
+}
+class SeaDist{
+-countryFrom
+-portFrom
+-portTo
+-countryTo
+-seadist
+}
+
+class ColorMapUI {
+}
+
+class ColorMapController {
++graphToAdjList(MatrixGraph<Place, Double> graph)
++colorMap(int numVert, ArrayList<ArrayList<Integer>> adj)
+}
+
+class ClosenessPlacesController{
+-int nPlaces;
+-Place p;
+-ClossenessPlaces clossenessPlaces;
+-List<Pair<Place,Double>> placesList;
+-generateList()
+-getClosestPlacesList()
+}
+class ClossenessPlaces{
+-int nPlaces;
+-FreightNetwork network;
+-List<Pair<Place,Double>> closenessPlaces;
+-Place p;
+-getClossenessPlacesNetwork()
+-getClosestPlaces()
+}
+
+class AlgorithmsNetwork{
+-shortestPathDijkstra(Graph<Place, Double> g, Place vOrig, Comparator<Double> ce,\n BinaryOperator<Double> sum, Double zero, boolean[] visited, Place [] pathKeys, Double [] dist)
+-shortestPath(Graph<Place, Double> g, Place vOrig, Place vDest,Comparator<Double> ce,\n BinaryOperator<Double> sum, Double zero, LinkedList<Place> shortPath)
+}
+
+class GetAuditTrailsUI{}
+class GetAuditTrailsController{
++getAuditTrails(containerID,cargoManifestID)
+}
+class AuditTrailDB{
++getAuditTrails(containerID,cargoManifestID)
+}
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
++getDatabaseConnection()
+}
+
+class ContainerRouteUI {
+}
+
+class GetClientContainerRouteController {
+getClientContainerRoute(databaseConnection, clientUsername, containerId)
+}
+
+class ContainerDB {
+getClientContainerRoute(databaseConnection, clientUsername, containerId)
+}
+class WarehouseOccupancyRateUI {
+}
+
+class GetWarehouseOccupancyRateController {
++getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerUsername)
+}
+
+class PortWarehouseDB {
+getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerUsername)
+}
+
+class PortOcupancyRateReport{
+-idPort
+-year
+-month
+-setDailyRate()
+-setMaxAndMin()
+-toString()
+}
+class PortReportController{
+-idPort
+-year
+-month
+-getDataAndGenerateReport()
+-doReport()
+-getReport()
+
+}
+class PortMonthlyReport{
+-getDataFromDB()
+-getPortFromDB(int idPort)
+-fillArrayWithDBdata()
+}
+
+class GetContainerSituationUI{}
+class GetContainerSituationController{
++getSituation(containerID,user)
+}
+class App{
+-company
+-authfacade
++getInstance()
++getCurrentUserSession()
+}
+class ContainerSituationDB{
++getSituation(containerID,user)
+}
+
+
+ImportShipsUI ..> ImportShipsController
+ImportShipsController ..> Import
+
+SearchShipUI ..> SearchShipController
+SearchShipController ..> Company
+SearchShipController ..> ShipMapper
+SearchShipController .> ShipStore
+
+PositionalMessagesUI ..> PositionalMessagesController
+PositionalMessagesController ..> Company
+
+SummaryUI ..> SummaryController
+SummaryController ..> Company
+
+Conversions -- ListShipController: Makes unit convertions >
+ListShipController -- ShipStore : gets list of ships >
+
+CloseShipInfoUI ..> PairOfShipsController
+PairOfShipsController ..> Company
+PairOfShipsController ..> ShipStore
+
+Import --> Company
+Import -> ShipStore
+Company -> ShipStore : uses >
+ShipStore "1" ->  "*" Ship: stores >
+Ship "1" -> "*" AISMessage: contains >
+ShipStore -> ShipTree
+
+
+ShipMapper ..> ShipDTO
+ShipMapper .> AISMessageMapper
+ShipMapper ..> Ship
+AISMessageMapper ..> AISMessage
+AISMessageMapper .> AISMessageDTO
+
+
+ImportPortsUI ..> ImportPortsController
+ImportPortsController ..> ImportPorts
+ImportPorts --> Company
+ImportPorts -> PortStore
+Company -> PortStore : uses >
+PortStore "1" ->  "*" PortWarehouse: stores >
+
+
+PortTree --> PortStore
+PortTree -|> KDTree
+
+BuildFreightNetworkUI ..> BuildFreightNetworkController
+BuildFreightNetworkController ..> FreightNetwork
+BuildFreightNetworkController ..> Company
+Company -> FreightNetwork : has
+FreightNetwork ..> CountryStoreDB
+FreightNetwork .> BorderStoreDB
+FreightNetwork .> PortStoreDB
+FreightNetwork .> SeadistStoreDB
+CountryStoreDB .> DatabaseConnection
+BorderStoreDB .> DatabaseConnection
+PortStoreDB .> DatabaseConnection
+SeadistStoreDB .> DatabaseConnection
+FreightNetwork - Place
+ Place -|> Country
+ Place --|> PortWarehouse
+
+ Country -> Border
+ Country -> SeaDist
+ PortWarehouse -> SeaDist
+
+ColorMapUI ..> ColorMapController
+ColorMapController ..> FreightNetwork
+ColorMapController ..> Company
+
+ClosenessPlacesController -- Company : get Freight Network from >
+ClosenessPlacesController -- ClossenessPlaces : Interacts with >
+ClossenessPlaces -- FreightNetwork : Requests the shortest paths from the required place to the rest
+FreightNetwork -- AlgorithmsNetwork : uses algorithms from >
+
+GetAuditTrailsUI .. GetAuditTrailsController
+GetAuditTrailsController .. AuditTrailDB
+AuditTrailDB -- ConnectionFactory : requests connection to database to obtain data >
+ConnectionFactory -- DatabaseConnection : fabricate a >
+
+ContainerRouteUI ..> GetClientContainerRouteController
+GetClientContainerRouteController ..> ContainerDB
+GetClientContainerRouteController ..> Company
+ContainerDB ..> ConnectionFactory
+
+WarehouseOccupancyRateUI ..> GetWarehouseOccupancyRateController
+GetWarehouseOccupancyRateController ..> PortWarehouseDB
+GetWarehouseOccupancyRateController ..> Company
+PortWarehouseDB ..> ConnectionFactory
+
+PortReportController -> PortMonthlyReport : Requests data from database >
+PortReportController -> PortOcupancyRateReport : GIves data to generate report >
+PortOcupancyRateReport -> PortWarehouse : Accesses >
+
+GetContainerSituationUI .. GetContainerSituationController
+GetContainerSituationController .. ContainerSituationDB
+GetContainerSituationController .. App
+ContainerSituationDB - ConnectionFactory : requests connection to database to obtain data >
+
+@enduml

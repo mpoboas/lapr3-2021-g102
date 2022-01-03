@@ -43,6 +43,34 @@ class DatabaseConnection{
 +registerError(SQLException error)
 +getLastError()
 }
+class Place{
+-continent
+-country
+-latitude
+-longitude
+}
+class Port{
+-id
+-name
+-capacity
+}
+class Country{
+-capital
+-alpha2Code
+-alpha3Code
+-population
+}
+class Border{
+-country1
+-country2
+}
+class SeaDist{
+-countryFrom
+-portFrom
+-portTo
+-countryTo
+-seadist
+}
 
 BuildFreightNetworkUI ..> BuildFreightNetworkController
 BuildFreightNetworkController ..> FreightNetwork
@@ -56,5 +84,12 @@ CountryStoreDB ..> DatabaseConnection
 BorderStoreDB ..> DatabaseConnection
 PortStoreDB ..> DatabaseConnection
 SeadistStoreDB ..> DatabaseConnection
+FreightNetwork - Place
+Place -|> Country
+Place --|> Port
+
+Country -> Border
+Country -> SeaDist
+Port -> SeaDist
 
 @enduml

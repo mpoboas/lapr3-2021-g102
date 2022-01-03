@@ -23,3 +23,6 @@ America,PE,401,MataraniWarehouse1,-17.111,-72.1,400
 America,PE,402,MataraniWarehouse2,-17.112,-72.1,400
 America,PE,403,MataraniWarehouse3,-17.113,-72.1,400
 America,PE,404,MataraniWarehouse4,-17.114,-72.1,400
+Europe,PT,501,TestWarehouse1,-66.666,66.666,5
+Europe,PT,502,TestWarehouse2,-66.663,66.666,10
+Europe,PT,503,TestWarehouse3,-66.662,66.666,15
