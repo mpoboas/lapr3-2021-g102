@@ -19,29 +19,39 @@ public class ColorMapController {
      */
     private final Company company;
 
+    /**
+     * The freight network
+     */
     private FreightNetwork fn = new FreightNetwork();
 
+    /**
+     * Constructor receiving the company as a parameter
+     * @param comp the company
+     */
     public ColorMapController(Company comp) {
         this.company = comp;
     }
 
+    /**
+     * Constructor receiving no parameters
+     */
     public ColorMapController() {
         this(App.getInstance().getCompany());
         app = App.getInstance();
         fn = company.getFreightNetwork();
     }
 
-    public static ArrayList<ArrayList<Integer>> graphToAdjList(MatrixGraph<Place, Double> graph)
-    {
+    /**
+     * Converts a graph to an adjacency list
+     * @param graph the graph
+     * @return      the adjacency list
+     */
+    public static ArrayList<ArrayList<Integer>> graphToAdjList(MatrixGraph<Place, Double> graph) {
         Edge<Place, Double>[][] edgeMatrix = graph.getEdgeMatrix();
-        // no of vertices
         int l = edgeMatrix[0].length;
         ArrayList<ArrayList<Integer>> adjListArray
                 = new ArrayList<ArrayList<Integer>>(l);
 
-        // Create a new list for each
-        // vertex such that adjacent
-        // nodes can be stored
         for (int i = 0; i < l; i++) {
             adjListArray.add(new ArrayList<Integer>());
         }
@@ -54,51 +64,44 @@ public class ColorMapController {
                 }
             }
         }
-
         return adjListArray;
     }
 
+    /**
+     * Colors an adjacency list using a greedy algorithm
+     * @param numVert   number of vertices
+     * @param adj       adjacency list
+     * @return          array with the vertices and their colors
+     */
     public static int[] colorMap(int numVert, ArrayList<ArrayList<Integer>> adj) {
         int[] result = new int[numVert];
-
-        // Initialize all vertices as unassigned
         Arrays.fill(result, -1);
-
-        // Assign the first color to first vertex
         result[0] = 0;
-
-        // A temporary array to store the available colors. False
-        // value of available[current] would mean that the color current is
-        // assigned to one of its adjacent vertices
         boolean[] available = new boolean[numVert];
-
-        // Initially, all colors are available
         Arrays.fill(available, true);
 
-        // Assign colors to remaining V-1 vertices
         for (int u = 1; u < numVert; u++) {
-            // Process all adjacent vertices and flag their colors
-            // as unavailable
             for (int i : adj.get(u)) {
                 if (result[i] != -1)
                     available[result[i]] = false;
             }
 
-            // Find the first available color
             int current;
             for (current = 0; current < numVert; current++) {
                 if (available[current])
                     break;
             }
-
-            result[u] = current; // Assign the found color
-
-            // Reset the values back to true for the next iteration
+            result[u] = current;
             Arrays.fill(available, true);
         }
         return result;
     }
-    
+
+    /**
+     * Prints a colored map
+     * @param numVert   number of vertices
+     * @param result    map
+     */
     public static void printColoredMap(int numVert, int[] result) {
         for (int u = 0; u < numVert; u++)
             System.out.println("Vertex " + u + " --->  Color " + result[u]);
