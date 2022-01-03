@@ -1,7 +1,7 @@
 -- Test US306 - Gets the occupancy rate and an estimate of the containers leaving the warehouse during the next 30 days of every warehouse that a port manager has access to.
 SET SERVEROUTPUT ON;
 DECLARE
-    p_id_port_manager INTEGER;
+    p_port_manager_username VARCHAR(50);
     v_id_warehouse INTEGER;
     v_warehouse_occupancy_rate NUMBER;
     v_warehouse_name VARCHAR(100);
@@ -12,9 +12,9 @@ DECLARE
     c_containers_leaving_next_30_days SYS_REFCURSOR;
     c_each_warehouse_occupancy_rate SYS_REFCURSOR;
 BEGIN
-    p_id_port_manager := 1;
+    p_port_manager_username := 'joaosilva12';
         
-    c_each_warehouse_occupancy_rate := fnc_get_each_warehouse_occupancy_rate(p_id_port_manager);
+    c_each_warehouse_occupancy_rate := fnc_get_each_warehouse_occupancy_rate(p_port_manager_username);
     LOOP
     FETCH c_each_warehouse_occupancy_rate INTO v_id_warehouse, v_warehouse_name, v_warehouse_occupancy_rate;
     EXIT WHEN c_each_warehouse_occupancy_rate%NOTFOUND;

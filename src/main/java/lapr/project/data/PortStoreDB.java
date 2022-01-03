@@ -265,15 +265,15 @@ public class PortStoreDB implements Persistable {
     /**
      * Gets the occupancy rate and an estimate of the containers leaving the warehouse during the next 30 days of every warehouse that a port manager has access to.
      *
-     * @param databaseConnection the database connection
-     * @param portManagerId      the port manager´s identifier
+     * @param databaseConnection  the database connection
+     * @param portManagerUsername the port manager´s username
      * @return the container´s route
      */
-    public String getEachWarehouseOccupancyRateAndContainersLeaving30Days(DatabaseConnection databaseConnection, int portManagerId) throws SQLException {
+    public String getEachWarehouseOccupancyRateAndContainersLeaving30Days(DatabaseConnection databaseConnection, String portManagerUsername) throws SQLException {
         Connection connection = databaseConnection.getConnection();
 
         try (CallableStatement callableStatementOccupancyRate = connection.prepareCall("{? = call fnc_get_each_warehouse_occupancy_rate(?)}")) {
-            callableStatementOccupancyRate.setInt(2, portManagerId);
+            callableStatementOccupancyRate.setString(2, portManagerUsername);
             callableStatementOccupancyRate.registerOutParameter(1, Types.REF_CURSOR);
             callableStatementOccupancyRate.execute();
             ResultSet resultSetOccupancyRate = (ResultSet) callableStatementOccupancyRate.getObject(1);

@@ -16,14 +16,16 @@ class GetWarehouseOccupancyRateControllerTest {
     DatabaseConnection databaseConnection = mock(DatabaseConnection.class);
     PortStoreDB portStoreDB = mock(PortStoreDB.class);
     Company company = App.getInstance().getCompany();
+    AuthController authController = new AuthController();
 
     @Test
     void getEachWarehouseOccupancyRateAndContainersLeaving30Days() {
         try {
+            authController.doLogin("portmanager@lei.sem3.pt", "123456");
             this.company.setPortStoreDB(this.portStoreDB);
-            when(this.portStoreDB.getEachWarehouseOccupancyRateAndContainersLeaving30Days(this.databaseConnection, 1)).thenReturn("Pass");
+            when(this.portStoreDB.getEachWarehouseOccupancyRateAndContainersLeaving30Days(this.databaseConnection, "portmanager")).thenReturn("Pass");
 
-            assertEquals("Pass", this.getWarehouseOccupancyRateController.getEachWarehouseOccupancyRateAndContainersLeaving30Days(this.databaseConnection, 1));
+            assertEquals("Pass", this.getWarehouseOccupancyRateController.getEachWarehouseOccupancyRateAndContainersLeaving30Days(this.databaseConnection, "portmanager"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

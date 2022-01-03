@@ -25,16 +25,16 @@ deactivate DB
 deactivate DC
 deactivate CF
 
-UI -> CTRL : getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerId)
+UI -> CTRL : getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerUsername)
 activate CTRL
-CTRL -> PORTWDB : getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerId)
+CTRL -> PORTWDB : getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerUsername)
 activate PORTWDB
 
 PORTWDB -> CF : connection = getConnection()
 activate CF
 deactivate CF
 
-PORTWDB -> DB : fnc_get_each_warehouse_occupancy_rate_next_30_days(portManagerId)
+PORTWDB -> DB : fnc_get_each_warehouse_occupancy_rate_next_30_days(portManagerUsername)
 activate DB
 deactivate DB
 loop for each warehouse

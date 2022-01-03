@@ -9,13 +9,11 @@ class WarehouseOccupancyRateUI {
 }
 
 class GetWarehouseOccupancyRateController {
-+getWarehouseOccupancyRate(int daysCount)
-+getContainersLeaving(int daysCount)
++getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerUsername)
 }
 
 class PortWarehouseDB {
-+getWarehouseOccupancyRate(int daysCount)
-+getContainersLeaving(int daysCount)
+getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerUsername)
 }
 
 class ConnectionFactory{
