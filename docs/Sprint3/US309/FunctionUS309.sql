@@ -1,4 +1,4 @@
-create or replace TRIGGER trg_available_ship_warning
+CREATE OR REPLACE TRIGGER trg_available_ship_warning
 BEFORE INSERT OR UPDATE
     ON user_g102.arrivalDeparture
     FOR EACH ROW
