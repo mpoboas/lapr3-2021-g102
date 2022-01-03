@@ -1,8 +1,8 @@
-create or replace FUNCTION fnc_get_container_status(p_containerID container.idcontainer%TYPE, p_clientName VARCHAR2) Return varchar 
+create or replace FUNCTION fnc_get_container_status(p_containerID container.idcontainer%TYPE, p_clientUserName VARCHAR2) Return varchar
 AS
     v_cargo_manifest cargomanifest.idcargomanifest%TYPE;
     v_cargo_m_type cargomanifest.idcargomanifesttype%type;
-    
+
     v_count INTEGER;
     v_client INTEGER;
     v_client_id_leased INTEGER;
@@ -38,11 +38,11 @@ BEGIN
        raise ex_container_not_leased;
     END IF;
 
-
-
-    Select idperson into v_client
-    from person
-    where name = p_clientName;
+    Select idclient into v_client
+    from client
+    where iduser = (Select iduser
+                    from systemuser
+                    where username = p_clientUserName);
 
     Select p.idclient into v_client_id_leased
     from leasing p
@@ -95,12 +95,12 @@ BEGIN
 
 EXCEPTION
         WHEN ex_container_not_found then
-            return 'WARNING! error code: 10 | Container ID: ' || p_containerID;
-            --raise_application_error(-20010, 'Invalid Container id');
+            --return 'WARNING! error code: 10 | Container ID: ' || p_containerID;
+            raise_application_error(-20010, 'WARNING! error code: 10 | Container ID: ' || p_containerID || ' | Invalid Container id');
         When ex_container_not_leased then
             raise_application_error(-20009, 'Container is not leased at the moment');
         When ex_container_not_leased_by_client then
-            return 'WARNING! error code: 11 | Container ID: ' || p_containerID;
-            --raise_application_error(-20011, 'Container is not leased by client');
+            --return 'WARNING! error code: 11 | Container ID: ' || p_containerID;
+            raise_application_error(-20011, 'WARNING! error code: 11 | Container ID: ' || p_containerID|| ' | Container is not leased by client');
 
 END;

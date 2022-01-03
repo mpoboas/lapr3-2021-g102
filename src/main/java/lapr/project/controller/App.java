@@ -55,7 +55,7 @@ public class App {
 
         // Clients
         this.authFacade.addUserWithRole("joaoteixeira08", "joaoteixeira08@lei.sem3.pt", "123456", Constants.U_ROLE_CLIENT);
-        this.authFacade.addUserWithRole("luisfigo07", "luisfigo07@lei.sem3.pt", "123456", Constants.U_ROLE_CLIENT);
+        this.authFacade.addUserWithRole("luisFigo07", "luisfigo07@lei.sem3.pt", "123456", Constants.U_ROLE_CLIENT);
 
         // Port Manager
         this.authFacade.addUserWithRole("joaosilva12", "joaosilva12@lei.sem3.pt", "123456", Constants.U_ROLE_PORT_MANAGER);
