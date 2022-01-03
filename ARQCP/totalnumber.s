@@ -8,6 +8,7 @@
     .global number_occupied_free
 
     number_occupied_free:
+        pushq %rbx
         movq matrix(%rip), %rdi # places matrix in rdi
         movq $0, %rax # puts 0 in rax (number of free spaces)
         movq $0, %rsi # puts 0 in rsi (number of occupied spaces)
@@ -51,5 +52,6 @@
     end:
         shlq $32, %rax # moves the value of the 4 least significant bytes to the 4 most significant
         addq %rsi, %rax # adds rsi to rax
+        popq %rbx
         ret
 
