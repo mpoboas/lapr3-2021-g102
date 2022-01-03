@@ -10,6 +10,8 @@ actor "Port Manager" as PWM
 
 actor "Client" as CL
 actor "Ship Captain" as SC
+actor "Port Staff" as PS
+actor "Ship Chief Electrical Engineer" as SCEE
 
 
 usecase "UC101 - Import Ship" as UC1
@@ -36,6 +38,28 @@ usecase "US208 - Occupancy rate of a given ship for a given cargo manifest" as U
 usecase "US209 - Occupancy rate of a given ship at a given moment" as US209
 usecase "US210 - Ships available next monday" as US210
 
+usecase "US301 - Build Freight Network" as US301
+usecase "US302 - Colour the map using as few colours as possible" as US302
+usecase "US303 - Get which places are closest to all other places" as US303
+usecase "US304 - Create audit trails for a given container of a given cargo manifest" as US304
+usecase "US305 - Get the route of a specific container" as US305
+usecase "US306 - Get the occupancy rate of each warehouse\n and an estimate of containers leaving in the next 30 days" as US306
+usecase "US307 - Get a warning whenever a cargo manifest exceeds\n a warehouse's available capacity" as US307
+usecase "US308 - Ensure that the number of containers in a manifest\n does not exceed the ship´s available capacity" as US308
+usecase "US309 - Ensure that a cargo manifest can't be added to a ship\n that's occupied, at a certain date" as US309
+usecase "US310 - Build a map of occupation of the existing resources\n in a port during a given month" as US310
+usecase "US312 - Current situation of a specific container" as US312
+usecase "US313 - Given a Cargo Manifest, fill a statically reserved matrix\n in memory with each container's ID in its respective place." as US313
+usecase "US314 - Know the total number of free/occupied slots\n in the transport vehicle." as US314
+usecase "US315 - Given a position in the transport vehicle, \nknow if a container is there or not." as US315
+usecase "US316 - Know the total number of occupied slots\n, given a set of positions." as US316
+usecase "US317 - Know what set of materials to use in a container,\n to operate at temperatures of 7°C" as US317
+usecase "US318 - Know what set of materials to use in a container,\n to operate at temperatures of -5 °C" as US318
+usecase "US319 - Know the thermal resistance, for each operating\n temperature, of each container" as US319
+usecase "US320 - Present in a summary document the choice of materials" as US320
+
+
+
 TM --> (UC1)
 TM --> (UC2)
 TM --> (UC3)
@@ -60,5 +84,37 @@ SC --> (US207)
 SC --> (US208)
 SC --> (US209)
 TM --> (US210)
+
+TM --> (US301)
+TM --> (US302)
+TM --> (US303)
+
+SC --> (US304)
+
+CL --> (US305)
+
+PM --> (US306)
+PM --> (US307)
+
+TM --> (US308)
+TM --> (US309)
+
+PM --> (US310)
+
+CL --> (US312)
+
+PS --> (US313)
+PS --> (US314)
+PS --> (US315)
+PS --> (US316)
+
+SCEE --> (US317)
+SCEE --> (US318)
+SCEE --> (US319)
+SCEE --> (US320)
+
+
+
+
 
 @enduml
