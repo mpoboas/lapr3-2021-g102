@@ -12,12 +12,12 @@ ex_container_not_valid EXCEPTION;
 ex_container_not_leased EXCEPTION;
 BEGIN
 
-    -- Check if the container is valid
+    -- Checks if the container is valid
     SELECT COUNT(*) INTO v_container_is_valid
     FROM Container
     WHERE Container.idContainer = p_id_container;
 
-    -- Check if the container is leased by the specified client
+    -- Checks if the container is leased by the specified client
     SELECT COUNT(*) INTO v_container_is_leased
     FROM Container, Client, Leasing, SystemUser
     WHERE Container.idContainer = p_id_container AND Container.idContainer = Leasing.idContainer AND Leasing.idClient = Client.idClient AND Client.idUser = SystemUser.idUser AND SystemUser.username = p_username_client;
@@ -32,7 +32,7 @@ BEGIN
         SELECT CURRENT_TIMESTAMP INTO v_current_timestamp
         FROM dual;
 
-        -- Loading cargo manifest id that contains the container
+        -- Selects the Loading cargo manifest id that contains the container
         SELECT subQuery.idCargoManifest INTO v_id_cargo_manifest_load
         FROM (SELECT CargoManifest.idCargoManifest, CargoManifest.elaborationDate - Leasing.leasingDate AS difference
             FROM CargoManifest, ManifestContainer, Container, Leasing, Client, SystemUser, SystemUserRole, SystemRole
