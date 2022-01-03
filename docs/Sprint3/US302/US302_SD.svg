@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="558px" preserveAspectRatio="none" style="width:929px;height:558px;background:#FFFFFF;" version="1.1" viewBox="0 0 929 558" width="929px" zoomAndPan="magnify"><defs><filter height="300%" id="f1xacciarpbdqk" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#f1xacciarpbdqk)" height="363.8125" style="stroke:#A80036;stroke-width:1.0;" width="10" x="53" y="99.6094"/><rect fill="#FFFFFF" filter="url(#f1xacciarpbdqk)" height="332.4609" style="stroke:#A80036;stroke-width:1.0;" width="10" x="411" y="121.9609"/><rect fill="#FFFFFF" filter="url(#f1xacciarpbdqk)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="633" y="273.0156"/><rect fill="#FFFFFF" filter="url(#f1xacciarpbdqk)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="633" y="333.3672"/><rect fill="#FFFFFF" filter="url(#f1xacciarpbdqk)" height="30.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="633" y="393.7188"/><rect fill="#FFFFFF" filter="url(#f1xacciarpbdqk)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="752.5" y="152.3125"/><rect fill="#FFFFFF" filter="url(#f1xacciarpbdqk)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="858" y="212.6641"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="58" x2="58" y1="89.6094" y2="472.4219"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="415.5" x2="415.5" y1="89.6094" y2="472.4219"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="637.5" x2="637.5" y1="89.6094" y2="472.4219"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="757.5" x2="757.5" y1="89.6094" y2="472.4219"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="862.5" x2="862.5" y1="89.6094" y2="472.4219"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="5" y="86.5332">Traffic Manager</text><ellipse cx="58" cy="15" fill="#FEFECE" filter="url(#f1xacciarpbdqk)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M58,23 L58,50 M45,31 L71,31 M58,50 L45,65 M58,50 L71,65 " fill="none" filter="url(#f1xacciarpbdqk)" style="stroke:#A80036;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="5" y="485.9551">Traffic Manager</text><ellipse cx="58" cy="499.0313" fill="#FEFECE" filter="url(#f1xacciarpbdqk)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M58,507.0313 L58,534.0313 M45,515.0313 L71,515.0313 M58,534.0313 L45,549.0313 M58,534.0313 L71,549.0313 " fill="none" filter="url(#f1xacciarpbdqk)" style="stroke:#A80036;stroke-width:2.0;"/><rect fill="#FEFECE" filter="url(#f1xacciarpbdqk)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="87" x="370.5" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="377.5" y="74.5332">ColorMapUI</text><rect fill="#FEFECE" filter="url(#f1xacciarpbdqk)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="87" x="370.5" y="471.4219"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="377.5" y="492.9551">ColorMapUI</text><rect fill="#FEFECE" filter="url(#f1xacciarpbdqk)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="137" x="567.5" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="574.5" y="74.5332">ColorMapController</text><rect fill="#FEFECE" filter="url(#f1xacciarpbdqk)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="137" x="567.5" y="471.4219"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="574.5" y="492.9551">ColorMapController</text><rect fill="#FEFECE" filter="url(#f1xacciarpbdqk)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="74" x="718.5" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="725.5" y="74.5332">Company</text><rect fill="#FEFECE" filter="url(#f1xacciarpbdqk)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="74" x="718.5" y="471.4219"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="725.5" y="492.9551">Company</text><rect fill="#FEFECE" filter="url(#f1xacciarpbdqk)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="109" x="806.5" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="813.5" y="74.5332">FreightNetwork</text><rect fill="#FEFECE" filter="url(#f1xacciarpbdqk)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="109" x="806.5" y="471.4219"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="813.5" y="492.9551">FreightNetwork</text><rect fill="#FFFFFF" filter="url(#f1xacciarpbdqk)" height="363.8125" style="stroke:#A80036;stroke-width:1.0;" width="10" x="53" y="99.6094"/><rect fill="#FFFFFF" filter="url(#f1xacciarpbdqk)" height="332.4609" style="stroke:#A80036;stroke-width:1.0;" width="10" x="411" y="121.9609"/><rect fill="#FFFFFF" filter="url(#f1xacciarpbdqk)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="633" y="273.0156"/><rect fill="#FFFFFF" filter="url(#f1xacciarpbdqk)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="633" y="333.3672"/><rect fill="#FFFFFF" filter="url(#f1xacciarpbdqk)" height="30.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="633" y="393.7188"/><rect fill="#FFFFFF" filter="url(#f1xacciarpbdqk)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="752.5" y="152.3125"/><rect fill="#FFFFFF" filter="url(#f1xacciarpbdqk)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="858" y="212.6641"/><polygon fill="#A80036" points="399,117.9609,409,121.9609,399,125.9609,403,121.9609" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="63" x2="405" y1="121.9609" y2="121.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="70" y="117.1045">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="311" x="81" y="117.1045">asks to color the map using as few colors as possible</text><polygon fill="#A80036" points="740.5,148.3125,750.5,152.3125,740.5,156.3125,744.5,152.3125" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="421" x2="746.5" y1="152.3125" y2="152.3125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="428" y="147.4561">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="211" x="439" y="147.4561">freightNetwork = getFreightNetwork()</text><polygon fill="#A80036" points="846,208.6641,856,212.6641,846,216.6641,850,212.6641" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="421" x2="852" y1="212.6641" y2="212.6641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="428" y="207.8076">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="195" x="439" y="207.8076">graph = freightNetwork.getGraph()</text><polygon fill="#A80036" points="621,269.0156,631,273.0156,621,277.0156,625,273.0156" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="421" x2="627" y1="273.0156" y2="273.0156"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="428" y="268.1592">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="180" x="439" y="268.1592">adjList = graphToAdjList(graph)</text><polygon fill="#A80036" points="621,329.3672,631,333.3672,621,337.3672,625,333.3672" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="421" x2="627" y1="333.3672" y2="333.3672"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="428" y="328.5107">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="182" x="439" y="328.5107">coloredMap = colorMap(adjList)</text><polygon fill="#A80036" points="621,389.7188,631,393.7188,621,397.7188,625,393.7188" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="421" x2="627" y1="393.7188" y2="393.7188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="428" y="388.8623">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="169" x="439" y="388.8623">printColoredMap(coloredMap)</text><polygon fill="#A80036" points="432,420.0703,422,424.0703,432,428.0703,428,424.0703" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="426" x2="637" y1="424.0703" y2="424.0703"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="438" y="419.2139">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="0" x="453" y="419.2139"/><polygon fill="#A80036" points="74,450.4219,64,454.4219,74,458.4219,70,454.4219" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="68" x2="415" y1="454.4219" y2="454.4219"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="80" y="449.5654">8</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="313" x="91" y="449.5654">shows the map colored and the number of colors used</text><!--MD5=[c6bd55b9122b165448caae1d3c25cb36]
+@startuml
+autonumber
+'hide footbox
+
+actor "Traffic Manager" as TF
+
+participant "ColorMapUI" as UI
+participant "ColorMapController" as CTRL
+participant Company as COMP
+participant "FreightNetwork" as FN
+
+
+
+activate TF
+TF -> UI : asks to color the map using as few colors as possible
+
+activate UI
+
+UI -> COMP : freightNetwork = getFreightNetwork()
+activate COMP
+deactivate COMP
+UI -> FN : graph = freightNetwork.getGraph()
+activate FN
+deactivate FN
+
+UI -> CTRL : adjList = graphToAdjList(graph)
+activate CTRL
+deactivate CTRL
+
+UI -> CTRL : coloredMap = colorMap(adjList)
+activate CTRL
+deactivate CTRL
+
+UI -> CTRL : printColoredMap(coloredMap)
+activate CTRL
+CTRL - -> UI
+deactivate CTRL
+UI - -> TF : shows the map colored and the number of colors used
+deactivate UI
+@enduml
+
+@startuml
+autonumber
+
+actor "Traffic Manager" as TF
+
+participant "ColorMapUI" as UI
+participant "ColorMapController" as CTRL
+participant Company as COMP
+participant "FreightNetwork" as FN
+
+
+
+activate TF
+TF -> UI : asks to color the map using as few colors as possible
+
+activate UI
+
+UI -> COMP : freightNetwork = getFreightNetwork()
+activate COMP
+deactivate COMP
+UI -> FN : graph = freightNetwork.getGraph()
+activate FN
+deactivate FN
+
+UI -> CTRL : adjList = graphToAdjList(graph)
+activate CTRL
+deactivate CTRL
+
+UI -> CTRL : coloredMap = colorMap(adjList)
+activate CTRL
+deactivate CTRL
+
+UI -> CTRL : printColoredMap(coloredMap)
+activate CTRL
+CTRL - -> UI
+deactivate CTRL
+UI - -> TF : shows the map colored and the number of colors used
+deactivate UI
+@enduml
+
+PlantUML version 1.2021.11(Sat Oct 02 14:26:11 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

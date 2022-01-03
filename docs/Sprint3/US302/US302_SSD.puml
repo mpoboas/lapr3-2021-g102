@@ -1,0 +1,12 @@
+@startuml
+autonumber
+actor "Traffic\n Manager" as TM
+
+activate TM
+TM -> ":System" : asks to color the map using as few colors as possible
+activate ":System"
+":System" --> TM : shows the map colored and the number of colors used
+deactivate ":System"
+deactivate TM
+
+@enduml
