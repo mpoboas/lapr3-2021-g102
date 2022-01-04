@@ -1,4 +1,4 @@
-mainmain: fillMatrixFromFile.o totalnumber.o is_position_occupied.o total_occupied.o main.o
+main: fillMatrixFromFile.o totalnumber.o is_position_occupied.o total_occupied.o main.o
 	gcc fillMatrixFromFile.o totalnumber.o is_position_occupied.o total_occupied.o main.o -o main
 
 fillMatrixFromFile.o: fillMatrixFromFile.c

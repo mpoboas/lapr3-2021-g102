@@ -1,5 +1,4 @@
 .section .data
- 
 	.global x               # coordenadas a serem utilizadas em is_position_filled()
     .global y
     .global z
@@ -11,10 +10,10 @@
     .global total_occupied
 
     total_occupied:
-        
         movq positions(%rip), %rdi
 		movl $0, %ecx
 	# loop para correr positions
+	 
 	my_loop: 
 		# colocar a coordenada atual (positions[i]) em x, y e z
 		movl (%rdi), %eax
@@ -37,11 +36,8 @@
 		pushq %rdx
 		call is_position_occupied
 		popq %rdx
-		
 		addl %eax, %edx
     
-		
     end:
         movl %edx, %eax
         ret
-		

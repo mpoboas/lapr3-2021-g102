@@ -11,6 +11,8 @@ int shipCapacityZ;
 int x = 0;
 int y = 0;
 int z = 0;
+int countPositions;
+int *positions;
 
 int **matrixFromFile(char *fileDirectory, int shipCapacity){
     int numberOfParams = 4;
@@ -66,6 +68,8 @@ int main(void){
     long *ptr = &res;
     int *x = (int *)ptr;
     printf("Occupied: %d || Free: %d\n", *(x + 0), *(x + 1));
+
+
 
     return 0;
 }
