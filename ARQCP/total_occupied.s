@@ -3,41 +3,47 @@
     .global y
     .global z
 	.global positions
+		.comm positions, 8
 	.global countPositions
 	
-    
 .section .text
     .global total_occupied
 
-    total_occupied:
-        movq positions(%rip), %rdi
-		movl $0, %ecx
+total_occupied:
+    movq positions(%rip), %rdi
+	movl $0, %ecx
 	# loop para correr positions
 	 
-	my_loop: 
+my_loop: 
 		# colocar a coordenada atual (positions[i]) em x, y e z
-		movl (%rdi), %eax
-		movl %eax, x(%rip)
-		addq $4, %rdi
-		incl %ecx
-		movl (%rdi), %eax
-		movl %eax, y(%rip)
-		addq $4, %rdi
-		incl %ecx
-		movl (%rdi), %eax
-		movl %eax, z(%rip)
-		addq $4, %rdi
-		incl %ecx
-		jmp isOccupied
-		cmpl countPositions(%rip) ,%ecx
-		je end
+	movl (%rdi), %eax
+	movl %eax, x(%rip)
+	addq $4, %rdi
+	movl (%rdi), %eax
+	movl %eax, y(%rip)
+	addq $4, %rdi
+	movl (%rdi), %eax
+	movl %eax, z(%rip)
+	addq $4, %rdi
+	incl %ecx
+	jmp isOccupied
+
 		
-	isOccupied:
-		pushq %rdx
-		call is_position_occupied
-		popq %rdx
-		addl %eax, %edx
+isOccupied:
+	pushq %rcx
+	pushq %rdi
+	pushq %rdx
+	movq $0, %rax
+	call is_position_occupied
+	popq %rdx
+	popq %rdi
+	popq %rcx
+	movb $0, %ah
+	addw %ax, %dx
+	cmpl countPositions(%rip) ,%ecx
+	je end
+	jmp my_loop
     
-    end:
-        movl %edx, %eax
-        ret
+end:
+    movl %edx, %eax
+    ret

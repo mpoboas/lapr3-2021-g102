@@ -3,6 +3,7 @@
 #include "fillMatrixFromFile.h"
 #include "totalnumber.h"
 #include "is_position_occupied.h"
+#include "total_occupied.h"
 
 int ***matrix;
 int shipCapacityX;
@@ -11,7 +12,7 @@ int shipCapacityZ;
 int x = 0;
 int y = 0;
 int z = 0;
-int countPositions;
+int countPositions ;
 int *positions;
 
 int **matrixFromFile(char *fileDirectory, int shipCapacity){
@@ -68,6 +69,16 @@ int main(void){
     long *ptr = &res;
     int *x = (int *)ptr;
     printf("Occupied: %d || Free: %d\n", *(x + 0), *(x + 1));
+    
+    
+    
+    printf("Number of positions to be tested?\n");
+    scanf("%d",&countPositions);
+    int p []={1,1,1,4,6,5,0,0,0};
+    positions = p;
+    int i = total_occupied();
+
+    printf("Result%d\n",i);
 
 
 
