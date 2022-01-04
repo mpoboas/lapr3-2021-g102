@@ -4,6 +4,7 @@ import lapr.project.data.*;
 import lapr.project.model.*;
 import lapr.project.utils.Conversions;
 import lapr.project.utils.PortTree;
+import lapr.project.utils.graph.Algorithms;
 import lapr.project.utils.graph.AlgorithmsNetwork;
 import lapr.project.utils.graph.MatrixGraph;
 
@@ -163,6 +164,12 @@ public class FreightNetwork {
     public Double shortestPath(Place vOrig, Place vDest){
         LinkedList<Place> shortPath = new LinkedList<>();
         return AlgorithmsNetwork.shortestPath(this.graph, vOrig,vDest,Double::compare,Double::sum, (double) 0,shortPath);
+    }
+
+    public boolean shortestPaths(Place vOrig) {
+        ArrayList<LinkedList<Place>> paths = new ArrayList<>();
+        ArrayList<Double> dists = new ArrayList<>();
+        return AlgorithmsNetwork.shortestPaths(this.graph, vOrig, Double::compare, Double::sum, 0.0, paths, dists);
     }
 
     /**
