@@ -7,9 +7,9 @@
 	.global countPositions
 	
 .section .text
-    .global total_occupied
+    .global totaloccupied
 
-total_occupied:
+totaloccupied:
     movq positions(%rip), %rdi
 	movl $0, %ecx
 	# loop para correr positions

@@ -54,4 +54,3 @@
         addq %rsi, %rax # adds rsi to rax
         popq %rbx
         ret
-
