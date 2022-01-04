@@ -11,13 +11,13 @@
         movq $0, %rsi # initializes %rsi to 0
         movq $0, %rcx # initializes %rcx to 0
         movq $0, %rdx # initializes %rdx to 0
-        movq matrix(%rip), %rdi # copies the address of matrix to %rdi
+        movq matrix(%rip), %rdi # copies matrix to %rdi
         movl x(%rip), %esi # copies x value to %esi
         movl y(%rip), %ecx # copies y value to %ecx
         movl z(%rip), %edx # copies x value to %edx
 
-        movq (%rdi, %rsi, 8), %rdi # copies value of line x to %rdi
-        movq (%rdi, %rcx, 8), %rdi # copies value of line y to %rdi
+        movq (%rdi, %rsi, 8), %rdi # address of line x
+        movq (%rdi, %rcx, 8), %rdi # address of line y
         movl (%rdi, %rdx, 4), %eax # copies matrix[x][y][z] value to %eax
 
         cmp $0, %eax # compares %eax with 0
