@@ -12,6 +12,7 @@
 totaloccupied:
     movq positions(%rip), %rdi
 	movl $0, %ecx
+	movl $0, %edx
 	# loop para correr positions
 	 
 my_loop: 
@@ -39,10 +40,18 @@ isOccupied:
 	popq %rdi
 	popq %rcx
 	movb $0, %ah
-	addw %ax, %dx
+	cmpb $1, %al
+	je incCount
 	cmpl countPositions(%rip) ,%ecx
 	je end
 	jmp my_loop
+
+incCount:
+	incl %edx
+	cmpl countPositions(%rip) ,%ecx
+	je end
+	jmp my_loop
+	
     
 end:
     movl %edx, %eax
