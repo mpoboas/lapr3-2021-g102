@@ -98,15 +98,13 @@ public class PortMonthlyReport {
         YearMonth yearMonthObject = YearMonth.of(year, month);
         int daysInMonth = yearMonthObject.lengthOfMonth();
         String s;
-        String sqlCommand = "SELECT (Select count(*) from MANIFESTCONTAINER where IDCARGOMANIFEST in (select IDCARGOMANIFESTUNLOAD from ARRIVALDEPARTURE where IDPORTWAREHOUSEARRIVAL = ? and ARRIVALDATE < to_timestamp( ? )))-(Select count(*) from MANIFESTCONTAINER where IDCARGOMANIFEST in (select IDCARGOMANIFESTLOAD from ARRIVALDEPARTURE where IDPORTWAREHOUSEARRIVAL = ? and ARRIVALDATE < to_timestamp( ? ) )) as Warehouse_Stock from DUAL";
+        String sqlCommand = "SELECT getOcupancyInDay(?,?) as oc from dual";
         this.dailyOcupiedSpace = new int[daysInMonth];
         for(int i = 0 ; i < dailyOcupiedSpace.length; i++){
             s = year+"-"+month+"-"+(i+1);
             try (PreparedStatement ps = cf.getDatabaseConnection().getConnection().prepareStatement(sqlCommand)){
                 ps.setInt(1,this.port.getid());
                 ps.setString(2,s);
-                ps.setInt(3,this.port.getid());
-                ps.setString(4,s);
                 try(ResultSet rs = ps.executeQuery()){
                     rs.next();
                     this.dailyOcupiedSpace[i]= rs.getInt(1);
