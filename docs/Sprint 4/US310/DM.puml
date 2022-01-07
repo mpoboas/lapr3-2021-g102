@@ -1,0 +1,26 @@
+@startuml
+class Port {
+-idPort
+-name
+-continent
+-country
+}
+class PortWarehouse {
+-idPortW
+-name
+-continent
+-country
+}
+class Container {
+-containerId
+-containerPayload
+-containerTare
+-containerGross
+-ISOcode
+}
+Port "1" -- "1" PortWarehouse : Has a >
+PortWarehouse "1" -- "*" Container : Stores >
+
+
+
+@enduml

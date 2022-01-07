@@ -1,0 +1,169 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+}
+
+class FreightNetwork{
+-graph
+-countries
+-borders
+-seadists
+}
+
+class AISMessage{
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
+
+class Trips{
+-startingPort
+-destination
+-CoordinatesSet
+}
+
+class Truck {
+}
+
+class Container {
+-containerId
+-containerPayload
+-containerTare
+-containerGross
+-ISOcode
+}
+
+class PortWarehouse {
+-idPortW
+-name
+-continent
+-country
+}
+
+class ShipCaptain {
+}
+
+class TrafficManager {
+}
+
+class FleetManager {
+}
+
+class WarehouseStaff {
+}
+
+class WarehouseManager {
+}
+
+class PortManager {
+}
+
+class PortStaff {
+}
+
+class TrafficManager {
+}
+
+class TruckDriver {
+}
+
+class ChiefElectricalEngineer {
+}
+
+class CargoManifest {
+-content
+-elaborationDate
+}
+
+class LoadingCargoManifest {
+}
+
+class UnloadingCargoManifest {
+}
+
+class Coordinates{
+-latitude
+-longitude
+}
+
+class Port {
+-idPort
+-name
+-continent
+-country
+}
+class Country{
+-continent
+-alpha.2.code
+-alpha.3.code
+-country
+-population
+-capital
+-latitude
+-longitude
+}
+class SeaDist{
+-from_country
+-to_port_id
+-from_port
+-to_country
+-to_port_id
+-to_port
+-sea_distance
+}
+
+class Border{
+-country1
+-country2
+}
+
+class Client {
+}
+Port -- SeaDist : Are connected by >
+Country -- SeaDist : Are connected by >
+SeaDist -- FreightNetwork : To the >
+Country - Border
+Country -- PortWarehouse: is located in <
+SeaDist - PortWarehouse
+Port "1" -- "1" Coordinates : Has a set of >
+Port "1" -- "1" PortWarehouse : Has a >
+FleetManager "1" -- "*" Ship : controls >
+TrafficManager "1" -- "1" Ship : controls >
+TrafficManager "1" -- "1" Truck : controls >
+Client "*" -- "*" Container : leases >
+Ship "1" -- "*" Container : carries >
+Ship "1" -- "*" AISMessage : contains >
+AISMessage "1" -- "1" Coordinates : Has a set of >
+Ship "1" -- "1" ShipCaptain : drives <
+Ship "1" -- "1" ChiefElectricalEngineer
+Trips "1" -- "*" Port : between >
+Ship "1" -- "*" Trips : does many >
+Container "*" -- "*" CargoManifest : contains <
+Truck "1" -- "*" Container : carries >
+PortWarehouse "1" -- "*" Container : Stores >
+Truck "1" -- "1" TruckDriver : drives <
+PortWarehouse "1" -- "1" WarehouseManager
+PortWarehouse "1" -- "1" WarehouseStaff
+PortWarehouse "1" -- "1" PortManager
+PortWarehouse "1" -- "1" PortStaff
+LoadingCargoManifest "1" -u- "1" CargoManifest : is a >
+CargoManifest "*" -- "1" PortStaff : makes <
+UnloadingCargoManifest "*" -u- "1" CargoManifest : is a >
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Ship Captain" as SC
+
+activate SC
+SC -> ":System" : asks the audit trails of a given container of a given cargo manifest
+activate ":System"
+":System" --> SC : requests data (container id, cargo manifest id)
+deactivate ":System"
+SC -> ":System" : inserts requested data
+activate ":System"
+":System" --> SC : shows list of audit trails of the inserted container and cargo manifest
+deactivate ":System"
+SC -> ":System" : confirms data
+activate ":System"
+":System" --> SC : shows operation success
+deactivate ":System"
+deactivate SC
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+
+class FreightNetwork{
+-graph
+-countries
+-borders
+-seadists
+}
+
+class SeaDist{
+-from_country
+-to_port_id
+-from_port
+-to_country
+-to_port_id
+-to_port
+-sea_distance
+}
+class Port {
+-idPort
+-name
+-continent
+-country
+}
+class Border{
+-country1
+-country2
+}
+class Country{
+-continent
+-alpha.2.code
+-alpha.3.code
+-country
+-population
+-capital
+-latitude
+-longitude
+}
+class PortWarehouse {
+-idPortW
+-name
+-continent
+-country
+}
+class Coordinates{
+-latitude
+-longitude
+}
+Port -- SeaDist : Are connected by >
+Country -- SeaDist : Are connected by >
+SeaDist -- FreightNetwork : To the >
+Country - Border
+Country -- PortWarehouse: is located in <
+Port "1" -- "1" PortWarehouse : Has a >
+Port "1" -- "1" Coordinates : Has a set of >
+Country "1" -- "1" Coordinates : Has a set of >
+
+
+@enduml

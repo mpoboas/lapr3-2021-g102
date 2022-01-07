@@ -1,0 +1,67 @@
+@startuml
+autonumber
+'hide footbox
+
+actor "Traffic Manager" as TF
+
+participant "BuildFreightNetworkUI" as UI
+participant "BuildFreightNetworkController" as CTRL
+participant Company as COMP
+participant "FreightNetwork" as FN
+participant ConnectionFactory as CF
+participant DatabaseConnection as DC
+database LAPR3_G102 as DB
+participant "CountryStoreDB" as CDB
+participant "BorderStoreDB" as BDB
+participant "PortStoreDB" as PDB
+participant "SeaDistStoreDB" as SDB
+participant "countries\n: List<Country>"
+participant "borders\n: List<Border>"
+participant "ports\n: List<Port>"
+participant "seaDists\n: List<SeaDist>"
+
+
+activate TF
+TF -> UI : asks to import countries, ports, borders and\n seadists to build a freight network
+
+activate UI
+UI -> CF** : create()
+activate CF
+CF -> DC** : create()
+activate DC
+DC --> DB
+activate DB
+deactivate DB
+deactivate DC
+deactivate CF
+
+UI -> CTRL : buildFreightNetworkFromDatabase(databaseConnection, numClosestPorts)
+activate CTRL
+CTRL -> COMP : freightNetwork = getFreightNetwork()
+activate COMP
+deactivate COMP
+CTRL -> FN : buildFreightNetworkFromDatabase(databaseConnection, numClosestPorts)
+activate FN
+FN -> CDB : countries = getCountriesFromDatabase(databaseConnection)
+activate CDB
+deactivate CDB
+FN -> BDB : borders = getBordersFromDatabase(databaseConnection)
+activate BDB
+deactivate BDB
+FN -> PDB : ports = getPortsFromDatabase(databaseConnection)
+activate PDB
+deactivate PDB
+FN -> SDB : seaDists = getSeadistsFromDatabase(databaseConnection)
+activate SDB
+deactivate SDB
+FN -> FN : buildFreightNetworkFromGivenData(countries, borders, ports, seaDists)
+deactivate CTRL
+UI -> CTRL : getFreightNetworkGraph()
+deactivate FN
+activate CTRL
+CTRL --> UI
+deactivate CTRL
+
+UI --> TF : shows the built freight network
+deactivate UI
+@enduml

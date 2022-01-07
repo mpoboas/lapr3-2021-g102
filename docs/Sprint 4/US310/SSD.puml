@@ -1,0 +1,21 @@
+@startuml
+actor "Port Manager" as pm
+participant System as sys
+autonumber
+activate pm
+pm -> sys : Asks for map of port ocupation during a certain month
+activate sys
+sys --> pm : Asks which port and which month
+deactivate sys
+pm -> sys : inserts requested data
+activate sys
+sys --> pm : asks for confirmation
+deactivate sys
+pm -> sys : confirms data
+activate sys
+sys --> pm : shows requested report
+deactivate sys
+deactivate pm
+
+
+@enduml

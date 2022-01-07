@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class CargoManifest {
+-content
+-elaborationDate
+}
+
+class Container {
+-containerId
+-containerPayload
+-containerTare
+-containerGross
+-ISOcode
+}
+
+class PortStaff {
+}
+
+class LoadingCargoManifest {
+}
+
+class UnloadingCargoManifest {
+}
+
+Container "*" -- "*" CargoManifest : contains <
+LoadingCargoManifest "1" -u- "1" CargoManifest : is a >
+CargoManifest "*" -- "1" PortStaff : makes <
+UnloadingCargoManifest "*" -u- "1" CargoManifest : is a >
+@enduml

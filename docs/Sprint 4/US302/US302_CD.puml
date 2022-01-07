@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
+}
+
+class ColorMapUI {
+}
+
+class ColorMapController {
++graphToAdjList(MatrixGraph<Place, Double> graph)
++colorMap(int numVert, ArrayList<ArrayList<Integer>> adj)
+}
+
+class FreightNetwork {
+-MatrixGraph<Place, Double> graph
++getMatrixGraph()
+}
+
+
+ColorMapUI ..> ColorMapController
+ColorMapController ..> FreightNetwork
+ColorMapController ..> Company
+Company -> FreightNetwork : has
+
+@enduml

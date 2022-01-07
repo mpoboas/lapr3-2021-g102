@@ -1,0 +1,12 @@
+@startuml
+autonumber
+actor "Traffic\n Manager" as TM
+
+activate TM
+TM -> ":System" : issues a cargo manifest destined for a ship at a\n certain date
+activate ":System"
+":System" --> TM : shows a warning if the ship is not available at\n the date
+deactivate ":System"
+deactivate TM
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Traffic Manager" as TF
+
+activate TF
+TF -> ":System" : asks to import countries, ports, borders and\n seadists to build a freight network
+activate ":System"
+
+":System" --> TF : shows the built freight network
+deactivate ":System"
+
+
+TF -> ":System" : confirms the data
+activate ":System"
+":System" --> TF : informs operation success
+deactivate ":System"
+
+deactivate TF
+@enduml

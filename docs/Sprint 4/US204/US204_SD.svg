@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="296px" preserveAspectRatio="none" style="width:546px;height:296px;background:#FFFFFF;" version="1.1" viewBox="0 0 546 296" width="546.8px" zoomAndPan="magnify"><defs><filter height="300%" id="fvxkljjhsx2pq" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="0.8000000000000002"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="1.6000000000000003" dy="1.6000000000000003" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="214.7688" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="8.4" y="39.8438"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="12.1406" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="120" y="48.7844"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="157.2656" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="120" y="73.0656"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="12.1406" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="120" y="242.4719"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="132.9844" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="202" y="85.2063"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="108.7031" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="280.8" y="97.3469"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="12" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="355.2" y="109.4875"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="12" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="355.2" y="133.6281"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="12" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="417" y="157.7688"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="12" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="469.8" y="181.9094"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;stroke-dasharray:5.0,5.0;" x1="10.4" x2="10.4" y1="35.8438" y2="261.8125"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;stroke-dasharray:5.0,5.0;" x1="122" x2="122" y1="35.8438" y2="261.8125"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;stroke-dasharray:5.0,5.0;" x1="204" x2="204" y1="35.8438" y2="261.8125"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;stroke-dasharray:5.0,5.0;" x1="282.8" x2="282.8" y1="35.8438" y2="261.8125"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;stroke-dasharray:5.0,5.0;" x1="357.2" x2="357.2" y1="35.8438" y2="261.8125"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;stroke-dasharray:5.0,5.0;" x1="418.8" x2="418.8" y1="35.8438" y2="261.8125"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;stroke-dasharray:5.0,5.0;" x1="471.6" x2="471.6" y1="35.8438" y2="261.8125"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;stroke-dasharray:5.0,5.0;" x1="518.4" x2="518.4" y1="35.8438" y2="261.8125"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="14.4" x="2" y="34.6133">Client</text><ellipse cx="10.4" cy="6" fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" rx="3.2" ry="3.2" style="stroke:#A80036;stroke-width:0.8000000000000002;"/><path d="M10.4,9.2 L10.4,20 M5.2,12.4 L15.6,12.4 M10.4,20 L5.2,26 M10.4,20 L15.6,26 " fill="none" filter="url(#fvxkljjhsx2pq)" style="stroke:#A80036;stroke-width:0.8000000000000002;"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="14.4" x="2" y="267.2258">Client</text><ellipse cx="10.4" cy="272.4563" fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" rx="3.2" ry="3.2" style="stroke:#A80036;stroke-width:0.8000000000000002;"/><path d="M10.4,275.6563 L10.4,286.4563 M5.2,278.8563 L15.6,278.8563 M10.4,286.4563 L5.2,292.4563 M10.4,286.4563 L15.6,292.4563 " fill="none" filter="url(#fvxkljjhsx2pq)" style="stroke:#A80036;stroke-width:0.8000000000000002;"/><rect fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" height="12.6438" style="stroke:#A80036;stroke-width:0.6000000000000001;" width="66.4" x="88" y="21.2"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="60.8" x="90.8" y="29.8133">GetContainerSituationUI</text><rect fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" height="12.6438" style="stroke:#A80036;stroke-width:0.6000000000000001;" width="66.4" x="88" y="261.4125"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="60.8" x="90.8" y="270.0258">GetContainerSituationUI</text><rect fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" height="12.6438" style="stroke:#A80036;stroke-width:0.6000000000000001;" width="86.4" x="160" y="21.2"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="80.8" x="162.8" y="29.8133">GetContainerSituationController</text><rect fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" height="12.6438" style="stroke:#A80036;stroke-width:0.6000000000000001;" width="86.4" x="160" y="261.4125"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="80.8" x="162.8" y="270.0258">GetContainerSituationController</text><rect fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" height="12.6438" style="stroke:#A80036;stroke-width:0.6000000000000001;" width="60" x="252" y="21.2"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="54.4" x="254.8" y="29.8133">ContainerSituationDB</text><rect fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" height="12.6438" style="stroke:#A80036;stroke-width:0.6000000000000001;" width="60" x="252" y="261.4125"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="54.4" x="254.8" y="270.0258">ContainerSituationDB</text><rect fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" height="12.6438" style="stroke:#A80036;stroke-width:0.6000000000000001;" width="53.6" x="329.6" y="21.2"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="48" x="332.4" y="29.8133">ConnectionFactory</text><rect fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" height="12.6438" style="stroke:#A80036;stroke-width:0.6000000000000001;" width="53.6" x="329.6" y="261.4125"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="48" x="332.4" y="270.0258">ConnectionFactory</text><rect fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" height="12.6438" style="stroke:#A80036;stroke-width:0.6000000000000001;" width="58.8" x="388.8" y="21.2"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="53.2" x="391.6" y="29.8133">DatabaseConnection</text><rect fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" height="12.6438" style="stroke:#A80036;stroke-width:0.6000000000000001;" width="58.8" x="388.8" y="261.4125"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="53.2" x="391.6" y="270.0258">DatabaseConnection</text><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="34.8" x="453.2" y="34.6133">LAPR3_G102</text><path d="M464.6,14.4 C464.6,10.4 471.8,10.4 471.8,10.4 C471.8,10.4 479,10.4 479,14.4 L479,24.8 C479,28.8 471.8,28.8 471.8,28.8 C471.8,28.8 464.6,28.8 464.6,24.8 L464.6,14.4 " fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" style="stroke:#000000;stroke-width:0.6000000000000001;"/><path d="M464.6,14.4 C464.6,18.4 471.8,18.4 471.8,18.4 C471.8,18.4 479,18.4 479,14.4 " fill="none" style="stroke:#000000;stroke-width:0.6000000000000001;"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="34.8" x="453.2" y="267.2258">LAPR3_G102</text><path d="M464.6,272.4563 C464.6,268.4563 471.8,268.4563 471.8,268.4563 C471.8,268.4563 479,268.4563 479,272.4563 L479,282.8563 C479,286.8563 471.8,286.8563 471.8,286.8563 C471.8,286.8563 464.6,286.8563 464.6,282.8563 L464.6,272.4563 " fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" style="stroke:#000000;stroke-width:0.6000000000000001;"/><path d="M464.6,272.4563 C464.6,276.4563 471.8,276.4563 471.8,276.4563 C471.8,276.4563 479,276.4563 479,272.4563 " fill="none" style="stroke:#000000;stroke-width:0.6000000000000001;"/><rect fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" height="12.6438" style="stroke:#A80036;stroke-width:0.6000000000000001;" width="46.8" x="494.4" y="21.2"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="41.2" x="497.2" y="29.8133">con: Connection</text><rect fill="#FEFECE" filter="url(#fvxkljjhsx2pq)" height="12.6438" style="stroke:#A80036;stroke-width:0.6000000000000001;" width="46.8" x="494.4" y="261.4125"/><text fill="#000000" font-family="sans-serif" font-size="5.6" lengthAdjust="spacing" textLength="41.2" x="497.2" y="270.0258">con: Connection</text><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="214.7688" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="8.4" y="39.8438"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="12.1406" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="120" y="48.7844"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="157.2656" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="120" y="73.0656"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="12.1406" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="120" y="242.4719"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="132.9844" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="202" y="85.2063"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="108.7031" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="280.8" y="97.3469"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="12" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="355.2" y="109.4875"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="12" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="355.2" y="133.6281"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="12" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="417" y="157.7688"/><rect fill="#FFFFFF" filter="url(#fvxkljjhsx2pq)" height="12" style="stroke:#A80036;stroke-width:0.4000000000000001;" width="4" x="469.8" y="181.9094"/><polygon fill="#A80036" points="115.2,47.1844,119.2,48.7844,115.2,50.3844,116.8,48.7844" style="stroke:#A80036;stroke-width:0.4000000000000001;"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;" x1="12.4" x2="117.6" y1="48.7844" y2="48.7844"/><text fill="#000000" font-family="sans-serif" font-size="5.2" font-weight="bold" lengthAdjust="spacing" textLength="2.8" x="15.2" y="46.8418">1</text><text fill="#000000" font-family="sans-serif" font-size="5.2" lengthAdjust="spacing" textLength="93.2" x="19.6" y="46.8418">asks the situation of a specific container</text><polygon fill="#A80036" points="16.8,59.325,12.8,60.925,16.8,62.525,15.2,60.925" style="stroke:#A80036;stroke-width:0.4000000000000001;"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;stroke-dasharray:2.0,2.0;" x1="14.4" x2="121.6" y1="60.925" y2="60.925"/><text fill="#000000" font-family="sans-serif" font-size="5.2" font-weight="bold" lengthAdjust="spacing" textLength="2.8" x="19.2" y="58.9824">2</text><text fill="#000000" font-family="sans-serif" font-size="5.2" lengthAdjust="spacing" textLength="78.4" x="23.6" y="58.9824">requests data (container identifier)</text><polygon fill="#A80036" points="115.2,71.4656,119.2,73.0656,115.2,74.6656,116.8,73.0656" style="stroke:#A80036;stroke-width:0.4000000000000001;"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;" x1="12.4" x2="117.6" y1="73.0656" y2="73.0656"/><text fill="#000000" font-family="sans-serif" font-size="5.2" font-weight="bold" lengthAdjust="spacing" textLength="2.8" x="15.2" y="71.123">3</text><text fill="#000000" font-family="sans-serif" font-size="5.2" lengthAdjust="spacing" textLength="51.6" x="19.6" y="71.123">inserts requested data</text><polygon fill="#A80036" points="197.2,83.6063,201.2,85.2063,197.2,86.8063,198.8,85.2063" style="stroke:#A80036;stroke-width:0.4000000000000001;"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;" x1="124" x2="199.6" y1="85.2063" y2="85.2063"/><text fill="#000000" font-family="sans-serif" font-size="5.2" font-weight="bold" lengthAdjust="spacing" textLength="2.8" x="126.8" y="83.2637">4</text><text fill="#000000" font-family="sans-serif" font-size="5.2" lengthAdjust="spacing" textLength="56.8" x="131.2" y="83.2637">getSituation(containerID)</text><polygon fill="#A80036" points="276,95.7469,280,97.3469,276,98.9469,277.6,97.3469" style="stroke:#A80036;stroke-width:0.4000000000000001;"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;" x1="206" x2="278.4" y1="97.3469" y2="97.3469"/><text fill="#000000" font-family="sans-serif" font-size="5.2" font-weight="bold" lengthAdjust="spacing" textLength="2.8" x="208.8" y="95.4043">5</text><text fill="#000000" font-family="sans-serif" font-size="5.2" lengthAdjust="spacing" textLength="59.2" x="213.2" y="95.4043">getSituation(containerDB)</text><polygon fill="#A80036" points="350.4,107.8875,354.4,109.4875,350.4,111.0875,352,109.4875" style="stroke:#A80036;stroke-width:0.4000000000000001;"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;" x1="284.8" x2="352.8" y1="109.4875" y2="109.4875"/><text fill="#000000" font-family="sans-serif" font-size="5.2" font-weight="bold" lengthAdjust="spacing" textLength="2.8" x="287.6" y="107.5449">6</text><text fill="#000000" font-family="sans-serif" font-size="5.2" lengthAdjust="spacing" textLength="30" x="292" y="107.5449">getInstance()</text><polygon fill="#A80036" points="350.4,132.0281,354.4,133.6281,350.4,135.2281,352,133.6281" style="stroke:#A80036;stroke-width:0.4000000000000001;"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;" x1="284.8" x2="352.8" y1="133.6281" y2="133.6281"/><text fill="#000000" font-family="sans-serif" font-size="5.2" font-weight="bold" lengthAdjust="spacing" textLength="2.8" x="287.6" y="131.6855">7</text><text fill="#000000" font-family="sans-serif" font-size="5.2" lengthAdjust="spacing" textLength="58.4" x="292" y="131.6855">getDatabaseConnection()</text><polygon fill="#A80036" points="412.2,156.1688,416.2,157.7688,412.2,159.3688,413.8,157.7688" style="stroke:#A80036;stroke-width:0.4000000000000001;"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;" x1="284.8" x2="414.6" y1="157.7688" y2="157.7688"/><text fill="#000000" font-family="sans-serif" font-size="5.2" font-weight="bold" lengthAdjust="spacing" textLength="2.8" x="287.6" y="155.8262">8</text><text fill="#000000" font-family="sans-serif" font-size="5.2" lengthAdjust="spacing" textLength="51.2" x="292" y="155.8262">con = getConnection()</text><polygon fill="#A80036" points="465,180.3094,469,181.9094,465,183.5094,466.6,181.9094" style="stroke:#A80036;stroke-width:0.4000000000000001;"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;" x1="284.8" x2="467.4" y1="181.9094" y2="181.9094"/><text fill="#000000" font-family="sans-serif" font-size="5.2" font-weight="bold" lengthAdjust="spacing" textLength="2.8" x="287.6" y="179.9668">9</text><text fill="#000000" font-family="sans-serif" font-size="5.2" lengthAdjust="spacing" textLength="113.2" x="292" y="179.9668">situation = fnc_get_container_status(containerID)</text><polygon fill="#A80036" points="210.4,204.45,206.4,206.05,210.4,207.65,208.8,206.05" style="stroke:#A80036;stroke-width:0.4000000000000001;"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;stroke-dasharray:2.0,2.0;" x1="208" x2="282.4" y1="206.05" y2="206.05"/><text fill="#000000" font-family="sans-serif" font-size="5.2" font-weight="bold" lengthAdjust="spacing" textLength="5.6" x="212.8" y="204.1074">10</text><text fill="#000000" font-family="sans-serif" font-size="5.2" lengthAdjust="spacing" textLength="19.6" x="220" y="204.1074">situation</text><polygon fill="#A80036" points="128.4,216.5906,124.4,218.1906,128.4,219.7906,126.8,218.1906" style="stroke:#A80036;stroke-width:0.4000000000000001;"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;stroke-dasharray:2.0,2.0;" x1="126" x2="203.6" y1="218.1906" y2="218.1906"/><text fill="#000000" font-family="sans-serif" font-size="5.2" font-weight="bold" lengthAdjust="spacing" textLength="5.6" x="130.8" y="216.248">11</text><text fill="#000000" font-family="sans-serif" font-size="5.2" lengthAdjust="spacing" textLength="19.6" x="138" y="216.248">situation</text><polygon fill="#A80036" points="16.8,228.7313,12.8,230.3313,16.8,231.9313,15.2,230.3313" style="stroke:#A80036;stroke-width:0.4000000000000001;"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;stroke-dasharray:2.0,2.0;" x1="14.4" x2="121.6" y1="230.3313" y2="230.3313"/><text fill="#000000" font-family="sans-serif" font-size="5.2" font-weight="bold" lengthAdjust="spacing" textLength="5.6" x="19.2" y="228.3887">12</text><text fill="#000000" font-family="sans-serif" font-size="5.2" lengthAdjust="spacing" textLength="90.8" x="26.4" y="228.3887">shows current situation of the container</text><polygon fill="#A80036" points="115.2,240.8719,119.2,242.4719,115.2,244.0719,116.8,242.4719" style="stroke:#A80036;stroke-width:0.4000000000000001;"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;" x1="12.4" x2="117.6" y1="242.4719" y2="242.4719"/><text fill="#000000" font-family="sans-serif" font-size="5.2" font-weight="bold" lengthAdjust="spacing" textLength="5.6" x="15.2" y="240.5293">13</text><text fill="#000000" font-family="sans-serif" font-size="5.2" lengthAdjust="spacing" textLength="40" x="22.4" y="240.5293">confirms the data</text><polygon fill="#A80036" points="14.8,253.0125,10.8,254.6125,14.8,256.2125,13.2,254.6125" style="stroke:#A80036;stroke-width:0.4000000000000001;"/><line style="stroke:#A80036;stroke-width:0.4000000000000001;stroke-dasharray:2.0,2.0;" x1="12.4" x2="121.6" y1="254.6125" y2="254.6125"/><text fill="#000000" font-family="sans-serif" font-size="5.2" font-weight="bold" lengthAdjust="spacing" textLength="5.6" x="17.2" y="252.6699">14</text><text fill="#000000" font-family="sans-serif" font-size="5.2" lengthAdjust="spacing" textLength="60.8" x="24.4" y="252.6699">informs operation success</text><!--MD5=[2c56d54a2b4770f1658b012eaee950cb]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor "Client" as CL
+participant "GetContainerSituationUI" as UI
+participant "GetContainerSituationController" as CTRL
+participant "ContainerSituationDB" as CSDB
+participant ConnectionFactory as CF
+participant DatabaseConnection as DC
+
+database LAPR3_G102 as DB
+participant "con: Connection" as CON
+
+
+
+activate CL
+CL -> UI : asks the situation of a specific container
+activate UI
+UI - -> CL : requests data (container identifier)
+deactivate UI
+
+CL -> UI : inserts requested data
+activate UI
+UI -> CTRL: getSituation(containerID)
+activate CTRL
+CTRL -> CSDB : getSituation(containerDB)
+activate CSDB
+CSDB -> CF : getInstance()
+activate CF
+deactivate CF
+CSDB -> CF : getDatabaseConnection()
+activate CF
+deactivate CF
+CSDB -> DC: con = getConnection()
+activate DC
+deactivate DC
+CSDB -> DB : situation = fnc_get_container_status(containerID)
+activate DB
+deactivate DB
+CSDB - -> CTRL : situation
+deactivate CSDB
+
+CTRL - -> UI : situation
+
+deactivate CTRL
+
+UI - -> CL : shows current situation of the container
+deactivate UI
+
+
+CL -> UI : confirms the data
+activate UI
+UI - -> CL : informs operation success
+deactivate UI
+
+deactivate CL
+@enduml
+
+@startuml
+
+autonumber
+actor "Client" as CL
+participant "GetContainerSituationUI" as UI
+participant "GetContainerSituationController" as CTRL
+participant "ContainerSituationDB" as CSDB
+participant ConnectionFactory as CF
+participant DatabaseConnection as DC
+
+database LAPR3_G102 as DB
+participant "con: Connection" as CON
+
+
+
+activate CL
+CL -> UI : asks the situation of a specific container
+activate UI
+UI - -> CL : requests data (container identifier)
+deactivate UI
+
+CL -> UI : inserts requested data
+activate UI
+UI -> CTRL: getSituation(containerID)
+activate CTRL
+CTRL -> CSDB : getSituation(containerDB)
+activate CSDB
+CSDB -> CF : getInstance()
+activate CF
+deactivate CF
+CSDB -> CF : getDatabaseConnection()
+activate CF
+deactivate CF
+CSDB -> DC: con = getConnection()
+activate DC
+deactivate DC
+CSDB -> DB : situation = fnc_get_container_status(containerID)
+activate DB
+deactivate DB
+CSDB - -> CTRL : situation
+deactivate CSDB
+
+CTRL - -> UI : situation
+
+deactivate CTRL
+
+UI - -> CL : shows current situation of the container
+deactivate UI
+
+
+CL -> UI : confirms the data
+activate UI
+UI - -> CL : informs operation success
+deactivate UI
+
+deactivate CL
+@enduml
+
+PlantUML version 1.2021.11(Sat Oct 02 14:26:11 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

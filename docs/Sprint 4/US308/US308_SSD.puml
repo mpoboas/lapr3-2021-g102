@@ -1,0 +1,12 @@
+@startuml
+autonumber
+actor "Traffic\n Manager" as TM
+
+activate TM
+TM -> ":System" : issues a cargo manifest destined for a ship
+activate ":System"
+":System" --> TM : shows a warning if the ship's available capacity\n is exceeded
+deactivate ":System"
+deactivate TM
+
+@enduml

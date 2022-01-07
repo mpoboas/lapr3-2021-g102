@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="654px" preserveAspectRatio="none" style="width:761px;height:654px;background:#FFFFFF;" version="1.1" viewBox="0 0 761 654" width="761px" zoomAndPan="magnify"><defs><filter height="300%" id="fcap3fy2xbr6v" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[02e4b9b7573f1156f41e60aa5b4e25a4]
+class Company--><rect codeLine="3" fill="#FEFECE" filter="url(#fcap3fy2xbr6v)" height="61.8359" id="Company" style="stroke:#A80036;stroke-width:1.5;" width="85" x="72" y="237"/><ellipse cx="87" cy="253" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M89,249.5 Q89.2031,249 89.4375,248.75 Q89.6719,248.5 89.9375,248.5 Q90.4063,248.5 90.7031,248.7813 Q91,249.0625 91,249.7188 L91,251.2813 Q91,251.9375 90.7188,252.2188 Q90.4375,252.5 90,252.5 Q89.6094,252.5 89.3594,252.3281 Q89.1094,252.1563 89,251.7031 Q88.9531,251.3906 88.7813,251.2188 Q88.4688,250.8906 87.9063,250.7031 Q87.3438,250.5 86.7813,250.5 Q86.0781,250.5 85.4844,250.7813 Q84.9063,251.0625 84.4531,251.6875 Q84,252.3125 84,253.1719 L84,254.0938 Q84,255.125 84.8438,255.8125 Q85.6875,256.5 87.1875,256.5 Q88.0781,256.5 88.7031,256.2969 Q89.0625,256.1875 89.4688,255.8281 Q89.7344,255.625 89.875,255.5625 Q90.0156,255.5 90.1875,255.5 Q90.5156,255.5 90.75,255.7656 Q91,256.0156 91,256.375 Q91,256.7188 90.6563,257.125 Q90.1563,257.7188 89.3594,258.0469 Q88.3125,258.5 87.0313,258.5 Q85.5313,258.5 84.3281,257.9063 Q83.3594,257.4375 82.6719,256.4219 Q82,255.4063 82,254.2031 L82,253.1094 Q82,251.8594 82.5938,250.7656 Q83.2031,249.6719 84.25,249.0938 Q85.3125,248.5 86.5,248.5 Q87.2188,248.5 87.8438,248.75 Q88.4688,249 89,249.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="53" x="101" y="257.9102">Company</text><line style="stroke:#A80036;stroke-width:1.5;" x1="73" x2="156" y1="269" y2="269"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="80" y="277"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="55" x="92" y="284.4189">designation</text><line style="stroke:#A80036;stroke-width:1.5;" x1="73" x2="156" y1="290.8359" y2="290.8359"/><!--MD5=[328ef66bf78ebc5f2be2895fa4ef4260]
+class WarehouseOccupancyRateUI--><rect codeLine="7" fill="#FEFECE" filter="url(#fcap3fy2xbr6v)" height="48" id="WarehouseOccupancyRateUI" style="stroke:#A80036;stroke-width:1.5;" width="194" x="194.5" y="7"/><ellipse cx="209.5" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M211.5,19.5 Q211.7031,19 211.9375,18.75 Q212.1719,18.5 212.4375,18.5 Q212.9063,18.5 213.2031,18.7813 Q213.5,19.0625 213.5,19.7188 L213.5,21.2813 Q213.5,21.9375 213.2188,22.2188 Q212.9375,22.5 212.5,22.5 Q212.1094,22.5 211.8594,22.3281 Q211.6094,22.1563 211.5,21.7031 Q211.4531,21.3906 211.2813,21.2188 Q210.9688,20.8906 210.4063,20.7031 Q209.8438,20.5 209.2813,20.5 Q208.5781,20.5 207.9844,20.7813 Q207.4063,21.0625 206.9531,21.6875 Q206.5,22.3125 206.5,23.1719 L206.5,24.0938 Q206.5,25.125 207.3438,25.8125 Q208.1875,26.5 209.6875,26.5 Q210.5781,26.5 211.2031,26.2969 Q211.5625,26.1875 211.9688,25.8281 Q212.2344,25.625 212.375,25.5625 Q212.5156,25.5 212.6875,25.5 Q213.0156,25.5 213.25,25.7656 Q213.5,26.0156 213.5,26.375 Q213.5,26.7188 213.1563,27.125 Q212.6563,27.7188 211.8594,28.0469 Q210.8125,28.5 209.5313,28.5 Q208.0313,28.5 206.8281,27.9063 Q205.8594,27.4375 205.1719,26.4219 Q204.5,25.4063 204.5,24.2031 L204.5,23.1094 Q204.5,21.8594 205.0938,20.7656 Q205.7031,19.6719 206.75,19.0938 Q207.8125,18.5 209,18.5 Q209.7188,18.5 210.3438,18.75 Q210.9688,19 211.5,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="162" x="223.5" y="27.9102">WarehouseOccupancyRateUI</text><line style="stroke:#A80036;stroke-width:1.5;" x1="195.5" x2="387.5" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="195.5" x2="387.5" y1="47" y2="47"/><!--MD5=[5edd85217c29e3bf231c13948fd87154]
+class GetWarehouseOccupancyRateController--><rect codeLine="10" fill="#FEFECE" filter="url(#fcap3fy2xbr6v)" height="61.8359" id="GetWarehouseOccupancyRateController" style="stroke:#A80036;stroke-width:1.5;" width="569" x="7" y="115"/><ellipse cx="175.75" cy="131" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M177.75,127.5 Q177.9531,127 178.1875,126.75 Q178.4219,126.5 178.6875,126.5 Q179.1563,126.5 179.4531,126.7813 Q179.75,127.0625 179.75,127.7188 L179.75,129.2813 Q179.75,129.9375 179.4688,130.2188 Q179.1875,130.5 178.75,130.5 Q178.3594,130.5 178.1094,130.3281 Q177.8594,130.1563 177.75,129.7031 Q177.7031,129.3906 177.5313,129.2188 Q177.2188,128.8906 176.6563,128.7031 Q176.0938,128.5 175.5313,128.5 Q174.8281,128.5 174.2344,128.7813 Q173.6563,129.0625 173.2031,129.6875 Q172.75,130.3125 172.75,131.1719 L172.75,132.0938 Q172.75,133.125 173.5938,133.8125 Q174.4375,134.5 175.9375,134.5 Q176.8281,134.5 177.4531,134.2969 Q177.8125,134.1875 178.2188,133.8281 Q178.4844,133.625 178.625,133.5625 Q178.7656,133.5 178.9375,133.5 Q179.2656,133.5 179.5,133.7656 Q179.75,134.0156 179.75,134.375 Q179.75,134.7188 179.4063,135.125 Q178.9063,135.7188 178.1094,136.0469 Q177.0625,136.5 175.7813,136.5 Q174.2813,136.5 173.0781,135.9063 Q172.1094,135.4375 171.4219,134.4219 Q170.75,133.4063 170.75,132.2031 L170.75,131.1094 Q170.75,129.8594 171.3438,128.7656 Q171.9531,127.6719 173,127.0938 Q174.0625,126.5 175.25,126.5 Q175.9688,126.5 176.5938,126.75 Q177.2188,127 177.75,127.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="223" x="196.25" y="135.9102">GetWarehouseOccupancyRateController</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="575" y1="147" y2="147"/><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="575" y1="155" y2="155"/><ellipse cx="18" cy="166" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="543" x="27" y="170.4189">getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerUsername)</text><!--MD5=[17f8e635bf336e7c687b305bbb6740ad]
+class PortWarehouseDB--><rect codeLine="14" fill="#FEFECE" filter="url(#fcap3fy2xbr6v)" height="61.8359" id="PortWarehouseDB" style="stroke:#A80036;stroke-width:1.5;" width="555" x="192" y="237"/><ellipse cx="413.75" cy="253" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M415.75,249.5 Q415.9531,249 416.1875,248.75 Q416.4219,248.5 416.6875,248.5 Q417.1563,248.5 417.4531,248.7813 Q417.75,249.0625 417.75,249.7188 L417.75,251.2813 Q417.75,251.9375 417.4688,252.2188 Q417.1875,252.5 416.75,252.5 Q416.3594,252.5 416.1094,252.3281 Q415.8594,252.1563 415.75,251.7031 Q415.7031,251.3906 415.5313,251.2188 Q415.2188,250.8906 414.6563,250.7031 Q414.0938,250.5 413.5313,250.5 Q412.8281,250.5 412.2344,250.7813 Q411.6563,251.0625 411.2031,251.6875 Q410.75,252.3125 410.75,253.1719 L410.75,254.0938 Q410.75,255.125 411.5938,255.8125 Q412.4375,256.5 413.9375,256.5 Q414.8281,256.5 415.4531,256.2969 Q415.8125,256.1875 416.2188,255.8281 Q416.4844,255.625 416.625,255.5625 Q416.7656,255.5 416.9375,255.5 Q417.2656,255.5 417.5,255.7656 Q417.75,256.0156 417.75,256.375 Q417.75,256.7188 417.4063,257.125 Q416.9063,257.7188 416.1094,258.0469 Q415.0625,258.5 413.7813,258.5 Q412.2813,258.5 411.0781,257.9063 Q410.1094,257.4375 409.4219,256.4219 Q408.75,255.4063 408.75,254.2031 L408.75,253.1094 Q408.75,251.8594 409.3438,250.7656 Q409.9531,249.6719 411,249.0938 Q412.0625,248.5 413.25,248.5 Q413.9688,248.5 414.5938,248.75 Q415.2188,249 415.75,249.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="103" x="434.25" y="257.9102">PortWarehouseDB</text><line style="stroke:#A80036;stroke-width:1.5;" x1="193" x2="746" y1="269" y2="269"/><line style="stroke:#A80036;stroke-width:1.5;" x1="193" x2="746" y1="277" y2="277"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="543" x="198" y="292.4189">getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerUsername)</text><!--MD5=[0b8a0869bb17c5d05015d74abb8e1141]
+class ConnectionFactory--><rect codeLine="18" fill="#FEFECE" filter="url(#fcap3fy2xbr6v)" height="89.5078" id="ConnectionFactory" style="stroke:#A80036;stroke-width:1.5;" width="149" x="395" y="359"/><ellipse cx="416.75" cy="375" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M418.75,371.5 Q418.9531,371 419.1875,370.75 Q419.4219,370.5 419.6875,370.5 Q420.1563,370.5 420.4531,370.7813 Q420.75,371.0625 420.75,371.7188 L420.75,373.2813 Q420.75,373.9375 420.4688,374.2188 Q420.1875,374.5 419.75,374.5 Q419.3594,374.5 419.1094,374.3281 Q418.8594,374.1563 418.75,373.7031 Q418.7031,373.3906 418.5313,373.2188 Q418.2188,372.8906 417.6563,372.7031 Q417.0938,372.5 416.5313,372.5 Q415.8281,372.5 415.2344,372.7813 Q414.6563,373.0625 414.2031,373.6875 Q413.75,374.3125 413.75,375.1719 L413.75,376.0938 Q413.75,377.125 414.5938,377.8125 Q415.4375,378.5 416.9375,378.5 Q417.8281,378.5 418.4531,378.2969 Q418.8125,378.1875 419.2188,377.8281 Q419.4844,377.625 419.625,377.5625 Q419.7656,377.5 419.9375,377.5 Q420.2656,377.5 420.5,377.7656 Q420.75,378.0156 420.75,378.375 Q420.75,378.7188 420.4063,379.125 Q419.9063,379.7188 419.1094,380.0469 Q418.0625,380.5 416.7813,380.5 Q415.2813,380.5 414.0781,379.9063 Q413.1094,379.4375 412.4219,378.4219 Q411.75,377.4063 411.75,376.2031 L411.75,375.1094 Q411.75,373.8594 412.3438,372.7656 Q412.9531,371.6719 414,371.0938 Q415.0625,370.5 416.25,370.5 Q416.9688,370.5 417.5938,370.75 Q418.2188,371 418.75,371.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="102" x="432.25" y="379.9102">ConnectionFactory</text><line style="stroke:#A80036;stroke-width:1.5;" x1="396" x2="543" y1="391" y2="391"/><line style="stroke:#A80036;stroke-width:1.5;" x1="396" x2="543" y1="399" y2="399"/><ellipse cx="406" cy="410" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="64" x="415" y="414.4189">getInstance()</text><ellipse cx="406" cy="423.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="415" y="428.2549">loadProperties()</text><ellipse cx="406" cy="437.6719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="123" x="415" y="442.0908">getDatabaseConnection()</text><!--MD5=[8aa441cdd93a4e2944eff58bc06cd78a]
+class DatabaseConnection--><rect codeLine="24" fill="#FEFECE" filter="url(#fcap3fy2xbr6v)" height="131.0156" id="DatabaseConnection" style="stroke:#A80036;stroke-width:1.5;" width="190" x="374.5" y="509"/><ellipse cx="407.95" cy="525" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M409.95,521.5 Q410.1531,521 410.3875,520.75 Q410.6219,520.5 410.8875,520.5 Q411.3563,520.5 411.6531,520.7813 Q411.95,521.0625 411.95,521.7188 L411.95,523.2813 Q411.95,523.9375 411.6688,524.2188 Q411.3875,524.5 410.95,524.5 Q410.5594,524.5 410.3094,524.3281 Q410.0594,524.1563 409.95,523.7031 Q409.9031,523.3906 409.7313,523.2188 Q409.4188,522.8906 408.8563,522.7031 Q408.2938,522.5 407.7313,522.5 Q407.0281,522.5 406.4344,522.7813 Q405.8563,523.0625 405.4031,523.6875 Q404.95,524.3125 404.95,525.1719 L404.95,526.0938 Q404.95,527.125 405.7938,527.8125 Q406.6375,528.5 408.1375,528.5 Q409.0281,528.5 409.6531,528.2969 Q410.0125,528.1875 410.4188,527.8281 Q410.6844,527.625 410.825,527.5625 Q410.9656,527.5 411.1375,527.5 Q411.4656,527.5 411.7,527.7656 Q411.95,528.0156 411.95,528.375 Q411.95,528.7188 411.6063,529.125 Q411.1063,529.7188 410.3094,530.0469 Q409.2625,530.5 407.9813,530.5 Q406.4813,530.5 405.2781,529.9063 Q404.3094,529.4375 403.6219,528.4219 Q402.95,527.4063 402.95,526.2031 L402.95,525.1094 Q402.95,523.8594 403.5438,522.7656 Q404.1531,521.6719 405.2,521.0938 Q406.2625,520.5 407.45,520.5 Q408.1688,520.5 408.7938,520.75 Q409.4188,521 409.95,521.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="117" x="426.05" y="529.9102">DatabaseConnection</text><line style="stroke:#A80036;stroke-width:1.5;" x1="375.5" x2="563.5" y1="541" y2="541"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="382.5" y="549"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="394.5" y="556.4189">oracleDataSource</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="382.5" y="562.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="53" x="394.5" y="570.2549">connection</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="382.5" y="576.6719"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="24" x="394.5" y="584.0908">error</text><line style="stroke:#A80036;stroke-width:1.5;" x1="375.5" x2="563.5" y1="590.5078" y2="590.5078"/><ellipse cx="385.5" cy="601.5078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="394.5" y="605.9268">getConnection()</text><ellipse cx="385.5" cy="615.3438" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="164" x="394.5" y="619.7627">registerError(SQLException error)</text><ellipse cx="385.5" cy="629.1797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="68" x="394.5" y="633.5986">getLastError()</text><!--MD5=[a84a02fb64dbba0f3167c9d86a94d5df]
+link WarehouseOccupancyRateUI to GetWarehouseOccupancyRateController--><path codeLine="33" d="M291.5,55.14 C291.5,70.71 291.5,91.53 291.5,109.22 " fill="none" id="WarehouseOccupancyRateUI-to-GetWarehouseOccupancyRateController" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="291.5,114.6,295.5,105.6,291.5,109.6,287.5,105.6,291.5,114.6" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[11da2bfb26c242092fe972e747ab9780]
+link GetWarehouseOccupancyRateController to PortWarehouseDB--><path codeLine="34" d="M336.42,177.28 C362.13,194.61 394.41,216.37 420.73,234.12 " fill="none" id="GetWarehouseOccupancyRateController-to-PortWarehouseDB" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="424.91,236.94,419.6932,228.5863,420.7674,234.1402,415.2135,235.2144,424.91,236.94" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[06b7e02616b684d7efc023ae7e745545]
+link GetWarehouseOccupancyRateController to Company--><path codeLine="35" d="M246.84,177.28 C220.69,195.01 187.7,217.37 161.21,235.33 " fill="none" id="GetWarehouseOccupancyRateController-to-Company" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="157.02,238.18,166.7124,236.4315,161.156,235.3704,162.217,229.814,157.02,238.18" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[8433edc2315d3b3ba20df95e63bf7a1f]
+link PortWarehouseDB to ConnectionFactory--><path codeLine="36" d="M469.5,299.07 C469.5,315.15 469.5,335.36 469.5,353.67 " fill="none" id="PortWarehouseDB-to-ConnectionFactory" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="469.5,358.78,473.5,349.78,469.5,353.78,465.5,349.78,469.5,358.78" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[f69893cd3a05080ec62d77c49424649a]
+link ConnectionFactory to DatabaseConnection--><path codeLine="37" d="M469.5,449.27 C469.5,465.94 469.5,485.32 469.5,503.75 " fill="none" id="ConnectionFactory-to-DatabaseConnection" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="469.5,508.92,473.5,499.92,469.5,503.92,465.5,499.92,469.5,508.92" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[6daf722056370d36de733041acd1cc6c]
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
+}
+
+class WarehouseOccupancyRateUI {
+}
+
+class GetWarehouseOccupancyRateController {
++getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerUsername)
+}
+
+class PortWarehouseDB {
+getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerUsername)
+}
+
+class ConnectionFactory{
++getInstance()
++loadProperties()
++getDatabaseConnection()
+}
+
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+WarehouseOccupancyRateUI ..> GetWarehouseOccupancyRateController
+GetWarehouseOccupancyRateController ..> PortWarehouseDB
+GetWarehouseOccupancyRateController ..> Company
+PortWarehouseDB ..> ConnectionFactory
+ConnectionFactory ..> DatabaseConnection
+
+@enduml
+
+@startuml
+
+class Company {
+-designation
+}
+
+class WarehouseOccupancyRateUI {
+}
+
+class GetWarehouseOccupancyRateController {
++getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerUsername)
+}
+
+class PortWarehouseDB {
+getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerUsername)
+}
+
+class ConnectionFactory{
++getInstance()
++loadProperties()
++getDatabaseConnection()
+}
+
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+WarehouseOccupancyRateUI ..> GetWarehouseOccupancyRateController
+GetWarehouseOccupancyRateController ..> PortWarehouseDB
+GetWarehouseOccupancyRateController ..> Company
+PortWarehouseDB ..> ConnectionFactory
+ConnectionFactory ..> DatabaseConnection
+
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 13:40:07 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: Dynamic Code Evolution 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

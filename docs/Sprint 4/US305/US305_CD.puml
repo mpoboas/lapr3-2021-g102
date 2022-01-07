@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
+}
+
+class ContainerRouteUI {
+}
+
+class GetClientContainerRouteController {
+getClientContainerRoute(databaseConnection, clientUsername, containerId)
+}
+
+class ContainerDB {
+getClientContainerRoute(databaseConnection, clientUsername, containerId)
+}
+
+class ConnectionFactory{
++getInstance()
++loadProperties()
++getDatabaseConnection()
+}
+
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+ContainerRouteUI ..> GetClientContainerRouteController
+GetClientContainerRouteController ..> ContainerDB
+GetClientContainerRouteController ..> Company
+ContainerDB ..> ConnectionFactory
+ConnectionFactory ..> DatabaseConnection
+
+@enduml

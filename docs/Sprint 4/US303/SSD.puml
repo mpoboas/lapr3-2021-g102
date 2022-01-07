@@ -1,0 +1,18 @@
+@startuml
+actor "Traffic Manager" as tm
+participant system as sys
+autonumber
+activate tm
+tm -> sys : requests the n Closest places to the port
+activate sys
+sys -->tm : asks which port and the values of n
+deactivate sys
+tm -> sys : types requested data
+activate sys
+sys --> tm : requests confirmation
+deactivate sys
+tm -> sys: confirms inserted data
+activate sys
+sys --> tm : shows requested list
+deactivate sys
+@enduml

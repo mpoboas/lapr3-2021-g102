@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor "Traffic Manager" as TF
+
+activate TF
+TF -> ":System" : asks the ships available next monday
+activate ":System"
+":System" --> TF : shows the next monday details
+deactivate ":System"
+
+TF -> ":System" : confirms day
+activate ":System"
+":System" --> TF : shows all the ships available
+deactivate ":System"
+
+
+TF -> ":System" : confirms the data
+activate ":System"
+":System" --> TF : informs operation success
+deactivate ":System"
+
+deactivate TF
+@enduml

@@ -1,0 +1,88 @@
+@startuml
+autonumber
+'hide footbox
+actor "Port Manager" as TF
+
+participant ":ImportPortsUI" as UI
+participant ":ImportPortsController" as CTRL
+participant ":Import" as import
+participant "Company" as COMP
+participant "importedPorts \n:List<Port>" as list
+participant "portStore :PortStore" as STR
+participant "port: Port" as port
+
+
+
+activate TF
+TF -> UI : asks to import ports from file
+activate UI
+UI --> TF : requests data (file directory)
+deactivate UI
+
+TF -> UI : inserts requested data
+activate UI
+
+UI -> CTRL :importPortsData(file)
+
+activate CTRL
+
+CTRL -> import: importPortsData(file)
+activate import
+
+import -> COMP: portStore = getPortStore()
+activate COMP
+deactivate COMP
+loop for each line of the file
+import -> list: b = boatAlreadyImported(id)
+activate list
+deactivate list
+
+alt b = false
+import -> STR: port = createPort(fileData)
+
+activate STR
+STR --> port** : create(idPort, name,continent,country,latitude,longitude)
+deactivate STR
+
+import -> list : add(port)
+activate list
+deactivate list
+
+end
+
+end
+import --> CTRL
+deactivate import
+CTRL --> UI
+deactivate CTRL
+
+
+UI --> TF : shows how many ports were imported
+deactivate UI
+
+
+TF -> UI : confirms the data
+activate UI
+
+UI -> CTRL: savePortsData()
+activate CTRL
+CTRL -> import: savePortsData()
+activate import
+
+import -> STR: buildPortTree(importedPorts)
+activate STR
+
+STR --> import
+deactivate STR
+
+import --> CTRL
+deactivate import
+CTRL --> UI
+deactivate CTRL
+UI --> TF : informs operation success
+deactivate UI
+
+deactivate TF
+
+
+@enduml

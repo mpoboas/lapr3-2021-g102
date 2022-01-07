@@ -1,0 +1,12 @@
+create FUNCTION getOcupancyInDay(port integer, d varchar) return INTEGER
+as
+OCUPANCY INTEGER;
+Loaded INTEGER;
+UNLOADED INTEGER;
+BEGIN
+
+    Select count(*) into UNLOADED from MANIFESTCONTAINER where IDCARGOMANIFEST in (select IDCARGOMANIFESTUNLOAD from ARRIVALDEPARTURE where IDPORTWAREHOUSEARRIVAL = port and ARRIVALDATE < to_timestamp( d ));
+    Select count(*) INTO Loaded from MANIFESTCONTAINER where IDCARGOMANIFEST in (select IDCARGOMANIFESTLOAD from ARRIVALDEPARTURE where IDPORTWAREHOUSEARRIVAL = port and ARRIVALDATE < to_timestamp( d ) );
+    OCUPANCY := UNLOADED - Loaded;
+    RETURN OCUPANCY;
+END;

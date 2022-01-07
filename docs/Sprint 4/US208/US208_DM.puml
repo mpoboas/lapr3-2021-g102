@@ -1,0 +1,50 @@
+@startuml
+
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
+
+class Container {
+-containerId
+-containerPayload
+-containerTare
+-containerGross
+-ISOcode
+}
+
+class CargoManifest {
+-content
+-elaborationDate
+}
+
+class LoadingCargoManifest {
+}
+
+class UnloadingCargoManifest {
+}
+
+Ship "1" -- "1" ShipCaptain : drives <
+Ship "1" -- "*" Container : carries >
+CargoManifest "*" -l- "*" Container : contains >
+LoadingCargoManifest "1" -u- "1" CargoManifest : is a >
+UnloadingCargoManifest "*" -u- "1" CargoManifest : is a >
+
+@enduml

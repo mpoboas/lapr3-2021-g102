@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class GetAuditTrailsUI{}
+class GetAuditTrailsController{
++getAuditTrails(containerID,cargoManifestID)
+}
+class AuditTrailDB{
++getAuditTrails(containerID,cargoManifestID)
+}
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
++getDatabaseConnection()
+}
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+GetAuditTrailsUI .. GetAuditTrailsController
+GetAuditTrailsController . AuditTrailDB
+AuditTrailDB - ConnectionFactory : requests connection to database to obtain data >
+ConnectionFactory -- DatabaseConnection : fabricate a >
+
+@enduml

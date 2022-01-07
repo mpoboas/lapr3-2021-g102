@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class GetAvailableShipsUI{}
+class GetAvailableShipsController{
++getNextMonday()
++getNextMondayAvailableShips()
+}
+class AvailableShipsDB{
++getNextMondayAvailableShips()
++getNextMonday()
+-getResult(ResultSet)
+}
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
++getDatabaseConnection()
+}
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+GetAvailableShipsUI .. GetAvailableShipsController
+GetAvailableShipsController . AvailableShipsDB
+AvailableShipsDB - ConnectionFactory : requests connection to database to obtain data >
+ConnectionFactory -- DatabaseConnection : fabricate a >
+
+
+@enduml

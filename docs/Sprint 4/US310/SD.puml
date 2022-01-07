@@ -1,0 +1,43 @@
+@startuml
+actor "Port Manager" as pm
+participant UI as ui
+participant PortReportController as controller
+participant PortMonthlyReport as data
+participant PortOcupancyRateReport as report
+database Database as db
+autonumber
+activate pm
+pm -> ui : Asks for map of port ocupation during a certain month
+activate ui
+ui --> pm : Asks which port and which month
+deactivate ui
+pm -> ui : inserts requested data
+activate ui
+ui --> pm : asks for confirmation
+deactivate ui
+pm -> ui : confirms data
+activate ui
+ui -> controller : requests new report
+activate controller
+controller -> data : requests data from database
+activate data
+data -> db : requests data about ports and ocupancy during given month
+activate db
+db --> data : sends requested data
+deactivate db
+data --> controller : sends requested data
+deactivate data
+controller -> report : requets new report with given data
+activate report
+report -> report : generates report
+activate report
+deactivate report
+report --> controller : sends report
+deactivate report
+controller --> ui : sends report
+deactivate controller
+ui --> pm : shows requested report
+deactivate ui
+deactivate pm
+
+@enduml

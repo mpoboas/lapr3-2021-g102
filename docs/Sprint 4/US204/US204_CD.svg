@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="429px" preserveAspectRatio="none" style="width:905px;height:429px;background:#FFFFFF;" version="1.1" viewBox="0 0 905 429" width="905px" zoomAndPan="magnify"><defs><filter height="300%" id="fskwngbgrab7z" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[4d5fc5bba1fa375825a54807f15c182a]
+class GetContainerSituationUI--><rect codeLine="3" fill="#FEFECE" filter="url(#fskwngbgrab7z)" height="48" id="GetContainerSituationUI" style="stroke:#A80036;stroke-width:1.5;" width="165" x="28" y="7"/><ellipse cx="43" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M45,19.5 Q45.2031,19 45.4375,18.75 Q45.6719,18.5 45.9375,18.5 Q46.4063,18.5 46.7031,18.7813 Q47,19.0625 47,19.7188 L47,21.2813 Q47,21.9375 46.7188,22.2188 Q46.4375,22.5 46,22.5 Q45.6094,22.5 45.3594,22.3281 Q45.1094,22.1563 45,21.7031 Q44.9531,21.3906 44.7813,21.2188 Q44.4688,20.8906 43.9063,20.7031 Q43.3438,20.5 42.7813,20.5 Q42.0781,20.5 41.4844,20.7813 Q40.9063,21.0625 40.4531,21.6875 Q40,22.3125 40,23.1719 L40,24.0938 Q40,25.125 40.8438,25.8125 Q41.6875,26.5 43.1875,26.5 Q44.0781,26.5 44.7031,26.2969 Q45.0625,26.1875 45.4688,25.8281 Q45.7344,25.625 45.875,25.5625 Q46.0156,25.5 46.1875,25.5 Q46.5156,25.5 46.75,25.7656 Q47,26.0156 47,26.375 Q47,26.7188 46.6563,27.125 Q46.1563,27.7188 45.3594,28.0469 Q44.3125,28.5 43.0313,28.5 Q41.5313,28.5 40.3281,27.9063 Q39.3594,27.4375 38.6719,26.4219 Q38,25.4063 38,24.2031 L38,23.1094 Q38,21.8594 38.5938,20.7656 Q39.2031,19.6719 40.25,19.0938 Q41.3125,18.5 42.5,18.5 Q43.2188,18.5 43.8438,18.75 Q44.4688,19 45,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="133" x="57" y="27.9102">GetContainerSituationUI</text><line style="stroke:#A80036;stroke-width:1.5;" x1="29" x2="192" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="29" x2="192" y1="47" y2="47"/><!--MD5=[b2f94f0dd218673998cc6c2e557b94a1]
+class GetContainerSituationController--><rect codeLine="4" fill="#FEFECE" filter="url(#fskwngbgrab7z)" height="61.8359" id="GetContainerSituationController" style="stroke:#A80036;stroke-width:1.5;" width="207" x="7" y="130"/><ellipse cx="22" cy="146" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M24,142.5 Q24.2031,142 24.4375,141.75 Q24.6719,141.5 24.9375,141.5 Q25.4063,141.5 25.7031,141.7813 Q26,142.0625 26,142.7188 L26,144.2813 Q26,144.9375 25.7188,145.2188 Q25.4375,145.5 25,145.5 Q24.6094,145.5 24.3594,145.3281 Q24.1094,145.1563 24,144.7031 Q23.9531,144.3906 23.7813,144.2188 Q23.4688,143.8906 22.9063,143.7031 Q22.3438,143.5 21.7813,143.5 Q21.0781,143.5 20.4844,143.7813 Q19.9063,144.0625 19.4531,144.6875 Q19,145.3125 19,146.1719 L19,147.0938 Q19,148.125 19.8438,148.8125 Q20.6875,149.5 22.1875,149.5 Q23.0781,149.5 23.7031,149.2969 Q24.0625,149.1875 24.4688,148.8281 Q24.7344,148.625 24.875,148.5625 Q25.0156,148.5 25.1875,148.5 Q25.5156,148.5 25.75,148.7656 Q26,149.0156 26,149.375 Q26,149.7188 25.6563,150.125 Q25.1563,150.7188 24.3594,151.0469 Q23.3125,151.5 22.0313,151.5 Q20.5313,151.5 19.3281,150.9063 Q18.3594,150.4375 17.6719,149.4219 Q17,148.4063 17,147.2031 L17,146.1094 Q17,144.8594 17.5938,143.7656 Q18.2031,142.6719 19.25,142.0938 Q20.3125,141.5 21.5,141.5 Q22.2188,141.5 22.8438,141.75 Q23.4688,142 24,142.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="175" x="36" y="150.9102">GetContainerSituationController</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="213" y1="162" y2="162"/><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="213" y1="170" y2="170"/><ellipse cx="18" cy="181" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="118" x="27" y="185.4189">getSituation(containerID)</text><!--MD5=[e449c66cf1c73e6341c2a16ed011be84]
+class ContainerSituationDB--><rect codeLine="7" fill="#FEFECE" filter="url(#fskwngbgrab7z)" height="61.8359" id="ContainerSituationDB" style="stroke:#A80036;stroke-width:1.5;" width="151" x="249" y="130"/><ellipse cx="264" cy="146" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M266,142.5 Q266.2031,142 266.4375,141.75 Q266.6719,141.5 266.9375,141.5 Q267.4063,141.5 267.7031,141.7813 Q268,142.0625 268,142.7188 L268,144.2813 Q268,144.9375 267.7188,145.2188 Q267.4375,145.5 267,145.5 Q266.6094,145.5 266.3594,145.3281 Q266.1094,145.1563 266,144.7031 Q265.9531,144.3906 265.7813,144.2188 Q265.4688,143.8906 264.9063,143.7031 Q264.3438,143.5 263.7813,143.5 Q263.0781,143.5 262.4844,143.7813 Q261.9063,144.0625 261.4531,144.6875 Q261,145.3125 261,146.1719 L261,147.0938 Q261,148.125 261.8438,148.8125 Q262.6875,149.5 264.1875,149.5 Q265.0781,149.5 265.7031,149.2969 Q266.0625,149.1875 266.4688,148.8281 Q266.7344,148.625 266.875,148.5625 Q267.0156,148.5 267.1875,148.5 Q267.5156,148.5 267.75,148.7656 Q268,149.0156 268,149.375 Q268,149.7188 267.6563,150.125 Q267.1563,150.7188 266.3594,151.0469 Q265.3125,151.5 264.0313,151.5 Q262.5313,151.5 261.3281,150.9063 Q260.3594,150.4375 259.6719,149.4219 Q259,148.4063 259,147.2031 L259,146.1094 Q259,144.8594 259.5938,143.7656 Q260.2031,142.6719 261.25,142.0938 Q262.3125,141.5 263.5,141.5 Q264.2188,141.5 264.8438,141.75 Q265.4688,142 266,142.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="119" x="278" y="150.9102">ContainerSituationDB</text><line style="stroke:#A80036;stroke-width:1.5;" x1="250" x2="399" y1="162" y2="162"/><line style="stroke:#A80036;stroke-width:1.5;" x1="250" x2="399" y1="170" y2="170"/><ellipse cx="260" cy="181" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="118" x="269" y="185.4189">getSituation(containerID)</text><!--MD5=[0b8a0869bb17c5d05015d74abb8e1141]
+class ConnectionFactory--><rect codeLine="10" fill="#FEFECE" filter="url(#fskwngbgrab7z)" height="89.5078" id="ConnectionFactory" style="stroke:#A80036;stroke-width:1.5;" width="149" x="722" y="116"/><ellipse cx="743.75" cy="132" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M745.75,128.5 Q745.9531,128 746.1875,127.75 Q746.4219,127.5 746.6875,127.5 Q747.1563,127.5 747.4531,127.7813 Q747.75,128.0625 747.75,128.7188 L747.75,130.2813 Q747.75,130.9375 747.4688,131.2188 Q747.1875,131.5 746.75,131.5 Q746.3594,131.5 746.1094,131.3281 Q745.8594,131.1563 745.75,130.7031 Q745.7031,130.3906 745.5313,130.2188 Q745.2188,129.8906 744.6563,129.7031 Q744.0938,129.5 743.5313,129.5 Q742.8281,129.5 742.2344,129.7813 Q741.6563,130.0625 741.2031,130.6875 Q740.75,131.3125 740.75,132.1719 L740.75,133.0938 Q740.75,134.125 741.5938,134.8125 Q742.4375,135.5 743.9375,135.5 Q744.8281,135.5 745.4531,135.2969 Q745.8125,135.1875 746.2188,134.8281 Q746.4844,134.625 746.625,134.5625 Q746.7656,134.5 746.9375,134.5 Q747.2656,134.5 747.5,134.7656 Q747.75,135.0156 747.75,135.375 Q747.75,135.7188 747.4063,136.125 Q746.9063,136.7188 746.1094,137.0469 Q745.0625,137.5 743.7813,137.5 Q742.2813,137.5 741.0781,136.9063 Q740.1094,136.4375 739.4219,135.4219 Q738.75,134.4063 738.75,133.2031 L738.75,132.1094 Q738.75,130.8594 739.3438,129.7656 Q739.9531,128.6719 741,128.0938 Q742.0625,127.5 743.25,127.5 Q743.9688,127.5 744.5938,127.75 Q745.2188,128 745.75,128.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="102" x="759.25" y="136.9102">ConnectionFactory</text><line style="stroke:#A80036;stroke-width:1.5;" x1="723" x2="870" y1="148" y2="148"/><line style="stroke:#A80036;stroke-width:1.5;" x1="723" x2="870" y1="156" y2="156"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="730" y="164"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="64" x="742" y="171.4189">getInstance()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="730" y="177.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="742" y="185.2549">loadProperties()</text><ellipse cx="733" cy="194.6719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="123" x="742" y="199.0908">getDatabaseConnection()</text><!--MD5=[8aa441cdd93a4e2944eff58bc06cd78a]
+class DatabaseConnection--><rect codeLine="15" fill="#FEFECE" filter="url(#fskwngbgrab7z)" height="131.0156" id="DatabaseConnection" style="stroke:#A80036;stroke-width:1.5;" width="190" x="701.5" y="284"/><ellipse cx="734.95" cy="300" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M736.95,296.5 Q737.1531,296 737.3875,295.75 Q737.6219,295.5 737.8875,295.5 Q738.3563,295.5 738.6531,295.7813 Q738.95,296.0625 738.95,296.7188 L738.95,298.2813 Q738.95,298.9375 738.6688,299.2188 Q738.3875,299.5 737.95,299.5 Q737.5594,299.5 737.3094,299.3281 Q737.0594,299.1563 736.95,298.7031 Q736.9031,298.3906 736.7313,298.2188 Q736.4188,297.8906 735.8563,297.7031 Q735.2938,297.5 734.7313,297.5 Q734.0281,297.5 733.4344,297.7813 Q732.8563,298.0625 732.4031,298.6875 Q731.95,299.3125 731.95,300.1719 L731.95,301.0938 Q731.95,302.125 732.7938,302.8125 Q733.6375,303.5 735.1375,303.5 Q736.0281,303.5 736.6531,303.2969 Q737.0125,303.1875 737.4188,302.8281 Q737.6844,302.625 737.825,302.5625 Q737.9656,302.5 738.1375,302.5 Q738.4656,302.5 738.7,302.7656 Q738.95,303.0156 738.95,303.375 Q738.95,303.7188 738.6063,304.125 Q738.1063,304.7188 737.3094,305.0469 Q736.2625,305.5 734.9813,305.5 Q733.4813,305.5 732.2781,304.9063 Q731.3094,304.4375 730.6219,303.4219 Q729.95,302.4063 729.95,301.2031 L729.95,300.1094 Q729.95,298.8594 730.5438,297.7656 Q731.1531,296.6719 732.2,296.0938 Q733.2625,295.5 734.45,295.5 Q735.1688,295.5 735.7938,295.75 Q736.4188,296 736.95,296.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="117" x="753.05" y="304.9102">DatabaseConnection</text><line style="stroke:#A80036;stroke-width:1.5;" x1="702.5" x2="890.5" y1="316" y2="316"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="709.5" y="324"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="721.5" y="331.4189">oracleDataSource</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="709.5" y="337.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="53" x="721.5" y="345.2549">connection</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="709.5" y="351.6719"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="24" x="721.5" y="359.0908">error</text><line style="stroke:#A80036;stroke-width:1.5;" x1="702.5" x2="890.5" y1="365.5078" y2="365.5078"/><ellipse cx="712.5" cy="376.5078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="721.5" y="380.9268">getConnection()</text><ellipse cx="712.5" cy="390.3438" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="164" x="721.5" y="394.7627">registerError(SQLException error)</text><ellipse cx="712.5" cy="404.1797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="68" x="721.5" y="408.5986">getLastError()</text><!--MD5=[788284d06c75b89fa89fff4da97a7d67]
+link GetContainerSituationUI to GetContainerSituationController--><path codeLine="24" d="M110.5,55.18 C110.5,76.07 110.5,106.93 110.5,129.75 " fill="none" id="GetContainerSituationUI-GetContainerSituationController" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[07abab6e741a2f97b344b1c562ceaa57]
+link GetContainerSituationController to ContainerSituationDB--><path codeLine="25" d="M214.16,161 C225.65,161 237.14,161 248.64,161 " fill="none" id="GetContainerSituationController-ContainerSituationDB" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[d30fc60dc7694cce1e1b5b574fbd96e0]
+link ContainerSituationDB to ConnectionFactory--><path codeLine="26" d="M400.07,161 C488.49,161 633.95,161 721.93,161 " fill="none" id="ContainerSituationDB-ConnectionFactory" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="427.5,149.1758,418.4549,146.2369,418.4549,152.1147,427.5,149.1758" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="272" x="431.5" y="154.4951">requests connection to database to obtain data</text><!--MD5=[f69893cd3a05080ec62d77c49424649a]
+link ConnectionFactory to DatabaseConnection--><path codeLine="27" d="M796.5,206.2 C796.5,229.36 796.5,258.16 796.5,283.78 " fill="none" id="ConnectionFactory-DatabaseConnection" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="801.5,250.1758,804.4389,241.1307,798.5611,241.1307,801.5,250.1758" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="60" x="810.5" y="250.4951">fabricate a</text><!--MD5=[7fd9e4cbf51b464dbc05b27fabcb7cab]
+@startuml
+'https://plantuml.com/class-diagram
+
+class GetContainerSituationUI{}
+class GetContainerSituationController{
++getSituation(containerID)
+}
+class ContainerSituationDB{
++getSituation(containerID)
+}
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
++getDatabaseConnection()
+}
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+GetContainerSituationUI .. GetContainerSituationController
+GetContainerSituationController . ContainerSituationDB
+ContainerSituationDB - ConnectionFactory : requests connection to database to obtain data >
+ConnectionFactory - - DatabaseConnection : fabricate a >
+
+@enduml
+
+@startuml
+
+class GetContainerSituationUI{}
+class GetContainerSituationController{
++getSituation(containerID)
+}
+class ContainerSituationDB{
++getSituation(containerID)
+}
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
++getDatabaseConnection()
+}
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+GetContainerSituationUI .. GetContainerSituationController
+GetContainerSituationController . ContainerSituationDB
+ContainerSituationDB - ConnectionFactory : requests connection to database to obtain data >
+ConnectionFactory - - DatabaseConnection : fabricate a >
+
+@enduml
+
+PlantUML version 1.2021.11(Sat Oct 02 14:26:11 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

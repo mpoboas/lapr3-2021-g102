@@ -1,0 +1,49 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Company {
+-designation
++getShipStore()
+}
+class SummaryController {
++getShip(code)
++getShipSummary(Ship ship)
+
+}
+class SummaryUI {
+}
+class ShipStore{
++getShipByMMSI(MMSI)
++getShipByIMO(IMO)
++getShipByCallSign(callSign)
+}
+
+class Ship{
++getVesselName()
++getStartBDT()
++getEndBDT()
++getTotalTimeInSea()
++numberOfMovements()
++getMaxSOG()
++getMeanSOG()
++getMaxCOG()
++getMeanCOG()
++getDepartureLatitude()
++getDepartureLongitude()
++getArrivalLatitude()
++getArrivalLongitude()
++getTotalDistance()
++deltaDistance()
+
+}
+
+
+SummaryUI ..> SummaryController
+SummaryController ..> Company
+Company --> ShipStore
+ShipStore --> Ship
+
+
+
+
+@enduml

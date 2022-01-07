@@ -1,0 +1,52 @@
+@startuml
+autonumber
+'hide footbox
+
+actor "Client" as CL
+
+participant "ContainerRouteUI" as UI
+participant "GetClientContainerRouteController" as CTRL
+participant "ContainerDB" as CONTAINERDB
+participant ConnectionFactory as CF
+participant DatabaseConnection as DC
+database LAPR3_G102 as DB
+
+activate CL
+CL -> UI : requests the route of a specific container that is being leased,\ngiven a registration code and container identifier
+activate UI
+UI --> CL : requests all the needed data (user registration code and container id)
+deactivate UI
+
+CL -> UI : types data
+activate UI
+
+UI -> CF** : create()
+activate CF
+CF -> DC** : create()
+activate DC
+DC --> DB
+activate DB
+deactivate DB
+deactivate DC
+deactivate CF
+
+UI -> CTRL : getClientContainerRoute(databaseConnection, clientUsername, containerId)
+activate CTRL
+CTRL -> CONTAINERDB : getClientContainerRoute(databaseConnection, clientUsername, containerId)
+activate CONTAINERDB
+
+CONTAINERDB -> DC : connection = getConnection()
+activate DC
+deactivate DC
+
+CONTAINERDB -> DB : fnc_get_client_container_route(clientUsername, containerId)
+activate DB
+deactivate DB
+CONTAINERDB --> CTRL : result
+deactivate CONTAINERDB
+deactivate CONTAINERDB
+CTRL --> UI : result
+deactivate CTRL
+UI --> CL : shows the given container´s route (locations, times of arrival and mean of transport)
+deactivate UI
+@enduml

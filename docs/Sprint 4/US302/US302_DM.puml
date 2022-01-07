@@ -1,0 +1,48 @@
+@startuml
+
+class FreightNetwork{
+-graph
+-countries
+-borders
+-seadists
+}
+
+class SeaDist{
+-from_country
+-to_port_id
+-from_port
+-to_country
+-to_port_id
+-to_port
+-sea_distance
+}
+class Port {
+-idPort
+-name
+-continent
+-country
+}
+class Border{
+-country1
+-country2
+}
+class Country{
+-continent
+-alpha.2.code
+-alpha.3.code
+-country
+-population
+-capital
+-latitude
+-longitude
+}
+
+
+Port -- SeaDist : is connected by >
+Country -- SeaDist : is connected by >
+SeaDist -- FreightNetwork : to the >
+Country "1" - "*" Border : has
+
+
+
+@enduml

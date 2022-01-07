@@ -1,0 +1,40 @@
+@startuml
+autonumber
+'hide footbox
+
+actor "Traffic Manager" as TF
+
+participant "ColorMapUI" as UI
+participant "ColorMapController" as CTRL
+participant Company as COMP
+participant "FreightNetwork" as FN
+
+
+
+activate TF
+TF -> UI : asks to color the map using as few colors as possible
+
+activate UI
+
+UI -> COMP : freightNetwork = getFreightNetwork()
+activate COMP
+deactivate COMP
+UI -> FN : graph = freightNetwork.getGraph()
+activate FN
+deactivate FN
+
+UI -> CTRL : adjList = graphToAdjList(graph)
+activate CTRL
+deactivate CTRL
+
+UI -> CTRL : coloredMap = colorMap(adjList)
+activate CTRL
+deactivate CTRL
+
+UI -> CTRL : printColoredMap(coloredMap)
+activate CTRL
+CTRL --> UI
+deactivate CTRL
+UI --> TF : shows the map colored and the number of colors used
+deactivate UI
+@enduml
