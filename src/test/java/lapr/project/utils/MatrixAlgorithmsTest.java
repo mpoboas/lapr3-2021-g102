@@ -79,7 +79,7 @@ public class MatrixAlgorithmsTest {
         assertEquals("Faro", path.peekFirst());
 
         path = Algorithms.breadthFirstSearch(incompleteMap, "Porto");
-        assertEquals(8, path.size(), "Should give seven vertices"); //yet to fix something in algorithms
+        assertEquals(7, path.size(), "Should give seven vertices");
 
         assertEquals("Porto", path.removeFirst(), "BreathFirst Porto");
 
@@ -112,7 +112,7 @@ public class MatrixAlgorithmsTest {
         assertEquals("Faro", path.peekFirst());
 
         path = Algorithms.breadthFirstSearch(incompleteMap, "Porto");
-        assertEquals(8, path.size(), "Should give seven vertices");//still something to fix in algorithms
+        assertEquals(7, path.size(), "Should give seven vertices");
 
         assertEquals("Porto", path.removeFirst(), "DepthFirst Porto");
         assertTrue(new LinkedList<>(Arrays.asList("Aveiro", "Braga", "Vila Real")).contains(path.removeFirst()), "DepthFirst Porto");
