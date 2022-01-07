@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Fleet Manager" as FM
+
+activate FM
+FM -> ":System" : asks the ship voyages that had occupancy rate \nbelow a certain threshold
+activate ":System"
+":System" --> FM : requests data (ship identification (mmsi))
+deactivate ":System"
+FM -> ":System" : inserts requested data
+activate ":System"
+":System" --> FM : shows list voyages
+deactivate ":System"
+FM -> ":System" : confirms data
+activate ":System"
+":System" --> FM : shows operation success
+deactivate ":System"
+deactivate FM
+@enduml

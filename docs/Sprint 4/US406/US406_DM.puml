@@ -1,0 +1,79 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Coordinates{
+-latitude
+-longitude
+}
+
+class Port {
+-idPort
+-name
+-continent
+-country
+}
+
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+}
+
+class AISMessage{
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
+
+class Trips{
+-startingPort
+-destination
+-CoordinatesSet
+}
+
+class CargoManifest {
+-content
+-elaborationDate
+}
+
+class Container {
+-containerId
+-containerPayload
+-containerTare
+-containerGross
+-ISOcode
+}
+
+class PortStaff {
+}
+
+class LoadingCargoManifest {
+}
+
+class UnloadingCargoManifest {
+}
+Port "1" -- "1" Coordinates : Has a set of >
+
+Container "*" -- "*" CargoManifest : contains <
+LoadingCargoManifest "1" -u- "1" CargoManifest : is a >
+CargoManifest "*" -- "1" PortStaff : makes <
+UnloadingCargoManifest "*" -u- "1" CargoManifest : is a >
+Ship "1" -- "*" Container : carries >
+Ship "1" - "*" AISMessage : contains >
+AISMessage "1" - "1" Coordinates : Has a set of >
+Trips "1" - "*" Port : between >
+Ship "1" - "*" Trips : does many >
+@enduml
