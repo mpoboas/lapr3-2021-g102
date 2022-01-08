@@ -1,0 +1,18 @@
+@startuml
+actor "Fleet Manager" as fm
+participant system as sys
+activate fm
+fm -> sys : asks for average ocupancy rate per cargomanifest of a ship in a given period
+activate sys
+sys --> fm : requests ship MMSI and period of time
+deactivate
+fm -> sys: types requested information
+activate sys
+sys -->fm : requests confirmation
+deactivate sys
+fm -> sys :confirms data
+activate sys
+sys --> fm :shows requested data
+deactivate sys
+deactivate fm
+@enduml
