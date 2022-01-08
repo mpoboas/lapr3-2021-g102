@@ -1,0 +1,20 @@
+@startuml
+class AvgOccupancyCGinShipController{
+-setData(AvgOccupancyPerCargoMan data)
+-getResult()
+}
+class AvgOccupancyPerCargoMan{
+-int shipMMSI
+-String date1;
+-String date2;
+-getDataFromDB()
+-accessDB()
+
+}
+database Database{
+}
+AvgOccupancyCGinShipController - AvgOccupancyPerCargoMan : Controls execution of >
+AvgOccupancyPerCargoMan - Database : interacts with >
+
+
+@enduml

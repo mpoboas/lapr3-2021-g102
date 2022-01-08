@@ -1,0 +1,36 @@
+@startuml
+actor "Fleet Manager" as fm
+participant UI as ui
+participant AvgOccupancyCGinShipController as controller
+participant AvgOccupancyPerCargoMan as data
+database Database as db
+activate fm
+fm -> ui : asks for average ocupancy rate per cargomanifest of a ship in a given period
+activate ui
+ui --> fm : requests ship MMSI and period of time
+deactivate
+fm -> ui: types requested information
+activate ui
+ui -->fm : requests confirmation
+deactivate ui
+fm -> ui :confirms data
+activate ui
+ui -> controller : requests average ocupancy rate per cargomanifest of a ship in a certain period
+activate controller
+controller -> data : requests data from database
+activate data
+data -> db : requests the average occupancy rate per Cargo Manifest in a given period
+activate db
+db --> db : getOccupancyRatePerCMInPeriod(idShip integer, date1 varchar, date2 varchar)
+activate db
+deactivate db
+db --> data :sends requested data
+deactivate db
+data --> controller : sends requested data
+deactivate data
+controller --> ui : sends requested data
+deactivate controller
+ui --> fm :shows requested data
+deactivate ui
+deactivate fm
+@enduml
