@@ -1,0 +1,47 @@
+@startuml
+autonumber
+'hide footbox
+
+actor "Fleet Manager" as FM
+
+participant "ShipIdleDaysUI" as UI
+participant "GetShipIdleDaysController" as CTRL
+participant "ShipDB" as SHIPDB
+participant ConnectionFactory as CF
+participant DatabaseConnection as DC
+database LAPR3_G102 as DB
+
+activate FM
+FM -> UI : requests the number of idle days of each ship\nsince the beginning of the current year
+activate UI
+
+UI -> CF** : create()
+activate CF
+CF -> DC** : create()
+activate DC
+DC --> DB
+activate DB
+deactivate DB
+deactivate DC
+deactivate CF
+
+UI -> CTRL : getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, currentYear)
+activate CTRL
+CTRL -> SHIPDB : getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, currentYear)
+activate SHIPDB
+
+SHIPDB -> DC : connection = getConnection()
+activate DC
+deactivate DC
+
+SHIPDB -> DB : fnc_get_each_ship_number_idle_days(fleetManagerUsername, currentYear)
+activate DB
+deactivate DB
+SHIPDB --> CTRL : result
+deactivate SHIPDB
+deactivate SHIPDB
+CTRL --> UI : result
+deactivate CTRL
+UI --> FM : shows the number of idle days of each ship associated\nwith the fleet manager
+deactivate UI
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
+}
+
+class ShipIdleDaysUI {
+}
+
+class GetShipIdleDaysController {
++getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, currentYear)
+}
+
+class ShipDB {
++getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, currentYear)
+}
+
+class ConnectionFactory{
++getInstance()
++loadProperties()
++getDatabaseConnection()
+}
+
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+ShipIdleDaysUI ..> GetShipIdleDaysController
+GetShipIdleDaysController ..> ShipDB
+GetShipIdleDaysController ..> Company
+ShipDB ..> ConnectionFactory
+ConnectionFactory ..> DatabaseConnection
+
+@enduml

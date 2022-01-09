@@ -1,0 +1,47 @@
+@startuml
+
+class FleetManager {
+}
+
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
+
+class Trips {
+-startingPort
+-destination
+-CoordinatesSet
+}
+
+class Port {
+-idPort
+-name
+-continent
+-country
+-latitude
+-longitude
+}
+
+FleetManager "1" -- "*" Ship : controls >
+Ship "1" -- "*" Trips : does many >
+Trips "1" -- "*" Port : between >
+
+@enduml

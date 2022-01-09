@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="684px" preserveAspectRatio="none" style="width:2074px;height:684px;background:#FFFFFF;" version="1.1" viewBox="0 0 2074 684" width="2074px" zoomAndPan="magnify"><defs><filter height="300%" id="f1vrtlmmnzvyqy" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="490.0859" style="stroke:#A80036;stroke-width:1.0;" width="10" x="49" y="99.6094"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="442.3828" style="stroke:#A80036;stroke-width:1.0;" width="10" x="418" y="138.3125"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="211.7578" style="stroke:#A80036;stroke-width:1.0;" width="10" x="982" y="322.2344"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="151.0547" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1546" y="352.5859"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="113.2188" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1657.5" y="178.6641"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="66.6094" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1817" y="225.2734"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1817" y="382.9375"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="2022" y="261.8828"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="2022" y="443.2891"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="54" x2="54" y1="89.6094" y2="598.6953"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="423" x2="423" y1="89.6094" y2="598.6953"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="986.5" x2="986.5" y1="89.6094" y2="598.6953"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="1550.5" x2="1550.5" y1="89.6094" y2="598.6953"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="1662.5" x2="1662.5" y1="179.6172" y2="598.6953"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="1821.5" x2="1821.5" y1="226.2266" y2="598.6953"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="2026.5" x2="2026.5" y1="89.6094" y2="598.6953"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="5" y="86.5332">Fleet Manager</text><ellipse cx="54" cy="15" fill="#FEFECE" filter="url(#f1vrtlmmnzvyqy)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M54,23 L54,50 M41,31 L67,31 M54,50 L41,65 M54,50 L67,65 " fill="none" filter="url(#f1vrtlmmnzvyqy)" style="stroke:#A80036;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="5" y="612.2285">Fleet Manager</text><ellipse cx="54" cy="625.3047" fill="#FEFECE" filter="url(#f1vrtlmmnzvyqy)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M54,633.3047 L54,660.3047 M41,641.3047 L67,641.3047 M54,660.3047 L41,675.3047 M54,660.3047 L67,675.3047 " fill="none" filter="url(#f1vrtlmmnzvyqy)" style="stroke:#A80036;stroke-width:2.0;"/><rect fill="#FEFECE" filter="url(#f1vrtlmmnzvyqy)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="108" x="367" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="374" y="74.5332">ShipIdleDaysUI</text><rect fill="#FEFECE" filter="url(#f1vrtlmmnzvyqy)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="108" x="367" y="597.6953"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="374" y="619.2285">ShipIdleDaysUI</text><rect fill="#FEFECE" filter="url(#f1vrtlmmnzvyqy)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="181" x="894.5" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="167" x="901.5" y="74.5332">GetShipIdleDaysController</text><rect fill="#FEFECE" filter="url(#f1vrtlmmnzvyqy)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="181" x="894.5" y="597.6953"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="167" x="901.5" y="619.2285">GetShipIdleDaysController</text><rect fill="#FEFECE" filter="url(#f1vrtlmmnzvyqy)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="61" x="1518.5" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="1525.5" y="74.5332">ShipDB</text><rect fill="#FEFECE" filter="url(#f1vrtlmmnzvyqy)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="61" x="1518.5" y="597.6953"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="1525.5" y="619.2285">ShipDB</text><rect fill="#FEFECE" filter="url(#f1vrtlmmnzvyqy)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="134" x="1593.5" y="597.6953"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120" x="1600.5" y="619.2285">ConnectionFactory</text><rect fill="#FEFECE" filter="url(#f1vrtlmmnzvyqy)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="147" x="1746.5" y="597.6953"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="133" x="1753.5" y="619.2285">DatabaseConnection</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87" x="1980.5" y="86.5332">LAPR3_G102</text><path d="M2009,36 C2009,26 2027,26 2027,26 C2027,26 2045,26 2045,36 L2045,62 C2045,72 2027,72 2027,72 C2027,72 2009,72 2009,62 L2009,36 " fill="#FEFECE" filter="url(#f1vrtlmmnzvyqy)" style="stroke:#000000;stroke-width:1.5;"/><path d="M2009,36 C2009,46 2027,46 2027,46 C2027,46 2045,46 2045,36 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87" x="1980.5" y="612.2285">LAPR3_G102</text><path d="M2009,625.3047 C2009,615.3047 2027,615.3047 2027,615.3047 C2027,615.3047 2045,615.3047 2045,625.3047 L2045,651.3047 C2045,661.3047 2027,661.3047 2027,661.3047 C2027,661.3047 2009,661.3047 2009,651.3047 L2009,625.3047 " fill="#FEFECE" filter="url(#f1vrtlmmnzvyqy)" style="stroke:#000000;stroke-width:1.5;"/><path d="M2009,625.3047 C2009,635.3047 2027,635.3047 2027,635.3047 C2027,635.3047 2045,635.3047 2045,625.3047 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="490.0859" style="stroke:#A80036;stroke-width:1.0;" width="10" x="49" y="99.6094"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="442.3828" style="stroke:#A80036;stroke-width:1.0;" width="10" x="418" y="138.3125"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="211.7578" style="stroke:#A80036;stroke-width:1.0;" width="10" x="982" y="322.2344"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="151.0547" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1546" y="352.5859"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="113.2188" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1657.5" y="178.6641"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="66.6094" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1817" y="225.2734"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1817" y="382.9375"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="2022" y="261.8828"/><rect fill="#FFFFFF" filter="url(#f1vrtlmmnzvyqy)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="2022" y="443.2891"/><polygon fill="#A80036" points="406,134.3125,416,138.3125,406,142.3125,410,138.3125" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="59" x2="412" y1="138.3125" y2="138.3125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="66" y="125.2803">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="263" x="77" y="117.1045">requests the number of idle days of each ship</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="221" x="77" y="133.4561">since the beginning of the current year</text><polygon fill="#A80036" points="1581.5,164.6641,1591.5,168.6641,1581.5,172.6641,1585.5,168.6641" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="428" x2="1587.5" y1="168.6641" y2="168.6641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="435" y="163.8076">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="44" x="446" y="163.8076">create()</text><rect fill="#FEFECE" filter="url(#f1vrtlmmnzvyqy)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="134" x="1593.5" y="146.3125"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120" x="1600.5" y="167.8457">ConnectionFactory</text><polygon fill="#A80036" points="1734.5,211.2734,1744.5,215.2734,1734.5,219.2734,1738.5,215.2734" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="1667.5" x2="1740.5" y1="215.2734" y2="215.2734"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="1674.5" y="210.417">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="44" x="1685.5" y="210.417">create()</text><rect fill="#FEFECE" filter="url(#f1vrtlmmnzvyqy)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="147" x="1746.5" y="192.9219"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="133" x="1753.5" y="214.4551">DatabaseConnection</text><polygon fill="#A80036" points="2010,257.8828,2020,261.8828,2010,265.8828,2014,261.8828" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="1827" x2="2016" y1="261.8828" y2="261.8828"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="1834" y="257.0264">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="0" x="1849" y="257.0264"/><polygon fill="#A80036" points="970,318.2344,980,322.2344,970,326.2344,974,322.2344" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="428" x2="976" y1="322.2344" y2="322.2344"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="435" y="317.3779">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="524" x="446" y="317.3779">getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, currentYear)</text><polygon fill="#A80036" points="1534,348.5859,1544,352.5859,1534,356.5859,1538,352.5859" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="992" x2="1540" y1="352.5859" y2="352.5859"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="999" y="347.7295">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="524" x="1010" y="347.7295">getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, currentYear)</text><polygon fill="#A80036" points="1805,378.9375,1815,382.9375,1805,386.9375,1809,382.9375" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="1556" x2="1811" y1="382.9375" y2="382.9375"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="1563" y="378.0811">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="170" x="1574" y="378.0811">connection = getConnection()</text><polygon fill="#A80036" points="2010,439.2891,2020,443.2891,2010,447.2891,2014,443.2891" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="1556" x2="2016" y1="443.2891" y2="443.2891"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="1563" y="438.4326">8</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="436" x="1574" y="438.4326">fnc_get_each_ship_number_idle_days(fleetManagerUsername, currentYear)</text><polygon fill="#A80036" points="1003,499.6406,993,503.6406,1003,507.6406,999,503.6406" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="997" x2="1550" y1="503.6406" y2="503.6406"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="1009" y="498.7842">9</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="32" x="1020" y="498.7842">result</text><polygon fill="#A80036" points="439,529.9922,429,533.9922,439,537.9922,435,533.9922" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="433" x2="986" y1="533.9922" y2="533.9922"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="445" y="529.1357">10</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="32" x="463" y="529.1357">result</text><polygon fill="#A80036" points="70,576.6953,60,580.6953,70,584.6953,66,580.6953" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="64" x2="422" y1="580.6953" y2="580.6953"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="76" y="567.6631">11</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="317" x="94" y="559.4873">shows the number of idle days of each ship associated</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="127" x="94" y="575.8389">with the fleet manager</text><!--MD5=[dbc57ef5aee84861354cd51245989186]
+@startuml
+autonumber
+'hide footbox
+
+actor "Fleet Manager" as FM
+
+participant "ShipIdleDaysUI" as UI
+participant "GetShipIdleDaysController" as CTRL
+participant "ShipDB" as SHIPDB
+participant ConnectionFactory as CF
+participant DatabaseConnection as DC
+database LAPR3_G102 as DB
+
+activate FM
+FM -> UI : requests the number of idle days of each ship\nsince the beginning of the current year
+activate UI
+
+UI -> CF** : create()
+activate CF
+CF -> DC** : create()
+activate DC
+DC - -> DB
+activate DB
+deactivate DB
+deactivate DC
+deactivate CF
+
+UI -> CTRL : getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, currentYear)
+activate CTRL
+CTRL -> SHIPDB : getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, currentYear)
+activate SHIPDB
+
+SHIPDB -> DC : connection = getConnection()
+activate DC
+deactivate DC
+
+SHIPDB -> DB : fnc_get_each_ship_number_idle_days(fleetManagerUsername, currentYear)
+activate DB
+deactivate DB
+SHIPDB - -> CTRL : result
+deactivate SHIPDB
+deactivate SHIPDB
+CTRL - -> UI : result
+deactivate CTRL
+UI - -> FM : shows the number of idle days of each ship associated\nwith the fleet manager
+deactivate UI
+@enduml
+
+@startuml
+autonumber
+
+actor "Fleet Manager" as FM
+
+participant "ShipIdleDaysUI" as UI
+participant "GetShipIdleDaysController" as CTRL
+participant "ShipDB" as SHIPDB
+participant ConnectionFactory as CF
+participant DatabaseConnection as DC
+database LAPR3_G102 as DB
+
+activate FM
+FM -> UI : requests the number of idle days of each ship\nsince the beginning of the current year
+activate UI
+
+UI -> CF** : create()
+activate CF
+CF -> DC** : create()
+activate DC
+DC - -> DB
+activate DB
+deactivate DB
+deactivate DC
+deactivate CF
+
+UI -> CTRL : getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, currentYear)
+activate CTRL
+CTRL -> SHIPDB : getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, currentYear)
+activate SHIPDB
+
+SHIPDB -> DC : connection = getConnection()
+activate DC
+deactivate DC
+
+SHIPDB -> DB : fnc_get_each_ship_number_idle_days(fleetManagerUsername, currentYear)
+activate DB
+deactivate DB
+SHIPDB - -> CTRL : result
+deactivate SHIPDB
+deactivate SHIPDB
+CTRL - -> UI : result
+deactivate CTRL
+UI - -> FM : shows the number of idle days of each ship associated\nwith the fleet manager
+deactivate UI
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 13:40:07 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: Dynamic Code Evolution 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>
