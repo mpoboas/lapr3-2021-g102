@@ -13,7 +13,7 @@ class GetWarehouseOccupancyRateController {
 }
 
 class PortWarehouseDB {
-getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerUsername)
++getEachWarehouseOccupancyRateAndContainersLeaving30Days(databaseConnection, portManagerUsername)
 }
 
 class ConnectionFactory{
