@@ -25,16 +25,16 @@ deactivate DB
 deactivate DC
 deactivate CF
 
-UI -> CTRL : getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, currentYear)
+UI -> CTRL : getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, year)
 activate CTRL
-CTRL -> SHIPDB : getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, currentYear)
+CTRL -> SHIPDB : getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, year)
 activate SHIPDB
 
 SHIPDB -> DC : connection = getConnection()
 activate DC
 deactivate DC
 
-SHIPDB -> DB : fnc_get_each_ship_number_idle_days(fleetManagerUsername, currentYear)
+SHIPDB -> DB : fnc_get_each_ship_number_idle_days(fleetManagerUsername, year)
 activate DB
 deactivate DB
 SHIPDB --> CTRL : result

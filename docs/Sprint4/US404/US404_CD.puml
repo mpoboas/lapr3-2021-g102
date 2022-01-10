@@ -9,11 +9,11 @@ class ShipIdleDaysUI {
 }
 
 class GetShipIdleDaysController {
-+getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, currentYear)
++getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, year)
 }
 
 class ShipDB {
-+getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, currentYear)
++getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, year)
 }
 
 class ConnectionFactory{
