@@ -5,6 +5,8 @@ import lapr.project.model.Container;
 import lapr.project.model.Trips;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -139,12 +141,34 @@ public class TripStore implements Persistable{
                 saveADPreparedStatement.executeUpdate();
             }
         }
-
-
-
-
-
-
-
     }
+
+    /**
+     * Gets the list of voyages of a given ship that the occupancy rate is below a threshold
+     * @param shipMMSI the ship identification
+     * @param cf connection
+     * @return the list of voyages
+     * @throws SQLException
+     */
+    public List<String> getShipVoyagesBelowThreshold(int shipMMSI, ConnectionFactory cf) throws SQLException{
+        List<String> list = new ArrayList<>();
+        Connection conn = cf.getDatabaseConnection().getConnection();
+        try(CallableStatement statement = conn.prepareCall("{ ? = call fnc_get_voyages_below_threshold(?)}")){
+            statement.registerOutParameter(1,Types.REF_CURSOR);
+            statement.setInt(2,shipMMSI);
+            statement.execute();
+            ResultSet rs = statement.getObject(1,ResultSet.class);
+            while (rs.next()){
+                String row = "Start Date: " + rs.getTimestamp(1) + " | "
+                        + "Start Place ID: " + rs.getInt(2) + " | "
+                        + "Start Place Name: " + rs.getString(3) + " | "
+                        + "End Date: " + rs.getTimestamp(4) + " | "
+                        + "End Place ID: " + rs.getInt(5) + " | "
+                        + "End Place Name: " + rs.getString(6);
+                list.add(row);
+            }
+        }
+        return list;
+    }
+
 }
