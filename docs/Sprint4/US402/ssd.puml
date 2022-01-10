@@ -1,0 +1,24 @@
+@startuml
+actor "Traffic Manager" as tm
+participant System as sys
+activate tm
+tm -> sys : Requests the shortest path between two places passing by n places
+activate sys
+sys --> tm : requests Place of start, destination and n places
+deactivate sys
+tm -> sys :types requested data
+loop
+activate sys
+sys --> tm : requests which are the n places
+tm -> sys : types requested data
+deactivate sys
+end loop
+activate sys
+sys --> tm : requests confirmation
+deactivate sys
+tm -> sys : confirms data
+activate sys
+sys --> tm : Shows requested data
+deactivate sys
+deactivate tm
+@enduml
