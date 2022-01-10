@@ -45,6 +45,15 @@ public class PhysicsUtils {
         return (wallThickness / thermalConductivity) / totalArea;
     }
 
+    public static double calculateEnergyTransferredAsHeat(double temp1, double temp2, double totalResistance){
+        return ((temp1 - temp2)/ totalResistance);
+    }
+
+    public static double calculateEnergyNecessary(double initialTemperature, double desiredTemperature, double totalResistance, int hour, int min, int sec){
+        int totalTime = hour*3600 + min*60 + sec;
+        return calculateEnergyTransferredAsHeat(initialTemperature,desiredTemperature,totalResistance) * totalTime;
+    }
+
     /**
      *
      * @return the list of all the materials of the walls

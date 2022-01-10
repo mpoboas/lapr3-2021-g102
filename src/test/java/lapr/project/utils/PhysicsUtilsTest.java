@@ -28,4 +28,20 @@ class PhysicsUtilsTest {
         double result = PhysicsUtils.calculateContainerThermalResistance(125.33428, materialThermalConductivityList, wallThicknessList);
         assertEquals(0.024147508493753002, result);
     }
+
+    @Test
+    void calculateEnergyTransferredAsHeat(){
+        double result = PhysicsUtils.calculateEnergyTransferredAsHeat(20,7,1);
+        assertEquals(13.0,result);
+        double result2 = PhysicsUtils.calculateEnergyTransferredAsHeat(20,7,0.024);
+        assertEquals(541.6666666666666,result2);
+    }
+
+    @Test
+    void calculateEnergyNecessary(){
+        double result = PhysicsUtils.calculateEnergyNecessary(20,7,1,2,30,0);
+        assertEquals(117000,result);
+        double result2 = PhysicsUtils.calculateEnergyNecessary(20,7,0.024,2,30,0);
+        assertEquals(4875000,result2);
+    }
 }
