@@ -1,0 +1,64 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+autonumber
+
+actor "Fleet Manager" as FM
+participant "GetVoyagesBelowThresholdUI" as UI
+participant "GetVoyagesBelowThresholdController" as CTRL
+participant "TripStore" as TS
+participant "cf :ConnectionFactory" as CF
+participant DatabaseConnection as DC
+
+database LAPR3_G102 as DB
+participant "con: Connection" as CON
+
+
+activate FM
+FM -> UI : asks the ship voyages that had occupancy rate \nbelow a certain threshold
+activate UI
+UI --> FM : requests data (ship identification (mmsi))
+deactivate UI
+FM -> UI : inserts requested data
+activate UI
+
+UI -> CF** : create()
+activate CF
+CF -> DC** : create()
+activate DC
+DC --> DB
+activate DB
+deactivate DB
+deactivate DC
+deactivate CF
+
+UI -> CTRL : getShipVoyagesBellowThreshold(int shipMMSI)
+activate CTRL
+CTRL -> TS : getShipVoyagesBelowThreshold(shipMMSI, connectionFactory)
+activate TS
+
+TS -> CF : conn = getDatabaseConnection()
+activate CF
+CF -> DC: getConnection()
+activate DC
+deactivate DC
+deactivate CF
+TS -> DB : voyages = fnc_get_voyages_below_threshold(mmsi)
+activate DB
+deactivate DB
+TS --> CTRL: voyages
+deactivate TS
+CTRL --> UI : voyages
+deactivate CTRL
+
+UI --> FM : shows list voyages
+deactivate UI
+FM -> UI : confirms data
+activate UI
+UI --> FM : shows operation success
+deactivate UI
+deactivate FM
+
+@enduml

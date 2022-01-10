@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class GetVoyagesBelowThresholdUI{}
+class GetVoyagesBelowThresholdController{
+-TripStore tsStore
+-ConnectionFactory connectionFactory
++create(tsStore,connectionFactory)
++getShipVoyagesBellowThreshold(int shipMMSI)
+}
+class TripStore{
++getShipVoyagesBelowThreshold(shipMMSI, connectionFactory)
+}
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
++getDatabaseConnection()
+}
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+GetVoyagesBelowThresholdUI .. GetVoyagesBelowThresholdController
+GetVoyagesBelowThresholdController . TripStore
+TripStore - ConnectionFactory : requests connection to database to obtain data >
+ConnectionFactory -- DatabaseConnection : fabricate a >
+
+@enduml
