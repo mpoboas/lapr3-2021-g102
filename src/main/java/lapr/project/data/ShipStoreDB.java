@@ -2,10 +2,7 @@ package lapr.project.data;
 
 import lapr.project.model.Ship;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -154,6 +151,32 @@ public class ShipStoreDB implements Persistable {
         }
     }
 
+    /**
+     * Gets the number of idles days of each ship associated with the given fleet manager, since the beginning of a given year.
+     *
+     * @param databaseConnection the database connection
+     * @param fleetManagerUsername the fleet manager´s username
+     * @param year the desired year
+     * @return the container´s route
+     */
+    public String getEachShipNumberOfIdleDays(DatabaseConnection databaseConnection, String fleetManagerUsername, int year) throws SQLException {
+        Connection connection = databaseConnection.getConnection();
 
+        try (CallableStatement callableStatement = connection.prepareCall("{? = call fnc_get_each_ship_number_of_idle_days(?, ?)}")) {
+            callableStatement.setString(2, fleetManagerUsername);
+            callableStatement.setInt(3, year);
+            callableStatement.registerOutParameter(1, Types.REF_CURSOR);
+            callableStatement.execute();
+            ResultSet resultSet = (ResultSet) callableStatement.getObject(1);
+            StringBuilder stringBuilder = new StringBuilder();
+            while (resultSet.next()) {
+                if (resultSet.getObject(2) == null || resultSet.getDouble(2) == 0)
+                    stringBuilder.append("The ship: ").append(resultSet.getInt(1)).append(" does not have idle time.").append("\n");
+                else stringBuilder.append("Ship Name: ").append(resultSet.getString(1)).append("\n")
+                            .append("Number of idle days since the beginning of the year: ").append(resultSet.getDouble(2)).append("\n");
+            }
 
+            return stringBuilder.toString();
+        }
+    }
 }

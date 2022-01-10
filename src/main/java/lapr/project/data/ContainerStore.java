@@ -160,7 +160,7 @@ public class ContainerStore implements Persistable {
                         count++;
                         stringBuilder.append("Movement ").append(count).append(":\n")
                                 .append("Departure PortWarehouse: ").append(resultSet.getString(3)).append("\n")
-                                .append("Arrival PortWarehouse ID: ").append(resultSet.getString(4)).append("\n")
+                                .append("Arrival PortWarehouse: ").append(resultSet.getString(4)).append("\n")
                                 .append("Date and time of departure: ").append(resultSet.getTimestamp(5)).append("\n")
                                 .append("Date and time of arrival: ").append(resultSet.getTimestamp(6)).append("\n")
                                 .append("Date and time of expected arrival: ").append(resultSet.getTimestamp(7)).append("\n")

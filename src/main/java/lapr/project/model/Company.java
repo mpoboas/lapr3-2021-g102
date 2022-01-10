@@ -35,7 +35,7 @@ public class Company {
     /**
      * The Ship store from database
      */
-    private final ShipStoreDB shipStoreDB;
+    private ShipStoreDB shipStoreDB;
 
     /**
      * The Port store from database
@@ -217,9 +217,16 @@ public class Company {
     }
 
     /**
-     * Sets the Container store from database (just for mockito usage).
+     * Sets the Port store from database (just for mockito usage).
      */
     public void setPortStoreDB(PortStoreDB portStoreDB) {
         this.portStoreDB = portStoreDB;
+    }
+
+    /**
+     * Sets the Ship store from database (just for mockito usage).
+     */
+    public void setShipStoreDB(ShipStoreDB shipStoreDB) {
+        this.shipStoreDB = shipStoreDB;
     }
 }
