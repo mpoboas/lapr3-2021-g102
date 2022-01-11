@@ -55,12 +55,6 @@ public class ClossenessPlaces {
             Pair<Place, Double> pair = new Pair<>(place, this.network.shortestPath(this.p, place));
             this.closenessPlaces.add(pair);
         }
-        for(int i = 0; i < this.closenessPlaces.size(); i++ ){
-            if(this.closenessPlaces.get(i).getSecond() == null){
-                this.closenessPlaces.remove(i); //remove places that are not connected to the desired port
-                i = i -1 ;
-            }
-        }
         this.closenessPlaces.sort(this::compare);
         if(this.closenessPlaces.size()>nPlaces) {
             this.closenessPlaces.subList(this.nPlaces, this.closenessPlaces.size()).clear();
@@ -74,12 +68,6 @@ public class ClossenessPlaces {
         for (Place place : places) {
             Pair<Place, Double> pair = new Pair<>(place, this.network.shortestPath(currentPlace, place));
             placeList.add(pair);
-        }
-        for(int i = 0; i < placeList.size(); i++ ){
-            if(placeList.get(i).getSecond() == null){
-                placeList.remove(i); //remove places that are not connected to the desired port
-                i = i -1 ;
-            }
         }
         placeList.sort(this::compare);
         return placeList.get(0).getFirst();

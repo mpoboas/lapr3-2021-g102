@@ -19,12 +19,14 @@ class ClossenessPlacesControllerTest {
         Company comp = new Company("Company");
         comp.getFreightNetwork().buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"),ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"),port.getListOfImportedPorts(),ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"), 1);
         controller = new ClossenessPlacesController(comp ,null,2);
-        port.importPortsData("data/data-shipsports/LAPR3_G102 - bports (alpha2Code).csv");
+        port.importPortsData("data/data-shipsports/data-shipsports/data-ships&ports/bports.csv");
         controller.getClossenessPlaces().getNetwork().buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"),ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"),port.getListOfImportedPorts(),ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"),2);
         controller.setPort(controller.getClossenessPlaces().getNetwork().getGraph().vertex(1));
         List<Pair<Place,Double>> list =  controller.getClosestPlacesList();
         assertEquals("Mexico" ,list.get(0).getFirst().getCountry());
-        assertEquals("Belize" ,list.get(1).getFirst().getCountry());
+        assertEquals("Mexico" ,list.get(1).getFirst().getCountry());
+        assertEquals("lapr.project.model.Port" ,list.get(1).getFirst().getClass().getName());
+
         assertEquals(2,list.size());
 
     }
@@ -35,7 +37,7 @@ class ClossenessPlacesControllerTest {
         Company comp = new Company("Company");
         comp.getFreightNetwork().buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"),ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"),port.getListOfImportedPorts(),ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"), 1);
         controller = new ClossenessPlacesController(comp ,null,2);
-        port.importPortsData("data/data-shipsports/LAPR3_G102 - bports (alpha2Code).csv");
+        port.importPortsData("data/data-shipsports/data-shipsports/data-ships&ports/bports.csv");
         controller.getClossenessPlaces().getNetwork().buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"),ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"),port.getListOfImportedPorts(),ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"),2);
         controller.setPort(controller.getClossenessPlaces().getNetwork().getGraph().vertex(1));
         controller.setnPlaces(50);
@@ -44,9 +46,9 @@ class ClossenessPlacesControllerTest {
             assertNotNull(placeDoublePair.getSecond());
         }
         assertEquals("Mexico" ,list.get(0).getFirst().getCountry());
-        assertEquals("Belize" ,list.get(1).getFirst().getCountry());
-        assertEquals(6408.485476184328,list.get(20).getSecond().doubleValue());
-        assertEquals(22,list.size());
+        assertEquals("Belize" ,list.get(2).getFirst().getCountry());
+        assertEquals(7967.640878074627,list.get(20).getSecond().doubleValue());
+        assertEquals(50,list.size());
         assertFalse(controller.getClosestPlacesList().isEmpty());
 
     }
