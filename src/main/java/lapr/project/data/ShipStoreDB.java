@@ -170,10 +170,10 @@ public class ShipStoreDB implements Persistable {
             ResultSet resultSet = (ResultSet) callableStatement.getObject(1);
             StringBuilder stringBuilder = new StringBuilder();
             while (resultSet.next()) {
-                if (resultSet.getObject(2) == null || resultSet.getDouble(2) == 0)
-                    stringBuilder.append("The ship: ").append(resultSet.getInt(1)).append(" does not have idle time.").append("\n");
-                else stringBuilder.append("Ship Name: ").append(resultSet.getString(1)).append("\n")
-                            .append("Number of idle days since the beginning of the year: ").append(resultSet.getDouble(2)).append("\n");
+                if (resultSet.getObject(3) == null || resultSet.getDouble(3) == 0)
+                    stringBuilder.append("The ship with the name ").append(resultSet.getString(2)).append(" does not have idle time.").append("\n");
+                else stringBuilder.append("Ship Name: ").append(resultSet.getString(2)).append("\n")
+                            .append("Number of idle days since the beginning of the year: ").append(resultSet.getDouble(3)).append("\n");
             }
 
             return stringBuilder.toString();

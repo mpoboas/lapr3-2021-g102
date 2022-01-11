@@ -59,6 +59,9 @@ public class App {
 
         // Port Manager
         this.authFacade.addUserWithRole("joaosilva12", "joaosilva12@lei.sem3.pt", "123456", Constants.U_ROLE_PORT_MANAGER);
+
+        // Fleet Manager
+        this.authFacade.addUserWithRole("sergioCosta15", "sergiocosta15@lei.sem3.pt", "123456", Constants.U_ROLE_FLEET_MANAGER);
     }
 
     // Extracted from https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2
