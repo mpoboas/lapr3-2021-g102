@@ -45,6 +45,7 @@ public class AlgorithmsNetwork {
                     }
                 }
             }
+
             Double minDist = null;
             vOrig = null;
             for (Place vert : g.vertices()) {
@@ -74,7 +75,7 @@ public class AlgorithmsNetwork {
      */
     public static Double shortestPath(Graph<Place, Double> g, Place vOrig, Place vDest,
                                       Comparator<Double> ce, BinaryOperator<Double> sum, Double zero,
-                                      List<Place> shortPath) {
+                                      LinkedList<Place> shortPath) {
         if (!g.validVertex(vOrig) || !g.validVertex(vDest))
             return null;
 
@@ -137,7 +138,7 @@ public class AlgorithmsNetwork {
      * @param path     stack with the minimum path (correct order)
      */
     private static <V, E> void getPath(Graph<V, E> g, V vOrig, V vDest,
-                                       V[] pathKeys, List<V> path) {
+                                       V[] pathKeys, LinkedList<V> path) {
         path.add(vOrig);
         for (V pathKey : pathKeys) {
             if (pathKey != null) {

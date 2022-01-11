@@ -69,6 +69,22 @@ public class ClossenessPlaces {
 
     }
 
+    public Place getClossestPlaceFromList(Place currentPlace, List<Place> places){
+        List<Pair<Place,Double>> placeList = new ArrayList<>();
+        for (Place place : places) {
+            Pair<Place, Double> pair = new Pair<>(place, this.network.shortestPath(currentPlace, place));
+            placeList.add(pair);
+        }
+        for(int i = 0; i < placeList.size(); i++ ){
+            if(placeList.get(i).getSecond() == null){
+                placeList.remove(i); //remove places that are not connected to the desired port
+                i = i -1 ;
+            }
+        }
+        placeList.sort(this::compare);
+        return placeList.get(0).getFirst();
+    }
+
     /**
      * method to compare distances
      * @param p1 place 1

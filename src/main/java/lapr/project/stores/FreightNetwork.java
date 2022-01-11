@@ -165,6 +165,9 @@ public class FreightNetwork {
         LinkedList<Place> shortPath = new LinkedList<>();
         return AlgorithmsNetwork.shortestPath(this.graph, vOrig,vDest,Double::compare,Double::sum, (double) 0,shortPath);
     }
+    public Double shortestPath(Place vOrig, Place vDest,LinkedList<Place> path){
+        return AlgorithmsNetwork.shortestPath(this.graph, vOrig,vDest,Double::compare,Double::sum, (double) 0,path);
+    }
 
     public boolean shortestPaths(Place vOrig) {
         ArrayList<LinkedList<Place>> paths = new ArrayList<>();
