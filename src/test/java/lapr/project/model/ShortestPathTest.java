@@ -77,7 +77,8 @@ class ShortestPathTest {
         places.add(network.getGraph().vertex(135));
         places.add(network.getGraph().vertex(1));
         path = new ShortestPath(network.getGraph().vertex(140), network.getGraph().vertex(0),places,network);
-        assertEquals(path.getSeaPath().size(),path.getSeaPath().size());
+        LinkedList<Place> fPath = path.getSeaPath();
+        assertEquals(path.getSeaPath().size(),fPath.size());
         assertEquals(0,path.getSeaPathDistance());
     }
 }
