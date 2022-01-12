@@ -175,7 +175,7 @@ public class FreightNetwork {
                 copyOfNetwork.removeVertex(copyOfNetwork.vertices().get(i));
             }
         }
-        return AlgorithmsNetwork.shortestPath(this.graph, vOrig,vDest,Double::compare,Double::sum, (double) 0,path);
+        return AlgorithmsNetwork.shortestPath(copyOfNetwork, vOrig,vDest,Double::compare,Double::sum, (double) 0,path);
     }
     public Double shortestPathLand(Place vOrig, Place vDest,LinkedList<Place> path){
         MatrixGraph<Place, Double> copyOfNetwork = this.graph;
@@ -184,7 +184,7 @@ public class FreightNetwork {
                 copyOfNetwork.removeVertex(copyOfNetwork.vertices().get(i));
             }
         }
-        return AlgorithmsNetwork.shortestPath(this.graph, vOrig,vDest,Double::compare,Double::sum, (double) 0,path);
+        return AlgorithmsNetwork.shortestPath(copyOfNetwork, vOrig,vDest,Double::compare,Double::sum, (double) 0,path);
     }
 
     public boolean shortestPaths(Place vOrig) {

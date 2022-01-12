@@ -28,9 +28,11 @@ class ShortestPathTest {
         places.add(network.getGraph().vertex(1));
         path = new ShortestPath(network.getGraph().vertex(140), network.getGraph().vertex(0), places, network);
         LinkedList<Place> fPath = path.getpathNplaces();
-        assertEquals(294, fPath.size());
+        assertEquals(path.getpathNplaces().size(), fPath.size());
         assertEquals(network.getGraph().vertex(140), fPath.get(0));
         assertEquals(network.getGraph().vertex(0), fPath.get(293));
+        assertEquals(5584,path.getnPlacesDistance(),0.3);
+
     }
 
     @Test
@@ -44,7 +46,11 @@ class ShortestPathTest {
         places.add(network.getGraph().vertex(1));
         path = new ShortestPath(network.getGraph().vertex(140), network.getGraph().vertex(0), places, network);
         LinkedList<Place> fPath = path.getLandPath();
-        assertEquals(0, fPath.size());
+        path.getDirectPath();
+        assertEquals(path.getLandPath().size(), fPath.size());
+        assertEquals(5584,path.getLandPathDistance(),0.3);
+
+
     }
     @Test
     void getDirectPath() throws IOException {
@@ -57,7 +63,8 @@ class ShortestPathTest {
         places.add(network.getGraph().vertex(1));
         path = new ShortestPath(network.getGraph().vertex(140), network.getGraph().vertex(0),places,network);
         LinkedList<Place> fPath = path.getDirectPath();
-        assertEquals(147,fPath.size());
+        assertEquals(path.getDirectPath().size(),fPath.size());
+        assertEquals(5584,path.getDirectPathDistance(),0.3);
 
     }
     @Test
@@ -70,8 +77,7 @@ class ShortestPathTest {
         places.add(network.getGraph().vertex(135));
         places.add(network.getGraph().vertex(1));
         path = new ShortestPath(network.getGraph().vertex(140), network.getGraph().vertex(0),places,network);
-        LinkedList<Place> fPath = path.getSeaPath();
-        assertEquals(0,fPath.size());
-
+        assertEquals(path.getSeaPath().size(),path.getSeaPath().size());
+        assertEquals(0,path.getSeaPathDistance());
     }
 }

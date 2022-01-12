@@ -10,9 +10,13 @@ public class ShortestPath {
     private final Place vDest;
     private final List<Place> listPlaces;
     private final LinkedList<Place> pathNplaces;
+    private double nPlacesDistance;
     private final LinkedList<Place> seaPath;
+    private double seaPathDistance;
     private final LinkedList<Place> landPath;
+    private double landPathDistance;
     private final LinkedList<Place> directPath;
+    private double directPathDistance;
     private final FreightNetwork network;
     private final ClossenessPlaces cp;
 
@@ -30,7 +34,7 @@ public class ShortestPath {
 
     private LinkedList<Place> pathBetweenVertex(Place vOrig, Place vDest) {
         LinkedList<Place> pathBetweenVertx = new LinkedList<>();
-        this.network.shortestPath(vOrig, vDest, pathBetweenVertx);
+        this.nPlacesDistance = this.nPlacesDistance + this.network.shortestPath(vOrig, vDest, pathBetweenVertx);
         return pathBetweenVertx;
     }
 
@@ -39,6 +43,7 @@ public class ShortestPath {
     }
 
     private void createPathNPlaces() {
+        this.nPlacesDistance = 0;
         Place currentPlace = vOrig;
         Place finalPlace = vDest;
         List<Place> listOfPlace = this.listPlaces;
@@ -53,15 +58,19 @@ public class ShortestPath {
     }
 
     private void seaPath() {
-        this.network.shortestPathSea(this.vOrig, this.vDest, this.seaPath);
+        try {
+            this.seaPathDistance = this.network.shortestPathSea(this.vOrig, this.vDest, this.seaPath);
+        }catch(NullPointerException e ){
+            this.seaPathDistance = 0;
+        }
     }
 
     private void landPath() {
-        this.network.shortestPathSea(this.vOrig, this.vDest, this.landPath);
+        this.landPathDistance = this.network.shortestPathLand(this.vOrig, this.vDest, this.landPath);
     }
 
     private void directPath() {
-        this.network.shortestPath(this.vOrig, this.vDest, this.directPath);
+        this.directPathDistance = this.network.shortestPath(this.vOrig, this.vDest, this.directPath);
     }
     public LinkedList<Place> getSeaPath() {
         if (this.pathNplaces.isEmpty()) {
@@ -87,5 +96,21 @@ public class ShortestPath {
             createPathNPlaces();
         }
         return this.pathNplaces;
+    }
+
+    public double getDirectPathDistance() {
+        return directPathDistance;
+    }
+
+    public double getLandPathDistance() {
+        return landPathDistance;
+    }
+
+    public double getnPlacesDistance() {
+        return nPlacesDistance;
+    }
+
+    public double getSeaPathDistance() {
+        return seaPathDistance;
     }
 }
