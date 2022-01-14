@@ -4,6 +4,7 @@ import lapr.project.stores.FreightNetwork;
 import lapr.project.utils.Pair;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -41,32 +42,44 @@ public class ShortestPath {
         if (indexPlace1 == -1 || indexPlace2 == -1) {
             return;
         }
-        list.set(indexPlace1,place2);
-        list.set(indexPlace2,place1);
+        Collections.swap(list,indexPlace1,indexPlace2);
     }
 
 
-    private List<LinkedList<Place>> allPossibleOrdersOfVisit(){
+    public List<LinkedList<Place>> allPossibleOrdersOfVisit(){
         List<LinkedList<Place>> possibleCombinations = new ArrayList<>();
         LinkedList<Place> origList = new LinkedList<>(this.listPlaces);
         possibleCombinations.add(origList);
-        int switchsLast = 0;
-        for(int i = 1 ; i < getFactorial(this.listPlaces.size()); i++) {
-            possibleCombinations.add(possibleCombinations.get(i - 1));
-            if (switchsLast % 2 == 0) {
-                swapElements(possibleCombinations.get(i), possibleCombinations.get(0).getLast(), possibleCombinations.get(i).get(possibleCombinations.get(i).indexOf(possibleCombinations.get(0).getLast()) - 1));
-            } else {
-                swapElements(possibleCombinations.get(i), possibleCombinations.get(0).getLast(), possibleCombinations.get(i).get(possibleCombinations.get(i).indexOf(possibleCombinations.get(0).getLast()) + 1));
-            }
-            if ((i + 1) % this.listPlaces.size() == 0) {
-                ++switchsLast;
-                if((i+1) % (this.listPlaces.size()*2)==0){
-                    swapElements(possibleCombinations.get(i), possibleCombinations.get(i).getFirst(), possibleCombinations.get(i).get(possibleCombinations.get(i).indexOf(possibleCombinations.get(i).getFirst()) + 1));
-
+        boolean leftToRight = true;
+        int listIndex = 1;
+        LinkedList<Place> list = new LinkedList<>();
+        if(this.listPlaces.size()==1){
+            return possibleCombinations;
+        }
+        if(this.listPlaces.size()==2){
+            list.addAll(possibleCombinations.get(0));
+            swapElements(list,list.getFirst(),list.getLast());
+            possibleCombinations.add(list);
+            return possibleCombinations;
+        }
+        for(int i = 1 ; i < getFactorial(this.listPlaces.size()-1)+1; i++) {
+            for(int k = 0; k < this.listPlaces.size()-1; k++){
+                possibleCombinations.add(new LinkedList<>(possibleCombinations.get(listIndex-1)));
+                if (leftToRight){
+                    swapElements(possibleCombinations.get(listIndex),possibleCombinations.get(listIndex).get(this.listPlaces.size()-1-k),possibleCombinations.get(listIndex).get(this.listPlaces.size()-2-k));
                 }else{
-                    swapElements(possibleCombinations.get(i), possibleCombinations.get(i).getLast(), possibleCombinations.get(i).get(possibleCombinations.get(i).indexOf(possibleCombinations.get(i).getLast()) - 1));
+                    swapElements(possibleCombinations.get(listIndex),possibleCombinations.get(listIndex).get(k),possibleCombinations.get(listIndex).get(k+1));
                 }
+                ++listIndex;
             }
+            possibleCombinations.add(new LinkedList<>(possibleCombinations.get(listIndex-1)));
+            if(leftToRight){
+                swapElements(possibleCombinations.get(listIndex),possibleCombinations.get(listIndex).getLast(),possibleCombinations.get(listIndex).get(possibleCombinations.get(listIndex).size()-2));
+            }else{
+                swapElements(possibleCombinations.get(listIndex),possibleCombinations.get(listIndex).getFirst(),possibleCombinations.get(listIndex).get(1));
+            }
+            leftToRight = !leftToRight;
+            ++listIndex;
         }
         return possibleCombinations;
     }
