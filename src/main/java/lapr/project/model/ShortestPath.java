@@ -59,11 +59,15 @@ public class ShortestPath {
                 swapElements(possibleCombinations.get(i), possibleCombinations.get(0).getLast(), possibleCombinations.get(i).get(possibleCombinations.get(i).indexOf(possibleCombinations.get(0).getLast()) - 1));
             } else {
                 swapElements(possibleCombinations.get(i), possibleCombinations.get(0).getLast(), possibleCombinations.get(i).get(possibleCombinations.get(i).indexOf(possibleCombinations.get(0).getLast()) + 1));
-
             }
             if ((i + 1) % this.listPlaces.size() == 0) {
-                swapElements(possibleCombinations.get(i), possibleCombinations.get(i).getLast(), possibleCombinations.get(i).get(possibleCombinations.get(i).indexOf(possibleCombinations.get(i).getLast()) - 1));
                 ++switchsLast;
+                if((i+1) % (this.listPlaces.size()*2)==0){
+                    swapElements(possibleCombinations.get(i), possibleCombinations.get(i).getFirst(), possibleCombinations.get(i).get(possibleCombinations.get(i).indexOf(possibleCombinations.get(i).getFirst()) + 1));
+
+                }else{
+                    swapElements(possibleCombinations.get(i), possibleCombinations.get(i).getLast(), possibleCombinations.get(i).get(possibleCombinations.get(i).indexOf(possibleCombinations.get(i).getLast()) - 1));
+                }
             }
         }
         return possibleCombinations;
