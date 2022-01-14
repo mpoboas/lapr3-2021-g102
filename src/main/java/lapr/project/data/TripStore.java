@@ -150,12 +150,13 @@ public class TripStore implements Persistable{
      * @return the list of voyages
      * @throws SQLException
      */
-    public List<String> getShipVoyagesBelowThreshold(int shipMMSI, ConnectionFactory cf) throws SQLException{
+    public List<String> getShipVoyagesBelowThreshold(int shipMMSI,double threshold, ConnectionFactory cf) throws SQLException{
         List<String> list = new ArrayList<>();
         Connection conn = cf.getDatabaseConnection().getConnection();
-        try(CallableStatement statement = conn.prepareCall("{ ? = call fnc_get_voyages_below_threshold(?)}")){
+        try(CallableStatement statement = conn.prepareCall("{ ? = call fnc_get_voyages_below_threshold(?,?)}")){
             statement.registerOutParameter(1,Types.REF_CURSOR);
             statement.setInt(2,shipMMSI);
+            statement.setDouble(3,threshold);
             statement.execute();
             ResultSet rs = statement.getObject(1,ResultSet.class);
             while (rs.next()){

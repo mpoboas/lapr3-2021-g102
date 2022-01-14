@@ -50,9 +50,9 @@ public class GetVoyagesBelowThresholdController {
      * @return the list of voyages
      * @throws SQLException
      */
-    public List<String> getShipVoyagesBellowThreshold(int shipMMSI) throws SQLException {
+    public List<String> getShipVoyagesBellowThreshold(int shipMMSI, double threshold) throws SQLException {
         if (app.getCurrentUserSession().isLoggedInWithRole(Constants.U_ROLE_FLEET_MANAGER)) {
-            return tripStoreDB.getShipVoyagesBelowThreshold(shipMMSI, connectionFactory);
+            return tripStoreDB.getShipVoyagesBelowThreshold(shipMMSI,threshold, connectionFactory);
         } else
             throw new IllegalStateException("Not authorized");
     }
