@@ -30,7 +30,6 @@ public class ShortestPath {
         this.landPath = new LinkedList<>();
         this.directPath = new LinkedList<>();
         this.network = network;
-        this.cp = new ClossenessPlaces(this.network, this.vOrig, 1);
     }
 
     private double pathBetweenVertex(Place vOrig, Place vDest,LinkedList<Place> pathBetweenVertx) {
