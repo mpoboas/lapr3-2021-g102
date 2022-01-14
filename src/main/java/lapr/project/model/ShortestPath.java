@@ -20,7 +20,6 @@ public class ShortestPath {
     private final LinkedList<Place> directPath;
     private double directPathDistance;
     private final FreightNetwork network;
-    private final ClossenessPlaces cp;
 
     public ShortestPath(Place vOrig, Place vDest, List<Place> places, FreightNetwork network) {
         this.vOrig = vOrig;
