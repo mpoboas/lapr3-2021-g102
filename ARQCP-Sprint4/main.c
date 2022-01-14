@@ -23,9 +23,9 @@ typedef struct {
     float centerWallCondutivity;
     float centerWallThickness;
     
-    char outterWallMaterial[16];
-    float outterWallCondutivity;
-    float outterWallThickness;
+    char outerWallMaterial[16];
+    float outerWallCondutivity;
+    float outerWallThickness;
 
 }container;
 
@@ -36,16 +36,16 @@ int getCargoManifestInformation(int fileInfo[][4], char *filename, container arr
     do
     {
         i++;
-        got = fscanf(file, "%d,%d,%d,%d ", &fileInfo[i][0], &fileInfo[i][1],&fileInfo[i][2],&fileInfo[i][3]);
+        int id;
+        char auxX,auxY,auxZ;
+        got = fscanf(file, "%d,%hhd,%hhd,%hhd ", &id, &auxX, &auxY, &auxZ);
         for (int j = 0; j < n; j++){
-            if (array[j].containerID == fileInfo[i][0])
-            {   
-                array[j].x=fileInfo[i][1];
-                array[j].y=fileInfo[i][2];
-                array[j].z=fileInfo[i][3];
+           if (array[j].containerID == id){
+               array[j].x=auxX;
+               array[j].y=auxY;
+               array[j].z=auxZ;
                 break;
-            }
-            
+           }
         }
         
     } while (got == 4);
@@ -53,20 +53,32 @@ int getCargoManifestInformation(int fileInfo[][4], char *filename, container arr
     return i;
 }
 
-int getContainerGeneralInformation(container array[],char *filename){
+container* getContainerGeneralInformation(container array[],char *filename, int *size){
     FILE *file = fopen(filename, "r");
-    int i=-1;
+    int i=0;
     int got;
     char firstLine[1024];
-    fscanf(file,"%s",&firstLine);
+    fscanf(file,"%s",firstLine);
+    container *tmp;
     do
     {
+
+        if (i >= *(size))
+        {
+            *(size) = *(size) + 1;
+            tmp = (container*)realloc(array, *(size)*sizeof(container));
+            if (tmp == NULL)
+            {
+                printf ("Unable to resize vector !\n");
+                break ;
+            }
+            array = tmp;
+        }
+        got = fscanf(file, "%d,%s ,%f,%f,%f,%f ",&array[i].containerID, array[i].isoCode, &array[i].length, &array[i].width, &array[i].height, &array[i].exposedArea);
         i++;
-        got = fscanf(file, "%d,%s ,%f,%f,%f,%f ",&array[i].containerID, &array[i].isoCode, &array[i].length, &array[i].width, &array[i].height, &array[i].exposedArea);
-        
         } while (got == 6);
     fclose(file);
-    return i;
+    return array;
 }
 
 //Not working properly
@@ -98,66 +110,62 @@ void addContainersWallInformation(container array[],int n,char *filename){
                 strcpy(array[i].centerWallMaterial,centerWallM);
                 array[i].centerWallCondutivity=centerWallC;
                 array[i].centerWallThickness=centerWallT;
-                strcpy(array[i].outterWallMaterial,outerWallM);
-                array[i].outterWallCondutivity=outerWallC;
-                array[i].centerWallThickness=outerWallT;
+                strcpy(array[i].outerWallMaterial,outerWallM);
+                array[i].outerWallCondutivity=outerWallC;
+                array[i].outerWallThickness=outerWallT;
                 break;
             }
-            
         }
-        
     } while (got == 10);
     fclose(file);
+}
 
+container* alloc_mem_for_arr(int size){
+    container* array =  (container*)malloc(size * sizeof(container));
+    return array;
 }
 
 int main(void) {
-    char fileN[] = "manifest.txt";
-    char *filename;
-    filename = fileN;
+    //-------------- Ficheiro Manifest
+    char fileManifest[] = "manifest.txt";
+    char *filename1;
+    filename1 = fileManifest;
     //printf("File?\n");
     //scanf("%s", filename);
-    int shipCapacity;
-    printf("Total Ship Capacity?\n");
-    scanf("%d", &shipCapacity);
-    int fileInfo[shipCapacity][4];
-
-    //int quantidade = getCargoManifestInformation(fileInfo, filename);
-
-    //printf("Quantidade = %d\n", quantidade);
-    //for (int j = 0; j <= quantidade; j++)
-    //{
-    //    printf("%d,%d,%d,%d\n", fileInfo[j][0], fileInfo[j][1],fileInfo[j][2],fileInfo[j][3]);
-    //}
-    
 
 
-    char fileNCon[70];
+    //-------------- Ficheiro Container General
+    char fileContainers[70];
     char *filename2;
-    filename2 = fileNCon;
+    filename2 = fileContainers;
     printf("File?\n");
     scanf("%s", filename2);
-    container containers[shipCapacity];
-    
-    char fileNConI[] = "containersWallInfo.csv";
-    int quantidadeC = getContainerGeneralInformation(containers, filename2);
-    getCargoManifestInformation(fileInfo, filename, containers, quantidadeC);
-    addContainersWallInformation(containers, quantidadeC,  fileNConI);
+
+    //-------------- Ficheiro Container Walls
+    char fileContainerInfo[] = "containersWallInfo.csv";
+
+    int arraySize = 5;
+
+    container *containers;
+    containers = alloc_mem_for_arr(arraySize);
+
+    containers = getContainerGeneralInformation(containers, filename2,&arraySize);
+
+    getCargoManifestInformation(filename1, containers, arraySize);
+    addContainersWallInformation(containers, arraySize,  fileContainerInfo);
 
 
-    printf("Quantidade = %d\n", quantidadeC);
-    printf("1: %d\n", containers[29].containerID);
-
-    for (int j = 0; j < quantidadeC; j++)
+    for (int j = 0; j < arraySize; j++)
     {
-        printf("ID: %d | ISO: %s | Length: %f | Width: %f | Height: %f | Area: %f | x: %d | y: %d | z: %d \n", containers[j].containerID, containers[j].isoCode, containers[j].length, containers[j].width, containers[j].height, containers[j].exposedArea,
-                            containers[j].x, containers[j].y, containers[j].z);
-
         /*
-        printf("ID: %d | ISO: %s | Length: %f | Width: %f | Height: %f | Area: %f | MI: %s | MC: %f | MT: %f | CM: %s | CC: %f | CT: %f | OM: %s | OC: %f | OT: %f \n", containers[j].containerID, containers[j].isoCode, containers[j].length, containers[j].width, containers[j].height, containers[j].exposedArea, 
+        printf("ID: %d | ISO: %s | Length: %f | Width: %f | Height: %f | Area: %f | x: %d | y: %d | z: %d \n", containers[j].containerID, containers[j].isoCode, containers[j].length, containers[j].width, containers[j].height, containers[j].exposedArea,
+                            containers[j].x, containers[j].y, containers[j].z);*/
+
+
+        printf("ID: %d | ISO: %s | Length: %f | Width: %f | Height: %f | Area: %f | MI: %s | MC: %f | MT: %f | CM: %s | CC: %f | CT: %f | OM: %s | OC: %f | OT: %f \n", containers[j].containerID, containers[j].isoCode, containers[j].length, containers[j].width, containers[j].height, containers[j].exposedArea,
                                            containers[j].innerWallMaterial, containers[j].innerWallCondutivity, containers[j].innerWallThickness,
-                                           containers[j].centerWallMaterial, containers[j].centerWallCondutivity, containers[j].centerWallThickness, 
-                                           containers[j].outterWallMaterial, containers[j].outterWallCondutivity, containers[j].centerWallThickness);*/
+                                           containers[j].centerWallMaterial, containers[j].centerWallCondutivity, containers[j].centerWallThickness,
+                                           containers[j].outerWallMaterial, containers[j].outerWallCondutivity, containers[j].centerWallThickness);
     }
 
 
