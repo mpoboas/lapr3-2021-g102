@@ -30,9 +30,8 @@ class ShortestPathTest {
         LinkedList<Place> fPath = path.getpathNplaces();
         assertEquals(path.getpathNplaces().size(), fPath.size());
         assertEquals(network.getGraph().vertex(140), fPath.get(0));
-        assertEquals(network.getGraph().vertex(0), fPath.get(293));
-        assertEquals(5584,path.getnPlacesDistance(),0.3);
-
+        assertEquals(network.getGraph().vertex(0), fPath.get(fPath.size()-1));
+        assertEquals(29802,path.getnPlacesDistance(),0.3);
     }
 
     @Test
@@ -49,8 +48,6 @@ class ShortestPathTest {
         path.getDirectPath();
         assertEquals(path.getLandPath().size(), fPath.size());
         assertEquals(5584,path.getLandPathDistance(),0.3);
-
-
     }
     @Test
     void getDirectPath() throws IOException {
@@ -65,6 +62,7 @@ class ShortestPathTest {
         LinkedList<Place> fPath = path.getDirectPath();
         assertEquals(path.getDirectPath().size(),fPath.size());
         assertEquals(5584,path.getDirectPathDistance(),0.3);
+
 
     }
     @Test

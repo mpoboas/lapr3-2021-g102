@@ -142,7 +142,7 @@ public class AlgorithmsNetwork {
         path.add(vOrig);
         for (V pathKey : pathKeys) {
             if (pathKey != null) {
-                path.add(g.vertices().get(g.vertices().indexOf(pathKey)));
+                path.add(pathKey);
             }
         }
         path.add(vDest);

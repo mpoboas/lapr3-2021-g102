@@ -168,7 +168,7 @@ public class FreightNetwork {
     public Double shortestPath(Place vOrig, Place vDest,LinkedList<Place> path){
         return AlgorithmsNetwork.shortestPath(this.graph, vOrig,vDest,Double::compare,Double::sum, (double) 0,path);
     }
-    public Double shortestPathSea(Place vOrig, Place vDest,LinkedList<Place> path){
+    public Double shortestPathSea(Place vOrig, Place vDest,LinkedList<Place> path){//not working properly yet
         MatrixGraph<Place, Double> copyOfNetwork = this.graph;
         for (int i = 0; i < copyOfNetwork.vertices().size(); i++){
             if(copyOfNetwork.vertices().get(i).getClass().getName().equals("lapr.project.model.Country") && copyOfNetwork.vertices().get(i) != vOrig && copyOfNetwork.vertices().get(i) != vOrig ){
@@ -177,10 +177,10 @@ public class FreightNetwork {
         }
         return AlgorithmsNetwork.shortestPath(copyOfNetwork, vOrig,vDest,Double::compare,Double::sum, (double) 0,path);
     }
-    public Double shortestPathLand(Place vOrig, Place vDest,LinkedList<Place> path){
+    public Double shortestPathLand(Place vOrig, Place vDest,LinkedList<Place> path){//not working properly yet
         MatrixGraph<Place, Double> copyOfNetwork = this.graph;
         for (int i = 0; i < copyOfNetwork.vertices().size(); i++){
-            if(copyOfNetwork.vertices().get(i).getClass().getName().equals("lapr.project.model.Port") && copyOfNetwork.vertices().get(i) != vOrig && copyOfNetwork.vertices().get(i) != vOrig ){
+            if((copyOfNetwork.vertices().get(i) instanceof lapr.project.model.Port) && copyOfNetwork.vertices().get(i) != vOrig && copyOfNetwork.vertices().get(i) != vOrig ){
                 copyOfNetwork.removeVertex(copyOfNetwork.vertices().get(i));
             }
         }

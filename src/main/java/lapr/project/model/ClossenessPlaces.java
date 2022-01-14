@@ -63,15 +63,6 @@ public class ClossenessPlaces {
 
     }
 
-    public Place getClossestPlaceFromList(Place currentPlace, List<Place> places){
-        List<Pair<Place,Double>> placeList = new ArrayList<>();
-        for (Place place : places) {
-            Pair<Place, Double> pair = new Pair<>(place, this.network.shortestPath(currentPlace, place));
-            placeList.add(pair);
-        }
-        placeList.sort(this::compare);
-        return placeList.get(0).getFirst();
-    }
 
     /**
      * method to compare distances

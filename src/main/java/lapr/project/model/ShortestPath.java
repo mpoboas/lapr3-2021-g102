@@ -1,7 +1,9 @@
 package lapr.project.model;
 
 import lapr.project.stores.FreightNetwork;
+import lapr.project.utils.Pair;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,29 +34,85 @@ public class ShortestPath {
         this.cp = new ClossenessPlaces(this.network, this.vOrig, 1);
     }
 
-    private LinkedList<Place> pathBetweenVertex(Place vOrig, Place vDest) {
-        LinkedList<Place> pathBetweenVertx = new LinkedList<>();
-        this.nPlacesDistance = this.nPlacesDistance + this.network.shortestPath(vOrig, vDest, pathBetweenVertx);
-        return pathBetweenVertx;
+    private double pathBetweenVertex(Place vOrig, Place vDest,LinkedList<Place> pathBetweenVertx) {
+        return this.network.shortestPath(vOrig, vDest, pathBetweenVertx);
+    }
+    private void swapElements(LinkedList<Place> list, Place place1, Place place2){
+        int indexPlace1 = list.indexOf(place1);
+        int indexPlace2 = list.indexOf(place2);
+        if (indexPlace1 == -1 || indexPlace2 == -1) {
+            return;
+        }
+        list.set(indexPlace1,place2);
+        list.set(indexPlace2,place1);
     }
 
-    private Place getNextPlace(Place currentPlace, List<Place> remainingPlaces) {
-        return this.cp.getClossestPlaceFromList(currentPlace, remainingPlaces);
+
+    private List<LinkedList<Place>> allPossibleOrdersOfVisit(){
+        List<LinkedList<Place>> possibleCombinations = new ArrayList<>();
+        LinkedList<Place> origList = new LinkedList<>(this.listPlaces);
+        possibleCombinations.add(origList);
+        int switchsLast = 0;
+        for(int i = 1 ; i < getFactorial(this.listPlaces.size()); i++) {
+            possibleCombinations.add(possibleCombinations.get(i - 1));
+            if (switchsLast % 2 == 0) {
+                swapElements(possibleCombinations.get(i), possibleCombinations.get(0).getLast(), possibleCombinations.get(i).get(possibleCombinations.get(i).indexOf(possibleCombinations.get(0).getLast()) - 1));
+            } else {
+                swapElements(possibleCombinations.get(i), possibleCombinations.get(0).getLast(), possibleCombinations.get(i).get(possibleCombinations.get(i).indexOf(possibleCombinations.get(0).getLast()) + 1));
+
+            }
+            if ((i + 1) % this.listPlaces.size() == 0) {
+                swapElements(possibleCombinations.get(i), possibleCombinations.get(i).getLast(), possibleCombinations.get(i).get(possibleCombinations.get(i).indexOf(possibleCombinations.get(i).getLast()) - 1));
+                ++switchsLast;
+            }
+        }
+        return possibleCombinations;
+    }
+    private int getFactorial(int value){
+        int i = value -1;
+        int res = value;
+        while(i>0){
+            res = res * i;
+            --i;
+        }
+        return res;
     }
 
     private void createPathNPlaces() {
         this.nPlacesDistance = 0;
-        Place currentPlace = vOrig;
         Place finalPlace = vDest;
-        List<Place> listOfPlace = this.listPlaces;
+        List<Pair<LinkedList<Place>,Double>> listOfPossibleRoutes = new ArrayList<>();
+        List<LinkedList<Place>> allPossibleVisits =  allPossibleOrdersOfVisit() ;
         Place nextPlace;
-        for (int i = 0; i < listOfPlace.size(); i++) {
-            nextPlace = getNextPlace(currentPlace, listOfPlace);
-            this.pathNplaces.addAll(pathBetweenVertex(currentPlace, nextPlace));
-            listOfPlace.remove(nextPlace);
-            currentPlace = nextPlace;
+        double pathDist;
+        LinkedList<Place> currentPartPath = new LinkedList<>();
+        for(int i = 0; i < allPossibleVisits.size()  ; i++){
+            Place currentPlace = vOrig;
+            LinkedList<Place> currentPath = new LinkedList<>();
+            pathDist = 0;
+            //get Next combo of places
+            LinkedList<Place> comboPLaces= allPossibleVisits.get(i);
+
+            for(int j = 0; j < comboPLaces.size(); j++){
+                nextPlace = comboPLaces.get(j);
+                currentPartPath.clear();
+                pathDist = pathDist + pathBetweenVertex(currentPlace, nextPlace, currentPartPath);
+                currentPath.addAll(currentPartPath);
+                currentPlace = nextPlace;
+            }
+            currentPartPath.clear();
+            pathDist = pathDist + pathBetweenVertex(currentPlace, finalPlace, currentPartPath);
+            currentPath.addAll(currentPartPath);
+            Pair<LinkedList<Place>,Double> pair = new Pair<>(currentPath,pathDist);
+            listOfPossibleRoutes.add(pair);
+
         }
-        this.pathNplaces.addAll(pathBetweenVertex(currentPlace, finalPlace));
+        listOfPossibleRoutes.sort(this::compare);
+        this.pathNplaces.addAll(listOfPossibleRoutes.get(0).getFirst());
+        this.nPlacesDistance = listOfPossibleRoutes.get(0).getSecond();
+    }
+    private int compare(Pair<LinkedList<Place>,Double> p1, Pair<LinkedList<Place>,Double> p2){
+        return p1.getSecond().compareTo(p2.getSecond());
     }
 
     private void seaPath() {
