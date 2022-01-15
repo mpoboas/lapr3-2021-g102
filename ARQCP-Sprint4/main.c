@@ -29,7 +29,7 @@ typedef struct {
 
 }container;
 
-int getCargoManifestInformation(int fileInfo[][4], char *filename, container array[], int n){
+int getCargoManifestInformation( char *filename, container array[], int n){
     FILE *file = fopen(filename, "r");
     int i=-1;
     int got;
@@ -86,10 +86,9 @@ void addContainersWallInformation(container array[],int n,char *filename){
     FILE *file = fopen(filename, "r");
     int got;
     char firstLine[1024];
-    fscanf(file,"%s",&firstLine);
+    fscanf(file,"%s",firstLine);
     do
     {
-        
         int id;
         char innerWallM[16];
         float innerWallC, innerWallT;
@@ -151,8 +150,8 @@ int main(void) {
 
     containers = getContainerGeneralInformation(containers, filename2,&arraySize);
 
-    getCargoManifestInformation(filename1, containers, arraySize);
-    addContainersWallInformation(containers, arraySize,  fileContainerInfo);
+    getCargoManifestInformation(filename1, containers,arraySize);
+    addContainersWallInformation(containers, 31,  "containersWallInfo.csv");
 
 
     for (int j = 0; j < arraySize; j++)
