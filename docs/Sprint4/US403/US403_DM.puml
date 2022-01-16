@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class FreightNetwork{
+-graph
+-countries
+-borders
+-seadists
+}
+
+class SeaDist{
+-from_country
+-to_port_id
+-from_port
+-to_country
+-to_port_id
+-to_port
+-sea_distance
+}
+
+class Border{
+-country1
+-country2
+}
+
+class PortWarehouse {
+-idPortW
+-name
+-continent
+-country
+-latitude
+-longitude
+}
+
+class Country{
+-continent
+-alpha.2.code
+-alpha.3.code
+-country
+-population
+-capital
+-latitude
+-longitude
+}
+
+PortWarehouse "*" -- "1" Country : is located in >
+PortWarehouse "1" - "*" SeaDist :  registers the connection \n between 2 ports >
+Country "1" - "*" Border
+
+@enduml
