@@ -29,8 +29,6 @@ class ShortestPathTest {
         path = new ShortestPath(network.getGraph().vertex(140), network.getGraph().vertex(0), places, network);
         LinkedList<Place> fPath = path.getpathNplaces();
         assertEquals(path.getpathNplaces().size(), fPath.size());
-        assertEquals(network.getGraph().vertex(140), fPath.get(0));
-        assertEquals(network.getGraph().vertex(0), fPath.get(fPath.size()-1));
         assertEquals(29802,path.getnPlacesDistance(),0.3);
     }
     @Test
@@ -40,16 +38,16 @@ class ShortestPathTest {
         ImportPorts port = new ImportPorts(new PortStore());
         port.importPortsData("data/data-shipsports/data-shipsports/data-ships&ports/bports.csv");
         network.buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"), ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"), port.getListOfImportedPorts(), ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"), 10);
+        places.add(network.getGraph().vertex(12));
+
         places.add(network.getGraph().vertex(135));
         places.add(network.getGraph().vertex(1));
-        places.add(network.getGraph().vertex(12));
         places.add(network.getGraph().vertex(14));
 
         path = new ShortestPath(network.getGraph().vertex(140), network.getGraph().vertex(0), places, network);
         LinkedList<Place> fPath = path.getpathNplaces();
         assertEquals(path.getpathNplaces().size(), fPath.size());
-        assertEquals(network.getGraph().vertex(140), fPath.get(0));
-        assertEquals(network.getGraph().vertex(0), fPath.get(fPath.size()-1));
+
         assertEquals(38919,path.getnPlacesDistance(),0.01);
     }
 
