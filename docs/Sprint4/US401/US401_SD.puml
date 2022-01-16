@@ -1,0 +1,31 @@
+@startuml
+autonumber
+'hide footbox
+
+actor "Traffic Manager" as TF
+
+participant "MostCriticalPortsUI" as UI
+participant "GetMostCriticalPortsController" as CTRL
+participant Company as COMP
+participant "freightNetwork : FreightNetwork" as FN
+participant "mostCriticalPorts\n: List<Port>"
+
+activate TF
+TF -> UI : requests to know which ports are more critical\n(have greater centrality) in this freight network
+
+activate UI
+UI -> CTRL : mostCriticalPorts = getMostCriticalPorts(nPorts)
+activate CTRL
+CTRL -> COMP : freightNetwork = getFreightNetwork()
+activate COMP
+deactivate COMP
+CTRL -> FN : getMostCriticalPorts(nPorts)
+activate FN
+FN --> CTRL
+deactivate FN
+
+CTRL --> UI
+deactivate CTRL
+UI --> TF : shows the n most critical ports in the freight network
+deactivate UI
+@enduml

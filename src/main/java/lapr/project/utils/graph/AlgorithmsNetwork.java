@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.BinaryOperator;
 
-// NOTE : MISSING ALLPATHS and getPaths METHOD
+// NOTE : MISSING ALLPATHS METHOD
 public class AlgorithmsNetwork {
     private AlgorithmsNetwork() {
 
@@ -95,6 +95,18 @@ public class AlgorithmsNetwork {
         return null;
     }
 
+    /**
+     * Shortest-path between a vertex and all other vertices
+     *
+     * @param g     graph
+     * @param vOrig start vertex
+     * @param ce    comparator between elements of type E
+     * @param sum   sum two elements of type E
+     * @param zero  neutral element of the sum in elements of type E
+     * @param paths returns all the minimum paths
+     * @param dists returns the corresponding minimum distances
+     * @return if vOrig exists in the graph true, false otherwise
+     */
     public static boolean shortestPaths(Graph<Place, Double> g, Place vOrig,
                                     Comparator<Double> ce, BinaryOperator<Double> sum, Double zero,
                                     ArrayList<LinkedList<Place>> paths, ArrayList<Double> dists) {
@@ -139,15 +151,11 @@ public class AlgorithmsNetwork {
      */
     private static <V, E> void getPath(Graph<V, E> g, V vOrig, V vDest,
                                        V[] pathKeys, LinkedList<V> path) {
-        path.add(vOrig);
-        for (V pathKey : pathKeys) {
-            if (pathKey != null) {
-                path.add(pathKey);
-            }
-        }
         path.add(vDest);
-
-
+        if (g.key(vOrig) != g.key(vDest)) {
+            vDest = pathKeys[g.key(vDest)];
+            getPath(g, vOrig, vDest, pathKeys, path);
+        }
     }
 
 

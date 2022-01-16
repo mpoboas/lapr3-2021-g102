@@ -4,7 +4,6 @@ import lapr.project.data.*;
 import lapr.project.model.*;
 import lapr.project.utils.Conversions;
 import lapr.project.utils.PortTree;
-import lapr.project.utils.graph.Algorithms;
 import lapr.project.utils.graph.AlgorithmsNetwork;
 import lapr.project.utils.graph.MatrixGraph;
 
@@ -24,7 +23,7 @@ public class FreightNetwork {
     }
 
     /**
-     * Gets all the data needed (list of countries, ports, borders and seadists) from the database and builds the freight network.
+     * Gets all the needed data (list of countries, ports, borders and seadists) from the database and builds the freight network.
      *
      * @param databaseConnection the database connection
      * @param n                  the desired number to be used for the n closest ports search
@@ -55,6 +54,7 @@ public class FreightNetwork {
 
     /**
      * Inserts the connection between countries.
+     *
      * @param borders the list of borders
      */
     private void insertConnectionBetweenCountries(List<Border> borders) {
@@ -65,6 +65,7 @@ public class FreightNetwork {
 
     /**
      * Inserts the connection between ports of the same country.
+     *
      * @param ports the list of ports
      */
 
@@ -81,6 +82,7 @@ public class FreightNetwork {
 
     /**
      * Inserts the connection between the capital of the country and the closest port to it.
+     *
      * @param countries the list of countries
      * @param ports     the list of ports
      */
@@ -110,7 +112,7 @@ public class FreightNetwork {
      *
      * @param ports    the list of ports
      * @param seaDists the list of seadists
-     * @param n the desired number of closest ports
+     * @param n        the desired number of closest ports
      */
     private void insertConnectionBetweenNClosestPorts(List<Port> ports, List<SeaDist> seaDists, int n) {
         seaDists.removeIf(s -> s.getFrom_country().getAlpha2Code().equals(s.getTo_country().getAlpha2Code()));
@@ -161,36 +163,76 @@ public class FreightNetwork {
         return Conversions.nauticalMilesToKm(result);
     }
 
-    public Double shortestPath(Place vOrig, Place vDest){
+    public Double shortestPath(Place vOrig, Place vDest) {
         LinkedList<Place> shortPath = new LinkedList<>();
-        return AlgorithmsNetwork.shortestPath(this.graph, vOrig,vDest,Double::compare,Double::sum, (double) 0,shortPath);
-    }
-    public Double shortestPath(Place vOrig, Place vDest,LinkedList<Place> path){
-        return AlgorithmsNetwork.shortestPath(this.graph, vOrig,vDest,Double::compare,Double::sum, (double) 0,path);
-    }
-    public Double shortestPathSea(Place vOrig, Place vDest,LinkedList<Place> path){//not working properly yet
-        MatrixGraph<Place, Double> copyOfNetwork = this.graph;
-        for (int i = 0; i < copyOfNetwork.vertices().size(); i++){
-            if(copyOfNetwork.vertices().get(i).getClass().getName().equals("lapr.project.model.Country") && copyOfNetwork.vertices().get(i) != vOrig && copyOfNetwork.vertices().get(i) != vOrig ){
-                copyOfNetwork.removeVertex(copyOfNetwork.vertices().get(i));
-            }
-        }
-        return AlgorithmsNetwork.shortestPath(copyOfNetwork, vOrig,vDest,Double::compare,Double::sum, (double) 0,path);
-    }
-    public Double shortestPathLand(Place vOrig, Place vDest,LinkedList<Place> path){//not working properly yet
-        MatrixGraph<Place, Double> copyOfNetwork = this.graph;
-        for (int i = 0; i < copyOfNetwork.vertices().size(); i++){
-            if((copyOfNetwork.vertices().get(i) instanceof lapr.project.model.Port) && copyOfNetwork.vertices().get(i) != vOrig && copyOfNetwork.vertices().get(i) != vOrig ){
-                copyOfNetwork.removeVertex(copyOfNetwork.vertices().get(i));
-            }
-        }
-        return AlgorithmsNetwork.shortestPath(copyOfNetwork, vOrig,vDest,Double::compare,Double::sum, (double) 0,path);
+        return AlgorithmsNetwork.shortestPath(this.graph, vOrig, vDest, Double::compare, Double::sum, (double) 0, shortPath);
     }
 
-    public boolean shortestPaths(Place vOrig) {
+    public Double shortestPath(Place vOrig, Place vDest, LinkedList<Place> path) {
+        return AlgorithmsNetwork.shortestPath(this.graph, vOrig, vDest, Double::compare, Double::sum, (double) 0, path);
+    }
+
+    public Double shortestPathSea(Place vOrig, Place vDest, LinkedList<Place> path) {//not working properly yet
+        MatrixGraph<Place, Double> copyOfNetwork = this.graph;
+        for (int i = 0; i < copyOfNetwork.vertices().size(); i++) {
+            if (copyOfNetwork.vertices().get(i).getClass().getName().equals("lapr.project.model.Country") && copyOfNetwork.vertices().get(i) != vOrig && copyOfNetwork.vertices().get(i) != vOrig) {
+                copyOfNetwork.removeVertex(copyOfNetwork.vertices().get(i));
+            }
+        }
+        return AlgorithmsNetwork.shortestPath(copyOfNetwork, vOrig, vDest, Double::compare, Double::sum, (double) 0, path);
+    }
+
+    public Double shortestPathLand(Place vOrig, Place vDest, LinkedList<Place> path) {//not working properly yet
+        MatrixGraph<Place, Double> copyOfNetwork = this.graph;
+        for (int i = 0; i < copyOfNetwork.vertices().size(); i++) {
+            if ((copyOfNetwork.vertices().get(i) instanceof lapr.project.model.Port) && copyOfNetwork.vertices().get(i) != vOrig && copyOfNetwork.vertices().get(i) != vOrig) {
+                copyOfNetwork.removeVertex(copyOfNetwork.vertices().get(i));
+            }
+        }
+        return AlgorithmsNetwork.shortestPath(copyOfNetwork, vOrig, vDest, Double::compare, Double::sum, (double) 0, path);
+    }
+
+    /**
+     * Gets the n ports with greater centrality (greatest number of shortest paths that pass through it).
+     *
+     * @param numPorts the desired number of most critical ports
+     * @return the list of ports with greater centrality
+     */
+    public List<Port> getMostCriticalPorts(int numPorts) {
+        List<Map.Entry<Port, Integer>> sortedList = new ArrayList<>(getNumberOfShortestPathsPerPort().entrySet());
+        sortedList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        List<Port> portsWithGreaterCentrality = new ArrayList<>();
+        for (Map.Entry<Port, Integer> portIntegerEntry : sortedList.subList(0, numPorts)) {
+            portsWithGreaterCentrality.add(portIntegerEntry.getKey());
+        }
+
+        return portsWithGreaterCentrality;
+    }
+
+    /**
+     * Gets the number of shortest paths per port of the network.
+     *
+     * @return the map with port keys and number of shortest paths values.
+     */
+    private Map<Port, Integer> getNumberOfShortestPathsPerPort() {
+        Map<Port, Integer> portShortestPathsMap = new HashMap<>(); // Map of ports and a counter of shortest paths that pass through it
+        for (Place vert : this.graph.vertices()) {
+            if (vert instanceof Port) portShortestPathsMap.put((Port) vert, 0);
+        }
+
         ArrayList<LinkedList<Place>> paths = new ArrayList<>();
-        ArrayList<Double> dists = new ArrayList<>();
-        return AlgorithmsNetwork.shortestPaths(this.graph, vOrig, Double::compare, Double::sum, 0.0, paths, dists);
+        for (Place vert : this.graph.vertices()) {
+            if (AlgorithmsNetwork.shortestPaths(this.graph, vert, Double::compare, Double::sum, 0.0, paths, new ArrayList<>())) {
+                for (LinkedList<Place> placeLinkedList : paths) {
+                    for (Place p : placeLinkedList) {
+                        if (p instanceof Port && portShortestPathsMap.containsKey(p))
+                            portShortestPathsMap.put((Port) p, portShortestPathsMap.get(p) + 1);
+                    }
+                }
+            }
+        }
+
+        return portShortestPathsMap;
     }
 
     /**

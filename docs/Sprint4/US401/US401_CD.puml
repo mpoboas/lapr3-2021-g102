@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
+}
+
+class MostCriticalPortsUI {
+}
+
+class GetMostCriticalPortsController {
++getMostCriticalPorts(nPorts)
+}
+
+class FreightNetwork {
+-MatrixGraph<Place, Double> graph
++getMostCriticalPorts(nPorts)
+}
+
+class Place{
+-continent
+-country
+-latitude
+-longitude
+}
+class Port{
+-id
+-name
+-capacity
+}
+
+MostCriticalPortsUI ..> GetMostCriticalPortsController
+GetMostCriticalPortsController ..> FreightNetwork
+GetMostCriticalPortsController ..> Company
+Company -> FreightNetwork : has
+FreightNetwork - Place
+Place -|> Country
+Place --|> Port
+@enduml

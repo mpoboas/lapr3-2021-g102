@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Traffic Manager" as TF
+
+activate TF
+TF -> ":System" : requests to know which ports are more critical\n(have greater centrality) in this freight network
+activate ":System"
+":System" --> TF : requests the number of desired ports
+deactivate ":System"
+TF -> ":System" : types data
+activate ":System"
+":System" --> TF : shows the n most critical ports in the freight network
+deactivate ":System"
+
+deactivate TF
+@enduml

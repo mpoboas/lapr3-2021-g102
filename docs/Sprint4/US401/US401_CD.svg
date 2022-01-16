@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="506px" preserveAspectRatio="none" style="width:571px;height:506px;background:#FFFFFF;" version="1.1" viewBox="0 0 571 506" width="571px" zoomAndPan="magnify"><defs><filter height="300%" id="f1xwhidlluj40m" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[02e4b9b7573f1156f41e60aa5b4e25a4]
+class Company--><rect codeLine="3" fill="#FEFECE" filter="url(#f1xwhidlluj40m)" height="61.8359" id="Company" style="stroke:#A80036;stroke-width:1.5;" width="85" x="7" y="259.5"/><ellipse cx="22" cy="275.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M24,272 Q24.2031,271.5 24.4375,271.25 Q24.6719,271 24.9375,271 Q25.4063,271 25.7031,271.2813 Q26,271.5625 26,272.2188 L26,273.7813 Q26,274.4375 25.7188,274.7188 Q25.4375,275 25,275 Q24.6094,275 24.3594,274.8281 Q24.1094,274.6563 24,274.2031 Q23.9531,273.8906 23.7813,273.7188 Q23.4688,273.3906 22.9063,273.2031 Q22.3438,273 21.7813,273 Q21.0781,273 20.4844,273.2813 Q19.9063,273.5625 19.4531,274.1875 Q19,274.8125 19,275.6719 L19,276.5938 Q19,277.625 19.8438,278.3125 Q20.6875,279 22.1875,279 Q23.0781,279 23.7031,278.7969 Q24.0625,278.6875 24.4688,278.3281 Q24.7344,278.125 24.875,278.0625 Q25.0156,278 25.1875,278 Q25.5156,278 25.75,278.2656 Q26,278.5156 26,278.875 Q26,279.2188 25.6563,279.625 Q25.1563,280.2188 24.3594,280.5469 Q23.3125,281 22.0313,281 Q20.5313,281 19.3281,280.4063 Q18.3594,279.9375 17.6719,278.9219 Q17,277.9063 17,276.7031 L17,275.6094 Q17,274.3594 17.5938,273.2656 Q18.2031,272.1719 19.25,271.5938 Q20.3125,271 21.5,271 Q22.2188,271 22.8438,271.25 Q23.4688,271.5 24,272 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="53" x="36" y="280.4102">Company</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="91" y1="291.5" y2="291.5"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="299.5"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="55" x="27" y="306.9189">designation</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="91" y1="313.3359" y2="313.3359"/><!--MD5=[7f48d8c46d9c1b02d3c87840ae283b43]
+class MostCriticalPortsUI--><rect codeLine="7" fill="#FEFECE" filter="url(#f1xwhidlluj40m)" height="48" id="MostCriticalPortsUI" style="stroke:#A80036;stroke-width:1.5;" width="137" x="79" y="7"/><ellipse cx="94" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M96,19.5 Q96.2031,19 96.4375,18.75 Q96.6719,18.5 96.9375,18.5 Q97.4063,18.5 97.7031,18.7813 Q98,19.0625 98,19.7188 L98,21.2813 Q98,21.9375 97.7188,22.2188 Q97.4375,22.5 97,22.5 Q96.6094,22.5 96.3594,22.3281 Q96.1094,22.1563 96,21.7031 Q95.9531,21.3906 95.7813,21.2188 Q95.4688,20.8906 94.9063,20.7031 Q94.3438,20.5 93.7813,20.5 Q93.0781,20.5 92.4844,20.7813 Q91.9063,21.0625 91.4531,21.6875 Q91,22.3125 91,23.1719 L91,24.0938 Q91,25.125 91.8438,25.8125 Q92.6875,26.5 94.1875,26.5 Q95.0781,26.5 95.7031,26.2969 Q96.0625,26.1875 96.4688,25.8281 Q96.7344,25.625 96.875,25.5625 Q97.0156,25.5 97.1875,25.5 Q97.5156,25.5 97.75,25.7656 Q98,26.0156 98,26.375 Q98,26.7188 97.6563,27.125 Q97.1563,27.7188 96.3594,28.0469 Q95.3125,28.5 94.0313,28.5 Q92.5313,28.5 91.3281,27.9063 Q90.3594,27.4375 89.6719,26.4219 Q89,25.4063 89,24.2031 L89,23.1094 Q89,21.8594 89.5938,20.7656 Q90.2031,19.6719 91.25,19.0938 Q92.3125,18.5 93.5,18.5 Q94.2188,18.5 94.8438,18.75 Q95.4688,19 96,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="105" x="108" y="27.9102">MostCriticalPortsUI</text><line style="stroke:#A80036;stroke-width:1.5;" x1="80" x2="215" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="80" x2="215" y1="47" y2="47"/><!--MD5=[14179706a4bf754d4f5b32b82ccbe80a]
+class GetMostCriticalPortsController--><rect codeLine="10" fill="#FEFECE" filter="url(#f1xwhidlluj40m)" height="61.8359" id="GetMostCriticalPortsController" style="stroke:#A80036;stroke-width:1.5;" width="198" x="48.5" y="116"/><ellipse cx="63.5" cy="132" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M65.5,128.5 Q65.7031,128 65.9375,127.75 Q66.1719,127.5 66.4375,127.5 Q66.9063,127.5 67.2031,127.7813 Q67.5,128.0625 67.5,128.7188 L67.5,130.2813 Q67.5,130.9375 67.2188,131.2188 Q66.9375,131.5 66.5,131.5 Q66.1094,131.5 65.8594,131.3281 Q65.6094,131.1563 65.5,130.7031 Q65.4531,130.3906 65.2813,130.2188 Q64.9688,129.8906 64.4063,129.7031 Q63.8438,129.5 63.2813,129.5 Q62.5781,129.5 61.9844,129.7813 Q61.4063,130.0625 60.9531,130.6875 Q60.5,131.3125 60.5,132.1719 L60.5,133.0938 Q60.5,134.125 61.3438,134.8125 Q62.1875,135.5 63.6875,135.5 Q64.5781,135.5 65.2031,135.2969 Q65.5625,135.1875 65.9688,134.8281 Q66.2344,134.625 66.375,134.5625 Q66.5156,134.5 66.6875,134.5 Q67.0156,134.5 67.25,134.7656 Q67.5,135.0156 67.5,135.375 Q67.5,135.7188 67.1563,136.125 Q66.6563,136.7188 65.8594,137.0469 Q64.8125,137.5 63.5313,137.5 Q62.0313,137.5 60.8281,136.9063 Q59.8594,136.4375 59.1719,135.4219 Q58.5,134.4063 58.5,133.2031 L58.5,132.1094 Q58.5,130.8594 59.0938,129.7656 Q59.7031,128.6719 60.75,128.0938 Q61.8125,127.5 63,127.5 Q63.7188,127.5 64.3438,127.75 Q64.9688,128 65.5,128.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="166" x="77.5" y="136.9102">GetMostCriticalPortsController</text><line style="stroke:#A80036;stroke-width:1.5;" x1="49.5" x2="245.5" y1="148" y2="148"/><line style="stroke:#A80036;stroke-width:1.5;" x1="49.5" x2="245.5" y1="156" y2="156"/><ellipse cx="59.5" cy="167" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="134" x="68.5" y="171.4189">getMostCriticalPorts(nPorts)</text><!--MD5=[074ba6ad47b234bd73d65012320c1634]
+class FreightNetwork--><rect codeLine="14" fill="#FEFECE" filter="url(#f1xwhidlluj40m)" height="75.6719" id="FreightNetwork" style="stroke:#A80036;stroke-width:1.5;" width="193" x="150" y="252.5"/><ellipse cx="200.75" cy="268.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M202.75,265 Q202.9531,264.5 203.1875,264.25 Q203.4219,264 203.6875,264 Q204.1563,264 204.4531,264.2813 Q204.75,264.5625 204.75,265.2188 L204.75,266.7813 Q204.75,267.4375 204.4688,267.7188 Q204.1875,268 203.75,268 Q203.3594,268 203.1094,267.8281 Q202.8594,267.6563 202.75,267.2031 Q202.7031,266.8906 202.5313,266.7188 Q202.2188,266.3906 201.6563,266.2031 Q201.0938,266 200.5313,266 Q199.8281,266 199.2344,266.2813 Q198.6563,266.5625 198.2031,267.1875 Q197.75,267.8125 197.75,268.6719 L197.75,269.5938 Q197.75,270.625 198.5938,271.3125 Q199.4375,272 200.9375,272 Q201.8281,272 202.4531,271.7969 Q202.8125,271.6875 203.2188,271.3281 Q203.4844,271.125 203.625,271.0625 Q203.7656,271 203.9375,271 Q204.2656,271 204.5,271.2656 Q204.75,271.5156 204.75,271.875 Q204.75,272.2188 204.4063,272.625 Q203.9063,273.2188 203.1094,273.5469 Q202.0625,274 200.7813,274 Q199.2813,274 198.0781,273.4063 Q197.1094,272.9375 196.4219,271.9219 Q195.75,270.9063 195.75,269.7031 L195.75,268.6094 Q195.75,267.3594 196.3438,266.2656 Q196.9531,265.1719 198,264.5938 Q199.0625,264 200.25,264 Q200.9688,264 201.5938,264.25 Q202.2188,264.5 202.75,265 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="83" x="221.25" y="273.4102">FreightNetwork</text><line style="stroke:#A80036;stroke-width:1.5;" x1="151" x2="342" y1="284.5" y2="284.5"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="158" y="292.5"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="167" x="170" y="299.9189">MatrixGraph&lt;Place, Double&gt; graph</text><line style="stroke:#A80036;stroke-width:1.5;" x1="151" x2="342" y1="306.3359" y2="306.3359"/><ellipse cx="161" cy="317.3359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="134" x="170" y="321.7549">getMostCriticalPorts(nPorts)</text><!--MD5=[8515a37c80da559ff7ce07f8a9e75d30]
+class Place--><rect codeLine="19" fill="#FEFECE" filter="url(#f1xwhidlluj40m)" height="103.3438" id="Place" style="stroke:#A80036;stroke-width:1.5;" width="70" x="378.5" y="239"/><ellipse cx="396.65" cy="255" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M398.65,251.5 Q398.8531,251 399.0875,250.75 Q399.3219,250.5 399.5875,250.5 Q400.0563,250.5 400.3531,250.7813 Q400.65,251.0625 400.65,251.7188 L400.65,253.2813 Q400.65,253.9375 400.3688,254.2188 Q400.0875,254.5 399.65,254.5 Q399.2594,254.5 399.0094,254.3281 Q398.7594,254.1563 398.65,253.7031 Q398.6031,253.3906 398.4313,253.2188 Q398.1188,252.8906 397.5563,252.7031 Q396.9938,252.5 396.4313,252.5 Q395.7281,252.5 395.1344,252.7813 Q394.5563,253.0625 394.1031,253.6875 Q393.65,254.3125 393.65,255.1719 L393.65,256.0938 Q393.65,257.125 394.4938,257.8125 Q395.3375,258.5 396.8375,258.5 Q397.7281,258.5 398.3531,258.2969 Q398.7125,258.1875 399.1188,257.8281 Q399.3844,257.625 399.525,257.5625 Q399.6656,257.5 399.8375,257.5 Q400.1656,257.5 400.4,257.7656 Q400.65,258.0156 400.65,258.375 Q400.65,258.7188 400.3063,259.125 Q399.8063,259.7188 399.0094,260.0469 Q397.9625,260.5 396.6813,260.5 Q395.1813,260.5 393.9781,259.9063 Q393.0094,259.4375 392.3219,258.4219 Q391.65,257.4063 391.65,256.2031 L391.65,255.1094 Q391.65,253.8594 392.2438,252.7656 Q392.8531,251.6719 393.9,251.0938 Q394.9625,250.5 396.15,250.5 Q396.8688,250.5 397.4938,250.75 Q398.1188,251 398.65,251.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="31" x="411.35" y="259.9102">Place</text><line style="stroke:#A80036;stroke-width:1.5;" x1="379.5" x2="447.5" y1="271" y2="271"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="386.5" y="279"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="44" x="398.5" y="286.4189">continent</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="386.5" y="292.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="37" x="398.5" y="300.2549">country</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="386.5" y="306.6719"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="34" x="398.5" y="314.0908">latitude</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="386.5" y="320.5078"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="43" x="398.5" y="327.9268">longitude</text><line style="stroke:#A80036;stroke-width:1.5;" x1="379.5" x2="447.5" y1="334.3438" y2="334.3438"/><!--MD5=[a0bfe97ac0a38e6e74cc1c7c7b744b71]
+class Port--><rect codeLine="25" fill="#FEFECE" filter="url(#f1xwhidlluj40m)" height="89.5078" id="Port" style="stroke:#A80036;stroke-width:1.5;" width="67" x="380" y="403"/><ellipse cx="400.85" cy="419" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M402.85,415.5 Q403.0531,415 403.2875,414.75 Q403.5219,414.5 403.7875,414.5 Q404.2563,414.5 404.5531,414.7813 Q404.85,415.0625 404.85,415.7188 L404.85,417.2813 Q404.85,417.9375 404.5688,418.2188 Q404.2875,418.5 403.85,418.5 Q403.4594,418.5 403.2094,418.3281 Q402.9594,418.1563 402.85,417.7031 Q402.8031,417.3906 402.6313,417.2188 Q402.3188,416.8906 401.7563,416.7031 Q401.1938,416.5 400.6313,416.5 Q399.9281,416.5 399.3344,416.7813 Q398.7563,417.0625 398.3031,417.6875 Q397.85,418.3125 397.85,419.1719 L397.85,420.0938 Q397.85,421.125 398.6938,421.8125 Q399.5375,422.5 401.0375,422.5 Q401.9281,422.5 402.5531,422.2969 Q402.9125,422.1875 403.3188,421.8281 Q403.5844,421.625 403.725,421.5625 Q403.8656,421.5 404.0375,421.5 Q404.3656,421.5 404.6,421.7656 Q404.85,422.0156 404.85,422.375 Q404.85,422.7188 404.5063,423.125 Q404.0063,423.7188 403.2094,424.0469 Q402.1625,424.5 400.8813,424.5 Q399.3813,424.5 398.1781,423.9063 Q397.2094,423.4375 396.5219,422.4219 Q395.85,421.4063 395.85,420.2031 L395.85,419.1094 Q395.85,417.8594 396.4438,416.7656 Q397.0531,415.6719 398.1,415.0938 Q399.1625,414.5 400.35,414.5 Q401.0688,414.5 401.6938,414.75 Q402.3188,415 402.85,415.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="22" x="416.15" y="423.9102">Port</text><line style="stroke:#A80036;stroke-width:1.5;" x1="381" x2="446" y1="435" y2="435"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="388" y="443"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="8" x="400" y="450.4189">id</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="388" y="456.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="26" x="400" y="464.2549">name</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="388" y="470.6719"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="400" y="478.0908">capacity</text><line style="stroke:#A80036;stroke-width:1.5;" x1="381" x2="446" y1="484.5078" y2="484.5078"/><!--MD5=[deb4e1f6eb1e3c1256fdb830f96abfbb]
+class Country--><rect fill="#FEFECE" filter="url(#f1xwhidlluj40m)" height="48" id="Country" style="stroke:#A80036;stroke-width:1.5;" width="74" x="483.5" y="266.5"/><ellipse cx="498.5" cy="282.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M500.5,279 Q500.7031,278.5 500.9375,278.25 Q501.1719,278 501.4375,278 Q501.9063,278 502.2031,278.2813 Q502.5,278.5625 502.5,279.2188 L502.5,280.7813 Q502.5,281.4375 502.2188,281.7188 Q501.9375,282 501.5,282 Q501.1094,282 500.8594,281.8281 Q500.6094,281.6563 500.5,281.2031 Q500.4531,280.8906 500.2813,280.7188 Q499.9688,280.3906 499.4063,280.2031 Q498.8438,280 498.2813,280 Q497.5781,280 496.9844,280.2813 Q496.4063,280.5625 495.9531,281.1875 Q495.5,281.8125 495.5,282.6719 L495.5,283.5938 Q495.5,284.625 496.3438,285.3125 Q497.1875,286 498.6875,286 Q499.5781,286 500.2031,285.7969 Q500.5625,285.6875 500.9688,285.3281 Q501.2344,285.125 501.375,285.0625 Q501.5156,285 501.6875,285 Q502.0156,285 502.25,285.2656 Q502.5,285.5156 502.5,285.875 Q502.5,286.2188 502.1563,286.625 Q501.6563,287.2188 500.8594,287.5469 Q499.8125,288 498.5313,288 Q497.0313,288 495.8281,287.4063 Q494.8594,286.9375 494.1719,285.9219 Q493.5,284.9063 493.5,283.7031 L493.5,282.6094 Q493.5,281.3594 494.0938,280.2656 Q494.7031,279.1719 495.75,278.5938 Q496.8125,278 498,278 Q498.7188,278 499.3438,278.25 Q499.9688,278.5 500.5,279 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="42" x="512.5" y="287.4102">Country</text><line style="stroke:#A80036;stroke-width:1.5;" x1="484.5" x2="556.5" y1="298.5" y2="298.5"/><line style="stroke:#A80036;stroke-width:1.5;" x1="484.5" x2="556.5" y1="306.5" y2="306.5"/><!--MD5=[e7e5e5101cc5f15d05da21e943288652]
+link MostCriticalPortsUI to GetMostCriticalPortsController--><path codeLine="31" d="M147.5,55.07 C147.5,71.01 147.5,92.51 147.5,110.6 " fill="none" id="MostCriticalPortsUI-to-GetMostCriticalPortsController" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="147.5,115.61,151.5,106.61,147.5,110.61,143.5,106.61,147.5,115.61" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9b72fbc462eab0dbd1ae638dcd9b5e9d]
+link GetMostCriticalPortsController to FreightNetwork--><path codeLine="32" d="M168.5,178.01 C182.82,198.48 201.96,225.84 217.7,248.34 " fill="none" id="GetMostCriticalPortsController-to-FreightNetwork" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="220.6,252.48,218.7135,242.8135,217.7317,248.3845,212.1607,247.4027,220.6,252.48" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[6622e14e00e177798b9b4b6dc17deac8]
+link GetMostCriticalPortsController to Company--><path codeLine="33" d="M126.72,178.01 C111.17,200.46 89.86,231.22 73.57,254.74 " fill="none" id="GetMostCriticalPortsController-to-Company" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="70.59,259.05,78.997,253.9195,73.4323,254.9365,72.4154,249.3718,70.59,259.05" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e359b474b5bea3d5e0a05d5f38acf6c5]
+link Company to FreightNetwork--><path codeLine="34" d="M92.25,290.5 C107.76,290.5 126.03,290.5 144.46,290.5 " fill="none" id="Company-to-FreightNetwork" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="149.66,290.5,140.66,286.5,144.66,290.5,140.66,294.5,149.66,290.5" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="21" x="110.5" y="283.9951">has</text><!--MD5=[fa4d65f953ae0f8f2ca1213e61726aa9]
+link FreightNetwork to Place--><path codeLine="35" d="M343.05,290.5 C354.79,290.5 366.53,290.5 378.27,290.5 " fill="none" id="FreightNetwork-Place" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e285b1d9a4cb65646243a0e0fd43a2a4]
+link Place to Country--><path codeLine="36" d="M448.61,290.5 C453.51,290.5 458.4,290.5 463.3,290.5 " fill="none" id="Place-to-Country" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="463.43,283.5,483.43,290.5,463.43,297.5,463.43,283.5" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[92ca904c8b4d199e8b0638d1cd223095]
+link Place to Port--><path codeLine="37" d="M413.5,342.42 C413.5,355.2 413.5,369.1 413.5,382.45 " fill="none" id="Place-to-Port" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="420.5,382.77,413.5,402.76,406.5,382.76,420.5,382.77" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0d3a77a410e7d05ccdcfdcc8fcde82cc]
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
+}
+
+class MostCriticalPortsUI {
+}
+
+class GetMostCriticalPortsController {
++getMostCriticalPorts(nPorts)
+}
+
+class FreightNetwork {
+-MatrixGraph<Place, Double> graph
++getMostCriticalPorts(nPorts)
+}
+
+class Place{
+-continent
+-country
+-latitude
+-longitude
+}
+class Port{
+-id
+-name
+-capacity
+}
+
+MostCriticalPortsUI ..> GetMostCriticalPortsController
+GetMostCriticalPortsController ..> FreightNetwork
+GetMostCriticalPortsController ..> Company
+Company -> FreightNetwork : has
+FreightNetwork - Place
+Place -|> Country
+Place - -|> Port
+@enduml
+
+@startuml
+
+class Company {
+-designation
+}
+
+class MostCriticalPortsUI {
+}
+
+class GetMostCriticalPortsController {
++getMostCriticalPorts(nPorts)
+}
+
+class FreightNetwork {
+-MatrixGraph<Place, Double> graph
++getMostCriticalPorts(nPorts)
+}
+
+class Place{
+-continent
+-country
+-latitude
+-longitude
+}
+class Port{
+-id
+-name
+-capacity
+}
+
+MostCriticalPortsUI ..> GetMostCriticalPortsController
+GetMostCriticalPortsController ..> FreightNetwork
+GetMostCriticalPortsController ..> Company
+Company -> FreightNetwork : has
+FreightNetwork - Place
+Place -|> Country
+Place - -|> Port
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 13:40:07 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: Dynamic Code Evolution 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>
