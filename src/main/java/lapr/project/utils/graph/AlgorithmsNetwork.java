@@ -157,6 +157,121 @@ public class AlgorithmsNetwork {
             getPath(g, vOrig, vDest, pathKeys, path);
         }
     }
+    /**
+     * Performs the nearest search starting in a vertex
+     *
+     * @param g       Graph instance
+     * @param vOrig   vertex of graph g that will be the source of the search
+     * @param visited set of previously visited vertices
+     * @param qdfs    return LinkedList with vertices of nearest neighbour search
+     */
+    private static void nearestNeighbourSearch(Graph<Place, Double> g, Place vOrig, boolean[] visited, LinkedList<Place> qdfs) {
+        int vKey = g.key(vOrig);
+        if (visited[vKey]) return;
+
+        qdfs.add(vOrig);
+        visited[vKey] = true;
+
+        Place current = vOrig;
+        double minDist = 999999999999999.9;
+        for (Place vAdj : g.adjVertices(vOrig)) {
+            if (!visited[g.key(vAdj)]) {
+                if (g.edge(vOrig, vAdj).getWeight() <= minDist) {
+                    minDist = g.edge(vOrig, vAdj).getWeight();
+                    current = vAdj;
+                }
+            }
+        }
+        nearestNeighbourSearch(g, current, visited, qdfs);
+    }
+
+    /**
+     * Performs nearest neighbour search starting in a vertex
+     *
+     * @param g    Graph instance
+     * @param vert vertex of graph g that will be the source of the search
+     * @return a LinkedList with the vertices of the search
+     */
+    public static LinkedList<Place> nearestNeighbour(Graph<Place, Double> g, Place vert) {
+        if (!g.validVertex(vert))
+            return null;
+        LinkedList<Place> qdfs = new LinkedList<>();
+        boolean[] visited = new boolean[g.numVertices()];
+        nearestNeighbourSearch(g, vert, visited, qdfs);
+        return qdfs;
+    }
+
+    /**
+     * Performs the search of a cycle in a list of vertices of a graph
+     * @param g Graph instance
+     * @param path list of connecting vertices
+     * @return the cycle obtained by the search
+     */
+    public static LinkedList<Place> searchCycle(Graph<Place, Double> g, LinkedList<Place> path) {
+        LinkedList<Place> result = new LinkedList<>(path);
+        while (result.size() > 2) {
+            if (g.edge(result.getLast(), result.getFirst()) != null) {
+                result.add(result.getFirst());
+                return result;
+            } else {
+                result.removeLast();
+            }
+        }
+        throw new IllegalStateException("Not Cycle Detected");
+    }
+
+    /**
+     * From a list of cycles selects the ones that contain more vertices
+     * @param cycles list of cycles
+     * @return list of the biggest cycles
+     */
+    public static ArrayList<LinkedList<Place>> searchLargestCycle(ArrayList<LinkedList<Place>> cycles){
+        ArrayList<LinkedList<Place>> result = new ArrayList<>();
+        int sizemax = cycles.get(0).size();
+        for (LinkedList<Place> list: cycles) {
+            if (list.size() > sizemax)
+                sizemax = list.size();
+        }
+        for (LinkedList<Place> list: cycles) {
+            if (list.size() == sizemax)
+                result.add(list);
+        }
+        return result;
+    }
+
+    /**
+     * From a list of cycles selects the one with less weight
+     * @param g Graph instance
+     * @param cycles list of cycles
+     * @return the less weighted cycle
+     */
+    public static LinkedList<Place> getLessWeightedBiggestCycle(Graph<Place, Double> g, ArrayList<LinkedList<Place>> cycles){
+        int index = 0;
+        double totalWeight= AlgorithmsNetwork.calculateTotalWeight( g,cycles.get(0));
+        for (LinkedList<Place> cycle: cycles) {
+            if (AlgorithmsNetwork.calculateTotalWeight(g,cycle) < totalWeight){
+                totalWeight= AlgorithmsNetwork.calculateTotalWeight(g,cycle);
+                index = cycles.indexOf(cycle);
+            }
+        }
+        return cycles.get(index);
+    }
+
+    /**
+     * Calculates the total weight of a path in a cycle
+     * @param g Graph instance
+     * @param path path to get the weight
+     * @return the weight of the path
+     */
+    public static double calculateTotalWeight(Graph<Place, Double> g, LinkedList<Place> path){
+        double result = 0;
+        for (int i = 0; i < path.size() - 1; i++) {
+            Edge<Place,Double> edge = g.edge(path.get(i),path.get(i + 1));
+            if (edge!=null)
+                result = result + edge.getWeight();
+        }
+        return result;
+    }
 
 
 }
