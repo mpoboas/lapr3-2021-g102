@@ -1,0 +1,70 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+autonumber
+
+
+actor "Traffic Manager" as TF
+participant ":GetEfficientCircuitUI" as UI
+participant ":GetEfficientCircuitController" as CTRL
+participant "Company" as COMP
+participant "fr :Freight Network" as FN
+participant "NetworkAlgorithms" as FNAL
+participant "bestCycle : LinkedList<Place>"
+
+activate TF
+TF -> UI : asks to get the most efficient circuit
+activate UI
+
+UI -> CTRL: getEfficientCircuit()
+activate CTRL
+
+CTRL -> COMP: fr = getFreightNetwork()
+activate COMP
+deactivate COMP
+
+CTRL -> FN : bestCycle = getEfficientCircuit()
+activate FN
+
+loop for each vertex = v of the graph
+FN -> FNAL: list = nearestNeighbour(graph,v)
+activate FNAL
+deactivate FNAL
+
+FN -> FN : add list to the list of lists
+activate FN
+deactivate FN
+end
+
+loop for each list of the lists
+FN -> FNAL : cycle = searchCycle(graph, list)
+activate FNAL
+deactivate FNAL
+
+FN -> FN : add cycle to the list of cycles
+activate FN
+deactivate FN
+end
+FN -> FNAL: biggestCycles = searchLargestCycle(cycles)
+activate FNAL
+deactivate FNAL
+FN -> FNAL: bestCycle = getLessWeightedBiggestCycle(graph, biggestCycles)
+activate FNAL
+deactivate FNAL
+FN --> CTRL: bestCycle
+deactivate FN
+CTRL --> UI: bestCycle
+deactivate CTRL
+
+UI --> TF : shows the list of locations of the circuit
+deactivate UI
+
+
+TF -> UI : confirms the data
+activate UI
+UI --> TF : informs operation success
+deactivate UI
+
+deactivate TF
+
+@enduml

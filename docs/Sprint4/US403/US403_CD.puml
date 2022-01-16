@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class GetEfficientCircuitUI{}
+class GetEfficientCircuitController{
++ getEfficientCircuit()
+}
+
+class FreightNetwork {
+-MatrixGraph<Place, Double> graph
++buildFreightNetworkFromDatabase(databaseConnection, n)
++buildFreightNetworkFromGivenData(countries, borders, ports, seadists, n)
++getEfficientCycle()
+}
+
+class Company {
+-designation
+-FreightNetwork
++getFreightNetwork()
+}
+
+class NetworkAlgorithms {
++ nearestNeighbour(Graph<Place, Double> g, Place vert)
++ searchCycle(Graph<Place, Double> g, LinkedList<Place> path)
++ searchLargestCycle(ArrayList<LinkedList<Place>> cycles)
++ getLessWeightedBiggestCycle(Graph<Place, Double> g, \nArrayList<LinkedList<Place>> cycles)
++ calculateTotalWeight(Graph<Place, Double> g, LinkedList<Place> path)
+}
+
+GetEfficientCircuitUI .. GetEfficientCircuitController
+GetEfficientCircuitController ..> Company
+GetEfficientCircuitController ..> FreightNetwork
+Company -> FreightNetwork : has
+FreightNetwork .. NetworkAlgorithms : uses >
+
+@enduml
