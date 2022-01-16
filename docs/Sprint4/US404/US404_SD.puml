@@ -6,7 +6,8 @@ actor "Fleet Manager" as FM
 
 participant "ShipIdleDaysUI" as UI
 participant "GetShipIdleDaysController" as CTRL
-participant "ShipDB" as SHIPDB
+participant "Company" as COMP
+participant "shipStoreDB : ShipStoreDB" as SHIPDB
 participant ConnectionFactory as CF
 participant DatabaseConnection as DC
 database LAPR3_G102 as DB
@@ -27,6 +28,9 @@ deactivate CF
 
 UI -> CTRL : getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, year)
 activate CTRL
+CTRL -> COMP : shipStoreDB = getShipStoreDB()
+activate COMP
+deactivate COMP
 CTRL -> SHIPDB : getEachShipNumberOfIdleDays(databaseConnection, fleetManagerUsername, year)
 activate SHIPDB
 

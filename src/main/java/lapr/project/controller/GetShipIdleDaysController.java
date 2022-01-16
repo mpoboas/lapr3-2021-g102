@@ -17,7 +17,7 @@ public class GetShipIdleDaysController {
     private Company company;
 
     /**
-     * Constructor of the client container route controller, through a company object.
+     * Constructor of the ship number of idle days controller, through a company object.
      *
      * @param company the company object
      */
@@ -26,7 +26,7 @@ public class GetShipIdleDaysController {
     }
 
     /**
-     * Constructor of the client container route controller, with no received parameters.
+     * Constructor of the ship number of idle days controller, with no received parameters.
      */
     public GetShipIdleDaysController() {
         this(App.getInstance().getCompany());
