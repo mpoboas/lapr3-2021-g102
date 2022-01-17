@@ -57,14 +57,29 @@ class ShortestPathTest {
         places = new ArrayList<>();
         ImportPorts port = new ImportPorts(new PortStore());
         port.importPortsData("data/data-shipsports/data-shipsports/data-ships&ports/bports.csv");
-        network.buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"), ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"), port.getListOfImportedPorts(), ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"), 10);
+        network.buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"), ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"), port.getListOfImportedPorts(), ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"), 1);
         places.add(network.getGraph().vertex(135));
         places.add(network.getGraph().vertex(1));
-        path = new ShortestPath(network.getGraph().vertex(140), network.getGraph().vertex(0), places, network);
+        path = new ShortestPath(network.getGraph().vertex(135), network.getGraph().vertex(0), places, network);
         LinkedList<Place> fPath = path.getLandPath();
-        path.getDirectPath();
         assertEquals(path.getLandPath().size(), fPath.size());
-        assertEquals(5584,path.getLandPathDistance(),0.3);
+        assertEquals(0,path.getLandPathDistance(),0.3);
+    }
+
+    @Test
+    void getLandPath2() throws IOException {
+        FreightNetwork network = new FreightNetwork();
+        places = new ArrayList<>();
+        ImportPorts port = new ImportPorts(new PortStore());
+        port.importPortsData("data/data-shipsports/data-shipsports/data-ships&ports/bports.csv");
+        network.buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"), ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"), port.getListOfImportedPorts(), ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"), 1);
+        places.add(network.getGraph().vertex(135));
+        places.add(network.getGraph().vertex(100));
+        path = new ShortestPath(network.getGraph().vertex(34), network.getGraph().vertex(56), places, network);
+
+        LinkedList<Place> fPath = path.getLandPath();
+        assertEquals(path.getLandPath().size(), fPath.size());
+        assertEquals(3054,path.getLandPathDistance(),0.3);
     }
     @Test
     void getDirectPath() throws IOException {
@@ -95,5 +110,19 @@ class ShortestPathTest {
         LinkedList<Place> fPath = path.getSeaPath();
         assertEquals(path.getSeaPath().size(),fPath.size());
         assertEquals(0,path.getSeaPathDistance());
+    }
+    @Test
+    void getSeaPath2() throws IOException {
+        FreightNetwork network = new FreightNetwork();
+        places = new ArrayList<>();
+        ImportPorts port = new ImportPorts(new PortStore());
+        port.importPortsData("data/data-shipsports/data-shipsports/data-ships&ports/bports.csv");
+        network.buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"), ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"),port.getListOfImportedPorts(), ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"), 10);
+        places.add(network.getGraph().vertex(135));
+        places.add(network.getGraph().vertex(143));
+        path = new ShortestPath(network.getGraph().vertex(140), network.getGraph().vertex(130),places,network);
+        LinkedList<Place> fPath = path.getSeaPath();
+        assertEquals(path.getSeaPath().size(),fPath.size());
+        assertEquals(9835.8,path.getSeaPathDistance(),0.01);
     }
 }

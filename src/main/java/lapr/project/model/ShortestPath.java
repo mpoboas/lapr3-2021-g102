@@ -139,14 +139,18 @@ public class ShortestPath {
     }
 
     private void landPath() {
+        try {
         this.landPathDistance = this.network.shortestPathLand(this.vOrig, this.vDest, this.landPath);
+        }catch (NullPointerException e){
+            this.landPathDistance = 0;
+        }
     }
 
     private void directPath() {
-        this.directPathDistance = this.network.shortestPath(this.vOrig, this.vDest, this.directPath);
+            this.directPathDistance = this.network.shortestPath(this.vOrig, this.vDest, this.directPath);
     }
     public LinkedList<Place> getSeaPath() {
-        if (this.pathNplaces.isEmpty()) {
+        if (this.seaPath.isEmpty()) {
             seaPath();
         }
         return this.seaPath;

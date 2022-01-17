@@ -14,6 +14,12 @@ public class FreightNetwork {
      * The graph
      */
     private final MatrixGraph<Place, Double> graph;
+    private int n;
+    private List<Border> listOfBorders;
+    private List<Country> listOfCountry;
+    private List<SeaDist> listOfSeadist;
+    private List<Port> listOfPort;
+
 
     /**
      * Constructor of the Freight Network, with no received parameters.
@@ -46,6 +52,11 @@ public class FreightNetwork {
      * @param n         the desired number to be used for the n closest ports search.
      */
     public void buildFreightNetworkFromGivenData(List<Country> countries, List<Border> borders, List<Port> ports, List<SeaDist> seaDists, int n) {
+        this.n = n;
+        this.listOfBorders = new ArrayList<>(borders);
+        this.listOfCountry = new ArrayList<>(countries);
+        this.listOfPort = new ArrayList<>(ports);
+        this.listOfSeadist = new ArrayList<>(seaDists);
         insertConnectionBetweenCountries(borders);
         insertConnectionBetweenPortsSameCountry(ports);
         insertConnectionBetweenCapitalAndClosestPort(countries, ports);
@@ -172,24 +183,16 @@ public class FreightNetwork {
         return AlgorithmsNetwork.shortestPath(this.graph, vOrig, vDest, Double::compare, Double::sum, (double) 0, path);
     }
 
-    public Double shortestPathSea(Place vOrig, Place vDest, LinkedList<Place> path) {//not working properly yet
-        MatrixGraph<Place, Double> copyOfNetwork = this.graph;
-        for (int i = 0; i < copyOfNetwork.vertices().size(); i++) {
-            if (copyOfNetwork.vertices().get(i).getClass().getName().equals("lapr.project.model.Country") && copyOfNetwork.vertices().get(i) != vOrig && copyOfNetwork.vertices().get(i) != vOrig) {
-                copyOfNetwork.removeVertex(copyOfNetwork.vertices().get(i));
-            }
-        }
-        return AlgorithmsNetwork.shortestPath(copyOfNetwork, vOrig, vDest, Double::compare, Double::sum, (double) 0, path);
+    public Double shortestPathSea(Place vOrig, Place vDest, LinkedList<Place> path) {
+        FreightNetwork copyOfNetwork = new FreightNetwork();
+        copyOfNetwork.buildFreightNetworkFromGivenData(this.listOfCountry,new ArrayList<>(),this.listOfPort,this.listOfSeadist,this.n);
+        return AlgorithmsNetwork.shortestPath(copyOfNetwork.getGraph(), vOrig, vDest, Double::compare, Double::sum, (double) 0, path);
     }
 
-    public Double shortestPathLand(Place vOrig, Place vDest, LinkedList<Place> path) {//not working properly yet
-        MatrixGraph<Place, Double> copyOfNetwork = this.graph;
-        for (int i = 0; i < copyOfNetwork.vertices().size(); i++) {
-            if ((copyOfNetwork.vertices().get(i) instanceof lapr.project.model.Port) && copyOfNetwork.vertices().get(i) != vOrig && copyOfNetwork.vertices().get(i) != vOrig) {
-                copyOfNetwork.removeVertex(copyOfNetwork.vertices().get(i));
-            }
-        }
-        return AlgorithmsNetwork.shortestPath(copyOfNetwork, vOrig, vDest, Double::compare, Double::sum, (double) 0, path);
+    public Double shortestPathLand(Place vOrig, Place vDest, LinkedList<Place> path) {
+        FreightNetwork copyOfNetwork = new FreightNetwork();
+        copyOfNetwork.buildFreightNetworkFromGivenData(this.listOfCountry,this.listOfBorders,this.listOfPort,new ArrayList<>(),this.n);
+        return AlgorithmsNetwork.shortestPath(copyOfNetwork.getGraph(), vOrig, vDest, Double::compare, Double::sum, (double) 0, path);
     }
 
     /**
