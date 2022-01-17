@@ -69,8 +69,12 @@ class PhysicsUtilsTest {
         assertEquals(5217929.628, result.get(4).getSecond(),0.1);
         assertEquals(4968046.08, result.get(5).getFirst(),0.1);
         assertEquals(3432238.1, result.get(5).getSecond(),0.1);
-
-
+    }
+    @Test
+    void listMaterials(){
+        List<Pair<String,Double>> list = PhysicsUtils.listOfMaterials();
+        assertEquals("Cork", list.get(2).getFirst());
+        assertEquals("Concrete", list.get(6).getFirst());
 
     }
 }

@@ -14,6 +14,9 @@ public class PhysicsUtils {
     public static final Pair<String, Double> MATERIAL_POLYSTYRENE = new Pair<>("Polystyrene", 0.04);
     public static final Pair<String, Double> MATERIAL_WOOD = new Pair<>("Wood", 0.13);
     public static final Pair<String, Double> MATERIAL_CONCRETE = new Pair<>("Concrete", 0.75);
+    private PhysicsUtils(){
+
+    }
 
     /**
      * Calculates the thermal resistance of a container.
