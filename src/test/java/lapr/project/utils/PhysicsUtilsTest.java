@@ -57,17 +57,17 @@ class PhysicsUtilsTest {
         assertEquals(0.024,PhysicsUtils.get7DegResistance(),0.01);
 
         List<Pair<Double,Double>> result = PhysicsUtils.energyToBeSupliedTocontainers(tripSections,12,14);
-        assertEquals(738077.48, result.get(0).getFirst(),0.1);
+        assertEquals(704925.4, result.get(0).getFirst(),0.1);
         assertEquals(800082.5, result.get(0).getSecond(),0.1);
-        assertEquals(3514654.67, result.get(1).getFirst(),0.1);
+        assertEquals(3356787.89, result.get(1).getFirst(),0.1);
         assertEquals(3014803.7, result.get(1).getSecond(),0.1);
-        assertEquals(1054396.403, result.get(2).getFirst(),0.1);
+        assertEquals(1007036.36, result.get(2).getFirst(),0.1);
         assertEquals(347861.9, result.get(2).getSecond(),0.1);
-        assertEquals(5974912.95, result.get(3).getFirst(),0.1);
+        assertEquals(5706539.42, result.get(3).getFirst(),0.1);
         assertEquals(2898849.79, result.get(3).getSecond(),0.1);
-        assertEquals(15815946.05, result.get(4).getFirst(),0.1);
+        assertEquals(15105545.54, result.get(4).getFirst(),0.1);
         assertEquals(5217929.628, result.get(4).getSecond(),0.1);
-        assertEquals(5201688.9, result.get(5).getFirst(),0.1);
+        assertEquals(4968046.08, result.get(5).getFirst(),0.1);
         assertEquals(3432238.1, result.get(5).getSecond(),0.1);
 
 

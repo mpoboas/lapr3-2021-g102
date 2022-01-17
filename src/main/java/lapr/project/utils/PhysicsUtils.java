@@ -10,7 +10,7 @@ public class PhysicsUtils {
     public static final Pair<String, Double> MATERIAL_STEEL = new Pair<>("Steel", 46.0);
     public static final Pair<String, Double> MATERIAL_IRON = new Pair<>("Iron", 80.4);
     public static final Pair<String, Double> MATERIAL_CORK = new Pair<>("Cork", 0.039); // cortiça
-    public static final Pair<String, Double> MATERIAL_STONE_WOOL = new Pair<>("Stone Wool", 0.035);
+    public static final Pair<String, Double> MATERIAL_STONE_WOOL = new Pair<>("Stone Wool", 0.034);
     public static final Pair<String, Double> MATERIAL_POLYSTYRENE = new Pair<>("Polystyrene", 0.04);
     public static final Pair<String, Double> MATERIAL_WOOD = new Pair<>("Wood", 0.13);
     public static final Pair<String, Double> MATERIAL_CONCRETE = new Pair<>("Concrete", 0.75);
@@ -71,8 +71,8 @@ public class PhysicsUtils {
         materialThermalConductivityList.add(PhysicsUtils.MATERIAL_STONE_WOOL.getSecond());
         List<Double> wallThicknessList = new ArrayList<>();
         wallThicknessList.add(0.04);
-        wallThicknessList.add(0.10);
         wallThicknessList.add(0.06);
+        wallThicknessList.add(0.10);
         return calculateContainerThermalResistance(PhysicsUtils.CONTAINER_40_AREA,materialThermalConductivityList,wallThicknessList);
     }
     public static List<Pair<Double,Double>> energyToBeSupliedTocontainers(List<Pair<Integer, Integer>> tripSections, int n5DegContainers, int n7DegContainers){
