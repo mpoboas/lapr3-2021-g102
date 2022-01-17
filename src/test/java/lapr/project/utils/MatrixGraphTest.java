@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -186,6 +187,26 @@ public class MatrixGraphTest {
      */
     @Test
     public void testEdges() {
+        try{
+            Edge<Integer,Double> test1= new Edge<>(null,null,null);
+        }catch (Exception ex){
+            assertEquals(RuntimeException.class,ex.getClass());
+            assertEquals("Edge vertices cannot be null!",ex.getMessage());
+
+        }
+        try{
+            Edge<Integer,Double> test1= new Edge<>(null,2,null);
+        }catch (Exception ex){
+            assertEquals(RuntimeException.class,ex.getClass());
+            assertEquals("Edge vertices cannot be null!",ex.getMessage());
+        }
+        try{
+            Edge<Integer,Double> test1= new Edge<>(2,null,null);
+        }catch (Exception ex){
+            assertEquals(RuntimeException.class,ex.getClass());
+            assertEquals("Edge vertices cannot be null!",ex.getMessage());
+
+        }
         System.out.println("Test Edges");
 
         assertEquals(0, instance.edges().size(), "edges should be empty");
@@ -218,6 +239,14 @@ public class MatrixGraphTest {
             ced.removeIf(e -> e.getVOrig().equals(co.get(finalI)) && e.getVDest().equals(cd.get(finalI)) && e.getWeight().equals(cw.get(finalI)));
         }
         assertEquals(0, ced.size(), "Edges should be as inserted");
+
+        instance.edge("A","C").setWeight(5);
+        assertEquals(5,instance.edge("A","C").getWeight());
+        assertTrue(instance.edge("A","C").equals(instance.edge("A","C")));
+        assertFalse(instance.edge("A","C").equals("AC"));
+        assertFalse(instance.edge("A","C").equals(null));
+
+        assertEquals(Objects.hash("A","C"),instance.edge("A","C").hashCode());
 
         instance.removeEdge("A","C"); instance.removeEdge("B","D");
         instance.removeEdge("C","D"); instance.removeEdge("C","E");

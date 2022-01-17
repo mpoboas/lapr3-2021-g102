@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="565px" preserveAspectRatio="none" style="width:585px;height:565px;background:#FFFFFF;" version="1.1" viewBox="0 0 585 565" width="585px" zoomAndPan="magnify"><defs><filter height="300%" id="f153687nner2bd" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[dad32fe6bd15ecbdfb110ca35837f4be]
+class GetEfficientCircuitUI--><rect codeLine="3" fill="#FEFECE" filter="url(#f153687nner2bd)" height="48" id="GetEfficientCircuitUI" style="stroke:#A80036;stroke-width:1.5;" width="141" x="153" y="7"/><ellipse cx="168" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M170,19.5 Q170.2031,19 170.4375,18.75 Q170.6719,18.5 170.9375,18.5 Q171.4063,18.5 171.7031,18.7813 Q172,19.0625 172,19.7188 L172,21.2813 Q172,21.9375 171.7188,22.2188 Q171.4375,22.5 171,22.5 Q170.6094,22.5 170.3594,22.3281 Q170.1094,22.1563 170,21.7031 Q169.9531,21.3906 169.7813,21.2188 Q169.4688,20.8906 168.9063,20.7031 Q168.3438,20.5 167.7813,20.5 Q167.0781,20.5 166.4844,20.7813 Q165.9063,21.0625 165.4531,21.6875 Q165,22.3125 165,23.1719 L165,24.0938 Q165,25.125 165.8438,25.8125 Q166.6875,26.5 168.1875,26.5 Q169.0781,26.5 169.7031,26.2969 Q170.0625,26.1875 170.4688,25.8281 Q170.7344,25.625 170.875,25.5625 Q171.0156,25.5 171.1875,25.5 Q171.5156,25.5 171.75,25.7656 Q172,26.0156 172,26.375 Q172,26.7188 171.6563,27.125 Q171.1563,27.7188 170.3594,28.0469 Q169.3125,28.5 168.0313,28.5 Q166.5313,28.5 165.3281,27.9063 Q164.3594,27.4375 163.6719,26.4219 Q163,25.4063 163,24.2031 L163,23.1094 Q163,21.8594 163.5938,20.7656 Q164.2031,19.6719 165.25,19.0938 Q166.3125,18.5 167.5,18.5 Q168.2188,18.5 168.8438,18.75 Q169.4688,19 170,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="109" x="182" y="27.9102">GetEfficientCircuitUI</text><line style="stroke:#A80036;stroke-width:1.5;" x1="154" x2="293" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="154" x2="293" y1="47" y2="47"/><!--MD5=[9e16f67224d57405d607a3cfbd63a734]
+class GetEfficientCircuitController--><rect codeLine="4" fill="#FEFECE" filter="url(#f153687nner2bd)" height="61.8359" id="GetEfficientCircuitController" style="stroke:#A80036;stroke-width:1.5;" width="183" x="132" y="116"/><ellipse cx="147" cy="132" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M149,128.5 Q149.2031,128 149.4375,127.75 Q149.6719,127.5 149.9375,127.5 Q150.4063,127.5 150.7031,127.7813 Q151,128.0625 151,128.7188 L151,130.2813 Q151,130.9375 150.7188,131.2188 Q150.4375,131.5 150,131.5 Q149.6094,131.5 149.3594,131.3281 Q149.1094,131.1563 149,130.7031 Q148.9531,130.3906 148.7813,130.2188 Q148.4688,129.8906 147.9063,129.7031 Q147.3438,129.5 146.7813,129.5 Q146.0781,129.5 145.4844,129.7813 Q144.9063,130.0625 144.4531,130.6875 Q144,131.3125 144,132.1719 L144,133.0938 Q144,134.125 144.8438,134.8125 Q145.6875,135.5 147.1875,135.5 Q148.0781,135.5 148.7031,135.2969 Q149.0625,135.1875 149.4688,134.8281 Q149.7344,134.625 149.875,134.5625 Q150.0156,134.5 150.1875,134.5 Q150.5156,134.5 150.75,134.7656 Q151,135.0156 151,135.375 Q151,135.7188 150.6563,136.125 Q150.1563,136.7188 149.3594,137.0469 Q148.3125,137.5 147.0313,137.5 Q145.5313,137.5 144.3281,136.9063 Q143.3594,136.4375 142.6719,135.4219 Q142,134.4063 142,133.2031 L142,132.1094 Q142,130.8594 142.5938,129.7656 Q143.2031,128.6719 144.25,128.0938 Q145.3125,127.5 146.5,127.5 Q147.2188,127.5 147.8438,127.75 Q148.4688,128 149,128.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="151" x="161" y="136.9102">GetEfficientCircuitController</text><line style="stroke:#A80036;stroke-width:1.5;" x1="133" x2="314" y1="148" y2="148"/><line style="stroke:#A80036;stroke-width:1.5;" x1="133" x2="314" y1="156" y2="156"/><ellipse cx="143" cy="167" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="152" y="171.4189">getEfficientCircuit()</text><!--MD5=[074ba6ad47b234bd73d65012320c1634]
+class FreightNetwork--><rect codeLine="8" fill="#FEFECE" filter="url(#f153687nner2bd)" height="103.3438" id="FreightNetwork" style="stroke:#A80036;stroke-width:1.5;" width="383" x="188" y="239"/><ellipse cx="333.75" cy="255" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M335.75,251.5 Q335.9531,251 336.1875,250.75 Q336.4219,250.5 336.6875,250.5 Q337.1563,250.5 337.4531,250.7813 Q337.75,251.0625 337.75,251.7188 L337.75,253.2813 Q337.75,253.9375 337.4688,254.2188 Q337.1875,254.5 336.75,254.5 Q336.3594,254.5 336.1094,254.3281 Q335.8594,254.1563 335.75,253.7031 Q335.7031,253.3906 335.5313,253.2188 Q335.2188,252.8906 334.6563,252.7031 Q334.0938,252.5 333.5313,252.5 Q332.8281,252.5 332.2344,252.7813 Q331.6563,253.0625 331.2031,253.6875 Q330.75,254.3125 330.75,255.1719 L330.75,256.0938 Q330.75,257.125 331.5938,257.8125 Q332.4375,258.5 333.9375,258.5 Q334.8281,258.5 335.4531,258.2969 Q335.8125,258.1875 336.2188,257.8281 Q336.4844,257.625 336.625,257.5625 Q336.7656,257.5 336.9375,257.5 Q337.2656,257.5 337.5,257.7656 Q337.75,258.0156 337.75,258.375 Q337.75,258.7188 337.4063,259.125 Q336.9063,259.7188 336.1094,260.0469 Q335.0625,260.5 333.7813,260.5 Q332.2813,260.5 331.0781,259.9063 Q330.1094,259.4375 329.4219,258.4219 Q328.75,257.4063 328.75,256.2031 L328.75,255.1094 Q328.75,253.8594 329.3438,252.7656 Q329.9531,251.6719 331,251.0938 Q332.0625,250.5 333.25,250.5 Q333.9688,250.5 334.5938,250.75 Q335.2188,251 335.75,251.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="83" x="354.25" y="259.9102">FreightNetwork</text><line style="stroke:#A80036;stroke-width:1.5;" x1="189" x2="570" y1="271" y2="271"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="196" y="279"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="167" x="208" y="286.4189">MatrixGraph&lt;Place, Double&gt; graph</text><line style="stroke:#A80036;stroke-width:1.5;" x1="189" x2="570" y1="292.8359" y2="292.8359"/><ellipse cx="199" cy="303.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="285" x="208" y="308.2549">buildFreightNetworkFromDatabase(databaseConnection, n)</text><ellipse cx="199" cy="317.6719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="357" x="208" y="322.0908">buildFreightNetworkFromGivenData(countries, borders, ports, seadists, n)</text><ellipse cx="199" cy="331.5078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="89" x="208" y="335.9268">getEfficientCycle()</text><!--MD5=[02e4b9b7573f1156f41e60aa5b4e25a4]
+class Company--><rect codeLine="15" fill="#FEFECE" filter="url(#f153687nner2bd)" height="89.5078" id="Company" style="stroke:#A80036;stroke-width:1.5;" width="123" x="7" y="245.5"/><ellipse cx="39.1" cy="261.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M41.1,258 Q41.3031,257.5 41.5375,257.25 Q41.7719,257 42.0375,257 Q42.5063,257 42.8031,257.2813 Q43.1,257.5625 43.1,258.2188 L43.1,259.7813 Q43.1,260.4375 42.8188,260.7188 Q42.5375,261 42.1,261 Q41.7094,261 41.4594,260.8281 Q41.2094,260.6563 41.1,260.2031 Q41.0531,259.8906 40.8813,259.7188 Q40.5688,259.3906 40.0063,259.2031 Q39.4438,259 38.8813,259 Q38.1781,259 37.5844,259.2813 Q37.0063,259.5625 36.5531,260.1875 Q36.1,260.8125 36.1,261.6719 L36.1,262.5938 Q36.1,263.625 36.9438,264.3125 Q37.7875,265 39.2875,265 Q40.1781,265 40.8031,264.7969 Q41.1625,264.6875 41.5688,264.3281 Q41.8344,264.125 41.975,264.0625 Q42.1156,264 42.2875,264 Q42.6156,264 42.85,264.2656 Q43.1,264.5156 43.1,264.875 Q43.1,265.2188 42.7563,265.625 Q42.2563,266.2188 41.4594,266.5469 Q40.4125,267 39.1313,267 Q37.6313,267 36.4281,266.4063 Q35.4594,265.9375 34.7719,264.9219 Q34.1,263.9063 34.1,262.7031 L34.1,261.6094 Q34.1,260.3594 34.6938,259.2656 Q35.3031,258.1719 36.35,257.5938 Q37.4125,257 38.6,257 Q39.3188,257 39.9438,257.25 Q40.5688,257.5 41.1,258 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="53" x="56.9" y="266.4102">Company</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="129" y1="277.5" y2="277.5"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="285.5"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="55" x="27" y="292.9189">designation</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="299.3359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="74" x="27" y="306.7549">FreightNetwork</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="129" y1="313.1719" y2="313.1719"/><ellipse cx="18" cy="324.1719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="97" x="27" y="328.5908">getFreightNetwork()</text><!--MD5=[0fe3c353e8abe23ac4c7ef2ffe24a072]
+class NetworkAlgorithms--><rect codeLine="21" fill="#FEFECE" filter="url(#f153687nner2bd)" height="131.0156" id="NetworkAlgorithms" style="stroke:#A80036;stroke-width:1.5;" width="365" x="197" y="420"/><ellipse cx="323.25" cy="436" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M325.25,432.5 Q325.4531,432 325.6875,431.75 Q325.9219,431.5 326.1875,431.5 Q326.6563,431.5 326.9531,431.7813 Q327.25,432.0625 327.25,432.7188 L327.25,434.2813 Q327.25,434.9375 326.9688,435.2188 Q326.6875,435.5 326.25,435.5 Q325.8594,435.5 325.6094,435.3281 Q325.3594,435.1563 325.25,434.7031 Q325.2031,434.3906 325.0313,434.2188 Q324.7188,433.8906 324.1563,433.7031 Q323.5938,433.5 323.0313,433.5 Q322.3281,433.5 321.7344,433.7813 Q321.1563,434.0625 320.7031,434.6875 Q320.25,435.3125 320.25,436.1719 L320.25,437.0938 Q320.25,438.125 321.0938,438.8125 Q321.9375,439.5 323.4375,439.5 Q324.3281,439.5 324.9531,439.2969 Q325.3125,439.1875 325.7188,438.8281 Q325.9844,438.625 326.125,438.5625 Q326.2656,438.5 326.4375,438.5 Q326.7656,438.5 327,438.7656 Q327.25,439.0156 327.25,439.375 Q327.25,439.7188 326.9063,440.125 Q326.4063,440.7188 325.6094,441.0469 Q324.5625,441.5 323.2813,441.5 Q321.7813,441.5 320.5781,440.9063 Q319.6094,440.4375 318.9219,439.4219 Q318.25,438.4063 318.25,437.2031 L318.25,436.1094 Q318.25,434.8594 318.8438,433.7656 Q319.4531,432.6719 320.5,432.0938 Q321.5625,431.5 322.75,431.5 Q323.4688,431.5 324.0938,431.75 Q324.7188,432 325.25,432.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="104" x="343.75" y="440.9102">NetworkAlgorithms</text><line style="stroke:#A80036;stroke-width:1.5;" x1="198" x2="561" y1="452" y2="452"/><line style="stroke:#A80036;stroke-width:1.5;" x1="198" x2="561" y1="460" y2="460"/><ellipse cx="208" cy="471" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="264" x="217" y="475.4189">nearestNeighbour(Graph&lt;Place, Double&gt; g, Place vert)</text><ellipse cx="208" cy="484.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="301" x="217" y="489.2549">searchCycle(Graph&lt;Place, Double&gt; g, LinkedList&lt;Place&gt; path)</text><ellipse cx="208" cy="498.6719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="284" x="217" y="503.0908">searchLargestCycle(ArrayList&lt;LinkedList&lt;Place&gt;&gt; cycles)</text><ellipse cx="208" cy="512.5078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="270" x="217" y="516.9268">getLessWeightedBiggestCycle(Graph&lt;Place, Double&gt; g,</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="182" x="217" y="530.7627">ArrayList&lt;LinkedList&lt;Place&gt;&gt; cycles)</text><ellipse cx="208" cy="540.1797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="339" x="217" y="544.5986">calculateTotalWeight(Graph&lt;Place, Double&gt; g, LinkedList&lt;Place&gt; path)</text><!--MD5=[bbbc11587c45420a85a2aaa364980bf5]
+link GetEfficientCircuitUI to GetEfficientCircuitController--><path codeLine="29" d="M223.5,55.07 C223.5,72.51 223.5,96.6 223.5,115.61 " fill="none" id="GetEfficientCircuitUI-GetEfficientCircuitController" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[72a01c97dcb11048cb03e3bcf251741d]
+link GetEfficientCircuitController to Company--><path codeLine="30" d="M190.63,178.01 C170.38,196.49 143.97,220.6 120.9,241.67 " fill="none" id="GetEfficientCircuitController-to-Company" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="116.93,245.29,126.2706,242.1669,120.6193,241.9153,120.871,236.264,116.93,245.29" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[8967582176a70864f81c6445dc40f011]
+link GetEfficientCircuitController to FreightNetwork--><path codeLine="31" d="M256.58,178.01 C275.01,194.73 298.52,216.05 320.03,235.56 " fill="none" id="GetEfficientCircuitController-to-FreightNetwork" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="323.74,238.93,319.7626,229.92,320.0371,235.5702,314.3869,235.8447,323.74,238.93" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e359b474b5bea3d5e0a05d5f38acf6c5]
+link Company to FreightNetwork--><path codeLine="32" d="M130.32,290.5 C146.1,290.5 163.94,290.5 182.65,290.5 " fill="none" id="Company-to-FreightNetwork" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="187.94,290.5,178.94,286.5,182.94,290.5,178.94,294.5,187.94,290.5" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="21" x="148.5" y="283.9951">has</text><!--MD5=[5f6d393c4d8f1119b992d14737c440f7]
+link FreightNetwork to NetworkAlgorithms--><path codeLine="33" d="M379.5,342.21 C379.5,366 379.5,394.62 379.5,419.94 " fill="none" id="FreightNetwork-NetworkAlgorithms" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#000000" points="384.5,386.1758,387.4389,377.1307,381.5611,377.1307,384.5,386.1758" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="28" x="393.5" y="386.4951">uses</text><!--MD5=[4dfba59e4dc6f808ff93ed58b076ac1a]
+@startuml
+'https://plantuml.com/class-diagram
+
+class GetEfficientCircuitUI{}
+class GetEfficientCircuitController{
++ getEfficientCircuit()
+}
+
+class FreightNetwork {
+-MatrixGraph<Place, Double> graph
++buildFreightNetworkFromDatabase(databaseConnection, n)
++buildFreightNetworkFromGivenData(countries, borders, ports, seadists, n)
++getEfficientCycle()
+}
+
+class Company {
+-designation
+-FreightNetwork
++getFreightNetwork()
+}
+
+class NetworkAlgorithms {
++ nearestNeighbour(Graph<Place, Double> g, Place vert)
++ searchCycle(Graph<Place, Double> g, LinkedList<Place> path)
++ searchLargestCycle(ArrayList<LinkedList<Place>> cycles)
++ getLessWeightedBiggestCycle(Graph<Place, Double> g, \nArrayList<LinkedList<Place>> cycles)
++ calculateTotalWeight(Graph<Place, Double> g, LinkedList<Place> path)
+}
+
+GetEfficientCircuitUI .. GetEfficientCircuitController
+GetEfficientCircuitController ..> Company
+GetEfficientCircuitController ..> FreightNetwork
+Company -> FreightNetwork : has
+FreightNetwork .. NetworkAlgorithms : uses >
+
+@enduml
+
+@startuml
+
+class GetEfficientCircuitUI{}
+class GetEfficientCircuitController{
++ getEfficientCircuit()
+}
+
+class FreightNetwork {
+-MatrixGraph<Place, Double> graph
++buildFreightNetworkFromDatabase(databaseConnection, n)
++buildFreightNetworkFromGivenData(countries, borders, ports, seadists, n)
++getEfficientCycle()
+}
+
+class Company {
+-designation
+-FreightNetwork
++getFreightNetwork()
+}
+
+class NetworkAlgorithms {
++ nearestNeighbour(Graph<Place, Double> g, Place vert)
++ searchCycle(Graph<Place, Double> g, LinkedList<Place> path)
++ searchLargestCycle(ArrayList<LinkedList<Place>> cycles)
++ getLessWeightedBiggestCycle(Graph<Place, Double> g, \nArrayList<LinkedList<Place>> cycles)
++ calculateTotalWeight(Graph<Place, Double> g, LinkedList<Place> path)
+}
+
+GetEfficientCircuitUI .. GetEfficientCircuitController
+GetEfficientCircuitController ..> Company
+GetEfficientCircuitController ..> FreightNetwork
+Company -> FreightNetwork : has
+FreightNetwork .. NetworkAlgorithms : uses >
+
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

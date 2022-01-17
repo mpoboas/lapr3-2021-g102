@@ -239,6 +239,29 @@ public class FreightNetwork {
     }
 
     /**
+     * Gets the biggest cycle that contain more locations with less weight
+     *
+     * @return the list of connected places
+     */
+    public LinkedList<Place> getEfficientCycle() {
+        ArrayList<LinkedList<Place>> largestMinDist = new ArrayList<>();
+        for (Place placeO : this.graph.vertices()) {
+            LinkedList<Place> list = AlgorithmsNetwork.nearestNeighbour(this.graph, placeO);
+            largestMinDist.add(list);
+        }
+        ArrayList<LinkedList<Place>> cycles = new ArrayList<>();
+        for (LinkedList<Place> list : largestMinDist) {
+            try {
+                cycles.add(AlgorithmsNetwork.searchCycle(this.graph, list));
+            } catch (Exception ignored) {
+            }
+        }
+        return AlgorithmsNetwork.getLessWeightedBiggestCycle(this.graph,AlgorithmsNetwork.searchLargestCycle(cycles));
+    }
+
+
+
+    /**
      * Gets the matrix graph.
      */
     public MatrixGraph<Place, Double> getGraph() {
