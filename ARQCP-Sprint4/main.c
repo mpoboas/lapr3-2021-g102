@@ -159,7 +159,7 @@ int main(void) {
     scanf("%d", &containerPosZ);
 
     float res = get_needed_energy_container(tripDuration, outerTemperature, containers, arraySize, containerPosX, containerPosY, containerPosZ);
-    printf("Total needed energy: %f\n", res);
+    printf("Total needed energy: %f J\n", res);
     
     return 0;
 }
