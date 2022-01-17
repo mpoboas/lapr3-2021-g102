@@ -5,8 +5,6 @@
 #include "get_needed_energy_container.h"
 #include "readContainersInfo.h"
 
-
-
 int main(void) {
     //-------------- Ficheiro Manifest
     char fileManifest[] = "manifest.txt";
