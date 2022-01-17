@@ -46,12 +46,53 @@ public class PhysicsUtils {
     }
 
     public static double calculateEnergyTransferredAsHeat(double temp1, double temp2, double totalResistance){
-        return ((temp1 - temp2)/ totalResistance);
+        return ((temp1 - (temp2))/ totalResistance);
     }
 
     public static double calculateEnergyNecessary(double initialTemperature, double desiredTemperature, double totalResistance, int hour, int min, int sec){
         int totalTime = hour*3600 + min*60 + sec;
         return calculateEnergyTransferredAsHeat(initialTemperature,desiredTemperature,totalResistance) * totalTime;
+    }
+    public static double get7DegResistance(){
+        List<Double> materialThermalConductivityList = new ArrayList<>();
+        materialThermalConductivityList.add(PhysicsUtils.MATERIAL_STEEL.getSecond());
+        materialThermalConductivityList.add(PhysicsUtils.MATERIAL_CORK.getSecond());
+        materialThermalConductivityList.add(PhysicsUtils.MATERIAL_WOOD.getSecond());
+        List<Double> wallThicknessList = new ArrayList<>();
+        wallThicknessList.add(0.04);
+        wallThicknessList.add(0.10);
+        wallThicknessList.add(0.06);
+        return calculateContainerThermalResistance(PhysicsUtils.CONTAINER_40_AREA,materialThermalConductivityList,wallThicknessList);
+    }
+    public static double get5DegResistance(){
+        List<Double> materialThermalConductivityList = new ArrayList<>();
+        materialThermalConductivityList.add(PhysicsUtils.MATERIAL_STEEL.getSecond());
+        materialThermalConductivityList.add(PhysicsUtils.MATERIAL_CORK.getSecond());
+        materialThermalConductivityList.add(PhysicsUtils.MATERIAL_STONE_WOOL.getSecond());
+        List<Double> wallThicknessList = new ArrayList<>();
+        wallThicknessList.add(0.04);
+        wallThicknessList.add(0.10);
+        wallThicknessList.add(0.06);
+        return calculateContainerThermalResistance(PhysicsUtils.CONTAINER_40_AREA,materialThermalConductivityList,wallThicknessList);
+    }
+    public static List<Pair<Double,Double>> energyToBeSupliedTocontainers(List<Pair<Integer, Integer>> tripSections, int n5DegContainers, int n7DegContainers){
+        double containers5DegsRt = get5DegResistance();
+        double containers7DegsRt = get7DegResistance();
+        List<Pair<Double,Double>> listOfEnergy = new ArrayList<>();
+        for (Pair<Integer, Integer> tripSection : tripSections) {
+            Pair<Double, Double> energyToBeSuplied = totalEnergyToBeSupliedToContainers(tripSection.getFirst(), tripSection.getSecond(), containers5DegsRt, containers7DegsRt);
+            listOfEnergy.add(new Pair<>(energyToBeSuplied.getFirst() * n5DegContainers, energyToBeSuplied.getSecond() * n7DegContainers));
+        }
+        return listOfEnergy;
+    }
+    public static Pair<Double,Double> totalEnergyToBeSupliedToContainers(int time, int exTemp, double thermalResisttance5, double thermalResisttance7){
+        double container5Degrees = energyToSupplyToContainer(exTemp,-5,thermalResisttance5,time);
+        double container7Degrees = energyToSupplyToContainer(exTemp,7,thermalResisttance7,time);
+        return new Pair<>(container5Degrees,container7Degrees);
+    }
+
+    public static double energyToSupplyToContainer(int exTemp, int intTemp, double thermalResistance, int time){
+        return calculateEnergyTransferredAsHeat(exTemp,intTemp,thermalResistance) * time;
     }
 
     /**
