@@ -1,33 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
-typedef struct {
-    int containerID;
-    char isoCode[5];
-    char x;
-    char y;
-    char z;
-
-    float length;
-    float width;
-    float height;
-
-    float exposedArea;
-
-    char innerWallMaterial[16];
-    float innerWallCondutivity;
-    float innerWallThickness;
-
-    char centerWallMaterial[16] ;
-    float centerWallCondutivity;
-    float centerWallThickness;
-    
-    char outerWallMaterial[16];
-    float outerWallCondutivity;
-    float outerWallThickness;
-
-}container;
+#include "get_needed_energy_container.h"
 
 int getCargoManifestInformation( char *filename, container array[], int n){
     FILE *file = fopen(filename, "r");
@@ -161,12 +135,31 @@ int main(void) {
                             containers[j].x, containers[j].y, containers[j].z);*/
 
 
-        printf("ID: %d | ISO: %s | Length: %f | Width: %f | Height: %f | Area: %f | MI: %s | MC: %f | MT: %f | CM: %s | CC: %f | CT: %f | OM: %s | OC: %f | OT: %f \n", containers[j].containerID, containers[j].isoCode, containers[j].length, containers[j].width, containers[j].height, containers[j].exposedArea,
+        /*printf("ID: %d | ISO: %s | Length: %f | Width: %f | Height: %f | Area: %f | MI: %s | MC: %f | MT: %f | CM: %s | CC: %f | CT: %f | OM: %s | OC: %f | OT: %f \n", containers[j].containerID, containers[j].isoCode, containers[j].length, containers[j].width, containers[j].height, containers[j].exposedArea,
                                            containers[j].innerWallMaterial, containers[j].innerWallCondutivity, containers[j].innerWallThickness,
                                            containers[j].centerWallMaterial, containers[j].centerWallCondutivity, containers[j].centerWallThickness,
-                                           containers[j].outerWallMaterial, containers[j].outerWallCondutivity, containers[j].centerWallThickness);
+                                           containers[j].outerWallMaterial, containers[j].outerWallCondutivity, containers[j].centerWallThickness);*/
     }
+    
+    float tripDuration = 1;
+    float outerTemperature = 20;
+    int containerPosX = 0;
+    int containerPosY = 0;
+    int containerPosZ = 0;
+    printf("Trip duration? ");
+    scanf("%f", &tripDuration);
+    printf("Outer temperature? ");
+    scanf("%f", &outerTemperature);
+    printf("Container position:\n");
+    printf("X? ");
+    scanf("%d", &containerPosX);
+    printf("Y? ");
+    scanf("%d", &containerPosY);
+    printf("Z? ");
+    scanf("%d", &containerPosZ);
 
-
+    float res = get_needed_energy_container(tripDuration, outerTemperature, containers, arraySize, containerPosX, containerPosY, containerPosZ);
+    printf("Total needed energy: %f\n", res);
+    
     return 0;
 }
