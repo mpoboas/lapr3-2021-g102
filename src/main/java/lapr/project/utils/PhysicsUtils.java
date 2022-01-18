@@ -1,11 +1,25 @@
 package lapr.project.utils;
 
+import lapr.project.model.CargoManifest;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PhysicsUtils {
 
     public static final Double CONTAINER_40_AREA = 125.33428;
+    public static final Double FRONTAL_FACE_AREA = 5.6165;
+    public static final Double LATERAL_FACE_AREA = 28.76604;
+    public static final Double SUPERIOR_FACE_AREA = 28.2846;
+    public static final Pair<String, Integer> CONTAINERS_5DEG = new Pair<>("refrigerated5", -5);
+    public static final Pair<String, Integer> CONTAINERS_7DEG = new Pair<>("refrigerated7", 7);
+    public static final Double resTerm5Deg = 4.48050757426716;
+    public static final Double resTerm7Deg = 3.02651059085842;
+
+
+
+
+
 
     public static final Pair<String, Double> MATERIAL_STEEL = new Pair<>("Steel", 46.0);
     public static final Pair<String, Double> MATERIAL_IRON = new Pair<>("Iron", 80.4);
@@ -101,6 +115,68 @@ public class PhysicsUtils {
 
     public static double energyToSupplyToContainer(int exTemp, int intTemp, double thermalResistance, int time) {
         return calculateEnergyTransferredAsHeat(exTemp, intTemp, thermalResistance) * time;
+    }
+
+
+
+    public static List<Pair<Double,Double>> energyToBeSupliedTocontainersDepOnPos(CargoManifest cg, List<Pair<Integer, Double>> tripSections){
+        List<Pair<Double,Double>> listOfEnergyToBeSupplied = new ArrayList<>();
+        for( int i = 0; i < tripSections.size(); i++){
+            double energyFor7degContainers = 0;
+            double energyFor5degContainers = 0;
+            for(int j = 0; j < cg.getContainerList().size();j++){
+                double areaExposed = determineAreaExposed(cg,cg.getContainerList().get(j).getSecond());
+                if(cg.getContainerList().get(j).getFirst().getType().equalsIgnoreCase(PhysicsUtils.CONTAINERS_5DEG.getFirst())){
+                    energyFor5degContainers = energyFor5degContainers + ( energyToBeSuppliedToContainer(areaExposed,-5,tripSections.get(i).getSecond()));
+                }
+                if(cg.getContainerList().get(j).getFirst().getType().equalsIgnoreCase(PhysicsUtils.CONTAINERS_7DEG.getFirst())){
+                    energyFor7degContainers = energyFor7degContainers + ( energyToBeSuppliedToContainer(areaExposed,7,tripSections.get(i).getSecond()));
+                }
+            }
+            listOfEnergyToBeSupplied.add(new Pair<>(energyFor5degContainers*tripSections.get(i).getFirst(),energyFor7degContainers*tripSections.get(i).getFirst()));
+        }
+        return listOfEnergyToBeSupplied;
+    }
+    public static double energyToBeSuppliedToContainer(double areaExposed, int intTemp, double exTemp){
+        double energyToSupplyToContainer = 0;
+        double resistance = 0;
+        if(intTemp == -5) {
+            resistance = resTerm5Deg / areaExposed;
+        }
+        if(intTemp == 7) {
+            resistance = resTerm7Deg / areaExposed;
+        }
+        double energyToSupplyToExposedArea = ((exTemp -intTemp  ))/ resistance;
+        if(intTemp == -5) {
+            resistance = resTerm5Deg / (CONTAINER_40_AREA - areaExposed);
+        }
+        if(intTemp == 7) {
+            resistance = resTerm7Deg / (CONTAINER_40_AREA - areaExposed);
+        }
+
+        double energyToSupplyToNonExposedArea = ((exTemp -intTemp  ))/ resistance;
+        energyToSupplyToContainer = energyToSupplyToExposedArea +energyToSupplyToNonExposedArea;
+        return energyToSupplyToContainer;
+    }
+
+    public static double determineAreaExposed(CargoManifest cg, CargoManifest.ContainerPosition currentPos){
+        double areaExposed = 0;
+        if(cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x,currentPos.y,currentPos.z +1))){
+          areaExposed = areaExposed + PhysicsUtils.SUPERIOR_FACE_AREA;
+        }
+        if(cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x+1,currentPos.y,currentPos.z))){
+            areaExposed = areaExposed + PhysicsUtils.LATERAL_FACE_AREA;
+        }
+        if(cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x-1,currentPos.y,currentPos.z))){
+            areaExposed = areaExposed + PhysicsUtils.LATERAL_FACE_AREA;
+        }
+        if(cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x,currentPos.y+1,currentPos.z))){
+            areaExposed = areaExposed + PhysicsUtils.FRONTAL_FACE_AREA;
+        }
+        if(cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x,currentPos.y-1,currentPos.z))){
+            areaExposed = areaExposed + PhysicsUtils.FRONTAL_FACE_AREA;
+        }
+        return areaExposed;
     }
 
     /**

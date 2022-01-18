@@ -3,6 +3,7 @@ package lapr.project.controller;
 import lapr.project.model.*;
 import lapr.project.stores.PortStore;
 import lapr.project.utils.Pair;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -13,15 +14,20 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ShortestPathControllerTest {
+    static Company comp = new Company("Test Company");
+    static ImportPorts port = new ImportPorts(new PortStore());
+
+    @BeforeAll
+    static void init() throws IOException {
+        port.importPortsData("data/data-shipsports/data-shipsports/data-ships&ports/bports.csv");
+        comp.getFreightNetwork().buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"), ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"),port.getListOfImportedPorts(), ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"), 10);
+
+    }
 
     @Test
-    void getFull() throws IOException {
+    void getFull() {
         ShortestPathController controller;
-        Company comp = new Company("Comp");
         List<Place> places = new ArrayList<>();
-        ImportPorts port = new ImportPorts(new PortStore());
-        port.importPortsData("data/data-shipsports/data-shipsports/data-ships&ports/bports.csv");
-        comp.getFreightNetwork().buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"), ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"), port.getListOfImportedPorts(), ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"), 10);
         places.add(comp.getFreightNetwork().getGraph().vertex(135));
         places.add(comp.getFreightNetwork().getGraph().vertex(1));
         controller = new ShortestPathController(places,comp,comp.getFreightNetwork().getGraph().vertex(120),comp.getFreightNetwork().getGraph().vertex(100));
@@ -32,13 +38,9 @@ class ShortestPathControllerTest {
     }
 
     @Test
-    void getDirect() throws IOException {
+    void getDirect() {
         ShortestPathController controller;
-        Company comp = new Company("Comp");
         List<Place> places = new ArrayList<>();
-        ImportPorts port = new ImportPorts(new PortStore());
-        port.importPortsData("data/data-shipsports/data-shipsports/data-ships&ports/bports.csv");
-        comp.getFreightNetwork().buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"), ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"), port.getListOfImportedPorts(), ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"), 10);
         places.add(comp.getFreightNetwork().getGraph().vertex(135));
         places.add(comp.getFreightNetwork().getGraph().vertex(1));
         controller = new ShortestPathController(places,comp,comp.getFreightNetwork().getGraph().vertex(120),comp.getFreightNetwork().getGraph().vertex(100));
@@ -48,13 +50,9 @@ class ShortestPathControllerTest {
     }
 
     @Test
-    void getSea() throws IOException {
+    void getSea() {
         ShortestPathController controller;
-        Company comp = new Company("Comp");
         List<Place> places = new ArrayList<>();
-        ImportPorts port = new ImportPorts(new PortStore());
-        port.importPortsData("data/data-shipsports/data-shipsports/data-ships&ports/bports.csv");
-        comp.getFreightNetwork().buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"), ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"), port.getListOfImportedPorts(), ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"), 10);
         places.add(comp.getFreightNetwork().getGraph().vertex(135));
         places.add(comp.getFreightNetwork().getGraph().vertex(1));
         controller = new ShortestPathController(places,comp,comp.getFreightNetwork().getGraph().vertex(120),comp.getFreightNetwork().getGraph().vertex(100));
@@ -64,13 +62,9 @@ class ShortestPathControllerTest {
     }
 
     @Test
-    void getLand() throws IOException {
+    void getLand() {
         ShortestPathController controller;
-        Company comp = new Company("Comp");
         List<Place> places = new ArrayList<>();
-        ImportPorts port = new ImportPorts(new PortStore());
-        port.importPortsData("data/data-shipsports/data-shipsports/data-ships&ports/bports.csv");
-        comp.getFreightNetwork().buildFreightNetworkFromGivenData(ImportCountry.importCountries("data/Data-Sprint3-4/countries.csv"), ImportBorder.importBorders("data/Data-Sprint3-4/borders.csv"), port.getListOfImportedPorts(), ImportSeadist.importSeadistData("data/Data-Sprint3-4/seadists.csv"), 10);
         places.add(comp.getFreightNetwork().getGraph().vertex(135));
         places.add(comp.getFreightNetwork().getGraph().vertex(1));
         controller = new ShortestPathController(places,comp,comp.getFreightNetwork().getGraph().vertex(120),comp.getFreightNetwork().getGraph().vertex(100));

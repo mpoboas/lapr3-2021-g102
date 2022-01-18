@@ -72,6 +72,14 @@ public class CargoManifest {
         }
         return s.toString();
     }
+    public boolean findIfExists(ContainerPosition otherContainer){
+        for (Pair<Container, ContainerPosition> containerContainerPositionPair : this.containerList) {
+            if (containerContainerPositionPair.getSecond().equals(otherContainer)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 

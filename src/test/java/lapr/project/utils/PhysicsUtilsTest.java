@@ -1,7 +1,11 @@
 package lapr.project.utils;
 
+import lapr.project.model.CargoManifest;
+import lapr.project.model.Container;
+import lapr.project.model.ImportCargoManifest;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,6 +114,48 @@ class PhysicsUtilsTest {
         List<Pair<String, Double>> list = PhysicsUtils.listOfMaterials();
         assertEquals("Cork", list.get(2).getFirst());
         assertEquals("Concrete", list.get(6).getFirst());
+
+    }
+    @Test
+    void listContainersEnergy() throws IOException {
+        List<Pair<Integer, Double>> tripSections = new ArrayList<>();
+        tripSections.add(new Pair<>(60, 30.0));
+        tripSections.add(new Pair<>(400, 20.0));
+        tripSections.add(new Pair<>(200, 10.0));
+        tripSections.add(new Pair<>(1000, 12.0));
+        tripSections.add(new Pair<>(3000, 10.0));
+        tripSections.add(new Pair<>(740, 15.0));
+        ImportCargoManifest importCG = new ImportCargoManifest();
+        importCG.importCargoManifestData("data/data-shipsports/LAPR3_G102 - cargoManifests.csv");
+        importCG.getListOfImportedCargoManifests().get(0).getContainerList().clear();
+        importCG.getListOfImportedCargoManifests().get(0).getContainerList().add(new Pair<>(new Container("Lpru1201232","refrigerated7","iso",12132,13221,231233), new CargoManifest.ContainerPosition(0,0,0)));
+        importCG.getListOfImportedCargoManifests().get(0).getContainerList().add(new Pair<>(new Container("Lpru1201233","refrigerated5","iso",12132,13221,231233), new CargoManifest.ContainerPosition(0,0,1)));
+        importCG.getListOfImportedCargoManifests().get(0).getContainerList().add(new Pair<>(new Container("Lpru1201234","refrigerated7","iso",12132,13221,231233), new CargoManifest.ContainerPosition(0,1,0)));
+        importCG.getListOfImportedCargoManifests().get(0).getContainerList().add(new Pair<>(new Container("Lpru1201235","refrigerated5","iso",12132,13221,231233), new CargoManifest.ContainerPosition(1,0,0)));
+        importCG.getListOfImportedCargoManifests().get(0).getContainerList().add(new Pair<>(new Container("Lpru1201236","refrigerated7","iso",12132,13221,231233), new CargoManifest.ContainerPosition(0,1,1)));
+        importCG.getListOfImportedCargoManifests().get(0).getContainerList().add(new Pair<>(new Container("Lpru1201237","refrigerated5","iso",12132,13221,231233), new CargoManifest.ContainerPosition(1,1,0)));
+        importCG.getListOfImportedCargoManifests().get(0).getContainerList().add(new Pair<>(new Container("Lpru1201238","refrigerated5","iso",12132,13221,231233), new CargoManifest.ContainerPosition(1,0,1)));
+        importCG.getListOfImportedCargoManifests().get(0).getContainerList().add(new Pair<>(new Container("Lpru1201239","refrigerated7","iso",12132,13221,231233), new CargoManifest.ContainerPosition(1,1,1)));
+        importCG.getListOfImportedCargoManifests().get(0).getContainerList().add(new Pair<>(new Container("Lpru1201240","refrigerated5","iso",12132,13221,231233), new CargoManifest.ContainerPosition(0,0,2)));
+        importCG.getListOfImportedCargoManifests().get(0).getContainerList().add(new Pair<>(new Container("Lpru1201241","refrigerated7","iso",12132,13221,231233), new CargoManifest.ContainerPosition(0,2,0)));
+        importCG.getListOfImportedCargoManifests().get(0).getContainerList().add(new Pair<>(new Container("Lpru1201242","refrigerated5","iso",12132,13221,231233), new CargoManifest.ContainerPosition(0,0,3)));
+        importCG.getListOfImportedCargoManifests().get(0).getContainerList().add(new Pair<>(new Container("Lpru1201243","refrigerated7","iso",12132,13221,231233), new CargoManifest.ContainerPosition(0,3,0)));
+        importCG.getListOfImportedCargoManifests().get(0).getContainerList().add(new Pair<>(new Container("Lpru1201244","refrigerated5","iso",12132,13221,231233), new CargoManifest.ContainerPosition(0,4,0)));
+
+
+        List<Pair<Double,Double>> list = PhysicsUtils.energyToBeSupliedTocontainersDepOnPos(importCG.getListOfImportedCargoManifests().get(0),tripSections);
+        assertEquals(411206.5,list.get(0).getFirst(),0.1);
+        assertEquals(342892.5,list.get(0).getSecond(),0.1);
+        assertEquals(1958126.2,list.get(1).getFirst(),0.1);
+        assertEquals(1292058.76,list.get(1).getSecond(),0.1);
+        assertEquals(587437.8,list.get(2).getFirst(),0.1);
+        assertEquals(149083.7,list.get(2).getSecond(),0.1);
+        assertEquals(3328814.66,list.get(3).getFirst(),0.1);
+        assertEquals(1242364.19,list.get(3).getSecond(),0.1);
+        assertEquals(8811568.23,list.get(4).getFirst(),0.1);
+        assertEquals(2236255.55,list.get(4).getSecond(),0.1);
+        assertEquals(2898026.8,list.get(5).getFirst(),0.1);
+        assertEquals(1470959.2,list.get(5).getSecond(),0.1);
 
     }
 }
