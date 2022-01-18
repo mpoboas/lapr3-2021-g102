@@ -5,6 +5,7 @@ import lapr.project.model.Container;
 import lapr.project.model.ImportCargoManifest;
 import org.junit.jupiter.api.Test;
 
+import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -158,4 +159,34 @@ class PhysicsUtilsTest {
         assertEquals(1470959.2,list.get(5).getSecond(),0.1);
 
     }
+
+
+    @Test
+    void calculateUnleadedCM(){
+        double length = 336.61;
+        double width = 45.6;
+        double height = 27.2;
+        double massTotal = 107849000;
+        Pair<Point2D.Double,Double> result = PhysicsUtils.calculateTheUnleadedCenterOfMass(length,width,height,massTotal,"MIDDLE");
+        assertEquals(0,result.getFirst().x);
+        assertEquals(158.0326,result.getFirst().y);
+        assertEquals(9.248,result.getSecond());
+
+        result = PhysicsUtils.calculateTheUnleadedCenterOfMass(175,28,8.5,6278000,"STERN");
+        assertEquals(0,result.getFirst().x);
+        assertEquals(80.2725,result.getFirst().y);
+        assertEquals(2.89,result.getSecond());
+
+        result = PhysicsUtils.calculateTheUnleadedCenterOfMass(175,28,8.5,6278000,"BOW");
+        assertEquals(0,result.getFirst().x);
+        assertEquals(84.6475,result.getFirst().y);
+        assertEquals(2.89,result.getSecond());
+
+
+        result = PhysicsUtils.calculateTheUnleadedCenterOfMass(175,28,8.5,6278000,"");
+        assertEquals(0,result.getFirst().x);
+        assertEquals(80.2725,result.getFirst().y);
+        assertEquals(2.89,result.getSecond());
+    }
+
 }

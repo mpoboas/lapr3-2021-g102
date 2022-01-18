@@ -2,6 +2,7 @@ package lapr.project.utils;
 
 import lapr.project.model.CargoManifest;
 
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +18,6 @@ public class PhysicsUtils {
     public static final Double resTerm7Deg = 3.02651059085842;
 
 
-
-
-
-
     public static final Pair<String, Double> MATERIAL_STEEL = new Pair<>("Steel", 46.0);
     public static final Pair<String, Double> MATERIAL_IRON = new Pair<>("Iron", 80.4);
     public static final Pair<String, Double> MATERIAL_CORK = new Pair<>("Cork", 0.039); // cortiça
@@ -28,6 +25,22 @@ public class PhysicsUtils {
     public static final Pair<String, Double> MATERIAL_POLYSTYRENE = new Pair<>("Polystyrene", 0.04);
     public static final Pair<String, Double> MATERIAL_WOOD = new Pair<>("Wood", 0.13);
     public static final Pair<String, Double> MATERIAL_CONCRETE = new Pair<>("Concrete", 0.75);
+
+
+    public static final double SECTION_1_MASS_PERCENT = 0.8;
+    public static final double SECTION_2_MASS_PERCENT = 0.15;
+    public static final double SECTION_3_MASS_PERCENT = 0.05;
+
+    public static final double SECTION_1_LENGTH_PERCENT = 0.8;
+    public static final double SECTION_2_LENGTH_PERCENT = 0.2;
+
+    public static final double SECTION_1_2_HEIGHT_PERCENT = 0.6;
+    public static final double SECTION_3_HEIGHT_PERCENT = 0.4;
+
+    public static final double SECTION_3_LENGTH_PERCENT_DISTANCE_STERN = 0.15;
+    public static final double SECTION_3_LENGTH_PERCENT_DISTANCE_MIDDLE = 0.40;
+    public static final double SECTION_3_LENGTH_PERCENT_DISTANCE_BOW = 0.65;
+
 
     private PhysicsUtils() {
 
@@ -118,62 +131,62 @@ public class PhysicsUtils {
     }
 
 
-
-    public static List<Pair<Double,Double>> energyToBeSupliedTocontainersDepOnPos(CargoManifest cg, List<Pair<Integer, Double>> tripSections){
-        List<Pair<Double,Double>> listOfEnergyToBeSupplied = new ArrayList<>();
-        for( int i = 0; i < tripSections.size(); i++){
+    public static List<Pair<Double, Double>> energyToBeSupliedTocontainersDepOnPos(CargoManifest cg, List<Pair<Integer, Double>> tripSections) {
+        List<Pair<Double, Double>> listOfEnergyToBeSupplied = new ArrayList<>();
+        for (int i = 0; i < tripSections.size(); i++) {
             double energyFor7degContainers = 0;
             double energyFor5degContainers = 0;
-            for(int j = 0; j < cg.getContainerList().size();j++){
-                double areaExposed = determineAreaExposed(cg,cg.getContainerList().get(j).getSecond());
-                if(cg.getContainerList().get(j).getFirst().getType().equalsIgnoreCase(PhysicsUtils.CONTAINERS_5DEG.getFirst())){
-                    energyFor5degContainers = energyFor5degContainers + ( energyToBeSuppliedToContainer(areaExposed,-5,tripSections.get(i).getSecond()));
+            for (int j = 0; j < cg.getContainerList().size(); j++) {
+                double areaExposed = determineAreaExposed(cg, cg.getContainerList().get(j).getSecond());
+                if (cg.getContainerList().get(j).getFirst().getType().equalsIgnoreCase(PhysicsUtils.CONTAINERS_5DEG.getFirst())) {
+                    energyFor5degContainers = energyFor5degContainers + (energyToBeSuppliedToContainer(areaExposed, -5, tripSections.get(i).getSecond()));
                 }
-                if(cg.getContainerList().get(j).getFirst().getType().equalsIgnoreCase(PhysicsUtils.CONTAINERS_7DEG.getFirst())){
-                    energyFor7degContainers = energyFor7degContainers + ( energyToBeSuppliedToContainer(areaExposed,7,tripSections.get(i).getSecond()));
+                if (cg.getContainerList().get(j).getFirst().getType().equalsIgnoreCase(PhysicsUtils.CONTAINERS_7DEG.getFirst())) {
+                    energyFor7degContainers = energyFor7degContainers + (energyToBeSuppliedToContainer(areaExposed, 7, tripSections.get(i).getSecond()));
                 }
             }
-            listOfEnergyToBeSupplied.add(new Pair<>(energyFor5degContainers*tripSections.get(i).getFirst(),energyFor7degContainers*tripSections.get(i).getFirst()));
+            listOfEnergyToBeSupplied.add(new Pair<>(energyFor5degContainers * tripSections.get(i).getFirst(), energyFor7degContainers * tripSections.get(i).getFirst()));
         }
         return listOfEnergyToBeSupplied;
     }
-    public static double energyToBeSuppliedToContainer(double areaExposed, int intTemp, double exTemp){
+
+    public static double energyToBeSuppliedToContainer(double areaExposed, int intTemp, double exTemp) {
         double energyToSupplyToContainer = 0;
         double resistance = 0;
-        if(intTemp == -5) {
+        if (intTemp == -5) {
             resistance = resTerm5Deg / areaExposed;
         }
-        if(intTemp == 7) {
+        if (intTemp == 7) {
             resistance = resTerm7Deg / areaExposed;
         }
-        double energyToSupplyToExposedArea = ((exTemp -intTemp  ))/ resistance;
-        if(intTemp == -5) {
+        double energyToSupplyToExposedArea = ((exTemp - intTemp)) / resistance;
+        if (intTemp == -5) {
             resistance = resTerm5Deg / (CONTAINER_40_AREA - areaExposed);
         }
-        if(intTemp == 7) {
+        if (intTemp == 7) {
             resistance = resTerm7Deg / (CONTAINER_40_AREA - areaExposed);
         }
 
-        double energyToSupplyToNonExposedArea = ((exTemp -intTemp  ))/ resistance;
-        energyToSupplyToContainer = energyToSupplyToExposedArea +energyToSupplyToNonExposedArea;
+        double energyToSupplyToNonExposedArea = ((exTemp - intTemp)) / resistance;
+        energyToSupplyToContainer = energyToSupplyToExposedArea + energyToSupplyToNonExposedArea;
         return energyToSupplyToContainer;
     }
 
-    public static double determineAreaExposed(CargoManifest cg, CargoManifest.ContainerPosition currentPos){
+    public static double determineAreaExposed(CargoManifest cg, CargoManifest.ContainerPosition currentPos) {
         double areaExposed = 0;
-        if(cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x,currentPos.y,currentPos.z +1))){
-          areaExposed = areaExposed + PhysicsUtils.SUPERIOR_FACE_AREA;
+        if (cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x, currentPos.y, currentPos.z + 1))) {
+            areaExposed = areaExposed + PhysicsUtils.SUPERIOR_FACE_AREA;
         }
-        if(cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x+1,currentPos.y,currentPos.z))){
+        if (cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x + 1, currentPos.y, currentPos.z))) {
             areaExposed = areaExposed + PhysicsUtils.LATERAL_FACE_AREA;
         }
-        if(cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x-1,currentPos.y,currentPos.z))){
+        if (cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x - 1, currentPos.y, currentPos.z))) {
             areaExposed = areaExposed + PhysicsUtils.LATERAL_FACE_AREA;
         }
-        if(cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x,currentPos.y+1,currentPos.z))){
+        if (cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x, currentPos.y + 1, currentPos.z))) {
             areaExposed = areaExposed + PhysicsUtils.FRONTAL_FACE_AREA;
         }
-        if(cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x,currentPos.y-1,currentPos.z))){
+        if (cg.findIfExists(new CargoManifest.ContainerPosition(currentPos.x, currentPos.y - 1, currentPos.z))) {
             areaExposed = areaExposed + PhysicsUtils.FRONTAL_FACE_AREA;
         }
         return areaExposed;
@@ -210,5 +223,114 @@ public class PhysicsUtils {
         list.add(MATERIAL_WOOD);
         list.add(MATERIAL_CONCRETE);
         return list;
+    }
+
+    /**
+     * This method gets the coordinates of the geometric center of a parallelepiped
+     *
+     * @param length length of the parallelepiped
+     * @param width  width of the parallelepiped
+     * @param height height of the parallelepiped
+     * @param center the y-axis is in the middle of the object
+     * @return the coordinates
+     */
+    public static Pair<Point2D.Double, Double> getGeometricCenterParallelepiped(double length, double width, double height, boolean center) {
+        double x;
+        if (center)
+            x = 0;
+        else
+            x = width / 2;
+        double y = length / 2;
+        double z = height / 2;
+        return new Pair<>(new Point2D.Double(x, y), z);
+    }
+
+    /**
+     * This method gets the coordinates of the geometric center of a pyramid
+     *
+     * @param base    length of the base of the pyramid
+     * @param height1 height of the base triangle
+     * @param height2 height of the pyramid
+     * @param center  the y-axis is in the middle of the object
+     * @return
+     */
+    public static Pair<Point2D.Double, Double> getGeometricCenterPyramid(double base, double height1, double height2, boolean center) {
+        double x;
+        if (center)
+            x = 0;
+        else
+            x = base / 2;
+        double y = (height1 * 1) / 3;
+        double z = (height2 * 2) / 3;
+        return new Pair<>(new Point2D.Double(x, y), z);
+    }
+
+    /**
+     * Defines the center of mass of a system of particles
+     *
+     * @param coordinatesList List of coordinates
+     * @param massList        List of mass of corresponding coordinates
+     * @param totalMass       the total mass of the system
+     * @return the coordinates of the center of mass
+     */
+    public static Pair<Point2D.Double, Double> getCenterOfMassPoints(List<Pair<Point2D.Double, Double>> coordinatesList, List<Double> massList, Double totalMass) {
+        if (coordinatesList.size() != massList.size())
+            throw new IllegalStateException("The list of coordinates and mass must have the same size");
+
+        double x = 0;
+        double y = 0;
+        double z = 0;
+        for (int i = 0; i < coordinatesList.size(); i++) {
+            x = x + coordinatesList.get(i).getFirst().x * massList.get(i);
+            y = y + coordinatesList.get(i).getFirst().y * massList.get(i);
+            z = z + coordinatesList.get(i).getSecond() * massList.get(i);
+        }
+        x = x / totalMass;
+        y = y / totalMass;
+        z = z / totalMass;
+        return new Pair<>(new Point2D.Double(x, y), z);
+    }
+
+    /**
+     * This method calculates the center of mass of an unleaded ship
+     *
+     * @param length    length of the ship
+     * @param width     width of the ship
+     * @param height    height of the ship
+     * @param massTotal total mass of the ship
+     * @return coordinates of the center of mass
+     */
+    public static Pair<Point2D.Double, Double> calculateTheUnleadedCenterOfMass(double length, double width, double height, double massTotal, String bridgePosition) {
+        boolean center = true;
+        List<Pair<Point2D.Double, Double>> particles = new ArrayList<>();
+        List<Double> particlesMass = new ArrayList<>();
+        //Section 1
+        particles.add(getGeometricCenterParallelepiped(length * SECTION_1_LENGTH_PERCENT, width, (height * SECTION_1_2_HEIGHT_PERCENT), center));
+        particlesMass.add(massTotal * SECTION_1_MASS_PERCENT);
+        //Section 2
+        Pair<Point2D.Double, Double> pyramid = getGeometricCenterPyramid(length * SECTION_2_LENGTH_PERCENT, width, height * SECTION_1_2_HEIGHT_PERCENT, center);
+        pyramid.getFirst().y = pyramid.getFirst().y + length * SECTION_1_LENGTH_PERCENT;
+        particles.add(pyramid);
+        particlesMass.add(massTotal * SECTION_2_MASS_PERCENT);
+        //Section 3
+        Pair<Point2D.Double, Double> controlBridge = getGeometricCenterParallelepiped(width * 0.80, width * 0.20, height * SECTION_3_HEIGHT_PERCENT, center);
+        switch (bridgePosition) {
+            case "MIDDLE":
+                controlBridge.getFirst().y = controlBridge.getFirst().y + (length * SECTION_1_LENGTH_PERCENT) * 0.50;
+                //controlBridge.getFirst().y = controlBridge.getFirst().y + length * SECTION_3_LENGTH_PERCENT_DISTANCE_MIDDLE;
+                break;
+            case "BOW":
+                controlBridge.getFirst().y = controlBridge.getFirst().y + length * SECTION_3_LENGTH_PERCENT_DISTANCE_BOW;
+                break;
+            case "STERN":
+            default:
+                controlBridge.getFirst().y = controlBridge.getFirst().y + length * SECTION_3_LENGTH_PERCENT_DISTANCE_STERN;
+                break;
+        }
+        double z = controlBridge.getSecond() + height * SECTION_1_2_HEIGHT_PERCENT;
+        particles.add(new Pair<>(controlBridge.getFirst(), z));
+        particlesMass.add(massTotal * SECTION_3_MASS_PERCENT);
+
+        return getCenterOfMassPoints(particles, particlesMass, massTotal);
     }
 }
