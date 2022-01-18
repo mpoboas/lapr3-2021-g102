@@ -30,49 +30,84 @@ class PhysicsUtilsTest {
     }
 
     @Test
-    void calculateEnergyTransferredAsHeat(){
-        double result = PhysicsUtils.calculateEnergyTransferredAsHeat(20,7,1);
-        assertEquals(13.0,result);
-        double result2 = PhysicsUtils.calculateEnergyTransferredAsHeat(20,7,0.024);
-        assertEquals(541.6666666666666,result2);
+    void calculateEnergyTransferredAsHeat() {
+        double result = PhysicsUtils.calculateEnergyTransferredAsHeat(20, 7, 1);
+        assertEquals(13.0, result);
+        double result2 = PhysicsUtils.calculateEnergyTransferredAsHeat(20, 7, 0.024);
+        assertEquals(541.6666666666666, result2);
     }
 
     @Test
-    void calculateEnergyNecessary(){
-        double result = PhysicsUtils.calculateEnergyNecessary(20,7,1,2,30,0);
-        assertEquals(117000,result);
-        double result2 = PhysicsUtils.calculateEnergyNecessary(20,7,0.024,2,30,0);
-        assertEquals(4875000,result2);
+    void calculateEnergyNecessary() {
+        double result = PhysicsUtils.calculateEnergyNecessary(20, 7, 1, 2, 30, 0);
+        assertEquals(117000, result);
+        double result2 = PhysicsUtils.calculateEnergyNecessary(20, 7, 0.024, 2, 30, 0);
+        assertEquals(4875000, result2);
     }
-    @Test
-    void calculateEnergyNecessaryInTrip(){
-        List<Pair<Integer,Integer>> tripSections = new ArrayList<>();
-        tripSections.add(new Pair<>(60,30));
-        tripSections.add(new Pair<>(400,20));
-        tripSections.add(new Pair<>(200,10));
-        tripSections.add(new Pair<>(1000,12));
-        tripSections.add(new Pair<>(3000,10));
-        tripSections.add(new Pair<>(740,15));
-        assertEquals(0.034,PhysicsUtils.get5DegResistance(),0.01);
-        assertEquals(0.024,PhysicsUtils.get7DegResistance(),0.01);
 
-        List<Pair<Double,Double>> result = PhysicsUtils.energyToBeSupliedTocontainers(tripSections,12,14);
-        assertEquals(704925.4, result.get(0).getFirst(),0.1);
-        assertEquals(800082.5, result.get(0).getSecond(),0.1);
-        assertEquals(3356787.89, result.get(1).getFirst(),0.1);
-        assertEquals(3014803.7, result.get(1).getSecond(),0.1);
-        assertEquals(1007036.36, result.get(2).getFirst(),0.1);
-        assertEquals(347861.9, result.get(2).getSecond(),0.1);
-        assertEquals(5706539.42, result.get(3).getFirst(),0.1);
-        assertEquals(2898849.79, result.get(3).getSecond(),0.1);
-        assertEquals(15105545.54, result.get(4).getFirst(),0.1);
-        assertEquals(5217929.628, result.get(4).getSecond(),0.1);
-        assertEquals(4968046.08, result.get(5).getFirst(),0.1);
-        assertEquals(3432238.1, result.get(5).getSecond(),0.1);
-    }
     @Test
-    void listMaterials(){
-        List<Pair<String,Double>> list = PhysicsUtils.listOfMaterials();
+    void calculateEnergyNecessaryInTrip() {
+        List<Pair<Integer, Integer>> tripSections = new ArrayList<>();
+        tripSections.add(new Pair<>(60, 30));
+        tripSections.add(new Pair<>(400, 20));
+        tripSections.add(new Pair<>(200, 10));
+        tripSections.add(new Pair<>(1000, 12));
+        tripSections.add(new Pair<>(3000, 10));
+        tripSections.add(new Pair<>(740, 15));
+        assertEquals(0.034, PhysicsUtils.get5DegResistance(), 0.01);
+        assertEquals(0.024, PhysicsUtils.get7DegResistance(), 0.01);
+
+        List<Pair<Double, Double>> result = PhysicsUtils.energyToBeSupliedTocontainers(tripSections, 12, 14);
+        assertEquals(704925.4, result.get(0).getFirst(), 0.1);
+        assertEquals(800082.5, result.get(0).getSecond(), 0.1);
+        assertEquals(3356787.89, result.get(1).getFirst(), 0.1);
+        assertEquals(3014803.7, result.get(1).getSecond(), 0.1);
+        assertEquals(1007036.36, result.get(2).getFirst(), 0.1);
+        assertEquals(347861.9, result.get(2).getSecond(), 0.1);
+        assertEquals(5706539.42, result.get(3).getFirst(), 0.1);
+        assertEquals(2898849.79, result.get(3).getSecond(), 0.1);
+        assertEquals(15105545.54, result.get(4).getFirst(), 0.1);
+        assertEquals(5217929.628, result.get(4).getSecond(), 0.1);
+        assertEquals(4968046.08, result.get(5).getFirst(), 0.1);
+        assertEquals(3432238.1, result.get(5).getSecond(), 0.1);
+    }
+
+
+    @Test
+    void getNumberOfAuxEquipment() {
+        List<Pair<Integer, Double>> tripSections = new ArrayList<>();
+        tripSections.add(new Pair<>(60, 30.0));
+        tripSections.add(new Pair<>(400, 20.0));
+        tripSections.add(new Pair<>(200, 10.0));
+        tripSections.add(new Pair<>(1000, 12.0));
+        tripSections.add(new Pair<>(3000, 10.0));
+        tripSections.add(new Pair<>(740, 15.0));
+
+        List<Double> cont5EnergyPerSection = new ArrayList<>();
+        cont5EnergyPerSection.add(172506.8835);
+        cont5EnergyPerSection.add(821461.3499);
+        cont5EnergyPerSection.add(246438.405);
+        cont5EnergyPerSection.add(1396484.295);
+        cont5EnergyPerSection.add(3696576.074);
+        cont5EnergyPerSection.add(1215762.798);
+
+        List<Double> cont7EnergyPerSection = new ArrayList<>();
+        cont7EnergyPerSection.add(297486.1677);
+        cont7EnergyPerSection.add(1120962.371);
+        cont7EnergyPerSection.add(129341.812);
+        cont7EnergyPerSection.add(1077848.434);
+        cont7EnergyPerSection.add(1940127.181);
+        cont7EnergyPerSection.add(1276172.546);
+
+        assertEquals(tripSections.size(), cont5EnergyPerSection.size());
+        assertEquals(tripSections.size(), cont7EnergyPerSection.size());
+        assertEquals(cont5EnergyPerSection.size(), cont7EnergyPerSection.size());
+        assertEquals(2, PhysicsUtils.getNumberOfAuxEquipment(tripSections, cont5EnergyPerSection, cont7EnergyPerSection, Constants.AUX_EQUIPMENT_MAX_POWER));
+    }
+
+    @Test
+    void listMaterials() {
+        List<Pair<String, Double>> list = PhysicsUtils.listOfMaterials();
         assertEquals("Cork", list.get(2).getFirst());
         assertEquals("Concrete", list.get(6).getFirst());
 

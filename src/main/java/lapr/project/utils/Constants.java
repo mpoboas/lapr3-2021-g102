@@ -20,4 +20,6 @@ public class Constants {
     public static final String U_ROLE_SHIP_CHIEF_ELECTRIC_ENGINEER = "SHIP CHIEF ELECTRIC ENGINEER";
     public static final String U_ROLE_TRUCK_DRIVER = "TRUCK DRIVER";
     public static final String U_ROLE_PROJECT_MANAGER = "PROJECT MANAGER";
+
+    public static final double AUX_EQUIPMENT_MAX_POWER = 7500;
 }
