@@ -260,7 +260,7 @@ public class PhysicsUtils {
             x = 0;
         else
             x = base / 2;
-        double y = (height1 * 1) / 3;
+        double y = ((height1) / 3);
         double z = (height2 * 2) / 3;
         return new Pair<>(new Point2D.Double(x, y), z);
     }
@@ -308,23 +308,23 @@ public class PhysicsUtils {
         particles.add(getGeometricCenterParallelepiped(length * SECTION_1_LENGTH_PERCENT, width, (height * SECTION_1_2_HEIGHT_PERCENT), center));
         particlesMass.add(massTotal * SECTION_1_MASS_PERCENT);
         //Section 2
-        Pair<Point2D.Double, Double> pyramid = getGeometricCenterPyramid(length * SECTION_2_LENGTH_PERCENT, width, height * SECTION_1_2_HEIGHT_PERCENT, center);
-        pyramid.getFirst().y = pyramid.getFirst().y + length * SECTION_1_LENGTH_PERCENT;
+        Pair<Point2D.Double, Double> pyramid = getGeometricCenterPyramid(width,length * SECTION_2_LENGTH_PERCENT,height * SECTION_1_2_HEIGHT_PERCENT, center);
+        pyramid.getFirst().y = length * SECTION_1_LENGTH_PERCENT + pyramid.getFirst().y;
         particles.add(pyramid);
         particlesMass.add(massTotal * SECTION_2_MASS_PERCENT);
         //Section 3
         Pair<Point2D.Double, Double> controlBridge = getGeometricCenterParallelepiped(width * 0.80, width * 0.20, height * SECTION_3_HEIGHT_PERCENT, center);
         switch (bridgePosition) {
             case "MIDDLE":
-                controlBridge.getFirst().y = controlBridge.getFirst().y + (length * SECTION_1_LENGTH_PERCENT) * 0.50;
+                controlBridge.getFirst().y = /*controlBridge.getFirst().y +*/ (length * SECTION_1_LENGTH_PERCENT) * 0.50;
                 //controlBridge.getFirst().y = controlBridge.getFirst().y + length * SECTION_3_LENGTH_PERCENT_DISTANCE_MIDDLE;
                 break;
             case "BOW":
-                controlBridge.getFirst().y = controlBridge.getFirst().y + length * SECTION_3_LENGTH_PERCENT_DISTANCE_BOW;
+                controlBridge.getFirst().y = /*controlBridge.getFirst().y +*/ length * SECTION_3_LENGTH_PERCENT_DISTANCE_BOW;
                 break;
             case "STERN":
             default:
-                controlBridge.getFirst().y = controlBridge.getFirst().y + length * SECTION_3_LENGTH_PERCENT_DISTANCE_STERN;
+                controlBridge.getFirst().y = /*controlBridge.getFirst().y +*/ length * SECTION_3_LENGTH_PERCENT_DISTANCE_STERN;
                 break;
         }
         double z = controlBridge.getSecond() + height * SECTION_1_2_HEIGHT_PERCENT;

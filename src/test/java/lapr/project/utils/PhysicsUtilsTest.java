@@ -169,24 +169,57 @@ class PhysicsUtilsTest {
         double massTotal = 107849000;
         Pair<Point2D.Double,Double> result = PhysicsUtils.calculateTheUnleadedCenterOfMass(length,width,height,massTotal,"MIDDLE");
         assertEquals(0,result.getFirst().x);
-        assertEquals(158.0326,result.getFirst().y);
+        assertEquals(158.2067,result.getFirst().y);
         assertEquals(9.248,result.getSecond());
 
         result = PhysicsUtils.calculateTheUnleadedCenterOfMass(175,28,8.5,6278000,"STERN");
-        assertEquals(0,result.getFirst().x);
-        assertEquals(80.2725,result.getFirst().y);
+       assertEquals(0,result.getFirst().x);
+        assertEquals(80.0625,result.getFirst().y);
         assertEquals(2.89,result.getSecond());
 
         result = PhysicsUtils.calculateTheUnleadedCenterOfMass(175,28,8.5,6278000,"BOW");
         assertEquals(0,result.getFirst().x);
-        assertEquals(84.6475,result.getFirst().y);
+        assertEquals(84.4375,result.getFirst().y);
         assertEquals(2.89,result.getSecond());
 
 
         result = PhysicsUtils.calculateTheUnleadedCenterOfMass(175,28,8.5,6278000,"");
         assertEquals(0,result.getFirst().x);
-        assertEquals(80.2725,result.getFirst().y);
+        assertEquals(80.0625,result.getFirst().y);
         assertEquals(2.89,result.getSecond());
+
+        result = PhysicsUtils.calculateTheUnleadedCenterOfMass(228.45,21.34,8,12309000,"BOW");
+        assertEquals(0,result.getFirst().x);
+        assertEquals(110.227125,result.getFirst().y);
+        assertEquals(2.72,result.getSecond());
+    }
+
+    @Test
+    void getGeometricCenterOtherCenter(){
+        Pair<Point2D.Double,Double> result = PhysicsUtils.getGeometricCenterParallelepiped(100,50,50,false);
+        assertEquals(25,result.getFirst().x);
+        assertEquals(50,result.getFirst().y);
+        assertEquals(25,result.getSecond());
+
+        result = PhysicsUtils.getGeometricCenterPyramid(100,75,75,false);
+        assertEquals(50,result.getFirst().x);
+        assertEquals(25,result.getFirst().y);
+        assertEquals(50,result.getSecond());
+    }
+
+    @Test
+    void getCenterOfMassException(){
+        List<Pair<Point2D.Double,Double>> list = new ArrayList<>();
+        List<Double> mass = new ArrayList<>();
+        list.add(PhysicsUtils.getGeometricCenterParallelepiped(100,50,50,false));
+        list.add(PhysicsUtils.getGeometricCenterPyramid(100,75,75,false));
+        mass.add(10000.0);
+        try {
+            PhysicsUtils.getCenterOfMassPoints(list,mass,mass.get(0));
+        }catch (Exception ex){
+            assertEquals(IllegalStateException.class,ex.getClass());
+            assertEquals("The list of coordinates and mass must have the same size", ex.getMessage());
+        }
     }
 
 }
