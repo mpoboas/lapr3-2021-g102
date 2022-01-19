@@ -192,6 +192,11 @@ class PhysicsUtilsTest {
         assertEquals(0,result.getFirst().x);
         assertEquals(110.227125,result.getFirst().y);
         assertEquals(2.72,result.getSecond());
+
+        result = PhysicsUtils.calculateTheUnleadedCenterOfMassWithBridgeINFO(336.61,45.6,27.2,107849000, 30,4, 20, 336.61*PhysicsUtils.SECTION_3_LENGTH_PERCENT_DISTANCE_STERN);
+        assertEquals(0,result.getFirst().x);
+        assertEquals(154.749075,result.getFirst().y);
+        assertEquals(15.46,result.getSecond());
     }
 
     @Test

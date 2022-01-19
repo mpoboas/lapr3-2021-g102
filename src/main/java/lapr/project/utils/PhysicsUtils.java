@@ -248,20 +248,20 @@ public class PhysicsUtils {
     /**
      * This method gets the coordinates of the geometric center of a pyramid
      *
-     * @param base    length of the base of the pyramid
-     * @param height1 height of the base triangle
-     * @param height2 height of the pyramid
-     * @param center  the y-axis is in the middle of the object
+     * @param base       length of the base of the pyramid
+     * @param baseHeight height of the base triangle
+     * @param height     height of the pyramid
+     * @param center     the y-axis is in the middle of the object
      * @return
      */
-    public static Pair<Point2D.Double, Double> getGeometricCenterPyramid(double base, double height1, double height2, boolean center) {
+    public static Pair<Point2D.Double, Double> getGeometricCenterPyramid(double base, double baseHeight, double height, boolean center) {
         double x;
         if (center)
             x = 0;
         else
             x = base / 2;
-        double y = ((height1) / 3);
-        double z = (height2 * 2) / 3;
+        double y = ((baseHeight) / 3);
+        double z = (height * 2) / 3;
         return new Pair<>(new Point2D.Double(x, y), z);
     }
 
@@ -308,7 +308,7 @@ public class PhysicsUtils {
         particles.add(getGeometricCenterParallelepiped(length * SECTION_1_LENGTH_PERCENT, width, (height * SECTION_1_2_HEIGHT_PERCENT), center));
         particlesMass.add(massTotal * SECTION_1_MASS_PERCENT);
         //Section 2
-        Pair<Point2D.Double, Double> pyramid = getGeometricCenterPyramid(width,length * SECTION_2_LENGTH_PERCENT,height * SECTION_1_2_HEIGHT_PERCENT, center);
+        Pair<Point2D.Double, Double> pyramid = getGeometricCenterPyramid(width, length * SECTION_2_LENGTH_PERCENT, height * SECTION_1_2_HEIGHT_PERCENT, center);
         pyramid.getFirst().y = length * SECTION_1_LENGTH_PERCENT + pyramid.getFirst().y;
         particles.add(pyramid);
         particlesMass.add(massTotal * SECTION_2_MASS_PERCENT);
@@ -332,5 +332,66 @@ public class PhysicsUtils {
         particlesMass.add(massTotal * SECTION_3_MASS_PERCENT);
 
         return getCenterOfMassPoints(particles, particlesMass, massTotal);
+    }
+
+    /**
+     * Calculation of the center of mass of a vessel having all the specific parameters
+     *
+     * @param section1Length   length of the section 1
+     * @param section1Width    width of the section 1
+     * @param section1Height   height of the section 1
+     * @param section1Mass     mass of the section 1
+     * @param section2Length   length of the section 2
+     * @param section2Width    width of the section 2
+     * @param section2Height   height of the section 2
+     * @param section2Mass     mass of the section 2
+     * @param section3Length   length of the section 3
+     * @param section3Width    width of the section 3
+     * @param section3Height   height of the section 3
+     * @param section3Mass     mass of the section 3
+     * @param totalMass        total mass of the vessel
+     * @param distanceToBridge distance from the stern to the bridge
+     * @return the coordinates of the center of mass
+     */
+    public static Pair<Point2D.Double, Double> calculateTheUnleadedCenterOfMassWithAllParameters(double section1Length, double section1Width, double section1Height, double section1Mass,
+                                                                                                 double section2Length, double section2Width, double section2Height, double section2Mass,
+                                                                                                 double section3Length, double section3Width, double section3Height, double section3Mass,
+                                                                                                 double totalMass, double distanceToBridge) {
+        List<Pair<Point2D.Double, Double>> points = new ArrayList<>();
+        List<Double> mass = new ArrayList<>();
+
+        Pair<Point2D.Double, Double> section1Parallelogram = getGeometricCenterParallelepiped(section1Length, section1Width, section1Height, true);
+        Pair<Point2D.Double, Double> section2Pyramid = getGeometricCenterPyramid(section2Width, section2Length, section2Height, true);
+        section2Pyramid.getFirst().y = section2Pyramid.getFirst().y + section1Length;
+
+        Pair<Point2D.Double, Double> section3aux = getGeometricCenterParallelepiped(section3Length, section3Width, section3Height, true);
+        Pair<Point2D.Double, Double> section3ControlBridge = new Pair<>(new Point2D.Double(section3aux.getFirst().x, section3aux.getFirst().y + distanceToBridge), section3aux.getSecond() + section1Height);
+
+        points.add(section1Parallelogram);
+        points.add(section2Pyramid);
+        points.add(section3ControlBridge);
+        mass.add(section1Mass);
+        mass.add(section2Mass);
+        mass.add(section3Mass);
+        return getCenterOfMassPoints(points, mass, totalMass);
+    }
+
+    /**
+     * @param length           length of the ship
+     * @param width            width of the ship
+     * @param height           height of the ship
+     * @param massTotal        total mass of the ship
+     * @param bridgeLength     length of the control bridge
+     * @param bridgeWidth      width of the control bridge
+     * @param bridgeHeight     height of the control bridge
+     * @param distanceToBridge distance from the stern to the bridge
+     * @return the coordinates of the center of mass
+     */
+    public static Pair<Point2D.Double, Double> calculateTheUnleadedCenterOfMassWithBridgeINFO(double length, double width, double height, double massTotal,
+                                                                                              double bridgeLength, double bridgeWidth, double bridgeHeight, double distanceToBridge) {
+
+        return calculateTheUnleadedCenterOfMassWithAllParameters(length * SECTION_1_LENGTH_PERCENT, width, height, massTotal * SECTION_1_MASS_PERCENT,
+                length * SECTION_2_LENGTH_PERCENT, width, height, massTotal * SECTION_2_MASS_PERCENT,
+                bridgeLength, bridgeWidth, bridgeHeight, massTotal * SECTION_3_MASS_PERCENT, massTotal, distanceToBridge);
     }
 }
