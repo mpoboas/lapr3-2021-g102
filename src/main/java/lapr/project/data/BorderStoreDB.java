@@ -1,6 +1,7 @@
 package lapr.project.data;
 
 import lapr.project.model.Border;
+import lapr.project.model.Country;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -117,6 +118,38 @@ public class BorderStoreDB implements Persistable {
                 borders.add(new Border(
                         countryStoreDB.getCountryByAlpha2Code(dbConnection, rs.getString(1)),
                         countryStoreDB.getCountryByAlpha2Code(dbConnection, rs.getString(2))));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+        return borders;
+    }
+
+    /**
+     * Gets the list of all borders of the database
+     * @param countries list of countries
+     * @param dbConnection database connection
+     * @return list of borders
+     */
+    public List<Border> getBordersFromDatabase(DatabaseConnection dbConnection, List<Country> countries) {
+        List<Border> borders = new ArrayList<>();
+        Connection connection = dbConnection.getConnection();
+        String sql = "select * from border";
+        try (PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet rs = statement.executeQuery()) {
+
+            while (rs.next()) {
+                Country country1 = null;
+                Country country2 = null;
+                for (Country c:countries) {
+                    if (c.getAlpha2Code().equals(rs.getString(1)))
+                        country1 = c;
+                    if (c.getAlpha2Code().equals(rs.getString(2)))
+                        country2 = c;
+                }
+                if (country1 != null && country2 != null)
+                    borders.add(new Border(country1,country2));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

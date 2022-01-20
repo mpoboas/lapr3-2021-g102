@@ -185,4 +185,50 @@ public class SeadistStoreDB implements Persistable {
 
         return seadistList;
     }
+
+    /**
+     * Returns all the existing instances of Seadist.
+     *
+     * @param dbConnection the database connection
+     * @param ports list of ports
+     * @param countries list of countries
+     */
+    public List<SeaDist> getSeadistsFromDatabase(DatabaseConnection dbConnection, List<Port> ports, List<Country> countries) {
+        List<SeaDist> seadistList = new ArrayList<>();
+        Connection connection = dbConnection.getConnection();
+        String sqlCommand = "select distinct (SELECT PortWarehouse.alpha2CodeCountry FROM PortWarehouse WHERE PortWarehouse.idPortWarehouse = idPortWarehouseFrom) as from_country, Seadist.idPortWarehouseFrom as from_port, (SELECT PortWarehouse.alpha2CodeCountry FROM PortWarehouse WHERE PortWarehouse.idPortWarehouse = idPortWarehouseTo) as to_country, Seadist.idPortWarehouseTo  as to_port, Seadist.seadist\n" +
+                "from Seadist, PortWarehouse, Country\n" +
+                "where (Seadist.idPortWarehouseFrom = PortWarehouse.idPortWarehouse or Seadist.idPortWarehouseTo = PortWarehouse.idPortWarehouse)\n" +
+                "and PortWarehouse.alpha2CodeCountry = Country.alpha2CodeCountry\n" +
+                "ORDER BY from_port, to_port";
+
+        try (PreparedStatement statement = connection.prepareStatement(sqlCommand); ResultSet rs = statement.executeQuery()) {
+            while (rs.next()) {
+                Country from_country = null;
+                Port from_port = null;
+                Country to_country = null;
+                Port to_port = null;
+                for (Country c: countries) {
+                    if (c.getAlpha2Code().equals(rs.getString(1)))
+                        from_country = c;
+                    if (c.getAlpha2Code().equals(rs.getString(3)))
+                        to_country = c;
+                }
+
+                for (Port p: ports) {
+                    if (p.getid() == rs.getInt(2))
+                        from_port = p;
+                    if (p.getid() == rs.getInt(4))
+                        to_port = p;
+                }
+
+                if (from_country != null && to_country != null && from_port !=null && to_port != null)
+                    seadistList.add(new SeaDist(from_country, from_port, to_country, to_port, rs.getInt(5)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return seadistList;
+    }
 }
