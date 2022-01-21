@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Ship Captain" as SC
+
+activate SC
+SC -> ":System" : asks the unladen center of mass of a vessel
+activate ":System"
+":System" --> SC : requests data (vessel dimensions, mass)
+deactivate ":System"
+SC -> ":System" : inserts requested data
+activate ":System"
+":System" --> SC : shows coordinates of the center of mass
+deactivate ":System"
+SC -> ":System" : confirms data
+activate ":System"
+":System" --> SC : shows operation success
+deactivate ":System"
+deactivate SC
+@enduml
