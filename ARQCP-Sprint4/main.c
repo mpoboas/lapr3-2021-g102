@@ -7,32 +7,38 @@
 
 int main(void) {
     //-------------- Ficheiro Manifest
-    char fileManifest[] = "manifest.txt";
+    //char fileManifest[] = "manifest.txt";
+    char fileManifest[70];
     char *filename1;
     filename1 = fileManifest;
-    //printf("File?\n");
-    //scanf("%s", filename);
+    printf("File cargo manifest (manifest.txt)?\n");
+    scanf("%s", filename1);
 
 
     //-------------- Ficheiro Container General
     char fileContainers[70];
     char *filename2;
     filename2 = fileContainers;
-    printf("File?\n");
+    printf("File with containers general info (containersGeneral.txt)?\n");
     scanf("%s", filename2);
 
     //-------------- Ficheiro Container Walls
-    char fileContainerInfo[] = "containersWallInfo.csv";
+    //char fileContainerInfo[] = "containersWallInfo.csv";
+    char fileContainerInfo[70];
+    char *filename3;
+    filename3 = fileContainerInfo;
+    printf("File with containers wall information (containersWallInfo.txt)?\n");
+    scanf("%s", filename3);
 
-    int arraySize = 5;
+    int arraySize = 5; // representa o tamanho do array de contentores inicializado a 5
 
-    container *containers;
-    containers = alloc_mem_for_arr(arraySize);
+    container *containers; // array de estruturas
+    containers = alloc_mem_for_arr(arraySize); // aloca memoria para array inicial
 
-    containers = getContainerGeneralInformation(containers, filename2,&arraySize);
+    containers = getContainerGeneralInformation(containers, filename2,&arraySize); // preenche array de containers com a informação geral, aumentando de tamanho dinamicamente
 
-    getCargoManifestInformation(filename1, containers,arraySize);
-    addContainersWallInformation(containers, arraySize,  fileContainerInfo);
+    getCargoManifestInformation(filename1, containers,arraySize); // preenche as estruturas com a informação das posições
+    addContainersWallInformation(containers, arraySize,  fileContainerInfo); // preenche as estruturas com as informação das paredes (materiais/condutividades/espessuras)
 
 
     for (int j = 0; j < arraySize; j++)

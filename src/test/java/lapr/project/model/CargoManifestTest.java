@@ -73,7 +73,7 @@ class CargoManifestTest {
             l.add(new Pair<>(importContainers.getListOfImportedContainers().get(i), new CargoManifest.ContainerPosition(i, i+1,i*2)) );
         }
         cm.addContainers(l);
-        System.out.println(cm);
+        //System.out.println(cm);
 
     }
 }

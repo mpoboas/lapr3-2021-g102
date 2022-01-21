@@ -102,13 +102,6 @@ class ImportPortsTest {
         }
         assertEquals(store,imp.getStore());
 
-        System.out.println("Port-Tree From SPORTS");
-        System.out.println("-------------------------");
-        System.out.println(store.getPortTree());
-        System.out.println("-------------------------");
-        System.out.println("Height = "+ store.getPortTree().height() );
-        System.out.println("-------------------------");
-
         PortStore store2 = new PortStore();
         ImportPorts imp2 = new ImportPorts(store2);
         try {
@@ -118,12 +111,6 @@ class ImportPortsTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println();
-        System.out.println("Port-Tree From BPORTS");
-        System.out.println("-------------------------");
-        System.out.println(store2.getPortTree());
-        System.out.println("-------------------------");
-        System.out.println("Height = "+ store2.getPortTree().height() );
-        System.out.println("-------------------------");
+
     }
 }
