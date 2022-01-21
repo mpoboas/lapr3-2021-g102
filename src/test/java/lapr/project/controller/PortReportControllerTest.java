@@ -37,7 +37,7 @@ class PortReportControllerTest {
         assertEquals(19,report.getMinDay());
         assertEquals(9,report.getMaxDay());
         assertEquals(122,report.getOcupationOnDay(1));
-        System.out.println(report);
+        //System.out.println(report);
 
     }
 

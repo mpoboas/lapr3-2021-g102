@@ -46,10 +46,10 @@ class ShipTreeTest {
         instance.insert(ship1);
 
         assertEquals(order1, instance.inOrder(), "inOrder should be " + order1.toString());
-        System.out.println("<instance 1>");
-        System.out.println(instance);
-        System.out.println("height1=" + instance.height());
-        System.out.println("------------------------------------");
+        //System.out.println("<instance 1>");
+        //System.out.println(instance);
+        //System.out.println("height1=" + instance.height());
+        //System.out.println("------------------------------------");
 
         //Testing Ship tree by CallSign
         ShipTree instance1 = new ShipTree("Call Sign");
@@ -65,10 +65,10 @@ class ShipTreeTest {
             instance1.insert(s);
         }
         assertEquals(order2, instance1.inOrder(), "inOrder should be " + order2.toString());
-        System.out.println("<instance 1.2>");
-        System.out.println(instance1);
-        System.out.println("height1.2=" + instance1.height());
-        System.out.println("------------------------------------");
+        //System.out.println("<instance 1.2>");
+        //System.out.println(instance1);
+        //System.out.println("height1.2=" + instance1.height());
+        //System.out.println("------------------------------------");
 
         //test Simple left rotation
         ShipTree instance2 = new ShipTree("IMO");
@@ -98,13 +98,13 @@ class ShipTreeTest {
             instance2.insert(s);
         }
 
-        System.out.println("<instance 2>");
-        System.out.println(instance2);
-        System.out.println("height2=" + instance2.height());
+        //System.out.println("<instance 2>");
+        //System.out.println(instance2);
+        //System.out.println("height2=" + instance2.height());
 
         assertEquals(order1, instance2.inOrder(), "inOrder should be " + order1.toString());
         assertEquals(instance2.height(), 2);
-        System.out.println("------------------------------------");
+        //System.out.println("------------------------------------");
 
 
         //test double rotation
@@ -137,12 +137,12 @@ class ShipTreeTest {
             instance3.insert(s);
         }
 
-        System.out.println("<instance 3>");
-        System.out.println(instance3);
-        System.out.println("height3=" + instance3.height());
+        //System.out.println("<instance 3>");
+        //System.out.println(instance3);
+        //System.out.println("height3=" + instance3.height());
         assertEquals(order1, instance3.inOrder(), "inOrder should be " + order1.toString());
         assertEquals(instance3.height(), 2);
-        System.out.println("------------------------------------");
+        //System.out.println("------------------------------------");
     }
 
     @Test

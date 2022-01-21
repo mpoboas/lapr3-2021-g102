@@ -15,10 +15,6 @@ class ImportBorderTest {
     void importBorders() {
         try {
             List<Border> list = ImportBorder.importBorders(fileDirectory);
-            for (Border b : list) {
-                System.out.println(b);
-            }
-            System.out.println(list.size());
             assertNotEquals(null,list);
             assertNotEquals(0,list.size());
         } catch (IOException ex) {

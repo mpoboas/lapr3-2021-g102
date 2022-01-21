@@ -49,8 +49,9 @@ public class PositionalMessagesControllerTest {
                 atDate.add(msg);
         }
 
+        /*
         System.out.println("\n\nAt date:");
-        System.out.println(ctrl.getPositionalMessagesAtDate(testShip, LocalDateTime.of(2020, Month.DECEMBER, 31, 2, 0)));
+        System.out.println(ctrl.getPositionalMessagesAtDate(testShip, LocalDateTime.of(2020, Month.DECEMBER, 31, 2, 0)));*/
         assertEquals(atDate, ctrl.getPositionalMessagesAtDate(testShip, LocalDateTime.of(2020, Month.DECEMBER, 31, 2, 0)));
 
 
@@ -62,9 +63,9 @@ public class PositionalMessagesControllerTest {
             if (msg.getBaseDateTime().isAfter(startDateTime) && msg.getBaseDateTime().isBefore(endDateTime))
                 betweenTwoDates.add(msg);
         }
-
+/*
         System.out.println("\n\nBetween two dates:");
-        System.out.println(ctrl.getPositionalMessagesBetweenTwoDates(testShip, LocalDateTime.of(2020, Month.DECEMBER, 31, 16, 59), LocalDateTime.of(2020, Month.DECEMBER, 31, 22, 59)));
+        System.out.println(ctrl.getPositionalMessagesBetweenTwoDates(testShip, LocalDateTime.of(2020, Month.DECEMBER, 31, 16, 59), LocalDateTime.of(2020, Month.DECEMBER, 31, 22, 59)));*/
         assertEquals(betweenTwoDates, ctrl.getPositionalMessagesBetweenTwoDates(testShip, LocalDateTime.of(2020, Month.DECEMBER, 31, 16, 59), LocalDateTime.of(2020, Month.DECEMBER, 31, 22, 59)));
     }
 }

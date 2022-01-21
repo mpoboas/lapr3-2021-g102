@@ -39,8 +39,9 @@ class ImportContainersTest {
         List<Container> list = importContainers.getListOfImportedContainers();
         assertEquals("LPRU0566306", list.get(0).getId());
         assertEquals("LPRU9575857", list.get(2).getId());
+        /*
         for (Container container : list) {
             System.out.println(container);
-        }
+        }*/
     }
 }

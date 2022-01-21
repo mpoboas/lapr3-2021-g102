@@ -1,5 +1,6 @@
 package lapr.project.stores;
 
+import lapr.project.data.ConnectionFactory;
 import lapr.project.model.*;
 import lapr.project.utils.Pair;
 import org.junit.jupiter.api.Test;
@@ -27,7 +28,7 @@ class FreightNetworkTest {
             importP.importPortsData(fileDirectoryPorts);
             List<Port> ports = importP.getListOfImportedPorts();
             network.buildFreightNetworkFromGivenData(countries, borders, ports, seaDists, 5);
-            System.out.println(network);
+            //System.out.println(network);
             assertTrue(network.getGraph().vertices().containsAll(countries));
             assertTrue(network.getGraph().vertices().containsAll(ports));
         } catch (IOException e) {

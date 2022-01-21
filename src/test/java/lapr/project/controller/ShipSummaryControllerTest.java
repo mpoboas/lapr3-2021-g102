@@ -53,7 +53,7 @@ public class ShipSummaryControllerTest {
         ship.addAISMessage(ais3);
 
 
-        System.out.println(ship.getAisMessagesList());
+        //System.out.println(ship.getAisMessagesList());
         ctrl.getShipSummary(ship);
         /*String expected = "Ship's Summary{MMSI=112, Vessel Name='122', Start Base Date Time='2018-06-26T01:43', End Base Date Time='2018-06-26T03:59', Total Movement Time=2.0, Total Number of Movements=3.0, Max SOG=13.7, Max COG=3.4, Mean SOG=13.533333333333333, Mean COG=13.533333333333333, Total Distance=959.8318622227812, Delta Distance=2.583174067017685, Departure Latitude=42.69577, Departure Longitude=-66.97808, Arrival Latitude=42.73879, Arrival Longitude=-66.97726}";
         assertEquals(expected,ctrl.getShipSummary(ship));

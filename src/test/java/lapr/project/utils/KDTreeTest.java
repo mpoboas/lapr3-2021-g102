@@ -60,7 +60,7 @@ class KDTreeTest {
             tree.insert(p, p.getLongitude(),p.getLatitude());
         }
         tree.insert(p1, p1.getLongitude(), p1.getLatitude());
-        System.out.println(tree);
+        //System.out.println(tree);
         assertEquals(6, tree.inOrder().size());
 
         assertEquals(3, tree.height());
@@ -74,10 +74,10 @@ class KDTreeTest {
 
 
         assertEquals(expectedOrder, tree.inOrder(), "inOrder should be " + expectedOrder);
-        System.out.println("<tree>");
-        System.out.println(tree);
-        System.out.println("height1=" + tree.height());
-        System.out.println("------------------------------------");
+        //System.out.println("<tree>");
+        //System.out.println(tree);
+        //System.out.println("height1=" + tree.height());
+        //System.out.println("------------------------------------");
     }
 
     @Test
@@ -103,7 +103,7 @@ class KDTreeTest {
         List<Port> balanced = new ArrayList<>();
         //balanced.add(p2);balanced.add(p3);balanced.add(p5);balanced.add(p6);balanced.add(p1);balanced.add(p4);
         balanced.add(p3);balanced.add(p2);balanced.add(p1);balanced.add(p5);balanced.add(p6);balanced.add(p4);
-        System.out.println(tree);
+        //System.out.println(tree);
         assertEquals(balanced, tree.inOrder());
 
 
@@ -143,20 +143,20 @@ class KDTreeTest {
         for (Port p : portsList) {
             tree.insert(p, p.getLongitude(),p.getLatitude());
         }
-        System.out.println("<tree>");
-        System.out.println(tree);
-        System.out.println("height1=" + tree.height());
-        System.out.println("------------------------------------");
+        //System.out.println("<tree>");
+        //System.out.println(tree);
+        //System.out.println("height1=" + tree.height());
+        //System.out.println("------------------------------------");
 
         //tree.findNearestNeighbour(4,5);
 
         assertEquals(p7, tree.findNearestNeighbour(4,5));
 
-
+/*
         System.out.println("In order:");
         for (Port p: tree.inOrder()) {
             System.out.println(p);
-        }
+        }*/
     }
 
 
