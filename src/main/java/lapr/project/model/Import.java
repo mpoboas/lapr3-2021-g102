@@ -24,7 +24,7 @@ public class Import {
      * Import class constructor
      */
     public Import(ShipStore store) {
-        shipStore = store; // Mudar dps para company.getShipStore()
+        shipStore = store;
         listOfImportedShips = new ArrayList<>();
     }
 
@@ -35,11 +35,6 @@ public class Import {
      * @throws IOException
      */
     public void importShipsData(String fileDirectory) throws IOException {
-        //listOfImportedShips = new ArrayList<>();
-
-        //Path pathToFile = Paths.get(fileDirectory);
-        //BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII);
-
         Scanner readfile = new Scanner(new File(fileDirectory));
         readfile.nextLine();
         while (readfile.hasNextLine()) {

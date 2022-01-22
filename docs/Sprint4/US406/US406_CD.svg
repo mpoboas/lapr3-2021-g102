@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="442px" preserveAspectRatio="none" style="width:1135px;height:442px;background:#FFFFFF;" version="1.1" viewBox="0 0 1135 442" width="1135px" zoomAndPan="magnify"><defs><filter height="300%" id="f1jmmdos62ikv7" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[fa12e7e4b4d59c03e82380733fcfa1b2]
+class GetVoyagesBelowThresholdUI--><rect codeLine="3" fill="#FEFECE" filter="url(#f1jmmdos62ikv7)" height="48" id="GetVoyagesBelowThresholdUI" style="stroke:#A80036;stroke-width:1.5;" width="200" x="34" y="7"/><ellipse cx="49" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M51,19.5 Q51.2031,19 51.4375,18.75 Q51.6719,18.5 51.9375,18.5 Q52.4063,18.5 52.7031,18.7813 Q53,19.0625 53,19.7188 L53,21.2813 Q53,21.9375 52.7188,22.2188 Q52.4375,22.5 52,22.5 Q51.6094,22.5 51.3594,22.3281 Q51.1094,22.1563 51,21.7031 Q50.9531,21.3906 50.7813,21.2188 Q50.4688,20.8906 49.9063,20.7031 Q49.3438,20.5 48.7813,20.5 Q48.0781,20.5 47.4844,20.7813 Q46.9063,21.0625 46.4531,21.6875 Q46,22.3125 46,23.1719 L46,24.0938 Q46,25.125 46.8438,25.8125 Q47.6875,26.5 49.1875,26.5 Q50.0781,26.5 50.7031,26.2969 Q51.0625,26.1875 51.4688,25.8281 Q51.7344,25.625 51.875,25.5625 Q52.0156,25.5 52.1875,25.5 Q52.5156,25.5 52.75,25.7656 Q53,26.0156 53,26.375 Q53,26.7188 52.6563,27.125 Q52.1563,27.7188 51.3594,28.0469 Q50.3125,28.5 49.0313,28.5 Q47.5313,28.5 46.3281,27.9063 Q45.3594,27.4375 44.6719,26.4219 Q44,25.4063 44,24.2031 L44,23.1094 Q44,21.8594 44.5938,20.7656 Q45.2031,19.6719 46.25,19.0938 Q47.3125,18.5 48.5,18.5 Q49.2188,18.5 49.8438,18.75 Q50.4688,19 51,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="168" x="63" y="27.9102">GetVoyagesBelowThresholdUI</text><line style="stroke:#A80036;stroke-width:1.5;" x1="35" x2="233" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="35" x2="233" y1="47" y2="47"/><!--MD5=[4029f5cb9939e5219dba710df7bc211f]
+class GetVoyagesBelowThresholdController--><rect codeLine="4" fill="#FEFECE" filter="url(#f1jmmdos62ikv7)" height="103.3438" id="GetVoyagesBelowThresholdController" style="stroke:#A80036;stroke-width:1.5;" width="254" x="7" y="116"/><ellipse cx="27.4" cy="132" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M29.4,128.5 Q29.6031,128 29.8375,127.75 Q30.0719,127.5 30.3375,127.5 Q30.8063,127.5 31.1031,127.7813 Q31.4,128.0625 31.4,128.7188 L31.4,130.2813 Q31.4,130.9375 31.1188,131.2188 Q30.8375,131.5 30.4,131.5 Q30.0094,131.5 29.7594,131.3281 Q29.5094,131.1563 29.4,130.7031 Q29.3531,130.3906 29.1813,130.2188 Q28.8688,129.8906 28.3063,129.7031 Q27.7438,129.5 27.1813,129.5 Q26.4781,129.5 25.8844,129.7813 Q25.3063,130.0625 24.8531,130.6875 Q24.4,131.3125 24.4,132.1719 L24.4,133.0938 Q24.4,134.125 25.2438,134.8125 Q26.0875,135.5 27.5875,135.5 Q28.4781,135.5 29.1031,135.2969 Q29.4625,135.1875 29.8688,134.8281 Q30.1344,134.625 30.275,134.5625 Q30.4156,134.5 30.5875,134.5 Q30.9156,134.5 31.15,134.7656 Q31.4,135.0156 31.4,135.375 Q31.4,135.7188 31.0563,136.125 Q30.5563,136.7188 29.7594,137.0469 Q28.7125,137.5 27.4313,137.5 Q25.9313,137.5 24.7281,136.9063 Q23.7594,136.4375 23.0719,135.4219 Q22.4,134.4063 22.4,133.2031 L22.4,132.1094 Q22.4,130.8594 22.9938,129.7656 Q23.6031,128.6719 24.65,128.0938 Q25.7125,127.5 26.9,127.5 Q27.6188,127.5 28.2438,127.75 Q28.8688,128 29.4,128.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="210" x="42.6" y="136.9102">GetVoyagesBelowThresholdController</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="260" y1="148" y2="148"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="156"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="82" x="27" y="163.4189">TripStore tsStore</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="169.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="184" x="27" y="177.2549">ConnectionFactory connectionFactory</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="260" y1="183.6719" y2="183.6719"/><ellipse cx="18" cy="194.6719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="167" x="27" y="199.0908">create(tsStore,connectionFactory)</text><ellipse cx="18" cy="208.5078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="228" x="27" y="212.9268">getShipVoyagesBellowThreshold(int shipMMSI)</text><!--MD5=[693220b91459d4d3c819897ec4093a4a]
+class TripStore--><rect codeLine="10" fill="#FEFECE" filter="url(#f1jmmdos62ikv7)" height="61.8359" id="TripStore" style="stroke:#A80036;stroke-width:1.5;" width="334" x="296" y="136.5"/><ellipse cx="433.75" cy="152.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M435.75,149 Q435.9531,148.5 436.1875,148.25 Q436.4219,148 436.6875,148 Q437.1563,148 437.4531,148.2813 Q437.75,148.5625 437.75,149.2188 L437.75,150.7813 Q437.75,151.4375 437.4688,151.7188 Q437.1875,152 436.75,152 Q436.3594,152 436.1094,151.8281 Q435.8594,151.6563 435.75,151.2031 Q435.7031,150.8906 435.5313,150.7188 Q435.2188,150.3906 434.6563,150.2031 Q434.0938,150 433.5313,150 Q432.8281,150 432.2344,150.2813 Q431.6563,150.5625 431.2031,151.1875 Q430.75,151.8125 430.75,152.6719 L430.75,153.5938 Q430.75,154.625 431.5938,155.3125 Q432.4375,156 433.9375,156 Q434.8281,156 435.4531,155.7969 Q435.8125,155.6875 436.2188,155.3281 Q436.4844,155.125 436.625,155.0625 Q436.7656,155 436.9375,155 Q437.2656,155 437.5,155.2656 Q437.75,155.5156 437.75,155.875 Q437.75,156.2188 437.4063,156.625 Q436.9063,157.2188 436.1094,157.5469 Q435.0625,158 433.7813,158 Q432.2813,158 431.0781,157.4063 Q430.1094,156.9375 429.4219,155.9219 Q428.75,154.9063 428.75,153.7031 L428.75,152.6094 Q428.75,151.3594 429.3438,150.2656 Q429.9531,149.1719 431,148.5938 Q432.0625,148 433.25,148 Q433.9688,148 434.5938,148.25 Q435.2188,148.5 435.75,149 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="50" x="454.25" y="157.4102">TripStore</text><line style="stroke:#A80036;stroke-width:1.5;" x1="297" x2="629" y1="168.5" y2="168.5"/><line style="stroke:#A80036;stroke-width:1.5;" x1="297" x2="629" y1="176.5" y2="176.5"/><ellipse cx="307" cy="187.5" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="308" x="316" y="191.9189">getShipVoyagesBelowThreshold(shipMMSI, connectionFactory)</text><!--MD5=[0b8a0869bb17c5d05015d74abb8e1141]
+class ConnectionFactory--><rect codeLine="13" fill="#FEFECE" filter="url(#f1jmmdos62ikv7)" height="89.5078" id="ConnectionFactory" style="stroke:#A80036;stroke-width:1.5;" width="149" x="951.5" y="122.5"/><ellipse cx="973.25" cy="138.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M975.25,135 Q975.4531,134.5 975.6875,134.25 Q975.9219,134 976.1875,134 Q976.6563,134 976.9531,134.2813 Q977.25,134.5625 977.25,135.2188 L977.25,136.7813 Q977.25,137.4375 976.9688,137.7188 Q976.6875,138 976.25,138 Q975.8594,138 975.6094,137.8281 Q975.3594,137.6563 975.25,137.2031 Q975.2031,136.8906 975.0313,136.7188 Q974.7188,136.3906 974.1563,136.2031 Q973.5938,136 973.0313,136 Q972.3281,136 971.7344,136.2813 Q971.1563,136.5625 970.7031,137.1875 Q970.25,137.8125 970.25,138.6719 L970.25,139.5938 Q970.25,140.625 971.0938,141.3125 Q971.9375,142 973.4375,142 Q974.3281,142 974.9531,141.7969 Q975.3125,141.6875 975.7188,141.3281 Q975.9844,141.125 976.125,141.0625 Q976.2656,141 976.4375,141 Q976.7656,141 977,141.2656 Q977.25,141.5156 977.25,141.875 Q977.25,142.2188 976.9063,142.625 Q976.4063,143.2188 975.6094,143.5469 Q974.5625,144 973.2813,144 Q971.7813,144 970.5781,143.4063 Q969.6094,142.9375 968.9219,141.9219 Q968.25,140.9063 968.25,139.7031 L968.25,138.6094 Q968.25,137.3594 968.8438,136.2656 Q969.4531,135.1719 970.5,134.5938 Q971.5625,134 972.75,134 Q973.4688,134 974.0938,134.25 Q974.7188,134.5 975.25,135 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="102" x="988.75" y="143.4102">ConnectionFactory</text><line style="stroke:#A80036;stroke-width:1.5;" x1="952.5" x2="1099.5" y1="154.5" y2="154.5"/><line style="stroke:#A80036;stroke-width:1.5;" x1="952.5" x2="1099.5" y1="162.5" y2="162.5"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="959.5" y="170.5"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="64" x="971.5" y="177.9189">getInstance()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="959.5" y="184.3359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="971.5" y="191.7549">loadProperties()</text><ellipse cx="962.5" cy="201.1719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="123" x="971.5" y="205.5908">getDatabaseConnection()</text><!--MD5=[8aa441cdd93a4e2944eff58bc06cd78a]
+class DatabaseConnection--><rect codeLine="18" fill="#FEFECE" filter="url(#f1jmmdos62ikv7)" height="131.0156" id="DatabaseConnection" style="stroke:#A80036;stroke-width:1.5;" width="190" x="931" y="297"/><ellipse cx="964.45" cy="313" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M966.45,309.5 Q966.6531,309 966.8875,308.75 Q967.1219,308.5 967.3875,308.5 Q967.8563,308.5 968.1531,308.7813 Q968.45,309.0625 968.45,309.7188 L968.45,311.2813 Q968.45,311.9375 968.1688,312.2188 Q967.8875,312.5 967.45,312.5 Q967.0594,312.5 966.8094,312.3281 Q966.5594,312.1563 966.45,311.7031 Q966.4031,311.3906 966.2313,311.2188 Q965.9188,310.8906 965.3563,310.7031 Q964.7938,310.5 964.2313,310.5 Q963.5281,310.5 962.9344,310.7813 Q962.3563,311.0625 961.9031,311.6875 Q961.45,312.3125 961.45,313.1719 L961.45,314.0938 Q961.45,315.125 962.2938,315.8125 Q963.1375,316.5 964.6375,316.5 Q965.5281,316.5 966.1531,316.2969 Q966.5125,316.1875 966.9188,315.8281 Q967.1844,315.625 967.325,315.5625 Q967.4656,315.5 967.6375,315.5 Q967.9656,315.5 968.2,315.7656 Q968.45,316.0156 968.45,316.375 Q968.45,316.7188 968.1063,317.125 Q967.6063,317.7188 966.8094,318.0469 Q965.7625,318.5 964.4813,318.5 Q962.9813,318.5 961.7781,317.9063 Q960.8094,317.4375 960.1219,316.4219 Q959.45,315.4063 959.45,314.2031 L959.45,313.1094 Q959.45,311.8594 960.0438,310.7656 Q960.6531,309.6719 961.7,309.0938 Q962.7625,308.5 963.95,308.5 Q964.6688,308.5 965.2938,308.75 Q965.9188,309 966.45,309.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="117" x="982.55" y="317.9102">DatabaseConnection</text><line style="stroke:#A80036;stroke-width:1.5;" x1="932" x2="1120" y1="329" y2="329"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="939" y="337"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="951" y="344.4189">oracleDataSource</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="939" y="350.8359"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="53" x="951" y="358.2549">connection</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="939" y="364.6719"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="24" x="951" y="372.0908">error</text><line style="stroke:#A80036;stroke-width:1.5;" x1="932" x2="1120" y1="378.5078" y2="378.5078"/><ellipse cx="942" cy="389.5078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="951" y="393.9268">getConnection()</text><ellipse cx="942" cy="403.3438" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="164" x="951" y="407.7627">registerError(SQLException error)</text><ellipse cx="942" cy="417.1797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="68" x="951" y="421.5986">getLastError()</text><!--MD5=[ffbadad0d9b487848710cc4c227520e4]
+link GetVoyagesBelowThresholdUI to GetVoyagesBelowThresholdController--><path codeLine="27" d="M134,55.12 C134,71.8 134,94.95 134,115.83 " fill="none" id="GetVoyagesBelowThresholdUI-GetVoyagesBelowThresholdController" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[9299acb9cf15c778d86eb73c37d6f7d3]
+link GetVoyagesBelowThresholdController to TripStore--><path codeLine="28" d="M261.23,167.5 C272.79,167.5 284.35,167.5 295.91,167.5 " fill="none" id="GetVoyagesBelowThresholdController-TripStore" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[3e71c19c4e065903b2a54e1f6a47a27c]
+link TripStore to ConnectionFactory--><path codeLine="29" d="M630.01,167.5 C736.67,167.5 869.76,167.5 951.28,167.5 " fill="none" id="TripStore-ConnectionFactory" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="657.25,155.6758,648.2049,152.7369,648.2049,158.6147,657.25,155.6758" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="272" x="661.25" y="160.9951">requests connection to database to obtain data</text><!--MD5=[f69893cd3a05080ec62d77c49424649a]
+link ConnectionFactory to DatabaseConnection--><path codeLine="30" d="M1026,212.78 C1026,237.71 1026,269.29 1026,296.93 " fill="none" id="ConnectionFactory-DatabaseConnection" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="1031,263.1758,1033.9389,254.1307,1028.0611,254.1307,1031,263.1758" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="60" x="1040" y="263.4951">fabricate a</text><!--MD5=[17c1ce963fce015da30ad337f2cd8474]
+@startuml
+'https://plantuml.com/class-diagram
+
+class GetVoyagesBelowThresholdUI{}
+class GetVoyagesBelowThresholdController{
+-TripStore tsStore
+-ConnectionFactory connectionFactory
++create(tsStore,connectionFactory)
++getShipVoyagesBellowThreshold(int shipMMSI)
+}
+class TripStore{
++getShipVoyagesBelowThreshold(shipMMSI, connectionFactory)
+}
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
++getDatabaseConnection()
+}
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+GetVoyagesBelowThresholdUI .. GetVoyagesBelowThresholdController
+GetVoyagesBelowThresholdController . TripStore
+TripStore - ConnectionFactory : requests connection to database to obtain data >
+ConnectionFactory - - DatabaseConnection : fabricate a >
+
+@enduml
+
+@startuml
+
+class GetVoyagesBelowThresholdUI{}
+class GetVoyagesBelowThresholdController{
+-TripStore tsStore
+-ConnectionFactory connectionFactory
++create(tsStore,connectionFactory)
++getShipVoyagesBellowThreshold(int shipMMSI)
+}
+class TripStore{
++getShipVoyagesBelowThreshold(shipMMSI, connectionFactory)
+}
+class ConnectionFactory{
+-getInstance()
+-loadProperties()
++getDatabaseConnection()
+}
+class DatabaseConnection{
+-oracleDataSource
+-connection
+-error
++getConnection()
++registerError(SQLException error)
++getLastError()
+}
+
+GetVoyagesBelowThresholdUI .. GetVoyagesBelowThresholdController
+GetVoyagesBelowThresholdController . TripStore
+TripStore - ConnectionFactory : requests connection to database to obtain data >
+ConnectionFactory - - DatabaseConnection : fabricate a >
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 16:16:42 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>
