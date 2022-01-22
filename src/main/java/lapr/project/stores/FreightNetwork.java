@@ -36,9 +36,9 @@ public class FreightNetwork {
      */
     public void buildFreightNetworkFromDatabase(DatabaseConnection databaseConnection, int n) {
         List<Country> countries = new CountryStoreDB().getCountriesFromDatabase(databaseConnection);
-        List<Border> borders = new BorderStoreDB().getBordersFromDatabase(databaseConnection/*,countries*/);
+        List<Border> borders = new BorderStoreDB().getBordersFromDatabase(databaseConnection,countries);
         List<Port> ports = new PortStoreDB().getPortsFromDatabase(databaseConnection);
-        List<SeaDist> seaDists = new SeadistStoreDB().getSeadistsFromDatabase(databaseConnection/*,ports,countries*/);
+        List<SeaDist> seaDists = new SeadistStoreDB().getSeadistsFromDatabase(databaseConnection,ports,countries);
         buildFreightNetworkFromGivenData(countries, borders, ports, seaDists, n);
     }
 
