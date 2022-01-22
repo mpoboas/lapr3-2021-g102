@@ -6,6 +6,8 @@ import lapr.project.model.Trips;
 import lapr.project.stores.ShipStore;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
@@ -16,149 +18,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
-public class listShipsControllerTest {
+ class listShipsControllerTest {
+
+
 
     @Test
-    public void getShipMap() {
-        ShipStore store = new ShipStore();
-        Ship ship1 = new Ship(114,"122","test","Ship", 12, 1200, 600 , 21,0);
-        Trips trip1;
-        AISMessage ais1;
-        AISMessage ais2;
-        AISMessage ais3;
-        AISMessage ais4;
-        AISMessage ais5;
-        AISMessage ais6;
-        Trips trip2;
-        Ship ship2;
-        Ship ship3;
-        Ship ship4;
-        trip1 = new Trips();
-        ship1.addTrip(trip1);
-        ais1 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' );
-        ship1.getTrip(0).addAISMessage(ais1);
-        ship1.addAISMessage(ais1);
-        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4, 3000, 'B' );
-        ship1.getTrip(0).addAISMessage(ais2);
-        ship1.addAISMessage(ais2);
-        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
-        ship1.getTrip(0).addAISMessage(ais3);
-        ship1.addAISMessage(ais3);
-        ship1.getTrip(0).endTrip();
-        trip2 = new Trips();
-        ship1.addTrip(trip2);
-        ais4 = new AISMessage( LocalDateTime.of(2019, Month.MAY, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' );
-        ship1.getTrip(1).addAISMessage(ais4);
-        ship1.addAISMessage(ais4);
-        ais5 = new AISMessage(LocalDateTime.of(2019, Month.MAY, 27, 1, 0), 14, 15, 21,13, 4, 3000, 'B' );
-        ship1.getTrip(1).addAISMessage(ais5);
-        ship1.addAISMessage(ais5);
-        ais6 = new AISMessage(LocalDateTime.of(2019, Month.MAY, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
-        ship1.getTrip(1).addAISMessage(ais6);
-        ship1.addAISMessage(ais6);
-        ship1.getTrip(1).endTrip();
-        ship2 = new Ship(113,"TEST","OTHER TEST","TEST", 2, 1200, 600 , 21,0);
-        trip1 = new Trips();
-        ship2.addTrip(trip1);
-        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' );
-        ship2.getTrip(0).addAISMessage(ais1);
-        ship2.addAISMessage(ais1);
-        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4, 3000, 'B' );
-        ship2.getTrip(0).addAISMessage(ais2);
-        ship2.addAISMessage(ais2);
-        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
-        ship2.getTrip(0).addAISMessage(ais3);
-        ship2.addAISMessage(ais3);
-        ship2.getTrip(0).endTrip();
-        trip2 = new Trips();
-        ship2.addTrip(trip2);
-        ais4 = new AISMessage( LocalDateTime.of(2020, Month.JANUARY, 20, 2, 0), -16, 14, 21,13, 4, 3000, 'B' );
-        ship2.getTrip(1).addAISMessage(ais4);
-        ship2.addAISMessage(ais4);
-        ais5 = new AISMessage(LocalDateTime.of(2020, Month.JANUARY, 25, 1, 0), 0, 15, 21,13, 4, 3000, 'B' );
-        ship2.getTrip(1).addAISMessage(ais5);
-        ship2.addAISMessage(ais5);
-        ais6 = new AISMessage(LocalDateTime.of(2020, Month.JANUARY, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
-        ship2.getTrip(1).addAISMessage(ais6);
-        ship2.addAISMessage(ais6);
-        ship2.getTrip(1).endTrip();
-
-        ship3 = new Ship(112,"122","test","Ship", 12, 1200, 600 , 21,0);
-        trip1 = new Trips();
-        ship3.addTrip(trip1);
-        ais1 = new AISMessage( LocalDateTime.of(2005, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' );
-        ship3.getTrip(0).addAISMessage(ais1);
-        ship3.addAISMessage(ais1);
-        ais2 = new AISMessage(LocalDateTime.of(2005, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4, 3000, 'B' );
-        ship3.getTrip(0).addAISMessage(ais2);
-        ship3.addAISMessage(ais2);
-        ais3 = new AISMessage(LocalDateTime.of(2005, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
-        ship3.getTrip(0).addAISMessage(ais3);
-        ship3.addAISMessage(ais3);
-        ship3.getTrip(0).endTrip();
-        trip2 = new Trips();
-        ship3.addTrip(trip2);
-        ais4 = new AISMessage( LocalDateTime.of(2019, Month.MAY, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' );
-        ship3.getTrip(1).addAISMessage(ais4);
-        ship3.addAISMessage(ais4);
-        ais5 = new AISMessage(LocalDateTime.of(2019, Month.MAY, 27, 1, 0), 14, 15, 21,13, 4, 3000, 'B' );
-        ship3.getTrip(1).addAISMessage(ais5);
-        ship3.addAISMessage(ais5);
-        ais6 = new AISMessage(LocalDateTime.of(2019, Month.MAY, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
-        ship3.getTrip(1).addAISMessage(ais6);
-        ship3.addAISMessage(ais6);
-        ship3.getTrip(1).endTrip();
-        ship4= new Ship(111,"TEST","OTHER TEST","TEST", 21, 1200, 600 , 21,0);
-        trip1 = new Trips();
-        ship4.addTrip(trip1);
-        ais1 = new AISMessage( LocalDateTime.of(2018, Month.JUNE, 26, 2, 0), 13, 14, 21,13, 4, 3000, 'B' );
-        ship4.getTrip(0).addAISMessage(ais1);
-        ship4.addAISMessage(ais1);
-        ais2 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 27, 1, 0), 14, 15, 21,13, 4, 3000, 'B' );
-        ship4.getTrip(0).addAISMessage(ais2);
-        ship4.addAISMessage(ais2);
-        ais3 = new AISMessage(LocalDateTime.of(2018, Month.JUNE, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
-        ship4.getTrip(0).addAISMessage(ais3);
-        ship4.addAISMessage(ais3);
-        ship4.getTrip(0).endTrip();
-        trip2 = new Trips();
-        ship4.addTrip(trip2);
-        ais4 = new AISMessage( LocalDateTime.of(2020, Month.JANUARY, 20, 2, 0), -16, 14, 21,13, 4, 3000, 'B' );
-        ship4.getTrip(1).addAISMessage(ais4);
-        ship4.addAISMessage(ais4);
-        ais5 = new AISMessage(LocalDateTime.of(2020, Month.JANUARY, 25, 1, 0), 0, 15, 21,13, 4, 3000, 'B' );
-        ship4.getTrip(1).addAISMessage(ais5);
-        ship4.addAISMessage(ais5);
-        ais6 = new AISMessage(LocalDateTime.of(2020, Month.JANUARY, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
-        ship4.getTrip(1).addAISMessage(ais6);
-        ship4.addAISMessage(ais6);
-        ship4.getTrip(1).endTrip();
-        trip2 = new Trips();
-        ship2.addTrip(trip2);
-        ais4 = new AISMessage( LocalDateTime.of(2021, Month.JANUARY, 20, 2, 0), -16, 14, 21,13, 4, 3000, 'B' );
-        ship2.getTrip(1).addAISMessage(ais4);
-        ship2.addAISMessage(ais4);
-        ais5 = new AISMessage(LocalDateTime.of(2021, Month.JANUARY, 25, 1, 0), 0, 15, 21,13, 4, 3000, 'B' );
-        ship2.getTrip(1).addAISMessage(ais5);
-        ship2.addAISMessage(ais5);
-        ais6 = new AISMessage(LocalDateTime.of(2021, Month.JANUARY, 29, 13, 0), 16, 19, 21,13, 4, 3000, 'B' );
-        ship2.getTrip(1).addAISMessage(ais6);
-        ship2.addAISMessage(ais6);
-        ship2.getTrip(1).endTrip();
-        List<Ship> list = new ArrayList<>();
-        list.add(ship1);
-        list.add(ship2);
-        list.add(ship3);
-        list.add(ship4);
-        store.addShip(ship1);
-        store.addShip(ship2);
-        store.addShip(ship3);
-        store.addShip(ship4);
-
-    }
-
-    @Test
-    public void getShipList() {
+    void getShipList() {
 
         ShipStore store;
         Ship ship1 ;
@@ -287,11 +152,7 @@ public class listShipsControllerTest {
         ship2.getTrip(1).addAISMessage(ais6);
         ship2.addAISMessage(ais6);
         ship2.getTrip(1).endTrip();
-        List<Ship> list = new ArrayList<>();
-        list.add(ship1);
-        list.add(ship2);
-        list.add(ship3);
-        list.add(ship4);
+
         store.addShip(ship1);
         store.addShip(ship2);
         store.addShip(ship3);
@@ -304,7 +165,7 @@ public class listShipsControllerTest {
     }
 
     @Test
-    public void orderByNmovements() {
+    void orderByNmovements() {
 
         ShipStore store;
         Ship ship1 ;
@@ -433,11 +294,7 @@ public class listShipsControllerTest {
         ship2.getTrip(1).addAISMessage(ais6);
         ship2.addAISMessage(ais6);
         ship2.getTrip(1).endTrip();
-        List<Ship> list = new ArrayList<>();
-        list.add(ship1);
-        list.add(ship2);
-        list.add(ship3);
-        list.add(ship4);
+
         store.addShip(ship1);
         store.addShip(ship2);
         store.addShip(ship3);
@@ -450,7 +307,7 @@ public class listShipsControllerTest {
     }
 
     @Test
-    public void getTopN() {
+    void getTopN() {
         ShipStore store;
         Ship ship1 ;
         Trips trip1;
@@ -578,11 +435,7 @@ public class listShipsControllerTest {
         ship2.getTrip(1).addAISMessage(ais6);
         ship2.addAISMessage(ais6);
         ship2.getTrip(1).endTrip();
-        List<Ship> list = new ArrayList<>();
-        list.add(ship1);
-        list.add(ship2);
-        list.add(ship3);
-        list.add(ship4);
+
         store.addShip(ship1);
         store.addShip(ship2);
         store.addShip(ship3);
@@ -600,7 +453,7 @@ public class listShipsControllerTest {
     }
 
     @Test
-    public void orderByTotalDistance() {
+    void orderByTotalDistance() {
         ShipStore store;
         Ship ship1 ;
         Trips trip1;
@@ -728,11 +581,7 @@ public class listShipsControllerTest {
         ship2.getTrip(1).addAISMessage(ais6);
         ship2.addAISMessage(ais6);
         ship2.getTrip(1).endTrip();
-        List<Ship> list = new ArrayList<>();
-        list.add(ship1);
-        list.add(ship2);
-        list.add(ship3);
-        list.add(ship4);
+
         store.addShip(ship1);
         store.addShip(ship2);
         store.addShip(ship3);
@@ -745,7 +594,7 @@ public class listShipsControllerTest {
     }
 
     @Test
-    public void groupVesselType() {
+    void groupVesselType() {
         ShipStore store;
         Ship ship1 ;
         Trips trip1;
@@ -884,7 +733,7 @@ public class listShipsControllerTest {
     }
 
     @Test
-    public void generateMap() {
+    void generateMap() {
         ShipStore store;
         Ship ship1 ;
         Trips trip1;
@@ -1029,7 +878,7 @@ public class listShipsControllerTest {
     }
 
     @Test
-    public void toStringTest(){
+    void toStringTest() throws FileNotFoundException {
         ShipStore store;
         Ship ship1 ;
         Trips trip1;
@@ -1161,15 +1010,14 @@ public class listShipsControllerTest {
         store.addShip(ship2);
         store.addShip(ship3);
         store.addShip(ship4);
-        List<Ship> list = new ArrayList<>();
-        list.add(ship1);
-        list.add(ship2);
-        list.add(ship3);
         ListShipsController controller = new ListShipsController(false,1, store);
         ListShipsController controller1 = new ListShipsController(50,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
-        System.out.println(controller);
-        System.out.println(controller1);
-
+        try (PrintWriter out = new PrintWriter("list1.txt")) {
+            out.println(controller);
+        }
+        try (PrintWriter out = new PrintWriter("list1.txt")) {
+            out.println(controller1);
+        }
     }
 
 }
