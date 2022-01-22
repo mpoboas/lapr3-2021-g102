@@ -33,25 +33,17 @@ class ClossenessPlacesControllerTest {
         assertEquals("Mexico" ,list.get(0).getFirst().getCountry());
         assertEquals("Mexico" ,list.get(1).getFirst().getCountry());
         assertEquals("lapr.project.model.Port" ,list.get(1).getFirst().getClass().getName());
-
-        assertEquals(2,list.size());
-
-    }
-
-    @Test
-    void getClossenessPlacesList()  {
-        controller.setPort(controller.getClossenessPlaces().getNetwork().getGraph().vertex(1));
-        controller.setnPlaces(4);
-        List<Pair<Place,Double>> list =  controller.getClosestPlacesList();
-        for (Pair<Place, Double> placeDoublePair : list) {
-            assertNotNull(placeDoublePair.getSecond());
-        }
-        assertEquals("Mexico" ,list.get(0).getFirst().getCountry());
-        assertEquals("Mexico" ,list.get(1).getFirst().getCountry());
         assertEquals(25.94, list.get(1).getSecond(),0.01);
+        assertEquals(2,list.size());
+        controller.setnPlaces(4);
+
+
         assertEquals(2,list.size());
         assertFalse(controller.getClosestPlacesList().isEmpty());
 
+
     }
+
+
 
 }
