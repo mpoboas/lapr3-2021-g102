@@ -41,7 +41,9 @@ class PairOfShipsControllerTest {
         importShipsController.addShips();
         List<Pair<Ship,Ship>> pairOfShipsList = pairOfShipsController.getCloseCoordsShips();
 
-        System.out.println(pairOfShipsController.toString(pairOfShipsList));
+        assertEquals("Ship1 MMSI   Ship2 MMSI   Movs   TravelDist   Movs   TravelDist\n" +
+                "------------------------------------------------------------\n" +
+                "List is empty.\n",pairOfShipsController.toString(pairOfShipsList));
         assertNotNull(pairOfShipsList);
         assertEquals(0, pairOfShipsList.size());
     }
@@ -54,6 +56,8 @@ class PairOfShipsControllerTest {
         Ship ex1 = new Ship(112, "122", "test", "Ship", 12, 1200, 600, 21);
         Ship ex2 = new Ship(113, "122", "test", "Ship", 12, 1200, 600, 21);
         pairOfShipsList.add(new Pair<>(ex1, ex2));
-        System.out.println(pairOfShipsController.toString(pairOfShipsList));
+        assertEquals("Ship1 MMSI   Ship2 MMSI   Movs   TravelDist   Movs   TravelDist\n" +
+                "------------------------------------------------------------\n" +
+                "112          113          0      0,000000     0      0,000000 \n",pairOfShipsController.toString(pairOfShipsList));
     }
 }

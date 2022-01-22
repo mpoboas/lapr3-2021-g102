@@ -15,7 +15,6 @@ class ShipTreeTest {
 
     @Test
     void insert() {
-        System.out.println("insert");
         Ship ship1 = new Ship(112, "112", "IMOtest9", "Ship55", 12, 1200, 600, 21);
         Ship ship2 = new Ship(113, "122", "IMOtest1", "Ship89", 12, 1200, 600, 21);
         Ship ship3 = new Ship(114, "132", "IMOtest4", "Ship01", 12, 1200, 600, 21);
@@ -98,13 +97,10 @@ class ShipTreeTest {
             instance2.insert(s);
         }
 
-        //System.out.println("<instance 2>");
-        //System.out.println(instance2);
-        //System.out.println("height2=" + instance2.height());
+
 
         assertEquals(order1, instance2.inOrder(), "inOrder should be " + order1.toString());
         assertEquals(instance2.height(), 2);
-        //System.out.println("------------------------------------");
 
 
         //test double rotation
@@ -147,7 +143,6 @@ class ShipTreeTest {
 
     @Test
     void getShip() {
-        System.out.println("get ship");
         Ship ship1 = new Ship(112, "112", "IMOtest9", "Ship55", 12, 1200, 600, 21);
         Ship ship2 = new Ship(113, "122", "IMOtest1", "Ship89", 12, 1200, 600, 21);
         Ship ship3 = new Ship(114, "132", "IMOtest4", "Ship01", 12, 1200, 600, 21);
@@ -172,7 +167,6 @@ class ShipTreeTest {
 
     @Test
     void remove() {
-        System.out.println("remove");
         Ship ship1 = new Ship(112, "112", "IMOtest9", "Ship55", 12, 1200, 600, 21);
         Ship ship2 = new Ship(113, "122", "IMOtest1", "Ship89", 12, 1200, 600, 21);
         Ship ship3 = new Ship(114, "132", "IMOtest4", "Ship01", 12, 1200, 600, 21);
@@ -236,12 +230,10 @@ class ShipTreeTest {
         assertEquals(order1, instance.inOrder(), "inOrder should be " + order1.toString());
         assertEquals(-1, instance.height());
 
-        System.out.println("------------------------------------");
     }
 
     @Test
     void testEquals() {
-        System.out.println("equals");
         Ship ship1 = new Ship(112, "112", "IMOtest9", "Ship55", 12, 1200, 600, 21);
         Ship ship2 = new Ship(113, "122", "IMOtest1", "Ship89", 12, 1200, 600, 21);
         ShipTree instance = new ShipTree("IMO");
@@ -263,7 +255,6 @@ class ShipTreeTest {
 
     @Test
     void testSearch() {
-        System.out.println("search");
         Ship ship1 = new Ship(112, "112", "IMOtest9", "Ship55", 12, 1200, 600, 21);
         Ship ship2 = new Ship(113, "122", "IMOtest1", "Ship89", 12, 1200, 600, 21);
         Ship ship3 = new Ship(114, "132", "IMOtest4", "Ship01", 12, 1200, 600, 21);

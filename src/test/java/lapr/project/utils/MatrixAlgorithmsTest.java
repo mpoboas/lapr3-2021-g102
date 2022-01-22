@@ -63,7 +63,6 @@ public class MatrixAlgorithmsTest {
      */
     @Test
     public void testBreadthFirstSearch() {
-        System.out.println("Test BreadthFirstSearch");
 
         Assertions.assertNull(Algorithms.breadthFirstSearch(completeMap, "LX"), "Should be null if vertex does not exist");
 
@@ -97,7 +96,6 @@ public class MatrixAlgorithmsTest {
      */
     @Test
     public void testDepthFirstSearch() {
-        System.out.println("Test of DepthFirstSearch");
 
         assertNull(Algorithms.DepthFirstSearch(completeMap, "LX"), "Should be null if vertex does not exist");
 
@@ -122,7 +120,6 @@ public class MatrixAlgorithmsTest {
      */
     @Test
     public void testShortestPath() {
-        System.out.println("Test of shortest path");
 
         LinkedList<String> shortPath = new LinkedList<>();
 
@@ -166,7 +163,6 @@ public class MatrixAlgorithmsTest {
      */
     @Test
     public void testShortestPaths() {
-        System.out.println("Test of shortest path");
 
         ArrayList<LinkedList<String>> paths = new ArrayList<>();
         ArrayList<Integer> dists = new ArrayList<>();

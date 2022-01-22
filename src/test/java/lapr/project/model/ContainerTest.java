@@ -56,6 +56,11 @@ class ContainerTest {
     @Test
     void testToString() {
         Container c = new Container( "ID", "Refrigerated","20R5",2000,1220,1200);
-        System.out.println(c);
+       assertEquals("Identification: ID\n" +
+                "Type: Refrigerated\n" +
+                "ISO code: 20R5\n" +
+                "Tare: 2000\n" +
+                "Payload: 1220\n" +
+                "Gross: 1200\n",c.toString());
     }
 }

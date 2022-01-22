@@ -25,7 +25,7 @@ class getNManifestsControllerTest {
         Mockito.when(this.data.getNManifests()).thenReturn(3);
         assertEquals(3, this.controller.getNManifests());
         controller.doDBQuery();
-        System.out.println("Result: "+ this.controller.getNManifests());
+        assertEquals(3.0, this.controller.getNManifests());
 
     }
 
@@ -37,7 +37,7 @@ class getNManifestsControllerTest {
         Mockito.when(this.data.getAvgManifests()).thenReturn(1.0);
         assertEquals(1.0, this.controller.getAvgContainerPerManifest());
         controller.doDBQuery();
-        System.out.println("Result: "+ this.controller.getAvgContainerPerManifest());
+        assertEquals(0, this.controller.getNManifests());
 
     }
 }

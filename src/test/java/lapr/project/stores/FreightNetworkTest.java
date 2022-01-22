@@ -1,6 +1,7 @@
 package lapr.project.stores;
 
 import lapr.project.model.*;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -11,43 +12,37 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FreightNetworkTest {
-    String fileDirectoryCountry = "data/Data-Sprint3-4/countries.csv";
-    String fileDirectoryPorts = "data/data-shipsports/data-shipsports/data-ships&ports/bports.csv";
-    String fileDirectoryBorders = "data/Data-Sprint3-4/borders.csv";
-    String fileDirectorySeaDist = "data/Data-Sprint3-4/seadists.csv";
-    ImportPorts importP = new ImportPorts(new PortStore());
-    FreightNetwork network = new FreightNetwork();
-
-    @Test
-    void buildFreightNetwork() {
+    static String fileDirectoryCountry = "data/Data-Sprint3-4/countries.csv";
+    static String fileDirectoryPorts = "data/data-shipsports/data-shipsports/data-ships&ports/bports.csv";
+    static String fileDirectoryBorders = "data/Data-Sprint3-4/borders.csv";
+    static String fileDirectorySeaDist = "data/Data-Sprint3-4/seadists.csv";
+    static ImportPorts importP = new ImportPorts(new PortStore());
+    static FreightNetwork network = new FreightNetwork();
+    static List<Country> countries ;
+    static List<Port> ports;
+    @BeforeAll
+    static void init(){
         try {
-            List<Country> countries = ImportCountry.importCountries(fileDirectoryCountry);
+             countries = ImportCountry.importCountries(fileDirectoryCountry);
             List<Border> borders = ImportBorder.importBorders(fileDirectoryBorders);
             List<SeaDist> seaDists = ImportSeadist.importSeadistData(fileDirectorySeaDist);
             importP.importPortsData(fileDirectoryPorts);
-            List<Port> ports = importP.getListOfImportedPorts();
+             ports = importP.getListOfImportedPorts();
             network.buildFreightNetworkFromGivenData(countries, borders, ports, seaDists, 5);
-            //System.out.println(network);
-            assertTrue(network.getGraph().vertices().containsAll(countries));
-            assertTrue(network.getGraph().vertices().containsAll(ports));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    @Test
+    void buildFreightNetwork() {
+        assertTrue(network.getGraph().vertices().containsAll(countries));
+        assertTrue(network.getGraph().vertices().containsAll(ports));
     }
 
     @Test
     void shortestPaths() {
-        try {
-            List<Country> countries = ImportCountry.importCountries(fileDirectoryCountry);
-            List<Border> borders = ImportBorder.importBorders(fileDirectoryBorders);
-            List<SeaDist> seaDists = ImportSeadist.importSeadistData(fileDirectorySeaDist);
-            importP.importPortsData(fileDirectoryPorts);
-            List<Port> ports = importP.getListOfImportedPorts();
-            network.buildFreightNetworkFromGivenData(countries, borders, ports, seaDists, 5);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         List<String> expectedList = new ArrayList<>();
         expectedList.add("Funchal");
         expectedList.add("Mersin");

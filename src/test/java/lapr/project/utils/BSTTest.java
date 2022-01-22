@@ -37,7 +37,6 @@ public class BSTTest {
      */
     @Test
     public void testSize() {
-        System.out.println("size");
         assertEquals(instance.size(), arr.length);
 
         BST<String> sInstance = new BST();
@@ -55,7 +54,6 @@ public class BSTTest {
      */
     @Test
     public void testInsert() {
-        System.out.println("insert");
         int arr[] = {20,15,10,13,8,17,40,50,30,20,15,10};
         BST<Integer> instance = new BST();
         for (int i=0; i<9; i++){            //new elements
@@ -72,7 +70,6 @@ public class BSTTest {
      */
     @Test
     public void testRemove() {
-        System.out.println("remove");
 
 
         int qtd=arr.length;
@@ -93,7 +90,6 @@ public class BSTTest {
      */
     @Test
     public void testIsEmpty() {
-        System.out.println("isempty");
 
         assertFalse( instance.isEmpty());
         instance = new BST();
@@ -110,7 +106,6 @@ public class BSTTest {
      */
     @Test
     public void testHeight() {
-        System.out.println("height");
 
         instance = new BST();
         assertEquals( instance.height(), -1);
@@ -126,7 +121,6 @@ public class BSTTest {
      */
     @Test
     public void testSmallestElement() {
-        System.out.println("smallestElement");
         assertEquals(new Integer(7), instance.smallestElement());
         instance.remove(7);
         assertEquals(new Integer(8), instance.smallestElement());
@@ -138,7 +132,6 @@ public class BSTTest {
      */
     @Test
     public void testProcessBstByLevel() {
-        System.out.println("processbstbylevel");
         Map<Integer,List<Integer>> expResult = new HashMap();
         expResult.put(0, Arrays.asList(new Integer[]{20}));
         expResult.put(1, Arrays.asList(new Integer[]{15,40}));
@@ -158,7 +151,6 @@ public class BSTTest {
      */
     @Test
     public void testInOrder() {
-        System.out.println("inOrder");
         List<Integer> lExpected = Arrays.asList(inorderT);
         assertEquals( lExpected, instance.inOrder());
     }
@@ -167,7 +159,6 @@ public class BSTTest {
      */
     @Test
     public void testpreOrder() {
-        System.out.println("preOrder");
         List<Integer> lExpected = Arrays.asList(preorderT);
         assertEquals( lExpected, instance.preOrder());
     }
@@ -176,7 +167,6 @@ public class BSTTest {
      */
     @Test
     public void testposOrder() {
-        System.out.println("posOrder");
         List<Integer> lExpected = Arrays.asList(posorderT);
         assertEquals( lExpected, instance.posOrder());
     }

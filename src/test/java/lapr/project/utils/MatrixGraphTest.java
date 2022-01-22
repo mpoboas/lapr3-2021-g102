@@ -36,7 +36,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testCopyConstructor() {
-        System.out.println("Test copy constructor");
 
         for (int i = 0; i < co.size(); i++)
             instance.addEdge(co.get(i), cd.get(i), cw.get(i));
@@ -51,7 +50,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testIsDirected() {
-        System.out.println("Test isDirected");
 
         assertTrue(instance.isDirected(), "result should be true");
         instance = new MatrixGraph<>(false);
@@ -63,7 +61,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testNumVertices() {
-        System.out.println("Test numVertices");
 
         assertEquals(0, instance.numVertices(), "result should be zero");
         instance.addVertex("A");
@@ -81,7 +78,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testVertices() {
-        System.out.println("Test vertices");
 
         assertEquals(0, instance.vertices().size(), "vertices should be empty");
 
@@ -109,7 +105,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testValidVertex() {
-        System.out.println("Test validVertex");
 
         for (int i = 0; i < co.size(); i++)
             instance.addEdge(co.get(i), cd.get(i), cw.get(i));
@@ -125,7 +120,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testKey() {
-        System.out.println("Test key");
 
         for (int i = 0; i < co.size(); i++)
             instance.addEdge(co.get(i), cd.get(i), cw.get(i));
@@ -140,10 +134,40 @@ public class MatrixGraphTest {
      */
     @Test
     public void testAdjVertices() {
-        System.out.println("Test adjVertices");
         for (int i = 0; i < co.size(); i++)
             instance.addEdge(co.get(i), cd.get(i), cw.get(i));
-        System.out.println(instance);
+        assertEquals("Vertices:\n" +
+                "A\n" +
+                "B\n" +
+                "C\n" +
+                "D\n" +
+                "E\n" +
+                "\n" +
+                "Matrix:\n" +
+                "   |  0  |  1  |  2  |  3  |  4 \n" +
+                " 0 |     |  X  |  X  |     |     \n" +
+                " 1 |     |     |     |  X  |     \n" +
+                " 2 |     |     |     |  X  |  X  \n" +
+                " 3 |  X  |     |     |     |     \n" +
+                " 4 |     |     |     |  X  |  X  \n" +
+                "\n" +
+                "Edges:\n" +
+                "From 0 to 1-> A -> B\n" +
+                "Weight: 1\n" +
+                "From 0 to 2-> A -> C\n" +
+                "Weight: 2\n" +
+                "From 1 to 3-> B -> D\n" +
+                "Weight: 3\n" +
+                "From 2 to 3-> C -> D\n" +
+                "Weight: 4\n" +
+                "From 2 to 4-> C -> E\n" +
+                "Weight: 5\n" +
+                "From 3 to 0-> D -> A\n" +
+                "Weight: 6\n" +
+                "From 4 to 3-> E -> D\n" +
+                "Weight: 7\n" +
+                "From 4 to 4-> E -> E\n" +
+                "Weight: 8\n\n",instance.toString());
         Collection <String> cs = instance.adjVertices("A");
         assertEquals(2, cs.size(), "Num adjacents should be 2");
         cs.removeIf(s -> s.equals("B") || s.equals("C"));
@@ -165,7 +189,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testNumEdges() {
-        System.out.println("Test numEdges");
 
         assertEquals(0, instance.numEdges(), "result should be zero");
 
@@ -207,7 +230,6 @@ public class MatrixGraphTest {
             assertEquals("Edge vertices cannot be null!",ex.getMessage());
 
         }
-        System.out.println("Test Edges");
 
         assertEquals(0, instance.edges().size(), "edges should be empty");
 
@@ -260,7 +282,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testGetEdge() {
-        System.out.println("Test getEdge");
 
         for (int i = 0; i <co.size(); i++)
             instance.addEdge(co.get(i), cd.get(i), cw.get(i));
@@ -279,7 +300,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testGetEdgeByKey() {
-        System.out.println("Test getEdge");
 
         for (int i = 0; i <co.size(); i++)
             instance.addEdge(co.get(i), cd.get(i), cw.get(i));
@@ -299,7 +319,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testOutDegree() {
-        System.out.println("Test outDegree");
 
         for (int i = 0; i <co.size(); i++)
             instance.addEdge(co.get(i), cd.get(i), cw.get(i));
@@ -315,7 +334,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testInDegree() {
-        System.out.println("Test inDegree");
 
         for (int i = 0; i <co.size(); i++)
             instance.addEdge(co.get(i), cd.get(i), cw.get(i));
@@ -331,7 +349,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testOutgoingEdges() {
-        System.out.println(" Test outgoingEdges");
 
         for (int i = 0; i <co.size(); i++)
             instance.addEdge(co.get(i), cd.get(i), cw.get(i));
@@ -364,7 +381,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testIncomingEdges() {
-        System.out.println(" Test incomingEdges");
 
         for (int i = 0; i <co.size(); i++)
             instance.addEdge(co.get(i), cd.get(i), cw.get(i));
@@ -398,7 +414,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testRemoveVertex() {
-        System.out.println("Test removeVertex");
 
         for (int i = 0; i <co.size(); i++)
             instance.addEdge(co.get(i), cd.get(i), cw.get(i));
@@ -428,7 +443,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testRemoveEdge() {
-        System.out.println("Test removeEdge");
 
         assertEquals(0, instance.numEdges(), "Num edges should be 0");
 
@@ -456,7 +470,6 @@ public class MatrixGraphTest {
      */
     @Test
     public void testClone() {
-        System.out.println("Test Clone");
 
         for (int i = 0; i <co.size(); i++)
             instance.addEdge(co.get(i), cd.get(i), cw.get(i));
@@ -484,7 +497,6 @@ public class MatrixGraphTest {
 
     @Test
     public void testEquals() {
-        System.out.println("Test Equals");
 
         for (int i = 0; i <co.size(); i++)
             instance.addEdge(co.get(i), cd.get(i), cw.get(i));

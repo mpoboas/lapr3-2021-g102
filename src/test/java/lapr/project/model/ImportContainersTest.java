@@ -1,5 +1,6 @@
 package lapr.project.model;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -8,12 +9,16 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ImportContainersTest {
-    ImportContainers importContainers;
+    static ImportContainers importContainers = new ImportContainers();
+
+    @BeforeAll
+    static void init(){
+        importContainers.importContainersData("data/data-shipsports/LAPR3_G102 - containers.csv");
+    }
 
     @Test
     void importContainersData() {
-        importContainers = new ImportContainers();
-        importContainers.importContainersData("data/data-shipsports/LAPR3_G102 - containers.csv");
+
         assertEquals(5200, importContainers.getListOfImportedContainers().get(0).getTare());
         assertEquals(4900, importContainers.getListOfImportedContainers().get(4).getTare());
 
@@ -22,9 +27,8 @@ class ImportContainersTest {
 
 
     @Test
-    void containerAlreadyImported() throws FileNotFoundException {
-        importContainers = new ImportContainers();
-        importContainers.importContainersData("data/data-shipsports/LAPR3_G102 - containers.csv");
+    void containerAlreadyImported()  {
+
         assertTrue(importContainers.containerAlreadyImported(importContainers.getListOfImportedContainers().get(10).getId()));
         Container c = new Container( "ID", "Refrigerated","20R5",2000,1220,1200);
         assertFalse(importContainers.containerAlreadyImported(c.getId()));
@@ -32,14 +36,10 @@ class ImportContainersTest {
 
     @Test
     void getListOfImportedContainers() {
-        importContainers = new ImportContainers();
-        importContainers.importContainersData("data/data-shipsports/LAPR3_G102 - containers.csv");
+
         List<Container> list = importContainers.getListOfImportedContainers();
         assertEquals("LPRU0566306", list.get(0).getId());
         assertEquals("LPRU9575857", list.get(2).getId());
-        /*
-        for (Container container : list) {
-            System.out.println(container);
-        }*/
+
     }
 }

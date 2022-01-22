@@ -35,7 +35,6 @@ class ShortestPathTest {
     }
     @Test
     void getNplacesPath()  {
-        places.add(network.getGraph().vertex(12));
 
         places.add(network.getGraph().vertex(135));
         places.add(network.getGraph().vertex(1));
@@ -45,7 +44,7 @@ class ShortestPathTest {
         LinkedList<Place> fPath = path.getpathNplaces();
         assertEquals(path.getpathNplaces().size(), fPath.size());
 
-        assertEquals(38919,path.getnPlacesDistance(),0.01);
+        assertEquals(39171.03,path.getnPlacesDistance(),0.01);
     }
     @Test
     void getFullPath2()  {

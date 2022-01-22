@@ -21,8 +21,7 @@ public class AVLTest {
      */
     @Test
     public void testInsert() {
-        System.out.println("insert");
-        
+
         //test Simple right rotation 
         AVL<Integer> instance = new AVL();
         int arr[] = {8,4,10,2,6,3};
@@ -70,7 +69,6 @@ public class AVLTest {
      */
     @Test
     public void testRemove() {
-        System.out.println("remove");
         List<Integer> lExpected;
         AVL<Integer> instance;
         
@@ -120,7 +118,6 @@ public class AVLTest {
     
      @Test
     public void testEquals() {
-        System.out.println("equals");
         AVL<Integer> instance = new AVL();
         int arr[] = {1, 8};
         for (int i = 0; i < arr.length; i++)
