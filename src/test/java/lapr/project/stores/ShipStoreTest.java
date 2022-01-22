@@ -21,7 +21,7 @@ class ShipStoreTest {
         ShipStore store = new ShipStore();
         Ship ex1 = new Ship(112, "122", "test", "Ship", 12, 1200, 600, 21);
         Ship ex2 = new Ship(113, "122", "test", "Ship", 12, 1200, 600, 21);
-        Ship res = store.createShip(112, "122", "test", "Ship", 12, 1200, 600, 21);
+        Ship res = store.createShip(112, "122", "test", "Ship", 12, 1200, 600, 21,0);
 
         assertEquals(ex1, res);
     }

@@ -105,8 +105,8 @@ public class ShipStoreDB implements Persistable {
             savePortPreparedStatement.setString(2, ship.getVesselName());
             savePortPreparedStatement.setString(3, ship.getCallSign());
             savePortPreparedStatement.setInt(4, ship.getVesselType());
-            savePortPreparedStatement.setInt(5, ship.getLength());
-            savePortPreparedStatement.setInt(6, ship.getWidth());
+            savePortPreparedStatement.setDouble(5, ship.getLength());
+            savePortPreparedStatement.setDouble(6, ship.getWidth());
             savePortPreparedStatement.setInt(7, ship.getCapacity());
             savePortPreparedStatement.setDouble(8, ship.getDraft());
             savePortPreparedStatement.setInt(9, ship.getMMSI());

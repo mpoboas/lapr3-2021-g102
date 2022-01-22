@@ -227,4 +227,11 @@ class PhysicsUtilsTest {
         }
     }
 
+    @Test
+    void getShipSinkageWithAddedCargo(){
+        assertEquals(9.997303113,PhysicsUtils.getDraftAfterAddedCargo(Constants.CASON_J_CALLAWAY,20000) ,0.1);
+        assertEquals(1.997303113,PhysicsUtils.shipSinkageWithCargo(Constants.CASON_J_CALLAWAY,20000) ,0.1);
+        assertEquals(13.892624933253762,PhysicsUtils.getDraftAfterAddedCargo(Constants.EVER_ACE,20000) ,0.1);
+        assertEquals(0.3926249332,PhysicsUtils.shipSinkageWithCargo(Constants.EVER_ACE,20000) ,0.1);
+    }
 }

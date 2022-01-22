@@ -38,8 +38,8 @@ public class ShipStore {
      * @param draft      the draft of the ship
      * @return a new instance of ship
      */
-    public Ship createShip(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, double draft) {
-        return new Ship(mmsi, vesselName, imo, callSign, vesselType, length, width, draft);
+    public Ship createShip(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, double draft,double weight) {
+        return new Ship(mmsi, vesselName, imo, callSign, vesselType, length, width, draft,weight);
     }
 
     /**

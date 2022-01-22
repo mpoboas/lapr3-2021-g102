@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,8 +38,9 @@ class PortReportControllerTest {
         assertEquals(19,report.getMinDay());
         assertEquals(9,report.getMaxDay());
         assertEquals(122,report.getOcupationOnDay(1));
-        //System.out.println(report);
-
+        try (PrintWriter out = new PrintWriter("Port Report.txt")) {
+            out.println(report);
+        }
     }
 
 

@@ -16,9 +16,9 @@ class SortByMMSITravDistanceTest {
 
     @Test
     void compare() {
-        Ship ex1 = new Ship(112, "122", "test", "Ship", 12, 1200, 600, 21);
-        Ship ex2 = new Ship(112, "123", "test1", "Ship1", 12, 1200, 600, 21);
-        Ship ex3 = new Ship(122, "124", "test2", "Ship2", 12, 1200, 600, 21);
+        Ship ex1 = new Ship(112, "122", "test", "Ship", 12, 1200, 600, 21,0);
+        Ship ex2 = new Ship(112, "123", "test1", "Ship1", 12, 1200, 600, 21,0);
+        Ship ex3 = new Ship(122, "124", "test2", "Ship2", 12, 1200, 600, 21,0);
 
         Trips exTrip1 = new Trips();
         ex1.addTrip(exTrip1);

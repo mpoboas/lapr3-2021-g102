@@ -35,11 +35,11 @@ public class Ship implements Comparable<Ship> {
     /**
      * the length of the ship
      */
-    private final int length;
+    private final double length;
     /**
      * the width of the ship
      */
-    private final int width;
+    private final double width;
     /**
      * the draft of the ship
      */
@@ -52,6 +52,8 @@ public class Ship implements Comparable<Ship> {
 
     private final List<Trips> tripsList;
 
+    private final double weight;
+
     /**
      * @param mmsi       the mmsi code of the ship
      * @param vesselName the vessel name of the ship
@@ -62,7 +64,7 @@ public class Ship implements Comparable<Ship> {
      * @param width      the width of the ship
      * @param draft      the draft of the ship
      */
-    public Ship(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, double draft) {
+    public Ship(int mmsi, String vesselName, String imo, String callSign, int vesselType, double length, double width, double draft,double weigth) {
         MMSI = mmsi;
         this.vesselName = vesselName;
         IMO = imo;
@@ -71,7 +73,20 @@ public class Ship implements Comparable<Ship> {
         this.length = length;
         this.width = width;
         this.draft = draft;
-
+        this.weight = weigth;
+        aisMessagesList = new ArrayList<>();
+        this.tripsList = new ArrayList<>();
+    }
+    public Ship(int mmsi, String vesselName, String imo, String callSign, int vesselType, double length, double width, double draft) {
+        MMSI = mmsi;
+        this.vesselName = vesselName;
+        IMO = imo;
+        this.callSign = callSign;
+        this.vesselType = vesselType;
+        this.length = length;
+        this.width = width;
+        this.draft = draft;
+        this.weight = 0;
         aisMessagesList = new ArrayList<>();
         this.tripsList = new ArrayList<>();
     }
@@ -114,14 +129,14 @@ public class Ship implements Comparable<Ship> {
     /**
      * @return length of the ship
      */
-    public int getLength() {
+    public double getLength() {
         return length;
     }
 
     /**
      * @return width of the ship
      */
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
@@ -131,6 +146,8 @@ public class Ship implements Comparable<Ship> {
     public double getDraft() {
         return draft;
     }
+
+    public double getWeight(){return this.weight;}
 
     /**
      * @return the max SOG of the ship
@@ -479,8 +496,8 @@ public class Ship implements Comparable<Ship> {
                 ", IMO='" + IMO + '\'' +
                 ", callSign='" + callSign + '\'' +
                 ", vesselType=" + vesselType +
-                ", length=" + length +
-                ", width=" + width +
+                ", length=" + (int)length +
+                ", width=" +(int) width +
                 ", draft=" + draft +
                 '}' + '\n' + aisMessagesList;
     }

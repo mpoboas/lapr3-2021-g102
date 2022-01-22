@@ -111,7 +111,7 @@ public class Import {
         int length = Integer.parseInt(attributes[11]);
         int width = Integer.parseInt(attributes[12]);
         double draft = Double.parseDouble(attributes[13]);
-        return shipStore.createShip(mmsi, vesselName, imo, callSign, vesselType, length, width, draft);
+        return shipStore.createShip(mmsi, vesselName, imo, callSign, vesselType, length, width, draft,0);
     }
 
     /**

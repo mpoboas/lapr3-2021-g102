@@ -1,6 +1,7 @@
 package lapr.project.utils;
 
 import lapr.project.model.CargoManifest;
+import lapr.project.model.Ship;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -393,5 +394,26 @@ public class PhysicsUtils {
         return calculateTheUnleadedCenterOfMassWithAllParameters(length * SECTION_1_LENGTH_PERCENT, width, height, massTotal * SECTION_1_MASS_PERCENT,
                 length * SECTION_2_LENGTH_PERCENT, width, height, massTotal * SECTION_2_MASS_PERCENT,
                 bridgeLength, bridgeWidth, bridgeHeight, massTotal * SECTION_3_MASS_PERCENT, massTotal, distanceToBridge);
+    }
+
+
+
+
+
+
+    public static  double getCalculatedDiffDraft(Ship ship, double cargo){
+        double weightWithCargo = ship.getWeight()+ cargo;
+        double waterToBeDisplacesNoCargo =ship.getWeight()/Constants.WATER_DENSITY;
+        double waterToBeDisplacesWithCargo =weightWithCargo/Constants.WATER_DENSITY;
+        double diffInDisplacement = waterToBeDisplacesWithCargo -waterToBeDisplacesNoCargo;
+        double shipSinkage = diffInDisplacement/ (ship.getLength() * ship.getWidth());
+        return shipSinkage;
+    }
+    public static double shipSinkageWithCargo(Ship ship, int nContainer){
+        double addedWeight = nContainer * Constants.CONTAINERWEIGHT;
+        return getCalculatedDiffDraft(ship,addedWeight);
+    }
+    public static double getDraftAfterAddedCargo(Ship ship, int nContainers){
+        return ship.getDraft() +shipSinkageWithCargo(ship,nContainers);
     }
 }

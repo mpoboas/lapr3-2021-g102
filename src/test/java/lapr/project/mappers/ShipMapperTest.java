@@ -14,8 +14,8 @@ class ShipMapperTest {
 
     @Test
     void testToDTO() {
-        Ship ship1 = new Ship(112,"122","test","Ship", 12, 1200, 600 , 21);
-        Ship ship2 = new Ship(120,"321","test2","ShipO", 12, 1200, 600 , 21);
+        Ship ship1 = new Ship(112,"122","test","Ship", 12, 1200, 600 , 21,0);
+        Ship ship2 = new Ship(120,"321","test2","ShipO", 12, 1200, 600 , 21,0);
         List<Ship> list = new ArrayList<>();
         list.add(ship1);
         list.add(ship2);

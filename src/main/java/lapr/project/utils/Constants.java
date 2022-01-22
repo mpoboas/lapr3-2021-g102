@@ -1,5 +1,7 @@
 package lapr.project.utils;
 
+import lapr.project.model.Ship;
+
 /**
  *
  * @author Paulo Maio <pam@isep.ipp.pt>
@@ -22,4 +24,9 @@ public class Constants {
     public static final String U_ROLE_PROJECT_MANAGER = "PROJECT MANAGER";
 
     public static final double AUX_EQUIPMENT_MAX_POWER = 7500;
+
+    public static final Ship EVER_ACE = new Ship(366971340,"Ever Ace","-","D5OB2",0,400,62,13.5,235579);
+    public static final Ship CASON_J_CALLAWAY= new Ship(366971340,"Sabrina","-","D5OB2",0,228.45,21.34,8,12309);
+    public static final double CONTAINERWEIGHT = 0.5;
+    public static final double WATER_DENSITY = 1.027;
 }

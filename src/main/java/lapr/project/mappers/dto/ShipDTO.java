@@ -27,11 +27,11 @@ public class ShipDTO {
     /**
      * the length of the ship
      */
-    private final int length;
+    private final double length;
     /**
      * the width of the ship
      */
-    private final int width;
+    private final double width;
     /**
      * the draft of the ship
      */
@@ -53,7 +53,7 @@ public class ShipDTO {
      * @param width            the width of the ship
      * @param draft            the draft of the ship
      */
-    public ShipDTO(int mmsi, String vesselName, String imo, String callSign, int vesselType, int length, int width, double draft, List<AISMessageDTO> aismessges) {
+    public ShipDTO(int mmsi, String vesselName, String imo, String callSign, int vesselType, double length, double width, double draft, List<AISMessageDTO> aismessges) {
         MMSI = mmsi;
         this.vesselName = vesselName;
         IMO = imo;
@@ -77,8 +77,8 @@ public class ShipDTO {
                 ", IMO='" + IMO + '\'' +
                 ", callSign='" + callSign + '\'' +
                 ", vesselType=" + vesselType +
-                ", length=" + length +
-                ", width=" + width +
+                ", length=" + (int)length +
+                ", width=" + (int)width +
                 ", draft=" + draft +
                 '}' + '\n' + aisMessagesList;
     }
