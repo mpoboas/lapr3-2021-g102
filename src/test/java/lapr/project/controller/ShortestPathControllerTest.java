@@ -32,7 +32,7 @@ class ShortestPathControllerTest {
         places.add(comp.getFreightNetwork().getGraph().vertex(1));
         controller = new ShortestPathController(places,comp,comp.getFreightNetwork().getGraph().vertex(120),comp.getFreightNetwork().getGraph().vertex(100));
         Pair<LinkedList<Place>,Double> fullPathInfo = controller.getFull();
-        assertEquals(26,fullPathInfo.getFirst().size());
+        assertEquals(27,fullPathInfo.getFirst().size());
         assertEquals(35371.82,fullPathInfo.getSecond(),0.1);
 
     }

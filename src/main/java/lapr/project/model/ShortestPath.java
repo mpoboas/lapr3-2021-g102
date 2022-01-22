@@ -117,6 +117,9 @@ public class ShortestPath {
     private int getFactorial(int value){
         if(value ==1)
             return 1;
+        if(value ==0 || value ==-1)
+            return 0;
+
 
         return value * getFactorial(value -1);
     }
@@ -129,22 +132,21 @@ public class ShortestPath {
         double pathDist;
         LinkedList<Place> currentPartPath = new LinkedList<>();
         for (LinkedList<Place> allPossibleVisit : allPossibleVisits) {
-            Place currentPlace = vOrig;
             LinkedList<Place> currentPath = new LinkedList<>();
             pathDist = 0;
             //get Next combo of places
-            LinkedList<Place> comboPLaces = allPossibleVisit;
-
-            for (Place comboPLace : comboPLaces) {
+            allPossibleVisit.addFirst(vOrig);
+            allPossibleVisit.addLast(vDest);
+            Place currentPlace = allPossibleVisit.get(0);
+            for (Place comboPLace : allPossibleVisit) {
                 nextPlace = comboPLace;
                 currentPartPath.clear();
                 pathDist = pathDist + pathBetweenVertex(currentPlace, nextPlace, currentPartPath);
+                revertList(currentPartPath);
                 currentPath.addAll(currentPartPath);
                 currentPlace = nextPlace;
             }
             currentPartPath.clear();
-            pathDist = pathDist + pathBetweenVertex(currentPlace, vDest, currentPartPath);
-            currentPath.addAll(currentPartPath);
             Pair<LinkedList<Place>, Double> pair = new Pair<>(currentPath, pathDist);
             listOfPossibleRoutes.add(pair);
 
@@ -160,14 +162,25 @@ public class ShortestPath {
     private void seaPath() {
         try {
             this.seaPathDistance = this.network.shortestPathSea(this.vOrig, this.vDest, this.seaPath);
+            revertList(this.seaPath);
         }catch(NullPointerException e ){
             this.seaPathDistance = 0;
         }
+    }
+    private void revertList(LinkedList<Place> list){
+        LinkedList<Place> tempList = new LinkedList<>();
+       for(int i = 0; i < list.size();i++){
+           tempList.addFirst(list.get(i));
+       }
+       list.clear();
+       list.addAll(tempList);
+       tempList.clear();
     }
 
     private void landPath() {
         try {
         this.landPathDistance = this.network.shortestPathLand(this.vOrig, this.vDest, this.landPath);
+        revertList(this.landPath);
         }catch (NullPointerException e){
             this.landPathDistance = 0;
         }
@@ -175,6 +188,7 @@ public class ShortestPath {
 
     private void directPath() {
             this.directPathDistance = this.network.shortestPath(this.vOrig, this.vDest, this.directPath);
+            revertList(this.directPath);
     }
     public LinkedList<Place> getSeaPath() {
         if (this.seaPath.isEmpty()) {

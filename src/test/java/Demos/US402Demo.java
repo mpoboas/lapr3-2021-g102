@@ -23,7 +23,9 @@ public class US402Demo {
             System.out.println("| " + comp.getFreightNetwork().getGraph().vertices().get(i).getCountry() + " | " + comp.getFreightNetwork().getGraph().vertices().get(i).getContinent() + " | " +  comp.getFreightNetwork().getGraph().vertices().get(i).getLatitude() + " | " + comp.getFreightNetwork().getGraph().vertices().get(i).getLongitude() + " | "  + comp.getFreightNetwork().getGraph().vertices().get(i).getClass()+ " | ");
         }
         System.out.println("Place id?");
-        int p = scan.nextInt();
+        int pInit = scan.nextInt();
+        System.out.println("Place destiny id?");
+        int pDest = scan.nextInt();
         System.out.println("Number of places?");
         int n = scan.nextInt();
         for(int i = 0; i < comp.getFreightNetwork().getGraph().vertices().size(); i++){
@@ -37,5 +39,49 @@ public class US402Demo {
                 places.add(comp.getFreightNetwork().getGraph().vertex(id-1));
             }
         }
+        System.out.println("LOADING...");
+        controller = new ShortestPathController(places,comp,comp.getFreightNetwork().getGraph().vertex(pInit-1),comp.getFreightNetwork().getGraph().vertex(pDest-1));
+        List <Place> routeLand =  controller.getLandPath();
+        List <Place> routeSea =  controller.getSeaPath();
+        List <Place> routeDirect =  controller.getDirectPath();
+        List <Place> routeFull =  controller.getFullPath();
+        System.out.println("Land Path");
+        if(routeLand.size()==0){
+            System.out.println("NOT POSSIBLE");
+        }else{
+            System.out.println("Distance = " + controller.getLandPathDist() + " km.");
+            System.out.println("Passes by :");
+            for (Place place : routeLand) {
+                System.out.println("| " + place.getCountry() + " | " + place.getContinent() + " | " + place.getLatitude() + " | " + place.getLongitude() + " | " + place.getClass() + " | ");
+            }
+        }
+        System.out.println("Sea Path");
+        if(routeSea.size()==0){
+            System.out.println("NOT POSSIBLE");
+        }else{
+            System.out.println("Distance = " + controller.getSeaPathDist() + " km.");
+            System.out.println("Passes by :");
+            for (Place place : routeSea) {
+                System.out.println("| " + place.getCountry() + " | " + place.getContinent() + " | " + place.getLatitude() + " | " + place.getLongitude() + " | " + place.getClass() + " | ");
+            }
+        }
+        System.out.println("Direct Path");
+        System.out.println("Distance = " + controller.getDirectPathDist() + " km.");
+        System.out.println("Passes by :");
+        for (Place value : routeDirect) {
+            System.out.println("| " + value.getCountry() + " | " + value.getContinent() + " | " + value.getLatitude() + " | " + value.getLongitude() + " | " + value.getClass() + " | ");
+        }
+
+        System.out.println("Full Path");
+        System.out.println("Distance = " + controller.getFullPathDist() + " km.");
+        System.out.println("Passes by :");
+        for (Place place : routeFull) {
+            System.out.println("| " + place.getCountry() + " | " + place.getContinent() + " | " + place.getLatitude() + " | " + place.getLongitude() + " | " + place.getClass() + " | ");
+        }
+
+
+
+
+
     }
 }
