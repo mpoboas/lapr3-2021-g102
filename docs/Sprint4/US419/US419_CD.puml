@@ -11,8 +11,8 @@ class ContainersOnShipUI {
 class PhysicsUtils {
 +whereToPositionContainersOnVessel(unladenCenterOfMass, shipAvailableLength, shipAvailableWidth, containerLength, containerWidth, numContainers)
 +verifyUnladenCenterOfMass(unladenCenterOfMass, container1, container2)
-+calculateTotalCenterOfMass(unladenCenterOfMass, containerMatrix, numContainers, shipMass)
--calculateContainerMatrixCenterOfMassXY(containerMatrix, numContainers)
++calculateTotalCenterOfMass(unladenCenterOfMass, containerPosMatrix, numContainers, shipMass)
+-calculateContainerMatrixCenterOfMassXY(containerPosMatrix, numContainers)
 }
 
 ContainersOnShipUI ..> PhysicsUtils

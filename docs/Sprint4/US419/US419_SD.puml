@@ -1,0 +1,21 @@
+@startuml
+autonumber
+'hide footbox
+
+actor "Ship Captain" as SC
+
+participant "ShipIdleDaysUI" as UI
+participant "PhysicsUtils" as PU
+
+activate SC
+SC -> UI : requests where to position n containers on the vessel,\nsuch that the center of mass remains at x and y
+activate UI
+
+UI -> PU : whereToPositionContainersOnVessel(unladenCenterOfMass, shipAvailableLength, shipAvailableWidth, containerLength, containerWidth, numContainers)
+activate PU
+
+PU --> UI : result
+deactivate PU
+UI --> SC : shows all the containers´ positions
+deactivate UI
+@enduml

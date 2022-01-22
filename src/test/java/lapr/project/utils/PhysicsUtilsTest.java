@@ -238,8 +238,8 @@ class PhysicsUtilsTest {
     @Test
     void whereToPositionContainersOnVessel() {
         Pair<Point2D.Double, Double> unladenCenterOfMass = PhysicsUtils.calculateTheUnleadedCenterOfMass(Constants.SABRINA.getLength(), Constants.SABRINA.getWidth(), Constants.SABRINA.getDraft(), Constants.SABRINA.getWeight(), "STERN");
-        Point2D.Double[][] containerMatrix = PhysicsUtils.whereToPositionContainersOnVessel(unladenCenterOfMass, Constants.SHIP_AVAILABLE_LENGTH, Constants.SHIP_AVAILABLE_WIDTH, Constants.CONTAINER_LENGTH, Constants.CONTAINER_WIDTH, 100);
-        Pair<Point2D.Double, Double> totalCenterOfMass = PhysicsUtils.calculateTotalCenterOfMass(unladenCenterOfMass, containerMatrix, 100, Constants.SABRINA.getWeight());
+        Point2D.Double[][] containerPosMatrix = PhysicsUtils.whereToPositionContainersOnVessel(unladenCenterOfMass, Constants.SHIP_AVAILABLE_LENGTH, Constants.SHIP_AVAILABLE_WIDTH, Constants.CONTAINER_LENGTH, Constants.CONTAINER_WIDTH, 100);
+        Pair<Point2D.Double, Double> totalCenterOfMass = PhysicsUtils.calculateTotalCenterOfMass(unladenCenterOfMass, containerPosMatrix, 100, Constants.SABRINA.getWeight());
         assertEquals(0.00, totalCenterOfMass.getFirst().getX());
         assertEquals(80.0625, totalCenterOfMass.getFirst().getY());
         assertEquals(2.9437689633375475, totalCenterOfMass.getSecond());

@@ -29,18 +29,18 @@ public class US419Demo {
                     System.out.println("Maximum number of containers per layer on the deck exceeded. Maximum is 100.");
                 else {
 
-                    Point2D.Double[][] containerMatrix = PhysicsUtils.whereToPositionContainersOnVessel(unladenCenterOfMass, Constants.SHIP_AVAILABLE_LENGTH, Constants.SHIP_AVAILABLE_WIDTH, Constants.CONTAINER_LENGTH, Constants.CONTAINER_WIDTH, numContainers);
+                    Point2D.Double[][] containerPosMatrix = PhysicsUtils.whereToPositionContainersOnVessel(unladenCenterOfMass, Constants.SHIP_AVAILABLE_LENGTH, Constants.SHIP_AVAILABLE_WIDTH, Constants.CONTAINER_LENGTH, Constants.CONTAINER_WIDTH, numContainers);
                     System.out.println("X and Y axis positions: ");
                     for (int i = 0; i < 10; i++) {
                         for (int j = 0; j < 10; j++) {
-                            System.out.printf("[%6.3f;%6.3f] ", containerMatrix[i][j].getX(), containerMatrix[i][j].getY());
+                            System.out.printf("[%6.3f;%6.3f] ", containerPosMatrix[i][j].getX(), containerPosMatrix[i][j].getY());
                         }
                         System.out.println();
                     }
 
-                    Pair<Point2D.Double, Double> totalCenterOfMass = PhysicsUtils.calculateTotalCenterOfMass(unladenCenterOfMass, containerMatrix, numContainers, Constants.SABRINA.getWeight());
-                    System.out.printf("\nPrevious total centre of mass: (%.3f, %.3f, %.3f)", unladenCenterOfMass.getFirst().getX(), unladenCenterOfMass.getFirst().getY(), unladenCenterOfMass.getSecond());
-                    System.out.printf("\nNew total centre of mass: (%.3f, %.3f, %.3f)\n\n", totalCenterOfMass.getFirst().getX(), totalCenterOfMass.getFirst().getY(), totalCenterOfMass.getSecond());
+                    Pair<Point2D.Double, Double> totalCenterOfMass = PhysicsUtils.calculateTotalCenterOfMass(unladenCenterOfMass, containerPosMatrix, numContainers, Constants.SABRINA.getWeight());
+                    System.out.printf("\nPrevious total centre of mass: (%.5f, %.5f, %.5f)", unladenCenterOfMass.getFirst().getX(), unladenCenterOfMass.getFirst().getY(), unladenCenterOfMass.getSecond());
+                    System.out.printf("\nNew total centre of mass: (%.5f, %.5f, %.5f)\n\n", totalCenterOfMass.getFirst().getX(), totalCenterOfMass.getFirst().getY(), totalCenterOfMass.getSecond());
                 }
 
                 System.out.println("Do you want to repeat the process? (y/n)");
