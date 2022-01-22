@@ -13,13 +13,13 @@ public class US413Demo {
         Scanner scan = new Scanner(System.in);
         System.out.println("Number of trip sections");
         int nSection = scan.nextInt();
-        List<Pair<Integer,Integer>> list = new ArrayList<>();
+        List<Pair<Integer,Double>> list = new ArrayList<>();
         for(int i = 0; i < nSection; i++){
             System.out.println("Section "+(i+1)+" duration");
             int duration = scan.nextInt();
             System.out.println("Section "+(i+1)+" temperature");
-            int temp = scan.nextInt();
-            Pair<Integer,Integer> pair = new Pair<>(duration,temp);
+            double temp = scan.nextDouble();
+            Pair<Integer,Double> pair = new Pair<>(duration,temp);
             list.add(pair);
         }
         System.out.println("Number of 7º containers");

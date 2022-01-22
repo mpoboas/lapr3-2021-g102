@@ -52,13 +52,13 @@ class PhysicsUtilsTest {
 
     @Test
     void calculateEnergyNecessaryInTrip() {
-        List<Pair<Integer, Integer>> tripSections = new ArrayList<>();
-        tripSections.add(new Pair<>(60, 30));
-        tripSections.add(new Pair<>(400, 20));
-        tripSections.add(new Pair<>(200, 10));
-        tripSections.add(new Pair<>(1000, 12));
-        tripSections.add(new Pair<>(3000, 10));
-        tripSections.add(new Pair<>(740, 15));
+        List<Pair<Integer, Double>> tripSections = new ArrayList<>();
+        tripSections.add(new Pair<>(60, 30.0));
+        tripSections.add(new Pair<>(400, 20.0));
+        tripSections.add(new Pair<>(200, 10.0));
+        tripSections.add(new Pair<>(1000, 12.0));
+        tripSections.add(new Pair<>(3000, 10.0));
+        tripSections.add(new Pair<>(740, 15.0));
         assertEquals(0.034, PhysicsUtils.get5DegResistance(), 0.01);
         assertEquals(0.024, PhysicsUtils.get7DegResistance(), 0.01);
 
@@ -135,18 +135,18 @@ class PhysicsUtilsTest {
 
 
         List<Pair<Double, Double>> list = PhysicsUtils.energyToBeSupliedTocontainersDepOnPos(importCG.getListOfImportedCargoManifests().get(0), tripSections);
-        assertEquals(411206.5, list.get(0).getFirst(), 0.1);
-        assertEquals(342892.5, list.get(0).getSecond(), 0.1);
-        assertEquals(1958126.2, list.get(1).getFirst(), 0.1);
-        assertEquals(1292058.76, list.get(1).getSecond(), 0.1);
-        assertEquals(587437.8, list.get(2).getFirst(), 0.1);
-        assertEquals(149083.7, list.get(2).getSecond(), 0.1);
-        assertEquals(3328814.66, list.get(3).getFirst(), 0.1);
-        assertEquals(1242364.19, list.get(3).getSecond(), 0.1);
-        assertEquals(8811568.23, list.get(4).getFirst(), 0.1);
-        assertEquals(2236255.55, list.get(4).getSecond(), 0.1);
-        assertEquals(2898026.8, list.get(5).getFirst(), 0.1);
-        assertEquals(1470959.2, list.get(5).getSecond(), 0.1);
+        assertEquals(120120.01, list.get(0).getFirst(), 0.1);
+        assertEquals(101308.407, list.get(0).getSecond(), 0.1);
+        assertEquals(572000.05, list.get(1).getFirst(), 0.1);
+        assertEquals(381741.82, list.get(1).getSecond(), 0.1);
+        assertEquals(171600.01, list.get(2).getFirst(), 0.1);
+        assertEquals(44047.1, list.get(2).getSecond(), 0.1);
+        assertEquals(972400.10, list.get(3).getFirst(), 0.1);
+        assertEquals(367059.44, list.get(3).getSecond(), 0.1);
+        assertEquals(2574000.26, list.get(4).getFirst(), 0.1);
+        assertEquals(660707.00, list.get(4).getSecond(), 0.1);
+        assertEquals(846560.088, list.get(5).getFirst(), 0.1);
+        assertEquals(434598.38, list.get(5).getSecond(), 0.1);
 
     }
 

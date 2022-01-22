@@ -110,43 +110,43 @@ public class PhysicsUtils {
         return calculateContainerThermalResistance(PhysicsUtils.CONTAINER_40_AREA, materialThermalConductivityList, wallThicknessList);
     }
 
-    public static List<Pair<Double, Double>> energyToBeSupliedTocontainers(List<Pair<Integer, Integer>> tripSections, int n5DegContainers, int n7DegContainers) {
+    public static List<Pair<Double, Double>> energyToBeSupliedTocontainers(List<Pair<Integer, Double>> tripSections, int n5DegContainers, int n7DegContainers) {
         double containers5DegsRt = get5DegResistance();
         double containers7DegsRt = get7DegResistance();
         List<Pair<Double, Double>> listOfEnergy = new ArrayList<>();
-        for (Pair<Integer, Integer> tripSection : tripSections) {
+        for (Pair<Integer, Double> tripSection : tripSections) {
             Pair<Double, Double> energyToBeSuplied = totalEnergyToBeSupliedToContainers(tripSection.getFirst(), tripSection.getSecond(), containers5DegsRt, containers7DegsRt);
             listOfEnergy.add(new Pair<>(energyToBeSuplied.getFirst() * n5DegContainers, energyToBeSuplied.getSecond() * n7DegContainers));
         }
         return listOfEnergy;
     }
 
-    public static Pair<Double, Double> totalEnergyToBeSupliedToContainers(int time, int exTemp, double thermalResisttance5, double thermalResisttance7) {
+    public static Pair<Double, Double> totalEnergyToBeSupliedToContainers(int time, Double exTemp, double thermalResisttance5, double thermalResisttance7) {
         double container5Degrees = energyToSupplyToContainer(exTemp, -5, thermalResisttance5, time);
         double container7Degrees = energyToSupplyToContainer(exTemp, 7, thermalResisttance7, time);
         return new Pair<>(container5Degrees, container7Degrees);
     }
 
-    public static double energyToSupplyToContainer(int exTemp, int intTemp, double thermalResistance, int time) {
+    public static double energyToSupplyToContainer(double exTemp, int intTemp, double thermalResistance, int time) {
         return calculateEnergyTransferredAsHeat(exTemp, intTemp, thermalResistance) * time;
     }
 
 
     public static List<Pair<Double, Double>> energyToBeSupliedTocontainersDepOnPos(CargoManifest cg, List<Pair<Integer, Double>> tripSections) {
         List<Pair<Double, Double>> listOfEnergyToBeSupplied = new ArrayList<>();
-        for (int i = 0; i < tripSections.size(); i++) {
+        for (Pair<Integer, Double> tripSection : tripSections) {
             double energyFor7degContainers = 0;
             double energyFor5degContainers = 0;
             for (int j = 0; j < cg.getContainerList().size(); j++) {
                 double areaExposed = determineAreaExposed(cg, cg.getContainerList().get(j).getSecond());
                 if (cg.getContainerList().get(j).getFirst().getType().equalsIgnoreCase(PhysicsUtils.CONTAINERS_5DEG.getFirst())) {
-                    energyFor5degContainers = energyFor5degContainers + (energyToBeSuppliedToContainer(areaExposed, -5, tripSections.get(i).getSecond()));
+                    energyFor5degContainers = energyFor5degContainers + (energyToBeSuppliedToContainer(areaExposed, -5, tripSection.getSecond()));
                 }
                 if (cg.getContainerList().get(j).getFirst().getType().equalsIgnoreCase(PhysicsUtils.CONTAINERS_7DEG.getFirst())) {
-                    energyFor7degContainers = energyFor7degContainers + (energyToBeSuppliedToContainer(areaExposed, 7, tripSections.get(i).getSecond()));
+                    energyFor7degContainers = energyFor7degContainers + (energyToBeSuppliedToContainer(areaExposed, 7, tripSection.getSecond()));
                 }
             }
-            listOfEnergyToBeSupplied.add(new Pair<>(energyFor5degContainers * tripSections.get(i).getFirst(), energyFor7degContainers * tripSections.get(i).getFirst()));
+            listOfEnergyToBeSupplied.add(new Pair<>(energyFor5degContainers * tripSection.getFirst(), energyFor7degContainers * tripSection.getFirst()));
         }
         return listOfEnergyToBeSupplied;
     }
@@ -161,16 +161,7 @@ public class PhysicsUtils {
             resistance = resTerm7Deg / areaExposed;
         }
         double energyToSupplyToExposedArea = ((exTemp - intTemp)) / resistance;
-        if (intTemp == -5) {
-            resistance = resTerm5Deg / (CONTAINER_40_AREA - areaExposed);
-        }
-        if (intTemp == 7) {
-            resistance = resTerm7Deg / (CONTAINER_40_AREA - areaExposed);
-        }
-
-        double energyToSupplyToNonExposedArea = ((exTemp - intTemp)) / resistance;
-        energyToSupplyToContainer = energyToSupplyToExposedArea + energyToSupplyToNonExposedArea;
-        return energyToSupplyToContainer;
+        return energyToSupplyToExposedArea;
     }
 
     public static double determineAreaExposed(CargoManifest cg, CargoManifest.ContainerPosition currentPos) {
