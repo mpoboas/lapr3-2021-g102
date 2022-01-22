@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor "Ship Captain" as SC
+
+activate SC
+SC -> ":System" : requests where to position n containers on the vessel,\nsuch that the center of mass remains at x and y
+activate ":System"
+":System" --> SC : requests data (vessel and containers dimensions and mass)
+deactivate ":System"
+SC -> ":System" : inserts requested data
+activate ":System"
+":System" --> SC : shows all the containers´ positions
+deactivate ":System"
+SC -> ":System" : confirms data
+activate ":System"
+":System" --> SC : shows operation success
+deactivate ":System"
+deactivate SC
+@enduml

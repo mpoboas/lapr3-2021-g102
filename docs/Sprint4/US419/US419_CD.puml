@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
+}
+
+class ContainersOnShipUI {
+}
+
+class PhysicsUtils {
++whereToPositionContainersOnVessel(unladenCenterOfMass, shipAvailableLength, shipAvailableWidth, containerLength, containerWidth, numContainers)
++verifyUnladenCenterOfMass(unladenCenterOfMass, container1, container2)
++calculateTotalCenterOfMass(unladenCenterOfMass, containerMatrix, numContainers, shipMass)
+-calculateContainerMatrixCenterOfMassXY(containerMatrix, numContainers)
+}
+
+ContainersOnShipUI ..> PhysicsUtils
+PhysicsUtils ..> ShipDB
+PhysicsUtils ..> Company
+
+@enduml
