@@ -18,8 +18,9 @@ import java.util.logging.Logger;
 public class BorderStoreDB implements Persistable {
     /**
      * Saves an instance of Border to the database
+     *
      * @param databaseConnection database connection
-     * @param object object to save
+     * @param object             object to save
      * @return true if the object was successfully saved, false if not
      */
     @Override
@@ -41,8 +42,9 @@ public class BorderStoreDB implements Persistable {
 
     /**
      * Deletes an instance of border from the database
+     *
      * @param databaseConnection database connection
-     * @param object object to delete
+     * @param object             object to delete
      * @return true if the object was successfully deleted, false if not
      */
     @Override
@@ -101,35 +103,26 @@ public class BorderStoreDB implements Persistable {
         }
     }
 
-
     /**
-     * Gets the list of all borders of the database
-     * @param countries list of countries
-     * @param dbConnection database connection
-     * @return list of borders
+     * -     * Gets the list of all borders of the database
+     * -     * @param dbConnection database connection
+     * -     * @return list of borders
+     * -
      */
-    public List<Border> getBordersFromDatabase(DatabaseConnection dbConnection, List<Country> countries) {
+    public List<Border> getBordersFromDatabase(DatabaseConnection dbConnection) {
         List<Border> borders = new ArrayList<>();
         Connection connection = dbConnection.getConnection();
         String sql = "select * from border";
         try (PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet rs = statement.executeQuery()) {
-
+            CountryStoreDB countryStoreDB = new CountryStoreDB();
             while (rs.next()) {
-                Country country1 = null;
-                Country country2 = null;
-                for (Country c:countries) {
-                    if (c.getAlpha2Code().equals(rs.getString(1)))
-                        country1 = c;
-                    if (c.getAlpha2Code().equals(rs.getString(2)))
-                        country2 = c;
-                }
-                if (country1 != null && country2 != null)
-                    borders.add(new Border(country1,country2));
+                borders.add(new Border(
+                        countryStoreDB.getCountryByAlpha2Code(dbConnection, rs.getString(1)),
+                        countryStoreDB.getCountryByAlpha2Code(dbConnection, rs.getString(2))));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-
         }
         return borders;
     }
