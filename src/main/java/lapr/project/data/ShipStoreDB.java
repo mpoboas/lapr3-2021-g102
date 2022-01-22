@@ -1,5 +1,6 @@
 package lapr.project.data;
 
+import lapr.project.model.Port;
 import lapr.project.model.Ship;
 
 import java.sql.*;
@@ -178,5 +179,26 @@ public class ShipStoreDB implements Persistable {
 
             return stringBuilder.toString();
         }
+    }
+
+    /**
+     * Creates an object of ship by information obtained by the database
+     * @param databaseConnection the database connection
+     * @param mmsi the identifier of the ship
+     * @return the instance of ship
+     * @throws SQLException
+     */
+    public Ship getShipByMMSI(DatabaseConnection databaseConnection, int mmsi) throws SQLException {
+        Ship ship = null;
+        try (Statement statement = databaseConnection.getConnection().createStatement();
+             ResultSet resultSet = statement.executeQuery("select * from ship where mmsi =" + mmsi);) {
+            while (resultSet.next()) {
+                ship = new Ship(resultSet.getInt(2), resultSet.getString(4), resultSet.getString(3), resultSet.getString(5), resultSet.getInt(6), resultSet.getDouble(7), resultSet.getDouble(8), resultSet.getDouble(10));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ship;
     }
 }

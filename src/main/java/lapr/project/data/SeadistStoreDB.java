@@ -158,38 +158,6 @@ public class SeadistStoreDB implements Persistable {
      * Returns all the existing instances of Seadist.
      *
      * @param dbConnection the database connection
-     */
-    public List<SeaDist> getSeadistsFromDatabase(DatabaseConnection dbConnection) {
-        List<SeaDist> seadistList = new ArrayList<>();
-        Connection connection = dbConnection.getConnection();
-        String sqlCommand = "select distinct (SELECT PortWarehouse.alpha2CodeCountry FROM PortWarehouse WHERE PortWarehouse.idPortWarehouse = idPortWarehouseFrom) as from_country, Seadist.idPortWarehouseFrom as from_port, (SELECT PortWarehouse.alpha2CodeCountry FROM PortWarehouse WHERE PortWarehouse.idPortWarehouse = idPortWarehouseTo) as to_country, Seadist.idPortWarehouseTo  as to_port, Seadist.seadist\n" +
-                "from Seadist, PortWarehouse, Country\n" +
-                "where (Seadist.idPortWarehouseFrom = PortWarehouse.idPortWarehouse or Seadist.idPortWarehouseTo = PortWarehouse.idPortWarehouse)\n" +
-                "and PortWarehouse.alpha2CodeCountry = Country.alpha2CodeCountry\n" +
-                "ORDER BY from_port, to_port";
-
-        try (PreparedStatement statement = connection.prepareStatement(sqlCommand); ResultSet rs = statement.executeQuery()) {
-            CountryStoreDB countryStoreDB = new CountryStoreDB();
-            PortStoreDB portStoreDB = new PortStoreDB();
-
-            while (rs.next()) {
-                Country from_country = new Country("", rs.getString(1), "", "", 0.0, "", 0.0, 0.0);
-                Port from_port = portStoreDB.getPortByIdFromDatabase(dbConnection, rs.getInt(2));
-                Country to_country = new Country("", rs.getString(3), "", "", 0.0, "", 0.0, 0.0);
-                Port to_port = portStoreDB.getPortByIdFromDatabase(dbConnection, rs.getInt(4));
-                seadistList.add(new SeaDist(from_country, from_port, to_country, to_port, rs.getInt(5)));
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-
-        return seadistList;
-    }
-
-    /**
-     * Returns all the existing instances of Seadist.
-     *
-     * @param dbConnection the database connection
      * @param ports list of ports
      * @param countries list of countries
      */
