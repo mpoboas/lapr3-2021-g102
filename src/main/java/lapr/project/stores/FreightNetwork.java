@@ -221,17 +221,15 @@ public class FreightNetwork {
      */
     private Map<Port, Integer> getNumberOfShortestPathsPerPort() {
         Map<Port, Integer> portShortestPathsMap = new HashMap<>(); // Map of ports and a counter of shortest paths that pass through it
-        for (Place vert : this.graph.vertices()) {
-            if (vert instanceof Port) portShortestPathsMap.put((Port) vert, 0);
-        }
-
         ArrayList<LinkedList<Place>> paths = new ArrayList<>();
         for (Place vert : this.graph.vertices()) {
             if (AlgorithmsNetwork.shortestPaths(this.graph, vert, Double::compare, Double::sum, 0.0, paths, new ArrayList<>())) {
                 for (LinkedList<Place> placeLinkedList : paths) {
                     for (Place p : placeLinkedList) {
-                        if (p instanceof Port && portShortestPathsMap.containsKey(p))
-                            portShortestPathsMap.put((Port) p, portShortestPathsMap.get(p) + 1);
+                        if (p instanceof Port) {
+                            if (portShortestPathsMap.containsKey(p)) portShortestPathsMap.put((Port) p, portShortestPathsMap.get(p) + 1);
+                            else portShortestPathsMap.put((Port) p, 0);
+                        }
                     }
                 }
             }
