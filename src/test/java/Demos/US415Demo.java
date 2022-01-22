@@ -1,6 +1,7 @@
 package Demos;
 
 import lapr.project.controller.AuthController;
+import lapr.project.data.CargoManifestStore;
 import lapr.project.model.CargoManifest;
 import lapr.project.model.ImportCargoManifest;
 import lapr.project.utils.Constants;
@@ -42,7 +43,13 @@ public class US415Demo {
 
                 ImportCargoManifest importCargoManifest = new ImportCargoManifest();
                 importCargoManifest.importCargoManifestData("data/data-shipsports/LAPR3_G102 - cargoManifests.csv");
-                CargoManifest cargoManifest = importCargoManifest.getListOfImportedCargoManifests().get(0);
+                System.out.println("Cargo manifest list: ");
+                for (CargoManifest c : importCargoManifest.getListOfImportedCargoManifests()) {
+                    System.out.println(c.getId() + " - " + c.getType() + " - " + c.getDate());
+                }
+                System.out.println("Type the wanted cargo manifest id: ");
+                int cargoManifestId = scan.nextInt() - 1;
+                CargoManifest cargoManifest = importCargoManifest.getListOfImportedCargoManifests().get(cargoManifestId);
                 List<Pair<Double, Double>> totalEnergyPerSection = PhysicsUtils.energyToBeSupliedTocontainersDepOnPos(cargoManifest, tripSections);
                 int numAuxEquipmentUnits = PhysicsUtils.getNumberOfAuxEquipmentUnits(tripSections, totalEnergyPerSection, Constants.AUX_EQUIPMENT_MAX_POWER);
 
