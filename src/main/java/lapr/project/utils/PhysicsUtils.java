@@ -153,7 +153,7 @@ public class PhysicsUtils {
 
     public static double energyToBeSuppliedToContainer(double areaExposed, int intTemp, double exTemp) {
         double energyToSupplyToContainer = 0;
-        double resistance = 0;
+        double resistance = 1;
         if (intTemp == -5) {
             resistance = resTerm5Deg / areaExposed;
         }
