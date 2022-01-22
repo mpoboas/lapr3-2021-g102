@@ -58,6 +58,6 @@ class PairOfShipsControllerTest {
         pairOfShipsList.add(new Pair<>(ex1, ex2));
         assertEquals("Ship1 MMSI   Ship2 MMSI   Movs   TravelDist   Movs   TravelDist\n" +
                 "------------------------------------------------------------\n" +
-                "112          113          0      0.000000     0      0.000000 \n",pairOfShipsController.toString(pairOfShipsList));
+                "112          113          0      0,000000     0      0,000000 \n",pairOfShipsController.toString(pairOfShipsList));
     }
 }
