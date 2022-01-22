@@ -67,7 +67,8 @@ public class ImportCargoManifest {
         int posX = Integer.parseInt(attributes [4]);
         int posY = Integer.parseInt(attributes [5]);
         int posz = Integer.parseInt(attributes [6]);
-        Container c = new Container(idContainer, null, null,0,0,0);
+        String type = attributes [7];
+        Container c = new Container(idContainer, type, null,0,0,0);
         CargoManifest.ContainerPosition pos = new CargoManifest.ContainerPosition(posX, posY,posz);
         return new Pair<>(c,pos);
     }
