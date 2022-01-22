@@ -25,6 +25,7 @@ class GetMostCriticalPortsControllerTest {
         List<Port> expectedList = new ArrayList<>();
         expectedList.add(expectedPort);
         when(this.freightNetwork.getMostCriticalPorts(1)).thenReturn(expectedList);
+        this.getMostCriticalPortsController.getMostCriticalPorts(1);
         assertEquals(expectedPort, expectedList.get(0));
     }
 }

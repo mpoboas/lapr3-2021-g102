@@ -197,14 +197,13 @@ public class PhysicsUtils {
      * Calculates the number of needed auxiliary equipment to supply energy to all the containers in a trip.
      *
      * @param tripSections          the trip sections, where the temperature is varies
-     * @param cont5EnergyPerSection the needed energy to supply for the -5 degrees containers per section
-     * @param cont7EnergyPerSection the needed energy to supply for the 7 degrees containers per section
+     * @param totalEnergyPerSection the needed energy to supply to the containers per section
      * @return the number of needed auxiliary equipment
      */
-    public static int getNumberOfAuxEquipment(List<Pair<Integer, Double>> tripSections, List<Double> cont5EnergyPerSection, List<Double> cont7EnergyPerSection, double equipmentMaxPower) {
-        double biggest = (cont5EnergyPerSection.get(0) + cont7EnergyPerSection.get(0)) / tripSections.get(0).getFirst();
+    public static int getNumberOfAuxEquipmentUnits(List<Pair<Integer, Double>> tripSections, List<Pair<Double, Double>> totalEnergyPerSection, double equipmentMaxPower) {
+        double biggest = (totalEnergyPerSection.get(0).getFirst() + totalEnergyPerSection.get(0).getSecond()) / tripSections.get(0).getFirst();
         for (int i = 1; i < tripSections.size(); i++) {
-            double result = (cont5EnergyPerSection.get(i) + cont7EnergyPerSection.get(i)) / tripSections.get(i).getFirst();
+            double result = (totalEnergyPerSection.get(i).getFirst() + totalEnergyPerSection.get(i).getSecond()) / tripSections.get(i).getFirst();
             if (result > biggest) biggest = result;
         }
 

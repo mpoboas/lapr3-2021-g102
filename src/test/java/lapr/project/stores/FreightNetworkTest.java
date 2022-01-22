@@ -18,16 +18,17 @@ class FreightNetworkTest {
     static String fileDirectorySeaDist = "data/Data-Sprint3-4/seadists.csv";
     static ImportPorts importP = new ImportPorts(new PortStore());
     static FreightNetwork network = new FreightNetwork();
-    static List<Country> countries ;
+    static List<Country> countries;
     static List<Port> ports;
+
     @BeforeAll
-    static void init(){
+    static void init() {
         try {
-             countries = ImportCountry.importCountries(fileDirectoryCountry);
+            countries = ImportCountry.importCountries(fileDirectoryCountry);
             List<Border> borders = ImportBorder.importBorders(fileDirectoryBorders);
             List<SeaDist> seaDists = ImportSeadist.importSeadistData(fileDirectorySeaDist);
             importP.importPortsData(fileDirectoryPorts);
-             ports = importP.getListOfImportedPorts();
+            ports = importP.getListOfImportedPorts();
             network.buildFreightNetworkFromGivenData(countries, borders, ports, seaDists, 5);
         } catch (IOException e) {
             e.printStackTrace();
