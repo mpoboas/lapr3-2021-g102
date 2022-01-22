@@ -101,29 +101,6 @@ public class BorderStoreDB implements Persistable {
         }
     }
 
-    /**
-     * Gets the list of all borders of the database
-     * @param dbConnection database connection
-     * @return list of borders
-     */
-    public List<Border> getBordersFromDatabase(DatabaseConnection dbConnection) {
-        List<Border> borders = new ArrayList<>();
-        Connection connection = dbConnection.getConnection();
-        String sql = "select * from border";
-        try (PreparedStatement statement = connection.prepareStatement(sql);
-             ResultSet rs = statement.executeQuery()) {
-            CountryStoreDB countryStoreDB = new CountryStoreDB();
-            while (rs.next()) {
-                borders.add(new Border(
-                        countryStoreDB.getCountryByAlpha2Code(dbConnection, rs.getString(1)),
-                        countryStoreDB.getCountryByAlpha2Code(dbConnection, rs.getString(2))));
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-
-        }
-        return borders;
-    }
 
     /**
      * Gets the list of all borders of the database
