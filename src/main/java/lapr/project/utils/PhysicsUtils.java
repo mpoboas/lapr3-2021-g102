@@ -152,7 +152,7 @@ public class PhysicsUtils {
     }
 
     public static double energyToBeSuppliedToContainer(double areaExposed, int intTemp, double exTemp) {
-        double energyToSupplyToContainer = 0;
+        double energyToSupplyToContainer;
         double resistance = 1;
         if (intTemp == -5) {
             resistance = resTerm5Deg / areaExposed;
@@ -302,19 +302,18 @@ public class PhysicsUtils {
      * @return coordinates of the center of mass
      */
     public static Pair<Point2D.Double, Double> calculateTheUnleadedCenterOfMass(double length, double width, double height, double massTotal, String bridgePosition) {
-        boolean center = true;
         List<Pair<Point2D.Double, Double>> particles = new ArrayList<>();
         List<Double> particlesMass = new ArrayList<>();
         //Section 1
-        particles.add(getGeometricCenterParallelepiped(length * SECTION_1_LENGTH_PERCENT, width, (height * SECTION_1_2_HEIGHT_PERCENT), center));
+        particles.add(getGeometricCenterParallelepiped(length * SECTION_1_LENGTH_PERCENT, width, (height * SECTION_1_2_HEIGHT_PERCENT), true));
         particlesMass.add(massTotal * SECTION_1_MASS_PERCENT);
         //Section 2
-        Pair<Point2D.Double, Double> pyramid = getGeometricCenterPyramid(width, length * SECTION_2_LENGTH_PERCENT, height * SECTION_1_2_HEIGHT_PERCENT, center);
+        Pair<Point2D.Double, Double> pyramid = getGeometricCenterPyramid(width, length * SECTION_2_LENGTH_PERCENT, height * SECTION_1_2_HEIGHT_PERCENT, true);
         pyramid.getFirst().y = length * SECTION_1_LENGTH_PERCENT + pyramid.getFirst().y;
         particles.add(pyramid);
         particlesMass.add(massTotal * SECTION_2_MASS_PERCENT);
         //Section 3
-        Pair<Point2D.Double, Double> controlBridge = getGeometricCenterParallelepiped(width * 0.80, width * 0.20, height * SECTION_3_HEIGHT_PERCENT, center);
+        Pair<Point2D.Double, Double> controlBridge = getGeometricCenterParallelepiped(width * 0.80, width * 0.20, height * SECTION_3_HEIGHT_PERCENT, true);
         switch (bridgePosition) {
             case "MIDDLE":
                 controlBridge.getFirst().y = /*controlBridge.getFirst().y +*/ (length * SECTION_1_LENGTH_PERCENT) * 0.50;
@@ -396,24 +395,119 @@ public class PhysicsUtils {
                 bridgeLength, bridgeWidth, bridgeHeight, massTotal * SECTION_3_MASS_PERCENT, massTotal, distanceToBridge);
     }
 
-
-
-
-
-
-    public static  double getCalculatedDiffDraft(Ship ship, double cargo){
-        double weightWithCargo = ship.getWeight()+ cargo;
-        double waterToBeDisplacesNoCargo =ship.getWeight()/Constants.WATER_DENSITY;
-        double waterToBeDisplacesWithCargo =weightWithCargo/Constants.WATER_DENSITY;
-        double diffInDisplacement = waterToBeDisplacesWithCargo -waterToBeDisplacesNoCargo;
-        double shipSinkage = diffInDisplacement/ (ship.getLength() * ship.getWidth());
-        return shipSinkage;
+    public static double getCalculatedDiffDraft(Ship ship, double cargo) {
+        double weightWithCargo = ship.getWeight() + cargo;
+        double waterToBeDisplacesNoCargo = ship.getWeight() / Constants.WATER_DENSITY;
+        double waterToBeDisplacesWithCargo = weightWithCargo / Constants.WATER_DENSITY;
+        double diffInDisplacement = waterToBeDisplacesWithCargo - waterToBeDisplacesNoCargo;
+        return diffInDisplacement / (ship.getLength() * ship.getWidth());
     }
-    public static double shipSinkageWithCargo(Ship ship, int nContainer){
-        double addedWeight = nContainer * Constants.CONTAINERWEIGHT;
-        return getCalculatedDiffDraft(ship,addedWeight);
+
+    public static double shipSinkageWithCargo(Ship ship, int nContainer) {
+        double addedWeight = nContainer * (Constants.CONTAINER_MASS / 1000);
+        return getCalculatedDiffDraft(ship, addedWeight);
     }
-    public static double getDraftAfterAddedCargo(Ship ship, int nContainers){
-        return ship.getDraft() +shipSinkageWithCargo(ship,nContainers);
+
+    public static double getDraftAfterAddedCargo(Ship ship, int nContainers) {
+        return ship.getDraft() + shipSinkageWithCargo(ship, nContainers);
+    }
+
+    /**
+     * Creates a matrix with the desired container positions.
+     *
+     * @param unladenCenterOfMass the unladen ship center of mass
+     * @param shipAvailableLength available length on the ship for container placement
+     * @param shipAvailableWidth  available width on the ship for container placement
+     * @param numContainers       the number of containers to be placed
+     * @return the created matrix
+     */
+    public static Point2D.Double[][] whereToPositionContainersOnVessel(Pair<Point2D.Double, Double> unladenCenterOfMass, double shipAvailableLength, double shipAvailableWidth, double containerLength, double containerWidth, int numContainers) {
+        int numMaxContainersX = (int) Math.round(shipAvailableWidth / containerWidth);
+        int numMaxContainersY = (int) Math.round(shipAvailableLength / containerLength);
+        Point2D.Double[][] containerMatrix = new Point2D.Double[numMaxContainersX][numMaxContainersY];
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                containerMatrix[i][j] = new Point2D.Double(0.0, 0.0);
+            }
+        }
+
+        for (int i = 0; i < containerMatrix.length; i++) {
+            for (int j = 0; j < containerMatrix[0].length; j++) {
+                double offsetX = containerWidth * ((double) (containerMatrix.length / 2) - i - 1);
+                double offsetY = containerLength * ((double) (containerMatrix[0].length / 2) - j - 1);
+                if (numContainers > 1) {
+                    containerMatrix[i][j] = new Point2D.Double(unladenCenterOfMass.getFirst().getX() - (containerWidth / 2) - offsetX, unladenCenterOfMass.getFirst().getY() - (containerLength / 2) - offsetY);
+                    containerMatrix[containerMatrix.length - 1 - i][containerMatrix[0].length - 1 - j] = new Point2D.Double(unladenCenterOfMass.getFirst().getX() + (containerWidth / 2) + offsetX, unladenCenterOfMass.getFirst().getY() + (containerLength / 2) + offsetY);
+                    if (!verifyUnladenCenterOfMass(unladenCenterOfMass, containerMatrix[i][j], containerMatrix[containerMatrix.length - 1 - i][containerMatrix[0].length - 1 - j])) throw new IllegalArgumentException("There was an error while filling the array.");
+                    numContainers -= 2;
+                } else if (numContainers == 1) {
+                    containerMatrix[i][j] = new Point2D.Double(unladenCenterOfMass.getFirst().getX() - (containerWidth / 2) - offsetX, unladenCenterOfMass.getFirst().getY() - (containerLength / 2) - offsetY);
+                    numContainers = 0;
+                }
+            }
+        }
+
+        return containerMatrix;
+    }
+
+    /**
+     * Verifies if the center of mass does not change by adding two given containers to the ship cargo.
+     *
+     * @param unladenCenterOfMass the unladen ship center of mass
+     * @return the created matrix
+     */
+    public static boolean verifyUnladenCenterOfMass(Pair<Point2D.Double, Double> unladenCenterOfMass, Point2D.Double container1, Point2D.Double container2) {
+        double totalMass = Constants.CONTAINER_MASS * 2;
+        double unladenCenterOfMassX = unladenCenterOfMass.getFirst().getX();
+        double unladenCenterOfMassY = unladenCenterOfMass.getFirst().getY();
+        double sumContainerY = Constants.CONTAINER_MASS * container1.getY();
+        sumContainerY += Constants.CONTAINER_MASS * container2.getY();
+        double sumContainerX = Constants.CONTAINER_MASS * container1.getX();
+        sumContainerX += Constants.CONTAINER_MASS * container2.getX();
+
+        return (totalMass * unladenCenterOfMassX == sumContainerX && totalMass * unladenCenterOfMassY == sumContainerY);
+    }
+
+    /**
+     * Calculates the center of mass of the ship with the containers already in place.
+     *
+     * @param unladenCenterOfMass the unladen ship center of mass
+     * @param numContainers       the number of containers on the matrix
+     * @param containerMatrix     the matrix of containers
+     * @param shipMass            the ship mass
+     * @return the total center of mass
+     */
+    public static Pair<Point2D.Double, Double> calculateTotalCenterOfMass(Pair<Point2D.Double, Double> unladenCenterOfMass, Point2D.Double[][] containerMatrix, int numContainers, double shipMass) {
+        Point2D.Double containerMatrixCenterOfMassXY = calculateContainerMatrixCenterOfMassXY(containerMatrix, numContainers);
+        double totalContainerMass = Constants.CONTAINER_MASS * numContainers, totalMass = totalContainerMass + shipMass;
+        double xCenterOfMass = ((totalContainerMass * containerMatrixCenterOfMassXY.getX()) + (shipMass * unladenCenterOfMass.getFirst().getX())) / totalMass;
+        double yCenterOfMass = ((totalContainerMass * containerMatrixCenterOfMassXY.getY()) + (shipMass * unladenCenterOfMass.getFirst().getY())) / totalMass;
+        double zCenterOfMass = ((totalContainerMass * 9.695) + (shipMass * unladenCenterOfMass.getSecond())) / totalMass;
+
+        return new Pair<>(new Point2D.Double(xCenterOfMass, yCenterOfMass), zCenterOfMass);
+    }
+
+    /**
+     * Calculates the center of mass of all the containers together (only considering x and y axis).
+     *
+     * @param containerMatrix     the matrix of containers
+     * @param numContainers       the number of containers on the matrix
+     * @return the center of mass (x and y axis only)
+     */
+    private static Point2D.Double calculateContainerMatrixCenterOfMassXY(Point2D.Double[][] containerMatrix, int numContainers) {
+        double xCenterOfMass = 0.0, yCenterOfMass = 0.0;
+        for (Point2D.Double[] matrix : containerMatrix) {
+            for (int j = 0; j < containerMatrix[0].length; j++) {
+                if (matrix[j].getX() != 0 || matrix[j].getY() != 0) {
+                    xCenterOfMass += Constants.CONTAINER_MASS * ((double) Math.round(matrix[j].getX() * 100000) / 100000);
+                    yCenterOfMass += Constants.CONTAINER_MASS * ((double) Math.round(matrix[j].getY() * 100000) / 100000);
+                }
+            }
+        }
+        xCenterOfMass /= Constants.CONTAINER_MASS * numContainers;
+        yCenterOfMass /= Constants.CONTAINER_MASS * numContainers;
+
+        return new Point2D.Double(xCenterOfMass, yCenterOfMass);
     }
 }

@@ -1,0 +1,39 @@
+@startuml
+
+class ShipCaptain {
+}
+
+class Ship {
+-MMSI
+-name
+-IMO
+-nrGenerators
+-pwrOutput
+-callSign
+-vesselType
+-length
+-width
+-capacity
+-draft
+-baseDateTime
+-latitude
+-longitude
+-SOG
+-COG
+-heading
+-position
+-transceiverClass
+}
+
+class Container {
+-containerId
+-containerPayload
+-containerTare
+-containerGross
+-ISOcode
+}
+
+Ship "1" -u- "1" ShipCaptain : drives <
+Ship "1" -- "*" Container : carries >
+
+@enduml
