@@ -152,7 +152,7 @@ public class PhysicsUtils {
     }
 
     public static double energyToBeSuppliedToContainer(double areaExposed, int intTemp, double exTemp) {
-        double energyToSupplyToContainer = 0;
+        double energyToSupplyToContainer;
         double resistance = 1;
         if (intTemp == -5) {
             resistance = resTerm5Deg / areaExposed;
@@ -302,19 +302,18 @@ public class PhysicsUtils {
      * @return coordinates of the center of mass
      */
     public static Pair<Point2D.Double, Double> calculateTheUnleadedCenterOfMass(double length, double width, double height, double massTotal, String bridgePosition) {
-        boolean center = true;
         List<Pair<Point2D.Double, Double>> particles = new ArrayList<>();
         List<Double> particlesMass = new ArrayList<>();
         //Section 1
-        particles.add(getGeometricCenterParallelepiped(length * SECTION_1_LENGTH_PERCENT, width, (height * SECTION_1_2_HEIGHT_PERCENT), center));
+        particles.add(getGeometricCenterParallelepiped(length * SECTION_1_LENGTH_PERCENT, width, (height * SECTION_1_2_HEIGHT_PERCENT), true));
         particlesMass.add(massTotal * SECTION_1_MASS_PERCENT);
         //Section 2
-        Pair<Point2D.Double, Double> pyramid = getGeometricCenterPyramid(width, length * SECTION_2_LENGTH_PERCENT, height * SECTION_1_2_HEIGHT_PERCENT, center);
+        Pair<Point2D.Double, Double> pyramid = getGeometricCenterPyramid(width, length * SECTION_2_LENGTH_PERCENT, height * SECTION_1_2_HEIGHT_PERCENT, true);
         pyramid.getFirst().y = length * SECTION_1_LENGTH_PERCENT + pyramid.getFirst().y;
         particles.add(pyramid);
         particlesMass.add(massTotal * SECTION_2_MASS_PERCENT);
         //Section 3
-        Pair<Point2D.Double, Double> controlBridge = getGeometricCenterParallelepiped(width * 0.80, width * 0.20, height * SECTION_3_HEIGHT_PERCENT, center);
+        Pair<Point2D.Double, Double> controlBridge = getGeometricCenterParallelepiped(width * 0.80, width * 0.20, height * SECTION_3_HEIGHT_PERCENT, true);
         switch (bridgePosition) {
             case "MIDDLE":
                 controlBridge.getFirst().y = /*controlBridge.getFirst().y +*/ (length * SECTION_1_LENGTH_PERCENT) * 0.50;
@@ -401,8 +400,7 @@ public class PhysicsUtils {
         double waterToBeDisplacesNoCargo = ship.getWeight() / Constants.WATER_DENSITY;
         double waterToBeDisplacesWithCargo = weightWithCargo / Constants.WATER_DENSITY;
         double diffInDisplacement = waterToBeDisplacesWithCargo - waterToBeDisplacesNoCargo;
-        double shipSinkage = diffInDisplacement / (ship.getLength() * ship.getWidth());
-        return shipSinkage;
+        return diffInDisplacement / (ship.getLength() * ship.getWidth());
     }
 
     public static double shipSinkageWithCargo(Ship ship, int nContainer) {
