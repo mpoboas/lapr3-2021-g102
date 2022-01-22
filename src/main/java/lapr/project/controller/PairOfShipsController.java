@@ -66,7 +66,7 @@ public class PairOfShipsController {
         stringBuilder.append("------------------------------------------------------------\n");
         if (!pairList.isEmpty()) {
             for (Pair<Ship, Ship> pairOfShips : pairList) {
-                stringBuilder.append(String.format("%-13d%-13d%-7d%-13f%-7d%-9f\n", pairOfShips.getFirst().getMMSI(), pairOfShips.getSecond().getMMSI(), pairOfShips.getFirst().numberOfMovements(), pairOfShips.getFirst().getTotalDistance(), pairOfShips.getSecond().numberOfMovements(), pairOfShips.getSecond().getTotalDistance()));
+                stringBuilder.append(String.format("%-13d%-13d%-7d%-13d%-7d%-9d\n", pairOfShips.getFirst().getMMSI(), pairOfShips.getSecond().getMMSI(), pairOfShips.getFirst().numberOfMovements(),(int) pairOfShips.getFirst().getTotalDistance(), pairOfShips.getSecond().numberOfMovements(),(int) pairOfShips.getSecond().getTotalDistance()));
             }
         } else stringBuilder.append("List is empty.\n");
 
