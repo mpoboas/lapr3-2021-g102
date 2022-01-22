@@ -6,8 +6,6 @@ import lapr.project.model.Trips;
 import lapr.project.stores.ShipStore;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
@@ -878,7 +876,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
     }
 
     @Test
-    void toStringTest() throws FileNotFoundException {
+    void toStringTest() {
         ShipStore store;
         Ship ship1 ;
         Trips trip1;
@@ -1012,12 +1010,21 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
         store.addShip(ship4);
         ListShipsController controller = new ListShipsController(false,1, store);
         ListShipsController controller1 = new ListShipsController(50,LocalDateTime.of(2018, Month.JANUARY, 1, 0, 0) , LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0),store);
-        try (PrintWriter out = new PrintWriter("list1.txt")) {
-            out.println(controller);
-        }
-        try (PrintWriter out = new PrintWriter("list1.txt")) {
-            out.println(controller1);
-        }
+        String string1 = "List of ships\n" +
+                "|\tMMSI\t|\tNumber of movements\t|\tTravelled distance\t|\tDelta Distance\t|\n" +
+                "|\t113\t|\t9.0\t|\t26543.17271974198\t|\t633.2475651879611\t|\n" +
+                "|\t114\t|\t6.0\t|\t3188.695891932572\t|\t633.2475651879611\t|\n" +
+                "|\t112\t|\t6.0\t|\t3188.695891932572\t|\t633.2475651879611\t|\n" +
+                "|\t111\t|\t6.0\t|\t12109.756527668786\t|\t633.2475651879611\t|\n" ;
+        String string2 = "List of ships\n" +
+                "|\tMMSI\t|\tVessel type\t|\tVessel Name\t|\tKilometers Traveled\t|\tMeanSOG\t|\n" +
+                " |\t113\t|\t2\t|\tTEST\t|\t638.8620816861528\t|\t14.255091268466927\t|\n" +
+                "|\t114\t|\t12\t|\t122\t|\t638.8620816861528\t|\t14.255091268466927\t|\n" +
+                "|\t112\t|\t12\t|\t122\t|\t0.0\t|\tNaN\t|\n" +
+                "|\t111\t|\t21\t|\tTEST\t|\t638.8620816861528\t|\t14.255091268466927\t|\n" ;
+        assertEquals(string1,controller.toString());
+        assertEquals(string2,controller1.toString());
+
     }
 
 }

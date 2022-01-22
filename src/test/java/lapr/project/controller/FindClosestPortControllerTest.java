@@ -1,6 +1,5 @@
 package lapr.project.controller;
 
-import lapr.project.model.AISMessage;
 import lapr.project.model.Company;
 import lapr.project.model.Port;
 import lapr.project.model.Ship;
@@ -9,14 +8,11 @@ import lapr.project.stores.ShipStore;
 import lapr.project.utils.Coordinates;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FindClosestPortControllerTest {
     Company test = new Company("Teste");

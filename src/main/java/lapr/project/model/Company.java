@@ -2,9 +2,9 @@ package lapr.project.model;
 
 import lapr.project.auth.AuthFacade;
 import lapr.project.data.*;
+import lapr.project.stores.FreightNetwork;
 import lapr.project.stores.PortStore;
 import lapr.project.stores.ShipStore;
-import lapr.project.stores.FreightNetwork;
 
 public class Company {
     /**

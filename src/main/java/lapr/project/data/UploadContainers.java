@@ -1,6 +1,5 @@
 package lapr.project.data;
 
-import lapr.project.model.ImportCargoManifest;
 import lapr.project.model.ImportContainers;
 
 import java.io.IOException;

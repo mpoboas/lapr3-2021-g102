@@ -3,10 +3,9 @@ package lapr.project.controller;
 import lapr.project.data.ConnectionFactory;
 import lapr.project.data.ContainersToBeLoadedOffloadedDB;
 import lapr.project.model.Company;
-import org.mockito.internal.verification.Times;
 
-import java.sql.*;
-import java.time.LocalDateTime;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 

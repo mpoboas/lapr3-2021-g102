@@ -1,11 +1,10 @@
 package lapr.project.controller;
 
 import lapr.project.data.ConnectionFactory;
-
 import lapr.project.data.ContainerSituationDB;
 import lapr.project.model.Company;
 
-import java.sql.*;
+import java.sql.SQLException;
 
 public class GetContainerSituationController {
     /**

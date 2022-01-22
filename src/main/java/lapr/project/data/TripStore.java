@@ -1,7 +1,5 @@
 package lapr.project.data;
 
-import lapr.project.model.CargoManifest;
-import lapr.project.model.Container;
 import lapr.project.model.Trips;
 
 import java.sql.*;

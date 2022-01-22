@@ -4,8 +4,7 @@ import lapr.project.data.AvailableShipsDB;
 import lapr.project.data.ConnectionFactory;
 import lapr.project.model.Company;
 
-import java.io.IOException;
-import java.sql.*;
+import java.sql.SQLException;
 import java.util.List;
 
 

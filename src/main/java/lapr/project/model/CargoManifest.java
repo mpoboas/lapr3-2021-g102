@@ -2,7 +2,8 @@ package lapr.project.model;
 
 import lapr.project.utils.Pair;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 public class CargoManifest {
     private final int id;

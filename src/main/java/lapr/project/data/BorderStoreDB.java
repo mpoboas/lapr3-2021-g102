@@ -3,7 +3,6 @@ package lapr.project.data;
 import lapr.project.model.Border;
 import lapr.project.model.Country;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

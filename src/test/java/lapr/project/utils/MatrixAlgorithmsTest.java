@@ -4,13 +4,8 @@ import lapr.project.utils.graph.Algorithms;
 import lapr.project.utils.graph.Graph;
 import lapr.project.utils.graph.MatrixGraph;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 

@@ -1,7 +1,5 @@
 package Demos;
 
-import lapr.project.auth.AuthFacade;
-import lapr.project.controller.AuthController;
 import lapr.project.controller.GetNManifestsController;
 
 import java.io.IOException;

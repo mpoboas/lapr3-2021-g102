@@ -5,8 +5,9 @@ import lapr.project.model.Company;
 import lapr.project.stores.FreightNetwork;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
 
 class BuildFreightNetworkControllerTest {
     DatabaseConnection databaseConnection = mock(DatabaseConnection.class);

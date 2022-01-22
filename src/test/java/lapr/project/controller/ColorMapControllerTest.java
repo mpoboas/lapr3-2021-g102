@@ -1,14 +1,11 @@
 package lapr.project.controller;
 
 import lapr.project.model.*;
-import lapr.project.stores.FreightNetwork;
 import lapr.project.stores.PortStore;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class ColorMapControllerTest {
     ColorMapController ctrl = new ColorMapController();

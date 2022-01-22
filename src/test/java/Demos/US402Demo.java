@@ -26,5 +26,16 @@ public class US402Demo {
         int p = scan.nextInt();
         System.out.println("Number of places?");
         int n = scan.nextInt();
+        for(int i = 0; i < comp.getFreightNetwork().getGraph().vertices().size(); i++){
+            System.out.printf("ID %d; ", i+1);
+            System.out.println("| " + comp.getFreightNetwork().getGraph().vertices().get(i).getCountry() + " | " + comp.getFreightNetwork().getGraph().vertices().get(i).getContinent() + " | " +  comp.getFreightNetwork().getGraph().vertices().get(i).getLatitude() + " | " + comp.getFreightNetwork().getGraph().vertices().get(i).getLongitude() + " | "  + comp.getFreightNetwork().getGraph().vertices().get(i).getClass()+ " | ");
+        }
+        if(n>0) {
+            System.out.println("Write the id of the places to pass");
+            for (int j = 0; j < n; j++){
+                int id = scan.nextInt();
+                places.add(comp.getFreightNetwork().getGraph().vertex(id-1));
+            }
+        }
     }
 }

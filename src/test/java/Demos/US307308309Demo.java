@@ -4,7 +4,10 @@ import lapr.project.data.ConnectionFactory;
 import lapr.project.data.DatabaseConnection;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 

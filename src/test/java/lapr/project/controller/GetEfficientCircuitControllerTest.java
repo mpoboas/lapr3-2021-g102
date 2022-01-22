@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GetEfficientCircuitControllerTest {
     String fileDirectoryCountry = "data/Data-Sprint3-4/countries.csv";

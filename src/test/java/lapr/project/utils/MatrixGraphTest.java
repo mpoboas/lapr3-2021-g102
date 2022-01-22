@@ -1,8 +1,8 @@
 package lapr.project.utils;
 
-import lapr.project.utils.graph.MatrixGraph;
-import lapr.project.utils.graph.Graph;
 import lapr.project.utils.graph.Edge;
+import lapr.project.utils.graph.Graph;
+import lapr.project.utils.graph.MatrixGraph;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

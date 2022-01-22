@@ -6,8 +6,6 @@ import lapr.project.data.ConnectionFactory;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
-import java.sql.SQLRecoverableException;
 import java.util.List;
 
 

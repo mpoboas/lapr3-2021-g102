@@ -2,7 +2,6 @@ package lapr.project.controller;
 
 import lapr.project.data.DatabaseConnection;
 import lapr.project.model.Company;
-import lapr.project.stores.FreightNetwork;
 
 public class BuildFreightNetworkController {
     /**

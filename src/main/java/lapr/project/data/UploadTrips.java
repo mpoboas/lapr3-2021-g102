@@ -1,10 +1,7 @@
 package lapr.project.data;
 
-import lapr.project.model.Import;
 import lapr.project.model.ImportTrip;
-import lapr.project.model.Ship;
 import lapr.project.model.Trips;
-import lapr.project.stores.ShipStore;
 
 import java.io.IOException;
 import java.util.List;

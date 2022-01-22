@@ -2,7 +2,6 @@ package lapr.project.data;
 
 import lapr.project.model.Port;
 
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

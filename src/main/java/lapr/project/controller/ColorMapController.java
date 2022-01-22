@@ -7,7 +7,9 @@ import lapr.project.utils.graph.Edge;
 import lapr.project.utils.graph.MatrixGraph;
 import org.apache.commons.lang3.ArrayUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class ColorMapController {
     /**

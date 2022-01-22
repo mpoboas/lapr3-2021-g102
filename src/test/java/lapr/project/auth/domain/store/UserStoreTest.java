@@ -2,7 +2,8 @@ package lapr.project.auth.domain.store;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class UserStoreTest {
     UserStore store = new UserStore();

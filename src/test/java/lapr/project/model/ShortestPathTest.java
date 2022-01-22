@@ -1,6 +1,5 @@
 package lapr.project.model;
 
-import lapr.project.data.ConnectionFactory;
 import lapr.project.stores.FreightNetwork;
 import lapr.project.stores.PortStore;
 import org.junit.jupiter.api.BeforeAll;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ShortestPathTest {
     ShortestPath path;
