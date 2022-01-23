@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Company {
+-designation
+}
+
+class ShortestPathUI {
+}
+
+class ShortestPathController {
++getFull()
++getDirect()
++getSea()
++getLand()
++getFullPathDist()
++getFullPath()
++getLandPathDist()
++getLandPath()
++getSeaPathDist()
++getSeaPath()
++getDirectPathDist()
++getDirectPath()
+}
+
+class ShortestPath {
++pathBetweenVertex()
++swapElements()
++allPossibleOrdersOfVisit()
++createPathNPlaces()
++getFactorial()
+}
+
+class FreightNetwork {
+-MatrixGraph<Place, Double> graph
++getShortestPath(nPorts)
+}
+
+class Place{
+-continent
+-country
+-latitude
+-longitude
+}
+class Port{
+-id
+-name
+-capacity
+}
+
+ShortestPathUI ..> ShortestPathController
+ShortestPathController ..> ShortestPath
+ShortestPathController ..> FreightNetwork
+ShortestPathController ..> Company
+Company -> FreightNetwork : has
+FreightNetwork - Place
+Place -|> Country
+Place --|> Port
+@enduml

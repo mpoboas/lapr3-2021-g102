@@ -1,0 +1,71 @@
+@startuml
+autonumber
+'hide footbox
+
+actor "Traffic Manager" as TF
+
+participant "ShortestPathUI" as UI
+participant "ShortestPathController" as CTRL
+participant Company as COMP
+participant ConnectionFactory as CF
+participant DatabaseConnection as DC
+database LAPR3_G102 as DB
+
+
+activate TF
+TF -> UI : requests the shortest path\n between two places passing by n places
+
+activate UI
+UI --> TF : asks for the start place, destination
+
+deactivate UI
+TF -> UI : types requested data
+
+loop
+activate UI
+UI --> TF : requests the N places wanted
+deactivate UI
+
+TF -> UI : types requested data
+activate UI
+end
+
+
+UI -> CF** : create()
+activate CF
+CF -> DC** : create()
+activate DC
+DC --> DB
+activate DB
+deactivate DB
+deactivate DC
+deactivate CF
+
+UI -> CTRL : getLandPath()
+activate CTRL
+deactivate CTRL
+
+UI -> CTRL : getSeaPath()
+activate CTRL
+deactivate CTRL
+
+UI -> CTRL : getDirectPath()
+activate CTRL
+deactivate CTRL
+
+UI -> CTRL : getpathNplaces()
+activate CTRL
+deactivate CTRL
+
+CTRL --> CTRL : landPath()
+activate CTRL
+deactivate CTRL
+
+CTRL --> CTRL : directPath()
+activate CTRL
+deactivate CTRL
+
+
+UI --> TF : shows requested data
+deactivate UI
+@enduml

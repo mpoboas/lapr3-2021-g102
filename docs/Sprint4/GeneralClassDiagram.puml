@@ -210,6 +210,8 @@ class FreightNetwork {
 +buildFreightNetworkFromGivenData(countries, borders, ports, seadists, n)
 +shortestPath(Place vOrig, Place vDest)
 +getGraph()
++getMostCriticalPorts(nPorts)
++getEfficientCycle()
 }
 
 class DatabaseConnection{
@@ -272,6 +274,12 @@ class ClossenessPlaces{
 class AlgorithmsNetwork{
 -shortestPathDijkstra(Graph<Place, Double> g, Place vOrig, Comparator<Double> ce,\n BinaryOperator<Double> sum, Double zero, boolean[] visited, Place [] pathKeys, Double [] dist)
 -shortestPath(Graph<Place, Double> g, Place vOrig, Place vDest,Comparator<Double> ce,\n BinaryOperator<Double> sum, Double zero, LinkedList<Place> shortPath)
++ nearestNeighbour(Graph<Place, Double> g, Place vert)
++ searchCycle(Graph<Place, Double> g, LinkedList<Place> path)
++ searchLargestCycle(ArrayList<LinkedList<Place>> cycles)
++ getLessWeightedBiggestCycle(Graph<Place, Double> g, \nArrayList<LinkedList<Place>> cycles)
++ calculateTotalWeight(Graph<Place, Double> g, LinkedList<Place> path)
+
 }
 
 class GetAuditTrailsUI{}
@@ -343,6 +351,13 @@ class App{
 }
 class ContainerSituationDB{
 +getSituation(containerID,user)
+}
+
+class MostCriticalPortsUI {
+}
+
+class GetMostCriticalPortsController {
++getMostCriticalPorts(nPorts)
 }
 
 
@@ -446,4 +461,12 @@ GetContainerSituationController .. ContainerSituationDB
 GetContainerSituationController .. App
 ContainerSituationDB - ConnectionFactory : requests connection to database to obtain data >
 
+
+MostCriticalPortsUI ..> GetMostCriticalPortsController
+GetMostCriticalPortsController ..> FreightNetwork
+GetMostCriticalPortsController ..> Company
+
+GetEfficientCircuitUI .. GetEfficientCircuitController
+GetEfficientCircuitController ..> Company
+GetEfficientCircuitController ..> FreightNetwork
 @enduml
