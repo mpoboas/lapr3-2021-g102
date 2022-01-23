@@ -173,7 +173,7 @@ public class ShipStoreDB implements Persistable {
                 if (resultSet.getObject(3) == null || resultSet.getDouble(3) == 0)
                     stringBuilder.append("The ship with the name ").append(resultSet.getString(2)).append(" does not have idle time.").append("\n");
                 else stringBuilder.append("Ship Name: ").append(resultSet.getString(2)).append("\n")
-                            .append("Number of idle days since the beginning of the year: ").append(resultSet.getDouble(3)).append("\n");
+                            .append("Number of idle days since the beginning of the year: ").append((double) Math.round(resultSet.getDouble(3) * 1000) / 1000).append("\n");
             }
 
             return stringBuilder.toString();
