@@ -40,12 +40,11 @@ int main(void) {
     getCargoManifestInformation(filename1, containers,arraySize); // preenche as estruturas com a informação das posições
     addContainersWallInformation(containers, arraySize,  fileContainerInfo); // preenche as estruturas com as informação das paredes (materiais/condutividades/espessuras)
 
-
     for (int j = 0; j < arraySize; j++)
     {
-        /*
+        
         printf("ID: %d | ISO: %s | Length: %f | Width: %f | Height: %f | Area: %f | x: %d | y: %d | z: %d \n", containers[j].containerID, containers[j].isoCode, containers[j].length, containers[j].width, containers[j].height, containers[j].exposedArea,
-                            containers[j].x, containers[j].y, containers[j].z);*/
+                            containers[j].x, containers[j].y, containers[j].z);
 
 
         printf("ID: %d | ISO: %s | Length: %f | Width: %f | Height: %f | Area: %f | MI: %s | MC: %f | MT: %f | CM: %s | CC: %f | CT: %f | OM: %s | OC: %f | OT: %f \n", containers[j].containerID, containers[j].isoCode, containers[j].length, containers[j].width, containers[j].height, containers[j].exposedArea,
@@ -56,23 +55,24 @@ int main(void) {
     
     float tripDuration = 1;
     float outerTemperature = 20;
-    int containerPosX = 0;
-    int containerPosY = 0;
-    int containerPosZ = 0;
+    char containerPosX = 0;
+    char containerPosY = 0;
+    char containerPosZ = 0;
     printf("Trip duration? ");
     scanf("%f", &tripDuration);
     printf("Outer temperature? ");
     scanf("%f", &outerTemperature);
     printf("Container position:\n");
     printf("X? ");
-    scanf("%d", &containerPosX);
+    scanf(" %hhd", &containerPosX);
     printf("Y? ");
-    scanf("%d", &containerPosY);
+    scanf(" %hhd", &containerPosY);
     printf("Z? ");
-    scanf("%d", &containerPosZ);
+    scanf(" %hhd", &containerPosZ);
 
     float res = get_needed_energy_container(tripDuration, outerTemperature, containers, arraySize, containerPosX, containerPosY, containerPosZ);
-    printf("Total needed energy: %f J\n", res);
+    if (res != -1) printf("Total needed energy: %f J\n", res);
+    else printf("Container not found.\n");
     
     return 0;
 }
