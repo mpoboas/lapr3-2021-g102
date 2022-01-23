@@ -26,6 +26,7 @@ public class PhysicsUtils {
     public static final Pair<String, Double> MATERIAL_POLYSTYRENE = new Pair<>("Polystyrene", 0.04);
     public static final Pair<String, Double> MATERIAL_WOOD = new Pair<>("Wood", 0.13);
     public static final Pair<String, Double> MATERIAL_CONCRETE = new Pair<>("Concrete", 0.75);
+    public static final Pair<String, Double> MATERIAL_FOAM_RUBBER = new Pair<>("Foam Rubber", 0.034);
 
 
     public static final double SECTION_1_MASS_PERCENT = 0.8;
@@ -213,6 +214,7 @@ public class PhysicsUtils {
         list.add(MATERIAL_POLYSTYRENE);
         list.add(MATERIAL_WOOD);
         list.add(MATERIAL_CONCRETE);
+        list.add(MATERIAL_FOAM_RUBBER);
         return list;
     }
 
