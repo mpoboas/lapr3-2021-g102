@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class GetUnladenCenterOfMassUI{}
+class GetUnladenCenterOfMassController{
++ getShipInfo(int mmsi)
++getCenterOfMassOfAShip(String type)
+}
+class PhysicsUtils{
++getGeometricCenterParallelepiped(double length, double width, double height, boolean center)
++getGeometricCenterPyramid(double base, double baseHeight, double height, boolean center)
++getCenterOfMassPoints(List<Pair<Point2D.Double, Double>> coordinatesList, List<Double> massList, Double totalMass)
++calculateTheUnleadedCenterOfMass(double length, double width, double height, double massTotal, String bridgePosition)
++calculateTheUnleadedCenterOfMassWithAllParameters(double section1Length, double section1Width,\n double section1Height, double section1Mass,double section2Length, double section2Width, double section2Height, double section2Mass,\ndouble section3Length, double section3Width, double section3Height, double section3Mass, double totalMass, double distanceToBridge)
++calculateTheUnleadedCenterOfMassWithBridgeINFO(double length, double width, double height, double massTotal,\n double bridgeLength, double bridgeWidth, double bridgeHeight, double distanceToBridge)
+}
+class Ship{
+-MMSI
+-vesselName
+-IMO
+-callSign
+-vesselType
+-length
+-width
+-draft
+-cargo
+-transceiverClass
+}
+class ShipStoreDB{
++ getShipByMMSI(DatabaseConnection, MMSI)
+}
+
+GetUnladenCenterOfMassUI .. GetUnladenCenterOfMassController
+GetUnladenCenterOfMassController ..> Ship
+GetUnladenCenterOfMassController ..> ShipStoreDB
+ShipStoreDB -> Ship
+GetUnladenCenterOfMassController ..> PhysicsUtils
+@enduml

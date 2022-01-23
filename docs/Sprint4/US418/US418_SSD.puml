@@ -8,7 +8,7 @@ actor "Ship Captain" as SC
 activate SC
 SC -> ":System" : asks the unladen center of mass of a vessel
 activate ":System"
-":System" --> SC : requests data (vessel dimensions, mass)
+":System" --> SC : requests data (ship id/vessel dimensions, mass and position of the bridge)
 deactivate ":System"
 SC -> ":System" : inserts requested data
 activate ":System"
