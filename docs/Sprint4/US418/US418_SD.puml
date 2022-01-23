@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Ship Captain" as SC
+participant "GetUnladenCenterOfMassUI" as UI
+participant "GetUnladenCenterOfMassController" as CTRL
+participant "ShipStoreDB" as SDB
+participant "PhysicsUtils" as PU
+
+participant "ship: Ship"
+
+activate SC
+SC -> UI : asks the unladen center of mass of a vessel
+activate UI
+UI --> SC : requests data (ship id/vessel dimensions, mass and position of the bridge)
+deactivate UI
+SC -> UI : inserts requested data
+activate UI
+UI -> CTRL: getShipInfo(shipMMSI)
+activate CTRL
+CTRL -> SDB :ship = getShipInfo(cf, shipMMSI)
+activate SDB
+deactivate SDB
+deactivate CTRL
+UI -> CTRL : getCenterOfMassOfAShip(String type)
+activate CTRL
+CTRL -> PU: calculateTheUnleadedCenterOfMass(ship.getLength(),ship.getWidth(),ship.getDraft(),ship.getWeight(),type);
+activate PU
+PU --> CTRL : coordinates
+deactivate PU
+CTRL --> UI : coordinates
+deactivate CTRL
+UI --> SC : shows coordinates of the center of mass
+deactivate UI
+SC -> UI : confirms data
+activate UI
+UI --> SC : shows operation success
+deactivate UI
+deactivate SC
+@enduml
