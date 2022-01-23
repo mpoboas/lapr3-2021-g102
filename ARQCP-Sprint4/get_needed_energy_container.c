@@ -4,12 +4,8 @@
 
 static float get_wall_thermal_resistance(float wallThickness, float thermalConductivity, float exposedArea)
 {
-    if (thermalConductivity > 0 && exposedArea > 0)
-    {
-        return (wallThickness / thermalConductivity) / exposedArea; // Calculates the thermal resistance of a wall
-    }
-    
-    return 0;
+    if (thermalConductivity <= 0 && exposedArea <= 0) return 0;
+    return (wallThickness / thermalConductivity) / exposedArea; // Calculates the thermal resistance of a wall
 }
 
 static float get_exposed_area(float length, float width, float height)
