@@ -1,26 +1,26 @@
 typedef struct {
-    int containerID;
-    char isoCode[5];
-    char x;
-    char y;
-    char z;
+    int containerID;                    // 4 bytes
+    char isoCode[5];                    // 5 bytes
+    char x;                             // 1 byte
+    char y;                             // 1 byte
+    char z;                             // 1 byte
 
-    float length;
-    float width;
-    float height;
+    float length;                       // 4 bytes
+    float width;                        // 4 bytes
+    float height;                       // 4 bytes
 
-    float exposedArea;
+    float exposedArea;                  // 4 bytes
 
-    char innerWallMaterial[16];
-    float innerWallCondutivity;
-    float innerWallThickness;
+    char innerWallMaterial[16];         // 16 bytes
+    float innerWallCondutivity;         // 4 bytes
+    float innerWallThickness;           // 4 bytes
 
-    char centerWallMaterial[16] ;
-    float centerWallCondutivity;
-    float centerWallThickness;
+    char centerWallMaterial[16] ;       // 16 bytes
+    float centerWallCondutivity;        // 4 bytes
+    float centerWallThickness;          // 4 bytes
     
-    char outerWallMaterial[16];
-    float outerWallCondutivity;
-    float outerWallThickness;
+    char outerWallMaterial[16];         // 16 bytes
+    float outerWallCondutivity;         // 4 bytes
+    float outerWallThickness;           // 4 bytes
 
-} container;
+} container;                            // total: 100 bytes

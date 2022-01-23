@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "struct.h"
+#include "is_refrigerated.h"
 #include "get_needed_energy_container.h"
 #include "readContainersInfo.h"
 
@@ -43,14 +44,14 @@ int main(void) {
     for (int j = 0; j < arraySize; j++)
     {
         
-        printf("ID: %d | ISO: %s | Length: %f | Width: %f | Height: %f | Area: %f | x: %d | y: %d | z: %d \n", containers[j].containerID, containers[j].isoCode, containers[j].length, containers[j].width, containers[j].height, containers[j].exposedArea,
+        /*printf("ID: %d | ISO: %s | Length: %f | Width: %f | Height: %f | Area: %f | x: %d | y: %d | z: %d \n", containers[j].containerID, containers[j].isoCode, containers[j].length, containers[j].width, containers[j].height, containers[j].exposedArea,
                             containers[j].x, containers[j].y, containers[j].z);
 
 
         printf("ID: %d | ISO: %s | Length: %f | Width: %f | Height: %f | Area: %f | MI: %s | MC: %f | MT: %f | CM: %s | CC: %f | CT: %f | OM: %s | OC: %f | OT: %f \n", containers[j].containerID, containers[j].isoCode, containers[j].length, containers[j].width, containers[j].height, containers[j].exposedArea,
                                            containers[j].innerWallMaterial, containers[j].innerWallCondutivity, containers[j].innerWallThickness,
                                            containers[j].centerWallMaterial, containers[j].centerWallCondutivity, containers[j].centerWallThickness,
-                                           containers[j].outerWallMaterial, containers[j].outerWallCondutivity, containers[j].centerWallThickness);
+                                           containers[j].outerWallMaterial, containers[j].outerWallCondutivity, containers[j].centerWallThickness);*/
     }
     
     float tripDuration = 1;
@@ -70,9 +71,13 @@ int main(void) {
     printf("Z? ");
     scanf(" %hhd", &containerPosZ);
 
+    int isRefrigerated = is_refrigerated(containers, containerPosX, containerPosY, containerPosZ, arraySize);
+    if (isRefrigerated == 0) printf("The container in position [%hhd, %hhd, %hhd] is not refrigerated.\n", containerPosX, containerPosY, containerPosZ);
+    else if (isRefrigerated == 1) printf("The container in position [%hhd, %hhd, %hhd] is refrigerated.\n", containerPosX, containerPosY, containerPosZ);
+    else printf("No container was found in position [%hhd, %hhd, %hhd].\n", containerPosX, containerPosY, containerPosZ);
+
     float res = get_needed_energy_container(tripDuration, outerTemperature, containers, arraySize, containerPosX, containerPosY, containerPosZ);
     if (res != -1) printf("Total needed energy: %f J\n", res);
-    else printf("Container not found.\n");
     
     return 0;
 }

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "struct.h"
-//#include "is_refrigerated.h"
+#include "is_refrigerated.h"
 
 static float get_wall_thermal_resistance(float wallThickness, float thermalConductivity, float exposedArea)
 {
@@ -19,7 +19,7 @@ static float get_exposed_area(float length, float width, float height)
 }
 
 float get_needed_energy_container(float hours, float outerTemperature, container *ptrContainer, int n, char x, char y, char z){
-    //if (is_refrigerated(x, y, z) == 0 || hours <= 0) return 0;
+    if (is_refrigerated(ptrContainer, x, y, z) == 0 || hours <= 0) return 0;
     
     for (int i = 0; i < n; i++)
     {
