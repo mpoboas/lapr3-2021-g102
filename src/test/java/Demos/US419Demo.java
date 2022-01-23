@@ -1,6 +1,5 @@
 package Demos;
 
-import lapr.project.controller.App;
 import lapr.project.controller.AuthController;
 import lapr.project.utils.Constants;
 import lapr.project.utils.Pair;
