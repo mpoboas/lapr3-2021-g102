@@ -1,7 +1,7 @@
 main: main.o is_refrigerated.o get_needed_energy_container.o readContainersInfo.o is_energy_enough.o
 	gcc main.o is_refrigerated.o get_needed_energy_container.o readContainersInfo.o is_energy_enough.o -o main
 
-main.o: main.c is_refrigerated.h get_needed_energy_container.h
+main.o: main.c is_refrigerated.h get_needed_energy_container.h is_energy_enough.h
 	gcc -g -Wall -c main.c -o main.o
 
 is_refrigerated.o: is_refrigerated.s

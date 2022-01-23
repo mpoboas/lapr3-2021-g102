@@ -7,7 +7,8 @@
 #include "readContainersInfo.h"
 #include "is_energy_enough.h"
 
-int main(void) {
+
+int main(void){
     //-------------- Ficheiro Manifest
     //char fileManifest[] = "manifest.txt";
     char fileManifest[70];
@@ -83,7 +84,7 @@ int main(void) {
 	float generatorEnergy = 0;
 	printf("Generator energy?");
 	scanf("%f", &generatorEnergy);
-	is_energy_enough(generatorEnergy, tripDuration, outerTemperature, containers, arraySize)
+	is_energy_enough(generatorEnergy, tripDuration, outerTemperature, containers, arraySize);
     
     return 0;
 }
