@@ -57,3 +57,28 @@ Begin
             raise_application_error(-20002, 'The ship with id: ' || p_ship_mmsi || ' has not registered voyages');
 
 End;
+
+create or replace function fnc_get_voyages_below_threshold_with_user_verification(p_user_name varchar, p_ship_mmsi ship.mmsi%type, p_threshold number)
+return SYS_REFCURSOR
+as
+    v_count integer;
+
+    ex_user_not_allowed exception;
+Begin
+
+select count(*) into v_count
+from Employee, SystemUser, SystemUserRole, SystemRole
+where SystemUser.idUser = Employee.idUser and SystemUser.idUser = SystemUserRole.idUser and SystemRole.idUserRole = SystemUserRole.idUserRole
+  and SystemRole.idUserRole = 5 and SystemUser.username = p_user_name;
+
+if v_count = 0
+    then
+        raise ex_user_not_allowed;
+end if;
+
+return fnc_get_voyages_below_threshold(p_ship_mmsi,p_threshold);
+
+EXCEPTION
+        when ex_user_not_allowed then
+            RAISE_APPLICATION_ERROR(-20555, 'The user is not allowed to do this operation');
+end;
