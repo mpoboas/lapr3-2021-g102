@@ -1,5 +1,5 @@
-main: main.o get_needed_energy_container.o readContainersInfo.o 
-	gcc main.o get_needed_energy_container.o readContainersInfo.o -o main
+main: main.o get_needed_energy_container.o readContainersInfo.o is_energy_enough.o
+	gcc main.o get_needed_energy_container.o readContainersInfo.o is_energy_enough.o -o main
 
 main.o: main.c get_needed_energy_container.h
 	gcc -g -Wall -c main.c -o main.o
@@ -9,6 +9,9 @@ get_needed_energy_container.o: get_needed_energy_container.c
 	
 readContainersInfo.o: readContainersInfo.c
 	gcc -Wall -g -c readContainersInfo.c -o readContainersInfo.o
+	
+is_energy_enough.o: is_energy_enough.c
+	gcc -Wall -g -c is_energy_enough.c -o is_energy_enough.o
 
 run: main
 	./main

@@ -1,0 +1,1 @@
+void is_energy_enough(float generatorEnergy, int hours, float outerTemperature, container *ptrContainers, int arraySize)

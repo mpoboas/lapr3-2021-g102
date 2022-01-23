@@ -4,6 +4,7 @@
 #include "struct.h"
 #include "get_needed_energy_container.h"
 #include "readContainersInfo.h"
+#include "is_energy_enough.h"
 
 int main(void) {
     //-------------- Ficheiro Manifest
@@ -73,6 +74,11 @@ int main(void) {
     float res = get_needed_energy_container(tripDuration, outerTemperature, containers, arraySize, containerPosX, containerPosY, containerPosZ);
     if (res != -1) printf("Total needed energy: %f J\n", res);
     else printf("Container not found.\n");
+	
+	float generatorEnergy = 0;
+	printf("Generator energy?");
+	scanf("%f", &generatorEnergy);
+	is_energy_enough(generatorEnergy, tripDuration, outerTemperature, containers, arraySize)
     
     return 0;
 }
