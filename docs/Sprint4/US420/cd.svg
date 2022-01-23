@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="215px" preserveAspectRatio="none" style="width:345px;height:215px;background:#FFFFFF;" version="1.1" viewBox="0 0 345 215" width="345px" zoomAndPan="magnify"><defs><filter height="300%" id="fwm4naqfvkfuo" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[cb65c8ee46d02eba4ce12a13faca1069]
+class ShipSinkageWithCargoUI--><rect codeLine="2" fill="#FEFECE" filter="url(#fwm4naqfvkfuo)" height="48" id="ShipSinkageWithCargoUI" style="stroke:#A80036;stroke-width:1.5;" width="185" x="76.5" y="7"/><ellipse cx="91.5" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M94.4688,28.6406 Q93.8906,28.9375 93.25,29.0781 Q92.6094,29.2344 91.9063,29.2344 Q89.4063,29.2344 88.0781,27.5938 Q86.7656,25.9375 86.7656,22.8125 Q86.7656,19.6875 88.0781,18.0313 Q89.4063,16.375 91.9063,16.375 Q92.6094,16.375 93.25,16.5313 Q93.9063,16.6875 94.4688,16.9844 L94.4688,19.7031 Q93.8438,19.125 93.25,18.8594 Q92.6563,18.5781 92.0313,18.5781 Q90.6875,18.5781 90,19.6563 Q89.3125,20.7188 89.3125,22.8125 Q89.3125,24.9063 90,25.9844 Q90.6875,27.0469 92.0313,27.0469 Q92.6563,27.0469 93.25,26.7813 Q93.8438,26.5 94.4688,25.9219 L94.4688,28.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="153" x="105.5" y="27.1543">ShipSinkageWithCargoUI</text><line style="stroke:#A80036;stroke-width:1.5;" x1="77.5" x2="260.5" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="77.5" x2="260.5" y1="47" y2="47"/><!--MD5=[cbc97b54f786030d903286d52929abc4]
+class PhysicsUtils--><rect codeLine="5" fill="#FEFECE" filter="url(#fwm4naqfvkfuo)" height="86.4141" id="PhysicsUtils" style="stroke:#A80036;stroke-width:1.5;" width="324" x="7" y="115"/><ellipse cx="128.25" cy="131" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M131.2188,136.6406 Q130.6406,136.9375 130,137.0781 Q129.3594,137.2344 128.6563,137.2344 Q126.1563,137.2344 124.8281,135.5938 Q123.5156,133.9375 123.5156,130.8125 Q123.5156,127.6875 124.8281,126.0313 Q126.1563,124.375 128.6563,124.375 Q129.3594,124.375 130,124.5313 Q130.6563,124.6875 131.2188,124.9844 L131.2188,127.7031 Q130.5938,127.125 130,126.8594 Q129.4063,126.5781 128.7813,126.5781 Q127.4375,126.5781 126.75,127.6563 Q126.0625,128.7188 126.0625,130.8125 Q126.0625,132.9063 126.75,133.9844 Q127.4375,135.0469 128.7813,135.0469 Q129.4063,135.0469 130,134.7813 Q130.5938,134.5 131.2188,133.9219 L131.2188,136.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="73" x="148.75" y="135.1543">PhysicsUtils</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="330" y1="147" y2="147"/><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="330" y1="155" y2="155"/><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="163"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="298" x="27" y="169.2104">getDraftAfterAddedCargo(Ship ship, int nContainers)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="175.8047"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="275" x="27" y="182.0151">shipSinkageWithCargo(Ship ship, int nContainer)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="188.6094"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="267" x="27" y="194.8198">getCalculatedDiffDraft(Ship ship, double cargo)</text><!--MD5=[10ca0de548ea9e0f6104b4072a353102]
+link ShipSinkageWithCargoUI to PhysicsUtils--><path codeLine="11" d="M169,55.22 C169,70.51 169,91.09 169,109.73 " fill="none" id="ShipSinkageWithCargoUI-to-PhysicsUtils" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="169,114.94,173,105.94,169,109.94,165,105.94,169,114.94" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5b3fd408a3c19e58785ef5882a9334f4]
+@startuml
+
+class ShipSinkageWithCargoUI {
+}
+
+class PhysicsUtils {
+-getDraftAfterAddedCargo(Ship ship, int nContainers)
+-shipSinkageWithCargo(Ship ship, int nContainer)
+-getCalculatedDiffDraft(Ship ship, double cargo)
+}
+
+ShipSinkageWithCargoUI ..> PhysicsUtils
+@enduml
+
+PlantUML version 1.2021.11(Sat Oct 02 14:26:11 WEST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: pt
+Country: PT
+--></g></svg>

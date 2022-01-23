@@ -1,0 +1,13 @@
+@startuml
+
+class ShipSinkageWithCargoUI {
+}
+
+class PhysicsUtils {
+-getDraftAfterAddedCargo(Ship ship, int nContainers)
+-shipSinkageWithCargo(Ship ship, int nContainer)
+-getCalculatedDiffDraft(Ship ship, double cargo)
+}
+
+ShipSinkageWithCargoUI ..> PhysicsUtils
+@enduml
