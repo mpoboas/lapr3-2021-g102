@@ -1,0 +1,17 @@
+@startuml
+autonumber
+actor "Ship Captain" as SC
+participant System as sys
+
+activate SC
+SC -> sys : requests how much will the ship sink with added cargo
+activate sys
+sys --> SC : requests data (ship information and number of containers)
+deactivate sys
+SC -> sys : inserts requested data
+
+activate sys
+sys --> SC : shows result
+deactivate sys
+deactivate SC
+@enduml

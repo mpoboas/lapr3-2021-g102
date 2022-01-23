@@ -1,0 +1,23 @@
+@startuml
+autonumber
+actor "Ship Captain" as SC
+participant ShipSinkageWithCargoUI as ui
+participant "PhysicsUtils" as PU
+
+
+activate SC
+SC -> ui : requests how much will the ship sink with added cargo
+activate ui
+ui --> SC : requests data (ship information and number of containers)
+deactivate ui
+SC -> ui : inserts requested data
+
+activate ui
+ui -> PU: shipSinkageWithCargo(Ship ship, int nContainer)
+activate PU
+PU -->  ui : result
+deactivate PU
+ui --> SC : shows result
+deactivate ui
+deactivate SC
+@enduml
